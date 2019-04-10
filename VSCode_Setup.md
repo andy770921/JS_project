@@ -52,4 +52,4 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 4. 輸入自己的github e-mail及帳號
 5. 創新檔案並編輯
 6. 點+(加到git add加到stage)，輸入註解文字，再按勾勾(git commit)
-7. 按F1再輸入git history可看到編輯狀況
+7. 按F1，再輸入git history，會出現新分頁，可看到文件commit狀況
