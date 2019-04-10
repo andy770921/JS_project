@@ -95,7 +95,7 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
    Ref: https://ithelp.ithome.com.tw/articles/10200459  
    a.在終端機輸入 npm install react react-dom --save    
    b. 在終端機輸入 npm i @babel/preset-react -D  
-   c. 更改"webpack.config.js"文件，將原先的東西取代成['@babel/preset-react']如下  
+   c. 更改"webpack.config.js"文件，將原先的東西取代成['@babel/preset-react']如下    
     module: {
     rules: [
              {
@@ -108,7 +108,12 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
               }
             ]
            }
-
+    d.在index.html的<body>下，新增<main id="app"></main>。  
+      id為js檔案中，getElementById的名稱  
+      ReactDOM.render(
+      <Parent />,
+      document.getElementById('app'));
+  
 ## -------------------
 
 
