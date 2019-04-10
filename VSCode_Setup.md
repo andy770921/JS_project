@@ -24,7 +24,19 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 1. F1 可開啟命令輸入欄
 2. alt + shift + F 可調整縮排
 3. 在html檔案內，打 ! 或 html:5，可呼叫出模板
-4. current file 按 F8 執行 js檔，
-To cancel a running process press F9
+4. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
+5. ctrl+`  可開啟終端機
+
+## Live Server port設定  
+
+1. 若按主畫面下Go Live，無法顯示網頁，要點檔案->喜好設定->設定
+2. 搜尋server，找到 在 setting.json 內編輯
+    Live Server › Settings: Port
+    Set Custom Port Number of Live Server. Set 0 if you want random port.
+    在 setting.json 內編輯
+3. 在大括號如下寫，之後存檔，即可用
+  {
+      "liveServer.settings.port":8080
+  }
 
 ## 使用版本控制  
