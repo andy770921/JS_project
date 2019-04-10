@@ -18,9 +18,9 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 4. Node快速執行
 - Node exec
 5. 好用小工具
-- Path Intellisense 提示檔案路徑
-- SCSS Refactoring 快速命名SCSS中的變數
-- ESLint 引入國際規範紅底線
+- Path Intellisense (提示檔案路徑)
+- SCSS Refactoring (快速命名SCSS中的變數)
+- ESLint (引入國際規範紅底線)
 
 ## 快捷鍵  
 
