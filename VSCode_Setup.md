@@ -48,5 +48,8 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 
 1. 創建資料夾，在終端機打npm init，一路enter到底
 2. 在左方點選分岔軌道圖示，再點git圖示初始化存放庫，選自己剛剛建的資料夾
-3. 點+，輸入註解文字，再按勾勾
+3. 點+(加到git add加到stage)，輸入註解文字，再按勾勾(git commit)
 4. 輸入自己的github e-mail及帳號
+5. 創新檔案並編輯
+6. 點+(加到git add加到stage)，輸入註解文字，再按勾勾(git commit)
+7. 按F1再輸入git history可看到編輯狀況
