@@ -15,11 +15,15 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 - Git-autoconfig (多個Github帳號時切換方便)
 3. 縮排方便類
 
+4. Node快速執行
+- Node exec
+
 
 ## 快捷鍵  
 
 1. F1 可開啟命令輸入欄
 2. alt + shift + F 可調整縮排
 3. 在html檔案內，打 ! 或 html:5，可呼叫出模板
+4. 按
 
 ## 使用版本控制  
