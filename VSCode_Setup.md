@@ -28,6 +28,7 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 3. 在html檔案內，打 ! 或 html:5，可呼叫出模板
 4. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
 5. ctrl+`  可開啟終端機
+6. 可按html檔內文處，右鍵，選Open with live server即時呈現
 
 ## Live Server port設定  
 
@@ -46,3 +47,4 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 1. 創建資料夾，在終端機打npm init，一路enter到底
 2. 在左方點選分岔軌道圖示，再點git圖示初始化存放庫，選自己剛剛建的資料夾
 3. 點+，輸入註解文字，再按勾勾
+4. 輸入自己的github e-mail及帳號
