@@ -1,10 +1,13 @@
+# 使用Webpack開發React JS環境建置
+
+
 Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
 
-1. 安裝VSCode
-2. 下載nvm (管理node JS 版本工具)
+## 1. 安裝VSCode
+## 2. 下載nvm (管理node JS 版本工具)
   https://github.com/coreybutler/nvm-windows/releases
   下載nvm-setup.zip
-3. 用命令提示字元下載與安裝nodeJS
+## 3. 用命令提示字元下載與安裝nodeJS
    a. 輸入nvm list 確認電腦中的NodeJS版本
    b. 輸入nvm list available 確認網路上可下載的、穩定版(LTS)的NodeJS版本
    c. 輸入nvm install 10.15.3 下載穩定版(LTS)的NodeJS版本
@@ -13,9 +16,9 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
    NOTE: 可按node -v確認有無裝好nodeJS
    NOTE: 此時也會裝好 npm (node JS 套件管理工具)
          可按npm -v確認有無版本號出現
-4. 創建資料夾"Webpack_demo"，用VSCode在資料夾下新增"webpack.config.js"文件
-5. 貼上官網https://webpack.js.org/中的Bundle It下的文字，貼在"webpack.config.js"文件中
-6. 照官網流程，在VSCode開啟終端機，安裝如下 https://webpack.js.org/guides/getting-started/
+## 4. 創建資料夾"Webpack_demo"，用VSCode在資料夾下新增"webpack.config.js"文件
+## 5. 貼上官網https://webpack.js.org/中的Bundle It下的文字，貼在"webpack.config.js"文件中
+## 6. 照官網流程，在VSCode開啟終端機，安裝如下 https://webpack.js.org/guides/getting-started/
    a. 輸入npm init -y, 在資料夾產生package.json，內含安裝那些套件、用甚麼指令
    b. 輸入npm install webpack webpack-cli -g, 安裝webpack，並且通用於全域 (npm install webpack webpack-cli --save-dev不通用於全域)
     結果: i. package.json中，多了webpack使用的版本編號
@@ -23,7 +26,7 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
             "webpack-cli": "^3.3.0" 
           ii. "Webpack_demo"資料夾中，多了新資料夾"node_module"，裡面含webpack依賴的第三方套件。通常複製專案時，不會複製此資料夾
               拿到專案時，重新按npm install重抓即可
-7. 切到webpack.config.js文件。
+## 7. 切到webpack.config.js文件。
    a. entry為'./src/index.js',意思是一開始的進入點，未來要將高版本的JS寫在此。
       此時需要自行創建src資料夾、其下創建index.js
    b. filename: 'bundle.js'  改成 'index.bundle.js'
@@ -33,9 +36,9 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
       在VSCode終端機執行指令webpack時，會創造出資料夾'dist'、資料夾下有'index.bundle.js'
    d. 'index.bundle.js'裡面是index.js經轉換後的檔，已處理/編譯好變數名稱重複等狀況並壓縮後轉成程式碼
    
-8. 掛載 Babel，在VSCode終端機，輸入指令npm install -D babel-loader @babel/core @babel/preset-env webpack
+## 8. 掛載 Babel，在VSCode終端機，輸入指令npm install -D babel-loader @babel/core @babel/preset-env webpack
    Babel loader Ref: https://github.com/babel/babel-loader
-9. 照Babel loader網站開發步驟，貼上Usage下方程式碼至"webpack.config.js"文件，並在output{}後加上逗號
+## 9. 照Babel loader網站開發步驟，貼上Usage下方程式碼至"webpack.config.js"文件，並在output{}後加上逗號
             module.exports = {
               entry: './src/index.js',
               output: {
@@ -58,10 +61,10 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
                        }
             };
 
-10. 創建index.html文件，在VSCode安裝套件html snippets，在index.html文件第一行打html:5，生成自動模板
-11. <body></body>中，插入如下
+## 10. 創建index.html文件，在VSCode安裝套件html snippets，在index.html文件第一行打html:5，生成自動模板
+## 11. <body></body>中，插入如下
     <script src="./dist/index.bundle.js"></script>
-12. 其他好用設定: 修改package.json裡面的文字，新增npm 腳本功能
+## 12. 其他好用設定: 修改package.json裡面的文字，新增npm 腳本功能
     將
       "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
@@ -79,7 +82,7 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
     npm run start: 一次性執行 develope版，Code可讀
     npm run deploy (直接打webpack也是這個預設功能): 上線前壓成產品版本，bundle出的code只有一行
     
-13. 若要執行React
+## 13. 若要執行React
     Ref: https://ithelp.ithome.com.tw/articles/10200459
     在終端機輸入 npm install react react-dom --save
     在終端機輸入 npm i @babel/preset-react -D
@@ -96,7 +99,8 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
               }
             ]
            }
--------------------
+
+## -------------------
 
 
 Q:
