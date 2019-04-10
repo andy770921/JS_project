@@ -79,7 +79,23 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
     npm run start: 一次性執行 develope版，Code可讀
     npm run deploy (直接打webpack也是這個預設功能): 上線前壓成產品版本，bundle出的code只有一行
     
-    
+13. 若要執行React
+    Ref: https://ithelp.ithome.com.tw/articles/10200459
+    在終端機輸入 npm install react react-dom --save
+    在終端機輸入 npm i @babel/preset-react -D
+    更改"webpack.config.js"文件，將原先的東西取代成['@babel/preset-react']如下
+    module: {
+    rules: [
+             {
+              test: /\.m?js$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                     loader: 'babel-loader',
+                     options: { presets: ['@babel/preset-react'] }
+                   }   
+              }
+            ]
+           }
 -------------------
 
 
