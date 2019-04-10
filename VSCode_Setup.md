@@ -24,6 +24,7 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 1. F1 可開啟命令輸入欄
 2. alt + shift + F 可調整縮排
 3. 在html檔案內，打 ! 或 html:5，可呼叫出模板
-4. 按
+4. current file 按 F8 執行 js檔，
+To cancel a running process press F9
 
 ## 使用版本控制  
