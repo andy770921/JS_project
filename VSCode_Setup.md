@@ -40,3 +40,7 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
   }  
 
 ## 使用版本控制  
+
+1. 創建資料夾，在終端機打npm init，一路enter到底
+2. 在左方點選分岔軌道圖示，再點git圖示初始化存放庫，選自己剛剛建的資料夾
+
