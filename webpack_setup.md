@@ -108,7 +108,7 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
               }
             ]
            }  
-    d.在index.html的<body>下，新增<main id="app"></main>   
+    d.在index.html的 <body> 下，新增 <main id="app"></main>    
      id為js檔案中，getElementById的名稱   
      ReactDOM.render(  
       <Parent /> ,  
