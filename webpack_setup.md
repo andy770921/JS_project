@@ -95,7 +95,7 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
     npm run start: 一次性執行 develope版，Code可讀
     npm run deploy (直接打webpack也是這個預設功能): 上線前壓成產品版本，bundle出的code只有一行
     
-## 13. 要執行React，還必須進行以下操作  
+## 13. 要執行React及JSX語法，還必須進行以下操作  
    Ref: https://ithelp.ithome.com.tw/articles/10200459  
    Ref: https://youtu.be/YN2hwa4_ins?t=3535  
    a.在終端機輸入 npm install react react-dom --save    
