@@ -17,7 +17,9 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 
 4. Node快速執行
 - Node exec
-
+5. 好用小工具
+- Path Intellisense 提示檔案路徑
+- SCSS Refactoring 快速命名SCSS中的變數
 
 ## 快捷鍵  
 
@@ -43,4 +45,4 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 
 1. 創建資料夾，在終端機打npm init，一路enter到底
 2. 在左方點選分岔軌道圖示，再點git圖示初始化存放庫，選自己剛剛建的資料夾
-
+3. 點+，輸入註解文字，再按勾勾
