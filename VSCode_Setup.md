@@ -1,7 +1,9 @@
 # VSCode環境建置
+
 ##參考網站
 https://www.youtube.com/watch?v=bcgL1sCjAJA&t=2s&fbclid=IwAR0QeUHlizXDVjmGHZ6c9EegpNe_RUuslQp-ue2eI2yf4A9ddcnVnxSWkR0
 https://www.youtube.com/watch?v=ZkDM77ZPkEo
+
 ##預先下載之外掛
 1. 即時呈現類
 - Live Server
