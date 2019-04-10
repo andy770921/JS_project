@@ -97,9 +97,11 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
     
 ## 13. 要執行React，還必須進行以下操作  
    Ref: https://ithelp.ithome.com.tw/articles/10200459  
+   Ref: https://youtu.be/YN2hwa4_ins?t=3535  
    a.在終端機輸入 npm install react react-dom --save    
    b. 在終端機輸入 npm i @babel/preset-react -D  
-   c. 更改"webpack.config.js"文件，將原先的東西取代成['@babel/preset-react']如下 
+   c-1. 更改"package.json"文件，"main":"index.js"下方，加入"babel" : {"presets": [ "env", "react"]},  
+   c-2. 更改"webpack.config.js"文件，將原先的東西取代成['@babel/preset-react']如下 
    
     module: {
     rules: [
