@@ -30,13 +30,13 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 ## Live Server port設定  
 
 1. 若按主畫面下Go Live，無法顯示網頁，要點檔案->喜好設定->設定
-2. 搜尋server，找到 在 setting.json 內編輯
-    Live Server › Settings: Port
-    Set Custom Port Number of Live Server. Set 0 if you want random port.
-    在 setting.json 內編輯
-3. 在大括號如下寫，之後存檔，即可用
-  {
-      "liveServer.settings.port":8080
-  }
+2. 搜尋server，找到 在 setting.json 內編輯  
+    Live Server › Settings: Port  
+    Set Custom Port Number of Live Server. Set 0 if you want random port.  
+    在 setting.json 內編輯  
+3. 在大括號如下寫，之後存檔，即可用  
+  {  
+      "liveServer.settings.port":5500  
+  }  
 
 ## 使用版本控制  
