@@ -83,8 +83,8 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
       "watch": "webpack --mode development --watch",
       "start": "webpack --mode development",
       "deploy": "webpack --mode production"
-    },
-      Ref: https://medium.com/@Mike_Cheng1208/webpack%E6%95%99%E5%AD%B8-%E5%9B%9B-javascript-%E8%88%87-babel-1d7acd911e63
+    },  
+      Ref: https://medium.com/@Mike_Cheng1208/webpack%E6%95%99%E5%AD%B8-%E5%9B%9B-javascript-%E8%88%87-babel-1d7acd911e63  
 
    新增指令:   
     npm run watch: 持續執行develope版，存檔時就會bundle，按ctrl+c可中斷執行。Code可讀。如用production版會很慢
@@ -107,7 +107,8 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
                    }   
               }
             ]
-           }  
+           } 
+           
     d.在index.html的 <body> 下，新增 <main id="app"></main>    
      id為js檔案中，getElementById的名稱   
      ReactDOM.render(  
