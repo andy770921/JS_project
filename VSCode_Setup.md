@@ -13,13 +13,14 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 - Gitignore (會找到兩個，要看內容介紹，下載右鍵點擊功能的)
 - Git History
 - Git-autoconfig (多個Github帳號時切換方便)
-3. 縮排方便類
-
+3. 存檔自動縮排
+- JS, CSS, HTML Formatter
 4. Node快速執行
 - Node exec
 5. 好用小工具
 - Path Intellisense 提示檔案路徑
 - SCSS Refactoring 快速命名SCSS中的變數
+- ESLint 引入國際規範紅底線
 
 ## 快捷鍵  
 
@@ -29,6 +30,7 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 4. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
 5. ctrl+`  可開啟終端機
 6. 可按html檔內文處，右鍵，選Open with live server即時呈現
+7. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
 
 ## Live Server port設定  
 
