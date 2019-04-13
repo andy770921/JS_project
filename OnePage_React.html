@@ -22,6 +22,7 @@
         name: "andy",
         age: 30
       }
+      
       handleClickRightCode = (e) => {
         this.setState({
           name : "Tom",
@@ -29,10 +30,16 @@
         });
         console.log("use arrow function to deal with handleClick");
       }
-      handleSubmit(e){
+      handleSubmit = (e) => {
         e.preventDefault();
         console.log("form submitted");
       }
+      handleChange = (e) => {
+        this.setState({
+        name: e.target.value
+        });
+      }
+          
       handleClick(e){
         console.log(e.target);
       }
@@ -47,8 +54,8 @@
           <div className="app-content">
             <h1>Hi</h1>
             <p>My name is { this.state.name } and I am { this.state.age }.</p>
-            <form>
-              <input type="text" onChange={ this.handleSubmit } />
+            <form onSubmit={  }>
+              <input type="text" onChange={ this.handleChange } />
               <button>Submit</button>
             </form>
             <button onClick={ this.handleClick }>Click me</button>
