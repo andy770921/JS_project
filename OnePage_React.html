@@ -18,10 +18,35 @@
   
   <script type="text/babel">
     class App extends React.Component{
+      state = {
+        name: "andy",
+        age: 30
+      }
+      handleClickRight = (e) =>{
+        this.setState({
+          name : "Tom",
+          age: 10
+        });
+        console.log("use arrow function to deal with handleClick");
+      }
+      
+      handleClick(e){
+        console.log(e.target);
+      }
+      handleMouseOver(e){
+        console.log(e.target, e.pageX);
+      }
+      handleCopy(e){
+        console.log("Don't do evil!");
+      }
       render(){
         return (
           <div className="app-content">
-            <h1>hi</h1>
+            <h1>Hi</h1>
+            <p>My name is { this.state.name } and I am { this.state.age }.</p>
+            <button onClick={ this.handleClick }>Click me</button>
+            <button onMouseOver={ this.handleClick }>Hover me</button>
+            <p onCopy={ this.handleCopy }>Copy this line.</p>
           </div>
         )
       }
