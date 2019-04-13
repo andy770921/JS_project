@@ -71,7 +71,8 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
 ## 10. 創建index.html文件
    在index.html文件第一行打html:5，生成自動模板  
 ## 11. 編輯index.html文件
-    <body></body>中，插入如下  
+   \<body\>\</body\>中，插入如下 
+
     <script src="./dist/index.bundle.js"></script>  
 ## 12. 其他好用設定: 
    修改package.json裡面的文字，新增npm 腳本功能  
