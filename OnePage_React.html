@@ -22,7 +22,7 @@
         name: "andy",
         age: 30
       }
-      handleClickRight = (e) =>{
+      handleClickRightCode = (e) => {
         this.setState({
           name : "Tom",
           age: 10
@@ -34,7 +34,7 @@
         console.log(e.target);
       }
       handleMouseOver(e){
-        console.log(e.target, e.pageX);
+        console.log(e.target, e.pageX, e.pageY);
       }
       handleCopy(e){
         console.log("Don't do evil!");
@@ -46,6 +46,7 @@
             <p>My name is { this.state.name } and I am { this.state.age }.</p>
             <button onClick={ this.handleClick }>Click me</button>
             <button onMouseOver={ this.handleClick }>Hover me</button>
+            <button onClick={ this.handleClickRightCode }>Click me to change name and age</button>
             <p onCopy={ this.handleCopy }>Copy this line.</p>
           </div>
         )
