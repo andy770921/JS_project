@@ -29,7 +29,10 @@
         });
         console.log("use arrow function to deal with handleClick");
       }
-      
+      handleSubmit(e){
+        e.preventDefault();
+        console.log("form submitted");
+      }
       handleClick(e){
         console.log(e.target);
       }
@@ -44,9 +47,13 @@
           <div className="app-content">
             <h1>Hi</h1>
             <p>My name is { this.state.name } and I am { this.state.age }.</p>
+            <form>
+              <input type="text" onChange={ this.handleSubmit } />
+              <button>Submit</button>
+            </form>
             <button onClick={ this.handleClick }>Click me</button>
-            <button onMouseOver={ this.handleClick }>Hover me</button>
-            <button onClick={ this.handleClickRightCode }>Click me to change name and age</button>
+            <button onMouseOver={ this.handleMouseOver }>Hover me</button>
+            <button onClick={ this.handleClickRightCode }>Change name and age</button>
             <p onCopy={ this.handleCopy }>Copy this line.</p>
           </div>
         )
