@@ -1,8 +1,9 @@
 # VSCode環境建置
 
 ## 參考網站  
-https://www.youtube.com/watch?v=bcgL1sCjAJA&t=2s&fbclid=IwAR0QeUHlizXDVjmGHZ6c9EegpNe_RUuslQp-ue2eI2yf4A9ddcnVnxSWkR0
-https://www.youtube.com/watch?v=ZkDM77ZPkEo
+1. https://www.youtube.com/watch?v=bcgL1sCjAJA&t=2s&fbclid=IwAR0QeUHlizXDVjmGHZ6c9EegpNe_RUuslQp-ue2eI2yf4A9ddcnVnxSWkR0
+2. https://www.youtube.com/watch?v=ZkDM77ZPkEo
+3. https://www.youtube.com/watch?v=SAX6RMEFVM4
 
 ## 預先下載之外掛  
 1. 即時呈現類
@@ -21,7 +22,9 @@ https://www.youtube.com/watch?v=ZkDM77ZPkEo
 - Path Intellisense (提示檔案路徑)
 - SCSS Refactoring (快速命名SCSS中的變數)
 - ESLint (引入國際規範紅底線)
-
+6. React相關
+- ES7 React/Redux/GraphQL/React-Native snippets (快速建立component, 加入import等)
+- Sublime Babel (輔助判斷JSX語法是否正確)
 ## 快捷鍵  
 
 1. F1 可開啟命令輸入欄
