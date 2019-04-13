@@ -54,9 +54,9 @@
           <div className="app-content">
             <h1>Hi</h1>
             <p>My name is { this.state.name } and I am { this.state.age }.</p>
-            <form onSubmit={  }>
+            <form onSubmit={ this.handleSubmit }>
               <input type="text" onChange={ this.handleChange } />
-              <button>Submit</button>
+              <button>Submit your name</button>
             </form>
             <button onClick={ this.handleClick }>Click me</button>
             <button onMouseOver={ this.handleMouseOver }>Hover me</button>
