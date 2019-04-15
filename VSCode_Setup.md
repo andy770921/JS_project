@@ -62,8 +62,27 @@
 
 1. 灌Node JS
 2. 建新資料夾
-3. 新資料夾下，在VSCode下終端機依序輸入如下指令，可在myapp資料夾下創react專案  
+3. 新資料夾下，在VSCode下終端機依序輸入如下指令，可在myapp資料夾下創react專案。此專案已有Git功能 
   npx create-react-app myapp  
   cd myapp  
   npm start  
 4. 參考資料: https://github.com/facebook/create-react-app
+5. 在.scr資料夾下，刪除app.js中的第三行import './App.css';，並刪除檔案App.css
+6. 刪除檔案App.test.js
+7. 刪除app.js中的第二行import logo from './logo.svg'、第八行\<img src={logo} className="App-logo" alt="logo" /\>;，並刪除檔案logo.svg
+8. 按npm start可開啟預覽
+9. 刪除App.js以下文字
+    
+       <header className="App-header">
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React
+          </a>
+        </header>
