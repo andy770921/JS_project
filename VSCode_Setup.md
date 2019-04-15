@@ -66,8 +66,11 @@
   npx create-react-app myapp  
   cd myapp  
   npm start  
-4. 參考資料: https://github.com/facebook/create-react-app
-5. 在.scr資料夾下，刪除app.js中的第三行import './App.css';，並刪除檔案App.css
+4. 參考資料: https://github.com/facebook/create-react-app  
+4.2. 先在Gitbub下創立Repository，得到網址如https://github.com/andy770921/ReactJS_Project.git  
+     在myapp資料夾下，連到Github，輸入指令git remote add origin https://github.com/你的帳號/專案名稱.git  
+     左方原始檔控制分岔圖，點進去，右鍵  
+5. 在.scr資料夾下，刪除app.js中的第三行import './App.css';，並刪除檔案App.css  
 6. 刪除檔案App.test.js
 7. 刪除app.js中的第二行import logo from './logo.svg'、第八行\<img src={logo} className="App-logo" alt="logo" /\>;，並刪除檔案logo.svg
 8. 按npm start可開啟預覽
