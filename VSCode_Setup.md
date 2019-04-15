@@ -56,3 +56,14 @@
 5. 創新檔案並編輯
 6. 點+(加到git add加到stage)，輸入註解文字，再按勾勾(git commit)
 7. 按F1，再輸入git history，會出現新分頁，可看到文件commit狀況
+
+
+## 不裝Webpack直接用React
+
+1. 灌Node JS
+2. 建新資料夾
+3. 新資料夾下，在VSCode下終端機依序輸入如下指令，可在myapp資料夾下創react專案
+  npx create-react-app myapp
+  cd myapp
+  npm start
+4. 參考資料: https://github.com/facebook/create-react-app
