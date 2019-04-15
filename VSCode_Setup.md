@@ -62,7 +62,7 @@
 
 1. 灌Node JS
 2. 建新資料夾
-3. 新資料夾下，在VSCode下終端機依序輸入如下指令，可在myapp資料夾下創react專案
+3. 新資料夾下，在VSCode下終端機依序輸入如下指令，可在myapp資料夾下創react專案  
   npx create-react-app myapp  
   cd myapp  
   npm start  
