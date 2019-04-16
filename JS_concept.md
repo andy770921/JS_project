@@ -1,4 +1,4 @@
-#JS code 觀念
+# JS code 觀念
 
 ## 同步/非同步
 https://www.youtube.com/watch?v=NOprCnnjHm0
