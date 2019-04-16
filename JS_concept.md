@@ -7,3 +7,5 @@ https://youtu.be/pr7JFQaAYjg
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
+## 計算機概論
+https://youtu.be/QuCu4iDpPTU
