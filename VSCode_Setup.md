@@ -30,12 +30,12 @@
 
 1. F1 可開啟命令輸入欄
 2. alt + shift + F 可調整縮排
-3. 在html檔案內，打 ! 或 html:5，可呼叫出模板
-4. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
-5. ctrl+`  可開啟終端機
-6. 可按html檔內文處，右鍵，選Open with live server即時呈現
-7. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
-8. React相關: 輸入rafc創造箭頭函式、rfc創造函式
+3. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
+4. ctrl+`  可開啟終端機
+5. 可按html檔內文處，右鍵，選Open with live server即時呈現
+6. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
+7. 在html檔案內，打 ! 或 html:5，可呼叫出模板
+8. React相關: 輸入rafc創造箭頭函式、rfc創造函式、rcc創造component
 
 ## Live Server port設定  
 
