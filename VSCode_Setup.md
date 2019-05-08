@@ -4,6 +4,7 @@
 1. https://www.youtube.com/watch?v=bcgL1sCjAJA&t=2s&fbclid=IwAR0QeUHlizXDVjmGHZ6c9EegpNe_RUuslQp-ue2eI2yf4A9ddcnVnxSWkR0
 2. https://www.youtube.com/watch?v=ZkDM77ZPkEo
 3. https://www.youtube.com/watch?v=SAX6RMEFVM4
+4. https://youtu.be/ScDWrogElmo?t=1350
 
 ## 預先下載之外掛  
 1. 即時呈現類
@@ -34,6 +35,7 @@
 5. ctrl+`  可開啟終端機
 6. 可按html檔內文處，右鍵，選Open with live server即時呈現
 7. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
+8. React相關: 輸入rafc創造箭頭函式、rfc創造函式
 
 ## Live Server port設定  
 
