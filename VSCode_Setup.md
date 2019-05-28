@@ -32,6 +32,7 @@
 2. alt + shift + F 可調整縮排
 3. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
 4. ctrl+`  可開啟終端機
+5. 終端機執行中時，按ctrl + c 可停止執行
 5. 可按html檔內文處，右鍵，選Open with live server即時呈現
 6. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
 7. 在html檔案內，打 ! 或 html:5，可呼叫出模板
