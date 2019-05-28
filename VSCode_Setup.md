@@ -92,3 +92,8 @@
             Learn React
           </a>
         </header>
+
+## 使用Create-React-App後，npm run build後，無法顯示index.html
+狀況: index.html白屏，開發人員工具顯示Failed to load resource: net::ERR_FILE_NOT_FOUND
+問題點: homepage路徑錯誤 Ref: https://www.andreasreiterer.at/fix-whitescreen-static-react-app/
+解法: at your package.json add "homepage": "."     Ref: https://github.com/facebook/create-react-app/issues/6369
