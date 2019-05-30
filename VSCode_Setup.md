@@ -98,3 +98,25 @@
 1. 狀況: index.html白屏，開發人員工具顯示Failed to load resource: net::ERR_FILE_NOT_FOUND
 2. 問題點: homepage路徑錯誤 Ref: https://www.andreasreiterer.at/fix-whitescreen-static-react-app/
 3. 解法: at your package.json add "homepage": "."     Ref: https://github.com/facebook/create-react-app/issues/6369
+
+## 使用Create-React-App後，要接著用Router功能
+1. terminal中，cd 到專案資料夾
+2. terminal中，輸入npm install react-router-dom
+3. 可在App.js檔中，加入import { BrowserRouter , Route } from 'react-router-dom';
+4. 可接著在App.js檔中，加入以下
+    
+ 
+ function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
