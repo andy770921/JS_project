@@ -104,8 +104,7 @@
 2. terminal中，輸入npm install react-router-dom
 3. 可在App.js檔中，加入import { BrowserRouter , Route } from 'react-router-dom';
 4. 可接著在App.js檔中，加入以下
-    
- 
+```
  function App() {
   return (
     <BrowserRouter>
@@ -120,3 +119,4 @@
 }
 
 export default App;
+```
