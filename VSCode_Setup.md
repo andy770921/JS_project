@@ -37,6 +37,7 @@
 6. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
 7. 在html檔案內，打 ! 或 html:5，可呼叫出模板
 8. React相關: 輸入rafc創造箭頭函式、rfc創造函式、rcc創造component
+9. ctrl+F2，可修改該文件全部相同的字
 
 ## Live Server port設定  
 
