@@ -32,7 +32,7 @@
 <figure>
   <img src="img/picture.jpg" alt="abc">
     <figcaption>
-      這裡會打入圖片說明，通常可用alt相同的描述
+      圖下顯示的文字。這裡會打入圖片說明，通常可用alt相同的描述，或是不要img後的title，直接寫在此
     </figcaption>
 </figure>
 ```
