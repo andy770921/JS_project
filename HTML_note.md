@@ -37,7 +37,9 @@
 </figure>
 ```
 15. ```<address>```可輸入地址
-16. ```<br>```換行，不用closing tag
+16. ```<br>```換行，可不用再加另一個closing tag，但可self-closing，寫成```<br />```
+17. ```<hr>```英文為"水平規則"，加入水平黑線
+
 ## URL
 1. 絕對URL: href="網址"
 2. 相對URL: href="article.html"，同資料夾下的其他檔案
