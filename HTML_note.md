@@ -50,9 +50,9 @@
 5. 相對URL 延伸: 兩層資料夾時， href="A/B/article.html" ; href="../../index.html"
 6. 相對URL 實例: href="../../A/picture.jpg"，意為上兩層資料夾後，再進入A資料夾下，找picture.jpg檔案
 
-## 文章內書籤連結
+## 同份HTML內，書籤連結
 
-1. 設定id如```<section id="xxx">```
+1. 在要跳轉的部分，設定id如```<section id="xxx">```
 2. 設定a的屬性href，保留"#"並加入後面的文字同id  
 ```
 <ul>
@@ -62,3 +62,14 @@
 </ul>
 ```
 
+## 超連結到另一份HTML內
+
+1. 在另一份HTML，在要跳轉的部分，設定id如```<article id="xxx">```
+2. 在原先HTML，設定a的屬性href，保留"#"並加入後面的文字同id  
+```
+<ul>
+      <li><a href="網址#xxx">A</a></li>
+      <li><a href="#">B</a></li>
+      <li><a href="#">C</a></li>
+</ul>
+```
