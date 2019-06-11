@@ -21,7 +21,9 @@
 </aside>
 ```
 9. ```<main>```一個網頁只能有一個、```<div>```不含語意
-  
+10. ```<blackquote>```可引用。若要加入超連結，可
+    a. ```<blackquote cite="網址">```
+    b. ```<cite><a href=="網址">``` 
 ## URL
 1. 絕對URL: href="網址"
 2. 相對URL: href="article.html"
