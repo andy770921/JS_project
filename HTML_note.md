@@ -13,9 +13,9 @@
 <aside>
   <h3>More Article about XXX</h3>
     <ul>
-      <li><a href="#">A<a/></li>
-      <li><a href="#">B<a/></li>
-      <li><a href="#">C<a/></li>
+      <li><a href="#">A</a></li>
+      <li><a href="#">B</a></li>
+      <li><a href="#">C</a></li>
     </ul>
 </aside>
 ```
