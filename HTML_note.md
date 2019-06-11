@@ -29,3 +29,4 @@
 ## URL
 1. 絕對URL: href="網址"
 2. 相對URL: href="article.html"，同資料夾下的其他檔案
+3. 相對URL: href="A/article.html"，同資料夾下的A資料夾下的其他檔案
