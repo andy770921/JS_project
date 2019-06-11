@@ -8,7 +8,17 @@
 5. ```<body>```下，可再切分為```<header>```、```<section>```、```<footer>```三個語意型標籤(semantic tag)
 6. ```<section>```下，可加```<article>```語意型標籤，涵蓋小標題```<h3>```與文章段落```<p>```，如部落格的一篇文章。若```<article>```下加入```<aside>```及```<q>```，會換行並自帶雙引號，可在文章中標示重點文句
 7. ```<ul>``` 外層可包```<nav>```
-8. ```<section>```下，可加```<aside>```語意型標籤，可加入twitter連結、補充連結等
+8. ```<section>```下，可加```<aside>```語意型標籤，可加入twitter連結、補充連結等，如下
+```<aside>
+  <h3>More Article about XXX</h3>
+    <ul>
+      <li><a href="#">A<a/></li>
+      <li><a href="#">B<a/></li>
+      <li><a href="#">C<a/></li>
+    </ul>
+</aside>
+```
+
   
 ## 絕對URL
 1. href="網址"
