@@ -36,7 +36,8 @@
     </figcaption>
 </figure>
 ```
-
+15. ```<address>```可輸入地址
+16. ```<br>```換行，不用closing tag
 ## URL
 1. 絕對URL: href="網址"
 2. 相對URL: href="article.html"，同資料夾下的其他檔案
