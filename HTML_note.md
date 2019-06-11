@@ -39,6 +39,8 @@
 15. ```<address>```可輸入地址
 16. ```<br>```換行，可不用再加另一個closing tag，但可self-closing，寫成```<br />```
 17. ```<hr>```英文為"水平規則"，加入水平黑線
+18. ```<p>```內加```<strong>```粗體、```<em>```斜體、```<small>```短段落的小字體
+19. ```<span>```及```<div>```無語意，```<div>```=block-level element，```<span>```= in-line element，用在字前後
 
 ## URL
 1. 絕對URL: href="網址"
