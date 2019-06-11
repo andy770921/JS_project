@@ -21,5 +21,6 @@
 ```
 
   
-## 絕對URL
-1. href="網址"
+## URL
+1. 絕對URL: href="網址"
+2. 相對URL: href="article.html"
