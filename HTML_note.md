@@ -5,7 +5,8 @@
 2. ```<a>``` 錨，通常後面加屬性```href="網址"```或  ```href="#"```，超連結，可連結到網頁中的某位置、外部網頁等。後面加屬性```target="_blank"```意為在新分頁開啟新連結
 3. ```<ul>``` unorder list
 4. ```<ol>``` order list
-5. ```<body>```下，可再切分為```<header>```、```<section>```、```<footer>```三個語意型(semantic) tag
+5. ```<body>```下，可再切分為```<header>```、```<section>```、```<footer>```三個語意型標籤(semantic tag)
+6. ```<section>```下，可分為```<article>```語意型標籤，涵蓋小標題```<h3>```與文章段落```<p>```，如部落格的一篇文章
   
 ## 絕對URL
 1. href="網址"
