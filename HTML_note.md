@@ -26,6 +26,7 @@
     b. ```<cite><a href="網址">``` 
 11. 除了整頁的版權可用```<footer>```之外，可在```<blackquote>```、```<article>```下加入```<footer>```，成為當下小段落的結尾。當下小段落的標題也可用```<header>```
 12. ```<img src="img/picture.jpg" alt="abc">``` 可插入圖片，引入後不需要再加closing tag (不需```<img />```)。alt為當圖出不來時的替代文字
+13. ```<img title="xxx">``` xxx意為，當滑鼠滑到圖上方靜置時，會出現的文字
 
 ## URL
 1. 絕對URL: href="網址"
