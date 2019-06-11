@@ -23,7 +23,9 @@
 9. ```<main>```一個網頁只能有一個、```<div>```不含語意
 10. ```<blackquote>```可引用。若要加入超連結，可
     a. ```<blackquote cite="網址">```
-    b. ```<cite><a href=="網址">``` 
+    b. ```<cite><a href="網址">``` 
+11. 除了整頁的版權可用```<footer>```之外，可在```<blackquote>```、```<article>```下加入```<footer>```，成為當下小段落的結尾
+
 ## URL
 1. 絕對URL: href="網址"
 2. 相對URL: href="article.html"
