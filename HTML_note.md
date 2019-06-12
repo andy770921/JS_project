@@ -86,5 +86,12 @@ Instead, you type in a URL, usually using an IP address, which then points to a 
 3. 用?subject=加入信件標題```<a href="mailto: aaa@gmail.com?subject=abcd">```，空白鍵要用%20，如subject=ab%20cd
 
 ## 特殊字元
-如在文字中出現<，要打$it;  
+1. 如在文字段落中出現<，要打$it;  
 https://dev.w3.org/html5/html-author/charref
+2. 如需要引述整段code，可用以下寫法
+```
+<pre>
+      $it;div$gt;
+      .....
+</pre>
+```
