@@ -80,3 +80,7 @@ Instead, you type in a URL, usually using an IP address, which then points to a 
       <li><a href="#">C</a></li>
 </ul>
 ```
+## 點連結寄e-mail設定法
+1. 原先文字加入```<a>```如```<p><strong>E-mail:</strong> <a>email to me</a></p>```
+2. 加入信箱```<a href="mailto: aaa@gmail.com">```
+3. 加入信件標題```<a href="mailto: aaa@gmail.com?subject=abcd">```，空白鍵要用%20如subject=ab%20cd
