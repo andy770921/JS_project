@@ -1,7 +1,7 @@
 # HTML 觀念
 
 ## 常用參考連結
-1. https://developer.mozilla.org/en-US/docs/Web/CSS
+1. https://developer.mozilla.org/en-US/docs/Web/CSS   
 2. https://webplatform.github.io/docs/css/
 
 ## 加入自定義CSS方式 (Author Style)
@@ -24,5 +24,6 @@ because the styles are written inside the HTML file, and
 there could be tens or hundreds of HTML files depending on the project, 
 the browser has to download the styles each time a new page is loaded. 
 And it also means that we're duplicating a lot of the same styles across 
-multiple pages, which defeats the real purpose and convenience behind using CSS.  
+multiple pages, which defeats the real purpose and convenience behind using CSS.     
+  
 3. external style sheet
