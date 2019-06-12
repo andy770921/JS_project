@@ -102,3 +102,6 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pre
 ## 註解
 1. ```<!-- XXXX -->```
 2. 滑鼠拖曳選取段落後，按ctrl + /
+
+## 引入CSS
+1. 在```<head></head>```間，加入```<link href="style.css" rel="stylesheet">```
