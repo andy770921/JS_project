@@ -67,3 +67,9 @@ header {
   background-color: orange;
 }
 ```
+3. ID selector (or element selector)，用ID作為選擇標準。EX:
+```
+#specific-id {
+  background-color: orange;
+}
+```
