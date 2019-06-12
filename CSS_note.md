@@ -25,7 +25,7 @@ the browser has to download the styles each time a new page is loaded.
   
 3. external style sheet
 
-## external style sheet
+## 引入外部CSS
 1. 加入新檔案名style.css
 2. 在HTML加入以下段落。rel=為 relationship between HTML and link document
 ```
@@ -35,3 +35,19 @@ the browser has to download the styles each time a new page is loaded.
   </head>
 ```
 Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
+
+## CSS中再引入另外的CSS (風格模組化)
+1. 在style.css中，第一行加入如下文字，可以再引入style.css同一層中的important-style.css
+```
+@import "important-style.css";
+```
+2. 或是直接在HTML中，加入如下文字
+```
+  <head>
+    <title>Lake Tahoe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    @import "css/important-style.css";
+    </style>
+  </head>
+```
