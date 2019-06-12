@@ -51,11 +51,11 @@
 3. href="../index.html"，該資料夾上一層的其他檔案
 4. 延伸: 兩層資料夾時， href="A/B/article.html" ; href="../../index.html"
 5. 實例: href="../../A/picture.jpg"，意為上兩層資料夾後，再進入A資料夾下，找picture.jpg檔案
-6. root relative: href="/"，意為到根目錄(下的index.html檔)
-7. root relative: href="/#about"，意為到根目錄下的index.html檔，id為about的書籤
-8. root relative路徑，只在上傳至網頁上，或是local server有效，如果直接雙擊html檔案，會無效
+6. root relative link: href="/"，意為到根目錄(下的index.html檔)
+7. root relative link: href="/#about"，意為到根目錄下的index.html檔，id為about的書籤
+8. root relative 路徑，只在上傳至網頁上，或是本機執行local server有效，如果直接在電腦雙擊html檔案，會無效  
    " to access the site you're building, you don't open the file using the File > Open menu in the browser.
-Instead, you type in a URL, usually using an IP address, which then points to a folder on your computer."
+Instead, you type in a URL, usually using an IP address, which then points to a folder on your computer."  
 
 ## 同份HTML內，書籤連結
 
