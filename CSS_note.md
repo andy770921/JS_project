@@ -53,12 +53,17 @@ Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
 ```
 ## 寫CSS的方式
 在.css檔案中編輯  
-1. Universal Selector，效用最強，覆蓋全體。EX:
+1. Universal selector，效用最強，覆蓋全HTML頁面。EX:
 ```
 * {
   margin: 0;
   padding: 0;
   color: red;
 }
-2. 
+```
+2. Type selector (or element selector)，用HTML Tag 作為選擇標準。EX:
+```
+header {
+  background-color: orange;
+}
 ```
