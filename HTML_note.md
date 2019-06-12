@@ -83,7 +83,7 @@ Instead, you type in a URL, usually using an IP address, which then points to a 
 ## 點連結寄e-mail設定法
 1. 原先文字加入```<a>```如```<p><strong>E-mail:</strong> <a>email to me</a></p>```
 2. 用mailto:加入信箱，冒號後不能有空白```<a href="mailto:aaa@gmail.com">```
-3. 用?subject=加入信件標題```<a href="mailto: aaa@gmail.com?subject=abcd">```，空白鍵要用%20，如subject=ab%20cd
+3. 用?subject=加入信件標題```<a href="mailto:aaa@gmail.com?subject=abcd">```，空白鍵要用%20，如subject=ab%20cd
 
 ## 特殊字元
 1. 如在文字段落中出現<，要打$it;。版權圖示要打&copy;。加入多餘空白可打&nbsp;。&要打&amp;  
