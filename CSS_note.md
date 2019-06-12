@@ -67,9 +67,15 @@ header {
   background-color: orange;
 }
 ```
-3. ID selector (or element selector)，用ID作為選擇標準。EX:
+3. ID selector，用ID作為選擇標準。一個```<div id="xxx">```中只能有一個id，一個id只能在同一HTML出現一次。EX:
 ```
 #specific-id {
+  border: 3px solid orange;
+}
+```
+4. Class selector，用HTML Tag 作為選擇標準。EX:
+```
+header {
   background-color: orange;
 }
 ```
