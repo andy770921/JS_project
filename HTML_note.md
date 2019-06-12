@@ -42,13 +42,20 @@
 18. ```<p>```內加```<strong>```粗體、```<em>```斜體、```<small>```短段落的小字體
 19. ```<span>```及```<div>```無語意，```<div>```=block-level element，```<span>```= in-line element，用在字前後
 
-## URL
+## 絕對URL
 1. 絕對URL: href="網址"
-2. 相對URL: href="article.html"，同資料夾下的其他檔案
-3. 相對URL: href="A/article.html"，同資料夾下的A資料夾下的其他檔案
-4. 相對URL: href="../index.html"，該資料夾上一層的其他檔案
-5. 相對URL 延伸: 兩層資料夾時， href="A/B/article.html" ; href="../../index.html"
-6. 相對URL 實例: href="../../A/picture.jpg"，意為上兩層資料夾後，再進入A資料夾下，找picture.jpg檔案
+
+## 相對URL
+1. href="article.html"，同資料夾下的其他檔案
+2. href="A/article.html"，同資料夾下的A資料夾下的其他檔案
+3. href="../index.html"，該資料夾上一層的其他檔案
+4. 延伸: 兩層資料夾時， href="A/B/article.html" ; href="../../index.html"
+5. 實例: href="../../A/picture.jpg"，意為上兩層資料夾後，再進入A資料夾下，找picture.jpg檔案
+6. root relative: href="/"，意為到根目錄(下的index.html檔)
+7. root relative: href="/#about"，意為到根目錄下的index.html檔，id為about的書籤
+8. root relative路徑，只在上傳至網頁上，或是local server有效，如果直接雙擊html檔案，會無效
+   " to access the site you're building, you don't open the file using the File > Open menu in the browser.
+Instead, you type in a URL, usually using an IP address, which then points to a folder on your computer."
 
 ## 同份HTML內，書籤連結
 
