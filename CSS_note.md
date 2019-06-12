@@ -41,7 +41,7 @@ Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
 ```
 @import "important-style.css";
 ```
-2. 或是直接在HTML中，加入如下文字
+2. 或是直接在HTML中，加入如下```<style>```內文字
 ```
   <head>
     <title>Lake Tahoe</title>
