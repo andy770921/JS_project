@@ -20,10 +20,7 @@
 ```
   Note: inline 的優先級大於internal style (inline style override internal style)  
   Note: The downside(缺點) to using this internal style sheet method on larger projects is that 
-because the styles are written inside the HTML file, and 
-there could be tens or hundreds of HTML files depending on the project, 
-the browser has to download the styles each time a new page is loaded. 
-And it also means that we're duplicating a lot of the same styles across 
-multiple pages, which defeats the real purpose and convenience behind using CSS.     
+because the styles are written inside the HTML file
+the browser has to download the styles each time a new page is loaded.      
   
 3. external style sheet
