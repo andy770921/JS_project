@@ -148,7 +148,7 @@ the browser has to download the styles each time a new page is loaded.
 
 1. https://blog.techbridge.cc/2017/06/17/cache-introduction/
 2. https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-tw
-&emsp; 外部CSS優點: The style are cached by the browser after the first request  
+&emsp; external style sheet優點: The style are cached by the browser after the first request  
 &emsp; Q: internal styles在大型專案的缺點是啥  
 &emsp; A: 1. 載入新html頁面每次都要讀取一次浪費資源 2. 開啟多頁時，花時間重複載入相同的style  
 
