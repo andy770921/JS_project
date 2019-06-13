@@ -144,7 +144,7 @@ the browser has to download the styles each time a new page is loaded.
 2. 可在CSS加入註解如```/*  Type selector  */ ```、```/*  ID selector  */ ```，助於CSS閱讀
 3. 可反白要註解的區段，按ctrl + /
 
-##瀏覽器快取(緩存)觀念補充
+## 瀏覽器快取(緩存)觀念補充
 
 1. https://blog.techbridge.cc/2017/06/17/cache-introduction/
 2. https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-tw
