@@ -132,7 +132,7 @@ the browser has to download the styles each time a new page is loaded.
     color: white;
   }
 ``` 
-&emsp; EX: CSS取消a:focus的寫法，寫成:focus，效果範圍變成不限於```<a>```，HTML全域通用
+&emsp; EX: CSS取消a:focus的寫法，寫成:focus，效果範圍變成不限於```<a>```，HTML全域可互動的物件通用(也包含本來的```<a>```連結)
 ``` 
   :focus {
     background-color: orange;
