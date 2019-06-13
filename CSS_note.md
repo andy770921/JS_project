@@ -108,7 +108,7 @@ the browser has to download the styles each time a new page is loaded.
   
 &emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes  
   
-&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前、點擊中、點擊後的顏色設定、滑鼠滑過時的顏色，可在CSS打如下程式碼。  
+&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前、點擊中、點擊後、滑鼠滑過時的顏色設定，可在CSS打如下程式碼。  
 ```
   a:link {
     color: orange;
