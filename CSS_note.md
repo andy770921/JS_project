@@ -1,8 +1,9 @@
 # CSS 觀念
 
-## 常用參考連結
+## 參考連結
 1. https://developer.mozilla.org/en-US/docs/Web/CSS   
 2. https://webplatform.github.io/docs/css/
+3. CSS Data Type: https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type
 
 ## 加入自定義CSS方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
