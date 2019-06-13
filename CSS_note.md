@@ -19,7 +19,7 @@
   </head>
 ```
 &emsp; Note: inline 的優先級大於internal style (inline style override internal style)  
-  Note: The downside(缺點) to using this internal style sheet method on larger projects is that 
+&emsp; Note: The downside(缺點) to using this internal style sheet method on larger projects is that 
 because the styles are written inside the HTML file
 the browser has to download the styles each time a new page is loaded.      
   
@@ -34,7 +34,7 @@ the browser has to download the styles each time a new page is loaded.
     <link rel="stylesheet" href="css/style.css">
   </head>
 ```
-Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
+&emsp; Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
 
 ## CSS中再引入另外的CSS (風格模組化)
 1. 在style.css中，第一行加入如下文字，可以再引入style.css同一層中的important-style.css
@@ -52,7 +52,7 @@ Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
   </head>
 ```
 ## 寫CSS的方式
-在.css檔案中編輯  
+&emsp; 在.css檔案中編輯  
 1. Universal selector，效用最強，覆蓋全HTML頁面。EX:
 ```
 * {
@@ -79,7 +79,7 @@ header {
   background-color: orange;
 }
 ```
-Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector
+&emsp; Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector
 
 5. Descendant selector。和Type selector類似，可指定到下一層HTML Tag 作為選擇標準。如，可指定到header下的span、ul下的li，EX:  
 ```
@@ -93,7 +93,7 @@ ul li{
   margin-bottom: 5px;
 }
 ```  
-可指定到某class下的span，EX:
+&emsp; 可指定到某class下的span，EX:
 ```
 .main-header span{
   color: white;
