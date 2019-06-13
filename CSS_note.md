@@ -178,3 +178,20 @@ the browser has to download the styles each time a new page is loaded.
 2. RGB 16進位色碼: 如#ff0033 ，ff為R、00為G、33為B
 3. RGB 16進位色碼簡寫: RGB若雙碼相同，可簡寫為單碼。如#ff0033可縮為#f03
 4. RGB 函數式寫法: 如rgb(255, 169, 73)
+5. RGB 函數式寫法加透明度alpha: 如rgba(255, 169, 73, .4) 或rgba(255, 169, 73, 40%)
+
+## CSS文字樣式說明
+1. text-align: center; 水平置中
+2. text-transform: uppercase; 全大寫
+3. text-decoration: none; 去除底線，在link常用，如下
+```
+  a:link {
+    color: orange;
+    text-decoration: none;
+  }
+```
+4. font-weight: bold; 粗體、font-weight: normal; 將h1-6字體恢復正常、font-weight: 100;、font-weight: 900; 可輸入100~900中的值
+5. font-family: sans-serif; 設定字型
+6. font-family: Helvetica, Arial, sans-serif, "Helvetica Neue"; 若使用者電腦優先灌有字型Helvetica則優先使用，若沒有，依序搜尋後面的字型，並使用之。雙字的字型要加雙引號
+&emsp; 字型Ref: https://www.cssfontstack.com/
+6. font-style: italic; 斜體、font-style: oblique; 字型常不支援、font-style: normal; 
