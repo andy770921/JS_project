@@ -19,6 +19,7 @@
     </style>
   </head>
 ```
+&emsp; Note: 20px，數字及px之間不要加空白。20是數字單位、px是長度單位，連起來才有意義
 &emsp; Note: inline 的優先級大於internal style (inline style override internal style)  
 &emsp; Note: The downside(缺點) to using this internal style sheet method on larger projects is that 
 because the styles are written inside the HTML file
