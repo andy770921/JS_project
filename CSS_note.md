@@ -102,3 +102,5 @@ the browser has to download the styles each time a new page is loaded.
   }
 ```  
 6. 較不建議用Descendant selector，若新增HTML元素時，本來不希望有樣式，但因為CSS加入Descendant selector ( 如```header span{...}```)，HTML新加入的元素(如header下新增了```<span>```)會一起套上樣式。建議直接在HTML要加入樣式的元素，加入class，如```<span class="xxx">```
+
+7. pseudo class
