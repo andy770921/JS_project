@@ -79,4 +79,25 @@ header {
   background-color: orange;
 }
 ```
-Note: 若同時出現ID及Class定義同個CSS樣式，ID selector的優先級大於Class selector
+Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector
+
+5. Descendant selector。和Type selector類似，可指定到下一層HTML Tag 作為選擇標準。如，可指定到header下的span、ul下的li，EX:  
+```
+header span{
+  color: white;
+  font-size: 26px;
+}
+ul li{
+  background-color: tomato;
+  color: white;
+  margin-bottom: 5px;
+}
+```  
+可指定到某class下的span，EX:
+```
+.main-header span{
+  color: white;
+  font-size: 26px;
+}
+```  
+6. 較不建議用Descendant selector，若新增HTML元素時，本來不希望有樣式，但因為CSS加入Descendant selector ( 如```header span{...}```)，HTML新加入的元素(如header下新增了```<span>```)會一起套上樣式。建議直接在HTML要加入樣式的元素，加入class，如```<span class="xxx">```
