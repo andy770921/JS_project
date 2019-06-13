@@ -39,7 +39,7 @@ the browser has to download the styles each time a new page is loaded.
 ## CSS中再引入另外的CSS (風格模組化)
 1. 在style.css中，第一行加入如下文字，可以再引入style.css同一層中的important-style.css
 ```
-@import "important-style.css";
+   @import "important-style.css";
 ```
 2. 或是直接在HTML中，加入如下```<style>```內文字
 ```
@@ -63,41 +63,42 @@ the browser has to download the styles each time a new page is loaded.
 ```
 2. Type selector (or element selector)，用HTML Tag 作為選擇標準。EX:
 ```
-header {
-  background-color: orange;
-}
+  header {
+    background-color: orange;
+  }
 ```
 3. ID selector，前面加#，用ID作為選擇標準。一個```<div id="xxx">```中只能有一個id，一個id只能在同一HTML出現一次。EX:
 ```
-#specific-id {
-  border: 3px solid orange;
-}
+  #specific-id {
+    border: 3px solid orange;
+  }
 ```
 4. Class selector，前面加.，用Class作為選擇標準，如```<div class="xxx">```。在 React JSX中要用```<div className="xxx">```。EX:  
 ```
-.primary-content {
-  background-color: orange;
-}
+  .primary-content {
+    background-color: orange;
+  }
 ```
 &emsp; Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector
 
 5. Descendant selector。和Type selector類似，可指定到下一層HTML Tag 作為選擇標準。如，可指定到header下的span、ul下的li，EX:  
 ```
-header span{
-  color: white;
-  font-size: 26px;
-}
-ul li{
-  background-color: tomato;
-  color: white;
-  margin-bottom: 5px;
-}
+  header span{
+    color: white;
+    font-size: 26px;
+  }
+
+  ul li{
+    background-color: tomato;
+    color: white;
+    margin-bottom: 5px;
+  }
 ```  
 &emsp; 可指定到某class下的span，EX:
 ```
-.main-header span{
-  color: white;
-  font-size: 26px;
-}
+  .main-header span{
+    color: white;
+    font-size: 26px;
+  }
 ```  
 6. 較不建議用Descendant selector，若新增HTML元素時，本來不希望有樣式，但因為CSS加入Descendant selector ( 如```header span{...}```)，HTML新加入的元素(如header下新增了```<span>```)會一起套上樣式。建議直接在HTML要加入樣式的元素，加入class，如```<span class="xxx">```
