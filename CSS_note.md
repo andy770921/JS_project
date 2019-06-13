@@ -73,9 +73,10 @@ header {
   border: 3px solid orange;
 }
 ```
-4. Class selector，前面加.，用Class作為選擇標準，如```<div class="xxx">```。在 React JSX中要用```<div className="xxx">```。EX:
+4. Class selector，前面加.，用Class作為選擇標準，如```<div class="xxx">```。在 React JSX中要用```<div className="xxx">```。EX:  
 ```
 .primary-content {
   background-color: orange;
 }
 ```
+Note: 若同時出現ID及Class定義同個CSS樣式，ID selector的優先級大於Class selector
