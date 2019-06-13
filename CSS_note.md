@@ -79,9 +79,9 @@ the browser has to download the styles each time a new page is loaded.
     background-color: orange;
   }
 ```
-&emsp; Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector
+&emsp; Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector  
 
-5. Descendant selector。和Type selector類似，可指定到下一層HTML Tag 作為選擇標準。如，可指定到header下的span、ul下的li，EX:  
+5. Descendant selector。和Type selector類似，可指定到下一層HTML Tag 作為選擇標準。如，可指定到header下的span、ul下的li，EX:    
 ```
   header span{
     color: white;
@@ -94,7 +94,7 @@ the browser has to download the styles each time a new page is loaded.
     margin-bottom: 5px;
   }
 ```  
-&emsp; 可指定到某class下的span，EX:
+&emsp; 可指定到某class下的span，EX:  
 ```
   .main-header span{
     color: white;
@@ -103,10 +103,10 @@ the browser has to download the styles each time a new page is loaded.
 ```  
 6. 較不建議用Descendant selector，若新增HTML元素時，本來不希望有樣式，但因為CSS加入Descendant selector ( 如```header span{...}```)，HTML新加入的元素(如header下新增了```<span>```)會一起套上樣式。建議直接在HTML要加入樣式的元素，加入class，如```<span class="xxx">```
 
-7. pseudo-class，因使用者互動而會改變的偽class。
-&emsp; "pseudo-classes can target elements dynamically based on user interaction, an element's state and more."
-&emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
-&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前與點擊後的顏色設定、滑鼠滑過時的顏色，可在CSS打如下程式碼。
+7. pseudo-class，因使用者互動而會改變的偽class。  
+&emsp; "pseudo-classes can target elements dynamically based on user interaction, an element's state and more."  
+&emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes  
+&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前與點擊後的顏色設定、滑鼠滑過時的顏色，可在CSS打如下程式碼。  
 ```
   a:link {
     color: orange;
