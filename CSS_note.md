@@ -67,15 +67,15 @@ header {
   background-color: orange;
 }
 ```
-3. ID selector，用ID作為選擇標準。一個```<div id="xxx">```中只能有一個id，一個id只能在同一HTML出現一次。EX:
+3. ID selector，前面加#，用ID作為選擇標準。一個```<div id="xxx">```中只能有一個id，一個id只能在同一HTML出現一次。EX:
 ```
 #specific-id {
   border: 3px solid orange;
 }
 ```
-4. Class selector，用HTML Tag 作為選擇標準。EX:
+4. Class selector，前面加.，用Class作為選擇標準，如```<div class="xxx">```。在 React JSX中要用```<div className="xxx">```。EX:
 ```
-header {
+.primary-content {
   background-color: orange;
 }
 ```
