@@ -108,16 +108,34 @@ the browser has to download the styles each time a new page is loaded.
   
 &emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes  
   
-&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前與點擊後的顏色設定、滑鼠滑過時的顏色，可在CSS打如下程式碼。  
+&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前、點擊中、點擊後的顏色設定、滑鼠滑過時的顏色，可在CSS打如下程式碼。  
 ```
   a:link {
     color: orange;
   }
-  
+  a:active {
+    color: lightcoral;
+  }
   a:visited {
     color: lightblue;
   }
   a:hover {
     color: forestgreen;
+  }
+
+``` 
+
+&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，在網頁按下Tab時，連結的字會反橘底、改白字
+``` 
+  a:focus {
+    background-color: orange;
+    color: white;
+  }
+``` 
+&emsp; EX: CSS取消a:focus的寫法，寫成:focus，效果範圍變成不限於```<a>```，HTML全域通用
+``` 
+  :focus {
+    background-color: orange;
+    color: white;
   }
 ``` 
