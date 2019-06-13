@@ -195,3 +195,8 @@ the browser has to download the styles each time a new page is loaded.
 6. font-family: Helvetica, Arial, sans-serif, "Helvetica Neue"; 若使用者電腦優先灌有字型Helvetica則優先使用，若沒有，依序搜尋後面的字型，並使用之。雙字的字型要加雙引號
 &emsp; 字型Ref: https://www.cssfontstack.com/
 6. font-style: italic; 斜體、font-style: oblique; 字型常不支援、font-style: normal; 
+
+## CSS行高設定
+&emsp; 通常在```<body>```下設定
+1. line-height: 1.5; 1.5倍行高，通常設1.5易於閱讀。 雖然也可用px、em等，通常用無單位的，這樣會隨著元素內font size不同而縮放變化。
+2. 含行高、字體大小、字型等綜合寫法: font: normal 1em/1.5 "Helvetica Neue"，分別對應font-weight(是否粗體)、字體大小、行高、字型。字體大小、字型必須要定義。可簡略成font: 1em/1.5 "Helvetica Neue"
