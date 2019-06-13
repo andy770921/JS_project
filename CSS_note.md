@@ -142,3 +142,4 @@ the browser has to download the styles each time a new page is loaded.
 ## CSS的註解寫法
 1. ```/*  xxxx  */ ```
 2. 可在CSS加入註解如```/*  Type selector  */ ```、```/*  ID selector  */ ```，助於CSS閱讀
+3. 可反白要註解的區段，按ctrl + /
