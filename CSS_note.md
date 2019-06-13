@@ -141,6 +141,18 @@ the browser has to download the styles each time a new page is loaded.
     color: white;
   }
 ``` 
+8. 可相同類別重複宣告(不同屬性)、同時宣告兩者類別。EX:  
+```
+  .primary-content {
+    background-color: orange;
+  }
+  
+  .primary-content,
+  .secondary-content {
+    width: 60%;
+  }
+  
+```
 ## CSS的註解寫法
 1. ```/*  xxxx  */ ```
 2. 可在CSS加入註解如```/*  Type selector  */ ```、```/*  ID selector  */ ```，助於CSS閱讀
@@ -153,4 +165,8 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; external style sheet優點: The style are cached by the browser after the first request  
 &emsp; Q: internal styles在大型專案的缺點是啥  
 &emsp; A: 1. 載入新html頁面每次都要讀取一次浪費資源 2. 開啟多頁時，花時間重複載入相同的style  
+
+## CSS單位說明
+1. px 為絕對單位。但非實體pixel之意。比如，相同螢幕長寬，硬體解析度高一倍的螢幕，同px的圖在螢幕中的長寬一樣。
+2. % 為相對單位: 相對於父元素中定義的大小，要乘的比例。
 
