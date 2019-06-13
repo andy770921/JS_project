@@ -169,4 +169,12 @@ the browser has to download the styles each time a new page is loaded.
 ## CSS單位說明
 1. px 為絕對單位。但非實體pixel之意。比如，相同螢幕長寬，硬體解析度高一倍的螢幕，同px的圖在螢幕中的長寬一樣。
 2. % 為相對單位: 相對於父元素中定義的大小，要乘的比例。
+3. em 為相對單位: 相對於父元素中定義的大小，要乘的值。150%=1.5em、50%=.5em
+4. em會有加成影響。如body(或是body的class屬性)設定font-size: 2em、body下的h1又設定font-size: 5em，最終h1會變成10em
+5. rem 為相對單位: 相對於root元素(即```<html>```元素)中定義的大小，要乘的值。不受父元素影響
 
+## CSS顏色編碼說明
+1. 常見色直接打英文字
+2. RGB 16進位色碼: 如#ff0033 ，ff為R、00為G、33為B
+3. RGB 16進位色碼簡寫: RGB若雙碼相同，可簡寫為單碼。如#ff0033可縮為#f03
+4. RGB 函數式寫法: 如rgb(255, 169, 73)
