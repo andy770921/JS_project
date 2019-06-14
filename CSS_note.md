@@ -200,3 +200,11 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; 通常在```<body>```下設定
 1. line-height: 1.5; 1.5倍行高，通常設1.5易於閱讀。 雖然也可用px、em等，通常用無單位的，這樣會隨著元素內font size不同而縮放變化。
 2. 含行高、字體大小、字型等綜合寫法: font: normal 1em/1.5 "Helvetica Neue"，分別對應font-weight(是否粗體)、字體大小、行高、字型。字體大小、字型必須要定義。可簡略成font: 1em/1.5 "Helvetica Neue"
+
+## CSS邊界設定
+1. padding: 若文字有設定背景顏色，此顏色會延伸出去。分padding-top、padding-bottom、padding-right、padding-left
+2. padding: 單一值; 四邊都一樣。如 padding: 100px;
+3. padding: 第一值 第二值; 第一值設定上下，第二值設定左右。如 padding: 100px 120px;
+4. padding: 第一值 第二值 第三值; 第一值設定上，第二值設定左右，第三值設定下。如 padding: 100px 120px 140px;
+5. padding: 第一值 第二值 第三值 第四值; 分別設定上、右、下、左。
+6. padding: 18% 24%; 百分比意為，上下寬度佔container的百分之18、左右寬度佔container的百分之24。
