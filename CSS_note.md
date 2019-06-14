@@ -215,8 +215,44 @@ the browser has to download the styles each time a new page is loaded.
 11. 可寫完border: ....; 再將需要特別改的，獨立寫，獨立寫的會override過去。如，加入border-bottom-style: dashed; 可將底部樣式變更，其他維持原border:設定
 13. margin: ...; 設定原則同padding、border，會空白延伸出去一段空間。...也可設定負的px，會吃掉該區塊外的其他文字
 14. margin-bottom: .5em; 若要用em設定，需要將欲設定的px，除以該區塊內字體大小的px
-15. 當Width: 60%時，可以加入敘述margin: auto;，讓左、右留白平衡
+15. 當Width: 60%時，可以加入敘述margin: auto;，讓左、右留白平衡，上下也留白平衡
+16. 若設定width: 或height:，除此值外要加上padding才是總高度
+17. 若設定width: 或height:，且希望總高度就是這樣，必須加入box-sizing: border-box;，如下
+```
+  .primary content {
+    width: 960px;
+    box-sizing: border-box;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: auto;
+  }
+```
+18. img加入max-width: 100%; 可讓圖片隨視窗大小縮放。若寫max-width: 900px; 意為縮放到寬度900px後，就不會再大
+```
+  img {
+    max-width: 100%;
+  }
+```
 
 ## CSS Display設定
 1. display: none; 不顯示，可不顯示某個區塊
 2. display: block; 將原先inline顯示的(比如link)，轉為block區塊式顯示
+3. display: inline; 將原先block顯示的(比如li)，轉為inline顯示。inline不能用margin(用margin無效)
+```
+  li {
+    display: inline;
+    padding: 0 12px;
+  }
+```
+4. display: inline-block; 將原先block顯示的(比如li)，轉為inline顯示。可用margin
+5. 設定超連結之綜合範例
+```
+  .callout {
+    display: inline-block;
+    font-size: 1.25em
+    border-bottom: 3px solid;
+    padding: 0 9px 3px;
+    margin-top: 20px;
+  }
+```
+
