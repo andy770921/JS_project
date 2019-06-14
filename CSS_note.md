@@ -208,3 +208,8 @@ the browser has to download the styles each time a new page is loaded.
 4. padding: 第一值 第二值 第三值; 第一值設定上，第二值設定左右，第三值設定下。如 padding: 100px 120px 140px;
 5. padding: 第一值 第二值 第三值 第四值; 分別設定上、右、下、左。
 6. padding: 18% 24%; 百分比意為，上下寬度佔container的百分之18、左右寬度佔container的百分之24。
+7. border-width: 10px; 也可設thin、medium、thick。也可設定兩值，第一值為上下、第二值為左右
+8. border-style: solid; 也可設dashed、dotted。也可設定兩文字，第一文字為上下、第二文字為左右
+9. border-color: orange; 也可設定兩色，第一色為上下、第二色為左右
+10. border: 10px solid orange; 分別設定width、style、color
+11. 可寫完border: ....; 再將需要特別改的，獨立寫，獨立寫的會override過去。如，加入border-bottom-style: dashed; 可將底部樣式變更，其他維持原border:設定
