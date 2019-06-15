@@ -509,4 +509,4 @@ p{
 ```
     <link rel="stylesheet" href="css/normalize.css">
 ```
-3. 設定style.css
+3. 設定style.css，可能需要加入index.html中的<div class="xx">調整樣式
