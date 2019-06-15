@@ -319,7 +319,7 @@ the browser has to download the styles each time a new page is loaded.
   }
 ```
 ## 改變list前綴符號
-1. 在css加入如下
+1. 在css加入如下，也可取消前綴符號，打為list-style-type: none;
 ```
   ul {
     list-style-type: square;
