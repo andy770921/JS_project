@@ -196,7 +196,7 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; 字型Ref: https://www.cssfontstack.com/
 6. font-style: italic; 斜體、font-style: oblique; 字型常不支援、font-style: normal; 
 7. letter-spacing: .065em;，可設定字元間距
-8. 在css引入需要的字型，可新建一個字體資料夾font，與css資料夾平行，並在css開頭設定如下
+8. 在css引入需要的字型(如Abolition Regular)，可新建一個字體資料夾font將相關字型檔案放入，與css資料夾平行，並在css開頭設定如下
 ```
   @font-face {
     font-family: "Abolition Regular";
