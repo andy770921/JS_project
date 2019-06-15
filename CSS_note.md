@@ -489,3 +489,4 @@ p{
 4. 若都來自於同重要的CSS(比如都是Author自訂的CSS)，特別程度排序: id selector 大於 class selector 大於 type selector
 5. 若都來自於相同的特別程度(比如都是同id selector下的CSS)，來源排序: 後面行數的，會複寫前面行數的
 6. HTML中的inline style: EX: ```<body style="background-color: orange;">```，優先序大於external style sheet
+7. 繼承: 子元素的特性(property)，比如color:，若無特別宣告，會繼承父元素。若要取消繼承，可加入color: initial;之字樣，回到原始設定值
