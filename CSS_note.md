@@ -509,3 +509,4 @@ p{
 ```
     <link rel="stylesheet" href="css/normalize.css">
 ```
+3. 設定style.css
