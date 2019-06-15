@@ -349,3 +349,28 @@ li {
 ## CSS 文字及區塊修飾
 1. 加入文字陰影 text-shadow: 5px 8px 10px #222; 數值分別對應往右長度、往下長度、邊緣模糊程度(模糊半徑)、陰影顏色
 2. 加入區塊陰影 box-shadow: 5px 8px 10px #222; 數值意義同上。也可引入第五個參數擴散(spread)半徑，在第四個值，讓四邊都有陰影，也可設定負值創造圖案四週邊緣柔合效果，加入spread設定20px，如box-shadow: 15px 15px 10px 20px #222;
+3. 創造圖案四週邊緣柔合效果，可設定如下 box-shadow: inset 0px 0px 50px 10px #222;，inset為向圖的padding內延伸
+4. 如要設定多層，需要用逗號間隔如下
+```
+.main-header{
+  box-shadow: 0px 2px 15px #aaa,
+              inset 0px 0px 60px 5px firebrick;
+}
+```
+5. 區塊四邊倒角設定如下，若設定border-radius: 50%; 為圓形效果、border-radius: 100% 25px; 為45度角眼睛形狀效果
+```
+.box {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 10px; 
+}
+.box {
+  border-radius: 20px 10px 20px 10px;
+.box {
+  border-radius: 20px 10px;
+}
+.box {
+  border-radius: 20px;
+}
+```
