@@ -195,6 +195,14 @@ the browser has to download the styles each time a new page is loaded.
 6. font-family: Helvetica, Arial, sans-serif, "Helvetica Neue"; 若使用者電腦優先灌有字型Helvetica則優先使用，若沒有，依序搜尋後面的字型，並使用之。雙字的字型要加雙引號
 &emsp; 字型Ref: https://www.cssfontstack.com/
 6. font-style: italic; 斜體、font-style: oblique; 字型常不支援、font-style: normal; 
+7. letter-spacing: .065em;，可設定字元間距
+8. 在css引入需要的字型，可新建一個字體資料夾font，與css資料夾平行，並在css開頭設定如下
+```
+  @font-face {
+    font-family: "Abolition Regular";
+    ....貼上字體文件夾中的snippet.css，預設的url;
+  }
+```
 
 ## CSS行高設定
 &emsp; 通常在```<body>```下設定
@@ -372,5 +380,25 @@ li {
 }
 .box {
   border-radius: 20px;
+}
+```
+6. 設定雙色漸層，使用函數linear-gradient(to right, steelblue, darkslateblue);或radial-gradient(); 如下
+```
+.main-header{
+  background-image: radial-gradient(circle at top right, #ffa949, firebrick);
+}
+```
+7. 設定三色漸層，及顏色停止位置，要加上百分比，使用函數radial-gradient(); 如下
+```
+.main-header{
+  background-image: radial-gradient(circle at top right, #ffa949 0%, firebrick 20%, dodgerblue 120%);
+}
+```
+8. 在背景圖設定透明漸層，如下。有圖層之概念，逗號前的是最上層，漸層要加在此。設定透明90%，意為到寬度90%處，之後就沒有任何漸層，第一層圖層結束
+```
+.main-header{
+  background: 
+    linear-gradient(#ffa949, transparent 90%);
+    #ffa949 url("../img/mountains.jpg") no-repeat center;
 }
 ```
