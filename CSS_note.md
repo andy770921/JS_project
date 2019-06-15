@@ -287,3 +287,26 @@ the browser has to download the styles each time a new page is loaded.
     background: #ffa949 url("../img/mountains.jpg") no-repeat center /cover;
   }
 ```
+## 設定div並排
+1. 先在```<html>```希望並排的兩個```<div>```分別加入class="tips"、class="resorts"
+2. 進行如下設定，引入float: ;，完畢後，可能會出現以下問題: a. footer文字飄到兩圖中間空白 b. 父元素設定的height 崩潰
+```.tips, 
+   .resorts {
+    width: 46.5%;
+  }
+  .tips {
+    float: right;
+  }
+  .resorts {
+    float: left;
+  }
+```
+3. 修正父元素設定的height 崩潰，可在父元素的css class，加入overflow: auto;
+```
+  .secondary-content {
+    padding-top: 80px;
+    padding-bottom: 70px;
+    border-bottom: 2px solid #dfe2e6;
+    overflow: auto;
+  }
+```
