@@ -402,3 +402,27 @@ li {
     #ffa949 url("../img/mountains.jpg") no-repeat center;
 }
 ```
+## 不同視窗大小/平台，響應式顯示 - media query
+
+1. 在css檔案，打如下code，可讓螢幕或視窗寬度小於等於960px時，顯示藍底白字。括號內會判斷true或false，若true則會引入其下的css
+```
+@ media (max-width: 960px) {
+  body{
+    background: blue;
+  }
+p{
+    color: white;
+  }
+}
+```
+2. 若需設定，螢幕或視窗寬度為一範圍時，引入css，可如下設定
+```
+@ media (min-width: 481px) and (max-width: 700px) {
+  body{
+    background: green;
+  }
+p{
+    color: white;
+  }
+}
+```
