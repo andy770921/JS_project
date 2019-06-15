@@ -503,7 +503,7 @@ p{
 7. 繼承: 子元素的特性(property)，比如color:，若無特別宣告，會繼承父元素。若要取消繼承，可加入color: initial;之字樣，回到原始設定值
 
 ## 開始實作 CSS Layout 流程
-1. 不同瀏覽器，會有預設的字體大小與邊界寬等，先消除之，避免不同瀏覽器影響自己的網頁。複製normalize.css檔案(或code)，到css資料夾下
+1. 不同瀏覽器，會有預設的字體大小與邊界寬等，先消除之，避免不同瀏覽器影響自己的網頁。複製normalize.css檔案(或code)，到css資料夾下  
 &emsp; normalize.css Ref:https://necolas.github.io/normalize.css/
 2. 在index.html的```<head>```下，引入normalize.css，如下
 ```
