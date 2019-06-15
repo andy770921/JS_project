@@ -301,7 +301,7 @@ the browser has to download the styles each time a new page is loaded.
     float: left;
   }
 ```
-3. 修正父元素設定的height 崩潰，可在父元素的css class，加入overflow: auto;
+3. 修正父元素設定的height 崩潰，可在父元素的css class說明內，加入overflow: auto;，此法缺點a.不同瀏覽器，可能出現非預期的下拉捲軸 b.可能截到content
 ```
   .secondary-content {
     padding-top: 80px;
@@ -310,3 +310,4 @@ the browser has to download the styles each time a new page is loaded.
     overflow: auto;
   }
 ```
+4. [推薦] 修正父元素設定的height 崩潰，可在css，加入.group的說明，clearfix
