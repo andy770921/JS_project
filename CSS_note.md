@@ -496,7 +496,7 @@ p{
 ## CSS 補充
 1. Cascade(串聯)意思是，當在不同selector重複宣告同一物如color:等特性時，會依優先順序，串列處理，最終決定一個最重要的套用進頁面。避免重複宣告的衝突
 2. "最重要"與否的判斷原則: 重要性、特別程度、來源順序
-3. 重要性排序: Author styles 大於 User styles 及 User Agent styles 
+3. 重要性排序: Author styles 大於 User styles 及 User Agent styles(瀏覽器預設的CSS，不同瀏覽器會預設的不太一樣)
 4. 若都來自於同重要的CSS(比如都是Author自訂的CSS)，特別程度排序: id selector 大於 class selector 大於 type selector
 5. 若都來自於相同的特別程度(比如都是同id selector下的CSS)，來源排序: 後面行數的，會複寫前面行數的
 6. HTML中的inline style: EX: ```<body style="background-color: orange;">```，優先序大於external style sheet
