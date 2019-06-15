@@ -227,12 +227,6 @@ the browser has to download the styles each time a new page is loaded.
     margin: auto;
   }
 ```
-18. img加入max-width: 100%; 可讓圖片隨視窗大小縮放。若寫max-width: 900px; 意為縮放到寬度900px後，就不會再大
-```
-  img {
-    max-width: 100%;
-  }
-```
 
 ## CSS Display設定
 1. display: none; 不顯示，可不顯示某個區塊
@@ -255,4 +249,41 @@ the browser has to download the styles each time a new page is loaded.
     margin-top: 20px;
   }
 ```
+## CSS img設定
+1. img加入max-width: 100%; 可讓圖片隨視窗大小縮放。若寫max-width: 900px; 意為縮放到寬度900px後，就不會再大
+```
+  img {
+    max-width: 100%;
+  }
+```
+2. 設定背景圖片，及大小，可如下寫。寫相對路徑，起始位置要從css檔案位置出發推算路徑，不是從html檔案出發。
 
+3. 大小設定百分比，若過小會重複出現，填滿畫面，要再設定background-repeat: ;
+```
+.main-header {
+    background-color: #ffa949;
+    background-image: url("../img/mountains.jpg");
+    background-size: 40%;
+    background-repeat: no-repeat;
+  }
+```
+4. 大小設定cover，可自動調整大小至塞進container
+```
+.main-header {
+    background-color: #ffa949;
+    background-image: url("../img/mountains.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+```
+5. background-repeat: repeat-x; 只有x方向重複出現，y同理。background-repeat: no-repeat; 不重複出現
+6. background-position: center top; 背景圖左右置中、上下置上，若四方置中可寫成 background-position: center;
+7. 也可設定位置百分比如 background-position: 20% 50%; 
+8. 綜合寫如下，分別為顏色、檔案路徑、是否重複、位置、/尺寸。或是顏色、檔案路徑、是否重複、位置，尺寸再加一行background-size: cover;
+```.main-header {
+    padding-top: 170px;
+    height: 850px;
+    background: #ffa949 url("../img/mountains.jpg") no-repeat center /cover;
+  }
+```
