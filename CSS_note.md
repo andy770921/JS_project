@@ -325,3 +325,24 @@ the browser has to download the styles each time a new page is loaded.
     list-style-type: square;
   }
 ```
+2. 在css加入如下，也可編號01 02等
+```
+  ol {
+    list-style-type: decimal-leading-zero;
+  }
+```
+3. 在css加入如下，可將編號或前綴符號，納入content，並設定最左留白的寬度為0。可順便設定上下margin，將margin-left: 0; 改寫成margin-left: 30px 0;
+```
+  ul,
+  ol {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 0;
+  }
+```
+4. 在css加入如下，可設定行距
+```
+li {
+    margin-bottom: 10px;
+  }
+```
