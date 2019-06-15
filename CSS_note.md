@@ -318,3 +318,10 @@ the browser has to download the styles each time a new page is loaded.
     clear: both;
   }
 ```
+## 改變list前綴符號
+1. 在css加入如下
+```
+  ul {
+    list-style-type: square;
+  }
+```
