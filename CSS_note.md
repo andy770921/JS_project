@@ -203,6 +203,7 @@ the browser has to download the styles each time a new page is loaded.
     ....貼上字體文件夾中的snippet.css，預設的url;
   }
 ```
+9.  文字顏色，直接用color: red; 設定即可
 
 ## CSS行高設定
 &emsp; 通常在```<body>```下設定
