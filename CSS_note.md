@@ -482,6 +482,17 @@ p{
 ```
   <meta name="viewport" content="width=device-width">
 ```
+7. 手機可能轉成橫向使用(landscape)，可加入設定orientation: landscape，如下範例。逗號意為，當A或B其中一者為真，就觸發大括號內CSS效果。A為only screen and (min-width: 768px)。B為only screen and (min-width: 700px) and (orientation: landscape)
+```
+@media only screen and (min-width: 768px),
+         only screen and (min-width: 700px) and (orientation: landscape) {
+  
+    .title {
+      float: left;
+      font-size: 1.4em;
+    }
+  }
+```
 ## CSS 補充
 1. Cascade(串聯)意思是，當在不同selector重複宣告同一物如color:等特性時，會依優先順序，串列處理，最終決定一個最重要的套用進頁面。避免重複宣告的衝突
 2. "最重要"與否的判斷原則: 重要性、特別程度、來源順序
