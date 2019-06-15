@@ -426,3 +426,58 @@ p{
   }
 }
 ```
+3. 實用上，若視窗縮小到一定程度(比如小於等於1024px)，要減少最左、最右之留白，可設定如下
+```
+@ media (max-width: 1024px) {
+  .primary-content,
+  .secondary-content{
+    width: 90%;
+  }
+}
+```
+4. 若視窗再縮小到一定程度(比如小於等於768px)，要減少padding、取消border，可設定如下
+```
+@ media (max-width: 768px) {
+  .primary-content,
+  .secondary-content{
+    width: 100%;
+    padding: 20px;
+    border: none;
+  }
+}
+```
+5. 在寬度限制的基礎下，再設定高度及字體大小相關的css、取消並排的css，可設定如下
+```
+@ media (max-width: 768px) {
+  .primary-content,
+  .secondary-content{
+    width: 100%;
+    padding: 20px;
+    border: none;
+  }
+  .main-header{
+    max-height: 380px;
+    padding: 50px 25px 0;
+  }
+  .title{
+     font-size: 1.3rem;
+     border: none;
+   }
+   h1{
+     font-size: 5rem;
+     line-height: 1.1;
+   }
+   .arror{
+     display: none;
+   }
+   .tips, 
+   .resorts {
+    float: none;
+    width: 100%;
+  }
+}
+```
+6. 記得在```<html>```的```<head>```下，加入使用不同電子產品的寬度設定code，如下
+```
+  <meta name="viewport" content="width=device-width">
+```
