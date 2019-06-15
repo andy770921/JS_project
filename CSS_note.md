@@ -310,4 +310,11 @@ the browser has to download the styles each time a new page is loaded.
     overflow: auto;
   }
 ```
-4. [推薦] 修正父元素設定的height 崩潰，可在css，加入.group的說明，clearfix
+4. [推薦] 修正父元素設定的height 崩潰，可在css，加入.group的說明如下，專門設定clearfix，然後再在```<html>```中的父元素```<div>```加入class="group"
+```
+  .group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+```
