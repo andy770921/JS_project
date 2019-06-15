@@ -61,6 +61,29 @@
 6. 點+(加到git add加到stage)，輸入註解文字，再按勾勾(git commit)
 7. 按F1，再輸入git history，會出現新分頁，可看到文件commit狀況
 
+## 使用github page
+1. 在github下，創建New repository，取名如remote-assignments，可取得github網址，如https://github.com/andy770921/remote-assignments.git
+2. 進入VS code的終端機，移動到D槽，想要放code的資料夾下，輸入指令 git clone https://github.com/andy770921/remote-assignments.git
+3. 建子資料夾如week1，在子資料夾下建index.html，用驚嘆號創建模版，並在```<body>```下輸入```<p>hello</p>```  
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>hello</p>
+</body>
+</html>
+
+```
+4. 在github網址中，進入Repository的Settings，下拉找到GitHub Pages，Source下拉捲軸從none改成master branch。此時會出現網址https://andy770921.github.io/remote-assignments/
+5. 將網址改為子資料夾下，如改成https://andy770921.github.io/remote-assignments/week1
+6. 此連結即可開啟week1資料夾下index.html  
+Ref: https://blog.wawajohn.net/11322.html
 
 ## 不裝Webpack直接用React
 
