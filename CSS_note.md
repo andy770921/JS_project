@@ -605,15 +605,15 @@ display: block;可讓整個content都可點擊
   margin-right: -4px;
 }
 ```
-10. 雙colomn顯示:
+10. 雙colomn顯示法-1:  
 HTML:
 ```
 <div class="container">	
   <div class="primary col">
-  </div><!--/.primary-->			
+  </div>		
   <div class="secondary col">
-  </div><!--/.secondary-->	
-</div><!--/.container-->
+  </div>	
+</div>
 ```
 &emsp; CSS:
 ```
@@ -659,3 +659,32 @@ HTML:
   }
 ```
 &emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（CSS-hack）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
+13. 雙colomn顯示法-2:  
+HTML:  
+```
+<div class="container clearfix">	
+  <div class="secondary col">
+  </div>			
+  <div class="primary col">
+  </div>	
+</div>
+```
+&emsp; CSS:
+```
+.col {    
+  float: left;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.primary { 
+  width: 60%; 
+}
+.secondary { 
+  width: 40%; 
+}
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+```
