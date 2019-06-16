@@ -538,7 +538,7 @@ p{
   padding: 1em 0;
   }
 ```
-5. 可先做出小螢幕的layout，one-column較簡單code不複雜，之後再@media 加入breakpoint做大螢幕的layout。(mobile-first layout)
+5. 可先做出小螢幕的layout，one-column較簡單code不複雜，之後再@media 加入breakpoint做大螢幕的layout。(mobile-first layout)  
 小螢幕如下
 ```
 .container {
@@ -547,7 +547,7 @@ p{
     margin: 0 auto;
 }
 ```
-大螢幕@media 如下
+&emsp; 大螢幕@media 如下
 ```
 @media (min-width: 769px) {
   .container {
@@ -557,9 +557,24 @@ p{
   }
 }
 ```
-6. 加入box-sizing:全域宣告，避免layout總長寬，再加上padding，而超乎自己預期
+6. 加入box-sizing: border-box;全域宣告，避免layout總長寬，再加上padding，而超乎自己預期
 ```
   * {
     box-sizing: border-box;
   } 
+```
+7. 將footer置底，避免下緣留白。留白之原因: 中央內文較短，比瀏覽器視窗的高度還短，內文後馬上接到footer，導致footer未貼底。解法: 設定內文寬度一定大於螢幕高度，設定法如下，先在Html設定新class，包住body除了footer以外的部分:
+```
+  <div class="wrap">
+    <header class="main-header">
+    </header>
+    <section>
+    </section>
+  </div>
+```
+&emsp; 再設定css如下。100vh意為100% viewport height，89px為footer高度，扣掉後才不會高度過高出現下拉捲軸
+```
+  .wrap {
+    min-height: calc(100vh - 89px);
+  }
 ```
