@@ -517,7 +517,7 @@ p{
   top-margin: 0;
   }
 ```
-  解法二: 修正main-header clsss的上padding
+&emsp;   解法二: 修正main-header clsss的上padding
 ```
   .main-header {
   background: #3acec2;
