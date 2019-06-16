@@ -595,3 +595,30 @@ display: inline-block; 可避免nav bar換行
     display: inline-block;
   }
 ```
+9. 去除inline-block或是inline之間的空白，空白起因為，瀏覽器判斷此物件為文字，文字之間會有預設空白。解法一: 改寫html的li寫法。解法二: css加入負margin
+```
+.main-nav li {    
+  margin-right: -4px;
+}
+```
+10. 雙colomn顯示:
+HTML:
+```
+<div class="container">	
+  <div class="primary col">
+  </div><!--/.primary-->			
+  <div class="secondary col">
+  </div><!--/.secondary-->	
+</div><!--/.container-->
+```
+CSS:
+```
+.col {    
+  display: inline-block;
+  width: 50%; 
+  margin-right: -4px;
+  vertical-align: top;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+```
