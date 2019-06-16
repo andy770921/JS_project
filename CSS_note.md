@@ -517,8 +517,12 @@ p{
         </div>
     </header>
 ```
-&emsp; 要在css加如下
+&emsp; 要在css加如下。外層設定顏色、內層設定margin: 0 auto;置中，才能顏色滿版
 ```
+.main-header {
+  background: #3acec2;
+  margin-bottom: 30px;
+}
 .container {
   width: 70%;
   margin: 0 auto;
