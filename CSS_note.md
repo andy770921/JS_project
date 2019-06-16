@@ -1,9 +1,9 @@
 # CSS 觀念
 
 ## 參考連結
-1. https://developer.mozilla.org/en-US/docs/Web/CSS   
-2. https://webplatform.github.io/docs/css/
-3. CSS Data Type: https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type
+1. https://developer.mozilla.org/en-US/docs/Web/CSS     
+2. https://webplatform.github.io/docs/css/  
+3. CSS Data Type: https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type  
 
 ## 加入自定義CSS方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
@@ -109,7 +109,7 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; "pseudo-classes can target elements dynamically based on user interaction, an element's state and more."  
   
 &emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes  
-&emsp; Ref: https://stringpiggy.hpd.io/pseudo-element-pseudo-class-difference/
+&emsp; Ref: https://stringpiggy.hpd.io/pseudo-element-pseudo-class-difference/  
 &emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前、點擊中、點擊後、滑鼠滑過時的顏色設定，可在CSS打如下程式碼。  
 ```
   a:link {
@@ -650,9 +650,9 @@ HTML:
   float: left;
 }
 ```
-&emsp; 解法二: 在html與container同層的 class，加入```<div class="container group">```，並將clearfix補進css
+&emsp; 解法二: 在html與container同層的 class，加入```<div class="container clearfix">```，並將clearfix補進css
 ```
-.group:after {
+.clearfix::after {
     content: "";
     display: table;
     clear: both;
