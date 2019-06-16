@@ -591,7 +591,7 @@ display: block;可讓整個content都可點擊
     display: block;
 }
 ```
-display: inline-block; 可避免nav bar換行
+&emsp; display: inline-block; 可避免nav bar換行
 ```
   .name,
   .main-nav,
@@ -615,7 +615,7 @@ HTML:
   </div><!--/.secondary-->	
 </div><!--/.container-->
 ```
-CSS:
+&emsp; CSS:
 ```
 .col {    
   display: inline-block;
@@ -626,3 +626,35 @@ CSS:
   padding-right: 1em;
 }
 ```
+11. float之使用- 圖片在左、文字在右，希望留圖及文字之間的空白，不能直接加文字的margin-right，如此這般無法拉大圖文間的空間，會拉大視窗邊界與文字邊界。正解: 要增加圖的margin-right 
+12. float之使用2- 標題在左、Nav. Bar在右，若float設定一左、一右，會導致上方顏色高度崩潰。解法一:在有顏色的部份(main-header)加入overflow: hidden;或overflow: auto;，但可能會有藏到不該藏的內容，或是出現非預期下拉捲軸之問題
+```
+.main-header {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  background: #3acec2;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.main-nav {
+  float: right;
+}
+
+.main-nav li {
+  float: left;
+  margin-left: 12px;
+}
+
+.name {
+  float: left;
+}
+```
+&emsp; 解法二: 在html與container同層的 class，加入```<div class="container group">```，並將clearfix補進css
+```
+.group:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+```
+&emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（CSS-hack）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
