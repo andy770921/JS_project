@@ -517,7 +517,7 @@ p{
         </div>
     </header>
 ```
- 要在css加如下
+&emsp; 要在css加如下
 ```
 .container {
   width: 70%;
@@ -537,4 +537,29 @@ p{
   background: #3acec2;
   padding: 1em 0;
   }
+```
+5. 可先做出小螢幕的layout，one-column較簡單code不複雜，之後再@media 加入breakpoint做大螢幕的layout。(mobile-first layout)
+小螢幕如下
+```
+.container {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0 auto;
+}
+```
+大螢幕@media 如下
+```
+@media (min-width: 769px) {
+  .container {
+    width: 70%;
+    margin: 0 auto;
+    max-width: 1000px;
+  }
+}
+```
+6. 加入box-sizing:全域宣告，避免layout總長寬，再加上padding，而超乎自己預期
+```
+  * {
+    box-sizing: border-box;
+  } 
 ```
