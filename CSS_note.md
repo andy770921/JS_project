@@ -109,7 +109,7 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; "pseudo-classes can target elements dynamically based on user interaction, an element's state and more."  
   
 &emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes  
-  
+&emsp; Ref: https://stringpiggy.hpd.io/pseudo-element-pseudo-class-difference/
 &emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前、點擊中、點擊後、滑鼠滑過時的顏色設定，可在CSS打如下程式碼。  
 ```
   a:link {
