@@ -511,16 +511,16 @@ p{
 ```
 3. 設定style.css，可能需要加入index.html中的```<div class="xx">```調整樣式。比如，希望上header滿版且左右留有背景色，要在html加如下
 ```
-	<header class="main-header">
-		<div class="container">
+    <header class="main-header">
+        <div class="container">
 		......
-		</div>
-	</header>
+        </div>
+    </header>
 ```
-&emsp;&ensp; 要在css加如下
+ 要在css加如下
 ```
 .container {
-	width: 70%;
+  width: 70%;
   margin: 0 auto;
 }
 ```
