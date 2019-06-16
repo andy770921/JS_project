@@ -510,3 +510,17 @@ p{
     <link rel="stylesheet" href="css/normalize.css">
 ```
 3. 設定style.css，可能需要加入index.html中的<div class="xx">調整樣式
+4. 修正最上方不滿版問題: collapsing margin，即標題(h1)字的margin超過了標題的content。由於h1與body中間沒有其他物件，h1的margin上緣與body的上緣貼齊  
+  解法一: 修正h1的上margin
+```
+  h1 {
+	top-margin: 0;
+  }
+```
+  解法二: 修正main-header clsss的上padding
+```
+  .main-header {
+	background: #3acec2;
+  padding: 1em 0;
+  }
+```
