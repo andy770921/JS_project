@@ -516,7 +516,7 @@ HTML:
   </ul>
 </header>
 ```
-CSS:
+&emsp; CSS:
 ```
 .ice-cream {
   position: absolute;
