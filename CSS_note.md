@@ -538,7 +538,7 @@ p{
   padding: 1em 0;
   }
 ```
-5. 可先做出小螢幕的layout，one-column較簡單code不複雜，之後再@media 加入breakpoint做大螢幕的layout。(mobile-first layout)  
+5. 可先做出小螢幕的layout，single-block content(各區塊接續往下排列)較簡單，code不複雜，之後再@media 加入breakpoint做大螢幕的layout。(mobile-first layout)  
 小螢幕如下
 ```
 .container {
@@ -576,5 +576,22 @@ p{
 ```
   .wrap {
     min-height: calc(100vh - 89px);
+  }
+```
+8. 調整nav bar，設定如下
+display: block;可讓整個content都可點擊
+```
+  .name a,
+  .main-nav a {
+    padding: 10px 15px;
+    display: block;
+}
+```
+display: inline-block; 可避免nav bar換行
+```
+  .name,
+  .main-nav,
+  .main-nav li{
+    display: inline-block;
   }
 ```
