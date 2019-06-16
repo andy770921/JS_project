@@ -502,6 +502,52 @@ p{
 6. HTML中的inline style: EX: ```<body style="background-color: orange;">```，優先序大於external style sheet
 7. 繼承: 子元素的特性(property)，比如color:，若無特別宣告，會繼承父元素。若要取消繼承，可加入color: initial;之字樣，回到原始設定值
 
+## position: absolute 說明
+
+1. 若無另外指定其他class為position: relative，則absolute的元素，會被抽離出原先的block，以獨立的圖層，配置在頁面上。上下左右距離，相對於視窗邊界  
+HTML:
+```
+<header class="main-header">
+  <ul class="main-nav">
+    <li class="ice-cream"><a href="#">ice cream</a></li>
+    <li><a href="#">donuts</a></li>
+    <li class="tea"><a href="#">tea</a></li>
+    <li><a href="#">coffee</a></li>
+  </ul>
+</header>
+```
+CSS:
+```
+.ice-cream {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+
+.tea {
+  position: absolute;
+  right: 6em;
+  bottom: 50%;
+}
+```
+2. 若另外指定其他class為position: relative，則absolute的元素，會相對於class元素的邊界，設定上下左右距離，如下例，ice-cream及tea的位置相對於```<ul class="main-nav">```配置  
+CSS:
+```
+.main-nav {
+  position: relative;
+}
+.ice-cream {
+  position: absolute;
+  top: 100px;
+  left: 50px;
+}
+
+.tea {
+  position: absolute;
+  right: 6em;
+  bottom: 50%;
+}
+```
 ## 開始實作 CSS Layout 流程
 1. 不同瀏覽器，會有預設的字體大小與邊界寬等，先消除之，避免不同瀏覽器影響自己的網頁。複製normalize.css檔案(或code)，到css資料夾下  
 &emsp; normalize.css Ref:https://necolas.github.io/normalize.css/
