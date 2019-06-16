@@ -509,7 +509,21 @@ p{
 ```
     <link rel="stylesheet" href="css/normalize.css">
 ```
-3. 設定style.css，可能需要加入index.html中的```<div class="xx">```調整樣式
+3. 設定style.css，可能需要加入index.html中的```<div class="xx">```調整樣式。比如，希望上header滿版且左右留有背景色，要在html加如下
+```
+	<header class="main-header">
+		<div class="container">
+		......
+		</div>
+	</header>
+```
+&emsp;&ensp; 要在css加如下
+```
+.container {
+	width: 70%;
+  margin: 0 auto;
+}
+```
 4. 修正最上方不滿版問題: collapsing margin，即標題(h1)字的margin超過了標題的content。由於h1與body中間沒有其他物件，h1的margin上緣與body的上緣貼齊  
   解法一: 修正h1的上margin  
 ```
