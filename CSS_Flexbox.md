@@ -107,3 +107,25 @@ HTML:
   flex: 1;
 }
 ```
+12. 水平及垂直置中的方式一:
+```
+.container {
+  justify-content: center;
+  align-items: center;
+}
+```
+13. 水平及垂直置中的方式二:
+```
+.container {
+  justify-content: center;
+}
+.item {
+  align-self: center;
+}
+```
+14. 水平及垂直置中的方式三:
+```
+.item {
+  margin: auto;
+}
+```
