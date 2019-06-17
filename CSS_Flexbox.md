@@ -48,27 +48,33 @@ HTML:
 6. 如需調整item間的空白，或是倒角，可在page.css中調整，	margin: 5px; 為item間的留白 
 ```
 .container {
-	padding: 10px;
-	background: #fff;
+  padding: 10px;
+  background: #fff;
   border-radius: 5px;
-	margin: 45px auto;
+  margin: 45px auto;
   box-shadow: 0 1.5px 0 0 rgba(0,0,0,0.1);
 }
 .item {
-	color: #fff;
-	padding: 15px;
-	margin: 5px;	
-	background: #3db5da;
-	border-radius: 3px;
+  color: #fff;
+  padding: 15px;
+  margin: 5px;	
+  background: #3db5da;
+  border-radius: 3px;
 }
 ```
 7. 同一列item，區分左右區塊，如logo與nav bar，加入第一個item的 margin-right: auto;
 ```
 .item-1 {
-	color: #fff;
-	padding: 15px;
-	margin: 5px;	
-	background: #3db5da;
-	border-radius: 3px;
+  color: #fff;
+  padding: 15px;
+  margin: 5px;	
+  background: #3db5da;
+  border-radius: 3px;
+}
+```
+8. 改變單一item順序，如改變 item-6順序提到最前，order值越負排越前面、越大排越後，未宣告者為0
+```
+.item-6 {
+  order: -1;
 }
 ```
