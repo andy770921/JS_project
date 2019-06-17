@@ -170,7 +170,7 @@ HTML:
 }
 
 ```
-## 文字並列顯示綜合設定
+## 文字並列、三列顯示綜合設定
 
 1. HTML
 ```
@@ -214,5 +214,31 @@ HTML:
 
 .primary{
   flex: 2;
+}
+```
+4. 兩元素寬度1:1，一元素換行的 CSS
+```
+.col {
+  flex: 1 50%;
+}
+
+.row {
+  flex-wrap: wrap;
+}
+
+```
+
+5. 三元素寬度1:1.4:1 的 CSS，寬度1的secondary元素在最前顯示
+
+```
+.col {
+  flex-basis: 0;
+}
+
+.primary {
+  flex-grow: 1;
+}
+.secondary {
+  order: -1;
 }
 ```
