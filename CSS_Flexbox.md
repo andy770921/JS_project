@@ -37,7 +37,7 @@ HTML:
 }
 ```
 
-4. 改裡面item的排列方向。如flex-direction: column;、row-reverse;。改變item 排列的起始點(從最右或最左開始)，可設定 justify-content:，flex-end 、center、space-between、space-around
+4. 改裡面item的排列方向。如flex-direction: column;、row-reverse;。改變item 排列的起始點(從最右或最左開始)，可設定 justify-content:，flex-end 、center、space-between、space-around。 justify-content: space-between會自動將文字置左、nav bar置右
 ```
 .container {
   display: flex;
@@ -71,14 +71,10 @@ HTML:
   border-radius: 3px;
 }
 ```
-2. 同一列item，區分左右區塊，如logo與nav bar，加入第一個item的 margin-right: auto;
+2. 同一列item，區分左右區塊，如logo與nav bar，加入第一個item的 margin-right: auto;。 justify-content: space-between會自動將文字置左、nav bar置右，不用加 margin-right: auto
 ```
 .item-1 {
-  color: #fff;
-  padding: 15px;
-  margin: 5px;	
-  background: #3db5da;
-  border-radius: 3px;
+  margin-right: auto;
 }
 ```
 3. 改變單一item順序，如改變 item-6順序提到最前，order值越負排越前面、越大排越後，未宣告者為0
@@ -132,4 +128,45 @@ HTML:
 .item {
   margin: auto;
 }
+```
+## Navbar綜合設定
+
+1. HTML
+```
+<header class="main-header">
+  <h1 class="name"><a href="#">Best City Guide</a></h1>
+  <ul class="main-nav">
+    <li><a href="#">ice cream</a></li>
+    <li><a href="#">donuts</a></li>
+    <li><a href="#">tea</a></li>
+    <li><a href="#">coffee</a></li>
+  </ul>
+</header>
+```
+2. 與標題不同排顯示的nav-bar CSS
+```
+.main-header,
+.main-nav {
+  display: flex;
+}
+
+.main-header {
+  flex-direction: column;
+  align-items: center;
+}
+```
+
+3. 與標題同排顯示的nav-bar CSS
+```
+.main-header,
+.main-nav {
+  display: flex;
+}
+
+.main-header {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 ```
