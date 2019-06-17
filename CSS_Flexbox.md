@@ -42,7 +42,7 @@ HTML:
 ```
 .container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-wrap: wrap;
 }
 ```
 6. 如需調整item間的空白，或是倒角，可在page.css中調整，	margin: 5px; 為item間的留白 
@@ -76,5 +76,14 @@ HTML:
 ```
 .item-6 {
   order: -1;
+}
+```
+9. 讓item寬度滿版，需設定flex-grow: 1;。當螢幕寬度過於壓縮時，最末元素會換行，且寬度滿版。也可用flex-grow: 2，設定單一item寬度加倍
+```
+.item {
+  flex-grow: 1;
+}
+.item-3 {
+  flex-grow: 2;
 }
 ```
