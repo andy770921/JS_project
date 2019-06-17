@@ -17,7 +17,7 @@ HTML:
 ```
 
 1. 在css資料夾下，創建flexbox.css
-2. css下，創建flex container，其下的物件會自動變成 block-level的flex item。若要inline，需要打成display: inline-flex;
+2. css下，創建flex container，其下的第一階子物件，會自動變成 block-level的flex item。若要inline，需要打成display: inline-flex;
 ```
 .container {
   display: flex;
@@ -240,5 +240,54 @@ HTML:
 }
 .secondary {
   order: -1;
+}
+```
+## 並列子元素中的按鈕置底
+```
+.main-header,
+.main-nav,
+.row, 
+.col {
+  display: flex;
+}
+.col {
+  flex: 1;
+  flex-direction: column;
+}
+.button {
+  margin-top: auto;
+  align-self: flex-end;
+}
+```
+## 黏底footer
+1. HTML:
+```
+<div class="row">		
+  <div class="primary col">
+    <h2>Welcome!</h2>
+    <p>Everything in this city is worth waiting in line for!</p>
+  </div>
+</div>
+	
+<footer class="main-footer">
+  <div class="footer-inner">
+    <span>&copy;2015 Residents of The Best City Ever.</span>
+  </div>
+</footer>
+
+```
+2. CSS
+```
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.row {
+  flex: 1;
+}
+.button {
+  margin-top: auto;
+  align-self: flex-end;
 }
 ```
