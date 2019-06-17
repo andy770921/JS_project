@@ -170,3 +170,49 @@ HTML:
 }
 
 ```
+## 文字並列顯示綜合設定
+
+1. HTML
+```
+  <div class="row">		
+    <div class="primary col">
+      <h2>Welcome!</h2>
+      <p>... </p>
+    </div>
+		
+  <div class="secondary col">
+    <h2>How to get here</h2>
+    <p>....</p>
+  </div>
+</div>
+```
+2. 寬度相同，並排顯示的 CSS
+
+```
+.main-header,
+.main-nav,
+.col {
+  display: flex;
+}
+
+.main-header {
+  flex-direction: row;
+  justify-content: space-around;
+}
+.col {
+  flex: 1;
+}
+
+```
+
+3. 寬度2:1，並排顯示的 CSS
+```
+.main-header {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.primary{
+  flex: 2;
+}
+```
