@@ -2,8 +2,14 @@
 
 ## 同步/非同步
 https://www.youtube.com/watch?v=NOprCnnjHm0
-## ES6語法與ES5差異
+## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
+## Array或Object，避免用=指定，因此兩者為call by ref
+1. [1]==[1]，會是false，因為指向不同記憶體位置
+2. 若要比較，要用_.isEqual([1],[1])，會回傳true
+3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
+4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b= Object.assign({}, a);
+
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
@@ -18,5 +24,7 @@ https://ithelp.ithome.com.tw/articles/10185430
 3. .shift(): 變更原陣列-移除陣列第一個元素，並回傳被移除的值
 4. .pop(): 變更原陣列-移除陣列最後一個元素，並回傳被移除的值
 5. .join(', '): 每個元素後面，加入, ，除了最後一個元素外
-6. .concat (陣列變數名): 結合兩陣列
+6. .concat (陣列變數名): 結合兩陣列，回傳一個全新陣列
 7. .indexOf('陣列中其中一個元素名稱'): 輸出該元素的index，若不是該陣列的元素會輸出-1，可判斷此元素是否在陣列中
+8. .map(function(element,index){ return.......;}): 遍歷陣列元素，在...內可打每個element要做甚麼事情，若需要跟index有關也可以寫進去。回傳一個全新的陣列
+9. [ES6] .filter(function(element){return 判斷式;}): 遍歷陣列元素，判斷式為真的元素，才會回傳
