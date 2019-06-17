@@ -52,7 +52,9 @@ HTML:
   flex-wrap: wrap;
 }
 ```
-6. 如需調整item間的空白，或是倒角，可在page.css中調整，margin: 5px; 為item間的留白 
+
+## 調整 Flex Item
+1. 如需調整item間的空白，或是倒角，可在page.css中調整，margin: 5px; 為item間的留白 
 ```
 .container {
   padding: 10px;
@@ -69,7 +71,7 @@ HTML:
   border-radius: 3px;
 }
 ```
-7. 同一列item，區分左右區塊，如logo與nav bar，加入第一個item的 margin-right: auto;
+2. 同一列item，區分左右區塊，如logo與nav bar，加入第一個item的 margin-right: auto;
 ```
 .item-1 {
   color: #fff;
@@ -79,13 +81,13 @@ HTML:
   border-radius: 3px;
 }
 ```
-8. 改變單一item順序，如改變 item-6順序提到最前，order值越負排越前面、越大排越後，未宣告者為0
+3. 改變單一item順序，如改變 item-6順序提到最前，order值越負排越前面、越大排越後，未宣告者為0
 ```
 .item-6 {
   order: -1;
 }
 ```
-9. 讓item寬度滿版，需設定flex-grow: 1;。當螢幕寬度過於壓縮時，最末元素會換行，且寬度滿版。也可用flex-grow: 2，設定單一item寬度加倍
+4. 讓item寬度滿版，需設定flex-grow: 1;。當螢幕寬度過於壓縮時，最末元素會換行，且寬度滿版。也可用flex-grow: 2，設定單一item寬度加倍
 ```
 .item {
   flex-grow: 1;
@@ -94,27 +96,29 @@ HTML:
   flex-grow: 2;
 }
 ```
-10. 定義item 寬度下限，用flex-basis，若小於此值，item會換行
+5. 定義item 寬度下限，用flex-basis，若小於此值，item會換行
 ```
 .item {
   flex-grow: 1;
   flex-basis: 200px;
 }
 ```
-11. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行
+6. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行
 ```
 .item {
   flex: 1;
 }
 ```
-12. 水平及垂直置中的方式一:
+
+## 水平及垂直置中
+1. 方式一:
 ```
 .container {
   justify-content: center;
   align-items: center;
 }
 ```
-13. 水平及垂直置中的方式二:
+2. 方式二:
 ```
 .container {
   justify-content: center;
@@ -123,7 +127,7 @@ HTML:
   align-self: center;
 }
 ```
-14. 水平及垂直置中的方式三:
+3. 方式三:
 ```
 .item {
   margin: auto;
