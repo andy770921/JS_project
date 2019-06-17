@@ -38,7 +38,7 @@ HTML:
   justify-content: flex-end;
 }
 ```
-5. 寬度被壓縮 a. item逐一換行但不要改變Item長寬 。flex-wrap: wrap; 。
+5. 寬度被壓縮時，將item逐一換行，但不要改變Item長寬，用以下寫法 flex-wrap: wrap; 。
 ```
 .container {
   display: flex;
