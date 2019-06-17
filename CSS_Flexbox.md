@@ -23,13 +23,20 @@ HTML:
   display: flex;
 }
 ```
-3. 定義flex container 寬高
+3. 定義flex container 高，定義container內元素的排列方式。 align-items: strench為預設，高度滿height設定值。flex-start;為貼齊上半、底下空間依內容高度而不滿height。flex-center; 為垂直置中，上半及下半空間，依內容高度而不滿height。若要單獨設定item，可在item-1. 下，用 align-self: 
 ```
 .container {
   display: flex;
   height: 300px;
+  align-items: center;
 }
 ```
+```
+.item-1 {
+  align-self: flex-start;
+}
+```
+
 4. 改裡面item的排列方向。如flex-direction: column;、row-reverse;。改變item 排列的起始點(從最右或最左開始)，可設定 justify-content:，flex-end 、center、space-between、space-around
 ```
 .container {
@@ -45,7 +52,7 @@ HTML:
   flex-wrap: wrap;
 }
 ```
-6. 如需調整item間的空白，或是倒角，可在page.css中調整，	margin: 5px; 為item間的留白 
+6. 如需調整item間的空白，或是倒角，可在page.css中調整，margin: 5px; 為item間的留白 
 ```
 .container {
   padding: 10px;
@@ -85,5 +92,18 @@ HTML:
 }
 .item-3 {
   flex-grow: 2;
+}
+```
+10. 定義item 寬度下限，用flex-basis，若小於此值，item會換行
+```
+.item {
+  flex-grow: 1;
+  flex-basis: 200px;
+}
+```
+11. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行
+```
+.item {
+  flex: 1;
 }
 ```
