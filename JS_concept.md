@@ -34,8 +34,8 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 1. 取得物件中的值，用students.name，或是students["name"]
 2. for-in loop 遍歷物件元素
 Note: propName指的是物件內的key，可換變數名稱，要與for迴圈內的統一即可。  
-&emsp; Note: students[propName]指的是每個key的值，不能用students.propName，因為會找students物件中，名為propName的key，但是沒有此 key
-&emsp; Note: console.log連續輸出不同字串，可用逗號間隔不同之字串
+&emsp; Note: students[propName]指的是每個key的值，不能用students.propName，因為會找students物件中，名為propName的key，但是沒有此 key  
+&emsp; Note: console.log連續輸出不同字串，可用逗號間隔不同之字串  
 ```
 var students = {
   name: "Dave",
