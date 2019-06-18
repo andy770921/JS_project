@@ -46,8 +46,8 @@ for (var propName in students) {
   console.log(propName, ", ", students[propName]);
 }
 ```
-3. 二維陣列改寫為物件，取值法也相應變化
-原:
+3. 二維陣列改寫為物件，取值法也相應變化  
+原:  
 ```
 var questions = [
   ['How many states are in the United States?', 50],
