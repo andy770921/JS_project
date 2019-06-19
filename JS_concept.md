@@ -85,7 +85,7 @@ for (var i = 0; i < questions.length; i += 1) {
 ```
 ## 與HTML DOM的互動
 1. 事件監聽: addEventListener()
-https://ithelp.ithome.com.tw/articles/10192015
+https://ithelp.ithome.com.tw/articles/10192015  
 HTML:
 ```
   <body>
@@ -93,7 +93,7 @@ HTML:
     <p>Making a web page interactive</p>
   </body>
 ```
-JS:
+&emsp;JS:
 ```
 const myHeading = document.getElementByID('myHeading');
 myHeading.addEventListener('click', ()=>{
