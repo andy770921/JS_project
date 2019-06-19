@@ -84,7 +84,7 @@ for (var i = 0; i < questions.length; i += 1) {
 }
 ```
 ## 與HTML DOM的互動
-1. 事件監聽: addEventListener()
+1. 事件監聽，以ID選: addEventListener()
 https://ithelp.ithome.com.tw/articles/10192015  
 HTML:
 ```
@@ -101,3 +101,6 @@ myHeading.addEventListener('click', ()=>{
   myHeading.style.color = 'red';
 });
 ```
+2. 以Type多重選，HTML 要用 const myHeading = document.getElementsByTagName('h1');
+3. 以Type單選清單內第三個元素，HTML 要用 const myList = document.getElementsByTagName('li')[2];
+4. 以Class多重選，HTML 要用 const excludeColor = document.getElementsByTagName('notPurple')[2];
