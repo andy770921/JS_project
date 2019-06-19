@@ -93,7 +93,7 @@ HTML:
     <p>Making a web page interactive</p>
   </body>
 ```
-&emsp;JS:
+&emsp; JS:
 ```
 const myHeading = document.getElementByID('myHeading');
 myHeading.addEventListener('click', ()=>{
