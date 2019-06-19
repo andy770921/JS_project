@@ -89,6 +89,7 @@ https://ithelp.ithome.com.tw/articles/10192015
 HTML:
 ```
   <body>
+    <script src="app.js"></script>
     <h1 id="myHeading">JavaScript and the DOM</h1>
     <p>Making a web page interactive</p>
   </body>
