@@ -121,3 +121,17 @@ for (let i = 0; i < evens.length; i++ ){
 ```
 let navigationLinks =  document.querySelectorAll('nav > ul > li > a');
 ```
+12.選擇某p下的class(名稱description) 第一個出現的物件，可如下
+```
+let p =  document.querySelector('p.description');
+```
+13.可用.innerHTML，取得或重新指定HTML Tag內部資料
+```
+let ul =  document.querySelector('ul');
+ul.innerHTML = "<li>red</li> <li>blue</li>";
+```
+14.可用.textContent，取得或重新指定HTML Tag內部文字
+```
+let myHeading =  document.querySelector('h1');
+h1.textContent = "This is new Heading";
+```
