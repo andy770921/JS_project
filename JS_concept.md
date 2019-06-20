@@ -236,3 +236,30 @@ listDiv.addEventListener('mouseout', (event) => {
   }
 });
 ```
+
+## Traverse 穿越(到上層父元素)，用.parentNode
+刪除Child可用，如下
+HTML:
+```
+<ul class="list">
+  <li>grapes <button>Remove</button></li>
+  <li>amethyst <button>Remove</button></li>
+  <li>lavender <button>Remove</button></li>
+  <li>plums <button>Remove</button></li>
+</ul>
+```
+
+JS:
+```
+const listUl = document.querySelector('.list');
+listUl.addEventListener('click', (event) => {
+  if(event.target.tagName == BUTTON"){
+    let li = event.target.parentNode;
+    let ul = li.parentNode;
+    ul = removeChild(li);
+  }
+});
+```
+
+
+
