@@ -146,3 +146,16 @@ h1.textContent = "This is new Heading";
 ```
 var inputValue = document.getElementById('linkName').value;
 ```
+16. .createElement('li');
+```
+let li = document.createElement('li');
+li.textContent = addItemInput.value;
+```
+17. .appendChild('li');與createElement合用
+```
+let ul = document.getElementByTagName('ul')[0];
+let li = document.createElement('li');
+li.textContent = addItemInput.value;
+ul.appendChild('li');
+```
+
