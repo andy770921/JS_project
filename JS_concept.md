@@ -125,12 +125,12 @@ let navigationLinks =  document.querySelectorAll('nav > ul > li > a');
 ```
 let p =  document.querySelector('p.description');
 ```
-13.可用.innerHTML，取得或重新指定HTML Tag內部資料
+13.可用.innerHTML，取得內部資料回傳值，也可重新指定HTML Tag內部資料
 ```
 let ul =  document.querySelector('ul');
 ul.innerHTML = "<li>red</li> <li>blue</li>";
 ```
-14.可用.textContent，取得或重新指定HTML Tag內部文字
+14.可用.textContent，取得文字內容回傳值，也可重新指定HTML Tag內部文字
 ```
 let myHeading =  document.querySelector('h1');
 h1.textContent = "This is new Heading";
