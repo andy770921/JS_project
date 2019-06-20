@@ -142,3 +142,7 @@ button.addEventListener('click', ()=>{
 let myHeading =  document.querySelector('h1');
 h1.textContent = "This is new Heading";
 ```
+15. 取得 <input type="text" id="linkName"> 輸入字串欄位的值:
+```
+var inputValue = document.getElementById('linkName').value;
+```
