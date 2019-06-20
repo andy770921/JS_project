@@ -181,4 +181,58 @@ removeItemButton.addEventListener('click', () => {
   ul.removeChild(li);
 });
 ```
+## Callback function
 
+意義: We want to call it back after certain amount of time has passed.
+
+Ex: (something) 為 Callback function
+```
+window.setTimeout((something) => {
+  console.log(something);
+  }, 3000 ,'Hi');
+```
+Ex: listener 為 Callback function，常被稱呼為event handler，因為其目的為處理事件
+```
+target.addEventListener(type, listener[, options]);
+```
+## Event Bubbling 、 Event Delegation
+
+意義: 當li元素收到click事件，接著父元素ul也收到click事件，接著父元素body也收到click事件，接著父元素Document也收到click事件。可用父元素為代表，以下的子元素可一併套用click觸發後的效果
+
+## Event Object
+
+意義: 當event handler被觸發時，它同時會收到一個event object，這個object有些關於這個事件的有用資訊，還有一些方法(method)
+
+event.target，會指向第一個收到此事件(如點擊)的元素 
+
+## 綜合練習
+
+HTML:
+```
+  <body>
+    <div class="list">
+      <p class="description">Things that are purple:</p>
+      <ul>
+        <li>grapes</li>
+        <li>amethyst</li>
+        <li>lavender</li>
+        <li>plums</li>
+      </ul>
+    </div>
+    <script src="app.js"></script>
+  </body>
+```
+app.js:
+```
+const listDiv = document.querySelector('.list');
+listDiv.addEventListener('mouseover', (event) => {
+  if(event.target.tagName == "LI"){
+    event.target.textContent = event.target.textContent.toUpperCase();
+  }
+});
+listDiv.addEventListener('mouseout', (event) => {
+  if(event.target.tagName == "LI"){
+    event.target.textContent = event.target.textContent.toLowerCase();
+  }
+});
+```
