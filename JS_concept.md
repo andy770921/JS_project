@@ -163,7 +163,7 @@ let li = document.createElement('li');
 ```
 newParagraph.className = "panel";
 ```
-## 設計HTML DOM的流程 - 按鈕可移除最後文字
+## 設計HTML互動的流程 - 按鈕可移除最後文字
 
 1. 在HTML創造按鈕如下
 ```
@@ -181,4 +181,4 @@ removeItemButton.addEventListener('click', () => {
   ul.removeChild(li);
 });
 ```
-```
+
