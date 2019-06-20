@@ -123,12 +123,19 @@ let navigationLinks =  document.querySelectorAll('nav > ul > li > a');
 ```
 12.選擇某p下的class(名稱description) 第一個出現的物件，可如下
 ```
-let p =  document.querySelector('p.description');
+let p = document.querySelector('p.description');
 ```
 13.可用.innerHTML，取得內部資料回傳值，也可重新指定HTML Tag內部資料
 ```
 let ul =  document.querySelector('ul');
 ul.innerHTML = "<li>red</li> <li>blue</li>";
+
+const input = document.querySelector('input');
+const p = document.querySelector('p.description');
+const button = document.querySelector('button');
+button.addEventListener('click', ()=>{
+  p.innerHTML = input.value;
+});
 ```
 14.可用.textContent，取得文字內容回傳值，也可重新指定HTML Tag內部文字
 ```
