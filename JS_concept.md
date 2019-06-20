@@ -151,11 +151,34 @@ var inputValue = document.getElementById('linkName').value;
 let li = document.createElement('li');
 li.textContent = addItemInput.value;
 ```
-17. .appendChild('li');與createElement合用
+17. .appendChild(li);與createElement合用，最後清除字串欄位的值
 ```
 let ul = document.getElementByTagName('ul')[0];
 let li = document.createElement('li');
-li.textContent = addItemInput.value;
-ul.appendChild('li');
+  li.textContent = addItemInput.value;
+  ul.appendChild(li);
+  addItemInput.value = '';
 ```
+18. 指定HTML元素class:
+```
+newParagraph.className = "panel";
+```
+## 設計HTML DOM的流程 - 按鈕可移除最後文字
 
+1. 在HTML創造按鈕如下
+```
+<button class="removeItemButton">Remove Last Item</button>
+```
+2. 創建query selector，在JS打如下
+```
+const removeItemButton = document.querySelector('button.removeItemButton');
+```
+3. 創建addEventListener，在JS打如下
+```
+removeItemButton.addEventListener('click', () => {
+  let ul = document.getElementByTagName('ul')[0];
+  let li = document.querySelector('li:last-child');
+  ul.removeChild(li);
+});
+```
+```
