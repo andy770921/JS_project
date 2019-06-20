@@ -183,7 +183,7 @@ removeItemButton.addEventListener('click', () => {
 ```
 ## Callback function
 
-意義: We want to call it back after certain amount of time has passed.
+&emsp; 意義: We want to call it back after certain amount of time has passed.
 
 Ex: (something) 為 Callback function
 ```
@@ -191,7 +191,7 @@ window.setTimeout((something) => {
   console.log(something);
   }, 3000 ,'Hi');
 ```
-Ex: listener 為 Callback function，常被稱呼為event handler，因為其目的為處理事件
+&emsp; Ex: listener 為 Callback function，常被稱呼為event handler，因為其目的為處理事件
 ```
 target.addEventListener(type, listener[, options]);
 ```
@@ -201,13 +201,13 @@ target.addEventListener(type, listener[, options]);
 
 ## Event Object
 
-意義: 當event handler被觸發時，它同時會收到一個event object，這個object有些關於這個事件的有用資訊，還有一些方法(method)
+&emsp; 意義: 當event handler被觸發時，它同時會收到一個event object，這個object有些關於這個事件的有用資訊，還有一些方法(method)
 
-event.target，會指向第一個收到此事件(如點擊)的元素 
+&emsp; event.target，會指向第一個收到此事件(如點擊)的元素 
 
 ## 綜合練習
 
-HTML:
+&emsp; HTML:
 ```
   <body>
     <div class="list">
@@ -222,7 +222,7 @@ HTML:
     <script src="app.js"></script>
   </body>
 ```
-app.js:
+&emsp; app.js:
 ```
 const listDiv = document.querySelector('.list');
 listDiv.addEventListener('mouseover', (event) => {
@@ -238,8 +238,8 @@ listDiv.addEventListener('mouseout', (event) => {
 ```
 
 ## Traverse 穿越(到上層父元素)，用.parentNode
-刪除Child可用，如下
-HTML:
+&emsp; 刪除Child，用法如下  
+&emsp; HTML:
 ```
 <ul class="list">
   <li>grapes <button>Remove</button></li>
@@ -249,7 +249,7 @@ HTML:
 </ul>
 ```
 
-JS:
+&emsp; JS:
 ```
 const listUl = document.querySelector('.list');
 listUl.addEventListener('click', (event) => {
