@@ -107,8 +107,9 @@ myHeading.addEventListener('click', ()=>{
 5. document.getElementsByClassName('notPurple'); 也可寫成 document.querySelectorAll('.notPurple');
 6. document.getElementById('myHeading'); 也可寫成 document.querySelector('#myHeading');
 7. document.querySelector('li'); 會找出```<li>```的第一個元素
-8. ```HTML: <p title="label">123456</p>```可用 document.querySelector('[title=label]'); 找到
-9. 偽class與document.querySelectorAll('li:nth-child(even)');搭配使用
+8. ul的ID，其下層的li全選，寫成document.querySelectorAll('#rainbow li');
+9. ```HTML: <p title="label">123456</p>```可用 document.querySelector('[title=label]'); 找到
+10. 偽class與document.querySelectorAll('li:nth-child(even)');搭配使用
 ```
 const evens = document.querySelectorAll('li:nth-child(even)');
 
