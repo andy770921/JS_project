@@ -96,11 +96,24 @@ HTML:
 ```
 &emsp;  JS:
 ```
-const myHeading = document.getElementByID('myHeading');
+const myHeading = document.getElementById('myHeading');
 myHeading.addEventListener('click', ()=>{
   myHeading.style.color = 'red';
 });
 ```
 2. 以Type多重選，HTML 要用 const myHeading = document.getElementsByTagName('h1');
 3. 以Type單選清單內第三個元素，HTML 要用 const myList = document.getElementsByTagName('li')[2];
-4. 以Class多重選，HTML 要用 const excludeColor = document.getElementsByTagName('notPurple')[2];
+4. 以Class多重選，HTML 要用 const excludeColor = document.getElementsByClassName('notPurple');
+5. document.getElementsByClassName('notPurple'); 也可寫成 document.querySelectorAll('.notPurple');
+6. document.getElementById('myHeading'); 也可寫成 document.querySelector('#myHeading');
+7. document.querySelector('li'); 會找出```<li>```的第一個元素
+8. ```HTML: <p title="label">123456</p>```可用 document.querySelector('[title=label]'); 找到
+9. 偽class與document.querySelectorAll('li:nth-child(even)');搭配使用
+```
+const evens = document.querySelectorAll('li:nth-child(even)');
+
+for (let i = 0; i < evens.length; i++ ){
+  evens[i].style.backgroundColor = 'lightgray';
+}
+```
+
