@@ -117,4 +117,7 @@ for (let i = 0; i < evens.length; i++ ){
   evens[i].style.backgroundColor = 'lightgray';
 }
 ```
-
+11. 選擇某nav下的超連結，可如下
+```
+let navigationLinks =  document.querySelectorAll('nav > ul > li > a');
+```
