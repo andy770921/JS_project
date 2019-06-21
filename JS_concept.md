@@ -261,5 +261,26 @@ listUl.addEventListener('click', (event) => {
 });
 ```
 
-
-
+## .previousSibling，與.previousElementSibling
+差異為，全部節點都選(有元素節點、文字節點、註釋節點等)，或是只選元素節點(含```<  >```的才選)，一般用.previousElementSibling
+https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/273054/
+HTML:
+```
+<ul class="list">
+  <li>grapes <button class="up"> Up </button></li>
+  <li>amethyst <button class="up">Up</button></li>
+  <li>lavender <button class="up">Up</button></li>
+  <li>plums <button class="up">Up</button></li>
+</ul>
+```
+JS:
+```
+listUl.addEventListener('click', (event) => {
+  if (event.target.className== 'up') {
+    let li = event.target.parentNode;
+    let prevLi = li.previousElementSibling;
+    let ul = li.parentNode;
+    ul.insertBrfore(li, prevLi);
+  }
+});
+```
