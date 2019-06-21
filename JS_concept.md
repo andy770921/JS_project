@@ -237,7 +237,7 @@ listDiv.addEventListener('mouseout', (event) => {
 });
 ```
 
-## Traverse 穿越(到上層父元素)，用.parentNode
+## Traverse 穿越: 到上層父元素，用.parentNode
 刪除Child，用法如下  
 HTML:
 ```
@@ -261,8 +261,8 @@ listUl.addEventListener('click', (event) => {
 });
 ```
 
-## .previousSibling，與.previousElementSibling
-差異為，全部節點都選(有元素節點、文字節點、註釋節點等)，或是只選元素節點(含```<  >```的才選)，一般用.previousElementSibling  
+## Traverse 穿越: 到同層兄弟姊妹元素，用.previousElementSibling
+.previousSibling，與.previousElementSibling 差異為，全部節點都選(有元素節點、文字節點、註釋節點等)，或是只選元素節點(含```<  >```的才選)，一般用.previousElementSibling  
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/273054/  
 HTML:
 ```
