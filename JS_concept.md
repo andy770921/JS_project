@@ -262,8 +262,8 @@ listUl.addEventListener('click', (event) => {
 ```
 
 ## .previousSibling，與.previousElementSibling
-差異為，全部節點都選(有元素節點、文字節點、註釋節點等)，或是只選元素節點(含```<  >```的才選)，一般用.previousElementSibling
-https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/273054/
+差異為，全部節點都選(有元素節點、文字節點、註釋節點等)，或是只選元素節點(含```<  >```的才選)，一般用.previousElementSibling  
+https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/273054/  
 HTML:
 ```
 <ul class="list">
@@ -280,7 +280,9 @@ listUl.addEventListener('click', (event) => {
     let li = event.target.parentNode;
     let prevLi = li.previousElementSibling;
     let ul = li.parentNode;
-    ul.insertBrfore(li, prevLi);
+    if (prevLi){ // 防止拉到第一個後，持續上拉出現置底
+      ul.insertBrfore(li, prevLi);
+    }
   }
 });
 ```
