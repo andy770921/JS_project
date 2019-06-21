@@ -273,7 +273,7 @@ HTML:
   <li>plums <button class="up">Up</button></li>
 </ul>
 ```
-JS:
+將元素往上移動的JS:
 ```
 listUl.addEventListener('click', (event) => {
   if (event.target.className== 'up') {
@@ -286,3 +286,17 @@ listUl.addEventListener('click', (event) => {
   }
 });
 ```
+將元素往下移動的JS:
+```
+listUl.addEventListener('click', (event) => {
+  if (event.target.className== 'down') {
+    let li = event.target.parentNode;
+    let nextLi = li.nextElementSibling;
+    let ul = li.parentNode;
+    if (nextLi){ // 防止拉到第一個後，持續上拉出現置底
+      ul.insertBrfore(nextLi, li);
+    }
+  }
+});
+```
+
