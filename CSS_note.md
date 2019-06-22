@@ -153,6 +153,41 @@ the browser has to download the styles each time a new page is loaded.
   }
   
 ```
+9. Attribute selector，Ex:
+```
+  [class] {
+    color: red;
+  }
+  input[type="text"] {
+    font-size: 26px;
+  }
+  input[placeholder] {
+    max-width: 500px;
+    margin: auto;
+  }
+```  
+10. Attribute selector配cursor如下，另外一個方法為再創一個addCursor class並指定HTML的Class
+```
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    cursor: pointer;
+  }
+  input[placeholder] {
+    max-width: 500px;
+    margin: auto;
+  }
+```  
+11. Child (>), Adjacent Sibling (+), and General Sibling (~) Combinators: 
+Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元素，加些甚麼特性。General Sibling不常用
+```
+  form > a {
+    font-size: .7em;
+  }
+  .btn + .btn {
+    margin-left: 20px;
+  }
+``` 
 ## CSS的註解寫法
 1. ```/*  xxxx  */ ```
 2. 可在CSS加入註解如```/*  Type selector  */ ```、```/*  ID selector  */ ```，助於CSS閱讀
