@@ -267,7 +267,7 @@ https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/273054/
 HTML:
 ```
 <ul class="list">
-  <li>grapes <button class="up"> Up </button></li>
+  <li>grapes <button class="up">Up</button></li>
   <li>amethyst <button class="up">Up</button></li>
   <li>lavender <button class="up">Up</button></li>
   <li>plums <button class="up">Up</button></li>
@@ -298,6 +298,11 @@ listUl.addEventListener('click', (event) => {
     }
   }
 });
+```
+## Traverse 穿越: 到第一個/最後一個子元素，用.firstElementChild / .lastElementChild
+```
+const firstListItem = document.querySelector('.list > ul').firstElementChild;
+firstListItem.style.backgroundColor = 'lightskyblue'
 ```
 ## 創建附帶按鈕之函數，用.appendChild
 ```
