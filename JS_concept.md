@@ -299,4 +299,12 @@ listUl.addEventListener('click', (event) => {
   }
 });
 ```
-
+## 創建附帶按鈕之函數，用.appendChild
+```
+function attachListBtn(li) {
+  let up = document.createElement('button');
+  up.className = "up";
+  up.textContent = "Up";
+  li.appendChild(up);
+}
+```
