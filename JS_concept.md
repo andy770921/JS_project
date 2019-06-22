@@ -304,6 +304,8 @@ listUl.addEventListener('click', (event) => {
 const firstListItem = document.querySelector('.list > ul').firstElementChild;
 firstListItem.style.backgroundColor = 'lightskyblue'
 ```
+.children[0]同義於.firstElementChild
+
 ## 創建附帶按鈕之函數，用.appendChild
 ```
 function attachListBtn(li) {
