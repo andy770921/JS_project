@@ -300,11 +300,13 @@ listUl.addEventListener('click', (event) => {
 });
 ```
 ## Traverse 穿越: 到第一個/最後一個子元素，用.firstElementChild / .lastElementChild
+1. .firstElementChild同義於.children[0]
+2. .children可全選所有該元素的其下child
 ```
 const firstListItem = document.querySelector('.list > ul').firstElementChild;
 firstListItem.style.backgroundColor = 'lightskyblue'
 ```
-.children[0]同義於.firstElementChild
+
 
 ## 創建附帶按鈕之函數，用.appendChild
 ```
