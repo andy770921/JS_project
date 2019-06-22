@@ -159,7 +159,7 @@ the browser has to download the styles each time a new page is loaded.
 ``` 
 &emsp; :checked，勾選方框點擊後，出現樣式變化   EX: 
 ``` 
-  input[type="checkbox"]:checked {
+  input[type="checkbox"]:checked + label {
     font-weight: bold;
   }
 ``` 
