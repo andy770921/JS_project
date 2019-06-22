@@ -101,11 +101,11 @@ myHeading.addEventListener('click', ()=>{
   myHeading.style.color = 'red';
 });
 ```
-2. 以Type多重選，HTML 要用 const myHeading = document.getElementsByTagName('h1');
+2. 以Type多重選，HTML 要用 const myHeading = document.getElementsByTagName('h1');，會回傳HTML collection的陣列，需要再用陣列的方式，取得第一、第二等的元素，或是用陣列的性質詢問找出幾個h1，如document.getElementsByTagName('h1')[0]、document.getElementsByTagName('h1')['length']
 3. 以Type單選清單內第三個元素，HTML 要用 const myList = document.getElementsByTagName('li')[2];
-4. 以Class多重選，HTML 要用 const excludeColor = document.getElementsByClassName('notPurple');
-5. document.getElementsByClassName('notPurple'); 也可寫成 document.querySelectorAll('.notPurple');
-6. document.getElementById('myHeading'); 也可寫成 document.querySelector('#myHeading');
+4. 以Class多重選，HTML 要用 const excludeColor = document.getElementsByClassName('notPurple');，找出有該class的元素陣列
+5. document.getElementsByClassName('notPurple'); 也可寫成 document.querySelectorAll('.notPurple');，找出有該class的元素陣列
+6. document.getElementById('myHeading'); 也可寫成 document.querySelector('#myHeading');，直接找出該元素(非取出陣列，不需再加[0])
 7. document.querySelector('li'); 會找出```<li>```的第一個元素
 8. ul的ID，其下層的li全選，寫成document.querySelectorAll('#rainbow li');
 9. ```HTML: <p title="label">123456</p>```可用 document.querySelector('[title=label]'); 找到
@@ -153,7 +153,7 @@ li.textContent = addItemInput.value;
 ```
 17. .appendChild(li);與createElement合用，最後清除字串欄位的值
 ```
-let ul = document.getElementByTagName('ul')[0];
+let ul = document.getElementsByTagName('ul')[0];
 let li = document.createElement('li');
   li.textContent = addItemInput.value;
   ul.appendChild(li);
