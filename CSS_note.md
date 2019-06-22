@@ -127,11 +127,15 @@ the browser has to download the styles each time a new page is loaded.
 
 ``` 
 
-&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，在網頁按下Tab時，連結的字會反橘底、改白字
+&emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，在網頁按下Tab時，連結的字會反橘底、改白字。點擊輸入文字區塊時，區塊底下出現顏色底線
 ``` 
   a:focus {
     background-color: orange;
     color: white;
+  }
+  input:focus,
+  textarea:focus {
+    border-color: orange;
   }
 ``` 
 &emsp; EX: CSS取消a:focus的寫法，寫成:focus，效果範圍變成不限於```<a>```，HTML全域可互動的物件通用(也包含本來的```<a>```連結)
@@ -139,6 +143,24 @@ the browser has to download the styles each time a new page is loaded.
   :focus {
     background-color: orange;
     color: white;
+  }
+``` 
+&emsp; li:last-child、:first-child、:only-child、:empty   EX: 
+``` 
+  li:last-child {
+    border: none;
+  }
+``` 
+&emsp; input:disabled，需要在HTML加入disabled如```<input class="xxx" disabled>```，之後會取消點擊或輸入功能   EX: 
+``` 
+  input:disabled {
+    background: #ddd;
+  }
+``` 
+&emsp; :checked，勾選方框點擊後，出現樣式變化   EX: 
+``` 
+  input[type="checkbox"]:checked {
+    font-weight: bold;
   }
 ``` 
 8. 可相同類別重複宣告(不同屬性)、同時宣告兩者類別。EX:  
@@ -153,7 +175,7 @@ the browser has to download the styles each time a new page is loaded.
   }
   
 ```
-9. Attribute selector，Ex:
+9. Attribute selector、begin-with attribute selector(搜尋起始文字的，加^)、end-with attribute selector(搜尋結尾文字的，加$)、contained attribute selector(搜尋所有內文的，加*)，Ex:
 ```
   [class] {
     color: red;
@@ -164,6 +186,13 @@ the browser has to download the styles each time a new page is loaded.
   input[placeholder] {
     max-width: 500px;
     margin: auto;
+  }
+  a[href^="http://"] {
+    color: orange;
+    text-decoration: none;
+  }
+  a[href$=".pdf"] {
+    background-image: url('../img/icn-pdf.svg');
   }
 ```  
 10. Attribute selector配cursor如下，另外一個方法為再創一個addCursor class並指定HTML的Class
@@ -188,6 +217,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
     margin-left: 20px;
   }
 ``` 
+
 ## CSS的註解寫法
 1. ```/*  xxxx  */ ```
 2. 可在CSS加入註解如```/*  Type selector  */ ```、```/*  ID selector  */ ```，助於CSS閱讀
