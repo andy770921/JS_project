@@ -84,14 +84,14 @@ for (var i = 0; i < questions.length; i += 1) {
 }
 ```
 ## 與HTML DOM的互動
-1. 事件監聽，以ID選: addEventListener()
+1. 事件監聽，以ID選: addEventListener()。```<script src="app.js"></script>```要在</body>前加，否則會讀取不到HTML的Tag出現錯誤
 https://ithelp.ithome.com.tw/articles/10192015  
 HTML:
 ```
   <body>
-    <script src="app.js"></script>
     <h1 id="myHeading">JavaScript and the DOM</h1>
     <p>Making a web page interactive</p>
+    <script src="app.js"></script>
   </body>
 ```
 &emsp;  JS:
