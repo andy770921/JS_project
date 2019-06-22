@@ -151,7 +151,7 @@ the browser has to download the styles each time a new page is loaded.
     border: none;
   }
 ``` 
-&emsp; input:disabled，需要在HTML加入disabled如```<input class="xxx" disabled>```，之後會取消點擊或輸入功能   EX: 
+&emsp; input:disabled 選擇在disable狀態的元素，若刻意需要disable元素，需在HTML加入disabled如```<input class="xxx" disabled>```，之後會取消點擊或輸入功能   EX: 
 ``` 
   input:disabled {
     background: #ddd;
