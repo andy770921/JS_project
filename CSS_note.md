@@ -163,6 +163,15 @@ the browser has to download the styles each time a new page is loaded.
     font-weight: bold;
   }
 ``` 
+&emsp; :nth-child(even)、:nth-child(odd)、:nth-child(3)、:nth-child(2n+3)、:nth-child(-n+3)、div:nth-of-type(4) 
+&emsp; :root、:target
+&emsp; :not() 可跳過第一個元素，加上後面元素的左邊margin  EX: 
+``` 
+  .col:not(:first-child:) {
+    margin-left: 15px;
+  }
+``` 
+
 8. 可相同類別重複宣告(不同屬性)、同時宣告兩者類別。EX:  
 ```
   .primary-content {
@@ -215,6 +224,41 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
   .btn + .btn {
     margin-left: 20px;
+  }
+``` 
+12. pseudo-element，偽element，直接在元素內部份元素，實現樣式效果，讓原始HTML更乾淨。標準上要用雙冒號，與pseudo-class區分，但瀏覽器執行上兩者都可以接受
+```
+  .intro::first-line {
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  .intro::first-letter {
+    float: left;
+    font-size: 80px;
+    color: white;
+    background-color: #384047;
+    padding: 5pxx 10px;
+    margin: 10px 10px 0 0;
+    border-radius: 5px;
+    line-height: 1;
+  }
+``` 
+13. 用::before、::after，生成某些內容，在指定的元素前or後。content後可接著用attr函數，調出HTML該元素的attribite。實際上創建出來的內容，可視為原本元素的child，在原本元素位置之前or之後
+```
+  .jpg::before {
+    content: "JPG - ";
+    font-size: .75em;
+  }
+  .zip::before {
+    content: url(../img/icn-picture.svg);
+    margin-right: 8px;
+  }
+  .d-loads a::after {
+    content: attr(title);
+    display: inline block;
+    color: initial;
+    font-size: .65em;
+    margin-left: 5px;
   }
 ``` 
 
