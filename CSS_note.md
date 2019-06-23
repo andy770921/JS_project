@@ -255,7 +255,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
   .d-loads a::after {
     content: attr(title);
-    display: inline block;
+    display: inline-block;
     color: initial;
     font-size: .65em;
     margin-left: 5px;
