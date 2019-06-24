@@ -36,6 +36,13 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`, (respons
 
 ```
 
-## 123
-1.   
+## 取出command line指令的尾綴詞
+1. command line指令如node app.js AA BB CC，可用console.log(process.argv)，看出尾綴(AA BB CC)會加在陣列第三個元素及其之後
+2. 用.slice(2)可取出尾綴元素
+3. 可再用.forEach，個別對尾綴元素操作。getProfile是單一變數函數，可將本來如下的寫法省略 users.forEach( username => { getProfile(username); });
+```
+const users = process.argv.slice(2);
+users.forEach(getProfile);
+```
+
 &emsp; Note: students[propName]指的是每個key的值，不能用students.propName
