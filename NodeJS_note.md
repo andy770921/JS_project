@@ -18,17 +18,17 @@ function printMessage(username, badgeCount, points){
 }
 
 const request = https.get(`https://teamtreehouse.com/${username}.json`, (response) => {
-  //console.dir(response);
+
   let body = "";
-  // 讀取資料如下
+    // 讀取資料如下
   response.on ('data', (data) => {
-  // 轉換資料為字串，如下.toString()。結合分段傳過來的串流資料，如下body +=
+    // 轉換資料為字串，如下.toString()。結合分段傳過來的串流資料，如下body +=
     body += data.toString();
   });
   response.on ('end', () => {
-  // 解析資料，解析成JSON物件，如下
+    // 解析資料，解析成JSON物件，如下
     const profile = JSON.parse(body);
-  // 印出資料如下
+    // 印出資料如下
     printMessage(username, profile.badges.length, profile.points.JavaScript);
   });
 });
