@@ -12,7 +12,18 @@ const https = require('https');
 const username = "andy";
 
 const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
-  console.dir(response);
+  //console.dir(response);
+  let body = "";
+  // 讀取資料如下
+  response.on ('data', (data) => {
+  // 解析資料，如下.toString()。結合分段傳過來的串流資料，如下body +=
+    body += data.toString();
+  });
+  response.on ('end', () => {
+  // 印出資料如下
+    console.log(body);
+    console.log(typeof );
+  });
 });
 
 function printMessage(username, badgeCount, points){
