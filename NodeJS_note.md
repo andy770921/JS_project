@@ -7,7 +7,7 @@
 3. 解析資料
 4. 印出資料
 5. 實做法: 先用require函數，導入https模組，再連到網頁提供的API的URL+讀取資料+解析資料(將字串轉成可用的JSON原生物件)，再印出資料。
-6. 邏輯: 先用.get方法，去某server網址取得資料。當server有回應時，會取得該server的"response"物件。此物件下有.on方法(函數)，函數中第一個參數是，甚麼事件被觸發了? data為server傳資料事件(data event)、第二個參數是，串流的斷斷續續的從server來的原始data，資料型態為"buffer物件"，如若干個```<Buffer 37 2e 30 30 30 5a  ... >```，兩位數為16進位，可對應到ascii code的文字 。如果需要使用，要先將斷斷續續的資料累加起來，再轉成字串。當資料都傳完時，end event會被觸發。通常data event一旦發生，結束時就一定會有end event。
+6. 邏輯: 先用.get方法，去某server網址取得資料。當server有回應時，會取得該server的"response"物件。此物件下有.on方法(函數，on an event)，函數中第一個參數是，甚麼事件被觸發了? data為server傳資料事件(data event)、第二個參數是，串流的斷斷續續的從server來的原始data，資料型態為"buffer物件"，如若干個```<Buffer 37 2e 30 30 30 5a  ... >```，兩位數為16進位，可對應到ascii code的文字 。如果需要使用，要先將斷斷續續的資料累加起來，再轉成字串。當資料都傳完時，end event會被觸發。通常data event一旦發生，結束時就一定會有end event。
 ```
 const https = require('https');
 const username = "chalkers";
@@ -33,8 +33,46 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`, (respons
   });
 });
 
+```
+
+7. 再加入收到error後的警示字樣，如下。用console.error會輸出不同顏色的字。若是url打成email一樣的格式，會在get值時就報錯，不會進到函數中error function。要設計出url錯誤的彈出訊息，要再加入try-catch函數
+```
+response.on ('error', (error) => { console.error(`Problem with request: ${error.message}`)});
+```
+
 
 ```
+const https = require('https');
+const username = "chalkers";
+
+function printMessage(username, badgeCount, points){
+  const message = ` ${username} has ${badgeCount} total badges and ${points} points in JS.
+  console.log('message');
+}
+try {
+  const request = https.get(`https://teamtreehouse.com/${username}.json`, (response) => {
+
+    let body = "";
+    // 讀取資料如下
+    response.on ('data', (data) => {
+    // 轉換資料為字串，如下.toString()。結合分段傳過來的串流資料，如下body +=
+      body += data.toString();
+    });
+    response.on ('end', () => {
+    // 解析資料，解析成JSON物件，如下
+      const profile = JSON.parse(body);
+    // 印出資料如下
+      printMessage(username, profile.badges.length, profile.points.JavaScript);
+    });
+    // 有error時報錯如下
+    response.on('error', (error) => { console.error(`Problem with request: ${error.message}`)});
+  });
+} catch (error) {
+  console.error(error.message);
+}
+```
+
+
 
 ## 取出command line指令的尾綴詞
 1. command line指令如node app.js AA BB CC，可用console.log(process.argv)，看出尾綴(AA BB CC)會加在陣列第三個元素及其之後
