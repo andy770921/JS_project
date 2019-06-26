@@ -37,7 +37,7 @@ const request = https.get(`https://teamtreehouse.com/${username}.json`, (respons
 
 7. 再加入收到error後的警示字樣，如下。用console.error會輸出不同顏色的字。若是url打成email一樣的格式，會在get值時就報錯，不會進到函數中error function。要設計出url錯誤的彈出訊息，要再加入try-catch函數
 ```
-response.on ('error', (error) => { console.error(`Problem with request: ${error.message}`)});
+request.on ('error', (error) => { console.error(`Problem with request: ${error.message}`)});
 ```
 
 
@@ -64,9 +64,9 @@ try {
     // 印出資料如下
       printMessage(username, profile.badges.length, profile.points.JavaScript);
     });
-    // 有error時報錯如下
-    response.on('error', (error) => { console.error(`Problem with request: ${error.message}`)});
   });
+  // 有error時報錯如下
+  request.on('error', (error) => { console.error(`Problem with request: ${error.message}`)});
 } catch (error) {
   console.error(error.message);
 }
