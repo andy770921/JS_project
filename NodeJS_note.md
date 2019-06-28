@@ -114,15 +114,15 @@ function get(username) {
     console.error(error.message);
   }
 }
-// 輸出get函數給其他JS文件
-module.exports.get = get;
+// 輸出get函數給其他JS文件，其他JS文件要調用時，要使用getProfile之名稱
+module.exports.getProfile = get;
 ```
 ```
 // 其他JS文件直接使用，可引入
 const profile = require('./profile.js');
 
 const users = process.argv.slice(2);
-users.forEach(get);
+users.forEach(getProfile);
 ```
 
 
