@@ -71,7 +71,7 @@ try {
   console.error(error.message);
 }
 ```
-8. 再加入a. 非回傳JSON物件會報錯，b.伺服器端報錯，輸出號碼與狀態。再獨立一個.js文件，輸出get 函數給其他js文件
+8. 再加入a. 非回傳JSON物件(非以{ or [ 開頭者 )會報錯，b.伺服器端報錯，輸出號碼與狀態。再獨立一個.js文件，輸出get 函數給其他js文件
 ```
 const https = require('https');
 const http = require('http');
