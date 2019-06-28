@@ -165,7 +165,7 @@ app.get('/', (request, response)=> {
 app.listen(3000);
 
 ```
-9. 下載npm套件，在開啟server時，只需要在終端機打入指令```nodemon```即可。先在終端機打入指令```npm install -g nodemon```按enter，再進入package.json，修改、確認預設的主頁面要是```"main": "app.js",```
+9. 下載npm套件，在開啟server時，只需要在終端機打入指令```nodemon```即可，app.js存檔時會自動重啟server。先在終端機打入指令```npm install -g nodemon```按enter，再進入package.json，修改、確認預設的主頁面要是```"main": "app.js",```
 
 10. 新增route，路徑為http://localhost:3000/getData，會回傳文字Lack of Parameter，並加入終端機的易讀狀態console.log，如下
 
@@ -181,7 +181,7 @@ app.get('/getData', (req, res)=> {
 });
 
 app.listen(3000, () => {
-  consloe.log('The application is running on localhost:3000');
+  console.log('The application is running on localhost:3000');
 });
 
 ```
