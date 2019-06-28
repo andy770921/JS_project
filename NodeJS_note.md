@@ -140,8 +140,10 @@ users.forEach(getProfile);
 &emsp; Note: process is the global object we can access the current version of node and arguments passed in to the command line
 
 ## 使用Express框架
-1. 先灌好npm
-2. 創建資料夾，command line使用cd指令，前往該資料夾下
+1. 先灌好npm。若需要連github，先建好github repo，再讓VS code可連到github 同步
+2. 創建資料夾，在資料夾下創app.js，command line使用cd指令，前往該資料夾下
 3. command line使用指令npm init -y，創造出package.json標準檔案
 4. command line使用指令npm install express --save，安裝Express模組
+5. app.js檔案中，第一行打```const express = require('express');```
+6. 在node_module資料夾按右鍵，選擇"Add to .gitignore"。此法要先灌VS外掛套件gitignore
 
