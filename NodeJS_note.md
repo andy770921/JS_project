@@ -71,7 +71,59 @@ try {
   console.error(error.message);
 }
 ```
+8. 再加入a. 非回傳JSON物件會報錯，b.伺服器端報錯，輸出號碼與狀態。再獨立一個.js文件，輸出get 函數給其他js文件
+```
+const https = require('https');
+const http = require('http');
+const username = "chalkers";
 
+function printMessage(username, badgeCount, points){
+  const message = ` ${username} has ${badgeCount} total badges and ${points} points in JS.
+  console.log('message');
+}
+function get(username) {
+  try {
+    const request = https.get(`https://teamtreehouse.com/${username}.json`, (response) => {
+      if (response.statusCode === 200){
+        let body = "";
+        // 讀取資料如下
+        response.on ('data', (data) => {
+        // 轉換資料為字串，如下.toString()。結合分段傳過來的串流資料，如下body +=
+          body += data.toString();
+        });
+        response.on ('end', () => {
+          try {
+          // 解析資料，解析成JSON物件，如下
+            const profile = JSON.parse(body);
+          // 印出資料如下
+            printMessage(username, profile.badges.length, profile.points.JavaScript);
+          });
+        } catch(error) {
+          //若取得的東西，為非標準JSON object時(如Not found文字)，會解析出錯誤。要用此catch抓出
+          console.error(error.message);
+        }
+      });
+      } else {
+        const message = `there was an error getting the profile for ${username} ${http.STATUS_CODES[response.statusCode]}`;
+        const statusCodeError = new Error(message);
+        console.error(statusCodeError.message);
+      }
+    // 有error時報錯如下
+    request.on('error', (error) => { console.error(`Problem with request: ${error.message}`)});
+    } catch (error) {
+    console.error(error.message);
+  }
+}
+// 輸出get函數給其他JS文件
+module.exports.get = get;
+```
+```
+// 其他JS文件直接使用，可引入
+const profile = require('./profile.js');
+
+const users = process.argv.slice(2);
+users.forEach(get);
+```
 
 
 ## 取出command line指令的尾綴詞
