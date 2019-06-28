@@ -138,3 +138,10 @@ users.forEach(getProfile);
 &emsp; Note: students[propName]指的是每個key的值，不能用students.propName
 &emsp; Note: .argv on the "process object" lists all arguments passed in to the command line
 &emsp; Note: process is the global object we can access the current version of node and arguments passed in to the command line
+
+## 使用Express框架
+1. 先灌好npm
+2. 創建資料夾，command line使用cd指令，前往該資料夾下
+3. command line使用指令npm init -y，創造出package.json標準檔案
+4. command line使用指令npm install express --save，安裝Express模組
+
