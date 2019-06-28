@@ -208,7 +208,7 @@ html(lang="en")
 ```
 ## 使用模版引擎 Pug
 1. 安裝npm Pug套件: 在終端機根目路下，打指令npm install pug --save
-2. 在app.js加入程式碼，```app.set('view engine', 'pug');```，此時程式會預設在根目錄下，要有資料夾名稱views，在資料夾下要創檔案index.pug
+2. 在app.js加入程式碼，```app.set('view engine', 'pug');```，此時程式會預設在根目錄下，要有資料夾名稱views，在資料夾下要創檔案index.pug，若不是此資料夾名稱或是不同位置，要自己再加入其他設定更改
 3. 在index.pug加入程式碼，如下
 ```
 doctype html
