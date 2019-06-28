@@ -185,3 +185,25 @@ app.listen(3000, () => {
 });
 
 ```
+11. 模版引擎 Pug之語法
+
+&emsp; Pug: 因div太常用，也可簡寫成```.wrapper```  
+```
+html(lang="en")
+  head
+  body
+    div.wrapper
+    p#mainContent Hi!
+```
+&emsp; 轉成HTML:
+```
+<html lang="en">
+  <head>
+  </head>
+  <body>
+    <div class="wrapper"></div>
+      <p id="mainContent"> Hi!</p>
+    </div>
+  </body>
+```
+
