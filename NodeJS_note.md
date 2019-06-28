@@ -139,7 +139,7 @@ users.forEach(getProfile);
 &emsp; Note: .argv on the "process object" lists all arguments passed in to the command line
 &emsp; Note: process is the global object we can access the current version of node and arguments passed in to the command line
 
-## 使用Express框架
+## 使用Express框架，加入 .get 功能，使server的資料能被瀏覽器取得
 1. 先灌好npm。若需要連github，先建好github repo，再讓VS code可連到github 同步
 2. 創建資料夾，在資料夾下創app.js，command line使用cd指令，前往該資料夾下
 3. command line使用指令npm init -y，創造出package.json標準檔案
@@ -207,7 +207,7 @@ html(lang="en")
   </body>
 ```
 ## 使用模版引擎 Pug
-1. 安裝npm Pug套件: 在終端機根目路下，打指令npm install pug --save
+1. 安裝npm Pug套件: 在終端機根目錄下，打指令npm install pug --save
 2. 在app.js加入程式碼，```app.set('view engine', 'pug');```，此時程式會預設在根目錄下，要有資料夾名稱views，在資料夾下要創檔案index.pug，若不是此資料夾名稱或是不同位置，要自己再加入其他設定更改
 3. 在index.pug加入程式碼，如下
 ```
@@ -295,3 +295,11 @@ const colors = [
 8. 簡化重複的程式碼1: 新創layout.pug檔案，在views資料夾下，貼上重複的程式碼，中段加入```block content```。在index.pug檔案開頭加入```extends layout.pug```，中段加入```block content```
 
 9. 簡化重複的程式碼2: 在views資料夾下，創建includes資料夾，下創建header.pug。layout.pug檔案，加入```include includes/header.pug```。在card.pug檔案開頭加入```extends layout.pug```
+
+## 送出(post) 瀏覽器的資料給server的流程
+
+1. 在終端機根目錄下，打指令npm install body-parser --save在app.js加入已下程式碼，使其可以解析文字
+```
+const bodyParser = require('body-parser');
+```
+2. 
