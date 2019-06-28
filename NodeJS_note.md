@@ -292,4 +292,6 @@ const colors = [
   'purple'
 ];
 ```
+8. 簡化重複的程式碼1: 新創layout.pug檔案，在views資料夾下，貼上重複的程式碼，中段加入```block content```。在index.pug檔案開頭加入```extends layout.pug```，中段加入```block content```
 
+9. 簡化重複的程式碼2: 在views資料夾下，創建includes資料夾，下創建header.pug。layout.pug檔案，加入```include includes/header.pug```。在card.pug檔案開頭加入```extends layout.pug```
