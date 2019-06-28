@@ -274,3 +274,22 @@ app.listen(3000, () => {
   console.log('The application is running on localhost:3000');
 });
 ```
+7. 在index.pug，加入從app.js取得的colors陣列
+```
+ul
+  each color in colors
+    li= color
+```
+&emsp; app.js:
+
+```
+const colors = [
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'purple'
+];
+```
+
