@@ -146,4 +146,22 @@ users.forEach(getProfile);
 4. command line使用指令npm install express --save，安裝Express模組
 5. app.js檔案中，第一行打```const express = require('express');```
 6. 在node_module資料夾按右鍵，選擇"Add to .gitignore"。此法要先灌VS外掛套件gitignore
+7. 在本地端開始運轉server。在 app.js檔案中，打如下，再在command line使用指令node app.js，再chrome輸入網址為localhost:3000就可找到頁面。
+```
+const express = require('express');
+const app = express();
 
+app.listen(3000);
+
+```
+8. 在本地端的server打可以回覆瀏覽器GET指令的code。在 app.js檔案中，打如下，再在終端機按鍵盤crtl + C終止server，再在command line使用指令node app.js，重啟server。
+```
+const express = require('express');
+const app = express();
+
+app.get('/', (request, response)=> {
+  response.send('Hello, My Server!');
+});
+app.listen(3000);
+
+```
