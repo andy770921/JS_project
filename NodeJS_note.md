@@ -206,4 +206,33 @@ html(lang="en")
     </div>
   </body>
 ```
+## 使用模版引擎 Pug
+1. 安裝npm Pug套件: 在終端機根目路下，打指令npm install pug --save
+2. 在app.js加入程式碼，```app.set('view engine', 'pug');```，此時程式會預設在根目錄下，要有資料夾名稱views，在資料夾下要創檔案index.pug
+3. 在index.pug加入程式碼，如下
+```
+doctype html
+html(lang="en")
+  head
+    title Landing Page
+  body
+    h1 Hello
+```
+4. 在app.js將程式碼```res.send```換成```res.render```，如下
 
+```
+const express = require('express');
+const app = express();
+
+app.set('view engine', 'pug');
+app.get('/', (req, res)=> {
+  res.render('index');
+});
+app.get('/getData', (req, res)=> {
+  res.send('Lack of Parameter');
+});
+
+app.listen(3000, () => {
+  console.log('The application is running on localhost:3000');
+});
+```
