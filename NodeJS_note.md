@@ -317,9 +317,12 @@ app.post('/hello', (req, res)=> {
   res.render('hello');
 });
 ```
-
+&emsp; hello.pug:
 ```
-app.get('/hello', (req, res)=> {
-  res.render('hello');
-});
+extends layout.pug
+block content
+  h2 welcome
+    label Please enter your name:
+      input(type='text', name='username')
+    button(type='submit') Submit
 ```
