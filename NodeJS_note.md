@@ -236,3 +236,41 @@ app.listen(3000, () => {
   console.log('The application is running on localhost:3000');
 });
 ```
+5. views資料夾下，新建card.pug，在card.pug加入程式碼，如下
+```
+doctype html
+html(lang="en")
+  head
+    title Flash Cards
+  body
+    header
+      h1 Flash Cards
+    section#content
+      h2= prompt
+      p
+        i Hint: #{hint}
+    footer
+      p abcd
+```
+6. app.js加入程式碼，如下。```app.get('/cards', (req, res)=> { res.render('cards', { prompt: "Who is buried?"});});```可拆成兩行寫
+```
+res.locals.prompt = "Who is buried?";
+app.get('/cards', (req, res)=> { res.render('cards');});
+```
+
+```
+const express = require('express');
+const app = express();
+
+app.set('view engine', 'pug');
+app.get('/', (req, res)=> {
+  res.render('index');
+});
+app.get('/cards', (req, res)=> {
+ res.render('cards', { prompt: "Who is buried?", hint: "Think about whose tomb it is."});
+});
+
+app.listen(3000, () => {
+  console.log('The application is running on localhost:3000');
+});
+```
