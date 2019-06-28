@@ -298,8 +298,28 @@ const colors = [
 
 ## 送出(post) 瀏覽器的資料給server的流程
 
-1. 在終端機根目錄下，打指令npm install body-parser --save在app.js加入已下程式碼，使其可以解析文字
+1. 在終端機根目錄下，打指令npm install body-parser --save。在app.js加入已下程式碼，使其可以解析文字
 ```
+const express = require('express');
+const app = express();
+
 const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded: { (extended: false) });
+
 ```
-2. 
+2. 建好模版頁hello.pug後，app.js加入如下程式碼
+```
+app.get('/hello', (req, res)=> {
+  res.render('hello');
+});
+app.post('/hello', (req, res)=> {
+  console.dir(req.body);
+  res.render('hello');
+});
+```
+
+```
+app.get('/hello', (req, res)=> {
+  res.render('hello');
+});
+```
