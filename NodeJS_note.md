@@ -364,3 +364,36 @@ app.post('/hello', (req, res)=> {
   res.redirect('/');
 });
 ```
+5. 若無cookie，主頁面將重新導向/hello。app.js加入如下程式碼
+```
+app.get('/', (req, res)=> {
+  if (req.cookies.username) {
+    res.render('index', {name: req.cookies.username}); 
+  } else {
+    res.redirect('/hello');
+  }
+});
+```
+6. 若有cookie，/hello將重新導向主頁面。app.js加入如下程式碼
+```
+app.get('/hello', (req, res)=> {
+  if (req.cookies.username) {
+    res.redirect('/');
+  } else {
+    res.render('hello');
+  }
+});
+```
+7. 加入清除cookie按鈕，在index.pug打如下程式碼
+```
+form(action='/goodbye', method='post')
+  button(type='submit') Goodbye
+```
+&emsp; 在app.js打如下程式碼
+```
+app.post('/goodbye', (req, res)=> {
+  res.clearCookie('username');
+  res.redirect('/hello');
+});
+```
+
