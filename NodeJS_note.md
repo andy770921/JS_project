@@ -398,7 +398,7 @@ app.post('/goodbye', (req, res)=> {
 ```
 
 ## 中介軟體 Middleware 使用介紹
-1. .use，使用閉包的原理，函數內再回傳函數。函數內出現 next();即結束此段程式，到下個程式碼
+1. .use，使用閉包的原理，函數內再回傳函數。函數內出現 next()，或是送出response時，即結束此段程式，到下個程式碼
 ```
 const express = require('express');
 const app = express();
