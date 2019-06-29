@@ -328,7 +328,8 @@ block content
 ```
 ## Save state方法(儲存瀏覽器使用者提供的資訊) - 使用cookie
 
-1. 在終端機根目錄下，打指令npm install cookie-parser --save。在app.js加入已下程式碼，使其可以解析文字
+1. cookies功能: 在客戶端存下資料，資料類型為「小型文字檔案」
+2. 在終端機根目錄下，打指令npm install cookie-parser --save。在app.js加入已下程式碼，使其可以解析文字
 ```
 const express = require('express');
 const app = express();
@@ -339,7 +340,7 @@ const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
 ```
-2. 建好模版頁hello.pug後，app.js加入如下程式碼可儲存使用者輸入的username，存入cookie
+3. 建好模版頁hello.pug後，app.js加入如下程式碼可儲存使用者輸入的username，存入cookie
 ```
 app.get('/hello', (req, res)=> {
   res.render('hello', name: req.cookies.username);
