@@ -428,3 +428,40 @@ app.use(bodyParser.urlencoded: { (extended: false) });
 app.use(cookieParser());
 
 ```
+
+## 處理Bug的親合頁面
+
+1. 自己創造出error code = 500 的 Bug，並傳出Error原生物件，加入如下程式碼
+
+```
+
+app.use((req, res, next) => {
+    console.log("hello");
+    const error = new Error('Oh Noes!');
+    error.status = 500;
+    next(err);
+});
+
+```
+2. 當error發生，渲染出error.pug頁面，在app.listen前，加入如下程式碼
+
+```
+
+app.use((err,req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('error');
+});
+
+```
+3. 編輯親合的error.pug頁面
+
+```
+
+extends layout.pug
+block content
+  h1= error.message
+  h2= error.status
+  pre= error.stack
+
+```
