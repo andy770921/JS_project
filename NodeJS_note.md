@@ -465,3 +465,66 @@ block content
   pre= error.stack
 
 ```
+## 模組化Route
+## 調用 Data Base資料
+
+1. 創建data資料夾，下創建flashcardData.json物件
+
+```
+{
+    "data": {
+        "title": "JavaScript Flashcards",
+        "cards": [
+            {
+                "question": "What language are Express apps written in?",
+                "hint": "It starts with a \"J\"",
+                "answer": "JavaScript"
+            },
+            {
+                "question": "What is one way a website can store data in a user's browser?",
+                "hint": "They are delicious with milk",
+                "answer": "Cookies"
+            },
+
+            {
+                "question": "Which HTML element can contain JavaScript?",
+                "hint": "It starts with an \"s\"",
+                "answer": "<script>"
+            }
+        ]
+    }
+}
+
+```
+2. card.js下，加入如下程式碼，讓資料庫的資料，能夠被取得。```const {cards} = data;```，等於```const cards = data.cards;```
+```
+const express = require('express');
+const router = express.Router();
+const {data} = require('../data/flashcardData.json');
+const {cards} = data;
+
+router.get('/', (req, res) => {
+  res.render('card', {
+    prompt: cards[0].question,
+    hint: cards[0].hint
+  });
+});
+
+module.exports = router;
+```
+3. card.js下，修改程式碼，讓資料庫的資料，能夠與URL的後詞綴相關。如http://localhost:3000/cards/1
+```
+const express = require('express');
+const router = express.Router();
+const {data} = require('../data/flashcardData.json');
+const {cards} = data;
+
+router.get('/:id', (req, res) => {
+  res.render('card', {
+    prompt: cards[req.params.id].question,
+    hint: cards[req.params.id].hint
+  });
+});
+
+module.exports = router;
+```
