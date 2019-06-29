@@ -528,3 +528,55 @@ router.get('/:id', (req, res) => {
 
 module.exports = router;
 ```
+4. card.js下，修改程式碼，讓資料庫的資料，能夠與URL的?後詞綴(query)相關。如http://localhost:3000/cards/1?side=answer、http://localhost:3000/cards/1?side=question
+```
+const express = require('express');
+const router = express.Router();
+const {data} = require('../data/flashcardData.json');
+const {cards} = data;
+
+router.get('/:id', (req, res) => {
+  const {side} = req.query;
+  const {id} = req.params;
+  const prompt = cards[id][side];
+  const {hint} = cards[id];
+  const templateData = {prompt, hint}
+  res.render('card', templateData );
+});
+
+module.exports = router;
+```
+
+5. card.pug下，加入重新導向的連結
+```
+extends layout.pug
+block content
+  section#content
+  h2= prompt
+  if hint
+    p
+      i Hint: #{hint};
+  a(href=`${id}?side=${sideToShow}`) = sideToShowDisplay
+
+```
+&emsp; card.js下
+```
+router.get('/:id', (req, res) => {
+  const {side} = req.query;
+  const {id} = req.params;
+  const prompt = cards[id][side];
+  const {hint} = cards[id];
+  const templateData = {id, prompt}
+  if (side ==='question') {
+    templateData.hint = hint;
+    templateData.sideToShow = 'answer';
+    templateData.sideToShowDisplay = 'Answer';
+  } else if(side ==='answer') {
+    templateData.sideToShow = 'question';
+    templateData.sideToShowDisplay = 'Question';
+  }
+  res.render('card', templateData );
+});
+
+module.exports = router;
+```
