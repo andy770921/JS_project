@@ -350,3 +350,17 @@ app.post('/hello', (req, res)=> {
   res.render('hello', {name: req.body.username});
 });
 ```
+4. 打完名字後，從/hello重新導向主頁面。app.js加入如下程式碼
+
+```
+app.get('/', (req, res)=> {
+  res.render('index', {name: req.cookies.username});
+});
+app.get('/hello', (req, res)=> {
+  res.render('hello');
+});
+app.post('/hello', (req, res)=> {
+  res.cookie('username', req.body.username);
+  res.redirect('/');
+});
+```
