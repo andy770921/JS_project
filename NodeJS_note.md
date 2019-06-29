@@ -417,5 +417,14 @@ app.use( (req, res, next) => {
     next();
 });
 ```
+2. .use直接呼叫其他函式
+```
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
+app.use(bodyParser.urlencoded: { (extended: false) });
+app.use(cookieParser());
 
+```
