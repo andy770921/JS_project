@@ -547,7 +547,7 @@ router.get('/:id', (req, res) => {
 module.exports = router;
 ```
 
-5. card.pug下，加入重新導向的連結
+5. card.pug下，加入重新導向至不同query的連結
 ```
 extends layout.pug
 block content
@@ -579,4 +579,34 @@ router.get('/:id', (req, res) => {
 });
 
 module.exports = router;
+```
+6. card.js下，加入重新導向至不同id的連結
+```
+router.get('/', (req, res)=>{
+  const numOfCards = cards.length;
+  const flashcardId= Math.floor( Math.random() * numOfCards);
+  res.redirect( `/cards/${flashcardId}?side=question`)
+})
+```
+7. card.js下，加入非預期網址http://localhost:3000/cards/1時，強迫指定side=question
+```
+router.get('/:id', (req, res) => {
+  const {side} = req.query;
+  const {id} = req.params;
+  if (!side){
+    res.redirect(`/cards/${id}?side=question`)
+  }
+  const prompt = cards[id][side];
+  const {hint} = cards[id];
+  const templateData = {id, prompt}
+  if (side ==='question') {
+    templateData.hint = hint;
+    templateData.sideToShow = 'answer';
+    templateData.sideToShowDisplay = 'Answer';
+  } else if(side ==='answer') {
+    templateData.sideToShow = 'question';
+    templateData.sideToShowDisplay = 'Question';
+  }
+  res.render('card', templateData );
+});
 ```
