@@ -594,7 +594,7 @@ router.get('/:id', (req, res) => {
   const {side} = req.query;
   const {id} = req.params;
   if (!side){
-    res.redirect(`/cards/${id}?side=question`)
+    return res.redirect(`/cards/${id}?side=question`);
   }
   const prompt = cards[id][side];
   const {hint} = cards[id];
@@ -609,4 +609,15 @@ router.get('/:id', (req, res) => {
   }
   res.render('card', templateData );
 });
+```
+## 創建static asset
+
+1. 根目錄下，建資料夾public，下建資料夾stylesheets，下建檔案style.css
+2. app.js，新增如下程式碼
+```
+app.use('/static', express.static('public'));
+```
+3. 在layout.png下，title的下一行，加入如下程式碼
+```
+link(rel='stylesheet', href='/static/stylesheets/style.css')
 ```
