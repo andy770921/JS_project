@@ -328,7 +328,7 @@ block content
 ```
 ## Save state方法(儲存瀏覽器使用者提供的資訊) - 使用cookie
 
-1. cookies功能: 在客戶端存下資料，資料類型為「小型文字檔案」
+1. cookies功能: 在客戶端存下資料，資料類型為「小型文字檔案」。當客戶端送出request給server時，會一併送出cookie給server
 2. 在終端機根目錄下，打指令npm install cookie-parser --save。在app.js加入已下程式碼，使其可以解析文字
 ```
 const express = require('express');
