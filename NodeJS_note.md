@@ -326,3 +326,26 @@ block content
       input(type='text', name='username')
     button(type='submit') Submit
 ```
+## Save state方法(儲存瀏覽器使用者提供的資訊) - 使用cookie
+
+1. 在終端機根目錄下，打指令npm install cookie-parser --save。在app.js加入已下程式碼，使其可以解析文字
+```
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded: { (extended: false) });
+
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+```
+2. 建好模版頁hello.pug後，app.js加入如下程式碼可儲存使用者輸入的username，存入cookie
+```
+app.get('/hello', (req, res)=> {
+  res.render('hello', name: req.cookies.username);
+});
+app.post('/hello', (req, res)=> {
+  res.cookie('username', req.body.username);
+  res.render('hello', {name: req.body.username});
+});
+```
