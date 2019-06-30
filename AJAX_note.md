@@ -16,7 +16,7 @@
   <title>AJAX with JavaScript</title>
   <script>
     var xhr = new XMLHttpRequest();
-    xhr.onReadyStateChange = function () {
+    xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
         document.getElementById('ajax').innerHTML = xhr.responseText;
       }
@@ -42,4 +42,55 @@
   </div>
 </body>
 </html>
+```
+5. 在```<script>```程式碼，加入處理伺服器錯誤的判斷式
+```
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status ===200) {
+          document.getElementById('ajax').innerHTML = xhr.responseText;
+        } else {
+          alert(xhr.statusText);
+        }
+      }
+    };
+    xhr.open('GET', 'sidebar.html');
+    xhr.send();
+  </script>
+```
+6. 讀取JSON文件的寫法
+```
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+    var employees = JSON.parse(xhr.responseText);
+    }
+  };
+xhr.open('GET', 'data/employee.jsons');
+xhr.send();
+```
+7. 讀取JSON文件後，在創建新的HTML的寫法
+```
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4) {
+    var employees = JSON.parse(xhr.responseText);
+    var statusHTML = "<ul class="bulleted">";
+    for (var i =0; i , employees.length ; i++ ) {
+      if (employees[i].inoffice === true) {
+        statusHTML += '<li class="in">';
+      } else {
+        statusHTML += '<li class="out">';
+      }
+      statusHTML += employees[i].name;
+      statusHTML += '</li>';
+    }
+    statusHTML += '</ul>';
+    document.getElementById('employeeList').innerHTML = statusHTML;
+  }
+};
+xhr.open('GET', 'data/employee.jsons');
+xhr.send();
 ```
