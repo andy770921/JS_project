@@ -16,7 +16,7 @@ this.setState({
   score: this.state.score +1
 });
 ```
-&emsp; 後，加入callback，引入前一次狀態，確保上次狀態更新後，才fire本次狀態更新:
+後，加入callback，引入前一次狀態，確保上次狀態更新後，才fire本次狀態更新:
 ```
 this.setState( prevState => {
   return {
@@ -24,7 +24,7 @@ this.setState( prevState => {
   };
 });
 ```
-&emsp; 簡化寫法，去掉return及大括號，在箭頭後加入圓括號
+簡化寫法，去掉return及大括號，在箭頭後加入圓括號
 ```
 this.setState( prevState => ({
     score: prevState.score +1
