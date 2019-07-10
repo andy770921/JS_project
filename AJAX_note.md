@@ -94,3 +94,26 @@ xhr.onreadystatechange = function () {
 xhr.open('GET', 'data/employee.jsons');
 xhr.send();
 ```
+8. 參考說明網頁的標準寫法，在id="abc"的<p>元素內可印出文字
+```
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
+ if (xhttp.readyState == 4 && xhttp.status == 200) {
+   document.getElementById("abc").innerHTML = xhttp.responseText;
+    }
+  };
+xhttp.open("GET", `https://api.appworks-school.tw/api/1.0/marketing/hots`, true);
+xhttp.send();
+```
+9. 輸出從server取得的物件 marketingHots
+```
+let marketingHots ={};
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
+  if (xhttp.readyState == 4 && xhttp.status == 200) {
+    marketingHots = JSON.parse(xhttp.responseText);
+     }
+  };
+xhttp.open("GET", `https://api.appworks-school.tw/api/1.0/marketing/hots`, true);
+xhttp.send();
+```
