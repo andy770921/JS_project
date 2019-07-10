@@ -23,7 +23,7 @@ HTML:
   display: flex;
 }
 ```
-3. 定義flex container 高，定義container內元素的排列方式。 align-items: strench為預設，高度滿height設定值。flex-start;為貼齊上半、底下空間依內容高度而不滿height。flex-center; 為垂直置中，上半及下半空間，依內容高度而不滿height。若要單獨設定item，可在item-1. 下，用 align-self: 
+3. 定義flex container 高，定義container內元素的排列方式。 align-items: strench為預設，高度滿height設定值。flex-start;為貼齊上半、底下空間依內容高度而不滿height。center; 為垂直置中，上半及下半空間，依內容高度而不滿height。若要單獨設定item，可在item-1. 下，用 align-self: 
 ```
 .container {
   display: flex;
