@@ -92,7 +92,7 @@ HTML:
   flex-grow: 2;
 }
 ```
-5. 定義item 寬度下限，用flex-basis，若小於此值，item會換行
+5. 定義item 寬度下限，用flex-basis，若小於此值，item會換行。若兩元素相等flex-basis，則在不換行同列顯示時，會同寬度
 ```
 .item {
   flex-grow: 1;
