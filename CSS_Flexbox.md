@@ -262,6 +262,7 @@ HTML:
 ## 黏底footer
 1. HTML:
 ```
+<body>
 <div class="row">		
   <div class="primary col">
     <h2>Welcome!</h2>
@@ -274,7 +275,7 @@ HTML:
     <span>&copy;2015 Residents of The Best City Ever.</span>
   </div>
 </footer>
-
+</body>
 ```
 2. CSS
 ```
@@ -286,8 +287,5 @@ body {
 .row {
   flex: 1;
 }
-.button {
-  margin-top: auto;
-  align-self: flex-end;
-}
+
 ```
