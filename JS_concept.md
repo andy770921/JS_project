@@ -6,6 +6,8 @@ https://www.youtube.com/watch?v=NOprCnnjHm0
 https://youtu.be/pr7JFQaAYjg
 ## 函數內部變數往外傳遞 - 閉包
 https://ithelp.ithome.com.tw/articles/10193009
+## new創造物件，與建立建構式
+https://ithelp.ithome.com.tw/articles/10193747
 ## Array或Object，避免用=指定，因此兩者為call by ref
 1. [1]==[1]，會是false，因為指向不同記憶體位置
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
