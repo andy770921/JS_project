@@ -4,6 +4,8 @@
 https://www.youtube.com/watch?v=NOprCnnjHm0
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
+## 函數內部變數往外傳遞 - 閉包
+https://ithelp.ithome.com.tw/articles/10193009
 ## Array或Object，避免用=指定，因此兩者為call by ref
 1. [1]==[1]，會是false，因為指向不同記憶體位置
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
