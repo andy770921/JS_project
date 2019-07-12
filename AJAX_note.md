@@ -7,7 +7,10 @@ https://youtu.be/OkphAk_cWPM?t=362
 
 1. 可在同一頁面，因使用者行為而讀取更多資料(google地圖未顯示的部份、下拉網頁更多留言等)，且不會讓網頁停下
 2. AJAX = 非同步 JS and XML (XML Request Object)
-3. 實作方式: 創XML Request Object -> 創callback function(如: 處理來自server的地圖資料顯示在螢幕上) -> open a request -> send a request
+3. 實作方式: 創XML Request Object -> 創 function(如: 處理來自server的地圖資料顯示在螢幕上) -> open a request -> send a request  
+&emsp;Note: 步驟二，創 function，指定的函式名稱後不加括號也沒有參數。這只是簡單的賦值，而非真的呼叫函數。除了指定函式名稱外，你也能用 Javascript 即時定義函式的技巧（稱為〝匿名函數〞）來定一個新的處理函式。當收到伺服器回應時，會觸發onreadystatechange。  
+&emsp;Note: 伺服器回應號碼意義: readyState 所有可能的值如下：0（還沒開始）、1（讀取中）、2（已讀取）、3（資訊交換中）4（一切完成）  
+  https://developer.mozilla.org/zh-TW/docs/Web/Guide/AJAX/Getting_Started
 4. 例子: 在index.html，利用Ajax，在```<script>```打程式碼，引入資料夾同一層的另一個頁面sidebar.html
 ```
 <!DOCTYPE html>
