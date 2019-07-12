@@ -222,7 +222,7 @@ target.addEventListener(type, listener[, options]);
 ```
 ## Event Bubbling 、 Event Delegation
 
-意義: 當li元素收到click事件，接著父元素ul也收到click事件，接著父元素body也收到click事件，接著父元素Document也收到click事件。可用父元素為代表，以下的子元素可一併套用click觸發後的效果
+意義: 當li元素收到click事件，接著父元素ul也收到click事件，接著父元素body也收到click事件，接著父元素Document也收到click事件。可用父元素為代表，以下的子元素可一併套用click觸發後的效果。若要防止Event Bubbling ，可參考此 https://ithelp.ithome.com.tw/articles/10192015
 
 ## Event Object
 
