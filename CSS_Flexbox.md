@@ -83,7 +83,7 @@ HTML:
   order: -1;
 }
 ```
-4. 讓item寬度滿版，需設定flex-grow: 1;。當螢幕寬度過於壓縮時，最末元素會換行，且寬度滿版。也可用flex-grow: 2，設定單一item寬度加倍
+4. 讓item寬度滿版，需設定flex-grow: 1，此時若該列有兩個以上的元素，元素寬度會被元素內容物多寡決定。當螢幕寬度過於壓縮時，最末元素會換行，且寬度滿版。也可用flex-grow: 2，設定單一item寬度加倍
 ```
 .item {
   flex-grow: 1;
@@ -99,7 +99,7 @@ HTML:
   flex-basis: 200px;
 }
 ```
-6. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行
+6. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行。合寫時若省略不寫flex-basis，如flex: 1，會設定flex-basis = 0，仍會發生該列元素等寬功用。
 ```
 .item {
   flex: 1;
