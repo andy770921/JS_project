@@ -346,9 +346,11 @@ function attachListBtn(li) {
 ## Scroll事件相關，當捲軸下拉到底，用AJAX擴展頁面
 
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/
-2. 動態取得目前scroll bar捲動長度，可直接使用範例程式碼。
+2. 動態取得目前scroll bar捲動長度，可直接使用範例程式碼。: 引入事件監聽函數，隨時可取得當下位置y座標 scroll_pos，或自己一次性使用window.scrollY
 https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event
-3. 動態取得目前viewport上，元件座標位置.getBoundingClientRect()
+3. 動態取得目前viewport上，元件座標位置: document.getElementsByClassName('container-5')[0].getBoundingClientRect().bottom; (或.top)
 https://juejin.im/entry/59c1fd23f265da06594316a9?fbclid=IwAR1j1TZ7TWBkqipedDJMi5EDLj3v9ZEdI9WHnrZ34ZAEGmM8G4A7NNqwhps
-4. 靜態取得網頁總高度
+4. 靜態取得網頁總高度: document.body.clientHeight
 https://blog.csdn.net/china_skag/article/details/30512877
+5. 取得瀏覽器當前視窗高度: window.innerHeight
+https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/294280/
