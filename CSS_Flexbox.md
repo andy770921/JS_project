@@ -99,7 +99,7 @@ HTML:
   flex-basis: 200px;
 }
 ```
-6. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行。合寫時若省略不寫flex-basis，如flex: 1，會設定flex-basis = 0，仍會發生該列元素等寬功用。
+6. 可用flex合寫，對應到三值: flex-grow、flex-basis、flex-shrink，最後一個不常用。若沒寫，即為預設值。如下範例，意義為flex-grow為1，flex-basis為0，flex-shrink為0。若flex-basis為0，則壓縮螢幕寬度後不會換行。合寫時若省略不寫flex-basis，如flex: 1，會設定flex-basis = 0，仍會觸發該列元素等寬功用，且不論元素寬度壓縮到多少都不會換行。
 ```
 .item {
   flex: 1;
