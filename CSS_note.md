@@ -237,7 +237,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
     font-size: 80px;
     color: white;
     background-color: #384047;
-    padding: 5pxx 10px;
+    padding: 5px 10px;
     margin: 10px 10px 0 0;
     border-radius: 5px;
     line-height: 1;
