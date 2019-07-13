@@ -92,7 +92,7 @@ HTML:
   flex-grow: 2;
 }
 ```
-5. 定義item 寬度，用flex-basis。意義為，不論內容物多寡，設定此item起始寬度為flex-basis值，該列各元素再平分剩下的空間。若小於此值，item會換行。若兩元素相等flex-basis，則在不換行同列顯示時，會同寬度
+5. 定義item 寬度，用flex-basis。意義為，不論內容物多寡，設定此item起始寬度為flex-basis值，可接受px或百分比、em等單位，扣掉該列元素item起始寬度總合後，該列各元素再平分剩下的空間。若小於此值，item會換行。若兩元素相等flex-basis，則在不換行同列顯示時，會同寬度
 ```
 .item {
   flex-grow: 1;
