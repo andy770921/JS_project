@@ -105,6 +105,12 @@ HTML:
   flex: 1;
 }
 ```
+## container設定align-items，內部元素垂直狀態會改變:
+1. align-items: stretch;，預設為此值，每個內部元素的height延伸至滿寬，內部文字置上
+2. align-items: flex-start;，每個內部元素的height未延伸至滿寬，僅剛好為文字寬。元素置上、內部文字無置上置下，因為元素高度剛好
+3. align-items: flex-end;，每個內部元素的height未延伸至滿寬，僅剛好為文字寬。元素置下、內部文字無置上置下，因為元素高度剛好
+4. align-items: center;，每個內部元素的height未延伸至滿寬，僅剛好為文字寬。元素置中、內部文字無置上置下，因為元素高度剛好
+5. align-self: xxx;，可在該元素的css中編寫，改變單一元素的垂直狀態
 
 ## 水平及垂直置中
 1. 方式一:
