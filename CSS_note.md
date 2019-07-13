@@ -5,6 +5,7 @@
 2. https://webplatform.github.io/docs/css/  
 3. CSS Data Type: https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type  
 4. 垂直置中23種方式: http://csscoke.com/2018/08/21/css-vertical-align/  
+5. 文字垂直置中2種方式:https://ithelp.ithome.com.tw/articles/10205421
 ## 加入自定義CSS方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
 2. internal style: EX:  
