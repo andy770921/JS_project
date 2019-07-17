@@ -144,7 +144,7 @@ HTML:
 <div class="container">
    <div class="minus">&#8722;</div>
    <div class="amount">2</div>
-   <div class="plus">&#43;</div>
+   <div class="plus">&#8330;</div>
 </div>
 ```
 4. CSS:
