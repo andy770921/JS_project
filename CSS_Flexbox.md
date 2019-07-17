@@ -138,8 +138,8 @@ HTML:
 
 ## - 數字 +  之按鈕設計，含水平與垂直置中
 1. 需要先建一個container，讓三個元素用1:5:1的比例，不換行、滿版、垂直置中呈現在畫面
-2. 需要賦予元素display: flex的特性，讓三個元素內部文字，可以水平置中(justify-content: center)。可想成是，元素內還有一個元素```<p></p>```，需要讓子元素置中，需要再加justify-content: center
-3. HTML:
+2. 需要賦予元素display: flex的特性，讓三個元素內部文字，可以水平置中(justify-content: center)。可想成是，元素內還有一個元素```<p></p>```，需要讓子元素置中，需要再加justify-content: center。但如此設定，會讓文字高度不滿版
+3. HTML(文字高度不滿版):
 ```
 <div class="container">
    <div class="minus">－</div>
@@ -147,7 +147,7 @@ HTML:
    <div class="plus">＋</div>
 </div>
 ```
-4. CSS:
+4. CSS(文字高度不滿版):
 ```
 .container{
   width: 100%;
@@ -168,7 +168,37 @@ HTML:
   justify-content: center;
 }
 ```
+5. HTML(文字高度滿版):
+```
+<div class="container">
+    <div class="minus"><p>&#8722;</p></div>
+    <div class="amount"><p>2</p></div>
+    <div class="plus"><p>＋</p></div>
+</div>
+```
+6. CSS(文字高度滿版):
+```
+.container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.minus, .plus, .amount-3x2 {
+  align-items: center;
+  justify-content: center;
+}
 
+.minus, .plus {
+  flex: 1;
+  display: flex;
+}
+
+.amount-3x2 {
+  flex: 3.5;
+  display: flex;
+}
+```
 ## Navbar綜合設定
 
 1. HTML
