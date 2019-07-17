@@ -199,6 +199,39 @@ HTML:
   display: flex;
 }
 ```
+7. 使用Button的最終設定(有滿版且避免點擊出問題-div會點擊成字，不會啟動整個區塊)
+8. HTML
+```
+<div class="container">
+   <button class="sign">&#8722;</button>
+   <div class="amount">2</div>
+   <button class="sign">＋</button>
+</div>
+```
+9. CSS
+```
+.container {
+  margin-top: 30px;
+  width: 100%;
+  height: 44px;
+  border: solid 1px #979797;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.sign{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.amount {
+  align-items: center;
+  justify-content: center;
+  flex: 3.5;
+  display: flex;
+}
+```
 ## Navbar綜合設定
 
 1. HTML
