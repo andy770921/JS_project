@@ -139,7 +139,7 @@ HTML:
 ## - 數字 +  之按鈕設計，含水平與垂直置中
 1. 需要先建一個container，讓三個元素用1:5:1的比例，不換行、滿版、垂直置中呈現在畫面
 2. 需要賦予元素display: flex的特性，讓三個元素內部文字，可以水平置中(justify-content: center)
-2. HTML:
+3. HTML:
 ```
 <div class="container">
    <div class="minus">&#8722;</div>
@@ -147,7 +147,7 @@ HTML:
    <div class="plus">&#43;</div>
 </div>
 ```
-3. CSS:
+4. CSS:
 ```
 .container{
   width: 100%;
