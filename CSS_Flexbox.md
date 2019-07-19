@@ -366,7 +366,7 @@ HTML:
   align-self: flex-end;
 }
 ```
-## 黏底footer
+## 黏底footer (將Footer固定在頁面底部)
 1. HTML:
 ```
 <body>
@@ -396,3 +396,9 @@ body {
 }
 
 ```
+3. 參考資料: https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+4. 其他實作法: https://aotu.io/notes/2017/04/13/Sticky-footer/index.html
+5. 其他實作法: https://css-tricks.com/couple-takes-sticky-footer/
+
+## 固定在畫面底部的 footer (Fixed footer)
+https://www.w3schools.com/howto/howto_css_fixed_footer.asp?fbclid=IwAR1F0asvjwhmLko3gaJsit0iGrRrF64v0volaOCU0kSrL6EeH4zt7sPuoJw
