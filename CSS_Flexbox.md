@@ -1,5 +1,9 @@
 # CSS Flexbox 觀念
 
+## Flex Box中文影片教學
+1. FlexBox 軸線與水平、垂直觀念: https://www.youtube.com/watch?v=lmBM7_OTDBQ
+2. FlexBox 子元件寬度(flex-grow、flex-shrink、flex-basis)觀念: https://www.youtube.com/watch?v=0QjOO-M2gs8
+
 ## 定義Flex Container
 
 HTML:
