@@ -123,3 +123,38 @@ xhttp.onreadystatechange = function () {
 xhttp.open("GET", `https://api.appworks-school.tw/api/1.0/marketing/hots`, true);
 xhttp.send();
 ```
+
+  
+## GET使用
+
+```
+
+function ajax(src, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status == 200) {
+      //如果JSON可讀值，但是回收的JSON錯誤，加入判斷式
+      if (JSON.parse(xhr.responseText) == "Wrong Request") {
+        //console.log('something wrong in ajax function response');
+        //console.log(xhr.responseText);
+      } else {
+        callback(JSON.parse(xhr.responseText));
+      }
+    }
+  };
+  xhr.open('GET', src);
+  xhr.send();
+}
+
+function setBullet(parsedData) {
+  consolo.log(parsedData);
+}
+ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns', setBullet);
+
+```
+
+## POST使用
+
+簡潔寫法 Ref: https://gist.github.com/EtienneR/2f3ab345df502bd3d13e
+英文說明 Ref: https://www.quora.com/What-is-the-way-to-send-a-JSON-object-via-a-POST-request-in-JavaScript-not-jQuery-or-Nodejs 
+中文說明 Ref: https://segmentfault.com/a/1190000004322487
