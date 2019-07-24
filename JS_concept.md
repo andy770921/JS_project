@@ -55,9 +55,16 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 8. .map(function(element,index){ return.......;}): 遍歷陣列元素，在...內可打每個element要做甚麼事情，若需要跟index有關也可以寫進去。回傳一個全新的陣列
 9. [ES6] .filter(function(element){return 判斷式;}): 遍歷陣列元素，判斷式為真的元素，才會回傳。也可.filter(function(element,index){return 判斷式;})
 
+
 ## Object常用的方法
-1. 取得物件中的值，用students.name，或是students["name"]
-2. for-in loop 遍歷物件元素
+1. 合併Object寫法: 合併後的Object  = {...obj1, ...obj2};
+```
+var obj1 = { food: 'pizza', car: 'ford' }
+var obj2 = { animal: 'dog' }
+let merged = {...obj1, ...obj2};
+```
+2. 取得物件中的值，用students.name，或是students["name"]
+3. for-in loop 遍歷物件元素
 Note: propName指的是物件內的key，可換變數名稱，要與for迴圈內的統一即可。  
 &emsp; Note: students[propName]指的是每個key的值，不能用students.propName，因為會找students物件中，名為propName的key，但是沒有此 key  
 &emsp; Note: console.log連續輸出不同字串，可用逗號間隔不同之字串  
@@ -71,7 +78,7 @@ for (var propName in students) {
   console.log(propName, ", ", students[propName]);
 }
 ```
-3. 二維陣列改寫為物件，取值法也相應變化  
+4. 二維陣列改寫為物件，取值法也相應變化  
 原:  
 ```
 var questions = [
