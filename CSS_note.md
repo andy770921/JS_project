@@ -8,6 +8,7 @@
 5. 文字垂直置中2種方式:https://ithelp.ithome.com.tw/articles/10205421
 6. CSS動畫相關: https://www.oxxostudio.tw/articles/201803/css-animation.html
 7. CSS動畫，在JS設定重新撥放，使用網頁方法4: https://www.jianshu.com/p/4bfc167946f0
+8. 找圖網址: https://unsplash.com/
 
 ## 加入自定義CSS方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
