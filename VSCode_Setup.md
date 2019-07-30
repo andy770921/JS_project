@@ -146,3 +146,7 @@ git clone https://github.com/andy770921/remote-assignments.git
 
 export default App;
 ```
+
+## Git 進階指令
+
+1. git reset --hard xxx: 清掉 xxx 之後的 commit ，並且回到 xxx 分支
