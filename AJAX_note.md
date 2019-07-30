@@ -325,3 +325,14 @@ async function getFeedback() {
 getFeedback();
 
 ```
+## 使用 async/await 寫法，純控制流程，不回傳值的寫法
+
+```
+ const InitFBLogin = async () => {
+       await LoadingFBScript();    //第一執行
+       await InitFBSetting();      //第二執行
+       await CheckLoginState();    //第三執行
+   }
+   
+InitFBLogin();
+```
