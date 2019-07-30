@@ -325,7 +325,7 @@ async function getFeedback() {
 getFeedback();
 
 ```
-## 使用 async/await 寫法，純控制流程，不回傳值的寫法
+## 使用 async/await ，純控制流程，不回傳值的寫法
 
 ```
  const InitFBLogin = async () => {
