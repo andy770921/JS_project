@@ -19,7 +19,7 @@
 15. 漢堡按鈕: https://codepen.io/rss/pen/vIDKH
 16. loading動畫: https://codepen.io/hakimel/pen/CxliK
 17. 影片開始與結束撥放: https://codepen.io/hakimel/pen/JoNrxq
-
+18. 邊框: https://freefrontend.com/css-border-animations/
 ----
 
 1. 震動: https://codepen.io/elrumordelaluz/pen/pHKcC
