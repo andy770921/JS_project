@@ -18,9 +18,26 @@
 14. 點按鈕，換成 loading 圖: https://codepen.io/hakimel/pen/gkeha
 15. 漢堡按鈕: https://codepen.io/rss/pen/vIDKH
 16. loading動畫: https://codepen.io/hakimel/pen/CxliK
+17. 影片開始與結束撥放: https://codepen.io/hakimel/pen/JoNrxq
 
 ----
 
 1. 震動: https://codepen.io/elrumordelaluz/pen/pHKcC
 2. 牛頓圓球來回撞: https://codepen.io/AllThingsSmitty/pen/zxGyXd
 3. 點點星空: https://codepen.io/hakimel/pen/bzrZGo
+4. RWD: https://codepen.io/hakimel/pen/Eikbv
+
+
+## 文字相關連結
+
+1. 背景加字: https://codepen.io/fixcl/pen/CHgrn
+2. 文字陰影: https://codepen.io/juanbrujo/pen/yGpAK
+3. 文字輪播: https://codepen.io/yoannhel/pen/sJpDj
+4. 透明文字加背景: https://codepen.io/Jintos/pen/crlxk
+5. 警示閃爍: https://codepen.io/moklick/pen/tAlJB
+6. 簽名效果: https://codepen.io/ghepting/pen/xnezB
+7. 行星環繞效果: https://codepen.io/captainbrosset/pen/JoZabN
+
+## 處理 GIF 網站
+
+1. https://ezgif.com/maker
