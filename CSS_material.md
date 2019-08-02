@@ -41,3 +41,9 @@
 ## 處理 GIF 網站
 
 1. https://ezgif.com/maker
+
+## 範例網站
+
+1. 卷軸播動畫: https://www.goldmansachs.com/insights/pages/blockchain/
+2. 資料 + 動態視覺化 : http://www.r2d3.us/visual-intro-to-machine-learning-part-1/
+3. 潮流字體 : https://webflow.com/blog/7-typography-trends-in-web-design
