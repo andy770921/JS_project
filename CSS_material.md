@@ -42,6 +42,12 @@
 
 1. https://ezgif.com/maker
 
+## 遊戲相關
+
+1. 骰子: https://codepen.io/tameraydin/pen/CADvB?fbclid=IwAR37xYlz1XViTEKDsmOoCVZl1FzryHNm09qWD5JmTaJWrTbRAey96FbvDB4
+2. 牌: https://codepen.io/frank890417/pen/bKdrPV?fbclid=IwAR3VKLeSrBP8MJ3pn2pimCUT5ojYS2AlIzYqx-UZ6m45j4V8JaFTK3fed7A
+
+
 ## 範例網站
 
 1. 卷軸播動畫: https://www.goldmansachs.com/insights/pages/blockchain/
