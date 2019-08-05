@@ -15,7 +15,7 @@ https://ithelp.ithome.com.tw/articles/10193747
 4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b= Object.assign({}, a);
 ## setState用法，避免多個刷新一次更新，非同步
 原:
-```Javascript=
+```js
 this.setState({
   score: this.state.score +1
 });
