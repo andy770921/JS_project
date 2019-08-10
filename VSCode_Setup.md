@@ -155,7 +155,7 @@ export default App;
 
 0. 建議配合 VS Code 套件 Git Graph 觀察分支狀況
 1. [ 此步驟與 gitflow 套件無關 ] 建空資料夾，用VS code 開啟，再在 github 建新的 repository 
-2. [ 此步驟與 gitflow 套件無關 ] 用VS code 終端機，在資料夾的路徑下，輸入 git init，再輸入 git remote add origin https://github.com/帳號/rep名字.git
+2. [ 此步驟與 gitflow 套件無關 ] 用 VS code 終端機，在資料夾的路徑下，輸入 git init，再輸入 git remote add origin https://github.com/帳號/rep名字.git
 3. [ 此步驟與 gitflow 套件無關 ] 資料夾下新建 html 檔，用 VS Code 左列的 "原始檔控制" 圖示，進行 commit 的流程。commit 完後，master branch 就有一個版本紀錄，並將 master 主支，用VS Code 的...圖示下的 " 推送至 " ， 將主支 push 到 github
 4. 按 F1 ，輸入 Gitflow: initialize repository for gitflow，找到該指令，一路 Enter 到底，此時會自動創建好 develop 分支。 
 - Note: 可能會跳出 右下角視窗的 bug ，直接重新按 F1 ，再輸入 Gitflow: initialize repository for gitflow，即可初始化。此時會自動創建好 develop 分支。
