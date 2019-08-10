@@ -150,3 +150,21 @@ export default App;
 ## Git 進階指令
 
 1. git reset --hard xxx: 清掉 xxx 之後的 commit ，並且回到 xxx 分支
+
+## git flow 套件: gitflow
+
+0. 建議配合 VS Code 套件 Git Graph 觀察分支狀況
+1. [ 此步驟與 gitflow 套件無關 ] 建空資料夾，用VS code 開啟，再在 github 建新的 repository 
+2. [ 此步驟與 gitflow 套件無關 ] 用VS code 終端機，在資料夾的路徑下，輸入 git init，再輸入 git remote add origin https://github.com/帳號/rep名字.git
+3. 資料夾下新建 html 檔，用 VS Code 左列的 "原始檔控制" 圖示，進行 commit 的流程。commit 完後，master branch 就有一個版本紀錄，並將 master 主支，用VS Code 的...圖示下的 " 推送至 " ， 將主支 push 到 github
+4. 按 F1 ，輸入 Gitflow: initialize repository for gitflow，找到該指令，一路 Enter 到底，此時會自動創建好 develop 分支。 
+- Note: 可能會跳出 右下角視窗的 bug ，直接重新按 F1 ，再輸入 Gitflow: initialize repository for gitflow，即可初始化。此時會自動創建好 develop 分支。
+- Note: 不可在 develop 分支，直接改文件 commit ，否則會碰到，與遠端無法同步的問題，衍伸出要自行 pull 到遠端，同步遠端的狀況
+5. 按 F1 ，輸入 Gitflow: Feature: start，找到該指令，一路 Enter 到底，此時會自動創建好 feature 的分支 (可自行輸入 feature 的分支名稱)
+6. 改好檔案後，正常使用 VS Code 左列的 "原始檔控制" 圖示，進行 commit 的流程，可在該分支下一直 commit 直到功能開發完。
+7. 功能開發完後，按 F1 ，輸入 Gitflow: Feature: finish，找到該指令，此時會自動移除 feature 的分支，並將最新 commit 合併進 develop
+8. 分支合併進 master 之前，一定要發佈 release 分支，目的為發佈前最後 debug ，此時要按 F1 ，輸入 Gitflow: Release: start，找到該指令，執行後會創建新的 release 分支
+9. 可以在此分支，再做修 bug 的 commit。
+10. 修完 bug 任務結束後，要按 F1 ，輸入 Gitflow: Release: finish，此時會自動移除 release 的分支，並將最新 commit 合併進 master 及 develop，並自動將目前分支位置，移動到 develop。
+11. 此時可以 push 本地端的 develop 分支到 github 。再用 git checkout 切換到 master 分支，再 push 本地端的 master 分支到 github。本地端再用 git checkout 移動到 develop 分支。
+12. 按 F1 ，輸入 Gitflow: Feature: start，繼續開發新功能
