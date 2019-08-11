@@ -164,7 +164,7 @@ export default App;
 6. 改好檔案後，正常使用 VS Code 左列的 "原始檔控制" 圖示，進行 commit 的流程，可在該分支下一直 commit 直到功能開發完。
 7. 功能開發完後，按 F1 ，輸入 Gitflow: Feature: finish，找到該指令，此時會自動移除 feature 的分支，並將最新 commit 合併進 develop
 8.  develop 分支合併進 master 之前，一定要發佈 release 分支，目的為發佈前最後 debug ，此時要按 F1 ，輸入 Gitflow: Release: start，找到該指令，執行後會創建新的 release 分支
-- 若出現右下角訊息 Branch "develop" has diverged from origin/develop ，代表有最新的 develop 在 github 上，要在本地端先自行 checkout 到本地 develop 分支，再 pull develpo 分支下來，才能繼續開 release 分支
+- 若創建新的 release 分支時，出現右下角訊息 Branch "develop" has diverged from origin/develop ，代表有最新的 develop 在 github 上，要在本地端先自行 checkout 到本地 develop 分支，再 pull develpo 分支下來，才能繼續開 release 分支。pull 下來後，若檔案無衝突，會合併好，成最新的 develop (包含遠端及本地端的更新)，再 push 回去 github，即可往下操作
 9. 可以在此 release 分支，再做修 bug 的 commit。
 10. 修完 bug 任務結束後，要按 F1 ，輸入 Gitflow: Release: finish，此時會自動移除 release 的分支，並將最新 commit 合併進 master 及 develop，並自動將目前分支位置，移動到 develop。
 11. 此時可以 push 本地端的 develop 分支到 github 。再用 git checkout 切換到 master 分支，再 push 本地端的 master 分支到 github。本地端再用 git checkout 移動到 develop 分支。
