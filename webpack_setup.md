@@ -137,4 +137,133 @@ A:
 它就會幫你安裝好了! 因為 package.json 已經記錄你所有需要的套件  
 所以每次你只要資料夾有我剛剛說的 package.json 跟 webpack.config.js 就可以快速安裝了  
 
+## ------------------- 初始化流程 by 彭彭 ------------
 
+## 1. 操作到補充: 建立 webpack 設定檔 之前，可灌好 Webpack
+https://hackmd.io/LFKDc8N7TV64AkS0aVNSuw?fbclid=IwAR0Ce_5el6D08bHJpzG7qY45DE95HLuL7pwYm5iTGdvthJ7rjZrRxBpeYrA
+原官網 Ref: https://webpack.js.org/concepts/
+## 2. 灌好 React
+
+終端機打指令 ```npm install react react-dom --save```
+
+## 3. 測試 React
+
+dist 資料夾下，新增檔案 index.html 如下
+ ```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="main.js"></script>
+</body>
+</html>
+ ```
+ 
+src 資料夾下，新增檔案 index.js 如下
+ 
+ ```
+import React from "react";
+import ReactDOM from "react-dom";
+
+let element = React.createElement("h3", {style:{ color : "red" }}, "hello react");
+
+ReactDOM.render(element, document.querySelector("#root"));
+```
+  
+ 按 npm run build，index.html 網頁會出現紅色的 hello react
+ 
+## 4. 設定及灌好 Babel - 1 
+ 
+在終端機打指令 ```npm install --save-dev babel-loader @babel/core```
+
+Ref: https://babeljs.io/setup#installation
+
+## 5. 設定及灌好 Babel - 2
+
+在 webpack.config.js 內，加入 module:{} 的設定
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js' 
+  },
+  module:{}
+};
+```
+再於官網，加入 module 內的物件內容 Ref: https://babeljs.io/setup#installation
+
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js' 
+  },
+  module:{}
+};
+```
+
+如下
+
+
+```
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js' 
+  },
+  module: {
+  rules: [
+    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+  ]
+}
+};
+```
+
+## 6. 設定及灌好 Babel - 3 ，官網沒有寫安裝 react ，要自己加
+
+ 
+在終端機打指令 ```npm install @babel/preset-env @babel/preset-react --save-dev```
+
+## 7. 設定及灌好 Babel - 4 
+
+在根目錄下創檔案，檔名是 ```.babelrc ```，檔案內文若照著網頁寫，會如下
+
+```
+{
+  "presets": ["@babel/preset-env"]
+}
+```
+
+需要改為
+
+```
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+```
+
+## 8. 測試灌好的 Babel 
+
+檔案 index.js 內容改為以下，存檔後再於終端機下指令 npm run build ，測試看看能否運作
+```
+import React from "react";
+import ReactDOM from "react-dom";
+
+let element = <h3>hello react</h3>;
+ReactDOM.render(element, document.querySelector("#root"));
+```
