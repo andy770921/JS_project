@@ -141,9 +141,9 @@ A:
 
 ## 1. 灌好 Webpack
 
-操作到  補充: 建立 webpack 設定檔  之前，可灌好 Webpack
+- 操作到  補充: 建立 webpack 設定檔  之前，可灌好 Webpack
 https://hackmd.io/LFKDc8N7TV64AkS0aVNSuw?fbclid=IwAR0Ce_5el6D08bHJpzG7qY45DE95HLuL7pwYm5iTGdvthJ7rjZrRxBpeYrA
-原官網 Ref: https://webpack.js.org/concepts/
+- 原官網 Ref: https://webpack.js.org/concepts/
 
 ## 2. 灌好 React
 
