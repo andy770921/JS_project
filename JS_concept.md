@@ -8,7 +8,7 @@ https://youtu.be/pr7JFQaAYjg
 https://ithelp.ithome.com.tw/articles/10193009
 ## new創造物件，與建立建構式
 https://ithelp.ithome.com.tw/articles/10193747
-## Array或Object，避免用=指定，因此兩者為call by ref
+## Array 或 Object ，避免用= 指定，因為這兩者為 call by ref
 1. [1]==[1]，會是false，因為指向不同記憶體位置
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
 3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
@@ -20,16 +20,16 @@ this.setState({
   score: this.state.score +1
 });
 ```
-後，加入callback，引入前一次狀態，確保上次狀態更新後，才fire本次狀態更新:
-```
+後，加入 callback ，引入前一次狀態，確保上次狀態更新後，才fire本次狀態更新:
+```js
 this.setState( prevState => {
   return {
     score: prevState.score +1
   };
 });
 ```
-簡化寫法，去掉return及大括號，在箭頭後加入圓括號
-```
+簡化寫法，去掉 return 及大括號，在箭頭後加入圓括號
+```js
 this.setState( prevState => ({
     score: prevState.score +1
 }));
@@ -48,7 +48,7 @@ addNinja = (newObj) => {
 }
 ```
 後，使用 array spread 寫法
-```
+```js
 state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
 }
@@ -83,7 +83,7 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 
 ## Object 常用的方法
 1. 合併Object寫法: 合併後的Object  = {...obj1, ...obj2};
-```
+```js
 var obj1 = { food: 'pizza', car: 'ford' }
 var obj2 = { animal: 'dog' }
 let merged = {...obj1, ...obj2};
@@ -93,7 +93,7 @@ let merged = {...obj1, ...obj2};
 Note: propName指的是物件內的key，可換變數名稱，要與for迴圈內的統一即可。  
 &emsp; Note: students[propName]指的是每個key的值，不能用students.propName，因為會找students物件中，名為propName的key，但是沒有此 key  
 &emsp; Note: console.log連續輸出不同字串，可用逗號間隔不同之字串  
-```
+```js
 var students = {
   name: "Dave",
   grade: [80, 85, 90]
@@ -105,7 +105,7 @@ for (var propName in students) {
 ```
 4. 二維陣列改寫為物件，取值法也相應變化  
 原:  
-```
+```js
 var questions = [
   ['How many states are in the United States?', 50],
   ['How many continents are there?', 7],
@@ -123,7 +123,7 @@ for (var i = 0; i < questions.length; i += 1) {
 }
 ```
 &emsp; 後:
-```
+```js
 var questions = [
   { question: 'How many states are in the United States?', answer: 50 },
   { question: 'How many continents are there?', answer: 7},
