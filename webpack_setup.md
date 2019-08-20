@@ -304,4 +304,25 @@ ReactDOM.render(<App />, document.querySelector("#root"));
 若成功時 index.html 會出現以下字樣   
 ```My name is Ryu and I am 30.```
 
+## 11. 用 React Router 功能
+1. terminal 中，cd 到專案資料夾
+2. terminal 中，輸入```npm install react-router-dom```
+3. 可在 App.js 檔中，開頭加入```import { BrowserRouter , Route } from 'react-router-dom';```
+4. 可接著在 App.js 檔中，加入以下
+```
+ function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+```
 
