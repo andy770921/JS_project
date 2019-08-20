@@ -35,7 +35,7 @@ this.setState( prevState => ({
 }));
 ```
 ## React: 新增值用法，避免用 .push()，用 array spread 寫法
-原 (不能用):
+原 (不能用，會直接修改到原先的 state ):
 ```js
 state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
