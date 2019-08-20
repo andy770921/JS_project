@@ -204,19 +204,6 @@ module.exports = {
 ```
 再於官網，加入 module 內的物件內容 Ref: https://babeljs.io/setup#installation
 
-```
-const path = require('path');
-
-module.exports = {
-  entry: './src/index.js',  
-  output: {
-    path: path.resolve(__dirname, 'dist'), 
-    filename: 'main.js' 
-  },
-  module:{}
-};
-```
-
 如下
 
 
