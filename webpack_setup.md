@@ -189,7 +189,7 @@ Ref: https://babeljs.io/setup#installation
 
 ## 5. 設定及灌好 Babel - 2
 
-在 webpack.config.js 內，加入 module:{} 的設定
+在 webpack.config.js 內，加入 module:{  } 的設定
 ```
 const path = require('path');
 
@@ -231,7 +231,7 @@ module.exports = {
 
 ## 7. 設定及灌好 Babel - 4 
 
-在根目錄下創檔案，檔名是 ```.babelrc ```，檔案內文若照著網頁寫，會如下
+在根目錄下創檔案，檔名是 ```.babelrc```，檔案內文若照著網頁寫，會如下
 
 ```
 {
