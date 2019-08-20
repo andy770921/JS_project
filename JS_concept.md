@@ -13,7 +13,7 @@ https://ithelp.ithome.com.tw/articles/10193747
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
 3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
 4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b= Object.assign({}, a);
-## setState用法，避免多個刷新一次更新，非同步
+## React: setState 用法，避免多個刷新一次更新，非同步
 原:
 ```js
 this.setState({
@@ -34,7 +34,32 @@ this.setState( prevState => ({
     score: prevState.score +1
 }));
 ```
-
+## React: 新增值用法，避免用 .push()
+原 (不能用):
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+addNinja = (newObj) => {
+  ninja.id = Math.random();
+  this.setState({
+    ninjas: this.state.ninjas.push(newObj)
+  });
+}
+```
+後，使用 array spread 寫法
+```
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+addNinja = (newObj) => {
+  ninja.id = Math.random();
+  let newNinjas = [...this.state.ninjas, newObj];
+  this.setState({
+    ninjas: newNinjas
+  });
+}
+```
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
@@ -43,7 +68,7 @@ https://youtu.be/QuCu4iDpPTU
 ## 解構賦值
 文章關鍵字:使用於函式的傳入參數之中的解構賦值  
 https://ithelp.ithome.com.tw/articles/10185430
-## Array常用的方法
+## Array 常用的方法
 https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 1. .push(1, 2, 3): 變更原陣列-多三個元素(可文字或數字)在陣列最後面，並回傳新增後的陣列長度
 2. .unshift(1, 2, 3): 變更原陣列-多三個元素(可文字或數字)在陣列最前面，並回傳減少後的陣列長度
@@ -56,7 +81,7 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 9. [ES6] .filter(function(element){return 判斷式;}): 遍歷陣列元素，判斷式為真的元素，才會回傳。也可.filter(function(element,index){return 判斷式;})
 
 
-## Object常用的方法
+## Object 常用的方法
 1. 合併Object寫法: 合併後的Object  = {...obj1, ...obj2};
 ```
 var obj1 = { food: 'pizza', car: 'ford' }
@@ -115,7 +140,7 @@ for (var i = 0; i < questions.length; i += 1) {
   } 
 }
 ```
-## 與HTML DOM的互動
+## 與 HTML DOM 的互動
 1. 事件監聽，以ID選: addEventListener()。```<script src="app.js"></script>```要在</body>前加，否則會讀取不到HTML的Tag出現錯誤
 https://ithelp.ithome.com.tw/articles/10192015  
 HTML:
@@ -195,7 +220,7 @@ let li = document.createElement('li');
 ```
 newParagraph.className = "panel";
 ```
-## 設計HTML互動的流程 - 按鈕可移除最後文字
+## 設計 HTML 互動的流程 - 按鈕可移除最後文字
 
 1. 在HTML創造按鈕如下
 ```
