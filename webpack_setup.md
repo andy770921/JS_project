@@ -313,3 +313,8 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.querySelector("#root"));
 ```
+
+若成功時 index.html 會出現以下字樣 
+```My name is Ryu and I am 30.```
+
+
