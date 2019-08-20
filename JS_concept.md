@@ -34,6 +34,32 @@ this.setState( prevState => ({
     score: prevState.score +1
 }));
 ```
+## React: 輸出的 Class 或 render 函數，開頭避免用小寫，否則跑不出來
+原 ( todoUi 開頭不能用小寫，會無法呈現在畫面):
+```js
+import todoUi from "./todoUI";
+
+class App extends React.Component {
+    render () {
+        return ( <todoUi /> );
+    }
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
+```
+
+後 (import 進來的東西，開頭要用大寫 TodoUi，在 export default 檔案中的函數命名，也要用開頭大寫):
+```js
+import TodoUi from "./todoUI";
+
+class App extends React.Component {
+    render () {
+        return ( <TodoUi /> );
+    }
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
+```
 ## React: 新增值用法，避免用 .push()，用 array spread 寫法
 原 (不能用，會直接修改到原先的 state ):
 ```js
