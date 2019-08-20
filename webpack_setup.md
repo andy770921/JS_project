@@ -141,7 +141,7 @@ A:
 
 ## 1. 灌好 Webpack
 
-- 操作到  補充: 建立 webpack 設定檔  之前，可灌好 Webpack
+- 操作到  補充: webpack-loader  之前，可灌好 Webpack、設定好 Webpack 的設定檔，決定好進入 js 與輸出的 js 檔名及路徑，以及加入方便使用的終端機指令如 ```npm run watch```
 https://hackmd.io/LFKDc8N7TV64AkS0aVNSuw?fbclid=IwAR0Ce_5el6D08bHJpzG7qY45DE95HLuL7pwYm5iTGdvthJ7rjZrRxBpeYrA
 - 原官網 Ref: https://webpack.js.org/concepts/
 
@@ -269,4 +269,47 @@ import ReactDOM from "react-dom";
 
 let element = <h3>hello react</h3>;
 ReactDOM.render(element, document.querySelector("#root"));
+```
+
+## 9. 為了 state 的語法，再灌 Babel plug-in
+
+為了 index.js 使用 state = { } 的語法，如下例，要進一步加掛 Babel plug-in
+```
+class App extends React.Component {
+    state = {
+        name: "Ryu",
+        age: 30
+    }
+```
+在終端機，打以下指令```npm install @babel/plugin-proposal-class-properties --save-dev```
+再在檔案 ```.babelrc```，中，內容改成如下
+```
+{
+    "presets": ["@babel/preset-env", "@babel/preset-react"],
+    "plugins": ["@babel/plugin-proposal-class-properties"]
+}
+
+```
+## 10. 測試灌好的 Babel plug-in 是否成功
+
+檔案 index.js 內容改為以下，存檔後再於終端機下指令 npm run build ，測試看看能否運作
+```
+import React from "react";
+import ReactDOM from "react-dom";
+
+class App extends React.Component {
+    state = {
+        name: "Ryu",
+        age: 30
+    }
+    render () {
+        return (
+            <div className="app-content">
+                <p> My name is { this.state.name } and I am { this.state.age }. </p>
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
 ```
