@@ -34,7 +34,7 @@ this.setState( prevState => ({
     score: prevState.score +1
 }));
 ```
-## React: 新增值用法，避免用 .push()
+## React: 新增值用法，避免用 .push()，用 array spread 寫法
 原 (不能用):
 ```js
 state = {
@@ -60,6 +60,21 @@ addNinja = (newObj) => {
   });
 }
 ```
+
+## React: 刪除值用法，用 .filter()
+
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+deleteNinja = (id) => {
+  let newNinjas = this.state.ninjas.filter( ninja => { return ninja.id !== id });
+  this.setState({
+    ninjas: newNinjas
+  });
+}
+```
+
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
