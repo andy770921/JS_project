@@ -366,7 +366,7 @@ module.exports = {
   
 ```Refused to apply style from 'http://xxxx/xxxx/css/index.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.```  
 
-## ------------------- 使用 React Router 功能 ，配合 live server -------------------
+## -------------- 使用 React Router 功能 ，配合 live server --------------
 
 ## 1. 用 React Router 功能
 1. terminal 中，cd 到專案資料夾
@@ -464,7 +464,7 @@ export default NavbarUi;
 在```http://127.0.0.1:5500```，以及點擊 navbar 皆可運作
 此外，有以下問題仍存在: 直接打網址```http://127.0.0.1:5500/ongoing```網頁會顯示 ```Cannot GET /ongoing```
 
-## ------------------- 使用 webpack 內建的 server ，不用 live server -------------------
+## -------------- 使用 webpack 內建的 server ，不用 live server --------------
 ## 1. 終端機打指令如下
 ```npm install --save-dev webpack-dev-server```  
 Ref 官方文件左列 Development 下的 Using webpack-dev-server : https://webpack.js.org/guides/development/#using-webpack-dev-server
