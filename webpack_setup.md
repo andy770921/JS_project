@@ -520,7 +520,7 @@ ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelect
 資料夾下可裝不只一個 reducer，目前只要在 reducers 資料夾下，新創 rootReducer.js 檔案，內容如下
 ```js
 const initState = {
-    todos : []
+    todos : [假資料]
 };
 
 const rootReducer = ( state = initState, action) => {
@@ -543,7 +543,7 @@ class Home extends React.Component {
   componentDidMount() { axios.get('https://xxxxx').then( res => {this.setstate({ todos: res.data })})}
 }
 ```
-新增 js 檔內 import ，及輸出時灌上 higher order component，兩個括號意思是執行 connect 立即函式，執行後才會回傳高階的 component
+新增 js 檔內 import ，及輸出時灌上 higher order component，兩個括號意思是，先用左邊的括號執行 connect 立即函式，執行後才會回傳高階的 component，然後再用右邊的括號，去 wrap 低階的 Home component
 ```js
 import { connect } from "react-redux";
 
@@ -562,3 +562,18 @@ const mapStoreToProps = (state) => {
 ```js
 export default connect(mapStoreToProps)(Home);
 ```
+## 9. 測試結果，在取資料的 js 檔，完整內容如下 
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { connect } from "react-redux";
+
+class Home extends React.Component {
+  render() { console.log(this.props) }
+}
+const mapStoreToProps = (state) => {
+  return { todos : state.todos };
+}
+export default connect(mapStoreToProps)(Home);
+```
+看看 console.log 有沒有出現 ```[假資料]```
