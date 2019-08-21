@@ -499,8 +499,8 @@ module.exports = {
 ## -------------- 使用 Redux --------------
 ## 1. 終端機打指令如下
 ```npm install redux react-redux```  
-官網 Ref: https://redux.js.org/introduction/getting-started
-教學 Ref: https://youtu.be/f87wPQMgF4c
+官網 Ref: https://redux.js.org/introduction/getting-started  
+教學 Ref: https://youtu.be/f87wPQMgF4c  
 ## 2. 在 index.js 內 import 如下程式碼
 ```js
 import { createStore } from "redux";
@@ -562,7 +562,34 @@ const mapStoreToProps = (state) => {
 ```js
 export default connect(mapStoreToProps)(Home);
 ```
-## 9. 測試結果，在取資料的 js 檔，完整內容如下 
+## 9. 在取資料的 js 檔新增 console.log 測試。最終 rootReducer.js 、 index.js 及取資料的 js ，完整內容如下 
+
+rootReducer.js
+```js
+const initState = {
+    todos : [假資料]
+};
+
+const rootReducer = ( state = initState, action) => {
+    return state;
+}
+
+export default rootReducer;
+```
+
+index.js
+```js
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers/rootReducer";
+
+const store = createStore(rootReducer);
+
+class App extends React.Component {.........}
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
+```
+取資料的 js 檔 ( 比如 Home.js )
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
