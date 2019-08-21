@@ -304,25 +304,100 @@ ReactDOM.render(<App />, document.querySelector("#root"));
 若成功時 index.html 會出現以下字樣   
 ```My name is Ryu and I am 30.```
 
-## 11. 用 React Router 功能
+## ------------------- 使用 React Router 功能 -------------------
+
+## 1. 用 React Router 功能
 1. terminal 中，cd 到專案資料夾
 2. terminal 中，輸入```npm install react-router-dom```
-3. 可在 App.js 檔中，開頭加入```import { BrowserRouter , Route } from 'react-router-dom';```
-4. 可接著在 App.js 檔中，加入以下
-```
- function App() {
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-      </div>
-    </BrowserRouter>
-  );
+3. 可在 index.js 檔中，開頭加入```import { BrowserRouter , Route } from 'react-router-dom';```
+4. 可接著在 index.js 檔中，加入以下
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter , Route } from 'react-router-dom';
+import NavbarUi from "./navbarUI";
+import AllUi from "./components/allUI";
+import OngoingUi from "./components/onGoingUI";
+import FinishedUi from "./components/finishedUI";
+
+class App extends React.Component {
+    render() {
+        return (
+            <BrowserRouter>
+            <div>
+                <NavbarUi />
+                <Route exact path="/" component={AllUi}/>
+                <Route path="/ongoing" component={OngoingUi} />
+                <Route path="/finished" component={FinishedUi} /> 
+            </div>
+            </BrowserRouter>
+        )
+    }
 }
 
-export default App;
+ReactDOM.render(<App />, document.querySelector("#root"));
 ```
+navbarUI.js 檔案如下
+```js
+import React from "react";
 
+const NavbarUi = () => {
+    return (
+        <nav>
+            <ul>
+                <li><a href = "/">All</a></li>
+                <li><a href = "/ongoing">On Going</a></li>
+                <li><a href = "/finished">Finished</a></li>
+            </ul>
+        </nav>
+    );
+}
+export default NavbarUi;
+```
+## 2. 此時會發生問題: 
+進入的首頁為 ```http://127.0.0.1:5500/dist/index.html```  
+點擊 navbar 的 ongoing 按鈕後，網址換成 ```http://127.0.0.1:5500/ongoing``` ，網頁出現 cannot GET /ongoing  
+
+## 3. 解決流程 - 1 ，讓 navbar 可以運作
+將 navbarUI.js 檔案寫成如下。引入 { Link }， a 換成 Link ， href 換成 to  
+```js
+import React from "react";
+import { Link } from "react-router-dom";
+
+const NavbarUi = () => {
+    return (
+        <nav>
+            <ul>
+                <li><Link to= "/">All</Link></li>
+                <li><Link to= "/ongoing">On Going</Link></li>
+                <li><Link to= "/finished">Finished</Link></li>
+            </ul>
+        </nav>
+    );
+}
+export default NavbarUi;
+```
+此時仍有，首頁為```http://127.0.0.1:5500/dist/index.html``` ，無法渲染出 {AllUi} 之問題
+
+## 3. 解決流程 - 2 ，換首頁網址
+
+將首頁網址```http://127.0.0.1:5500/dist/index.html```換成```http://127.0.0.1:5500/index.html```  
+
+1. 點選 VS Code 左上角檔案 -> 喜好設定 -> 設定，搜尋 liveServer.settings
+2. 點選 在 setting.json 內編輯
+3. 將設定由原先
+```
+{
+    "liveServer.settings.donotShowInfoMsg": true,
+}
+```
+改為
+```
+{
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.root": "/dist/"
+}
+```
+此時，用 live server 開啟 index.html 首頁，網址為```http://127.0.0.1:5500/index.html```，無法渲染出 {AllUi} 
+在```http://127.0.0.1:5500```，以及點擊 navbar 皆可運作
+此外，有以下問題仍存在: 直接打網址```http://127.0.0.1:5500/ongoing```網頁會顯示 ```Cannot GET /ongoing```
