@@ -495,3 +495,70 @@ module.exports = {
 ```
 
 ## 4. 開發時打指令 npm run start 即可運作 server
+
+## -------------- 使用 Redux --------------
+## 1. 終端機打指令如下
+```npm install redux react-redux```  
+官網 Ref: https://redux.js.org/introduction/getting-started
+教學 Ref: https://youtu.be/f87wPQMgF4c
+## 2. 在 index.js 內 import 如下程式碼
+```js
+import { createStore } from "redux";
+```
+## 3. 在 index.js 加入如下程式碼，創建新的 store，並引入在 ReactDOM.render 內 (需要再 import)
+```js
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+const store = createStore();
+
+class App extends React.Component {.........}
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
+```
+## 4. 在 src 資料夾下，創建新的 reducers 資料夾
+資料夾下可裝不只一個 reducer，目前只要在 reducers 資料夾下，新創 rootReducer.js 檔案，內容如下
+```js
+const initState = {
+    todos : []
+};
+
+const rootReducer = ( state = initState, action) => {
+    return state;
+}
+
+export default rootReducer;
+```
+## 5. 在 index.js 加入 import 並加入 createStore 括號內的函數
+```js
+import rootReducer from "./reducers/rootReducer";
+
+const store = createStore(rootReducer);
+```
+## 6. 在有 state 或要 AJAX 取資料的 js 檔，移除 state 並加入如下 connect
+移除 js 檔內 class 的內容
+```js
+class Home extends React.Component {
+  state = {........}
+  componentDidMount() { axios.get('https://xxxxx').then( res => {this.setstate({ todos: res.data })})}
+}
+```
+新增 js 檔內 import ，及輸出時灌上 higher order component，兩個括號意思是執行 connect 立即函式，執行後才會回傳高階的 component
+```js
+import { connect } from "react-redux";
+
+export default connect()(Home);
+```
+
+## 7. 在與 6. 同份檔案內，新增如下，可將 store 的 state 取出，抓到 mapStoreToProps 函數內
+```js
+const mapStoreToProps = (state) => {
+  return { todos : state.todos };
+}
+```
+
+
+## 8. 傳入 export default
+```js
+export default connect(mapStoreToProps)(Home);
+```
