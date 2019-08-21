@@ -468,7 +468,7 @@ export default NavbarUi;
 ## 1. 終端機打指令如下
 ```npm install --save-dev webpack-dev-server```  
 Ref 官方文件左列 Development 下的 Using webpack-dev-server : https://webpack.js.org/guides/development/#using-webpack-dev-server
-## 2. webpack.config.js 新增 devServer如下
+## 2. webpack.config.js 新增 devServer 如下
 ```
 module.exports = {
   entry: './src/index.js',  
