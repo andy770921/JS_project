@@ -359,9 +359,11 @@ module.exports = {
 
 ## 5. 不加灌 css loader 的其他作法
 
-可在 dist 資料夾下的 index.html ， ```<head></head> ``` 內部加入 ```<link rel="stylesheet" href="css/index.css"> ```  
+可在 dist 資料夾下的 index.html ， ```<head></head> ``` 內部加入 ```<link rel="stylesheet" href="css/index.css"> ``` 
+  
 此時需注意，放 css 檔案的資料夾，需要在 dist 資料夾的目錄下，否則開網頁時無法載入 css ，會有以下錯誤  
-```Refused to apply style from 'http://xxxx/xxxx/css/index.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.```
+  
+```Refused to apply style from 'http://xxxx/xxxx/css/index.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.```  
 
 ## ------------------- 使用 React Router 功能 -------------------
 
