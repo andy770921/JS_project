@@ -304,6 +304,66 @@ ReactDOM.render(<App />, document.querySelector("#root"));
 若成功時 index.html 會出現以下字樣   
 ```My name is Ryu and I am 30.```
 
+## ------------------- 使用 import css 語法 -------------------
+## 1. 終端機輸入指令，灌 css loader 及 style loader
+輸入```npm install --save-dev css-loader```
+
+Ref: https://github.com/webpack-contrib/css-loader
+
+## 2. 在 webpack.config.js 內，加入 module:{  } 的設定
+原:  
+```
+module.exports = {
+  entry: './src/index.js',  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js',
+  },
+  module: {
+     rules: [
+    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+    ]
+  }
+};
+```
+加入後:  
+```
+module.exports = {
+  entry: './src/index.js',  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js',
+  },
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}, {test: /\.css$/i, use: [{loader: "style-loader"}, {loader: "css-loader", options: {modules: false}}
+       ],
+    }
+    ]
+  }
+};
+```
+## 3. 確認 package.json 內，是否有灌到 css-loader 及 style-loader
+```
+“devDependencies”: {
+   “css-loader”: “^3.2.0”,
+   “style-loader”: “^1.0.0”,
+ },
+```
+## 4. 實際使用
+
+可在 src 資料夾下，新增檔案 index.css
+
+並且可在 index.js 內，第一行加入 ```import './index.css';```
+
+即可實際使用
+
+## 5. 不加灌 css loader 的其他作法
+
+可在 dist 資料夾下的 index.html ， ```<head></head> ``` 內部加入 ```<link rel="stylesheet" href="css/index.css"> ```
+此時需注意，放 css 檔案的資料夾，需要在 dist 資料夾的目錄下，否則開網頁時無法載入 css ，會有以下錯誤
+```Refused to apply style from 'http://xxxx/xxxx/css/index.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.```
+
 ## ------------------- 使用 React Router 功能 -------------------
 
 ## 1. 用 React Router 功能
