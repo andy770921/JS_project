@@ -343,6 +343,7 @@ module.exports = {
 };
 ```
 ## 3. 確認 package.json 內，是否有灌到 css-loader 及 style-loader
+若有灌到，會寫在 "devDependencies" 裡面  
 ```
 "devDependencies": {
    "css-loader": "^3.2.0",
@@ -365,7 +366,7 @@ module.exports = {
   
 ```Refused to apply style from 'http://xxxx/xxxx/css/index.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.```  
 
-## ------------------- 使用 React Router 功能 -------------------
+## ------------------- 使用 React Router 功能 ，配合 live server -------------------
 
 ## 1. 用 React Router 功能
 1. terminal 中，cd 到專案資料夾
@@ -462,3 +463,35 @@ export default NavbarUi;
 此時，用 live server 開啟 index.html 首頁，網址為```http://127.0.0.1:5500/index.html```，無法渲染出 {AllUi} 
 在```http://127.0.0.1:5500```，以及點擊 navbar 皆可運作
 此外，有以下問題仍存在: 直接打網址```http://127.0.0.1:5500/ongoing```網頁會顯示 ```Cannot GET /ongoing```
+
+## ------------------- 使用 webpack 內建的 server ，不用 live server -------------------
+## 1. 終端機打指令如下
+```npm install --save-dev webpack-dev-server```  
+Ref 官方文件左列 Development 下的 Using webpack-dev-server : https://webpack.js.org/guides/development/#using-webpack-dev-server
+## 2. webpack.config.js 新增 devServer如下
+```
+module.exports = {
+  entry: './src/index.js',  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: 'main.js'
+  },
+  devServer: {
+    contentBase: "./dist",
+  }
+};
+
+```
+## 3. package.json 新增 script 指令如下
+
+```
+"scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "watch": "webpack --watch",
+      "start": "webpack-dev-server --open",
+      "build": "webpack"
+    }
+
+```
+
+## 4. 開發時打指令 npm run start 即可運作 server
