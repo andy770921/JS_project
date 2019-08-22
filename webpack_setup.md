@@ -720,3 +720,60 @@ const rootReducer = (state = initState, action) => {
 
 export default rootReducer;
 ```
+## --------------- 補充 : 同專案一次製造兩個 Html ---------------
+
+## 1. 下載 html-webpack-plugin
+Ref: https://www.npmjs.com/package/html-webpack-plugin  
+終端機輸入指令```npm i --save-dev html-webpack-plugin```
+## 2. webpack.config.js 新增 plugins、output filename 及 entry 設定如下
+```js
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  entry: { main: './src/index.js', gameEntry: './src/secondEntry.js'},  
+  output: {
+    path: path.resolve(__dirname, 'dist'), 
+    filename: '[name].js',
+  },
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}, 
+      { test: /\.css$/i, use: [{loader: "style-loader"}, {loader: "css-loader", options: {modules: false}}]}
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      title: "Todo's",
+      template: './src/template.html',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'game.html',
+      title: 'Game Page Title',
+      template: './src/template.html',
+      chunks: ['gameEntry']
+    })
+  ]
+  
+};
+```
+說明: 輸出時會用兩份高階 js 檔，各自輸出兩份 低階打包好的 js 檔及 html 檔  
+index.js 輸出 main.js 及 index.html  
+secondEntry.js 輸出 gameEntry.js 及 game.html  
+## 3. src 資料夾下，新增模板 template.html ，內容可設定如下
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
+```
