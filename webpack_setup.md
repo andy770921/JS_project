@@ -416,6 +416,12 @@ const NavbarUi = () => {
 }
 export default NavbarUi;
 ```
+5. 補充資料```component={AllUi}```的寫法，有三種方式: https://reacttraining.com/react-router/web/api/Route  
+6. 若要傳 prop 值進去 component ，可用以下寫法。第一行為傳值寫法，第二行為不傳值寫法    
+```js
+<Route exact path="/" component={props => <AllUi {...props} extra={this.state.todos} />}/>
+<Route path="/ongoing" component={OngoingUi} />
+ ```
 ## 2. 此時會發生問題: 
 進入的首頁為 ```http://127.0.0.1:5500/dist/index.html```  
 點擊 navbar 的 ongoing 按鈕後，網址換成 ```http://127.0.0.1:5500/ongoing``` ，網頁出現 cannot GET /ongoing  
