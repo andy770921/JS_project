@@ -778,3 +778,21 @@ secondEntry.js 輸出 gameEntry.js 及 game.html
 </body>
 </html>
 ```
+## 3. src 資料夾下，新增一份 secondEntry.js ，內容可設定如下
+```js
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+
+class SecondApp extends Component {
+    render() {
+        return (
+            <div>
+                <h1> Game Page </h1>
+            </div>
+        )
+    }
+}
+
+
+ReactDOM.render(<SecondApp />, document.querySelector("#root"));
+```
