@@ -604,3 +604,32 @@ const mapStoreToProps = (state) => {
 export default connect(mapStoreToProps)(Home);
 ```
 看看 console.log 有沒有出現 ```[假資料]```
+
+## 10. 改資料: 在改資料的 js 檔新增如下 
+
+比如，刪除 id 是一號的，改資料的 js 檔如下 
+```js
+class Home extends React.Component {
+  handleClick = () => { this.props.deleteTodo(1) }
+  render() { <button onClick="this.handleClick"> Delete </button> }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return { deleteTodo : id => { dispatch({ type: "DELETE_TODO", id : id }) } };
+}
+
+export default connect(mapDispatchToProps)(Home);
+```
+rootReducer.js 檔新增如下  
+```js
+const initState = {
+    todos : [假資料]
+};
+
+const rootReducer = ( state = initState, action) => {
+    console.log(action);
+    return state;
+}
+
+export default rootReducer;
+```
