@@ -170,7 +170,7 @@ dist 資料夾下，新增檔案 index.html 如下
  
 src 資料夾下，新增檔案 index.js 如下
  
- ```
+```js
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -190,7 +190,7 @@ Ref: https://babeljs.io/setup#installation
 ## 5. 設定及灌好 Babel - 2
 
 在 webpack.config.js 內，加入 module:{  } 的設定
-```
+```js
 const path = require('path');
 
 module.exports = {
@@ -207,7 +207,7 @@ module.exports = {
 如下
 
 
-```
+```js
 const path = require('path');
 
 module.exports = {
@@ -233,7 +233,7 @@ module.exports = {
 
 在根目錄下創檔案，檔名是 ```.babelrc```，檔案內文若照著網頁寫，會如下
 
-```
+```js
 {
   "presets": ["@babel/preset-env"]
 }
@@ -241,7 +241,7 @@ module.exports = {
 
 需要改為
 
-```
+```js
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
@@ -250,7 +250,7 @@ module.exports = {
 ## 8. 測試灌好的 Babel 
 
 檔案 index.js 內容改為以下，存檔後再於終端機下指令 npm run build ，測試看看能否運作
-```
+```js
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -261,7 +261,7 @@ ReactDOM.render(element, document.querySelector("#root"));
 ## 9. 為了 state 的語法，再灌 Babel plug-in
 
 為了 index.js 使用 state = { } 的語法，如下例，要進一步加掛 Babel plug-in
-```
+```js
 class App extends React.Component {
     state = {
         name: "Ryu",
@@ -270,7 +270,7 @@ class App extends React.Component {
 ```
 在終端機，打以下指令```npm install @babel/plugin-proposal-class-properties --save-dev```
 再在檔案 ```.babelrc```，中，內容改成如下
-```
+```js
 {
     "presets": ["@babel/preset-env", "@babel/preset-react"],
     "plugins": ["@babel/plugin-proposal-class-properties"]
@@ -280,7 +280,7 @@ class App extends React.Component {
 ## 10. 測試灌好的 Babel plug-in 是否成功
 
 檔案 index.js 內容改為以下，存檔後再於終端機下指令 npm run build ，測試看看能否運作
-```
+```js
 import React from "react";
 import ReactDOM from "react-dom";
 
@@ -312,7 +312,7 @@ Ref: https://github.com/webpack-contrib/css-loader
 
 ## 2. 在 webpack.config.js 內，加入 module:{  } 的設定
 原:  
-```
+```js
 module.exports = {
   entry: './src/index.js',  
   output: {
@@ -327,7 +327,7 @@ module.exports = {
 };
 ```
 加入後:    
-```
+```js
 module.exports = {
   entry: './src/index.js',  
   output: {
@@ -344,7 +344,7 @@ module.exports = {
 ```
 ## 3. 確認 package.json 內，是否有灌到 css-loader 及 style-loader
 若有灌到，會寫在 "devDependencies" 裡面  
-```
+```js
 "devDependencies": {
    "css-loader": "^3.2.0",
    "style-loader": "^1.0.0",
@@ -454,13 +454,13 @@ export default NavbarUi;
 1. 點選 VS Code 左上角檔案 -> 喜好設定 -> 設定，搜尋 liveServer.settings
 2. 點選 在 setting.json 內編輯
 3. 將設定由原先
-```
+```js
 {
     "liveServer.settings.donotShowInfoMsg": true,
 }
 ```
 改為
-```
+```js
 {
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.root": "/dist/"
@@ -475,7 +475,7 @@ export default NavbarUi;
 ```npm install --save-dev webpack-dev-server```  
 Ref 官方文件左列 Development 下的 Using webpack-dev-server : https://webpack.js.org/guides/development/#using-webpack-dev-server
 ## 2. webpack.config.js 新增 devServer 如下
-```
+```js
 module.exports = {
   entry: './src/index.js',  
   output: {
@@ -490,7 +490,7 @@ module.exports = {
 ```
 ## 3. package.json 新增 script 指令如下
 
-```
+```js
 "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "watch": "webpack --watch",
@@ -763,6 +763,7 @@ module.exports = {
 index.js 輸出 main.js 及 index.html  
 secondEntry.js 輸出 gameEntry.js 及 game.html  
 ## 3. src 資料夾下，新增模板 template.html ，內容可設定如下
+標題會隨著 webpack.config.js 內的 title 設定而變
 ```html
 <!DOCTYPE html>
 <html lang="en">
