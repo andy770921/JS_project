@@ -643,9 +643,9 @@ export default rootReducer;
 
 ## 11. 改資料 -2 : 子層 Element，可用 connect 在輸出給父層 ，在改資料的 js 檔新增如下 
 
-比如，刪除 id 是一號的，改資料的 js 檔如下 
-Note: ```connect(null, mapDispatchToProps)(Home)```寫 ```null``` 是因為使用```mapDispatchToProps```卻沒使用```mapStateToProps```  
-若同時使用```mapStateToProps```，要把 ```null``` 換成```mapStateToProps```
+比如，刪除 id 是一號的，改資料的 js 檔如下  
+Note: ```connect(null, mapDispatchToProps)(Home)```寫 ```null``` 是因為使用```mapDispatchToProps```卻沒使用```mapStateToProps```   
+若同時使用```mapStateToProps```，要把 ```null``` 換成```mapStateToProps```  
 ```js
 class Home extends React.Component {
   handleClick = () => { this.props.deleteTodo(1) }
