@@ -641,7 +641,7 @@ export default rootReducer;
 ```
 測試: 點擊按鈕後，console 會出現```{type: "DELETE_TODO", id: 2}```
 
-## 11. 改資料 - 2 : 子層 Element，可用 connect 在輸出給父層 ，在改資料的 js 檔新增如下 
+## 11. 改資料 - 2 : 子層 Element，可用 connect 在 export 時綁自己，會輸出 prop 給自己。在改資料的 js 檔新增如下 
 
 比如，刪除 id 是一號的，改資料的 js 檔如下  
 Note: ```connect(null, mapDispatchToProps)(Home)```寫 ```null``` 是因為使用```mapDispatchToProps```卻沒使用```mapStateToProps```   
