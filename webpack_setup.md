@@ -778,7 +778,7 @@ secondEntry.js 輸出 gameEntry.js 及 game.html
 </body>
 </html>
 ```
-## 3. src 資料夾下，新增一份 secondEntry.js ，內容可設定如下
+## 4. src 資料夾下，新增一份 secondEntry.js ，內容可設定如下
 ```js
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
@@ -796,3 +796,4 @@ class SecondApp extends Component {
 
 ReactDOM.render(<SecondApp />, document.querySelector("#root"));
 ```
+## 5. 終端機輸入指令 npm run build ， 完工
