@@ -611,7 +611,7 @@ export default connect(mapStoreToProps)(Home);
 ```js
 class Home extends React.Component {
   handleClick = () => { this.props.deleteTodo(1) }
-  render() { <button onClick="this.handleClick"> Delete </button> }
+  render() { <button onClick={this.handleClick} > Delete </button> }
 }
 
 const mapDispatchToProps = (dispatch) => {
