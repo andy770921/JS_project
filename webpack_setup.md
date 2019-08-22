@@ -605,7 +605,7 @@ export default connect(mapStoreToProps)(Home);
 ```
 看看 console.log 有沒有出現 ```[假資料]```
 
-## 10. 改資料 -1 : 最高層的 Element ，直接在該 js 檔 class 內新增如下 
+## 10. 改資料 - 1 : 最高層的 Element ，直接在該 js 檔 class 內新增如下 
 比如，刪除 id 是二號的，index.js 檔如下 
 
 ```js
@@ -641,7 +641,7 @@ export default rootReducer;
 ```
 測試: 點擊按鈕後，console 會出現```{type: "DELETE_TODO", id: 2}```
 
-## 11. 改資料 -2 : 子層 Element，可用 connect 在輸出給父層 ，在改資料的 js 檔新增如下 
+## 11. 改資料 - 2 : 子層 Element，可用 connect 在輸出給父層 ，在改資料的 js 檔新增如下 
 
 比如，刪除 id 是一號的，改資料的 js 檔如下  
 Note: ```connect(null, mapDispatchToProps)(Home)```寫 ```null``` 是因為使用```mapDispatchToProps```卻沒使用```mapStateToProps```   
@@ -672,3 +672,45 @@ const rootReducer = ( state = initState, action) => {
 export default rootReducer;
 ```
 測試: 點擊按鈕後，console 會出現```{type: "DELETE_TODO", id: 1}```
+
+## 12. 改資料 - 3 : 調整 rootReducer.js  的內容，看要新增或刪除 store
+rootReducer.js 完整範例如下 
+```js
+const initState = {
+    todos: [
+        { content: "Buy some milk", isFinished: false, id: 1 },
+        { content: "Play games", isFinished: false, id: 2 },
+        { content: "Sleep", isFinished: true, id: 3 }
+    ]
+};
+
+const rootReducer = (state = initState, action) => {
+    let newTodoArray = [];
+    switch (action.type) {
+        case "DELETE_TODO":
+            newTodoArray = state.todos.filter(element => (action.id !== element.id));
+            break;
+        case "CONFIRM_TODO":
+            newTodoArray = state.todos.map(element => {
+                if (action.id === element.id) {
+                    element.isFinished = true;
+                    return element;
+                } else { return element; }
+            });
+            break;
+        case "ADD_TODO":
+            const newObj = { content: action.newTodoContent, isFinished: false, id: parseInt(Math.random() * 1000000) };
+            newTodoArray = [...state.todos, newObj];
+            break;
+        default:
+            return state;
+    }
+
+    return {
+        ...state,
+        todos: newTodoArray
+    }
+}
+
+export default rootReducer;
+```
