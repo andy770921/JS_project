@@ -605,9 +605,47 @@ export default connect(mapStoreToProps)(Home);
 ```
 看看 console.log 有沒有出現 ```[假資料]```
 
-## 10. 改資料: 在改資料的 js 檔新增如下 
+## 10. 改資料 -1 : 最高層的 Element ，直接在該 js 檔 class 內新增如下 
+比如，刪除 id 是二號的，index.js 檔如下 
+
+```js
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import rootReducer from "./reducers/rootReducer";
+
+const store = createStore(rootReducer);
+
+class App extends React.Component {
+    handleClick = (id) => { store.dispatch({ type: "DELETE_TODO", id : id }) }
+    render() {
+        return (
+           <button onClick={() => (this.handleClick(2))}> Delete </button>
+        )
+    }
+}
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector("#root"));
+```
+rootReducer.js 檔如下  
+```js
+const initState = {
+    todos : [假資料]
+};
+
+const rootReducer = ( state = initState, action) => {
+    console.log(action);
+    return state;
+}
+
+export default rootReducer;
+```
+測試: 點擊按鈕後，console 會出現```{type: "DELETE_TODO", id: 2}```
+
+## 11. 改資料 -2 : 子層 Element，可用 connect 在輸出給父層 ，在改資料的 js 檔新增如下 
 
 比如，刪除 id 是一號的，改資料的 js 檔如下 
+Note: ```connect(null, mapDispatchToProps)(Home)```寫 ```null``` 是因為使用```mapDispatchToProps```卻沒使用```mapStateToProps```  
+若同時使用```mapStateToProps```，要把 ```null``` 換成```mapStateToProps```
 ```js
 class Home extends React.Component {
   handleClick = () => { this.props.deleteTodo(1) }
@@ -618,7 +656,7 @@ const mapDispatchToProps = (dispatch) => {
     return { deleteTodo : id => { dispatch({ type: "DELETE_TODO", id : id }) } };
 }
 
-export default connect(mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home);
 ```
 rootReducer.js 檔新增如下  
 ```js
@@ -633,3 +671,4 @@ const rootReducer = ( state = initState, action) => {
 
 export default rootReducer;
 ```
+測試: 點擊按鈕後，console 會出現```{type: "DELETE_TODO", id: 1}```
