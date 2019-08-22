@@ -152,7 +152,7 @@ https://hackmd.io/LFKDc8N7TV64AkS0aVNSuw?fbclid=IwAR0Ce_5el6D08bHJpzG7qY45DE95HL
 ## 3. 測試 React
 
 dist 資料夾下，新增檔案 index.html 如下
- ```
+ ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
