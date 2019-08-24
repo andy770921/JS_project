@@ -602,7 +602,7 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 
 class Home extends React.Component {
-  render() { console.log(this.props) }
+  render() { console.log(this.props.todos) }
 }
 const mapStoreToProps = (state) => {
   return { todos : state.todos };
