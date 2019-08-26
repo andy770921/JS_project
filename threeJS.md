@@ -89,7 +89,7 @@ class ThreeScene extends Component {
 export default ThreeScene;
 ```
 Ref: https://medium.com/@colesayershapiro/using-three-js-in-react-6cb71e87bdf4  
-## 3. [不用於 React] 起始步驟: 初始化場景，設定場景、燈、相機視角
+## 3. [不用於 React] 起始步驟: 初始化場景，設定場景、燈、相機視角、渲染迴圈 ( 或名稱是動畫迴圈 )
 ```html
 <!DOCTYPE html>
 <html>
@@ -117,6 +117,11 @@ Ref: https://medium.com/@colesayershapiro/using-three-js-in-react-6cb71e87bdf4
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    function render() {
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+    }
+    render();
 </body>
 </html>
 ```
