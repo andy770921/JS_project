@@ -90,6 +90,7 @@ export default ThreeScene;
 ```
 Ref: https://medium.com/@colesayershapiro/using-three-js-in-react-6cb71e87bdf4  
 ## 3. [不用於 React] 起始步驟: 初始化場景，設定場景、燈、相機視角、渲染迴圈 ( 或名稱是動畫迴圈 )
+Rhttps://github.com/kriscfoster/threejs-import-from-blender/blob/master/public/index.html
 ```html
 <!DOCTYPE html>
 <html>
@@ -125,7 +126,26 @@ Ref: https://medium.com/@colesayershapiro/using-three-js-in-react-6cb71e87bdf4
 </body>
 </html>
 ```
-
+載入 3D 物件及 外觀材料
+```
+ const objLoader = new THREE.OBJLoader();
+    objLoader.setPath('/blender-files/');
+    const mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setPath('/blender-files/');
+    new Promise((resolve) => {
+      mtlLoader.load('cube.mtl', (materials) => {
+        resolve(materials);
+      });
+    })
+    .then((materials) => {
+      materials.preload();
+      objLoader.setMaterials(materials);
+      objLoader.load('cube.obj', (object) => {
+        cube = object;
+        scene.add(object);
+      });
+    });
+```
 
 初始化 js -2
 ```js
@@ -198,3 +218,4 @@ window.addEventListener('resize', onWindowResize, false);
 init();
 animate();
 ```
+Ref: https://codepen.io/bradtraversy/pen/VOpZvp?fbclid=IwAR2MhQ4rXKEmETgA_r-I-6m3Lj2guS9YDib1upxjA9iH9alJL1eXLHwOWtU
