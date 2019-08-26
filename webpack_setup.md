@@ -306,9 +306,11 @@ ReactDOM.render(<App />, document.querySelector("#root"));
 
 ## ------------------- 使用 import css 語法 -------------------
 ## 1. 終端機輸入指令，灌 css loader 及 style loader  
-輸入```npm install --save-dev css-loader```  
+輸入```npm install --save-dev css-loader```    
+再輸入```npm install --save-dev style-loader```   
 
 Ref: https://github.com/webpack-contrib/css-loader  
+Ref: https://github.com/webpack-contrib/style-loader  
 
 ## 2. 在 webpack.config.js 內，加入 module:{  } 的設定
 原:  
