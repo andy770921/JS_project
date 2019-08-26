@@ -1,5 +1,6 @@
 # Three.js 觀念
 
+
 ## 1. Webpack 安裝
 輸入```npm install three --save```  
 輸入```npm install react-three --save```  
@@ -90,7 +91,8 @@ export default ThreeScene;
 ```
 Ref: https://medium.com/@colesayershapiro/using-three-js-in-react-6cb71e87bdf4  
 ## 3. [不用於 React] 起始步驟: 初始化場景，設定場景、燈、相機視角、渲染迴圈 ( 或名稱是動畫迴圈 )
-Rhttps://github.com/kriscfoster/threejs-import-from-blender/blob/master/public/index.html
+Three 原始檔的 JS 引入 Ref: https://github.com/mrdoob/three.js/tree/master
+Ref: https://github.com/kriscfoster/threejs-import-from-blender/blob/master/public/index.html
 ```html
 <!DOCTYPE html>
 <html>
@@ -144,6 +146,32 @@ Rhttps://github.com/kriscfoster/threejs-import-from-blender/blob/master/public/i
         scene.add(object);
       });
     });
+```
+設定 載入到畫面中的 obj 旋轉
+```
+    let cube;
+    new Promise((resolve) => {
+      mtlLoader.load('cube.mtl', (materials) => {
+        resolve(materials);
+      });
+    })
+    .then((materials) => {
+      materials.preload();
+      objLoader.setMaterials(materials);
+      objLoader.load('cube.obj', (object) => {
+        cube = object;
+        scene.add(object);
+      });
+    });
+    function render() {
+      if (cube) {
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      }
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+    }
+    render();
 ```
 
 初始化 js -2
