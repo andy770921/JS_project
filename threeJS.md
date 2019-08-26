@@ -1,9 +1,11 @@
 # Three.js 觀念
 
 ## 1. Webpack 安裝
-輸入```npm install three --save```
-輸入```npm install react-three --save```
+輸入```npm install three --save```  
+輸入```npm install react-three --save```  
+輸入```npm install three-orbitcontrols```  
 Ref: https://github.com/Izzimach/react-three  
+Ref: https://www.npmjs.com/package/three-orbitcontrols  
 ## 2. index.js 修改如下，及 新增 three_scene.js
 index.js
 ```js
