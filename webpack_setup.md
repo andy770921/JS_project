@@ -291,7 +291,7 @@ class App extends React.Component {
     }
     render () {
         return (
-            <div className="app-content">
+            <div>
                 <p> My name is { this.state.name } and I am { this.state.age }. </p>
             </div>
         )
