@@ -141,7 +141,6 @@ Rhttps://github.com/kriscfoster/threejs-import-from-blender/blob/master/public/i
       materials.preload();
       objLoader.setMaterials(materials);
       objLoader.load('cube.obj', (object) => {
-        cube = object;
         scene.add(object);
       });
     });
