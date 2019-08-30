@@ -248,7 +248,7 @@ animate();
 Ref: https://codepen.io/bradtraversy/pen/VOpZvp?fbclid=IwAR2MhQ4rXKEmETgA_r-I-6m3Lj2guS9YDib1upxjA9iH9alJL1eXLHwOWtU
 
 
-## 4. [可用於 React] 加入物體等速移動、等速旋轉，或是加速度移動 (重力)
+## 4. [可用於 React] 加入單一軸 ( x 軸 ) 物體彈跳，包含等速移動、等速旋轉，及重力 (加速度移動)
 Ref: https://stackoverflow.com/questions/48130461/how-to-make-my-character-jump-with-gravity  
 ```js
 import React, { Component } from 'react';
@@ -265,14 +265,14 @@ let jumpInfo = {
     dy: 0,
     onGround: true,
     triggerJump: false,
-    jumpPower: -1,  // power of jump smaller jumps higher eg -10 smaller than -5
-    moveSpeed: 0.72, // moveSpeed: 0.252, 0.501, 0.72 
+    jumpPower: -1,  // vertical velocity. Negative sign is because vertical velocity direction is opposite to gravity.
+    moveSpeed: 0.72, // horizontal velocity 
     rotationSpeed: -0.063,
     world: {
-        gravity: 0.08, // strength per frame of gravity
-        drag: 1, // 0.999 play with this value to change drag
-        // groundDrag: 0.9, // play with this value to change ground movement
-        ground: 17.2 //17.2, 18.6
+        gravity: 0.08, // strength per frame of gravity, acceleration in other words
+        drag: 0.999, //  play with this value to change drag
+        // groundDrag: 0.9,  play with this value to change ground movement
+        ground: 17.2 
     }
 };
 
