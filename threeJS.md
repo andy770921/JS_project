@@ -248,7 +248,7 @@ animate();
 Ref: https://codepen.io/bradtraversy/pen/VOpZvp?fbclid=IwAR2MhQ4rXKEmETgA_r-I-6m3Lj2guS9YDib1upxjA9iH9alJL1eXLHwOWtU
 
 
-## 4. [可用於 React] 加入物體等速移動，或是加速度移動 (重力)
+## 4. [可用於 React] 加入物體等速移動、等速旋轉，或是加速度移動 (重力)
 Ref: https://stackoverflow.com/questions/48130461/how-to-make-my-character-jump-with-gravity  
 ```js
 import React, { Component } from 'react';
