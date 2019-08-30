@@ -26,7 +26,7 @@
 6. React相關
 - ES7 React/Redux/GraphQL/React-Native snippets (快速建立 component, 加入 import 等 )
 - Sublime Babel (輔助判斷JSX語法是否正確)
-- Simple React Snippets ( net ninja 推薦， cc 可快速建立 component, imr 可加入 import 等 )
+- Simple React Snippets ( net ninja 推薦， cc 可快速建立 component, imr 或 imrc 可加入 import 等 )
 ## 快捷鍵  
 
 1. F1 可開啟命令輸入欄
