@@ -11,10 +11,10 @@
 - Live Server
 - Live Sass Compiler
 2. 版本控制類
-- Gitlens (看到每個人、何時編輯哪行code，多人開發用)
-- Gitignore (會找到兩個，要看內容介紹，下載右鍵點擊功能的)
+- Gitlens ( 看到每個人、何時編輯哪行 code ，多人開發用 )
+- Gitignore ( 會找到兩個，要看內容介紹，下載右鍵點擊功能的 )
 - Git History
-- Git-autoconfig (多個Github帳號時切換方便)
+- Git-autoconfig ( 多個 Github 帳號時切換方便 )
 3. 存檔自動縮排
 - JS, CSS, HTML Formatter
 4. Node快速執行
@@ -24,14 +24,15 @@
 - SCSS Refactoring (快速命名SCSS中的變數)
 - ESLint (引入國際規範紅底線)
 6. React相關
-- ES7 React/Redux/GraphQL/React-Native snippets (快速建立component, 加入import等)
+- ES7 React/Redux/GraphQL/React-Native snippets (快速建立 component, 加入 import 等 )
 - Sublime Babel (輔助判斷JSX語法是否正確)
+- Simple React Snippets ( net ninja 推薦，快速建立 component, 加入 import 等 )
 ## 快捷鍵  
 
 1. F1 可開啟命令輸入欄
 2. alt + shift + F 可調整縮排
 3. 若安裝Node exec，可在目前.js檔案按 F8 執行， F9取消執行
-4. ctrl+`  可開啟終端機
+4. ```ctrl+` ``` 可開啟終端機
 5. 終端機執行中時，按ctrl + c 可停止執行
 5. 可按html檔內文處，右鍵，選Open with live server即時呈現
 6. 檔案名稱按右鍵，在自動生成檔選Add to .gitignore，只記錄自己的編輯檔即可
