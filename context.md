@@ -70,8 +70,31 @@ class ThemeContextProvider extends Component {
  
 export default ThemeContextProvider;
 ```
-## 4. 測試與檢查
-看看```console.log```有沒出現存放庫中的state
+## 4. 子層元件加入 import 及 static contextType = ThemeContext; 利用 this.context 取出資料庫 state 資料
+
 ```js
-console.log(this.props);
+import React, { Component } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+
+class Navbar extends Component {
+  static contextType = ThemeContext;
+  render() {
+    console.log(this.context);
+    const { isLightTheme, light, dark } = this.context;
+    const theme = isLightTheme ? light : dark;
+    return ( 
+      <nav style={{ background: theme.ui, color: theme.syntax }}>
+        <h1>Context App</h1>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    );
+  }
+}
+ 
+export default Navbar;
 ```
+## 5. 
