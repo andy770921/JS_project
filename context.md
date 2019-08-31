@@ -69,7 +69,7 @@ class ThemeContextProvider extends Component {
  
 export default ThemeContextProvider;
 ```
-## 4. 子層元件加入 import 及 static contextType = ThemeContext; 利用 this.context 取出資料庫 state 資料
+## 4. 子層組件加入 import 及 static contextType = ThemeContext; 利用 this.context 取出資料庫 state 資料
 Navbar.js 內打如下程式碼
 ```js
 import React, { Component } from 'react';
@@ -97,4 +97,33 @@ class Navbar extends Component {
 export default Navbar;
 ```
 看看 console.log 是否如預期出現資料庫的 state
-## 5. 
+## 5. 取出資料庫 state 資料方法二: 用 <ThemeContext.Consumer>
+- 與方法一比較的優點: 1. 可在 fucntion component 使用 2. 可在同個子組件加入不同的 context
+```js
+import React, { Component } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+
+class Navbar extends Component {
+  // static contextType = ThemeContext;
+  render() {
+    return ( 
+      <ThemeContext.Consumer>{(context) => {
+        const { isLightTheme, light, dark } = context;
+        const theme = isLightTheme ? light : dark;
+        return (
+          <nav style={{ background: theme.ui, color: theme.syntax }}>
+            <h1>Context App</h1>
+            <ul>
+              <li>Home</li>
+              <li>About</li>
+              <li>Contact</li>
+            </ul>
+          </nav>
+        )
+      }}</ThemeContext.Consumer>
+    );
+  }
+}
+ 
+export default Navbar;
+```
