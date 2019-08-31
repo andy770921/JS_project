@@ -29,7 +29,6 @@ import React, { Component } from 'react';
 
 class Navbar extends Component {
   render() { 
-    console.log(this.props);
     return ( 
       <nav>
         <h1>Context App</h1>
@@ -97,4 +96,5 @@ class Navbar extends Component {
  
 export default Navbar;
 ```
+看看 console.log 是否如預期出現資料庫的 state
 ## 5. 
