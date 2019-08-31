@@ -46,8 +46,8 @@ class Navbar extends Component {
 export default Navbar;
 ```
 ## 3. src 資料夾下，創 contexts 資料夾， 其下創建 ThemeContext.js 內打如下程式碼，初始化存放庫
-Note: class 可取名為 XxxxxProvider  
-Note: {{...this.state}} is used instead of {this.state} in order to pass event handler to child components along with state. it'll show on Tutorial #6 later.  
+- Note: class 可取名為 XxxxxProvider  
+- Note: {{...this.state}} is used instead of {this.state} in order to pass event handler to child components along with state. it'll show on Tutorial #6 later.  
 ```js
 import React, { Component, createContext } from 'react';
 
@@ -71,7 +71,7 @@ class ThemeContextProvider extends Component {
 export default ThemeContextProvider;
 ```
 ## 4. 子層元件加入 import 及 static contextType = ThemeContext; 利用 this.context 取出資料庫 state 資料
-
+Navbar.js 內打如下程式碼
 ```js
 import React, { Component } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
