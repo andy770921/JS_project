@@ -721,7 +721,11 @@ const rootReducer = (state = initState, action) => {
 }
 
 export default rootReducer;
+
 ```
+## 13. Redux 使用 switch 的補充，若 case 內變數重複命名報錯誤，可加上大括號解決
+https://medium.com/@e_himmelfarb/use-curly-braces-with-es6-let-and-const-in-switch-blocks-react-redux-reducers-c0b01b37d748
+
 ## --------------- 補充 : 同專案一次製造兩個 Html ---------------
 
 ## 1. 下載 html-webpack-plugin
