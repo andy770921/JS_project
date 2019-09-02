@@ -121,7 +121,7 @@ deleteNinja = (id) => {
 }
 ```
 
-## React: 修改值用法，用 array spread
+## React: 修改值用法，用 array spread / 
 - 修改值目標: a. 修改 camels 下，某 id 物件的同一層的 run 值，b. 修改 state 下，step 值
 - 在 React 下，就算不寫 levelHeight: 1.4 ，levelHeight 的值不會不見，原因為 "setState Updates are Merged"，在 Redux 特性不同， Redux 會直接將新的 state 覆寫
 - Ref: https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
