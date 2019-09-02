@@ -44,7 +44,7 @@ class Navbar extends Component {
  
 export default Navbar;
 ```
-## 3. src 資料夾下，創 contexts 資料夾， 其下創建 ThemeContext.js 內打如下程式碼，初始化存放庫
+## 3. src 資料夾下，創 contexts 資料夾， 其下創建 ThemeContext.js 內打如下程式碼，初始化存放庫，與設定傳出狀態。進一步設定，也可傳出函數
 - Note: class 可取名為 XxxxxProvider  
 - Note: {{...this.state}} is used instead of {this.state} in order to pass event handler to child components along with state. it'll show on Tutorial #6 later.  
 ```js
@@ -69,7 +69,33 @@ class ThemeContextProvider extends Component {
  
 export default ThemeContextProvider;
 ```
-## 4. 子層組件加入 import 及 static contextType = ThemeContext; 利用 this.context 取出資料庫 state 資料
+進一步設定: 
+```js
+import React, { Component, createContext } from 'react';
+
+export const ThemeContext = createContext();
+
+class ThemeContextProvider extends Component {
+  state = {
+    isLightTheme: true,
+    light: { syntax: '#555', ui: '#ddd', bg: '#eee' },
+    dark: { syntax: '#ddd', ui: '#333', bg: '#555'}
+  }
+  toggleTheme= () => {
+    this.setState({ isLightTheme: !this.state.isLightTheme });
+  }
+  render() { 
+    return (
+      <ThemeContext.Provider value={{...this.state}, toggleTheme: this.toggleTheme}>
+        {this.props.children}
+      </ThemeContext.Provider>
+    );
+  }
+}
+ 
+export default ThemeContextProvider;
+```
+## 4. 子層組件加入 import 及 static contextType = ThemeContext; 利用 this.context 取出資料庫 state 資料，或是取出函數
 Navbar.js 內打如下程式碼
 ```js
 import React, { Component } from 'react';
@@ -79,11 +105,12 @@ class Navbar extends Component {
   static contextType = ThemeContext;
   render() {
     console.log(this.context);
-    const { isLightTheme, light, dark } = this.context;
+    const { isLightTheme, light, dark, toggleTheme } = this.context;
     const theme = isLightTheme ? light : dark;
     return ( 
       <nav style={{ background: theme.ui, color: theme.syntax }}>
         <h1>Context App</h1>
+        <button onClick={toggleTheme}>Toggle the theme</button>
         <ul>
           <li>Home</li>
           <li>About</li>
