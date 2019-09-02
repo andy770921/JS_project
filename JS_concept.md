@@ -67,9 +67,8 @@ state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
 }
 addNinja = (newObj) => {
-  ninja.id = Math.random();
   this.setState({
-    ninjas: this.state.ninjas.push(newObj)
+    ninjas: prevState.ninjas.push(newObj)
   });
 }
 ```
@@ -79,11 +78,21 @@ state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
 }
 addNinja = (newObj) => {
-  ninja.id = Math.random();
   let newNinjas = [...this.state.ninjas, newObj];
   this.setState({
     ninjas: newNinjas
   });
+}
+```
+配合 prevState ，使用 array spread 寫法
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+addNinja = (newObj) => {
+  this.setState(prevState => ({
+    ninjas: [...prevState.ninjas, newObj]
+  }));
 }
 ```
 
@@ -100,7 +109,37 @@ deleteNinja = (id) => {
   });
 }
 ```
+配合 prevState ， 寫法如下
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+deleteNinja = (id) => {
+  this.setState({
+    ninjas: prevState.ninjas.filter( ninja => { return ninja.id !== id })
+  });
+}
+```
 
+## React: 修改值用法，用 array spread
+- 修改值目標: a. 修改 camels 下，某 id 物件的同一層的 run 值，b. 修改 state 下，step 值
+- 在 React 下，就算不寫 levelHeight: 1.4 ，levelHeight 的值不會不見，原因為 "setState Updates are Merged"，在 Redux 特性不同， Redux 會直接將新的 state 覆寫
+- Ref: https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
+
+```js
+state = {
+    camels: [ {camel: "object1", id: 0, run: false}, {camel: "object2", id: 1, run: false}, {camel: "object3", id: 2, run: false}],
+    step: 0,
+    levelHeight: 1.4
+}
+changeCamel = (ID) => {
+    this.setState(prevState => ({
+         camels: [...prevState.camels.filter(element => (element.id !== ID)), 
+                  { ...prevState.camels.find(element => (element.id === ID)), ...{ run: true } }],
+         step: 2,
+    }));
+}
+```
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
