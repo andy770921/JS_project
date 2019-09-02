@@ -154,3 +154,54 @@ class Navbar extends Component {
  
 export default Navbar;
 ```
+## 6. 可使用複數 context 資料庫 
+contexts 資料夾， 其下創建 AuthContext.js ，新增如下
+```js
+import React, { Component, createContext } from 'react';
+
+export const AuthContext = createContext();
+
+class AuthContextProvider extends Component {
+  state = {
+    isAuthenticated: false
+  }
+  toggleAuth = () => {
+    this.setState({ isAuthenticated: !this.state.isAuthenticated });
+  }
+  render() { 
+    return (
+      <AuthContext.Provider value={{...this.state, toggleAuth: this.toggleAuth}}>
+        {this.props.children}
+      </AuthContext.Provider>
+    );
+  }
+}
+ 
+export default AuthContextProvider;
+```
+App.js ，新增如下，包兩層```<ContextProvider>``` 即可，內外層順序沒差
+```js
+import React from 'react';
+import BookList from './components/BookList';
+import Navbar from './components/Navbar';
+import ThemeContextProvider from './contexts/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
+import AuthContextProvider from './contexts/AuthContext';
+
+function App() {
+  return (
+    <div className="App">
+      <ThemeContextProvider>
+        <AuthContextProvider>
+          <Navbar />
+          <BookList />
+          <ThemeToggle />
+        </AuthContextProvider>
+      </ThemeContextProvider>
+    </div>
+  );
+}
+
+export default App;
+```
+## 7. 
