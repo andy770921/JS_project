@@ -135,7 +135,7 @@ state = {
     step: 0,
     levelHeight: 1.4
 }
-changeCamel = (ID) => {
+changeS = (ID) => {
     this.setState(prevState => ({
          camels: [...prevState.camels.filter(element => (element.id !== ID)), 
                   { ...prevState.camels.find(element => (element.id === ID)), ...{ run: true, boxNum: 1 } }],
