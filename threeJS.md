@@ -619,3 +619,4 @@ https://github.com/schteppe/cannon.js
 https://aotu.io/notes/2018/10/18/cannonjs/index.html
 - 比較好懂的教學之二
 https://ithelp.ithome.com.tw/articles/10208078
+- debug 模式出現邊框: https://github.com/schteppe/cannon.js/tree/master/tools/threejs
