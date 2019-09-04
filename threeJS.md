@@ -620,3 +620,4 @@ https://aotu.io/notes/2018/10/18/cannonjs/index.html
 - 比較好懂的教學之二
 https://ithelp.ithome.com.tw/articles/10208078
 - debug 模式出現邊框: https://github.com/schteppe/cannon.js/tree/master/tools/threejs
+- debug 模式要先複製此串 JS code 在自己的程式碼，才能用:https://github.com/schteppe/cannon.js/blob/master/tools/threejs/CannonDebugRenderer.js
