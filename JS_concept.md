@@ -160,7 +160,7 @@ this.state = {
        ],
      ranklist: [],
      start: false,
-     userName: “”,
+     userName: "",
      useStep: 0
 };
 
@@ -181,7 +181,7 @@ this.setState((prestate)=> {
      },()=>{
      // check win
      if(this.checkWin()){
-         alert(this.state.userName + “, you win ٩(^ᴗ^)۶“);
+         alert(this.state.userName + ", you win ٩(^ᴗ^)۶");
          this.endGame();
      }
 });
