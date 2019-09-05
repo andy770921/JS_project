@@ -336,22 +336,11 @@ class ThreeScene extends Component {
         this.cube.position.set(12, cubeDepth, 12);
         this.scene.add(this.cube);
 
-        this.cube3 = new THREE.Mesh(geometry, material);
-        this.cube3.position.set(12 - 2 * cubedlength, cubeDepth, 12);
-        this.scene.add(this.cube3);
-
-        this.cube5 = new THREE.Mesh(geometry, material);
-        this.cube5.position.set(12 - 4 * cubedlength, cubeDepth, 12);
-        this.scene.add(this.cube5);
 
         // ADD CUBE2
         this.cube2 = new THREE.Mesh(geometry, materialTex);
         this.cube2.position.set(12 - cubedlength, cubeDepth, 12);
         this.scene.add(this.cube2);
-
-        this.cube4 = new THREE.Mesh(geometry, materialTex);
-        this.cube4.position.set(12 - 3 * cubedlength, cubeDepth, 12);
-        this.scene.add(this.cube4);
 
         // ADD BACKGROUND
         this.objLoader = new OBJLoader();
