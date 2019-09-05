@@ -143,6 +143,51 @@ changeState = (ID) => {
     }));
 }
 ```
+## React: 修改值用法 - 2 
+```js
+this.state = {
+    size: 3,
+    tileArray: [
+         {row:0 , col:0 , value:1},
+         {row:0 , col:1 , value:2},
+         {row:0 , col:2 , value:3},
+         {row:1 , col:0 , value:4},
+         {row:1 , col:1 , value:5},
+         {row:1 , col:2 , value:6},
+         {row:2 , col:0 , value:7},
+         {row:2 , col:1 , value:8},
+         {row:2 , col:2 , value:9}
+       ],
+     ranklist: [],
+     start: false,
+     userName: “”,
+     useStep: 0
+};
+
+this.setState((prestate)=> {
+     if(checkTopResult || checkRightResult || checkBottomResult || checkLeftResult){
+         // update the value
+         const clickval = clickitem.value;
+         const emptyItem = prestate.tileArray.filter(item => item.value === 9)[0];
+         const emptyIndex = prestate.tileArray.indexOf(emptyItem);
+         prestate.tileArray[emptyIndex].value = clickval;
+         const itemIndex = prestate.tileArray.indexOf(clickitem);
+         prestate.tileArray[itemIndex].value = 9;
+       }
+        return{
+          tileArray: prestate.tileArray,
+          useStep: (prestate.useStep + 1)
+       }
+     },()=>{
+     // check win
+     if(this.checkWin()){
+         alert(this.state.userName + “, you win ٩(^ᴗ^)۶“);
+         this.endGame();
+     }
+});
+
+```
+
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
