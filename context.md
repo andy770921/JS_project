@@ -335,3 +335,101 @@ const NewBookForm = () => {
  
 export default NewBookForm;
 ```
+## 6. 使用 Reducer 的做法
+
+BookContext.js 移除不必要的程式碼 ，剩餘如下
+
+```js
+import React, { createContext } from 'react';
+
+export const BookContext = createContext();
+
+const BookContextProvider = (props) => {
+  const [books, setBooks] = useState([
+    {title: 'name of the wind', author: 'patrick rothfuss', id: 1},
+    {title: 'the final empire', author: 'brandon sanderson', id: 2},
+  ]);
+
+  return (
+    <BookContext.Provider value={{ books }}>
+      {props.children}
+    </BookContext.Provider>
+  );
+}
+ 
+export default BookContextProvider;
+```
+
+將 useState 改為 useRuducer，重新 import ，修改如下
+```js
+import React, { createContext, useReducer } from 'react';
+import { bookReducer } from '../reducers/bookReducer';
+
+export const BookContext = createContext();
+
+const BookContextProvider = (props) => {
+  const [books, dispatch] = useReducer(bookReducer, [
+    {title: 'name of the wind', author: 'patrick rothfuss', id: 1},
+    {title: 'the final empire', author: 'brandon sanderson', id: 2},
+  ]);
+  return (
+    <BookContext.Provider value={{ books, dispatch }}>
+      {props.children}
+    </BookContext.Provider>
+  );
+}
+ 
+export default BookContextProvider;
+```
+
+src 資料夾下新增 reducers 資料夾， 再新增 bookReducer.js，內容如下
+```js
+import uuid from 'uuid/v4';
+
+export const bookReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_BOOK':
+      return [...state, {
+        title: action.book.title, 
+        author: action.book.author, 
+        id: uuid()}
+      ]
+    case 'REMOVE_BOOK':
+      return state.filter(book => book.id !== action.id);
+    default:
+      return state;
+  }
+} 
+```
+
+
+將 components 下的 NewBookForm.js ，修改如下
+```js
+import React, { useContext, useState } from 'react';
+import { BookContext } from '../contexts/BookContext';
+
+const NewBookForm = () => {
+  const { dispatch } = useContext(BookContext);
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({ type: 'ADD_BOOK', book: { title, author }});
+    setTitle('');
+    setAuthor('');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="book title" value={title}
+        onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" placeholder="author name" value={author}
+        onChange={(e) => setAuthor(e.target.value)} />
+      <input type="submit" value="add book" />
+    </form>
+  );
+}
+ 
+export default NewBookForm;
+```
