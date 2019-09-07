@@ -206,8 +206,10 @@ export default App;
 ```
 
 # 加上 hook 的使用
-## 1. 新專案初始化資料庫，在專案新增 contexts 資料夾， 在資料夾下增檔案 BookContext.js 如下
+
+## 1. 新專案初始化資料庫及操作資料的函數，在專案新增 contexts 資料夾， 在資料夾下增檔案 BookContext.js 如下
 - 要先打指令 ```npm install uuid```，之後可用 隨機 id 產生函數
+
 ```js
 import React, { createContext, useState } from 'react';
 import uuid from 'uuid/v1';
@@ -235,5 +237,48 @@ const BookContextProvider = (props) => {
  
 export default BookContextProvider;
 ```
+## 2. app.js 修改如下，用 Provider 引入 context 的資料及函數
+```js
+import React from 'react';
+import Navbar from './components/Navbar';
+import BookContextProvider from './contexts/BookContext';
 
+function App() {
+  return (
+    <div className="App">
+      <BookContextProvider>
+        <Navbar />
+      </BookContextProvider>
+    </div>
+  );
+}
 
+export default App;
+```
+
+## 3. 在專案新增 components 資料夾， 在資料夾下增檔案 Navbar.js 如下，用 useContext 拉資料進來
+
+```js
+import React, { useContext } from 'react';
+import { BookContext } from '../contexts/BookContext';
+
+const Navbar = () => {
+  const { books } = useContext(BookContext);
+  return (
+    <div className="navbar">
+      <h1>Ninja Reading List</h1>
+      <p>Currently you have {books.length} books to get through...</p>
+    </div>
+  );
+}
+ 
+export default Navbar;
+```
+
+## 4. 確認資料是否正確傳遞
+
+網頁會出現內容
+```
+Ninja Reading List
+Currently you have 2 books to get through...
+```
