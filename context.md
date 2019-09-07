@@ -437,3 +437,28 @@ export default NewBookForm;
 ```js
 <li onClick={() => dispatch({ type: 'REMOVE_BOOK', id: book.id })}>
 ```
+
+## 7. 將資料存進 localstorage 的做法: a. 剛開始程式時，如果 localstorage 若已有值，設定預設值。b. [books] 資料刷新時，重設 localstorage
+```js
+import React, { createContext, useReducer, useEffect } from 'react';
+import { bookReducer } from '../reducers/bookReducer';
+
+export const BookContext = createContext();
+
+const BookContextProvider = (props) => {
+  const [books, dispatch] = useReducer(bookReducer, [], () => {
+    const localData = localStorage.getItem('books');
+    return localData ? JSON.parse(localData) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem('books', JSON.stringify(books));
+  }, [books]);
+  return (
+    <BookContext.Provider value={{ books, dispatch }}>
+      {props.children}
+    </BookContext.Provider>
+  );
+}
+ 
+export default BookContextProvider;
+```
