@@ -154,7 +154,7 @@ class Navbar extends Component {
  
 export default Navbar;
 ```
-## 6. 可使用複數 context 資料庫 
+## 6. 可引入用複數 context 資料庫 ， 包兩層 privider、 也可包兩層 consumer
 contexts 資料夾， 其下創建 AuthContext.js ，新增如下
 ```js
 import React, { Component, createContext } from 'react';
@@ -204,4 +204,36 @@ function App() {
 
 export default App;
 ```
-## 7. 
+
+# 加上 hook 的使用
+## 1. 新專案初始化資料庫，在專案新增 contexts 資料夾， 在資料夾下增檔案 BookContext.js 如下
+- 要先打指令 ```npm install uuid```，之後可用 隨機 id 產生函數
+```js
+import React, { createContext, useState } from 'react';
+import uuid from 'uuid/v1';
+
+export const BookContext = createContext();
+
+const BookContextProvider = (props) => {
+  const [books, setBooks] = useState([
+    {title: 'name of the wind', author: 'patrick rothfuss', id: 1},
+    {title: 'the final empire', author: 'brandon sanderson', id: 2},
+  ]);
+  const addBook = (title, author) => {
+    setBooks([...books, {title, author, id: uuid()}]);
+  };
+  const removeBook = (id) => {
+    setBooks(books.filter(book => book.id !== id));
+  }
+
+  return (
+    <BookContext.Provider value={{ books, addBook, removeBook }}>
+      {props.children}
+    </BookContext.Provider>
+  );
+}
+ 
+export default BookContextProvider;
+```
+
+
