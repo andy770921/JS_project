@@ -282,3 +282,56 @@ export default Navbar;
 Ninja Reading List
 Currently you have 2 books to get through...
 ```
+## 5. 新增資料的做法
+
+App.js 修改如下
+```js
+import React from 'react';
+import Navbar from './components/Navbar';
+import BookContextProvider from './contexts/BookContext';
+import NewBookForm from './components/NewBookForm';
+
+function App() {
+  return (
+    <div className="App">
+      <BookContextProvider>
+        <Navbar />
+        <NewBookForm />
+      </BookContextProvider>
+    </div>
+  );
+}
+
+export default App;
+```
+components 下新增 NewBookForm.js 如下
+```js
+import React, { useContext, useState } from 'react';
+import { BookContext } from '../contexts/BookContext';
+
+const NewBookForm = () => {
+  const { addBook } = useContext(BookContext);
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //console.log(title, author);
+    addBook(title, author);
+    setTitle('');
+    setAuthor('');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="book title" value={title}
+        onChange={(e) => setTitle(e.target.value)} />
+      <input type="text" placeholder="author name" value={author}
+        onChange={(e) => setAuthor(e.target.value)} />
+      <input type="submit" value="add book" />
+    </form>
+  );
+}
+ 
+export default NewBookForm;
+```
