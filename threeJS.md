@@ -621,3 +621,7 @@ https://www.youtube.com/audiolibrary/music
 
 - Facebook 音效庫
 https://www.facebook.com/creatorstudio/?reference=redirect_from_sound_collection&mode=facebook&tab=sound_collection&collection_id=all_pages&sound_collection_tab=sound_tracks
+
+## 7. 加入點擊動作
+
+https://www.youtube.com/watch?v=x68rZ_UEQPE
