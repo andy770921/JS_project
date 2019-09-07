@@ -433,3 +433,7 @@ const NewBookForm = () => {
  
 export default NewBookForm;
 ```
+也可在 JSX 中，用 in-line 寫法，將 dispatch 寫在裡面，如下
+```js
+<li onClick={() => dispatch({ type: 'REMOVE_BOOK', id: book.id })}>
+```
