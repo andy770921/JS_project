@@ -597,7 +597,7 @@ class ThreeScene extends Component {
 export default ThreeScene;
 ```
 
-## 5. [可用於 React] cannon 物理引擎相關
+## 5. Cannon 物理引擎相關
 - 首頁
 https://schteppe.github.io/cannon.js/
 - 難懂的 Docs
@@ -610,3 +610,14 @@ https://aotu.io/notes/2018/10/18/cannonjs/index.html
 https://ithelp.ithome.com.tw/articles/10208078
 - debug 模式出現邊框: https://github.com/schteppe/cannon.js/tree/master/tools/threejs
 - debug 模式要先複製此串 JS code 在自己的程式碼，才能用:https://github.com/schteppe/cannon.js/blob/master/tools/threejs/CannonDebugRenderer.js
+
+## 6. 音效相關
+
+- 音效庫大全
+https://www.pkstep.com/archives/31914
+
+- YouTube 音效庫
+https://www.youtube.com/audiolibrary/music
+
+- Facebook 音效庫
+https://www.facebook.com/creatorstudio/?reference=redirect_from_sound_collection&mode=facebook&tab=sound_collection&collection_id=all_pages&sound_collection_tab=sound_tracks
