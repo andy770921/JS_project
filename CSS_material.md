@@ -59,4 +59,4 @@
 
 ##  box shadow
 1. 簡易調整工具: https://www.cssmatic.com/box-shadow
-2. 
+2. https://css-tricks.com/almanac/properties/b/box-shadow/
