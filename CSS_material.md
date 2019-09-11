@@ -20,6 +20,8 @@
 16. loading動畫: https://codepen.io/hakimel/pen/CxliK
 17. 影片開始與結束撥放: https://codepen.io/hakimel/pen/JoNrxq
 18. 邊框: https://freefrontend.com/css-border-animations/
+19: 404: https://codepen.io/supah/pen/RrzREx
+20. 純 CSS 立體方塊旋轉: https://codepen.io/carmerano/pen/LpGfg
 ----
 
 1. 震動: https://codepen.io/elrumordelaluz/pen/pHKcC
@@ -37,6 +39,7 @@
 5. 警示閃爍: https://codepen.io/moklick/pen/tAlJB
 6. 簽名效果: https://codepen.io/ghepting/pen/xnezB
 7. 行星環繞效果: https://codepen.io/captainbrosset/pen/JoZabN
+8. 潮流字體 + box shadow: https://codepen.io/chriseisenbraun/pen/upmDB
 
 ## 處理 GIF 網站
 
@@ -53,3 +56,7 @@
 1. 卷軸播動畫: https://www.goldmansachs.com/insights/pages/blockchain/
 2. 資料 + 動態視覺化 : http://www.r2d3.us/visual-intro-to-machine-learning-part-1/
 3. 潮流字體 : https://webflow.com/blog/7-typography-trends-in-web-design
+
+##  box shadow
+1. 簡易調整工具: https://www.cssmatic.com/box-shadow
+2. 
