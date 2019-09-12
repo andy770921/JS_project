@@ -60,3 +60,6 @@
 ##  box shadow
 1. 簡易調整工具: https://www.cssmatic.com/box-shadow
 2. https://css-tricks.com/almanac/properties/b/box-shadow/
+
+##  賭博遊戲素材
+https://www.shutterstock.com/g/babysofja?page=4&section=1&searchterm=game&search_source=base_gallery&language=en
