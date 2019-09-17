@@ -15,6 +15,28 @@ https://ithelp.ithome.com.tw/articles/10193747
 4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b= Object.assign({}, a);
 ## React: 改 JSX inline-css 用法
 - style={todo.status===true? {color: 'red', textDecoration: 'line-through'} : {color: ‘black’}}
+## React: 迴圈渲染用法
+```js
+    render() {
+        let diceImgs = this.state.historyDices.length ? (
+            this.state.historyDices.map((element, i) => {
+                return (
+                    <div key={5000 + i}><img className={`dice-all dice-color-img${i + 1}`} src={`./imgs/${element.color}_${element.number}.png`} key={6000 + i}></img></div>
+                )
+            })) : (<div></div>)
+        // 方法二: 
+        // let diceImgs = [];
+        //     for (let i = 0; i < this.state.historyDices.length; i++){
+        //         const color = this.state.historyDices[i].color;
+        //         const number = this.state.historyDices[i].number;
+        //         diceImgs.push(<div><img className={`dice-color-img${i+1}`} src={`./imgs/${color}_${number}.png`}></img></div>);
+        //     }
+
+        return (
+            <div>{diceImgs}</div>
+            )
+      }
+```
 ## React: setState 用法，避免多個刷新一次更新，非同步
 原:
 ```js
