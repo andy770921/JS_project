@@ -45,6 +45,9 @@
 
 1. https://ezgif.com/maker
 
+## 印章圖片製作 網站
+1. https://nenga.yu-bin.jp/hanko/
+
 ## 遊戲相關
 
 1. 骰子: https://codepen.io/tameraydin/pen/CADvB?fbclid=IwAR37xYlz1XViTEKDsmOoCVZl1FzryHNm09qWD5JmTaJWrTbRAey96FbvDB4
