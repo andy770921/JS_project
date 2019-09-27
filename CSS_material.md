@@ -40,6 +40,7 @@
 6. 簽名效果: https://codepen.io/ghepting/pen/xnezB
 7. 行星環繞效果: https://codepen.io/captainbrosset/pen/JoZabN
 8. 潮流字體 + box shadow: https://codepen.io/chriseisenbraun/pen/upmDB
+9. https://envato.com/blog/css3-typography-code-snippets/
 
 ## 處理 GIF 網站、GIF 素材
 
