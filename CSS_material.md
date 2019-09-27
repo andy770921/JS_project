@@ -41,10 +41,10 @@
 7. 行星環繞效果: https://codepen.io/captainbrosset/pen/JoZabN
 8. 潮流字體 + box shadow: https://codepen.io/chriseisenbraun/pen/upmDB
 
-## 處理 GIF 網站
+## 處理 GIF 網站、GIF 素材
 
 1. https://ezgif.com/maker
-
+2. https://loading.io/
 ## 印章圖片製作 網站
 1. https://nenga.yu-bin.jp/hanko/
 
