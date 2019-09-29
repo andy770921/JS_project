@@ -472,6 +472,25 @@ export default NavbarUi;
 在```http://127.0.0.1:5500```，以及點擊 navbar 皆可運作
 此外，有以下問題仍存在: 直接打網址```http://127.0.0.1:5500/ongoing```網頁會顯示 ```Cannot GET /ongoing```
 
+## 4. 在有 < Route path="...."> 的 Component ，設定重新導向:
+```js
+props.history.push('/about');
+```
+## 5. 在無 < Route path="...."> 的 Component 下重新導向:
+要先掛高階 component
+```js
+import { withRouter } from "react-router-dom";
+
+const ABC = (props) => {
+  setTimeout(()=> { props.history.push('/about'); }, 2000);
+  return (
+    <div>hi</div>
+  )
+}
+
+export default withRouter(ABC);
+```
+
 ## -------------- 使用 webpack 內建的 server ，不用 live server --------------
 ## 1. 終端機打指令如下
 ```npm install --save-dev webpack-dev-server```  
