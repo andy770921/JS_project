@@ -491,6 +491,23 @@ const ABC = (props) => {
 export default withRouter(ABC);
 ```
 
+## 6. 重新導向新寫法:
+```js
+
+import { Redirect } from "react-router-dom";
+
+class DailyRecord extends React.Component {
+ constructor(props) {
+   super(props);
+ }
+
+ render() {
+   const { auth } = this.props;
+   if (!auth.uid) return <Redirect to="./member" />;
+   }
+}
+```
+
 ## -------------- 使用 webpack 內建的 server ，不用 live server --------------
 ## 1. 終端機打指令如下
 ```npm install --save-dev webpack-dev-server```  
