@@ -7,7 +7,23 @@ https://3dtransforms.desandro.com/card-flip
 ## 設計範例
 
 https://dribbble.com/
-
+1. 網頁: https://codepen.io/Dhemie/pen/MpNNLm
+2. 網頁: https://codepen.io/tommyhare/pen/mdbMNev
+3. 登入: https://codepen.io/mdbootstrap/pen/Yrdjwr
+4. 網頁: https://codepen.io/fareedkhan557/pen/yLBGNeM
+5. 網頁: https://codepen.io/Noble99/pen/ZeEMVP
+6. 圓形圖片效果: https://codepen.io/alinedmelo/pen/mAGbpZ
+7. 加入# : https://codepen.io/jvald043/pen/XXoRpX
+8. 卷軸滑動效果: https://codepen.io/teckliew/pen/yeomxy
+9. nav: https://codepen.io/nickelse/pen/yNwPwv
+10. 方塊: https://codepen.io/SaraSoueidan/pen/sBELl
+11. mobile-like: https://codepen.io/virgilpana/pen/ZYZXgP
+12. text-card: https://codepen.io/derekmorash/pen/NjBvdX
+13. 底流動: https://codepen.io/liquidcharcoal/pen/rEeYrw
+14. 圓點點擊效果: https://codepen.io/chrisgannon/pen/BoXLOJ
+15. 純 CSS 點擊星星: https://codepen.io/GeoffreyCrofte/pen/jEkBL
+16. 卡片左右選: https://codepen.io/JuniVersal/pen/zNyMRd
+17. 水彩效果: https://codepen.io/leusrox/pen/Xaadrx
 ## 參考連結
 
 1. 找圖網址: https://unsplash.com/
@@ -32,6 +48,7 @@ https://dribbble.com/
 18. 邊框: https://freefrontend.com/css-border-animations/
 19: 404: https://codepen.io/supah/pen/RrzREx
 20. 純 CSS 立體方塊旋轉: https://codepen.io/carmerano/pen/LpGfg
+21. 純 CSS 動畫: https://codepen.io/TheSmallPicture/pen/RrRmZJ
 ----
 
 1. 震動: https://codepen.io/elrumordelaluz/pen/pHKcC
