@@ -15,6 +15,7 @@ https://dribbble.com/
 6. 圓形圖片效果: https://codepen.io/alinedmelo/pen/mAGbpZ
 7. 加入# : https://codepen.io/jvald043/pen/XXoRpX
 8. 卷軸滑動效果: https://codepen.io/teckliew/pen/yeomxy
+8. 卷軸滑動效果 - 純 JS: https://codepen.io/Gjoko-Bulovski/pen/eoVKGo
 9. nav: https://codepen.io/nickelse/pen/yNwPwv
 10. 方塊: https://codepen.io/SaraSoueidan/pen/sBELl
 11. mobile-like: https://codepen.io/virgilpana/pen/ZYZXgP
@@ -24,6 +25,21 @@ https://dribbble.com/
 15. 純 CSS 點擊星星: https://codepen.io/GeoffreyCrofte/pen/jEkBL
 16. 卡片左右選: https://codepen.io/JuniVersal/pen/zNyMRd
 17. 水彩效果: https://codepen.io/leusrox/pen/Xaadrx
+18. 紙卡: https://codepen.io/tunguska/pen/xGOQwe
+19. 網頁: https://codepen.io/ElHumanoide/pen/RmdKzW
+20. 網頁: https://codepen.io/dwiki13/pen/BEPapd
+21. card; https://codepen.io/mikemang/pen/EZYPXp
+22. slider: https://codepen.io/barrel/pen/oBefw
+23. card with selection: https://codepen.io/creativetim/pen/EgVBXa
+24. 網頁: https://codepen.io/Master-X31/pen/MxprvR
+25. card with slider: https://codepen.io/WebSonick/pen/JkLcf
+26. 卷軸及介紹: https://codepen.io/DragosBodin/pen/gGIzt
+27. 手指: https://codepen.io/thykka/pen/GJQZaV
+28. 網頁: https://codepen.io/Joruchan/pen/KEdZmQ
+29. 網頁: https://codepen.io/Espree/pen/xmjVmN
+30. 人物介紹: https://codepen.io/alexjbrown2/pen/NeMQro
+31. 圖片橫幅展開: https://codepen.io/tutsplus/pen/NRjNBr
+
 ## 參考連結
 
 1. 找圖網址: https://unsplash.com/
@@ -49,6 +65,12 @@ https://dribbble.com/
 19: 404: https://codepen.io/supah/pen/RrzREx
 20. 純 CSS 立體方塊旋轉: https://codepen.io/carmerano/pen/LpGfg
 21. 純 CSS 動畫: https://codepen.io/TheSmallPicture/pen/RrRmZJ
+22. card flip: https://codepen.io/adrianparr/pen/GqLle
+23. 純 css slide show: https://codepen.io/zewbz/pen/tnfbr
+24. 雪花背景: https://codepen.io/redstapler/pen/REJpxy
+25. 百分比進度環: https://codepen.io/dyf234/pen/bvCBr
+26. 便利貼: https://codepen.io/tutsplus/pen/dNPReW
+27. css flip: https://codepen.io/miquel/pen/niyud
 ----
 
 1. 震動: https://codepen.io/elrumordelaluz/pen/pHKcC
