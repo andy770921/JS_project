@@ -119,3 +119,17 @@ http://www.akuziti.com/
 
 ##  賭博遊戲素材
 https://www.shutterstock.com/g/babysofja?page=4&section=1&searchterm=game&search_source=base_gallery&language=en
+
+## JS 取消 key in 雜按鍵:
+```js
+var ageInput = document.getElementById("age")
+
+ageInput.addEventListener("keydown", function(e) {
+  // prevent: "e", "=", ",", "-", "."
+  if ([69, 187, 188, 189, 190].includes(e.keyCode)) {
+    e.preventDefault();
+  }
+})
+```
+## CSS clip:
+https://www.oxxostudio.tw/articles/201503/css-clip-path.html
