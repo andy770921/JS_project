@@ -7,7 +7,7 @@
 ```
 npm install --save-dev jest
 ```
-Ref: https://jestjs.io/docs/en/getting-started.html
+Ref: https://jestjs.io/docs/en/getting-started.html  
 2. 新增 package.json 檔案下的 script，之後終端機輸入 npm run test 即可測試
 ```
 {
@@ -21,8 +21,8 @@ Ref: https://jestjs.io/docs/en/getting-started.html
 }
 ```
 3. 終端機輸入 npm i react-test-renderer --save-dev，之後 js 檔才能用 import renderer from 'react-test-renderer';
-
-Ref: https://www.valentinog.com/blog/testing-react/
+  
+Ref: https://www.valentinog.com/blog/testing-react/  
 
 4. 新增 unit_test 資料夾，其下新增檔名為 component.test.js ，需要 .test.js 結尾。檔案內容可如下
 ```
