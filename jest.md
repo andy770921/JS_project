@@ -68,4 +68,34 @@ it('renders correctly', () => {
   expect(tree).toMatchSnapshot();
 });
 ```
+```
+import React, {useState} from "react";
+import Keyboard from "../components/Keyboard";
+import renderer from "react-test-renderer";
+import { AppContext } from "../app-context";
+it("renders correctly", () => {
+   const tree = renderer
+       .create(
+           <AppContext.Provider value={{
+               pressKey:[],
+               playNote:[],
+               state:{editStaff: ""}}}>
+               <Keyboard />
+           </AppContext.Provider>)
+       .toJSON();
+       expect(tree).toMatchSnapshot();
+});
+it("Validate Treble Keyboard", () => {
+   const tree = renderer
+       .create(
+           <AppContext.Provider value={{
+               pressKey:[],
+               playNote:[],
+               state:{editStaff: "treble"}}}>
+               <Keyboard />
+           </AppContext.Provider>)
+       .toJSON();
+       expect(tree).toMatchSnapshot();
+});
+```
 7. 測試成功時，會顯示 pass ，且自動創立 _snapshots_ 資料夾，裡面有.snap 檔，日後都用此檔案當標準比對。
