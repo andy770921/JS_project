@@ -1,5 +1,6 @@
 # React Note
-
+## 檢查 code 品質
+https://app.codacy.com/projects
 ## Resize 時，隱藏漢堡選單
 ```js
 componentDidMount = () => {
