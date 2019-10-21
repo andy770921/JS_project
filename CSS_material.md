@@ -98,8 +98,12 @@ https://dribbble.com/
 
 1. https://ezgif.com/maker
 2. https://loading.io/
+
 ## 印章圖片製作 網站
 1. https://nenga.yu-bin.jp/hanko/
+
+## 圖片壓縮 網站
+https://squoosh.app/
 
 ## 遊戲相關
 
