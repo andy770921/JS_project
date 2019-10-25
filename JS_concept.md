@@ -2,6 +2,7 @@
 
 ## 同步/非同步
 https://www.youtube.com/watch?v=NOprCnnjHm0
+https://youtu.be/yswb4SkDoj0
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
 ## 函數內部變數往外傳遞 - 閉包
