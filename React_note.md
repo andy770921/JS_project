@@ -19,5 +19,8 @@ componentWillUnmount = () => {
  };
 ```
 ## useEffect
-https://overreacted.io/a-complete-guide-to-useeffect/
+https://overreacted.io/a-complete-guide-to-useeffect/  
+https://sebhastian.com/react-hooks-useeffect  
+https://stackoverflow.com/questions/53464595/how-to-use-componentwillmount-in-react-hooks  
+
 
