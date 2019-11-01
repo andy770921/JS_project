@@ -62,3 +62,6 @@ module.exports = {
   
 1. 輸入指令 ```npm run check src/components/HeroList.js``` 可檢查 js 文檔
 2. 輸入指令 ```npm run fix src/components/HeroList.js``` 可自動修正 js 文檔
+
+## 一次安裝、一次搞定法
+https://blog.echobind.com/integrating-prettier-eslint-airbnb-style-guide-in-vscode-47f07b5d7d6a?gi=7fab28102769
