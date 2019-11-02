@@ -23,4 +23,5 @@ https://overreacted.io/a-complete-guide-to-useeffect/
 https://sebhastian.com/react-hooks-useeffect  
 https://stackoverflow.com/questions/53464595/how-to-use-componentwillmount-in-react-hooks  
 
-
+## React + GA
+https://medium.com/@malith.dev/track-users-in-your-react-app-with-google-analytics-6364ebfcbae8
