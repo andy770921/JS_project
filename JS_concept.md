@@ -14,6 +14,7 @@ https://www.youtube.com/watch?v=Fsp42zUNJYU
 ## Array 或 Object ，避免用= 指定，因為這兩者為 call by ref
 1. [1]==[1]，會是false，因為指向不同記憶體位置
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
+2-2. 實際安裝.isEqual Ref: https://stackoverflow.com/questions/43479464/how-to-import-a-single-lodash-function
 3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
 4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b= Object.assign({}, a);
 ## React: 改 JSX inline-css 用法
