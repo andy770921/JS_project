@@ -839,3 +839,18 @@ class SecondApp extends Component {
 ReactDOM.render(<SecondApp />, document.querySelector("#root"));
 ```
 ## 5. 終端機輸入指令 npm run build ， 完工
+
+## --------------- 補充 : 使用 async / await 語法 ---------------
+https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav  
+
+## 1. 終端機輸入如下
+
+```npm install --save-dev @babel/plugin-transform-runtime```
+
+## 2. .babelrc輸入如下
+
+```
+{
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
