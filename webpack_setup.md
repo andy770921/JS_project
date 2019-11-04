@@ -759,8 +759,57 @@ const rootReducer = (state = initState, action) => {
 export default rootReducer;
 
 ```
-## 13. Redux 使用 switch 的補充，若 case 內變數重複命名報錯誤，可加上大括號解決
+
+## 13. Redux 使用 action creater
+使用目的: 非同步的 code 若寫在 component，會造成資料處理無法分離。寫在 reducer 會無法 return state。故在 dispatch 之前在 action creater 處理資料
+
+## 14. 先安裝 npm
+```npm install redux-thunk```
+
+## 15. index.js，新增及修改如下，引入中介層，增強 store 功能，可以在 action creater 回傳函數，此函數可與 store 資料互動
+```js
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers/rootReducer";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+## 16. 新建 actions 資料夾，其下開 projectActions.js
+無中介層的標準寫法，可以直接回傳物件，並讓 dispatch 使用，projectActions.js 如下寫  
+```js
+export const createProject = (project) => {
+  return {type: 'ADD_PROJECT', project: project};
+}
+```
+有中介層，可回傳函數，這裡的 dispatch 是可以派送 action 給 reducer 的函數。getState 可取到 state 
+```js
+export const createProject = (project) => {
+  return (dispatch, getState) => {
+    // make async code 
+    dispatch({type: 'ADD_PROJECT', project: project});
+  }
+}
+```
+
+## 17. 在改資料的 js 檔新增如下 
+```js
+import { createProject } from ......
+import { connect } from "react-redux";
+
+const mapDispatchToProps = (dispatch) => {
+    return { deleteTodo : id => { dispatch({ type: "DELETE_TODO", id : id }) },
+             createProject : project => { dispatch(createProject(project)) }};
+}
+
+export default connect(null, mapDispatchToProps)(Home);
+```
+
+## 18. Redux 使用複數的 reducer
+
+## 19. Redux 使用 switch 的補充，若 case 內變數重複命名報錯誤，可加上大括號解決
 https://medium.com/@e_himmelfarb/use-curly-braces-with-es6-let-and-const-in-switch-blocks-react-redux-reducers-c0b01b37d748
+
+
 
 ## --------------- 補充 : 同專案一次製造兩個 Html ---------------
 
