@@ -767,6 +767,7 @@ export default rootReducer;
 ```npm install redux-thunk```
 
 ## 15. index.js，新增及修改如下，引入中介層，增強 store 功能，可以在 action creater 回傳函數，此函數可與 store 資料互動
+引入 thunk 之後，原本的 dispatch 函數，擴展成為多形功能的函數。餵給它物件可以送指令出去。餵給他函數，可以延後送指令。在餵進去的函數做一些事情之後，再由函數裡面 dispatch 送指令出去
 ```js
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
@@ -804,8 +805,18 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(null, mapDispatchToProps)(Home);
 ```
 
-## 18. Redux 使用複數的 reducer
+## 18. Redux 使用複數的 reducer， rootReducer.js 修改如下
+```js
+import { combineReducers } from 'redux';
+import heroReducer from './heroReducer';
+import popupReducer from './popupReducer';
 
+const rootReducer = combineReducers({
+    hero: heroReducer,
+    popup: popupReducer,
+});
+export default rootReducer;
+```
 ## 19. Redux 使用 switch 的補充，若 case 內變數重複命名報錯誤，可加上大括號解決
 https://medium.com/@e_himmelfarb/use-curly-braces-with-es6-let-and-const-in-switch-blocks-react-redux-reducers-c0b01b37d748
 
