@@ -27,3 +27,8 @@ https://stackoverflow.com/questions/53464595/how-to-use-componentwillmount-in-re
 https://medium.com/@malith.dev/track-users-in-your-react-app-with-google-analytics-6364ebfcbae8  
 https://medium.com/google-cloud/tracking-site-visits-on-react-app-hosted-in-google-cloud-using-google-analytics-f49c2411d398  
 
+## Pure Component
+https://www.youtube.com/watch?v=YCRuTT31qR0  
+https://www.youtube.com/watch?v=PXXjkq4A-OU
+## Pure Component 在 Hook 中實作
+https://iandays.com/2019/06/01/reacthooks/
