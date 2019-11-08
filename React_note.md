@@ -28,7 +28,7 @@ https://medium.com/@malith.dev/track-users-in-your-react-app-with-google-analyti
 https://medium.com/google-cloud/tracking-site-visits-on-react-app-hosted-in-google-cloud-using-google-analytics-f49c2411d398  
 
 ## Pure Component
-不要被更新影響的 component 若是 class component ，直接繼承 PureComponent 即可
+不要被更新影響的 component 若是 class component ，直接繼承 PureComponent 即可  
 https://www.youtube.com/watch?v=YCRuTT31qR0  
 https://www.youtube.com/watch?v=PXXjkq4A-OU
 ## Pure Component 在 Hook 中實作
