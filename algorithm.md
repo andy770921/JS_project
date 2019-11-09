@@ -94,7 +94,10 @@ function findPath(){
       } else if (modifiedMaze[h][g] === 0 && mark[h][g] === 0){ // new position
         mark[h][g] = 1;
         path = {x: i, y: j, nextDirNum: d+1};
-        pathStack.push(path); // stack it. record history info: 1. step (i,j) 2. next triable direction if it goes back to (i,j) 
+        pathStack.push(path); // stack it. 
+        // record history info: 
+        // 1. step (i,j) 
+        // 2. next triable direction if it goes back to (i,j) 
         i = g; j = h; d = 0; // move to (g,h)
       } else { d++; } // try next direction
     }
