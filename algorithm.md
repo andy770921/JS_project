@@ -1,4 +1,4 @@
-## Selection Sort
+## Selection Sort: 時間複雜度 O(n^2)
 
 ```js
 let arr = [1, -100, 200, 2, 300];
@@ -17,8 +17,8 @@ for (let i = 0; i < arr.length; i++){
 }
 console.log(arr);
 ```
-## Binary Search
-```
+## Binary Search: 時間複雜度 O(log n)
+```js
 function binarySearch(arr, inputNum){
   let leftIndex = 0;
   let rightIndex = arr.length - 1;
