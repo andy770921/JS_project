@@ -81,23 +81,22 @@ function findPath(){
   while(pathStack.length !== 0 ){ 
     // stack is not empty
     const step = pathStack[pathStack.length -1];
-    pathStack.pop();
+    pathStack.pop(); // unstack
     let i = step.x; 
     let j = step.y; 
     let d = step.nextDirNum;
     while (d < 4){
       let g = i + move[d].hor;
       let h = j + move[d].ver;
-      if (g === endY && h ===endX){
+      if (g === endY && h === endX){ // reach exit
         console.log("find path! axis hostioy:", JSON.stringify(pathStack));
-        console.log(mark)
         return;
-      } else if (modifiedMaze[h][g] === 0 && mark[h][g] === 0){
+      } else if (modifiedMaze[h][g] === 0 && mark[h][g] === 0){ // new position
         mark[h][g] = 1;
         path = {x: i, y: j, nextDirNum: d+1};
-        pathStack.push(path);
-        i = g; j = h; d = 0;
-      } else { d++; }
+        pathStack.push(path); // stack it. record history info: 1. step (i,j) 2. next triable direction if it goes back to (i,j) 
+        i = g; j = h; d = 0; // move to (g,h)
+      } else { d++; } // try next direction
     }
   } 
   console.log("there's no path to the end point")
