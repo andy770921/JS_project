@@ -1,3 +1,21 @@
+## Insertion Sort: 時間複雜度 O(n^2)
+
+```js
+function insertionSort(arr){
+  for (let i = 1; i < arr.length; i++){
+    const numToBeSorted = arr[i];
+    let j = 0;
+    for (j = i; j > 0 && arr[j-1] > numToBeSorted; j--){
+      //  第 j 個 和第 j-1 個交換，步驟 1.: j-1 的值往後移至 j
+      arr[j] = arr[j-1];
+    }
+    // 步驟 2.: 原先最右邊的值 ( arr[i] ) 指定到最左邊 第 j 個 ( 內層迴圈跑完後， j 是在需要交換的一串數字中最左邊的位置 )
+    arr[j] = numToBeSorted;
+  }
+  console.log(arr);
+}
+insertionSort([1, -100, 200, 2, 300]);
+```
 ## Selection Sort: 時間複雜度 O(n^2)
 
 ```js
