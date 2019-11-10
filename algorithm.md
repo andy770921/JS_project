@@ -71,6 +71,41 @@ function binarySearch(arr, inputNum){
 }
 console.log(binarySearch([-100, 1, 2, 200, 300],200));
 ```
+## Merge Sort: 時間複雜度 O(nlogn)
+
+```js
+function mergeSort(arr){
+  if (arr.length < 2){
+    return arr;
+  } else {
+    let middle = Math.floor(arr.length / 2);
+    let left = arr.slice(0, middle);
+    let right = arr.slice(middle, arr.length);
+    return merge(mergeSort(left), mergeSort(right));
+  }
+}
+function merge(left, right){
+  let result = [];
+  while (left.length && right.length){
+    if (left[0] <= right[0]){
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+  while (left.length) {
+    result.push(left.shift());
+  }
+  while (right.length) {
+    result.push(right.shift());
+  }
+  return result;
+}
+console.log(
+  mergeSort([1, -100, 200, 2, 300, -5,400,-500])
+  );
+```
+
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
 ```js
