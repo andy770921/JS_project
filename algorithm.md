@@ -21,9 +21,9 @@ insertionSort([1, -100, 200, 2, 300]);
 ```js
 let arr = [1, -100, 200, 2, 300];
 
-for (let i = 0; i < arr.length - 2; i++){
+for (let i = 0; i < arr.length - 1; i++){
   let minIndex = i;
-  for (let j = i + 1; j < arr.length - 1; j++){
+  for (let j = i + 1; j < arr.length; j++){
     if (arr[j] < arr[i]){
         minIndex = j;
       } 
