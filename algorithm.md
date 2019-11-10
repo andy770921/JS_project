@@ -24,7 +24,7 @@ let arr = [1, -100, 200, 2, 300];
 for (let i = 0; i < arr.length - 1; i++){
   let minIndex = i;
   for (let j = i + 1; j < arr.length; j++){
-    if (arr[j] < arr[i]){
+    if (arr[j] < arr[minIndex]){
         minIndex = j;
       } 
     }
