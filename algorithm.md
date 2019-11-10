@@ -199,8 +199,10 @@ function findPath(){
     while (d < 4){
       let g = i + move[d].hor;
       let h = j + move[d].ver;
-      if (g === endY && h === endX){ // reach exit
-        console.log("find path! axis hostioy:", JSON.stringify(pathStack));
+      if (g === endX && h === endY){ // reach exit
+        path = {x: i, y: j };
+        pathStack.push(path);
+        console.log("find path! step histioy:", JSON.stringify(pathStack));
         return;
       } else if (modifiedMaze[h][g] === 0 && mark[h][g] === 0){ // new position
         mark[h][g] = 1;
