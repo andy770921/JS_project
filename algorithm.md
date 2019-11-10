@@ -72,7 +72,7 @@ function binarySearch(arr, inputNum){
 console.log(binarySearch([-100, 1, 2, 200, 300],200));
 ```
 ## Merge Sort: 時間複雜度 O(nlogn)
-
+解法一: https://www.youtube.com/watch?v=o1V9J3QR1ZQ  
 ```js
 function mergeSort(arr){
   if (arr.length < 2){
@@ -102,10 +102,48 @@ function merge(left, right){
   return result;
 }
 console.log(
-  mergeSort([1, -100, 200, 2, 300, -5,400,-500])
+  mergeSort([1, -100, 200, 2, 300, -5, 400, -500])
   );
 ```
-
+解法二: merge 函數，用雙 index 移動的方式  
+```js
+function mergeSort(arr){
+  if (arr.length < 2){
+    return arr;
+  } else {
+    let middle = Math.floor(arr.length / 2);
+    let left = arr.slice(0, middle);
+    let right = arr.slice(middle, arr.length);
+    return merge(mergeSort(left), mergeSort(right));
+  }
+}
+function merge(left, right){
+  let result = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  while (leftIndex <= left.length -1 && rightIndex <= right.length - 1){
+    if (left[leftIndex] <= right[rightIndex]){
+      result.push(left[leftIndex]);
+      leftIndex++;
+    } else {
+      result.push(right[rightIndex]);
+      rightIndex++;
+    }
+  }
+  while (leftIndex <= left.length -1) {
+    result.push(left[leftIndex]);
+    leftIndex++;
+  }
+  while (rightIndex <= right.length - 1) {
+    result.push(right[rightIndex]);
+    rightIndex++;
+  }
+  return result;
+}
+console.log(
+  mergeSort([1, -100, 200, 2, 300, -5, 400, -500])
+  );
+```
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
 ```js
