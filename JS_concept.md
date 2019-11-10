@@ -16,9 +16,10 @@ https://www.youtube.com/watch?v=Fsp42zUNJYU
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
 2-2. 實際安裝.isEqual Ref: https://stackoverflow.com/questions/43479464/how-to-import-a-single-lodash-function
 3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
-4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b= Object.assign({}, a);
+4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b = Object.assign({}, a);
+5. copy Object方法 2，用展開運算子，會是新的記憶體位置: b = { ...a };
 ## React: 改 JSX inline-css 用法
-- style={todo.status===true? {color: 'red', textDecoration: 'line-through'} : {color: ‘black’}}
+- style={todo.status===true? {color: 'red', textDecoration: 'line-through'} : {color: 'black'}}
 ## React: 迴圈渲染用法
 ```js
     render() {
