@@ -35,6 +35,26 @@ for (let i = 0; i < arr.length - 1; i++){
 }
 console.log(arr);
 ```
+
+## Bubble Sort: 時間複雜度 O(n^2)
+
+```js
+function bubbleSort(arr){
+  for (let i = 0; i < arr.length -1; i++){
+    for (let j = arr.length -1; j > i; j--){
+      if (arr[j] < arr[j-1]){
+        // 交換 arr[j] 和 arr[j-1]
+        let arr_j = arr[j];
+        arr[j] = arr[j-1];
+        arr[j-1] = arr_j;
+      }
+    }
+  }
+  console.log(arr);
+}
+bubbleSort([1, -100, 200, 2, 300, -5]);
+```
+
 ## Binary Search: 時間複雜度 O(log n)
 ```js
 function binarySearch(arr, inputNum){
