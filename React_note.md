@@ -48,6 +48,7 @@ https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
 Next.js  
 https://nextjs.org/features/server-side-rendering#benefits  
 React 官方:  
+https://blog.techbridge.cc/2016/08/27/react-redux-immutablejs-node-server-isomorphic-tutorial/  
 server 端設定```import ReactDOMServer from 'react-dom/server';```:  
 https://reactjs.org/docs/react-dom-server.html  
 client 端加入```ReactDOM.hydrate(element, container[, callback])```:  
