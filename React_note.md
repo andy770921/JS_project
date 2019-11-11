@@ -46,9 +46,9 @@ https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
 
 ## Server Side Rendering
 Next.js  
-https://nextjs.org/features/server-side-rendering#benefits
+https://nextjs.org/features/server-side-rendering#benefits  
 React 官方:  
 server 端設定```import ReactDOMServer from 'react-dom/server';```:  
-https://reactjs.org/docs/react-dom-server.html
+https://reactjs.org/docs/react-dom-server.html  
 client 端加入```ReactDOM.hydrate(element, container[, callback])```:  
-https://reactjs.org/docs/react-dom.html#hydrate
+https://reactjs.org/docs/react-dom.html#hydrate  
