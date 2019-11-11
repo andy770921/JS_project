@@ -15,7 +15,7 @@ componentDidMount = () => {
    }
  };
 componentWillUnmount = () => {
-   window.removeEventListener(“resize”, this.checkForHeaderStyle);
+   window.removeEventListener("resize", this.checkForHeaderStyle);
  };
 ```
 ## useEffect
@@ -36,3 +36,19 @@ https://www.youtube.com/watch?v=PXXjkq4A-OU
 上層 component 的函數若是用 hook 寫，且傳進不被影響的 component ，需要加掛 useCallback  
 https://iandays.com/2019/06/01/reacthooks/
 https://www.youtube.com/watch?v=7TaBhrnPH78
+
+## Reacr-Router urls don't work when refreshing or writing manually
+https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
+
+
+## Isomorphic React App
+https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
+
+## Server Side Rendering
+Next.js  
+https://nextjs.org/features/server-side-rendering#benefits
+React 官方:  
+server 端設定```import ReactDOMServer from 'react-dom/server';```:  
+https://reactjs.org/docs/react-dom-server.html
+client 端加入```ReactDOM.hydrate(element, container[, callback])```:  
+https://reactjs.org/docs/react-dom.html#hydrate
