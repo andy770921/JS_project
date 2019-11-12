@@ -18,6 +18,8 @@ componentWillUnmount = () => {
    window.removeEventListener("resize", this.checkForHeaderStyle);
  };
 ```
+## useEffect, Dan
+https://overreacted.io/making-setinterval-declarative-with-react-hooks/?fbclid=IwAR18fsppc2BMUUkJIfnk4gfel1sxeevCZbOsK544ZjdWhioNiD75EcmcK3I
 ## useEffect
 https://overreacted.io/a-complete-guide-to-useeffect/  
 https://sebhastian.com/react-hooks-useeffect  
