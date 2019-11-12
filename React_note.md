@@ -55,3 +55,9 @@ server 端設定```import ReactDOMServer from 'react-dom/server';```:
 https://reactjs.org/docs/react-dom-server.html  
 client 端加入```ReactDOM.hydrate(element, container[, callback])```:  
 https://reactjs.org/docs/react-dom.html#hydrate  
+
+## 即時更新
+https://blog.niclin.tw/2017/10/28/%E7%8D%B2%E5%BE%97%E5%AF%A6%E6%99%82%E6%9B%B4%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95polling-comet-long-polling-websocket/  
+https://codeburst.io/polling-vs-sse-vs-websocket-how-to-choose-the-right-one-1859e4e13bd9  
+
+
