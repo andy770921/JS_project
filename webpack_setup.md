@@ -507,6 +507,8 @@ class DailyRecord extends React.Component {
    }
 }
 ```
+## 7. 教學:
+https://www.youtube.com/watch?v=XRfD8xIOroA
 
 ## -------------- 使用 webpack 內建的 server ，不用 live server --------------
 ## 1. 終端機打指令如下
