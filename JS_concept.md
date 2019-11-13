@@ -11,6 +11,8 @@ https://ithelp.ithome.com.tw/articles/10193009
 https://ithelp.ithome.com.tw/articles/10193747
 ## 原型鍊，實現 class 繼承功能
 https://www.youtube.com/watch?v=Fsp42zUNJYU
+## 實現 class 的 super 
+https://www.youtube.com/watch?v=CwAU1wYeHiM
 ## Array 或 Object ，避免用= 指定，因為這兩者為 call by ref
 1. [1]==[1]，會是false，因為指向不同記憶體位置
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
