@@ -8,7 +8,7 @@ docker run 意思是，依照指定的映像檔 (image) 創造且執行一個 co
   
 ## 執行 container 相關操作
 - ```docker run 容器名字 指令```，執行 container 時，同時執行附加指令，如 ```docker run ubuntu sleep 5```
-- ```docker exec 容器名字 指令```，在已執行的 container，執行指令，如 ```docker run ubuntu cat /etc/hosts```，意思是印出 /etc/hosts 資料夾下的內容
+- ```docker exec 容器名字 指令```，已執行的 container，再執行指令，如 ```docker run ubuntu cat /etc/hosts```，意思是在執行中的 ubuntu container印出 /etc/hosts 資料夾下的內容
   
 ## 映像檔其他相關操作
 - ```docker pull nginx```，下載映像檔，從 docker hub 拉下來，不執行 container 。下次若使用 ```docker run``` 指令，就不用再抓  
