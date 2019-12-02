@@ -1,10 +1,13 @@
 # docker 指令
   
+## Ref:
+- https://docs.docker.com/install/linux/docker-ce/ubuntu/
+- https://www.udemy.com/course/learn-docker/
 ## 下載映像檔並執行 container
 ### docker run nginx
-docker run 意思是，依照指定的映像檔 (image) 創造且執行一個 container。  
-如果已有映像檔，在 docker host 上，執行 nginx 應用程式的實體 (instance)  
-如果沒有，會自動先從 docker hub 拉下來，再執行。  
+- docker run 意思是，依照指定的映像檔 (image) 創造且執行一個 container。  
+- 如果已有映像檔，在 docker host 上，執行 nginx 應用程式的實體 (instance)  
+- 如果沒有，會自動先從 docker hub 拉下來，再執行。  
   
 ## 執行 container 相關操作
 - ```docker run 容器名字 指令```，執行 container 時，同時執行附加指令，如 ```docker run ubuntu sleep 5```
