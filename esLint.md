@@ -1,5 +1,7 @@
 # ES Lint 流程
 
+## Air BnB 規則中文說明
+https://github.com/jigsawye/javascript
 ## Ref (官網, document error, import React error, 加入 Air BnB 規則)
 1. https://eslint.org/
 2. https://www.freecodecamp.org/forum/t/i-have-a-problem-in-js-im-getting-error-document-is-not-defined-no-undef-document-getelementbyid-ahmed-innerhtml-hello/280879/2
