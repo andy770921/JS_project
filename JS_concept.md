@@ -6,6 +6,8 @@ https://www.youtube.com/watch?v=NOprCnnjHm0
 https://youtu.be/yswb4SkDoj0
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
+## 深層複製 / 淺層複製
+https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
 ## 函數內部變數往外傳遞 - 閉包
 https://ithelp.ithome.com.tw/articles/10193009
 ## new創造物件，與建立建構式
