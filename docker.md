@@ -11,11 +11,14 @@
 ## 下載映像檔並執行 container
 ### docker run nginx
 - docker run 意思是，依照指定的映像檔 (image) 創造且執行一個 container。  
-- 如果已有映像檔，在 docker host 上，執行 nginx 應用程式的實體 (instance)  
+- 如果已有映像檔，在 docker host 上 (存在映像檔快取區)，執行 nginx 應用程式的實體 (instance)  
 - 如果沒有，會自動先從 docker hub 拉下來最新版的映像檔，再執行。  
+- 執行 nginx 應用程式的實體 (instance) ，會有四個過程: 創造新 container、在內部的 docker 引擎，給定虛擬 IP 及私有網路、打開主機 port 並導向到指定的 container 內部 port (如果指令中有含 ```--publish 80:80``` 的設定)、執行 container
   
 ## 執行 container 相關操作
 - ```docker container run 指令```，執行 container 時，同時執行附加指令，如 ```docker container run --publish 80:80 nginx```
+- ```--publish 80:80``` 表示接下主機的 80 port ，導向 container 的 80 port。
+- ```--publish 8888:80``` 表示可在主機網址打 localhost:8888，進到 container 的 80 port
 - 預設為前台跑，須按 ctrl + c 拿回終端機控制權，Mac 會同時 stop container， windows 要再下指令停止
 - ```docker container run --publish 80:80 --detach nginx```，為在後台跑
 - ```docker container run --publish 80:80 --name webhost --detach nginx```，加上自己取名 webhost
