@@ -48,14 +48,18 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
 - ```docker container rm ID前碼```，永久移除 container，如 ```docker container rm 630 690 0de```
 - ```docker container rm -f ID前碼```，永久移除 container，執行中的 container 也強迫移除
 
-# container 內 process 相關指令
+## container 內 process 相關指令
+- ```docker container top 容器名字```，列出 container 內部運作的程式 (process)
+- ```docker container inspect 容器名字```，列出 container 內部運作的程式 (process) 的 JSON 細節
+- ```docker container stats```，列出 container 內部運作所有程式 (process) 的效能狀況，看完後要按 ctrl + c 跳出
 
-## 列出 container 內部運作的程式 (process)
-- ```docker container top 容器名字```
-## 列出 container 內部運作的程式 (process) 的 JSON 細節
-- ```docker container inspect 容器名字```
-## 列出 container 內部運作所有程式 (process) 的效能狀況
-- ```docker container stats```，看完後要按 ctrl + c 跳出
+## 進入 container 內的終端機，互動介面
+- ```docker container run -it nginx bash ```，建立新的 container ，並執行 container 內部的終端機 bash 程式，並可直接輸入指令操作該 container。後輸入 exit 可跳出 
+- 此時會把 nginx 剛開始要跑的預設程式 ("nginx -g 'daemon...")，換成 bash 程式
+- 輸入 exit 可跳出後，因為 container 無程式在跑， container 會變成退出狀態 (exited)
+- ```docker container run -it ubuntu ```，因 ubuntu 要跑的預設程式就是 bash，所以不用附加 bash 指令，直接就可以進入 container 內終端機
+- ```docker container run -it alpine sh ```，因 alpine 內部沒有 bash ，無法執行此程式，只有輕量化的程式 sh，故要下此指令。若有需要的話，可進入 sh 之後再灌 bash
+- ```docker container exec -it 容器名字 附加指令 ```，在已有的 container 執行附加指令
 
 # docker 行為
 ## 觀念
