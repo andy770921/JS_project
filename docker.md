@@ -20,13 +20,14 @@
 - ```--publish 80:80``` 表示接下主機的 80 port ，導向 container 的 80 port。
 - ```--publish 8888:80``` 表示可在主機網址打 localhost:8888，進到 container 的 80 port
 - 預設為前台跑，須按 ctrl + c 拿回終端機控制權，Mac 會同時 stop container， windows 要再下指令停止
-- ```docker container run --publish 80:80 --detach nginx```，為在後台跑
+- ```docker container run --publish 80:80 --detach nginx```，為在後台跑，```--detach``` 可寫成 ```-d```
 - ```docker container run --publish 80:80 --name webhost --detach nginx```，加上自己取名 webhost
 - ```docker container logs 容器名字```，取得後台的 log，如 ```docker container logs webhost```
+- ```docker container run -e MYSQL_RANDOM_ROOT_PASSWORD=true mysql```，```-e```可設定環境變數
 
 ## 映像檔其他相關操作
 - ```docker pull nginx```，下載映像檔，從 docker hub 拉下來，不執行 container 。下次若使用 ```docker run``` 指令，就不用再抓  
-- ```docker images```，檢查目前已下載映像檔
+- ```docker images```，檢查目前已下載映像檔，或 ```docker image ls```
 - ```docker rmi 映像檔名字```，移除已下載映像檔，如 docker rmi nginx。須確保沒有 container 在使用該映像檔才可移除
   
 ## 列出 container 清單
@@ -42,11 +43,19 @@
 ## 移除暫停使用或已退出的 container 
 - ```docker container rm ID前碼```，永久移除 container，如 ```docker container rm 630 690 0de```
 - ```docker container rm -f ID前碼```，永久移除 container，執行中的 container 也強迫移除
-  
+
+# container 內 process 相關指令
+
 ## 列出 container 內部運作的程式 (process)
 - ```docker container top 容器名字```
+## 列出 container 內部運作的程式 (process) 的 JSON 細節
+- ```docker container inspect 容器名字```
+## 列出 container 內部運作所有程式 (process) 的效能狀況
+- ```docker container stats```，看完後要按 ctrl + c 跳出
+
 # docker 行為
-  
+## 觀念
+- 若有程式在 container 裡面跑，該程式只是本機的其中一個應用程式。若停止 container 裡面的程式，就會關閉程式，搜尋本機的應用程式會搜不到。
 ## 使用 run 指令
 - 若無程式 (process / application) 在 container 裡面跑，直接執行映像檔的實體 (instance) 後，會立即退出 (exit)。  
 - 若程式 (如網路服務) 在 container 裡面停止，或 crash ，也會立即退出。  
@@ -55,7 +64,7 @@
 - ```docker run kodekloud/simple-webapp```，會在前台執行 = attach mode，前台鎖輸入指令的功能，要按 ctrl + c 終止 container 執行。      
 - ```docker run -d kodekloud/simple-webapp```，會在後台執行 = detach mode。    
 - ```docker attach a043d``` ，將 detach mode 轉成 attach mode  
-
+- detach mode: By running in detached mode, we are able to have access to our command line when the container spins up and runs. Without it, we would have logs constantly fed onto the screen.
 
 # 舊版
 - ```docker ps```，列出執行中的 container 清單
