@@ -2,7 +2,8 @@
   
 ## Ref:
 - https://docs.docker.com/install/linux/docker-ce/ubuntu/
-- https://www.udemy.com/course/learn-docker/
+- https://www.udemy.com/course/docker-mastery/
+- https://hackmd.io/@uoFaNlktTwuOMah6WLMbXA/SyrqM7_NH
 
 ## docker engine (CE version) download link for Mac
 https://hub.docker.com/editions/community/docker-ce-desktop-mac
