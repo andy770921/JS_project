@@ -151,6 +151,13 @@ export default App;
 ## Git 進階指令
 
 1. git reset --hard xxx: 清掉 xxx 之後的 commit ，並且回到 xxx 分支
+2. 拉與推不同 repo 的方法: https://marcus116.blogspot.com/2019/04/git-github-sync-fork-repository.html
+3. 拉與推不同 repo 的方法二: 使用 `git remote set-url origin https://xxxxx.git` 及 `git remote set-url --push origin https://xxxxx.git`，設定不同拉與推的網址，之後就可以下簡單的 `git pull` 指令
+4. 暫存目前未 commit 及未 add 的編輯狀態：使用 `git stash save`
+5. 叫出之前的暫存狀態：使用 `git stash pop`
+6. 創造新分支並切換：`git checkout -b feature_xxxx`
+7. `git remote -v` 查看本機設定拉及推的遠端網址
+8. `git branch -a` 查看本機及遠端的所有分支
 
 ## git flow 套件: gitflow
 
