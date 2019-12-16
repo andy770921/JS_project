@@ -4,6 +4,40 @@
 1. FlexBox 軸線與水平、垂直觀念: https://www.youtube.com/watch?v=lmBM7_OTDBQ
 2. FlexBox 子元件寬度(flex-grow、flex-shrink、flex-basis)觀念: https://www.youtube.com/watch?v=0QjOO-M2gs8
 
+## 面試題
+Q: 請問三個 flex item 寬度如何分配?   
+A: 平分，不受 width 設定影響   
+```html
+<div class="flex">
+  <div class = "a">A</div>
+  <div class = "b">B</div>
+  <div class = "c">C</div>
+</div>
+```
+```css
+.flex{
+  display: flex;
+  width: 100px;
+  background-color: red;
+}
+
+.a{
+  width: 20px;
+  flex: 1;
+  background-color: blue;
+}
+.b{
+  width: 30px;
+  flex: 1;
+  background-color: yellow;
+}
+.c{
+  width: 30px;
+  flex: 1;
+  background-color: green;
+}
+```
+
 ## 定義Flex Container
 
 HTML:
