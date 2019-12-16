@@ -259,5 +259,4 @@ function A(){
   console.log("hi");
 }
 let B = debounce(A, 2000);
-B();
 ```
