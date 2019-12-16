@@ -224,21 +224,40 @@ findPath();
 function debounce(fn, interval=300){
   let startTime=null;
   let endTime=null;
-  return ()=>{
+  return () => {
     startTime=Date.now();
-    let id = setTimeout(
-      function(){
+    setTimeout(
+      () => {
         endTime=Date.now();
-        if (endTime - startTime >= interval){
-          fn();
-          }
+        if (endTime - startTime >= interval){ 
+          fn(); 
         }
-    ,interval);
+      }
+      ,interval);
   }
 }
 function A(){
   console.log("hi");
 }
-let B = debounce(A, 3000);
+let B = debounce(A, 2000);
 
+```
+
+```js
+function debounce(fn, interval=300){
+  let startTime=null;
+  let endTime=null;
+  let timeoutId=null;
+  return () => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(
+      () => fn()
+      ,interval);
+  }
+}
+function A(){
+  console.log("hi");
+}
+let B = debounce(A, 2000);
+B();
 ```
