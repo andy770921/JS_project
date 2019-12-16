@@ -222,13 +222,13 @@ findPath();
 ## debounce (closure)
 ```js
 function debounce(fn, interval=300){
-  let startTime=null;
-  let endTime=null;
+  let startTime = null;
+  let endTime = null;
   return () => {
-    startTime=Date.now();
+    startTime = Date.now();
     setTimeout(
       () => {
-        endTime=Date.now();
+        endTime = Date.now();
         if (endTime - startTime >= interval){ 
           fn(); 
         }
@@ -244,12 +244,29 @@ let B = debounce(A, 2000);
 ```
 
 ```js
-function debounce(fn, interval=300){
-  let timeoutId=null;
+function debounce(fn, interval = 300){
+  let timeoutId = null;
   return () => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(
-      () => fn()
+      () => fn();
+      ,interval);
+  }
+}
+function A(){
+  console.log("hi");
+}
+let B = debounce(A, 2000);
+```
+better:
+```js
+function debounce(fn, interval = 300){
+  let timeoutId = null;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(
+      timeoutId = null;
+      () => fn(...args);
       ,interval);
   }
 }
