@@ -219,3 +219,26 @@ function findPath(){
 }
 findPath();
 ```
+## debounce (closure)
+```js
+function debounce(fn, interval=300){
+  let startTime=null;
+  let endTime=null;
+  return ()=>{
+    startTime=Date.now();
+    let id = setTimeout(
+      function(){
+        endTime=Date.now();
+        if (endTime - startTime >= interval){
+          fn();
+          }
+        }
+    ,interval);
+  }
+}
+function A(){
+  console.log("hi");
+}
+let B = debounce(A, 3000);
+
+```
