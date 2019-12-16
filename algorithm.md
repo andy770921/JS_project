@@ -245,8 +245,6 @@ let B = debounce(A, 2000);
 
 ```js
 function debounce(fn, interval=300){
-  let startTime=null;
-  let endTime=null;
   let timeoutId=null;
   return () => {
     clearTimeout(timeoutId);
