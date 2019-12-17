@@ -6,10 +6,10 @@ https://www.youtube.com/watch?v=NOprCnnjHm0
 https://youtu.be/yswb4SkDoj0
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
-## function 建構式寫法，new 的意義
+## constructor function 寫法，new 的意義
 1. 建立空物件 `{}`
 2. 將 function 內的 this 指向此空物件
-3. 執行 function ，完畢後自動 return 1. 產生出的物件。所以用此用法，function 最後不用寫 return
+3. 執行 function ，完畢後自動 return 1. 產生出的物件。所以用此用法，function 最後不用寫 return。有寫 return 的函數稱作 factory function
 4. Ref: https://youtu.be/PFmuCDHHpwk?t=1257
 
 ## 深層複製 / 淺層複製
