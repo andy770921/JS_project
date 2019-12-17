@@ -6,6 +6,12 @@ https://www.youtube.com/watch?v=NOprCnnjHm0
 https://youtu.be/yswb4SkDoj0
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
+## function 建構式寫法，new 的意義
+1. 建立空物件 `{}`
+2. 將 function 內的 this 指向此空物件
+3. 自動 return 1. 的 new 建立出來的物件。所以用此用法，function 內不用寫 return
+4. Ref: https://youtu.be/PFmuCDHHpwk?t=1257
+
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
 ## 函數內部變數往外傳遞 - 閉包
