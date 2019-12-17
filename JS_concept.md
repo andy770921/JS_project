@@ -11,6 +11,18 @@ https://youtu.be/pr7JFQaAYjg
 2. 將 function 內的 this 指向此空物件
 3. 執行 function ，完畢後自動 return 1. 產生出的物件。所以用此用法，function 最後不用寫 return。有寫 return 的函數稱作 factory function
 4. Ref: https://youtu.be/PFmuCDHHpwk?t=1257
+5. new 與 call 相等寫法
+```js
+function Circle(radius){
+    this.radius = radius;
+}
+
+let a = {};
+Circle.call(a, 1);
+// Circle.apply(a, [1]); 也可以
+
+const b = new Circle(1);
+```
 
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
