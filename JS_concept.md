@@ -23,6 +23,7 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
+6. 使用原型鏈，取用私有變數方法: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions
 
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
