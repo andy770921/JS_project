@@ -23,7 +23,34 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-6. 使用原型鏈，取用私有變數方法，要另建公開函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions
+6. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
+```js
+// 實作練習
+function A (myPublic){
+  // public variable
+  this.myPublic = myPublic;
+  
+  // private variable
+  let myPrivate = "PRIVATE";
+  
+  // public read-only method
+  Object.defineProperty(this, 'getPri', {
+    get: function(){
+      console.log(myPrivate);
+    }
+  });
+}
+
+// method on prototype
+A.prototype.getPrivate = function (){
+  console.log(this.myPublic);
+  this.getPri();
+}
+
+const obj = new A("PUBLIC");
+obj.getPrivate();
+
+```
 7. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
 8. class 目前沒語法可以直接使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
 9. class 目前使用私有變數的實作法 https://tw.twincl.com/javascript/*6937
