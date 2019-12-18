@@ -27,11 +27,17 @@ const b = new Circle(1);
 ```js
 // 實作練習
 function A (myPublic){
-  // public variable
+  // public variable/method
   this.myPublic = myPublic;
+  this.myPublicFn = function (){
+    console.log("myPublicFn");
+  }
   
-  // private variable
+  // private variable/method
   let myPrivate = "PRIVATE";
+  const myPrivateFn = function (){
+    console.log("myPrivateFn");
+  }
   
   // public read-only getter/setter
   Object.defineProperty(this, 'pri', {
