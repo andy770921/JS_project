@@ -33,23 +33,28 @@ function A (myPublic){
   // private variable
   let myPrivate = "PRIVATE";
   
-  // public read-only method
-  Object.defineProperty(this, 'getPri', {
+  // public read-only getter/setter
+  Object.defineProperty(this, 'pri', {
     get: function(){
       console.log(myPrivate);
+      return myPrivate
+    },
+    set: function(value){
+      myPrivate = value;
     }
   });
 }
 
-// method on prototype
+// public method on prototype
 A.prototype.getPrivate = function (){
   console.log(this.myPublic);
-  this.getPri;
+  this.pri;
 }
 
 const obj = new A("PUBLIC");
 obj.getPrivate();
-
+obj.pri = 1000;
+obj.pri;
 ```
 7. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
 8. class 目前沒語法可以直接使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
