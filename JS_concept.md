@@ -23,7 +23,10 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-6. 使用原型鏈，取用私有變數方法: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions
+6. 使用原型鏈，取用私有變數方法，要另建公開函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions
+7. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
+8. class 目前無法使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
+
 
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
