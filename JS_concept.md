@@ -44,7 +44,7 @@ function A (myPublic){
 // method on prototype
 A.prototype.getPrivate = function (){
   console.log(this.myPublic);
-  this.getPri();
+  this.getPri;
 }
 
 const obj = new A("PUBLIC");
