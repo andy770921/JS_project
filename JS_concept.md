@@ -9,9 +9,10 @@ https://youtu.be/pr7JFQaAYjg
 ## constructor function 寫法，new 的意義
 1. 建立空物件 `{}`
 2. 將 function 內的 this 指向此空物件
-3. 執行 function ，完畢後自動 return 1. 產生出的物件。所以用此用法，function 最後不用寫 return。有寫 return 的函數稱作 factory function
-4. Ref: https://youtu.be/PFmuCDHHpwk?t=1257
-5. new 與 call 相等寫法
+3. 將此空物件的原型，指向名稱為 函數名稱 的空物件 (`{}.__proto__ = 函數名稱 的空物件`)
+4. 執行 function ，完畢後自動 return 1. 產生出的物件。所以用此用法，function 最後不用寫 return。有寫 return 的函數稱作 factory function
+5. Ref: https://youtu.be/PFmuCDHHpwk?t=1257
+6. new 與 call 相等寫法
 ```js
 function Circle(radius){
     this.radius = radius;
@@ -23,7 +24,7 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-6. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
+7. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
 ```js
 // 實作練習
 function A (myPublic){
@@ -62,9 +63,9 @@ obj.getPrivate();
 obj.pri = 1000;
 obj.pri;
 ```
-7. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
-8. class 目前沒語法可以直接使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
-9. class 目前使用私有變數的實作法 https://tw.twincl.com/javascript/*6937
+8. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
+9. class 目前沒語法可以直接使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
+10. class 目前使用私有變數的實作法 https://tw.twincl.com/javascript/*6937
 
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
