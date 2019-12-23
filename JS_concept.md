@@ -24,7 +24,15 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-7. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
+7. 原型鏈原生寫法
+```js
+const person = {
+    name: 'default'
+};
+const john = Object.create(person);
+
+```
+8. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
 ```js
 // 實作練習
 function A (myPublic){
@@ -63,9 +71,9 @@ obj.getPrivate();
 obj.pri = 1000;
 obj.pri;
 ```
-8. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
-9. class 目前沒語法可以直接使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
-10. class 目前使用私有變數的實作法 https://tw.twincl.com/javascript/*6937
+9. 與 class 的比較: https://tylermcginnis.com/beginners-guide-to-javascript-prototype/
+10. class 目前沒語法可以直接使用私有變數。目前已在審核中的方法，建議使用井字號: https://www.sitepoint.com/javascript-private-class-fields/
+11. class 目前使用私有變數的實作法 https://tw.twincl.com/javascript/*6937
 
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
