@@ -317,7 +317,8 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 9. [ES6] .filter(function(element){return 判斷式;}): 遍歷陣列元素，判斷式為真的元素，才會回傳。也可.filter(function(element,index){return 判斷式;})
 10. Array: Splice, sort, revserse  會改到本來的 
 11. Array: slice, concat, join, filter 不會改到本來的
-
+## String 常用的方法
+1. slice 不會改到本來的
 ## Object 常用的方法
 1. 合併Object寫法: 合併後的Object  = {...obj1, ...obj2};
 ```js
