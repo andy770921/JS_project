@@ -27,9 +27,17 @@ const b = new Circle(1);
 7. 指定原型鏈原生寫法
 ```js
 const person = {
-    name: 'default'
+    name: 'default',
+    greet: function (){
+        console.log("hi "+ this.name);
+    }
 };
+
 const john = Object.create(person);
+
+john.name = "john";
+john.greet();
+
 // 不要用 john.__proto__ = person;
 
 ```
