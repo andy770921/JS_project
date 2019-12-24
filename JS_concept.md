@@ -24,12 +24,13 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-7. 原型鏈原生寫法
+7. 指定原型鏈原生寫法
 ```js
 const person = {
     name: 'default'
 };
 const john = Object.create(person);
+// 不要用 john.__proto__ = person;
 
 ```
 8. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
