@@ -48,6 +48,7 @@ const Person = function(name) {
 
 Person.prototype = {
     name: 'default',  // 實做上通常不會將變數放在原型，只會放方法
+    constructor: Person, // 要加這行
     greet: function (){
         console.log("hi "+ this.name);
     },
@@ -55,13 +56,14 @@ Person.prototype = {
         console.log("bye");
     }
 };
-// 會喪失 Person.constructor 的屬性
+// 要加入 `constructor:`，否則用 `{ }` 建立的物件，會喪失 Person.constructor 的屬性
 // 若使用 Person.prototype.greet =  function (){ ...} 、Person.prototype.xxx = ooo; 不會喪失 Person.constructor 的屬性
 
 const john = new Person("john");
 john.greet();
 
 ```
+Note: constructor 屬性補充: https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor  
 8. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
 ```js
 // 實作練習
