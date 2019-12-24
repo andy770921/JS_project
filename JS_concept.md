@@ -24,7 +24,7 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-7. 指定原型鏈原生寫法
+7. 指定原型鏈原生寫法，不能用
 ```js
 const person = {
     name: 'default',
@@ -34,11 +34,32 @@ const person = {
 };
 
 const john = Object.create(person);
+// 不要用 john.__proto__ = person; 會有效能問題
 
 john.name = "john";
-john.greet();
+// 不能用 john = { name: "john" }; 因為大括號會新建的物件，設定自己的 prototype 為 Object.prototype
 
-// 不要用 john.__proto__ = person;
+```
+7-2. 指定原型鏈使用 new 的寫法
+```js
+const Person = function(name) {
+    this.name = name;
+}
+
+Person.prototype = {
+    name: 'default',  // 實做上通常不會將變數放在原型，只會放方法
+    greet: function (){
+        console.log("hi "+ this.name);
+    },
+    sayBye: function (){
+        console.log("bye");
+    }
+};
+// 會喪失 Person.constructor 的屬性
+// 若使用 Person.prototype.greet =  function (){ ...} 、Person.prototype.xxx = ooo; 不會喪失 Person.constructor 的屬性
+
+const john = new Person("john");
+john.greet();
 
 ```
 8. 使用原型鏈，取用私有變數方法，要另建函數，或是另建公開變數才能取得: https://stackoverflow.com/questions/436120/accessing-private-member-variables-from-prototype-defined-functions  
