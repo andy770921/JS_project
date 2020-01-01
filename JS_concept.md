@@ -56,7 +56,7 @@ Person.prototype = {
         console.log("bye");
     }
 };
-// 要加入 `constructor:`，否則用 `{ }` 建立的物件，會喪失 Person.constructor 的屬性
+// 要加入 constructor:，否則用 { } 建立的物件，會喪失 Person.constructor 的屬性
 // 若使用 Person.prototype.greet =  function (){ ...} 、Person.prototype.xxx = ooo; 不會喪失 Person.constructor 的屬性
 
 const john = new Person("john");
