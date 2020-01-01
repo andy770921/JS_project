@@ -24,7 +24,7 @@ Circle.call(a, 1);
 
 const b = new Circle(1);
 ```
-7. 指定原型鏈原生寫法，不能用
+7. 指定原型鏈原生寫法
 ```js
 const person = {
     name: 'default',
