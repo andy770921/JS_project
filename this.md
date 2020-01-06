@@ -1,7 +1,7 @@
 
 # JS 中的 this
 
-## 在 constructor function 及 class 的測試 code 
+## constructor function 及 class 的 this
 
 ```js
 function A(){
