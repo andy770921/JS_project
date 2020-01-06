@@ -12,13 +12,25 @@ function A(){
     console.log("A nornal",this);
   }
 }
+A.prototype.sayProto = () =>{
+  console.log("A proto arrow",this);
+}
+A.prototype.sayProtoN = function() {
+  console.log("A proto normal",this);
+}
 const x = new A();
-x.say();
+x.say(); 
 x.sayN();
+x.sayProto(); // window
+x.sayProtoN();
 const x1 = x.say;
 const x2 = x.sayN;
+const x3 = x.sayProto;
+const x4 = x.sayProtoN;
 x1();
-x2();
+x2();  // window
+x3();  // window
+x4();  // window
 
 
 class B  {
@@ -50,7 +62,7 @@ const y2 = y.sayN;
 const y3 = y.sayOutsideConst;
 const y4 = y.sayOutsideConstN;
 y1();
-y2();
+y2(); // undefined
 y3();
-y4();
+y4(); // undefined
 ```
