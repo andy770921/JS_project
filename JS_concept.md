@@ -4,6 +4,11 @@ https://github.com/AllJointTW/clean-code-javascript
 ## 同步/非同步
 https://www.youtube.com/watch?v=NOprCnnjHm0  
 https://youtu.be/yswb4SkDoj0
+## 同步/非同步 - async function 會回傳 promise 物件 / await
+https://noob.tw/js-async/  
+https://www.oxxostudio.tw/articles/201908/js-async-await.html  
+https://developers.google.com/web/fundamentals/primers/async-functions?hl=zh-tw  
+
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
 ## constructor function 寫法，new 的意義
