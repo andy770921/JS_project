@@ -275,3 +275,4 @@ function A(x){
 }
 let B = debounce(()=>A("hi"), 2000);
 ```
+Ref: https://gist.github.com/nmsdvid/8807205
