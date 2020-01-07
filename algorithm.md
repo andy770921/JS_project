@@ -264,14 +264,14 @@ function debounce(fn, interval = 300){
   let timeoutId = null;
   return (...args) => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(
+    timeoutId = setTimeout(()=>{
       timeoutId = null;
-      () => fn(...args);
-      ,interval);
+      fn(...args);
+      },interval);
   }
 }
-function A(){
-  console.log("hi");
+function A(x){
+  console.log(x);
 }
-let B = debounce(A, 2000);
+let B = debounce(()=>A("hi"), 2000);
 ```
