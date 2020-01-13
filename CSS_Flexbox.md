@@ -5,11 +5,11 @@
 2. FlexBox 子元件寬度(flex-grow、flex-shrink、flex-basis)觀念: https://www.youtube.com/watch?v=0QjOO-M2gs8
 
 ## flex 設定
-1. flex: 0 0 auto;
+1. ```flex: 0 0 auto;```
 2. 第一個 0 :flex-grow，分配剩餘 margin 
 3. 第二個 0 :flex-shrink
 4. 第三個 auto: flex-basis，若有設定，指元件要占的最小寬度。若沒設定 flex-basis 但有設定 ```flex: 1```，預設值是 0。若沒設定 flex-basis 也沒設定 ```flex: 1```，預設值是 auto，指的是寬度依元件 width 為主
-
+5. 若只有寫 ```flex: 1```，flex-shrink 預設是 1 ，flex-basis ，預設是 0
 ## 面試題
 Q: 請問三個 flex item 寬度如何分配?   
 A: 平分，不受 width 設定影響   
