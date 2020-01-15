@@ -359,21 +359,21 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
 const sortedList = [....list].sort((a, b) => a.order - b.order);
 ```
-13. map 函數不會直接改到本來的陣列，若接 sort 不用先淺層拷貝。若直接使用，比較好的做法是，不要改到傳進去 map 函數的 element
+13. map 函數不會直接改到本來的陣列，若接 sort 不用先淺層拷貝。若直接使用，比較好的做法是，拷貝一份，不要改到傳進去 map 函數的 element
 ```js
-const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
+const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}, {name: 'z', order: 0} ];
 const sortedList = list
-              .map(el => el.order === 0 ? { ...el, order: 100 } : el )
-              .sort((a, b) => a.order - b.order);
+                   .map(el => el.order === 0 ? { ...el, order: 100 } : el )
+                   .sort((a, b) => a.order - b.order);
 ```
 ```js
-const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
+const list = [ {name: 'x', order: 1}, {name: 'y', order: 2} ];
 const newList = list
-              .map(el => {
-                let newEl = { ...el };
-                newEl.order = 100;
-                return newEl;
-              })
+                .map(el => {
+                    let newEl = { ...el };
+                    newEl.order = 100;
+                    return newEl;
+                 })
 ```
 ## String 常用的方法
 1. slice 不會改到本來的
