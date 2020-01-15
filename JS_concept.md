@@ -375,6 +375,46 @@ const newList = list
                     return newEl;
                  })
 ```
+14. reduce 用法
+```js
+// 用 reduce 在陣列裡面，再區分兩個陣列的方法，初級
+const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}, {name: 'z', order: 0}, {name: 'hi', order: 0}  ];
+const seperateList = list.reduce(
+  ( acc, cur ) => {
+    if (cur.order !== 0){
+      acc[0].push(cur);
+    } else {
+      acc[1].push(cur);
+    }
+    return acc;
+  }
+  ,
+  [[],[]]
+);
+console.log(seperateList);
+
+// 中級
+const seperateList = list.reduce(
+  ( acc, cur ) => (cur.order !== 0 ? 
+                   [acc[0],[...acc[1], cur]]: 
+                   [[...acc[0], cur],acc[1]]
+                  )
+  ,
+  [[],[]]
+);
+console.log(seperateList);
+
+// 高級
+const seperateList = list
+  .reduce(
+    ([noneZeroAry, zeroAry], { order, ...props }) => order !== 0
+      ? [[...noneZeroAry, { order, ...props }], zeroAry]
+      : [noneZeroAry, [...zeroAry, { order, ...props }]],
+    [[], []]
+  );
+console.log(seperateList);
+```
+
 ## String 常用的方法
 1. slice 不會改到本來的
 ## Object 常用的方法
