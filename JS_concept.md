@@ -359,7 +359,7 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
 const sortedList = [....list].sort((a, b) => a.order - b.order);
 ```
-13. map 函數不會直接改到本來的陣列，若接 sort 不用先淺層拷貝。若直接使用，比較好的做法是，拷貝一份，不要改到傳進去 map 函數的 element
+13. map 函數不會改到本來的陣列會回傳新的陣列，若之後接 sort 不用先淺層拷貝，因為 sort 改到的陣列是新的。若直接使用 map ，比較好的做法是，先拷貝一份陣列，並且不要改到傳進去 map 函數的 element
 ```js
 const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}, {name: 'z', order: 0} ];
 const sortedList = list
