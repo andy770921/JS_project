@@ -354,6 +354,27 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 9. [ES6] .filter(function(element){return 判斷式;}): 遍歷陣列元素，判斷式為真的元素，才會回傳。也可.filter(function(element,index){return 判斷式;})
 10. Array: Splice, sort, revserse  會改到本來的 
 11. Array: slice, concat, join, filter 不會改到本來的
+12. sort 函數會直接改到本來的陣列，一般情況，若陣列沒包很多層，要先淺層拷貝一份
+```js
+const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
+const sortedList = [....list].sort((a, b) => a.order - b.order);
+```
+13. map 函數不會直接改到本來的陣列，若接 sort 不用先淺層拷貝。若直接使用，比較好的做法是，不要改到傳進去 map 函數的 element
+```js
+const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
+const sortedList = list
+              .map(el => el.order === 0 ? { ...el, order: 100 } : el )
+              .sort((a, b) => a.order - b.order);
+```
+```js
+const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
+const newList = list
+              .map(el => {
+                let newEl = { ...el };
+                newEl.order = 100;
+                return newEl;
+              })
+```
 ## String 常用的方法
 1. slice 不會改到本來的
 ## Object 常用的方法
@@ -529,11 +550,11 @@ target.addEventListener(type, listener[, options]);
 ```
 ## Event Bubbling 、 Event Delegation
 
-意義: 當li元素收到click事件，接著父元素ul也收到click事件，接著父元素body也收到click事件，接著父元素Document也收到click事件。可用父元素為代表，以下的子元素可一併套用click觸發後的效果。若要防止Event Bubbling ，可參考此 https://ithelp.ithome.com.tw/articles/10192015
+意義: 當li元素收到 click 事件，接著父元素 ul 也收到 click 事件，接著父元素 body 也收到 click 事件，接著父元素 Document 也收到 click 事件。可用父元素為代表，以下的子元素可一併套用 click 觸發後的效果。若要防止 Event Bubbling ，可參考此 https://ithelp.ithome.com.tw/articles/10192015
 
 ## Event Object
 
-意義: 當event handler被觸發時，它同時會收到一個event object，這個object有些關於這個事件的有用資訊，還有一些方法(method)
+意義: 當event handler 被觸發時，它同時會收到一個event object，這個object有些關於這個事件的有用資訊，還有一些方法(method)
 
 event.target，會指向第一個收到此事件(如點擊)的元素 
 
