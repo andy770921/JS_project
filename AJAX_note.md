@@ -3,6 +3,7 @@
 https://blog.miniasp.com/post/2008/02/22/Explain-HTTP-Cookie-in-Detail  
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24542/  
 https://yu-jack.github.io/2019/06/02/ajax-with-session/  
+https://flaviocopes.com/cookies/  
 ## Fetch 和 Axios 差別
 https://medium.com/@thejasonfile/fetch-vs-axios-js-for-making-http-requests-2b261cdd3af5
 
