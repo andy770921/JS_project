@@ -1,6 +1,12 @@
 # AJAX 觀念
 
-## 彭彭講AJAX
+## Fetch 和 Axios 差別
+https://medium.com/@thejasonfile/fetch-vs-axios-js-for-making-http-requests-2b261cdd3af5
+
+## 使用 Fetch 處理 Error
+https://medium.com/enjoy-life-enjoy-coding/jacascript-fetch-%E8%AE%93-es6-%E6%93%81%E6%9C%89%E4%B8%80%E5%B0%8D%E7%BF%85%E8%86%80-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8-2f98efe55ba4
+
+## 彭彭講 AJAX
 https://youtu.be/OkphAk_cWPM?t=362
 
 ## 概念說明
