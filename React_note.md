@@ -24,7 +24,7 @@ https://overreacted.io/making-setinterval-declarative-with-react-hooks/?fbclid=I
 https://overreacted.io/a-complete-guide-to-useeffect/  
 https://sebhastian.com/react-hooks-useeffect  
 https://stackoverflow.com/questions/53464595/how-to-use-componentwillmount-in-react-hooks  
-
+https://medium.com/enjoy-life-enjoy-coding/react-%E7%82%BA%E4%BA%86%E8%88%87-hooks-%E7%9B%B8%E9%81%87-function-components-%E5%8D%87%E7%B4%9A%E8%A8%98-86869d869a45  
 ## React + GA
 https://medium.com/@malith.dev/track-users-in-your-react-app-with-google-analytics-6364ebfcbae8  
 https://medium.com/google-cloud/tracking-site-visits-on-react-app-hosted-in-google-cloud-using-google-analytics-f49c2411d398  
