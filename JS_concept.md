@@ -357,7 +357,7 @@ https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 12. sort 函數會直接改到本來的陣列，一般情況，若陣列沒包很多層，要先淺層拷貝一份
 ```js
 const list = [ {name: 'x', order: 1}, {name: 'y', order: 2}];
-const sortedList = [....list].sort((a, b) => a.order - b.order);
+const sortedList = [...list].sort((a, b) => a.order - b.order);
 ```
 13. map 函數不會改到本來的陣列會回傳新的陣列，若之後接 sort 不用先淺層拷貝，因為 sort 改到的陣列是新的。  
 ```js
