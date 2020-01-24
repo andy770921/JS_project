@@ -377,3 +377,20 @@ getFeedback();
    
 InitFBLogin();
 ```
+## 使用 async/await ，及高階函數，處理錯誤的寫法 (包裝 .catch)
+```js
+function handleError(fn) {
+  return function (...params)  {
+    return fn(...params).catch(function (err){
+        // DO SOMETHING FOR ERROR
+        console.error('Oops', err)
+      }
+    )
+  }
+}
+async function getFeedback() {
+  const result = await axios.get('https://api.appworks-school.tw/api/1.0/products/all');
+}
+const safeGetFeedback = handleError(getFeedback);
+safeGetFeedback();
+```
