@@ -329,16 +329,29 @@ getFeedback();
 ```
 4. 補充: 若要等到兩個非同步的函數，都完成後，再做下一步，可直接操作。但總共會等較久 ( result1 開始運作並取得資料 ->  result2 開始運作並取得資料 -> 再下一行)
 ```js
-function getFeedback() {
-  let result1 = await ajax('https://api.appworks-school.tw/api/1.0/products/all');
-  let result2 = await ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+function async getFeedback() {
+  const result1 = await ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  const result2 = await ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   console.log(result1, result2);
 }
 
 getFeedback();
 
 ```
-5. 補充: reject 內的值，可用 try - catch 語法得到
+
+5. 補充: 同時發送 ajax ，避免等較久的做法
+```js
+function async getFeedback() {
+  const result1Promise = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  const result2Promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const [result1, result2] = await Promise.all([result1Promise, result2Promise]);
+  console.log(result1, result2);
+}
+
+getFeedback();
+
+```
+6. 補充: reject 內的值，可用 try - catch 語法得到
 
 ```js
 async function getFeedback() {
