@@ -137,7 +137,22 @@ xhttp.open("GET", `https://api.appworks-school.tw/api/1.0/marketing/hots`, true)
 xhttp.send();
 ```
 
-  
+## callback 使用
+```js
+function A(fn){
+  console.log('first');
+  fn()
+}
+function B(fn){
+  console.log('second');
+  fn();
+}
+A(function(){
+  B(function(){
+    console.log('last');
+   })
+});
+``` 
 ## GET 使用
 
 ```js
