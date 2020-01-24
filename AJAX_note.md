@@ -141,7 +141,7 @@ xhttp.send();
 ```js
 function A(fn){
   console.log('first');
-  fn()
+  fn();
 }
 function B(fn){
   console.log('second');
@@ -149,7 +149,7 @@ function B(fn){
 }
 A(function(){
   B(function(){
-    console.log('last');
+      console.log('last');
    })
 });
 ``` 
