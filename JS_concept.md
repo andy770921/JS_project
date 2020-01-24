@@ -8,7 +8,8 @@ https://youtu.be/yswb4SkDoj0
 https://noob.tw/js-async/  
 https://www.oxxostudio.tw/articles/201908/js-async-await.html  
 https://developers.google.com/web/fundamentals/primers/async-functions?hl=zh-tw  
-
+封裝錯誤處理 HOC:  
+https://www.youtube.com/watch?v=DwQJ_NPQWWo  
 ## 同步/非同步 - event loop
 https://youtu.be/cCOL7MC4Pl0  
 https://www.youtube.com/watch?v=8aGhZQkoFbQ  
