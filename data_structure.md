@@ -44,3 +44,4 @@ insert50(nodeTen);
 console.log(first);         //  [Object] {data: 10, link: [Object] }
 console.log(first.link);    //  [Object] {data: 50, link: [Object] }
 ```
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/linkedList_2.png)
