@@ -185,7 +185,7 @@ function findPath(){
   console.log(modifiedMaze[endY][endX]);
   // start at (1,1)
   mark[1][1] = 1;
-  // create stack to recoed path
+  // create stack to record path
   let pathStack = [];
   let path = {x: 1, y: 1, nextDirNum: 0};
   pathStack.push(path);
