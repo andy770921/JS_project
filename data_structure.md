@@ -1,7 +1,7 @@
 ## Linked List
 Ref: https://hiskio.com/courses/126/lectures/4310  
-Ex: 製造兩個節點的 Linked List
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/linkedList_1.png)
+Ex: 製造兩個節點的 Linked List  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/linkedList_1.png)  
 ```js
 function ListNode (value){
   this.data = value;
@@ -14,8 +14,8 @@ first.link = new ListNode(20);
 console.log(first);         //  [Object] {data: 10, link: [Object] }
 console.log(first.link);    //  [Object] {data: 20, link: null}
 ```
-Ex: 承上題，在值為 10 及 20 的節點中間，加入一個值為 50 的節點
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/linkedList_2.png)
+Ex: 承上題，在值為 10 及 20 的節點中間，加入一個值為 50 的節點  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/linkedList_2.png)  
 ```js
 function ListNode (value){
   this.data = value;
