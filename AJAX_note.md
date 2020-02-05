@@ -1,5 +1,6 @@
 # AJAX 觀念
 ## Cookie
+https://medium.com/@hulitw/session-and-cookie-15e47ed838bc
 https://blog.miniasp.com/post/2008/02/22/Explain-HTTP-Cookie-in-Detail  
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24542/  
 https://yu-jack.github.io/2019/06/02/ajax-with-session/  
