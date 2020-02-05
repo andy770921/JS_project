@@ -345,6 +345,8 @@ https://youtu.be/QuCu4iDpPTU
 ## 解構賦值
 文章關鍵字:使用於函式的傳入參數之中的解構賦值  
 https://ithelp.ithome.com.tw/articles/10185430
+## hoisting 提升
+https://blog.techbridge.cc/2018/11/10/javascript-hoisting/?fbclid=IwAR3No5aPr4uqhVN3CiusRV37RDQa6TTCeW7zw_1k3uCm_r_1LF9sLkXCNTg
 ## Array 常用的方法
 https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 1. .push(1, 2, 3): 變更原陣列-多三個元素(可文字或數字)在陣列最後面，並回傳新增後的陣列長度
