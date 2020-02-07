@@ -151,18 +151,18 @@ export default App;
 ## Git 進階指令
 
 1. `git reset --hard xxx`: 清掉 xxx 之後的 commit ，並且回到 xxx commit，如`git reset 85e7e30`，另一種寫法為 `git reset master^`，在 master 分支倒回一個版本
-1-2. `git reset --hard origin/develop` 在該分支下，若有設定遠端連結 (up-stream) ，捨棄目前本機所有變更，回到遠端連結分支最新版
-2. 拉與推不同 repo 的方法: https://marcus116.blogspot.com/2019/04/git-github-sync-fork-repository.html
-3. 拉與推不同 repo 的方法二: 使用 `git remote set-url origin https://xxxxx.git` 及 `git remote set-url --push origin https://xxxxx.git`，設定不同拉與推的網址，之後就可以下簡單的 `git pull` 指令
-4. 暫存目前未 commit 及未 add 的編輯狀態：使用 `git stash save`
-5. 叫出之前的暫存狀態：使用 `git stash pop`
-6. 創造新分支並切換：`git checkout -b feature_xxxx`
-7. `git remote -v` 查看本機設定拉及推的遠端網址
-8. `git branch -a` 查看本機及遠端的所有分支
-9. `git push --set-upstream origin feature_xxxx` 推上遠端分支，並順便建立當下分支與遠端分支連結
-10. `git rebase develop`
-10-2. `git rebase -i develop`在功能分支下此指令，會將目前所有的 commit 再 re-commit 一份，逐個解完衝突後，接在 develop 分支後面
-10-3. 單個 commit 解完衝突後要下指令 `git rebase --continue` 繼續解下個 commit 的衝突
+2. `git reset --hard origin/develop` 在該分支下，若有設定遠端連結 (up-stream) ，捨棄目前本機所有變更，回到遠端連結分支最新版
+3. 拉與推不同 repo 的方法: https://marcus116.blogspot.com/2019/04/git-github-sync-fork-repository.html
+4. 拉與推不同 repo 的方法二: 使用 `git remote set-url origin https://xxxxx.git` 及 `git remote set-url --push origin https://xxxxx.git`，設定不同拉與推的網址，之後就可以下簡單的 `git pull` 指令
+5. 暫存目前未 commit 及未 add 的編輯狀態：使用 `git stash save`
+6. 叫出之前的暫存狀態：使用 `git stash pop`
+7. 創造新分支並切換：`git checkout -b feature_xxxx`
+8. `git remote -v` 查看本機設定拉及推的遠端網址
+9. `git branch -a` 查看本機及遠端的所有分支
+10. `git push --set-upstream origin feature_xxxx` 推上遠端分支，並順便建立當下分支與遠端分支連結
+11. `git rebase develop`
+12. `git rebase -i develop`在功能分支下此指令，會將目前所有的 commit 再 re-commit 一份，逐個解完衝突後，接在 develop 分支後面
+13. 單個 commit 解完衝突後要下指令 `git rebase --continue` 繼續解下個 commit 的衝突
 
 ## git flow 套件: gitflow
 
