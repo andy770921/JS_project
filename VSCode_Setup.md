@@ -160,7 +160,7 @@ export default App;
 8. `git remote -v` 查看本機設定拉及推的遠端網址
 9. `git branch -a` 查看本機及遠端的所有分支
 10. `git push --set-upstream origin feature_xxxx` 推上遠端分支，並順便建立當下分支與遠端分支連結
-11. `git rebase develop` 在功能分支下此指令，會將目前所有的新 commit 再 re-commit 一份，逐個解完衝突後，接在 develop 分支後面
+11. `git rebase develop` 在功能分支下此指令，會將目前所有的新 commit 再 re-commit 一份，逐個解完衝突後，接在 develop 分支後面，結束後，功能分支的指標停在最新的 commit 、 develop 的指標停在原先 的 commit
 12. `git rebase -i develop`在功能分支下此指令，新 commit 接在 develop 分支後面，並可以統一處理需要的 (或想移除的) commit 想移除的 pick 換成 drop
 13. 單個 commit 解完衝突後要下指令 `git rebase --continue` 繼續解下個 commit 的衝突
 
