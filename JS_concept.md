@@ -216,9 +216,9 @@ state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
 }
 addNinja = (newObj) => {
-  this.setState({
+  this.setState( prevState => ({
     ninjas: prevState.ninjas.push(newObj)
-  });
+  }));
 }
 ```
 後，使用 array spread 寫法
@@ -239,7 +239,7 @@ state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
 }
 addNinja = (newObj) => {
-  this.setState(prevState => ({
+  this.setState( prevState => ({
     ninjas: [...prevState.ninjas, newObj]
   }));
 }
@@ -264,12 +264,18 @@ state = {
   ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
 }
 deleteNinja = (id) => {
-  this.setState({
+  this.setState( prevState => ({
     ninjas: prevState.ninjas.filter( ninja => { return ninja.id !== id })
-  });
+  }));
 }
 ```
-
+變更到原陣列的寫法，不要用
+```js
+data = [ "Ryu", "Andy"];
+deleteData = (item) => {
+  this.data.splice(this.data.indexOf(item), 1);
+}
+```
 ## React: 修改值用法，用 array spread 及 object spread 
 
 - 修改值目標: a. 修改 camels 下，某 id 物件的同一層的 run 值及 boxNum 值，b. 修改 state 下，step 值
