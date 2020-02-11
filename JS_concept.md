@@ -269,10 +269,13 @@ deleteNinja = (id) => {
   }));
 }
 ```
-變更到原陣列的寫法，不要用
+變更到原陣列、且不能操作陣列中的物件的寫法，不要用
 ```js
 data = [ "Ryu", "Andy"];
 deleteData = (item) => {
+  if (this.data.indexOf(item) === -1){
+    return;
+  }
   this.data.splice(this.data.indexOf(item), 1);
 }
 ```
