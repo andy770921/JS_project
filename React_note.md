@@ -18,6 +18,8 @@ componentWillUnmount = () => {
    window.removeEventListener("resize", this.checkForHeaderStyle);
  };
 ```
+## React 運作原理
+https://overreacted.io/react-as-a-ui-runtime/#memoization
 ## useEffect, Dan
 https://overreacted.io/making-setinterval-declarative-with-react-hooks/?fbclid=IwAR18fsppc2BMUUkJIfnk4gfel1sxeevCZbOsK544ZjdWhioNiD75EcmcK3I
 ## useEffect
