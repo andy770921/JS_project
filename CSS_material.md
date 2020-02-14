@@ -105,6 +105,22 @@ https://dribbble.com/
 ## 圖片壓縮 網站
 https://squoosh.app/
 
+## 處理 sketch to SVG、SVG to font 的 npm 套件
+
+1. sketch to SVG: grunt-extract-sketch-svgs / gulp-sketch
+2. SVG to font: grunt-webfont / gulp-iconfont
+3. sketch to SVG to font: https://github.com/cognitom/symbols-for-sketch
+4. Ref: 
+https://www.npmjs.com/package/grunt-extract-sketch-svgs  
+https://www.npmjs.com/package/gulp-sketch  
+https://www.npmjs.com/package/grunt-webfont  
+https://www.npmjs.com/package/gulp-iconfont  
+5. sketch to SVG 線上轉 
+https://medium.com/sketch-app-sources/how-to-create-font-icons-from-a-sketch-icon-library-e94fe93ed00c
+6. 教學:
+https://5xruby.tw/posts/sketch-to-icon-font/  
+https://wcc723.github.io/tools/2015/11/20/sketch-convert-to-web-icon-fonts/  
+
 ## 遊戲相關
 
 1. 骰子: https://codepen.io/tameraydin/pen/CADvB?fbclid=IwAR37xYlz1XViTEKDsmOoCVZl1FzryHNm09qWD5JmTaJWrTbRAey96FbvDB4
