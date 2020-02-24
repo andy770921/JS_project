@@ -165,11 +165,16 @@ function A(fn){
   }, 2000);
 }
 
-A(function(x){
-  console.log('second', x);
+function B(b, fn){ 
+  console.log('second', b);
   setTimeout(()=>{
-    console.log('last', x + 100);
+    fn(b + 100);
   }, 2000);
+}
+A(function(x){
+  B(x, function(y){
+    console.log('last', y);
+  })
 });
 ``` 
 ## GET 使用
