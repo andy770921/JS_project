@@ -166,7 +166,10 @@ function A(fn){
 }
 
 A(function(x){
-  console.log('last', x);
+  console.log('second', x);
+  setTimeout(()=>{
+    console.log('last', x + 100);
+  }, 2000);
 });
 ``` 
 ## GET 使用
