@@ -154,6 +154,21 @@ A(function(){
    })
 });
 ``` 
+
+```js
+function A(fn){
+  let a = 0; 
+  console.log('first');
+  setTimeout(()=>{
+    a = 100
+    fn(a);
+  }, 2000);
+}
+
+A(function(x){
+  console.log('last', x);
+});
+``` 
 ## GET 使用
 
 ```js
