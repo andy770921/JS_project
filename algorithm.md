@@ -219,6 +219,43 @@ function findPath(){
 }
 findPath();
 ```
+## forEach, map (HOF)
+```js
+// Q:
+
+function forEach(list, fn){
+  // CODE HERE:
+};
+
+forEach([2, 3, 4], console.log); // 2 3 4
+
+// A:
+function forEach(list, fn){
+  for(let i = 0; i < list.length; i++){
+    fn(list[i]);
+  }
+};
+
+// Q:
+
+function map(list, fn){
+  // CODE HERE:
+}
+
+const ans = map([2, 3, 4], x => x*2 ); 
+console.log(ans);  // [4, 6, 8]
+
+// A:
+function map(list, fn){
+  const newList = [];
+  for(let i = 0; i < list.length; i++){
+    newList.push(fn(list[i]));
+  }
+  return newList;
+}
+
+```
+
 ## debounce (closure)
 ```js
 function debounce(fn, interval=300){
