@@ -205,7 +205,7 @@ module.exports = {
   module:{}
 };
 ```
-再於官網，加入 module 內的物件內容 Ref: https://babeljs.io/setup#installation
+再於官網，加入 module 內的物件內容 Ref: https://babeljs.io/setup#installation. 
 
 如下
 
@@ -226,7 +226,20 @@ module.exports = {
 }
 };
 ```
+如果副檔名要用 .jsx，需要調整 module 內的物件內容如下. 
 
+```js
+  module: {
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        resolve: { extensions: ['.js', '.jsx'] }
+      }
+    ]
+  },
+```
 ## 6. 設定及灌好 Babel - 3 ，官網沒有寫安裝 react ，要自己加
 
  
