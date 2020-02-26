@@ -7,6 +7,24 @@
 
 ```js
 // 無法取得 feedbackData
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+const ADD_BOOK_MUTATION = gql`
+  mutation($name: String!, $genre: String!, $authorId: ID!) {
+    addBook(name: $name, genre: $genre, authorId: $authorId) {
+      name
+      genre
+      id
+      author {
+        name
+      }
+    }
+  }
+`;
+
+
 function AddBook() {
   const [addBookMutation, { data: feedbackData }] = useMutation(ADD_BOOK_MUTATION);
   const [bookData, setBookData] = useState({
