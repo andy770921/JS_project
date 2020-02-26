@@ -52,6 +52,7 @@ function AddBook() {
     </form>
   );
 }
+export default AddBook;
 ```
 
 ```js
