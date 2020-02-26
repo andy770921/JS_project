@@ -1,6 +1,34 @@
 # React Note
 ## 檢查 code 品質
 https://app.codacy.com/projects
+
+## Styled-components，傳變數方法 ( 使用 TypeScript )
+```ts
+const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
+    display: flex;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0.03em 0.05em 0.1em 0 rgba(0, 0, 0, 0.25);
+    font-size: ${p => (p.circleSize ? `${p.circleSize}px` : '40px')};
+    background-color: ${p => {
+        switch (p.iconId) {
+            case 'fb_page':
+                return '#4367b2';
+            case 'line':
+                return '#00c200';
+            case 'ig':
+                return '#d72d78';
+            case 'fb_messenger':
+                return '#0084ff';
+            default:
+                return 'white';
+        }
+    }};
+`;
+```
 ## Resize 時，隱藏漢堡選單
 ```js
 componentDidMount = () => {
