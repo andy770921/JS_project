@@ -166,7 +166,7 @@ const GET_BOOK_QUERY = gql`
 function BookDetails() {
   const [selectedId, setSelectedId] = useState(null);
   const [getBookQuery, { called, loading, data }] = useLazyQuery(GET_BOOK_QUERY, {
-    variables: { id: selectedBookId }
+    variables: { id: selectedId }
   });
   const handleChange = e => {
     setSelectedId(e.target.value);
@@ -188,14 +188,14 @@ function BookDetails() {
       <div id="book-details">
         {called && !loading ? (
           <>
-            <p>Book Name: {bookQueryData.book.name}</p>
-            <p>Book Genre: {bookQueryData.book.genre}</p>
-            <p>Book Author: {bookQueryData.book.author.name}</p>
-            <p>Book Author's age: {bookQueryData.book.author.age}</p>
+            <p>Book Name: {data.book.name}</p>
+            <p>Book Genre: {data.book.genre}</p>
+            <p>Book Author: {data.book.author.name}</p>
+            <p>Book Author's age: {data.book.author.age}</p>
             <p>Other Books from the Same Author:</p>
             <ul>
-              {bookQueryData.book.author.books
-                .filter(book => book.id !== bookQueryData.book.id)
+              {data.book.author.books
+                .filter(book => book.id !== data.book.id)
                 .map(book => (
                   <li key={book.id}>{book.name}</li>
                 ))}
