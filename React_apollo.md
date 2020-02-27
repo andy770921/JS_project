@@ -60,7 +60,7 @@ export default AddBook;
 function AddBook() {
     const [addBookMutation] = useMutation(ADD_BOOK_MUTATION, {
     onCompleted: feedbackData => {
-      console.log('fff', feedbackData);
+      console.log('feedbackData', feedbackData);
     }
   });
   const [bookData, setBookData] = useState({
@@ -90,7 +90,7 @@ function AddBook() {
 ```
 3. 無法取得回應 Data 狀況，原因為要掌握 useMatation 更新 hook 的時間點，才能正確取到資料
   a. 一載入頁面，`data, loading, called` 為 `undefined false false`  
-  b. addBookMutation 執行後，會立刻更新 hook，`data, loading, called` 為 `undefined true true`  
+  b. addBookMutation 執行後，會更新 hook，下一次的 hook `data, loading, called` 為 `undefined true true`  
   c. addBookMutation 取得資料回來後，會再更新 hook，`data, loading, called` 為 `{addBook: {…}} false true`  
   d. 若再次執行 addBookMutation，會重複 b.-c.   
 
@@ -142,5 +142,71 @@ function AddBook() {
   );
 }
 export default AddBook;
+
+```
+
+
+## useLazyQuery 在使用者操作後取得值
+
+1. useLazyQuery 更新 hook 的時間點如下
+  a. 一載入頁面，`data, loading, called, selectedId` 為 `undefined false false null`  
+  b. getBookQuery 執行後，會更新 hook，連同 useState 的 setXXX 更新，一起進入下次的 hook `data, loading, called, selectedId` 為 `undefined true true 2`  
+  c. getBookQuery 取得資料回來後，會再更新 hook，`data, loading, called, selectedId` 為 `{book: {…}} false true 2`  
+  d. 若再次執行 getBookQuery，會重複 b.-c.   
+
+```js
+import React, { useState } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+const GET_BOOK_QUERY = gql`
+  query($id: ID!) {
+    book(id: $id) {
+      name
+      genre
+      id
+      author {
+        name
+        age
+        books {
+          name
+        }
+      }
+    }
+  }
+`;
+
+function BookDetails() {
+  const [selectedId, setSelectedId] = useState(null);
+  const [getBookQuery, { called, loading, data }] = useLazyQuery(GET_BOOK_QUERY, {
+    variables: { id: selectedBookId }
+  });
+  const handleChange = e => {
+    setSelectedId(e.target.value);
+    getBookQuery();
+  };
+  console.log('data, loading, called, selectedId', data, loading, called, selectedId);
+  // 
+  return (
+    <div>
+      <h2> Select Book for Details: </h2>
+      <select onChange={handleChange}">
+        <option> Select Book </option>
+        {[{name: "book1", id: "1"}, {name: "book2", id: "2"}].map(book => (
+          <option key={book.id} value={book.id}>
+            {book.name}
+          </option>
+        ))}
+      </select>
+      <div id="book-details">
+        {called && !loading ? <p>{JSON.stringify(data)}</p> : null}
+      </div>
+      <h2> ------- </h2>
+    </div>
+  );
+}
+
+export default BookDetails;
+
 
 ```
