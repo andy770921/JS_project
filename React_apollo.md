@@ -90,7 +90,7 @@ function AddBook() {
   );
 }
 ```
-3. 無法取得回應 Data 狀況，原因為要掌握 useMatation 更新 hook 的時間點，才能正確取到資料
+3. 無法取得回應 Data 狀況，原因為要掌握 useMatation 更新 hook 的時間點，才能正確取到資料  
   a. 一載入頁面，`data, loading, called` 為 `undefined false false`  
   b. addBookMutation 執行後，會更新 hook，下一次的 hook `data, loading, called` 為 `undefined true true`  
   c. addBookMutation 取得資料回來後，會再更新 hook，`data, loading, called` 為 `{addBook: {…}} false true`  
