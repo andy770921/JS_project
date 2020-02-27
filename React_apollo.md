@@ -211,3 +211,8 @@ export default BookDetails;
 
 
 ```
+
+## useSubscription 和 GraphQL 的 subscription
+1. 使用即時聊天室可使用此功能
+2. GraphQL 的 subscription: https://www.howtographql.com/graphql-js/7-subscriptions/
+3. useSubscription: https://www.apollographql.com/docs/react/data/subscriptions/
