@@ -6,7 +6,8 @@
 2. [社群討論](https://spectrum.chat/apollo/react-apollo/usemutation-always-returns-undefined~d5b587ed-28cf-4d41-804d-000726e0effc)
 
 ```js
-// 無法取得 feedbackData
+
+// 無法直接取得 feedbackData
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -56,6 +57,7 @@ export default AddBook;
 ```
 
 ```js
+
 // 可以取得 feedbackData
 function AddBook() {
     const [addBookMutation] = useMutation(ADD_BOOK_MUTATION, {
@@ -95,23 +97,6 @@ function AddBook() {
   d. 若再次執行 addBookMutation，會重複 b.-c.   
 
 ```js
-import React, { useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
-
-const ADD_BOOK_MUTATION = gql`
-  mutation($name: String!, $genre: String!, $authorId: ID!) {
-    addBook(name: $name, genre: $genre, authorId: $authorId) {
-      name
-      genre
-      id
-      author {
-        name
-      }
-    }
-  }
-`;
-
 
 function AddBook() {
   const [addBookMutation, { data, loading, called }] = useMutation(ADD_BOOK_MUTATION);
@@ -148,14 +133,14 @@ export default AddBook;
 
 
 ## useLazyQuery 在使用者操作後取得值
-
-1. useLazyQuery 更新 hook 的時間點如下
-  a. 一載入頁面，`data, loading, called, selectedId` 為 `undefined false false null`  
-  b. getBookQuery 執行後，會更新 hook，連同 useState 的 setXXX 更新，一起進入下次的 hook `data, loading, called, selectedId` 為 `undefined true true 2`  
-  c. getBookQuery 取得資料回來後，會再更新 hook，`data, loading, called, selectedId` 為 `{book: {…}} false true 2`  
-  d. 若再次執行 getBookQuery，會重複 b.-c.   
+useLazyQuery 更新 hook 的時間點如下  
+1. 一載入頁面，`data, loading, called, selectedId` 為 `undefined false false null`  
+2. getBookQuery 執行後，會更新 hook，連同 useState 的 setXXX 更新，一起進入下次的 hook `data, loading, called, selectedId` 為 `undefined true true 2`  
+3. getBookQuery 取得資料回來後，會再更新 hook，`data, loading, called, selectedId` 為 `{book: {…}} false true 2`  
+4. 若再次執行 getBookQuery，會重複 b.-c.   
 
 ```js
+
 import React, { useState } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -202,7 +187,6 @@ function BookDetails() {
       <div id="book-details">
         {called && !loading ? <p>{JSON.stringify(data)}</p> : null}
       </div>
-      <h2> ------- </h2>
     </div>
   );
 }
