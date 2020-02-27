@@ -156,6 +156,7 @@ const GET_BOOK_QUERY = gql`
         age
         books {
           name
+          id
         }
       }
     }
@@ -185,7 +186,22 @@ function BookDetails() {
         ))}
       </select>
       <div id="book-details">
-        {called && !loading ? <p>{JSON.stringify(data)}</p> : null}
+        {called && !loading ? (
+          <>
+            <p>Book Name: {bookQueryData.book.name}</p>
+            <p>Book Genre: {bookQueryData.book.genre}</p>
+            <p>Book Author: {bookQueryData.book.author.name}</p>
+            <p>Book Author's age: {bookQueryData.book.author.age}</p>
+            <p>Other Books from the Same Author:</p>
+            <ul>
+              {bookQueryData.book.author.books
+                .filter(book => book.id !== bookQueryData.book.id)
+                .map(book => (
+                  <li key={book.id}>{book.name}</li>
+                ))}
+            </ul>
+          </>
+        ) : null}
       </div>
     </div>
   );
