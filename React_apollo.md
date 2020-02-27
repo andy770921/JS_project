@@ -131,7 +131,8 @@ function AddBook() {
     });
   };
   
-  console.log('data, loading, called ', data, loading, called); // undefined false false  => 
+  console.log('data, loading, called ', data, loading, called); 
+  // undefined false false  => undefined true true => {addBook: {…}} false true
   return (
     <form id="add-book" onSubmit={handleSubmit}>
       <div>
@@ -186,7 +187,7 @@ function BookDetails() {
     getBookQuery();
   };
   console.log('data, loading, called, selectedId', data, loading, called, selectedId);
-  // 
+  // undefined false false null  => undefined true true 2 => {book: {…}} false true 2 
   return (
     <div>
       <h2> Select Book for Details: </h2>
