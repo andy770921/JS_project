@@ -7,7 +7,7 @@
 
 ```js
 
-// 無法直接取得 feedbackData
+// 錯用時無法直接取得 feedbackData
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -114,8 +114,10 @@ function AddBook() {
         authorId: bookData.authorId
       }
     });
+    // 無法直接取得 data
+    // console.log('data', data);
   };
-  
+  // 未來刷新兩次後，可取得 data
   console.log('data, loading, called ', data, loading, called); 
   // undefined false false  => undefined true true => {addBook: {…}} false true
   return (
