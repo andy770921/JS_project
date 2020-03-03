@@ -149,7 +149,7 @@ console.log(
 1. heap 是 complete binary tree，且每個節點上的數值不能比父節點大/小。 heap 常用來實做 priority queue。
 2. bottom-up insert 進 heap 一次，複雜度為 logn。
 3. top-down delete heap 的 Min/Max 一次，複雜度為 logn
-4. 將數字個數 n ，先逐一將數字加入 Min/Max Heap ( 複雜度為 n x logn )，再將此 Heap delete 其 Min/Max 值 n 次 ( 複雜度 n x logn )，把 delete 的值逐一加入空陣列
+4. Heap Sort: 將 n 個數字 ，先逐一加入 Min/Max Heap ( 複雜度為 n x logn )，再將此 Heap delete 其 Min/Max 值 n 次 ( 複雜度 n x logn )，把 delete 的值逐一加入空陣列
 
 ```js
 
