@@ -19,21 +19,22 @@ insertionSort([1, -100, 200, 2, 300]);
 ## Selection Sort: 時間複雜度 O(n^2)
 
 ```js
-let arr = [1, -100, 200, 2, 300];
-
-for (let i = 0; i < arr.length - 1; i++){
-  let minIndex = i;
-  for (let j = i + 1; j < arr.length; j++){
-    if (arr[j] < arr[minIndex]){
-        minIndex = j;
-      } 
-    }
-  // SWAP 交換 第 i 個 和第 minIndex 個
-  let arr_i = arr[i];
-  arr[i] = arr[minIndex];
-  arr[minIndex] = arr_i;
+function selectionSort(arr){
+  for (let i = 0; i < arr.length - 1; i++){
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++){
+      if (arr[j] < arr[minIndex]){
+          minIndex = j;
+        } 
+      }
+    // SWAP 交換 第 i 個 和第 minIndex 個
+    const temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
+  }
+  console.log(arr);
 }
-console.log(arr);
+selectionSort([1, -100, 200, 2, 300]);
 ```
 
 ## Bubble Sort: 時間複雜度 O(n^2)
@@ -44,9 +45,9 @@ function bubbleSort(arr){
     for (let j = arr.length -1; j > i; j--){
       if (arr[j] < arr[j-1]){
         // 交換 arr[j] 和 arr[j-1]
-        let arr_j = arr[j];
+        const temp = arr[j];
         arr[j] = arr[j-1];
-        arr[j-1] = arr_j;
+        arr[j-1] = temp;
       }
     }
   }
@@ -65,8 +66,6 @@ function binarySearch(arr, inputNum){
     if (arr[middle] > inputNum) {rightIndex = middle - 1;}
     else if (arr[middle] < inputNum) {leftIndex = middle + 1;}
     else { return arr[middle]}
-
-
   }
 }
 console.log(binarySearch([-100, 1, 2, 200, 300],200));
@@ -144,6 +143,15 @@ console.log(
   mergeSort([1, -100, 200, 2, 300, -5, 400, -500])
   );
 ```
+
+## Heap Sort: 不是 comparison based ，時間複雜度 O(nlogn)
+```js
+// heap 同義於 priority queue
+// bottom-up insert 進 heap 一次，複雜度為 logn。top-down delete heap 的 Min/Max 一次，複雜度為 logn
+// 將數字個數 n ，先逐一將數字加入 Min/Max Heap ( 複雜度為 n x logn )，再將此 Heap delete 其 Min/Max 值 n 次 ( 複雜度 n x logn )
+
+```
+
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
 ```js
