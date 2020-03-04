@@ -67,11 +67,33 @@ class BinaryTree{
   constructor(rootNode){
     this.root = rootNode;
   }
-  inorderTraverse(currentNode){
+  
+  static inorderTraverse = (currentNode) => {
     if(currentNode){
-      inorderTraverse(currentNode.leftChild);
+      this.inorderTraverse(currentNode.leftChild);
       console.log(currentNode.data);
-      inorderTraverse(currentNode.rightChild);
+      this.inorderTraverse(currentNode.rightChild);
+    }
+  }
+  static preorderTraverse = (currentNode) => {
+    if(currentNode){
+      console.log(currentNode.data);
+      this.preorderTraverse(currentNode.leftChild);
+      this.preorderTraverse(currentNode.rightChild);
+    }
+  }
+  static inorderNonRecursive = (currentNode) => {
+    const stack = [];
+    while (true){
+      while(currentNode){
+        stack.push(currentNode);
+        currentNode = currentNode.leftChild;
+      }
+      if(stack.length >= 1){
+        currentNode = stack.pop();
+        console.log(currentNode.data);
+        currentNode = currentNode.rightChild;
+      } else break;
     }
   }
 }
@@ -87,7 +109,8 @@ const demoRootNode = new TreeNode('A', demoOneLevelB, demoOneLevelC);
 
 
 const demoTree = new BinaryTree(demoRootNode);
-demoTree.inorderTraverse(this.root); // D B E A C 應用: 100 * 50 + 1
-
+BinaryTree.inorderTraverse(demoTree.root);  // D B E A C 應用: 100 * 50 + 1
+BinaryTree.inorderNonRecursive(demoTree.root);  // D B E A C
+BinaryTree.preorderTraverse(demoTree.root);  // A B D E C
 
 ```
