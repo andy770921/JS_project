@@ -52,7 +52,9 @@ console.log(first.link);    //  [Object] { data: 50, link: [Object] }
 ```
 
 ## Binary Tree
-1. Inorder Traverse:
+1. Inorder, post-order, pre-order, level-order Traverse:
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/BinaryTree_2.png) 
+2. Inorder Traverse:
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/BinaryTree_1.png) 
 ```js
 class TreeNode {
