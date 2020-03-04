@@ -98,6 +98,21 @@ class BinaryTree{
       } else break;
     }
   }
+  static levelOrderTraverse = (currentNode) => {
+    const queue = [];
+    while (true){
+      console.log(currentNode.data);
+      if (currentNode.leftChild){
+        queue.push(currentNode.leftChild);
+      }
+      if (currentNode.rightChild){
+        queue.push(currentNode.rightChild);
+      }
+      if(queue.length >= 1){
+        currentNode = queue.shift();
+      } else break;
+    }
+  }
 }
 
 
@@ -111,8 +126,15 @@ const demoRootNode = new TreeNode('A', demoOneLevelB, demoOneLevelC);
 
 
 const demoTree = new BinaryTree(demoRootNode);
+console.log("inorderTraverse:");
 BinaryTree.inorderTraverse(demoTree.root);  // D B E A C 應用: 100 * 50 + 1
+
+console.log("inorderNonRecursive:");
 BinaryTree.inorderNonRecursive(demoTree.root);  // D B E A C
+
+console.log("preorderTraverse:");
 BinaryTree.preorderTraverse(demoTree.root);  // A B D E C
 
+console.log("levelOrderTraverse:");
+BinaryTree.levelOrderTraverse(demoTree.root);  // A B C D E
 ```
