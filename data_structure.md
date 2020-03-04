@@ -51,3 +51,43 @@ console.log(first);         //  [Object] { data: 10, link: [Object] }
 console.log(first.link);    //  [Object] { data: 50, link: [Object] }
 ```
 
+## Binary Tree
+1. Inorder Traverse:
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/BinaryTree_1.png) 
+```js
+class TreeNode {
+  constructor(data, leftChild = null, rightChild = null){
+    this.data = data;
+    this.leftChild = leftChild;
+    this.rightChild = rightChild;
+  }
+
+}
+class BinaryTree{
+  constructor(rootNode){
+    this.root = rootNode;
+  }
+  inorderTraverse(currentNode){
+    if(currentNode){
+      inorderTraverse(currentNode.leftChild);
+      console.log(currentNode.data);
+      inorderTraverse(currentNode.rightChild);
+    }
+  }
+}
+
+
+const demoOneLevelD = new TreeNode('D');
+const demoOneLevelE = new TreeNode('E');
+
+const demoOneLevelB = new TreeNode('B', demoOneLevelD, demoOneLevelE);
+const demoOneLevelC = new TreeNode('C');
+
+const demoRootNode = new TreeNode('A', demoOneLevelB, demoOneLevelC);
+
+
+const demoTree = new BinaryTree(demoRootNode);
+demoTree.inorderTraverse(this.root); // D B E A C 應用: 100 * 50 + 1
+
+
+```
