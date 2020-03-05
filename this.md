@@ -73,6 +73,7 @@ y4(); // undefined
 # JS 中的 Class 與 function 實做繼承
 
 ## class
+https://codepen.io/jackblackevo/pen/veyNKJ?editors=0010&fbclid=IwAR0yaCXye7ogklCrUK0avmi5-CYXRC2Gn03G0Q4UMfNSQJ4nx77ria2DCLQ
 ```js
 class Person {
   constructor(name) {
@@ -102,6 +103,7 @@ console.log(ryan.hasOwnProperty('name'));
 console.log(ryan.hasOwnProperty('programLang'));
 ```
 ## function
+https://codepen.io/jackblackevo/pen/oGYXKL?editors=0010&fbclid=IwAR2UWw5tTT9Pgm_cbZaD5P5MiXIumVtqnXty2JQGurj8PZRwmAUkdVwx8lU
 ```js
 function Person(name) {
   this.name = name;
