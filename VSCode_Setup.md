@@ -165,7 +165,7 @@ export default App;
 13. 調整完後按 `control + {` 或是 ESC，再打 `:wq` (存檔跳出) 或是 `:q!` 不存檔強制跳出
 13. 單個 commit 解完衝突後要下指令 `git rebase --continue` 繼續解下個 commit 的衝突
 14. 如果要調整第一個 commit 要下指令 `git rebase -i --root`
-
+15. `git pull upstream merge-requests/PR號碼/head:其他人推上去的分支名稱` 可拉下遠端 Pull Request 如 `git pull upstream merge-requests/2472/head:feature/add-apollo-to-query` 
 
 ## git flow 套件: gitflow
 
