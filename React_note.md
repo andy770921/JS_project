@@ -46,6 +46,8 @@ componentWillUnmount = () => {
    window.removeEventListener("resize", this.checkForHeaderStyle);
  };
 ```
+## React hooks 拆分 fetch 範例 
+https://codesandbox.io/s/fetch-optimize-620rt?fbclid=IwAR0H9ugelbNPGju78KcGULyhTGdQiycfygOFBlFfldXV5OG7XKahQnhF1Qg
 ## React 運作原理
 https://overreacted.io/react-as-a-ui-runtime/#memoization
 ## React Hooks 運作原理
