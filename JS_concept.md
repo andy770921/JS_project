@@ -129,6 +129,35 @@ https://www.youtube.com/watch?v=8gWvJx-NP-w
 https://www.youtube.com/watch?v=CwAU1wYeHiM  
 https://www.youtube.com/watch?v=1WnRom8Yjac  
 https://www.youtube.com/watch?v=aZAYj7mqa4c  
+
+## super
+Super is not calling parent method, but calling parent constructor which is not valid call outside of the constructor.  
+https://stackoverflow.com/questions/46234103/error-call-super-outside-of-class-constructor  
+```js
+class People {
+  say(){
+    console.log('hi');
+  }
+}
+
+class Engineer extends People{
+  say(){
+    console.log('hello world');
+  }
+}
+
+class Elaine extends Engineer{
+  say(){
+    super.say();
+    console.log('I am Elaine');
+  }
+}
+
+const elaine = new Elaine();
+elaine.say(); 
+// hello world
+// I am Elaine
+```
 ## Dan 說明 super 在 React 中的使用
 https://overreacted.io/zh-hant/why-do-we-write-super-props/
 ## Array 或 Object ，避免用= 指定，因為這兩者為 call by ref
