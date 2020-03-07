@@ -138,6 +138,9 @@ class People {
   say(){
     console.log('hi');
   }
+  sleep(){
+    console.log('I want to sleep');
+  }
 }
 
 class Engineer extends People{
@@ -150,6 +153,7 @@ class Elaine extends Engineer{
   say(){
     super.say();
     console.log('I am Elaine');
+    super.sleep();
   }
 }
 
@@ -157,6 +161,7 @@ const elaine = new Elaine();
 elaine.say(); 
 // hello world
 // I am Elaine
+// I want to sleep
 ```
 ## Dan 說明 super 在 React 中的使用
 https://overreacted.io/zh-hant/why-do-we-write-super-props/
