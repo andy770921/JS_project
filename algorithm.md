@@ -159,12 +159,12 @@ class MaxHeap {
   insert = function (n){
     let treePositionOfN = this.maxHeap.length + 1;
     for(let i = treePositionOfN; i >= 1; i = Math.floor(i/2)){
-      if (i === 1) break;
+      if (i === 1) break; // at root
       
       const parentIndex = Math.floor(i/2) -1;
       const currentIndex = i - 1;
       if (n <= this.maxHeap[parentIndex]) break;
-      this.maxHeap[currentIndex] = this.maxHeap[parentIndex];
+      this.maxHeap[currentIndex] = this.maxHeap[parentIndex]; // move parent to current
       treePositionOfN = Math.floor(i/2);
     }
     this.maxHeap[treePositionOfN - 1] = n;
