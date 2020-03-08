@@ -152,6 +152,30 @@ console.log(
 4. Heap Sort: 將 n 個數字 ，先逐一加入 Min/Max Heap ( 複雜度為 n x logn )，再將此 Heap delete 其 Min/Max 值 n 次 ( 複雜度 n x logn )，把 delete 的值逐一加入空陣列
 
 ```js
+class MaxHeap {
+  constructor(heapArr){
+    this.maxHeap = heapArr;
+  }
+  insert = function (n){
+    let treePositionOfN = this.maxHeap.length + 1;
+    for(let i = treePositionOfN; i >= 1; i = Math.floor(i/2)){
+      if (i === 1) break;
+      
+      const parentIndex = Math.floor(i/2) -1;
+      const currentIndex = i - 1;
+      if (n <= this.maxHeap[parentIndex]) break;
+      this.maxHeap[currentIndex] = this.maxHeap[parentIndex];
+      treePositionOfN = Math.floor(i/2);
+    }
+    this.maxHeap[treePositionOfN - 1] = n;
+    return this.maxHeap;
+  }
+
+}
+
+const demoMaxHeap = new MaxHeap([20, 15, 2, 14, 10]);
+console.log(demoMaxHeap.insert(21)); // [21, 15, 20, 14, 10, 2]
+// [20, 15, 2, 14, 10, 2] =>  [20, 15, 20, 14, 10, 2] => [21, 15, 20, 14, 10, 2]
 
 ```
 
