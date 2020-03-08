@@ -120,6 +120,22 @@ https://www.youtube.com/watch?v=7TaBhrnPH78
 ## Reacr-Router urls don't work when refreshing or writing manually
 https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
 
+## 為何 Hook 沒用到 React 還要 import?
+1. Ans: Babel 將 JSX 轉成 React.createElement 後，需要 React 接著處理 createElement
+2. Babel 負責處理 JSX 的 plug-in ()，可以將 JSX 語法，轉成 React.createElement 
+3. React.createElement: JSX 解析後產生出來的 React.createElement(xxx,ooo) 需要被接著處理。xxx ooo 經過 createElement 函式處理後，變成 react 自己用的物件，範例如下  
+```js
+React.createElement("h3", {style:{ color : "red" }}, "hello react");
+// 轉換成
+{
+  type: 'h3',
+  props: { children: 'hello react',
+           style: { color: 'red' }
+         }
+}
+
+```
+4. ReactDom.render: 將 產生出的物件，轉成瀏覽器可以使用的 document.XXX 操作 DOM
 
 ## Isomorphic React App
 https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
