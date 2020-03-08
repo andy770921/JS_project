@@ -113,13 +113,25 @@ class BinaryTree{
       } else break;
     }
   }
+  static copyTree = (BinaryTree) => {
+    function copyNode(originalNode){
+      if(originalNode){
+        let temp = new TreeNode('default data');
+        temp.data = originalNode.data;
+        temp.leftChild = copyNode(originalNode.leftChild);
+        temp.rightChild = copyNode(originalNode.rightChild);
+        return temp;
+      } else return null;
+
+    }
+    return copyNode(BinaryTree.root); 
+  }
 }
 
+const demoTwoLevelD = new TreeNode('D');
+const demoTwoLevelE = new TreeNode('E');
 
-const demoOneLevelD = new TreeNode('D');
-const demoOneLevelE = new TreeNode('E');
-
-const demoOneLevelB = new TreeNode('B', demoOneLevelD, demoOneLevelE);
+const demoOneLevelB = new TreeNode('B', demoTwoLevelD, demoTwoLevelE);
 const demoOneLevelC = new TreeNode('C');
 
 const demoRootNode = new TreeNode('A', demoOneLevelB, demoOneLevelC);
@@ -137,4 +149,7 @@ BinaryTree.preorderTraverse(demoTree.root);  // A B D E C
 
 console.log("levelOrderTraverse:");
 BinaryTree.levelOrderTraverse(demoTree.root);  // A B C D E
+
+console.log("copiedTree:");
+console.log(BinaryTree.copyTree(demoTree)); // TreeNode {data: "A", leftChild: TreeNode, rightChild: TreeNode}
 ```
