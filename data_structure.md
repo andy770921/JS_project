@@ -130,7 +130,7 @@ class BinaryTree{
       if (!treeNodeX && !treeNodeY) return true; // both x and y are 0
       if (treeNodeX && treeNodeY // both x and y are not 0
           && (treeNodeX.data === treeNodeX.data) // data is the same
-          && equal(treeNodeX.leftChild, treeNodeY.leftChild)
+          && equal(treeNodeX.leftChild, treeNodeY.leftChild) // subtrees are the same
           && equal(treeNodeX.rightChild, treeNodeY.rightChild)) return true;
       return false;
     }
