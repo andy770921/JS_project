@@ -167,3 +167,31 @@ console.log("test isEqual:");
 const copiedTree = BinaryTree.copyTree(demoTree);
 console.log(BinaryTree.isEuqal(demoTree, copiedTree));  // true
 ```
+3. Heap
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png) 
+```js
+class MaxHeap {
+  constructor(heapArr){
+    this.maxHeap = heapArr;
+  }
+  insert = function (n){
+    let treePositionOfN = this.maxHeap.length + 1;
+    for(let i = treePositionOfN; i >= 1; i = Math.floor(i/2)){
+      if (i === 1) break; // at root
+      
+      const parentIndex = Math.floor(i/2) -1;
+      const currentIndex = i - 1;
+      if (n <= this.maxHeap[parentIndex]) break;
+      this.maxHeap[currentIndex] = this.maxHeap[parentIndex]; // move parent to current
+      treePositionOfN = Math.floor(i/2);
+    }
+    this.maxHeap[treePositionOfN - 1] = n;
+    return this.maxHeap;
+  }
+
+}
+
+const demoMaxHeap = new MaxHeap([20, 15, 2, 14, 10]);
+console.log(demoMaxHeap.insert(21)); // [21, 15, 20, 14, 10, 2]
+// [20, 15, 2, 14, 10, 2] =>  [20, 15, 20, 14, 10, 2] => [21, 15, 20, 14, 10, 2]
+```
