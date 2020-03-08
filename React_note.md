@@ -46,6 +46,49 @@ componentWillUnmount = () => {
    window.removeEventListener("resize", this.checkForHeaderStyle);
  };
 ```
+## HOC
+
+```js
+const HOC = WrappedComponent => {
+  const products = [
+    {
+      id: 90,
+      picture:
+        "https://diz36nn4q02zr.cloudfront.net/webapi/imagesV3/Cropped/SalePage/6016548/0/173139?v=1",
+      name: "MUSTELA~寶寶洗髮沐浴露/Dermo雙潔乳(500ml)【D013520】",
+      suggestPrice: 680,
+      price: 399
+    }
+  ];
+  return props => <WrappedComponent products={products} {...props} />;
+};
+const ProductCard = ({ imgSrc, name }) => (
+  <div>
+    <img src={imgSrc} style={{ width: "100px" }} alt={name} />
+    <div>{name}</div>
+  </div>
+);
+class App extends Component {
+  render() {
+    const { products } = this.props;
+    return (
+      <>
+        {products.map(e => (
+          <ProductCard
+            id={e.id}
+            key={e.id}
+            imgSrc={e.picture}
+            name={e.name}
+          />
+        ))}
+      </>
+    );
+  }
+}
+const WrappedApp = HOC(App);
+const rootElement = document.getElementById("root");
+React.render(<WrappedApp />, rootElement);
+```
 ## React hooks 拆分 fetch 範例 
 https://codesandbox.io/s/fetch-optimize-620rt?fbclid=IwAR0H9ugelbNPGju78KcGULyhTGdQiycfygOFBlFfldXV5OG7XKahQnhF1Qg
 ## React 運作原理
