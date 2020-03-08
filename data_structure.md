@@ -122,9 +122,19 @@ class BinaryTree{
         temp.rightChild = copyNode(originalNode.rightChild);
         return temp;
       } else return null;
-
     }
-    return copyNode(BinaryTree.root); 
+    return {root: copyNode(BinaryTree.root)};
+  }
+  static isEuqal = (BinaryTreeA, BinaryTreeB) => {
+    function equal(treeNodeX, treeNodeY){
+      if (!treeNodeX && !treeNodeY) return true; // both x and y are 0
+      if (treeNodeX && treeNodeY // both x and y are not 0
+          && (treeNodeX.data === treeNodeX.data) // data is the same
+          && equal(treeNodeX.leftChild, treeNodeY.leftChild)
+          && equal(treeNodeX.rightChild, treeNodeY.rightChild)) return true;
+      return false;
+    }
+    return equal(BinaryTreeA.root, BinaryTreeB.root); 
   }
 }
 
@@ -151,5 +161,9 @@ console.log("levelOrderTraverse:");
 BinaryTree.levelOrderTraverse(demoTree.root);  // A B C D E
 
 console.log("copiedTree:");
-console.log(BinaryTree.copyTree(demoTree)); // TreeNode {data: "A", leftChild: TreeNode, rightChild: TreeNode}
+console.log(BinaryTree.copyTree(demoTree)); // {root: TreeNode}
+
+console.log("test isEqual:");
+const copiedTree = BinaryTree.copyTree(demoTree);
+console.log(BinaryTree.isEuqal(copiedTree, demoTree));  // true
 ```
