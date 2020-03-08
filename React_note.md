@@ -128,10 +128,13 @@ https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-re
 React.createElement("h3", {style:{ color : "red" }}, "hello react");
 // 轉換成
 {
-  type: 'h3',
-  props: { children: 'hello react',
-           style: { color: 'red' }
-         }
+    type: 'h3',
+    props: {
+        children: 'hello react',
+        style: {
+            color: 'red'
+        }
+    }
 }
 
 ```
