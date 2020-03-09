@@ -167,6 +167,8 @@ console.log(<App />);
 console.log(App());
 // Object {type: "div", key: null, ref: null, props: Object, _owner: null…}
 ```
+8. what does React do when an element type is a function? It calls your component, and asks what element that component wants to render.
+9. Ref: https://overreacted.io/react-as-a-ui-runtime/
 ## Isomorphic React App
 https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
 
