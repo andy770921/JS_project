@@ -319,9 +319,37 @@ function map(list, fn){
 }
 
 ```
-
-## debounce (closure)
+## Once (HOF, closure)
 ```js
+Q:
+function once(fn){
+  // TODO
+
+}
+
+const log = () => console.log("hello");
+const onceLog = once(log);
+onceLog(); // hello
+onceLog();
+onceLog();
+
+
+A:
+function once(fn){
+  let times = 0;
+  return () => {
+    times ++;
+    if (times <= 1) fn();
+  }
+}
+
+```
+## debounce (HOF, closure)
+```js
+// debounce
+// threashold      : |   |
+// event stream    : |  |  |  |
+// expected outcome:            |
 function debounce(fn, interval=300){
   let startTime = null;
   let endTime = null;
