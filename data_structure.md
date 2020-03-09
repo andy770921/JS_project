@@ -168,7 +168,11 @@ const copiedTree = BinaryTree.copyTree(demoTree);
 console.log(BinaryTree.isEuqal(demoTree, copiedTree));  // true
 ```
 3. Heap
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png) 
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png)   
+最上的根節點編號是 1  
+編號 3 的位置，他的父節點是編號 1 位置  
+編號 4 的位置，他的父節點是 2 位置  
+可用除以 2 再捨小數點，得到父節點編號  
 ```js
 class MaxHeap {
   constructor(heapArr){
