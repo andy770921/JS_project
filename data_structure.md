@@ -208,7 +208,8 @@ class MaxHeap {
       }
     }
     this.maxHeap[i] = k;
-    return this.maxHeap;
+    return this.maxHeap; 
+    // or return maxNumber;
   }
 }
 
