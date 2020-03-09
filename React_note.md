@@ -139,7 +139,10 @@ React.createElement("h3", {style:{ color : "red" }}, "hello react");
 
 ```
 4. ReactDOM.render: 將 產生出的物件，轉成瀏覽器可以使用的 document.XXX 操作 DOM
-
+5.  Dan: 
+```
+When we say ReactDOM.render(reactElement, domContainer), we mean: “Dear React, make the domContainer host tree match my reactElement.”
+```
 ## Isomorphic React App
 https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
 
