@@ -349,7 +349,7 @@ function once(fn){
 // debounce
 // threashold      : |   |
 // event stream    : |  |  |  |
-// expected outcome:            |
+// expected outcome:              |
 function debounce(fn, interval=300){
   let startTime = null;
   let endTime = null;
