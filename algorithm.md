@@ -156,26 +156,55 @@ class MaxHeap {
   constructor(heapArr){
     this.maxHeap = heapArr;
   }
-  insert = function (n){
-    let treePositionOfN = this.maxHeap.length + 1;
-    for(let i = treePositionOfN; i >= 1; i = Math.floor(i/2)){
-      if (i === 1) break; // at root
+  insert(n){
+    let newPosition = this.maxHeap.length + 1;
+    while(newPosition >= 1){
+      if (newPosition === 1) break; // at root
       
-      const parentIndex = Math.floor(i/2) -1;
-      const currentIndex = i - 1;
+      const parentIndex = Math.floor(newPosition / 2) - 1;
+      const currentIndex = newPosition - 1;
       if (n <= this.maxHeap[parentIndex]) break;
       this.maxHeap[currentIndex] = this.maxHeap[parentIndex]; // move parent to current
-      treePositionOfN = Math.floor(i/2);
+      newPosition = Math.floor(newPosition / 2);
     }
-    this.maxHeap[treePositionOfN - 1] = n;
+    this.maxHeap[newPosition - 1] = n;
     return this.maxHeap;
   }
-
+  delete(){
+    if (this.maxHeap.length === 0) return [];
+    const maxNumber = this.maxHeap[0];
+    const k = this.maxHeap[this.maxHeap.length - 1]; // keep the last value
+    this.maxHeap.pop(); // delete last element in the original heap array
+    let i = 0;
+    for(let j = 1; j <= this.maxHeap.length - 1; j *= 2){
+      if(j < this.maxHeap.length - 1){
+        if(this.maxHeap[j] < this.maxHeap[j + 1]) j++;
+        if(k > this.maxHeap[j]) break;
+        this.maxHeap[i] = this.maxHeap[j];
+        i = j; 
+      }
+    }
+    this.maxHeap[i] = k;
+    return maxNumber;
+  }
 }
 
-const demoMaxHeap = new MaxHeap([20, 15, 2, 14, 10]);
-console.log(demoMaxHeap.insert(21)); // [21, 15, 20, 14, 10, 2]
-// [20, 15, 2, 14, 10, 2] =>  [20, 15, 20, 14, 10, 2] => [21, 15, 20, 14, 10, 2]
+function heapSort(arr){
+  let heap = new MaxHeap([]);
+  let sortedArr = [];
+  for(let i = 0; i < arr.length; i++){
+    heap.insert(arr[i]);
+  }
+  for(let i = 0; i < arr.length; i++){
+    sortedArr.unshift(heap.delete()); // 可從小排到大
+    // sortedArr.push(heap.delete()); // 可從大排到小
+  }
+  console.log(sortedArr);
+  return sortedArr;
+}
+
+
+heapSort([1, -100, 200, 2, 300, -5]); // [-100, -5, 1, 2, 200, 300]
 
 ```
 
