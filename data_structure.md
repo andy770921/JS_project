@@ -168,11 +168,12 @@ const copiedTree = BinaryTree.copyTree(demoTree);
 console.log(BinaryTree.isEuqal(demoTree, copiedTree));  // true
 ```
 3. Heap
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png)   
-最上的根節點編號是 1  
-編號 3 的位置，他的父節點是編號 1 位置  
-編號 4 的位置，他的父節點是 2 位置  
-可用除以 2 再捨小數點，得到父節點編號  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png)
+Heap 定義：是 complete binary tree，且每個節點上的數值不能比父節點大/小。  
+父節點找法：可用除以 2 再捨小數點，得到父節點編號  
+Ex：最上的根節點編號是 1，編號 3 的位置，他的父節點是編號 1 位置  
+Ex：編號 4 的位置，他的父節點是 2 位置  
+  
 ```js
 class MaxHeap {
   constructor(heapArr){
