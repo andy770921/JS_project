@@ -218,4 +218,5 @@ console.log(demoMaxHeap.insert(21)); // [21, 15, 20, 14, 10, 2]
 
 const demoMaxHeap2 = new MaxHeap([20, 15, 2, 14, 10]);
 console.log(demoMaxHeap2.delete()); // [15, 14, 2, 10]
+console.log(demoMaxHeap2.delete()); // [14, 10, 2]
 ```
