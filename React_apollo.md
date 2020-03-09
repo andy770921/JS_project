@@ -213,6 +213,42 @@ export default BookDetails;
 
 
 ```
+## SSR 可能出現的 Bug
+1. fetch is not found globally and no fetcher passed, to fix pass a fetch => 需要安裝 fetch 但一般的 node-fetch 
+2. Error: unable to locate global object => 已測試出，使用原官方的 apollo-client 加上 cross-fetch 可解決，用 apollo-boost 或 node-fetch 都會有報錯
+
+```js
+// 可用的解法
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloProvider } from '@apollo/react-hooks';
+import fetch from 'cross-fetch';
+import { HttpLink } from 'apollo-link-http';
+
+const cache = new InMemoryCache();
+const link = new HttpLink({
+    uri: 'http://demo.tw/graphql',
+    fetch,
+});
+const apolloClient = new ApolloClient({
+    link,
+    cache,
+});
+
+function App() {
+  return (
+    <ApolloProvider client={apolloClient}>
+      <div id="main">
+        <h1>Reading List</h1>
+      </div>
+    </ApolloProvider>
+  );
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'));
+```
 
 ## useSubscription 和 GraphQL 的 subscription
 1. 使用即時聊天室可使用此功能
