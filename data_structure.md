@@ -179,17 +179,17 @@ class MaxHeap {
     this.maxHeap = heapArr;
   }
   insert = function (n){
-    let treePositionOfN = this.maxHeap.length + 1;
-    for(let i = treePositionOfN; i >= 1; i = Math.floor(i/2)){
-      if (i === 1) break; // at root
+    let newPosition = this.maxHeap.length + 1;
+    while(newPosition >= 1){
+      if (newPosition === 1) break; // at root
       
-      const parentIndex = Math.floor(i/2) -1;
-      const currentIndex = i - 1;
+      const parentIndex = Math.floor(newPosition / 2) -1;
+      const currentIndex = newPosition - 1;
       if (n <= this.maxHeap[parentIndex]) break;
       this.maxHeap[currentIndex] = this.maxHeap[parentIndex]; // move parent to current
-      treePositionOfN = Math.floor(i/2);
+      newPosition = Math.floor(newPosition / 2);
     }
-    this.maxHeap[treePositionOfN - 1] = n;
+    this.maxHeap[newPosition - 1] = n;
     return this.maxHeap;
   }
 
