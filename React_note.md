@@ -143,6 +143,30 @@ React.createElement("h3", {style:{ color : "red" }}, "hello react");
 ```
 When we say ReactDOM.render(reactElement, domContainer), we mean: “Dear React, make the domContainer host tree match my reactElement.”
 ```
+6. `<APP />` 與 `App()`，差異在，`<APP />` 會被 Babel 轉成 React.createElement(許多複合參數)，轉換後並未呼叫函數，console.log 結果如下
+```js
+import React from "react";
+
+function App() {
+  const state = { name: "Ryan" };
+  const sayHi = () => {
+    console.log("hi");
+  };
+  return (
+    <div className="App">
+      <h1>{state.name}</h1>
+      <button onClick={sayHi}>Click 1</button>
+    </div>
+  );
+}
+console.log(<App />);
+// Object {type: function App(), key: null, ref: null, props: Object, _owner: null…}
+```
+7. `App()` 已呼叫函數，console.log 結果如下
+```js
+console.log(App());
+Object {type: "div", key: null, ref: null, props: Object, _owner: null…}
+```
 ## Isomorphic React App
 https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
 
