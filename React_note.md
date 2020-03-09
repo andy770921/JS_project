@@ -165,7 +165,7 @@ console.log(<App />);
 7. `App()` 已呼叫函數，console.log 結果如下
 ```js
 console.log(App());
-Object {type: "div", key: null, ref: null, props: Object, _owner: null…}
+// Object {type: "div", key: null, ref: null, props: Object, _owner: null…}
 ```
 ## Isomorphic React App
 https://github.com/firebase/functions-samples/tree/master/isomorphic-react-app
