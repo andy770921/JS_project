@@ -214,10 +214,10 @@ export default BookDetails;
 
 ```
 ## SSR 可能出現的 Bug
-1. fetch is not found globally and no fetcher passed, to fix pass a fetch => 需要安裝 fetch 但一般的 node-fetch 
+1. fetch is not found globally and no fetcher passed, to fix pass a fetch => 需要安裝 fetch 但一般的 node-fetch 裝完後會出現 2. 的錯誤
 2. Error: unable to locate global object => 已測試出，使用原官方的 apollo-client 加上 cross-fetch 可解決，用 apollo-boost 或 node-fetch 都會有報錯
 3. Note: apollo-client 的 new ApolloClient 和 apollo-boost 的 new ApolloClient 不同，來源自 apollo-client 的，可加 link
-
+4. Ref: https://github.com/apollographql/apollo-link/issues/513
 ```js
 // 可用的解法
 import React from 'react';
