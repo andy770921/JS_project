@@ -179,12 +179,12 @@ class MaxHeap {
   constructor(heapArr){
     this.maxHeap = heapArr;
   }
-  insert = function (n){
+  insert(n){
     let newPosition = this.maxHeap.length + 1;
     while(newPosition >= 1){
       if (newPosition === 1) break; // at root
       
-      const parentIndex = Math.floor(newPosition / 2) -1;
+      const parentIndex = Math.floor(newPosition / 2) - 1;
       const currentIndex = newPosition - 1;
       if (n <= this.maxHeap[parentIndex]) break;
       this.maxHeap[currentIndex] = this.maxHeap[parentIndex]; // move parent to current
@@ -193,10 +193,29 @@ class MaxHeap {
     this.maxHeap[newPosition - 1] = n;
     return this.maxHeap;
   }
-
+  delete(){
+    if (this.maxHeap.length === 0) return [];
+    const maxNumber = this.maxHeap[0];
+    const k = this.maxHeap[this.maxHeap.length - 1]; // keep the last value
+    this.maxHeap.pop(); // delete last element in the original heap array
+    let i = 0;
+    for(let j = 1; j <= this.maxHeap.length - 1; j *= 2){
+      if(j < this.maxHeap.length - 1){
+        if(this.maxHeap[j] < this.maxHeap[j + 1]) j++;
+        if(k > this.maxHeap[j]) break;
+        this.maxHeap[i] = this.maxHeap[j];
+        i = j; 
+      }
+    }
+    this.maxHeap[i] = k;
+    return this.maxHeap;
+  }
 }
 
 const demoMaxHeap = new MaxHeap([20, 15, 2, 14, 10]);
 console.log(demoMaxHeap.insert(21)); // [21, 15, 20, 14, 10, 2]
 // [20, 15, 2, 14, 10, 2] =>  [20, 15, 20, 14, 10, 2] => [21, 15, 20, 14, 10, 2]
+
+const demoMaxHeap2 = new MaxHeap([20, 15, 2, 14, 10]);
+console.log(demoMaxHeap2.delete()); // [15, 14, 2, 10]
 ```
