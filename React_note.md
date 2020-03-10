@@ -186,4 +186,215 @@ https://reactjs.org/docs/react-dom.html#hydrate
 https://blog.niclin.tw/2017/10/28/%E7%8D%B2%E5%BE%97%E5%AF%A6%E6%99%82%E6%9B%B4%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95polling-comet-long-polling-websocket/  
 https://codeburst.io/polling-vs-sse-vs-websocket-how-to-choose-the-right-one-1859e4e13bd9  
 
+## Dan 說明 super 在 React 中的使用
+https://overreacted.io/zh-hant/why-do-we-write-super-props/
 
+# React 寫法
+
+## React: 改 JSX inline-css 用法
+- style={todo.status===true? {color: 'red', textDecoration: 'line-through'} : {color: 'black'}}
+## React: 迴圈渲染用法
+```js
+    render() {
+        let diceImgs = this.state.historyDices.length ? (
+            this.state.historyDices.map((element, i) => {
+                return (
+                    <div key={5000 + i}><img className={`dice-all dice-color-img${i + 1}`} src={`./imgs/${element.color}_${element.number}.png`} key={6000 + i}></img></div>
+                )
+            })) : (<div></div>)
+        // 方法二: 
+        // let diceImgs = [];
+        //     for (let i = 0; i < this.state.historyDices.length; i++){
+        //         const color = this.state.historyDices[i].color;
+        //         const number = this.state.historyDices[i].number;
+        //         diceImgs.push(<div><img className={`dice-color-img${i+1}`} src={`./imgs/${color}_${number}.png`}></img></div>);
+        //     }
+
+        return (
+            <div>{diceImgs}</div>
+            )
+      }
+```
+## React: setState 用法，避免多個刷新一次更新，非同步
+原:
+```js
+this.setState({
+  score: this.state.score +1
+});
+```
+後，加入 callback ，引入前一次狀態，確保上次狀態更新後，才fire本次狀態更新:
+```js
+this.setState( prevState => {
+  return {
+    score: prevState.score +1
+  };
+});
+```
+簡化寫法，去掉 return 及大括號，在箭頭後加入圓括號
+```js
+this.setState( prevState => ({
+    score: prevState.score +1
+}));
+```
+## React: 輸出的 Class 或 render 函數，開頭避免用小寫，否則跑不出來
+原 ( todoUi 開頭不能用小寫，會無法呈現在畫面):
+```js
+import todoUi from "./todoUI";
+
+class App extends React.Component {
+    render () {
+        return ( <todoUi /> );
+    }
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
+```
+
+後 (import 進來的東西，開頭要用大寫 TodoUi，在 export default 檔案中的函數命名，也要用開頭大寫):
+```js
+import TodoUi from "./todoUI";
+
+class App extends React.Component {
+    render () {
+        return ( <TodoUi /> );
+    }
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
+```
+## React: 新增值用法，避免用 .push()，用 array spread 寫法
+原 (不能用，會直接修改到原先的 state ):
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+addNinja = (newObj) => {
+  this.setState( prevState => ({
+    ninjas: prevState.ninjas.push(newObj)
+  }));
+}
+```
+後，使用 array spread 寫法
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+addNinja = (newObj) => {
+  let newNinjas = [...this.state.ninjas, newObj];
+  this.setState({
+    ninjas: newNinjas
+  });
+}
+```
+配合 prevState ，使用 array spread 寫法
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+addNinja = (newObj) => {
+  this.setState( prevState => ({
+    ninjas: [...prevState.ninjas, newObj]
+  }));
+}
+```
+
+## React: 刪除值用法，用 .filter()
+
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+deleteNinja = (id) => {
+  let newNinjas = this.state.ninjas.filter( ninja => { return ninja.id !== id });
+  this.setState({
+    ninjas: newNinjas
+  });
+}
+```
+配合 prevState ， 寫法如下
+```js
+state = {
+  ninjas: [ { name: "Ryu", age: 30, id: 1 }, { name: "Andy", age: 25, id: 2 } ]
+}
+deleteNinja = (id) => {
+  this.setState( prevState => ({
+    ninjas: prevState.ninjas.filter( ninja => { return ninja.id !== id })
+  }));
+}
+```
+變更到原陣列、且不能操作陣列中的物件的寫法，不要用
+```js
+data = [ "Ryu", "Andy"];
+deleteData = (item) => {
+  if (this.data.indexOf(item) === -1){
+    return;
+  }
+  this.data.splice(this.data.indexOf(item), 1);
+}
+```
+## React: 修改值用法，用 array spread 及 object spread 
+
+- 修改值目標: a. 修改 camels 下，某 id 物件的同一層的 run 值及 boxNum 值，b. 修改 state 下，step 值
+- 在 React 下，setState 就算不寫 levelHeight: 1.4 ，levelHeight 的值不會不見，原因為 "setState Updates are Merged"，在 Redux 特性不同， Redux 會直接將新的 state 覆寫，所以在 Redux 寫法需要加上 ```...state```，如 ```return { ...state, camels: newArray, step: 2};```
+- Ref: https://www.freecodecamp.org/news/get-pro-with-react-setstate-in-10-minutes-d38251d1c781/
+
+```js
+state = {
+    camels: [ {camel: "object1", id: 0, run: false, boxNum: 0}, 
+              {camel: "object2", id: 1, run: false, boxNum: 0}, 
+              {camel: "object3", id: 2, run: false, boxNum: 0}],
+    step: 0,
+    levelHeight: 1.4
+}
+changeState = (ID) => {
+    this.setState(prevState => ({
+         camels: [...prevState.camels.filter(element => (element.id !== ID)), 
+                  { ...prevState.camels.find(element => (element.id === ID)), ...{ run: true, boxNum: 1 } }],
+         step: 2,
+    }));
+}
+```
+## React: 修改值用法 - 2 
+```js
+this.state = {
+    size: 3,
+    tileArray: [
+         {row:0 , col:0 , value:1},
+         {row:0 , col:1 , value:2},
+         {row:0 , col:2 , value:3},
+         {row:1 , col:0 , value:4},
+         {row:1 , col:1 , value:5},
+         {row:1 , col:2 , value:6},
+         {row:2 , col:0 , value:7},
+         {row:2 , col:1 , value:8},
+         {row:2 , col:2 , value:9}
+       ],
+     ranklist: [],
+     start: false,
+     userName: "",
+     useStep: 0
+};
+
+this.setState((prestate)=> {
+     if(checkTopResult || checkRightResult || checkBottomResult || checkLeftResult){
+         // update the value
+         const clickval = clickitem.value;
+         const emptyItem = prestate.tileArray.filter(item => item.value === 9)[0];
+         const emptyIndex = prestate.tileArray.indexOf(emptyItem);
+         prestate.tileArray[emptyIndex].value = clickval;
+         const itemIndex = prestate.tileArray.indexOf(clickitem);
+         prestate.tileArray[itemIndex].value = 9;
+       }
+        return{
+          tileArray: prestate.tileArray,
+          useStep: (prestate.useStep + 1)
+       }
+     },()=>{
+     // check win
+     if(this.checkWin()){
+         alert(this.state.userName + ", you win ٩(^ᴗ^)۶");
+         this.endGame();
+     }
+});
+
+```
