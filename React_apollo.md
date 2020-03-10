@@ -3,6 +3,8 @@
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
 ```js
+// 封裝 context provider 的範例
+const shopId = 100;
 export const ShopCategoryMapProvider = ({ children }) => {
     const [categoryMap, setCategoryMap] = useState(new Map());
 
@@ -15,7 +17,7 @@ export const ShopCategoryMapProvider = ({ children }) => {
     const { id: defaultCategoryId } = categoryList[0] || { id: 0 };
 
     useEffect(() => {
-        setCategoryMap(generateCategoryMap(categoryList));
+        setCategoryMap(categoryList);
     }, [categoryList]);
 
     const context = useMemo(
@@ -29,6 +31,53 @@ export const ShopCategoryMapProvider = ({ children }) => {
 
     return <ShopCategoryMapContext.Provider value={context}>{children}</ShopCategoryMapContext.Provider>;
 };
+
+// 其他完整的 code 如下
+
+import fetch from 'cross-fetch';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
+export const SHOP_CATEGORY_LIST = gql`
+    query ShopCategoryList($shopId: Int!) {
+        shopCategoryList(shopId: $shopId) {
+            categoryList {
+                id
+                name
+            }
+            count
+        }
+    }
+`;
+
+
+
+const apolloClient = new ApolloClient({
+    link: new HttpLink({
+        uri: 'https://bff-private.qa.eks.91dev.tw/graphql',
+        fetch,
+    }),
+    cache: new InMemoryCache(),
+});
+
+const ShopCategory = ({
+    moduleId // 部分資料用 props 傳下來
+}) => (
+    <Router>
+        <ApolloProvider client={apolloClient}>
+            <ModuleConfigContext.Provider value={{ moduleId }}> // 直接放進 context
+                <ShopCategoryMapProvider>   // 對 context 加邏輯處理後的 HOC 
+                    <JSXComponent />        // 畫面相關的 Component
+                </ShopCategoryMapProvider>
+            </ModuleConfigContext.Provider>
+        </ApolloProvider>
+    </Router>
+);
+
+export default ShopCategory;
 ```
 ## useMutation 取得回傳值
 
