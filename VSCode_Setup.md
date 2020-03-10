@@ -166,6 +166,8 @@ export default App;
 13. 單個 commit 解完衝突後要下指令 `git rebase --continue` 繼續解下個 commit 的衝突
 14. 如果要調整第一個 commit 要下指令 `git rebase -i --root`
 15. `git pull upstream merge-requests/PR號碼/head:其他人推上去的分支名稱` 可拉下遠端 Pull Request 如 `git pull upstream merge-requests/2472/head:feature/add-apollo-to-query` 
+16. `git reset --hard upstream/master` 可讓指標指回，跟遠端同步的地方
+
 
 ## git flow 套件: gitflow
 
