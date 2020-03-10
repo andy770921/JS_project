@@ -1,5 +1,35 @@
 # React-Apollo Note
 
+## useQuery 帶變數與取得回傳值
+若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
+```js
+export const ShopCategoryMapProvider = ({ children }) => {
+    const [categoryMap, setCategoryMap] = useState(new Map());
+
+    const { data } = useQuery(SHOP_CATEGORY_LIST, {
+        variables: { shopId },
+    });
+    const {
+        shopCategoryList: { categoryList },
+    } = data || { shopCategoryList: { categoryList: [] } };
+    const { id: defaultCategoryId } = categoryList[0] || { id: 0 };
+
+    useEffect(() => {
+        setCategoryMap(generateCategoryMap(categoryList));
+    }, [categoryList]);
+
+    const context = useMemo(
+        () => ({
+            defaultCategoryId,
+            categoryMap,
+            setCategoryMap,
+        }),
+        [defaultCategoryId, categoryMap]
+    );
+
+    return <ShopCategoryMapContext.Provider value={context}>{children}</ShopCategoryMapContext.Provider>;
+};
+```
 ## useMutation 取得回傳值
 
 1. [官方範例，使用起來無法取得data](https://www.apollographql.com/docs/react/api/react-hooks/#usemutation)
