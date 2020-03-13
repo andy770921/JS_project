@@ -189,6 +189,10 @@ https://codeburst.io/polling-vs-sse-vs-websocket-how-to-choose-the-right-one-185
 ## Dan 說明 super 在 React 中的使用
 https://overreacted.io/zh-hant/why-do-we-write-super-props/
 
+## Redux Partial
+https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux  
+https://hackmd.io/@jackblackevo/rkcdqrh8-#Stale-props-and-zombie-children-in-Redux
+
 # React 寫法
 
 ## React: 改 JSX inline-css 用法
