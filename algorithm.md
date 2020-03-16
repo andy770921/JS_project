@@ -207,6 +207,17 @@ function heapSort(arr){
 heapSort([1, -100, 200, 2, 300, -5]); // [-100, -5, 1, 2, 200, 300]
 
 ```
+## Bucket Sort (Radix sort 基數排序): 不是 comparison based ，時間複雜度 O(nk)
+1. n 個數字、最高 k 位數
+2. k 決定了進行多少輪處理，而 n 是每輪處理的運算元目
+3. Radix-Exchange sort (most significant bit MSB)
+```js
+
+```
+4. Straight-Radix sort (least significant bit LSB)
+```js
+
+```
 
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
