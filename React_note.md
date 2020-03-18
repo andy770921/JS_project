@@ -30,6 +30,80 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
 `;
 ```
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
+1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
+2. 若打開註解，使用 provider value={{orderBy, setOrderBy}}，在 notAdd 函數觸發時，console.log 會出現 re-render
+```js
+import React, { createContext, useState, useMemo, useContext} from "react";
+
+function MainComponent() {
+  const {orderBy, setOrderBy} = useContext(OrderByProviderContext);
+  console.log('re-render');
+  const addX = () => {
+    console.log("addX", orderBy);
+    const i = orderBy.x + 1;
+    setOrderBy({...orderBy, x:i});
+  };
+  const addY = () => {
+    console.log("addY", orderBy);
+    const i = orderBy.y + 1;
+    setOrderBy({...orderBy, y:i});
+  };
+  const sameAddress = () => {
+    console.log("sameAddress", orderBy);
+    setOrderBy(orderBy);
+  };
+  const notAdd = () => {
+    console.log("notAdd", orderBy);
+    setOrderBy({...orderBy});
+  };
+
+  return (
+    <div className="App">
+      <h1>x: {orderBy.x}</h1>
+      <h1>y: {orderBy.y}</h1>
+      <button onClick={addX}>Click 1</button>
+      <button onClick={addY}>Click 2</button>
+      <button onClick={sameAddress}>Click 3</button>
+      <button onClick={notAdd}>Click 4</button>
+    </div>
+  );
+}
+
+
+
+const OrderByProviderInitialState = {
+    orderBy: '',
+    setOrderBy: _orderBy => {},
+};
+
+const OrderByProviderContext = createContext(OrderByProviderInitialState);
+
+const OrderByProvider = ({ children }) => {
+    const [orderBy, setOrderBy] = useState({x:1, y:2});
+
+    const context = useMemo(
+        () => {
+          console.log('trigger useMemo');
+          return {
+            orderBy: {x: orderBy.x, y:orderBy.y},
+            setOrderBy,
+        }},
+        [orderBy.x, orderBy.y]
+    );
+
+    console.log('in Context Provider');
+    //return <OrderByProviderContext.Provider value={{orderBy, setOrderBy}}>{children}</OrderByProviderContext.Provider>;
+    return <OrderByProviderContext.Provider value={context}>{children}</OrderByProviderContext.Provider>;
+};
+
+const App = () => (
+  <OrderByProvider>
+    <MainComponent />
+  </OrderByProvider>
+);
+
+export default App;
+```
 ```ts
 import { createContext, useState, useMemo, useEffect, FC } from 'react';
 
