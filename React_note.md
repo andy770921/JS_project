@@ -97,6 +97,16 @@ export const OrderByProvider: FC = ({ children }) => {
     return <OrderByProviderContext.Provider value={context}>{children}</OrderByProviderContext.Provider>;
 };
 
+const MainComponent: FC = () => (
+    <BreadcrumbsPathMapProvider>
+        <OrderByProvider>
+            <MainComponent />
+        </OrderByProvider>
+    </BreadcrumbsPathMapProvider>
+);
+
+export default MainComponent;
+
 ```
 ## Resize 時，隱藏漢堡選單
 ```js
