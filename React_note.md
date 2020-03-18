@@ -29,6 +29,75 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
     }};
 `;
 ```
+## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
+```ts
+import { createContext, useState, useMemo, useEffect, FC } from 'react';
+
+interface BreadcrumbsPathMapState {
+    breadcrumbsPathMap: Map<number, ShopCategoryItem[]>;
+    setBreadcrumbsPathMap: (breadcrumbsPathMap: Map<number, ShopCategoryItem[]>) => void;
+}
+
+const breadcrumbsPathMapInitialState: BreadcrumbsPathMapState = {
+    breadcrumbsPathMap: new Map(),
+    setBreadcrumbsPathMap: _breadcrumbsPathMap => {},
+};
+
+export const BreadcrumbsPathMapContext = createContext(breadcrumbsPathMapInitialState);
+
+export const BreadcrumbsPathMapProvider: FC = ({ children }) => {
+    const [breadcrumbsPathMap, setBreadcrumbsPathMap] = useState(new Map<number, ShopCategoryItem[]>());
+
+    const { data } = useQuery<ShopCategoryList>(SHOP_CATEGORY_LIST, {
+        variables: { shopId },
+    });
+    const {
+        shopCategoryList: { categoryList },
+    } = data || { shopCategoryList: { categoryList: [] } };
+
+    useEffect(() => {
+        setBreadcrumbsPathMap(generateBreadcrumbsPathMap(categoryList));
+    }, [categoryList]);
+
+    const context = useMemo(
+        () => ({
+            breadcrumbsPathMap,
+            setBreadcrumbsPathMap,
+        }),
+        [breadcrumbsPathMap]
+    );
+
+    return <BreadcrumbsPathMapContext.Provider value={context}>{children}</BreadcrumbsPathMapContext.Provider>;
+};
+
+
+interface OrderByState {
+    orderBy: string;
+    setOrderBy: (orderBy: string) => void;
+}
+
+const OrderByProviderInitialState: OrderByState = {
+    orderBy: '',
+    setOrderBy: _orderBy => {},
+};
+
+export const OrderByProviderContext = createContext(OrderByProviderInitialState);
+
+export const OrderByProvider: FC = ({ children }) => {
+    const [orderBy, setOrderBy] = useState('');
+
+    const context = useMemo(
+        () => ({
+            orderBy,
+            setOrderBy,
+        }),
+        [orderBy]
+    );
+
+    return <OrderByProviderContext.Provider value={context}>{children}</OrderByProviderContext.Provider>;
+};
+
+```
 ## Resize 時，隱藏漢堡選單
 ```js
 componentDidMount = () => {
