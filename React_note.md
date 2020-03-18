@@ -183,6 +183,12 @@ const MainComponent: FC = () => (
 export default MainComponent;
 
 ```
+
+## react-redux Partial
+1. partial 是只有用到的那個 property 變了才 update
+2. https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux?fbclid=IwAR2DzAFYbIn3offrloT1nYX1MXagALLfQ3kSvFghzMaTNfKiqmz52mZ9Khs
+3. https://hackmd.io/@jackblackevo/rkcdqrh8-?fbclid=IwAR2NqkGYVGlMOp3g94ElR-gz_rizmLIZ7IPgncJv_gfID6j8HwZiEQ_zPIo#Stale-props-and-zombie-children-in-Redux
+
 ## Resize 時，隱藏漢堡選單
 ```js
 componentDidMount = () => {
