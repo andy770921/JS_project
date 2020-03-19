@@ -4,7 +4,10 @@ https://app.codacy.com/projects
 ## Ryan React 筆記
 https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
 ## useMemo, useCallback
+1. 沒有用useCallback，每次都是不同的address
+2. 有用useCallback，特定條件下才會是不同的address
 https://kentcdodds.com/blog/usememo-and-usecallback
+https://overreacted.io/a-complete-guide-to-useeffect/?fbclid=IwAR0V2KB1vCC9QhrRwrE8_fsgGurO6JEZNqaSaG9oY1cmr3Jv_Fe3F0ELYhM
 ## Styled-components，傳變數方法 ( 使用 TypeScript )
 ```ts
 const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
