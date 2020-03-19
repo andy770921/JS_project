@@ -251,3 +251,237 @@ const demoRootNode = new TreeNode(30, 3, demoOneLevelB, demoOneLevelC);
 
 const demoTree = new BinarySearchTree(demoRootNode);
 ```
+## Stack 實際應用
+
+```ts
+interface ShopCategoryItem {
+    id: number;
+    name: string;
+    childList: ShopCategoryItem[] | null;
+    isThereChild?: boolean;
+}
+
+class Stack<T> {
+    private arr: T[];
+
+    constructor(array: T[] = []) {
+        this.arr = array.slice();
+    }
+
+    pop() {
+        return this.arr.pop();
+    }
+
+    push(...x: T[]) {
+        this.arr.push(...x);
+    }
+
+    isEmpty() {
+        return this.arr.length === 0;
+    }
+
+    top() {
+        return this.arr[this.arr.length - 1];
+    }
+}
+
+const hasChild = (item: ShopCategoryItem) => Boolean(item.childList) && item.childList.length > 0;
+
+export const generateBreadcrumbsPathMap = (data: ShopCategoryItem[] = []) => {
+    if (!data || data.length === 0) {
+        return new Map<number, ShopCategoryItem[]>();
+    }
+
+    const pathMap = new Map<number, ShopCategoryItem[]>();
+    const pathStack = new Stack<ShopCategoryItem[]>();
+    const currStack = new Stack(data.slice().reverse());
+
+    while (!currStack.isEmpty()) {
+        const curr = currStack.pop();
+        const prevPath = pathStack.pop() || [];
+        const currPath = [...prevPath, curr];
+
+        pathMap.set(
+            curr.id,
+            currPath.map(({ id, name }) => ({ id, name, childList: null }))
+        );
+
+        if (hasChild(curr)) {
+            const { childList } = curr;
+            currStack.push(...childList.slice().reverse());
+
+            for (let i = 0; i < childList.length; i += 1) {
+                pathStack.push(currPath);
+            }
+        }
+    }
+
+    return pathMap;
+};
+
+export const generateCategoryMap = (data: ShopCategoryItem[] = []) => {
+    if (!data || data.length === 0) {
+        return new Map<number, ShopCategoryItem>();
+    }
+
+    const categoryMap = new Map<number, ShopCategoryItem>();
+    const currStack = new Stack(data.slice().reverse());
+
+    while (!currStack.isEmpty()) {
+        const curr = currStack.pop();
+        const isThereChild = hasChild(curr);
+
+        categoryMap.set(curr.id, { ...curr, isThereChild });
+
+        if (isThereChild) {
+            const { childList } = curr;
+            currStack.push(...childList.slice().reverse());
+        }
+    }
+
+    return categoryMap;
+};
+// 以下為測試
+const testState: ShopCategoryItem[] = [
+    {
+        id: 1,
+        name: 'A',
+        childList: [
+            {
+                id: 2,
+                name: 'A-1',
+                childList: null,
+            },
+            {
+                id: 3,
+                name: 'A-2',
+                childList: [
+                    {
+                        id: 4,
+                        name: 'A-2-1',
+                        childList: null,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 5,
+        name: 'B',
+        childList: [
+            {
+                id: 6,
+                name: 'B-1',
+                childList: [
+                    {
+                        id: 7,
+                        name: 'B-1-1',
+                        childList: [
+                            {
+                                id: 8,
+                                name: 'B-1-1-1',
+                                childList: null,
+                            },
+                            {
+                                id: 9,
+                                name: 'B-1-1-2',
+                                childList: [
+                                    {
+                                        id: 10,
+                                        name: 'B-1-1-2-1',
+                                        childList: null,
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        id: 11,
+        name: 'C',
+        childList: null,
+    },
+];
+
+
+const getFormattedResult = (data: ShopCategoryItem[] = []) => data.map(x => x.name);
+
+describe('generateBreadcrumbsPathMap', () => {
+    let breadcrumbsPathMap: Map<number, ShopCategoryItem[]>;
+
+    beforeAll(() => {
+        breadcrumbsPathMap = generateBreadcrumbsPathMap(testState);
+    });
+
+    afterAll(() => {
+        breadcrumbsPathMap = null;
+    });
+
+    it('when no data', () => {
+        const id = 4;
+        const emptyBreadcrumbsPathMap = generateBreadcrumbsPathMap(null);
+        const isThereID = emptyBreadcrumbsPathMap.has(id);
+        expect(isThereID).toBe(false);
+    });
+
+    it('when no id found', () => {
+        const id = 999;
+        const isThereID = breadcrumbsPathMap.has(id);
+        expect(isThereID).toBe(false);
+    });
+
+    it('when 1 level', () => {
+        const id = 1;
+        const breadcrumbsPath = breadcrumbsPathMap.get(id);
+        expect(getFormattedResult(breadcrumbsPath)).toEqual(['A']);
+    });
+
+    it('when 3 level', () => {
+        const id = 4;
+        const breadcrumbsPath = breadcrumbsPathMap.get(id);
+        expect(getFormattedResult(breadcrumbsPath)).toEqual(['A', 'A-2', 'A-2-1']);
+    });
+
+    it('when 5 level', () => {
+        const id = 10;
+        const breadcrumbsPath = breadcrumbsPathMap.get(id);
+        expect(getFormattedResult(breadcrumbsPath)).toEqual(['B', 'B-1', 'B-1-1', 'B-1-1-2', 'B-1-1-2-1']);
+    });
+});
+
+describe('generateCategoryMap', () => {
+    let categoryMap: Map<number, ShopCategoryItem>;
+
+    beforeAll(() => {
+        categoryMap = generateCategoryMap(testState);
+    });
+
+    afterAll(() => {
+        categoryMap = null;
+    });
+
+    it('when no data', () => {
+        const id = 4;
+        const emptyCategoryMap = generateCategoryMap(null);
+        const isThereID = emptyCategoryMap.has(id);
+        expect(isThereID).toBe(false);
+    });
+
+    it('when no id found', () => {
+        const id = 31415926;
+        const isThereID = categoryMap.has(id);
+        expect(isThereID).toBe(false);
+    });
+
+    it('when id exists', () => {
+        const id = 9;
+        const categoryItem = categoryMap.get(id);
+        const name = categoryItem.name;
+        expect(name).toBe('B-1-1-2');
+    });
+});
+
+```
