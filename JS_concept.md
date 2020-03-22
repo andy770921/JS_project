@@ -5,7 +5,9 @@ https://github.com/AllJointTW/clean-code-javascript
 https://www.youtube.com/watch?v=NOprCnnjHm0  
 https://youtu.be/yswb4SkDoj0
 ## Callbacks vs Promises vs RxJs Observables vs async/ await
-https://youtu.be/jgWnccjXR4I
+https://youtu.be/jgWnccjXR4I  
+RxJS: https://youtu.be/T9wOu11uU6U
+Redux-observable: https://youtu.be/AslncyG8whg  
 ## 同步/非同步 - async function 會回傳 promise 物件 / await
 https://noob.tw/js-async/  
 https://www.oxxostudio.tw/articles/201908/js-async-await.html  
