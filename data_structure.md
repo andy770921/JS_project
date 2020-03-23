@@ -226,7 +226,7 @@ console.log(demoMaxHeap2.delete()); // [14, 10, 2]
 定義：每個節點上有一個唯一且非 0 的數值 (key) ，且左邊 child 節點的數值不能比該節點小/大。   
 ```js
 class TreeNode {
-  constructor(data, leftSize, leftChild = null, rightChild = null){
+  constructor(key, leftSize, leftChild = null, rightChild = null){
     this.key = key;
     this.leftSize = leftSize;
     this.leftChild = leftChild;
@@ -237,6 +237,12 @@ class TreeNode {
 class BinarySearchTree{
   constructor(rootNode){
     this.root = rootNode;
+  }
+  search(node, value){
+    if (!node) return false;
+    if (value === node.key) return node; // or return true
+    if (value < node.key) return this.search(node.leftChild, value);
+    return this.search(node.rightChild, value);
   }
 }
 
@@ -250,6 +256,9 @@ const demoOneLevelC = new TreeNode(40, 2, demoTwoLevelF, demoTwoLevelG);
 const demoRootNode = new TreeNode(30, 3, demoOneLevelB, demoOneLevelC);
 
 const demoTree = new BinarySearchTree(demoRootNode);
+
+console.log(demoTree.search(demoTree.root, 40)); // TreeNode {key: 40, leftSize: 2, leftChild: TreeNode, rightChild: TreeNode}
+console.log(demoTree.search(demoTree.root, 15)); // false
 ```
 ## Stack 實際應用
 
