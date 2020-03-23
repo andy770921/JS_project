@@ -168,8 +168,8 @@ const copiedTree = BinaryTree.copyTree(demoTree);
 console.log(BinaryTree.isEuqal(demoTree, copiedTree));  // true
 ```
 3. Heap
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png)
-Heap 定義：是 complete binary tree，且每個節點上的數值不能比父節點大/小。  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/Heap_1.png)  
+Heap 定義：是 complete binary tree，且每個節點上的數值不能比父節點大 / 小。  
 父節點找法：可用除以 2 再捨小數點，得到父節點編號  
 Ex：最上的根節點編號是 1，編號 3 的位置，他的父節點是編號 1 位置  
 Ex：編號 4 的位置，他的父節點是 2 位置  
@@ -222,9 +222,9 @@ console.log(demoMaxHeap2.delete()); // [15, 14, 2, 10]
 console.log(demoMaxHeap2.delete()); // [14, 10, 2]
 ```
 4. Binary Search Tree
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/bst_1.png)  
-1. 定義：每個節點上有一個唯一且非 0 的數值 (key) ，且左邊 child 節點的數值不能比該節點小 / 大。 
-2. Left Size：以自己當作 root，左邊 subtree 的節點個數 + 1 即為 Left Size
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/bst_1.png)    
+定義：每個節點上有一個唯一且非 0 的數值 (key) ，且左邊 child 節點的數值不能比該節點小 / 大。   
+Left Size：以自己當作 root，左邊 subtree 的節點個數 + 1 即為 Left Size  
 ```js
 class TreeNode {
   constructor(key, leftSize, leftChild = null, rightChild = null){
