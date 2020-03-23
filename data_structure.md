@@ -223,7 +223,8 @@ console.log(demoMaxHeap2.delete()); // [14, 10, 2]
 ```
 4. Binary Search Tree
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/bst_1.png)  
-定義：每個節點上有一個唯一且非 0 的數值 (key) ，且左邊 child 節點的數值不能比該節點小/大。   
+1. 定義：每個節點上有一個唯一且非 0 的數值 (key) ，且左邊 child 節點的數值不能比該節點小 / 大。 
+2. Left Size：以自己當作 root，左邊 subtree 的節點個數 + 1 即為 Left Size
 ```js
 class TreeNode {
   constructor(key, leftSize, leftChild = null, rightChild = null){
