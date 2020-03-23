@@ -225,6 +225,7 @@ console.log(demoMaxHeap2.delete()); // [14, 10, 2]
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/bst_1.png)    
 定義：每個節點上有一個唯一且非 0 的數值 (key) ，且左邊 child 節點的數值不能比該節點小 / 大。   
 Left Size：以自己當作 root，左邊 subtree 的節點個數 + 1 即為 Left Size  
+第 k 個數字：從小到大排序，第 k 個數字
 ```js
 class TreeNode {
   constructor(key, leftSize, leftChild = null, rightChild = null){
@@ -248,10 +249,23 @@ class BinarySearchTree{
   searchNonRecursive(node, value){
     let currentNode = node;
     while(currentNode !== null){
-      if(value === currentNode.key) return currentNode;
+      if (value === currentNode.key) return currentNode;
       if (value < currentNode.key) {
         currentNode = currentNode.leftChild;
       } else {
+        currentNode = currentNode.rightChild;
+      }
+    }
+    return false;
+  }
+  findKth(node, k){
+    let currentNode = node;
+    while(currentNode !== null){
+      if (k === currentNode.leftSize) return currentNode;
+      if (k < currentNode.leftSize) {
+        currentNode = currentNode.leftChild;
+      } else {
+        k -= currentNode.leftSize;
         currentNode = currentNode.rightChild;
       }
     }
@@ -275,6 +289,9 @@ console.log(demoTree.search(demoTree.root, 15)); // false
 
 console.log(demoTree.searchNonRecursive(demoTree.root, 40)); // TreeNode {key: 40, ...}
 console.log(demoTree.searchNonRecursive(demoTree.root, 15)); // false
+
+console.log(demoTree.findKth(demoTree.root, 2)); // TreeNode {key: 5, ...}
+console.log(demoTree.findKth(demoTree.root, 5)); // TreeNode {key: 40, ...}
 ```
 ## Stack 實際應用
 
