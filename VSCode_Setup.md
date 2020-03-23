@@ -168,7 +168,7 @@ export default App;
 16. `git pull upstream merge-requests/PR號碼/head:其他人推上去的分支名稱` 可拉下遠端 Pull Request 如 `git pull upstream merge-requests/2472/head:feature/add-apollo-to-query` 
 17. `git reset --hard upstream/master` 可讓指標指回，跟遠端同步的地方
 18. `git fetch --all` 可讓本機知道遠端所有分支 
-
+19. `git clone --single-branch --branch <branchname> <remote-repo>` 可 clone 遠端特定分支
 ## git flow 套件: gitflow
 
 0. 建議配合 VS Code 套件 Git Graph 觀察分支狀況
