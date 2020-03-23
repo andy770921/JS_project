@@ -244,6 +244,18 @@ class BinarySearchTree{
     if (value < node.key) return this.search(node.leftChild, value);
     return this.search(node.rightChild, value);
   }
+  searchNonRecursive(node, value){
+    let currentNode = node;
+    while(currentNode !== null){
+      if(value === currentNode.key) return currentNode;
+      if (value < currentNode.key) {
+        currentNode = currentNode.leftChild;
+      } else {
+        currentNode = currentNode.rightChild;
+      }
+    }
+    return false;
+  }
 }
 
 const demoTwoLevelD = new TreeNode(2, 1);
@@ -257,8 +269,11 @@ const demoRootNode = new TreeNode(30, 3, demoOneLevelB, demoOneLevelC);
 
 const demoTree = new BinarySearchTree(demoRootNode);
 
-console.log(demoTree.search(demoTree.root, 40)); // TreeNode {key: 40, leftSize: 2, leftChild: TreeNode, rightChild: TreeNode}
+console.log(demoTree.search(demoTree.root, 40)); // TreeNode {key: 40, ...}
 console.log(demoTree.search(demoTree.root, 15)); // false
+
+console.log(demoTree.searchNonRecursive(demoTree.root, 40)); // TreeNode {key: 40, ...}
+console.log(demoTree.searchNonRecursive(demoTree.root, 15)); // false
 ```
 ## Stack 實際應用
 
