@@ -228,17 +228,43 @@ Left Size：以自己當作 root，左邊 subtree 的節點個數 + 1 即為 Lef
 第 k 個數字：從小到大排序，第 k 個數字
 ```js
 class TreeNode {
-  constructor(key, leftSize, leftChild = null, rightChild = null){
+  constructor(key, leftChild = null, rightChild = null){
     this.key = key;
-    this.leftSize = leftSize;
     this.leftChild = leftChild;
     this.rightChild = rightChild;
   }
-
+  // 透過計算得到 leftSize
+  calculateLeftSize(node){
+    let count = 0;
+    let currentNode = node;
+    while(currentNode){
+      count++;
+      currentNode = currentNode.leftChild;
+    }
+    this.leftSize = count;
+  }
 }
-class BinarySearchTree{
+
+class BinarySearchTree {
   constructor(rootNode){
     this.root = rootNode;
+    // BinarySearchTree 一旦被建立，馬上算出每個節點的 leftSize
+    this.inorderTraverseAndCountLeftSize(rootNode);
+  }
+  inorderTraverseAndCountLeftSize(node) {
+    let currentNode = node;
+    const stack = [];
+    while (true){
+      while(currentNode){
+        stack.push(currentNode);
+        currentNode = currentNode.leftChild;
+      }
+      if(stack.length >= 1){
+        currentNode = stack.pop();
+        currentNode.calculateLeftSize(currentNode);
+        currentNode = currentNode.rightChild;
+      } else break;
+    }
   }
   search(node, value){
     if (!node) return false;
@@ -273,25 +299,25 @@ class BinarySearchTree{
   }
 }
 
-const demoTwoLevelD = new TreeNode(2, 1);
-const demoTwoLevelF = new TreeNode(32, 1);
-const demoTwoLevelG = new TreeNode(45, 1);
+const demoTwoLevelD = new TreeNode(2);   // leftSize = 1
+const demoTwoLevelF = new TreeNode(32);  // leftSize = 1
+const demoTwoLevelG = new TreeNode(45);  // leftSize = 1
 
-const demoOneLevelB = new TreeNode(5, 2, demoTwoLevelD);
-const demoOneLevelC = new TreeNode(40, 2, demoTwoLevelF, demoTwoLevelG);
+const demoOneLevelB = new TreeNode(5, demoTwoLevelD);                   // leftSize = 2
+const demoOneLevelC = new TreeNode(40, demoTwoLevelF, demoTwoLevelG);   // leftSize = 2
 
-const demoRootNode = new TreeNode(30, 3, demoOneLevelB, demoOneLevelC);
+const demoRootNode = new TreeNode(30, demoOneLevelB, demoOneLevelC);    // leftSize = 3
 
 const demoTree = new BinarySearchTree(demoRootNode);
 
-console.log(demoTree.search(demoTree.root, 40)); // TreeNode {key: 40, ...}
+console.log(demoTree.search(demoTree.root, 40)); // TreeNode {key: 40, ...}
 console.log(demoTree.search(demoTree.root, 15)); // false
 
-console.log(demoTree.searchNonRecursive(demoTree.root, 40)); // TreeNode {key: 40, ...}
+console.log(demoTree.searchNonRecursive(demoTree.root, 40)); // TreeNode {key: 40, ...}
 console.log(demoTree.searchNonRecursive(demoTree.root, 15)); // false
 
-console.log(demoTree.findKth(demoTree.root, 2)); // TreeNode {key: 5, ...}
-console.log(demoTree.findKth(demoTree.root, 5)); // TreeNode {key: 40, ...}
+console.log(demoTree.findKth(demoTree.root, 2)); // TreeNode {key: 5, ...}
+console.log(demoTree.findKth(demoTree.root, 5)); // TreeNode {key: 40, ...}
 ```
 ## Stack 實際應用
 
