@@ -272,8 +272,8 @@ class BinarySearchTree {
     if (value < node.key) return this.search(node.leftChild, value);
     return this.search(node.rightChild, value);
   }
-  searchNonRecursive(node, value){
-    let currentNode = node;
+  searchNonRecursive(value){
+    let currentNode = this.root;
     while(currentNode !== null){
       if (value === currentNode.key) return currentNode;
       if (value < currentNode.key) {
@@ -284,8 +284,8 @@ class BinarySearchTree {
     }
     return false;
   }
-  findKth(node, k){
-    let currentNode = node;
+  findKth(k){
+    let currentNode = this.root;
     while(currentNode !== null){
       if (k === currentNode.leftSize) return currentNode;
       if (k < currentNode.leftSize) {
@@ -296,6 +296,30 @@ class BinarySearchTree {
       }
     }
     return false;
+  }
+  insert(value){
+    const newNode = new TreeNode(value);
+    newNode.leftSize = 1;
+    let currentNode = this.root;
+    while(currentNode !== null){
+      if (value < currentNode.key) {
+        currentNode.leftSize++;
+        if(currentNode.leftChild){
+          currentNode = currentNode.leftChild
+        } else {
+          currentNode.leftChild = newNode;
+          break;
+        }
+      } else {
+        if(currentNode.rightChild){
+          currentNode = currentNode.rightChild;
+        } else {
+          currentNode.rightChild = newNode;
+          break;
+        }
+      }
+    }
+    return this.root;
   }
 }
 
@@ -313,11 +337,14 @@ const demoTree = new BinarySearchTree(demoRootNode);
 console.log(demoTree.search(demoTree.root, 40)); // TreeNode {key: 40, ...}
 console.log(demoTree.search(demoTree.root, 15)); // false
 
-console.log(demoTree.searchNonRecursive(demoTree.root, 40)); // TreeNode {key: 40, ...}
-console.log(demoTree.searchNonRecursive(demoTree.root, 15)); // false
+console.log(demoTree.searchNonRecursive(40)); // TreeNode {key: 40, ...}
+console.log(demoTree.searchNonRecursive(15)); // false
 
-console.log(demoTree.findKth(demoTree.root, 2)); // TreeNode {key: 5, ...}
-console.log(demoTree.findKth(demoTree.root, 5)); // TreeNode {key: 40, ...}
+console.log(demoTree.findKth(2)); // TreeNode {key: 5, ...}
+console.log(demoTree.findKth(5)); // TreeNode {key: 40, ...}
+
+console.log(demoTree.insert(1)); // TreeNode {key: 30, leftSize: 4 ...}
+console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 ```
 ## Stack 實際應用
 
