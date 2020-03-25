@@ -1,6 +1,15 @@
 
 # 寶哥課程
 
+## Callbacks vs Promises vs RxJs Observables vs async/ await
+https://youtu.be/jgWnccjXR4I  
+
+## RxJS 教學
+https://youtu.be/T9wOu11uU6U  
+
+## Redux-observable 教學
+https://youtu.be/AslncyG8whg  
+
 ## 運算子觀念網站
 https://reactive.how
 
@@ -8,6 +17,7 @@ https://reactive.how
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg1.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg2.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg3.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg3.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg4.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg5.png"/>
