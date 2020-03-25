@@ -3,6 +3,7 @@
 
 ## 運算子觀念網站
 https://reactive.how
+
 ## 投影片
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg1.png"/>
@@ -25,7 +26,9 @@ https://reactive.how
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg18.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg19.png"/>
 </div>
+
 ## Retry
+
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/retry.png"/>
 </div>
