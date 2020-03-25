@@ -9,4 +9,23 @@ https://reactive.how
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg2.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg3.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg4.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg5.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg6.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg7.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg8.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg9.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg10.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg11.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg12.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg13.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg14.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg15.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg16.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg17.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg18.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg19.png"/>
+</div>
+## Retry
+<div align="center">
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/retry.png"/>
 </div>
