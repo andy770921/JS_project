@@ -18,7 +18,7 @@ https://reactive.how
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg1.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg2.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg3.png"/>
-  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg3.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg3-5.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg4.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg5.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg6.png"/>
