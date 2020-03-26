@@ -568,3 +568,75 @@ this.setState((prestate)=> {
 });
 
 ```
+
+## React: 純功能 Component 
+```js
+import { FC, useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { dependencies } from '@src/providers/globalVariableProvider';
+import { ShopCategoryMapContext } from '../../../desktop/ShopCategory/contexts';
+
+const DocumentTitle: FC = () => {
+    const { categoryMap } = useContext(ShopCategoryMapContext);
+    const { categoryId: id } = useParams();
+    const categoryId = Number(id);
+
+    useEffect(() => {
+        const shopName = dependencies?.shopProfile?.ShopBasicInfo?.ShopName || '';
+        const { name } = categoryMap.get(categoryId) || { name: '' };
+        document.title = `${name} - ${shopName}`;
+    }, [categoryId, categoryMap]);
+
+    return null;
+};
+
+export default DocumentTitle;
+
+
+const ShopCategoryContent: FC<{ baseUrl: string; shopCategoryMapContext: Context<ContextType> }> = ({
+    baseUrl,
+    shopCategoryMapContext,
+}) => {
+    const { categoryId: id } = useParams();
+    const categoryId = Number.isNaN(Number(id)) ? -1 : Number(id);
+
+    const { categoryMap } = useContext(shopCategoryMapContext);
+    const { isThereChild } = categoryMap.get(categoryId) || { isThereChild: false };
+
+    const isExist = useSelector((state: RootState) => state.shopCategory.isExist);
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(switchCategory({ categoryId, isShowCurator: categoryId !== CATEGORY_ID_ALL_ITEMS && !isThereChild }));
+    }, [dispatch, categoryId, isThereChild]);
+
+    useEffect(() => {
+        if (categoryId < 0 || !isExist) {
+            window.location.replace('/error');
+        }
+    }, [categoryId, isExist]);
+
+    if (categoryId < 0 || !isExist) {
+        return null;
+    }
+
+    return (
+        <Wrapper>
+            <DocumentTitle />
+            <Breadcrumbs baseUrl={baseUrl} />
+            <Content>
+                <MenuWrapper>
+                    <Menu baseUrl={baseUrl} />
+                </MenuWrapper>
+                <ListWrapper>
+                    <AdvertisementSection />
+                    <PromotionSection />
+                    <ShopCategoryMapProvider>
+                        <ProductBlock />
+                    </ShopCategoryMapProvider>
+                </ListWrapper>
+            </Content>
+        </Wrapper>
+    );
+};
+```
