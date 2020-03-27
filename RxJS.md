@@ -354,6 +354,158 @@ export default combineEpics(
     // aaa, bbb, ccc
 );
 ```
+```js
+// 資料夾路徑為 ui.render.client.tsx
+
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { loadTranslations, setLocale, syncTranslationWithStore } from 'react-redux-i18n';
+import { applyMiddleware, combineReducers, compose, createStore, Store } from 'redux';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import thunk from 'redux-thunk';
+import { merge } from 'lodash';
+import { initLangInfo } from 'xx/actions';
+import * as sparkCoreEnUS from 'xxx/en-US.json';
+import * as sparkCoreZhTW from 'ooo/zh-TW.json';
+import Dependencies from './xx';
+import { trackPageView } from 'xx/tracking.action';
+import rootEpic from './epics';
+import { log } from './xx/log';
+import { reducers, RootState } from './reducers';
+import { Container } from './ui.module';
+import { nineyi } from './providers/globalVariableProvider';
+import { CommonActions, commonActions } from './ui.common.actions';
+
+// TODO: 實際型別待補
+interface RenderClientHtmlParams {
+    preloadedState: any;
+    dependencies: any;
+    pageComponent?: any;
+    injectRootReducer?: any;
+    injectRootEpic?: any;
+    initPageComponentLocale?: any;
+    i18n?: typeof nineyi.i18n;
+}
+
+declare global {
+    interface Window {
+        // eslint-disable-next-line no-undef
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+        ThemeCore: {
+            renderClientHtml: (params: RenderClientHtmlParams) => void;
+            commonActions: CommonActions;
+        };
+    }
+}
+/**
+ * 初始化翻譯
+ * @param store
+ * @param dependencies
+ */
+const initTranslation = (store: Store<RootState>, locale: string, translationsData: any) => {
+    log.info('[themeCore/ui.client] client render init locale start');
+    if (!translationsData) {
+        log.debug('[themeCore/ui.client] client render no translationsData');
+        return;
+    }
+    const mergedTranslationsData = merge(translationsData, sparkCoreEnUS, sparkCoreZhTW);
+    syncTranslationWithStore(store);
+    store.dispatch(loadTranslations(mergedTranslationsData));
+    store.dispatch(setLocale(locale));
+    log.info('[themeCore/ui.client] initLocaleTranslation complete');
+};
+
+/**
+ * 初始化語言
+ * @param store
+ * @param locale
+ * @param i18n
+ */
+const initLangs = (store: Store<RootState>, locale: string, i18n: typeof nineyi.i18n) => {
+    const { defaultLanguage, isEnableLanguage, allLanguages } = i18n;
+    if (!allLanguages) {
+        log.warn('[themeCore/ui.client] initLangs failed, reason: no allLanguages data');
+        return;
+    }
+    const availableLanguages = isEnableLanguage ? i18n.availableLanguages : [];
+    const preferredLanguage = locale || defaultLanguage; // 後續調整為server端決定
+    store.dispatch(initLangInfo({ preferredLanguage, allLanguages, availableLanguages }));
+    log.info('[themeCore/ui.client] initLangs complete');
+};
+
+
+/**
+ * 取得redux store
+ * @param preloadedState
+ * @param dependencies
+ * @param injectedReducers
+ * @param injectRootEpic
+ */
+const getStore = (preloadedState, dependencies: Dependencies, injectedReducers = {}, injectRootEpic = []) => {
+    log.info('[themeCore/ui.client] getStore start');
+    const combinedReducer = combineReducers({ ...reducers, ...injectedReducers });
+    const combinedEpic = combineEpics(rootEpic, ...injectRootEpic);
+    const epicMiddleware = createEpicMiddleware({ dependencies });
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store = createStore(
+        combinedReducer,
+        { ...preloadedState, dependencies },
+        composeEnhancers(applyMiddleware(epicMiddleware, thunk))
+    );
+    epicMiddleware.run(combinedEpic);
+    log.info('[themeCore/ui.client] getStore success');
+    return store;
+};
+
+/**
+ * 進行react app渲染client html
+ * @param param0
+ */
+const renderClientHtml = ({
+    preloadedState = {},
+    dependencies = {},
+    pageComponent,
+    injectRootReducer,
+    injectRootEpic,
+    initPageComponentLocale,
+    i18n,
+}: RenderClientHtmlParams) => {
+    log.info('[themeCore/ui.client] client render init start');
+    const store = getStore(preloadedState, dependencies, injectRootReducer, injectRootEpic);
+    const { translationsData, locale } = dependencies;
+    initTranslation(store, locale, translationsData);
+    if (i18n) {
+        initLangs(store, locale, i18n);
+        initCurrency(store, i18n);
+    }
+    if (initPageComponentLocale) {
+        initPageComponentLocale(store);
+    }
+    // render
+    log.info('[themeCore/ui.client] client render start');
+    ReactDOM.hydrate(
+        <Provider store={store}>
+            <Container pageComponent={pageComponent} dependencies={dependencies} />
+        </Provider>,
+        document.getElementById('root')
+    );
+    document.addEventListener('DOMContentLoaded', () => {
+        store.dispatch(trackPageView());
+    });
+};
+window.ThemeCore = {
+    renderClientHtml,
+    commonActions,
+};
+
+const { __PRELOADED_STATE__ } = nineyi;
+if (__PRELOADED_STATE__) {
+    const { dependencies, i18n } = nineyi;
+    renderClientHtml({ preloadedState: __PRELOADED_STATE__, dependencies, i18n });
+}
+```
+
 
 ## 運算子觀念網站
 https://reactive.how
