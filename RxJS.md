@@ -1,5 +1,5 @@
 
-# 寶哥課程
+# RxJS 與 redux-observable
 
 ## Callbacks vs Promises vs RxJs Observables vs async/ await
 https://youtu.be/jgWnccjXR4I  
@@ -309,8 +309,52 @@ export const promotion = createReducer<State, RootAction>({
         promotionListInShopCategory: action.payload,
     }));
 
-
 ```
+
+```js
+// 資料夾路徑為 reducers/index.ts
+
+import { combineReducers } from 'redux';
+import { StateType } from 'typesafe-actions';
+import { promotion } from './promotion.reducer';
+
+export const reducers = {
+    promotion,
+    // aaa, bbb, ccc
+};
+
+export const rootReducer = combineReducers(reducers);
+
+export type RootState = StateType<typeof rootReducer>;
+```
+
+```js
+// 資料夾路徑為 actions/index.ts
+
+import { ActionType } from 'typesafe-actions';
+import * as promotion from './promotion.action';
+
+export * from './promotion.action';
+
+export type RootAction = ActionType<
+    | typeof promotion
+    //| typeof aaa
+    //| typeof bbb
+>;
+```
+
+```js
+// 資料夾路徑為 epics/index.ts
+
+import { combineEpics } from 'redux-observable';
+import promotionEpics from './promotion.epic';
+
+export default combineEpics(
+    pageEpics,
+    // aaa, bbb, ccc
+);
+```
+
 ## 運算子觀念網站
 https://reactive.how
 
