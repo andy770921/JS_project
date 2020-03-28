@@ -1,3 +1,36 @@
+# Redux
+## Code structure: Duck Pattern
+
+https://github.com/erikras/ducks-modular-redux  
+https://redux.js.org/style-guide/style-guide/#structure-files-as-feature-folders-or-ducks  
+https://livebook.manning.com/book/redux-in-action/chapter-11/51  
+
+## Redux 官網 及 Redux in Action 書
+```
+An example folder structure might look something like:
+/src
+    index.tsx
+/app
+    store.ts
+    rootReducer.ts
+    App.tsx
+/common
+    hooks, generic components, utils, etc
+/features
+/todos
+    todosSlice.ts
+    Todos.tsx
+
+Note: 
+/app contains app-wide setup and layout that depends on all the other folders.
+/common contains truly generic and reusable utilities and components.
+
+/features has folders that contain all functionality related to a specific feature. In this example, todosSlice.ts is a "duck"-style file that contains a call to RTK's createSlice() function, and exports the slice reducer and action creators
+```
+<div align="center">
+  <img src="https://dpzbhybb2pdcj.cloudfront.net/garreau/Figures/11fig05_alt.jpg"/>
+</div>
+
 ## -------------- 使用 Redux --------------
 ## 1. 終端機打指令如下
 ```npm install redux react-redux```  
