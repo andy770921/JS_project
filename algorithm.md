@@ -292,12 +292,72 @@ function bucketSortMSB(arr){
   return sortedArray;
 }
 
-// 適用正數、非小數、數字無重複。若是負數、小數、數字有重複，要寫額外邏輯，另外處理
+// 適用正數、非小數，數字不能重複。若是負數、小數、數字有重複，要寫額外邏輯，另外處理
 bucketSortMSB([1, 200, 2, 300]); // [1, 2, 200, 300]
 ```
 4. Straight-Radix sort (least significant bit LSB)
 ```js
+function bucketSortLSB(arr){
+  
+  // array element with maximum k digit
+  let k = 0;
+  for(let i = 0; i < arr.length; i++){
+    if (k < arr[i].toString().length){
+      k = arr[i].toString().length;
+    }
+  }
+  
+  // convert to string array
+  let stringArr = [];
+  for (let i = 0; i < arr.length; i++){
+    let zeroSeries = '';
+    if (k > arr[i].toString().length){
+      const zeroAmount = k - arr[i].toString().length;
+      for (let j = 0; j < zeroAmount; j++){ zeroSeries += '0'; }
+    }
+    stringArr.push(zeroSeries + arr[i].toString());
+  }
+  
+  // --- Straight Radix Algorithm begins ---
+  
+  // all element are initially in a global queue
+  let globalQueue = [...stringArr];
+  
+  // Sort
+  for(let i = k; i >= 1; i--){
+    // initialize bucket queue to be empty
+    let digitBucket = [];
+    for (let x = 0; x < 10; x++){
+      digitBucket.push([]);
+    }
+    
+    // 從 Global Queue 取出並分類
+    while(globalQueue.length > 0){
+      const numberStr = globalQueue.pop();
+      const d = Number(numberStr[i-1]);
+      digitBucket[d].push(numberStr);
+    }
+    
+    // 分類好之後，逐一放回 Global Queue
+    for(let j = 0; j < 10; j++){
+      for(let k = 0; k < digitBucket[j].length; k++){
+        globalQueue.push(digitBucket[j][k]);
+      }
+    }
+  }
+  
+  let sortedArray = [];
+  for(let i = 0; i < stringArr.length; i++){
+    // pop stringArr[i] from global queue
+    sortedArray.push(Number(globalQueue.shift()));
+  }
 
+  console.log(sortedArray);
+  return sortedArray;
+}
+
+// 適用正數、非小數，數字可重複。若是負數、小數，要寫額外邏輯，另外處理
+bucketSortLSB([1, 200, 2, 300]); // [1, 2, 200, 300]
 ```
 
 ## Maze Problem - Using stack data structure
