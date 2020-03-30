@@ -283,7 +283,7 @@ function bucketSortMSB(arr){
       const zeroAmount = maxDigit - arr[i].toString().length;
       for (let j = 0; j < zeroAmount; j++){ zeroSeries += '0'; }
     }
-    stringArr.push( zeroSeries + arr[i].toString());
+    stringArr.push(zeroSeries + arr[i].toString());
   }
   
   // 遞迴分類排序
