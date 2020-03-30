@@ -214,7 +214,7 @@ heapSort([1, -100, 200, 2, 300, -5]); // [-100, -5, 1, 2, 200, 300]
 ```js
 function bucketSortMSB(arr){
 
-  // 分 bucket，且當 bucket 內超過兩個數字以上，開始遞迴計算
+  // 定義分類 bucket 函式，且當 bucket 內超過兩個數字以上，呼叫自身再遞迴計算
   function getBucketSort(stringArr, digit){
     const bucket = [[], [], [], [], [], [], [], [], [], []];
     for (let i = 0; i < stringArr.length; i++){
@@ -292,7 +292,7 @@ function bucketSortMSB(arr){
   return sortedArray;
 }
 
-// 適用正數、非小數、數字無重複，若是負數、小數、數字有重複，要寫額外邏輯，另外處理
+// 適用正數、非小數、數字無重複。若是負數、小數、數字有重複，要寫額外邏輯，另外處理
 bucketSortMSB([1, 200, 2, 300]); // [1, 2, 200, 300]
 ```
 4. Straight-Radix sort (least significant bit LSB)
