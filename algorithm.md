@@ -212,7 +212,88 @@ heapSort([1, -100, 200, 2, 300, -5]); // [-100, -5, 1, 2, 200, 300]
 2. k 決定了進行多少輪處理，而 n 是每輪處理的運算元目
 3. Radix-Exchange sort (most significant bit MSB)
 ```js
+function bucketSortMSB(arr){
 
+  // 分 bucket，且當 bucket 內超過兩個數字以上，開始遞迴計算
+  function getBucketSort(stringArr, digit){
+    const bucket = [[], [], [], [], [], [], [], [], [], []];
+    for (let i = 0; i < stringArr.length; i++){
+      const strNum = stringArr[i].slice(digit, digit + 1);
+      switch (strNum){
+        case '0':
+          bucket[0].push(stringArr[i]); 
+          break;
+        case '1':
+          bucket[1].push(stringArr[i]);
+          break;
+        case '2':
+          bucket[2].push(stringArr[i]);
+          break;
+        case '3':
+          bucket[3].push(stringArr[i]);
+          break;
+        case '4':
+          bucket[4].push(stringArr[i]);
+          break;
+        case '5':
+          bucket[5].push(stringArr[i]);
+          break;
+        case '6':
+          bucket[6].push(stringArr[i]);
+          break;
+        case '7':
+          bucket[7].push(stringArr[i]);
+          break;
+        case '8':
+          bucket[8].push(stringArr[i]);
+          break;
+        case '9':
+          bucket[9].push(stringArr[i]);
+          break;
+      }   
+    }
+    let sortedArr = [];
+    for (let i = 0; i < bucket.length; i++){
+      // 僅剩一個數在陣列中，就將字串轉成數字，丟回 sortedArr
+      if (bucket[i].length === 1) sortedArr.push(Number(bucket[i][0])); 
+      // 剩兩個數以上在陣列中，就遞迴再分類，遞迴算完的結果，丟回 sortedArr
+      if (bucket[i].length >= 2) {
+        const nextDigit = digit + 1;
+        const nextSortedArr = getBucketSort(bucket[i], nextDigit);
+        for (let j = 0; j < nextSortedArr.length; j++){
+          sortedArr.push(nextSortedArr[j]);
+        }
+      }
+    }
+    
+    return sortedArr;
+  }
+  // 產生字串陣列，找出最高位數的數字
+  let maxDigit = 0;
+  let stringArr = [];
+  for(let i = 0; i < arr.length; i++){
+    if (maxDigit < arr[i].toString().length){
+      maxDigit = arr[i].toString().length;
+    }
+  }
+  // 不足最高位數左邊補零
+  for (let i = 0; i < arr.length; i++){
+    let zeroSeries = '';
+    if (maxDigit > arr[i].toString().length){
+      const zeroAmount = maxDigit - arr[i].toString().length;
+      for (let j = 0; j < zeroAmount; j++){ zeroSeries += '0'; }
+    }
+    stringArr.push( zeroSeries + arr[i].toString());
+  }
+  
+  // 遞迴分類排序
+  const sortedArray = getBucketSort(stringArr, 0);
+  console.log(sortedArray);
+  return sortedArray;
+}
+
+// 適用正數、非小數、數字無重複，若是負數、小數、數字有重複，要寫額外邏輯，另外處理
+bucketSortMSB([1, 200, 2, 300]); // [1, 2, 200, 300]
 ```
 4. Straight-Radix sort (least significant bit LSB)
 ```js
