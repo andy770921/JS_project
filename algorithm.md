@@ -219,38 +219,7 @@ function bucketSortMSB(arr){
     const bucket = [[], [], [], [], [], [], [], [], [], []];
     for (let i = 0; i < stringArr.length; i++){
       const strNum = stringArr[i].slice(digit, digit + 1);
-      switch (strNum){
-        case '0':
-          bucket[0].push(stringArr[i]); 
-          break;
-        case '1':
-          bucket[1].push(stringArr[i]);
-          break;
-        case '2':
-          bucket[2].push(stringArr[i]);
-          break;
-        case '3':
-          bucket[3].push(stringArr[i]);
-          break;
-        case '4':
-          bucket[4].push(stringArr[i]);
-          break;
-        case '5':
-          bucket[5].push(stringArr[i]);
-          break;
-        case '6':
-          bucket[6].push(stringArr[i]);
-          break;
-        case '7':
-          bucket[7].push(stringArr[i]);
-          break;
-        case '8':
-          bucket[8].push(stringArr[i]);
-          break;
-        case '9':
-          bucket[9].push(stringArr[i]);
-          break;
-      }   
+      bucket[Number(strNum)].push(stringArr[i]);
     }
     let sortedArr = [];
     for (let i = 0; i < bucket.length; i++){
@@ -357,7 +326,7 @@ function bucketSortLSB(arr){
 }
 
 // 適用正數、非小數，數字可重複。若是負數、小數，要寫額外邏輯，另外處理
-bucketSortLSB([1, 200, 2, 300]); // [1, 2, 200, 300]
+bucketSortLSB([1, 200, 2, 300, 2]); // [1, 2, 2, 200, 300]
 ```
 
 ## Maze Problem - Using stack data structure
