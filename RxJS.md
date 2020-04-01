@@ -309,6 +309,64 @@ export const promotion = createReducer<State, RootAction>({
         promotionListInShopCategory: action.payload,
     }));
 
+// 資料夾路徑為 reducers/shopCategory.reducer.ts
+
+
+import { createReducer } from 'typesafe-actions';
+import {
+    switchCategory,
+    switchCategoryFulfilled,
+    switchCategoryRejected,
+    switchCategoryOrderBy,
+    switchCategoryOrderByFulfilled,
+    switchCategoryOrderByRejected,
+    fetchCategoryMoreProducts,
+    fetchCategoryMoreProductsFulfilled,
+    fetchCategoryMoreProductsEmpty,
+    fetchCategoryMoreProductsRejected,
+    RootAction,
+} from '@client/themeCore/actions';
+
+const initialState = {
+    isExist: true,
+    categoryId: -1,
+    isShowCurator: false,
+    orderBy: '',
+    productList: [],
+    cursor: 0,
+    totalSize: 0,
+    isFetching: false,
+};
+
+export const shopCategory = createReducer<typeof initialState, RootAction>(initialState)
+    .handleAction([switchCategory, switchCategoryOrderBy, fetchCategoryMoreProducts], state => ({
+        ...state,
+        isFetching: true,
+    }))
+    .handleAction([switchCategoryFulfilled, switchCategoryOrderByFulfilled], (state, action) => ({
+        ...state,
+        ...action.payload,
+        isFetching: false,
+    }))
+    .handleAction(fetchCategoryMoreProductsFulfilled, (state, { payload: { productList, cursor, totalSize } }) => ({
+        ...state,
+        productList: [...state.productList, ...productList],
+        cursor,
+        totalSize,
+        isFetching: false,
+    }))
+    .handleAction(fetchCategoryMoreProductsEmpty, state => ({
+        ...state,
+        isFetching: false,
+    }))
+    .handleAction(
+        [switchCategoryRejected, switchCategoryOrderByRejected, fetchCategoryMoreProductsRejected],
+        state => ({
+            ...state,
+            isFetching: false,
+        })
+    );
+
 ```
 
 ```js
