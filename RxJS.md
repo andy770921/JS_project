@@ -9,6 +9,7 @@ https://youtu.be/T9wOu11uU6U
 
 ## Redux-observable 教學
 https://youtu.be/AslncyG8whg  
+https://youtu.be/sF5-V-Szo0c?t=1400
 
 ## Redux-observable 取 API 範例
 ```js
