@@ -11,6 +11,8 @@ https://youtu.be/T9wOu11uU6U
 https://youtu.be/AslncyG8whg  
 https://youtu.be/sF5-V-Szo0c?t=1400
 
+## Redux-observable and TypeScript
+https://github.com/piotrwitek/react-redux-typescript-guide
 
 ## 運算子觀念網站
 https://reactive.how  
