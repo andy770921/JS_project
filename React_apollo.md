@@ -35,7 +35,7 @@ export const ShopCategoryMapProvider = ({ children }) => {
 // 其他完整的 code 如下
 
 import fetch from 'cross-fetch';
-import { HttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -56,9 +56,10 @@ export const SHOP_CATEGORY_LIST = gql`
 
 
 const apolloClient = new ApolloClient({
-    link: new HttpLink({
-        uri: 'https://bff-private.qa.eks.91dev.tw/graphql',
+    link: createHttpLink({
+        uri: `${apiConfig?.bffHost}/pythia/graphql?shopId=${shopId}&lang=${locale}`,
         fetch,
+        // useGETForQueries: true,  若要設定 http request 是 GET 可加入此設定
     }),
     cache: new InMemoryCache(),
 });
