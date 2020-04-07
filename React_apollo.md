@@ -81,7 +81,7 @@ const ShopCategory = ({
 
 export default ShopCategory;
 ```
-## useQuery 使用 fetchMore 實作無限下拉卷軸
+## useQuery 使用 fetchMore 實作無限下拉卷軸，及封裝 useQuery
 1. 實際輸出 fetchMoreProducts 給外部使用
 2. 在觸發 fetchMore 時，若加入 `notifyOnNetworkStatusChange: true` 設定， 會 a. 改變 networkStatus 號碼變成 `3` b. 改變 loading 變成 `false`
 3. 外部可以判斷 loading 狀態決定是否使用 fetchMoreProducts
@@ -91,7 +91,7 @@ export default ShopCategory;
 ```js
 
 import { useQuery } from '@apollo/react-hooks';
-import { SHOP_CATEGORY_PRODUCT_LIST, ShopCategory } from '../gqls';
+import { SC_LIST, ShopCategory } from '../gqls';
 
 const useFetchProducts = ({
     shopId,
@@ -102,7 +102,7 @@ const useFetchProducts = ({
     categoryId: number;
     orderBy: string;
 }) => {
-    const { loading: isFetching, data, fetchMore, networkStatus } = useQuery<ShopCategory>(SHOP_CATEGORY_PRODUCT_LIST, {
+    const { loading: isFetching, data, fetchMore, networkStatus } = useQuery<ShopCategory>(SC_LIST, {
         variables: { shopId, categoryId, startIndex: 0, fetchCount: 40, orderBy },
         notifyOnNetworkStatusChange: true,
     });
