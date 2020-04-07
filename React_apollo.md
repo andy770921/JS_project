@@ -32,13 +32,8 @@ export const ShopCategoryMapProvider = ({ children }) => {
     return <ShopCategoryMapContext.Provider value={context}>{children}</ShopCategoryMapContext.Provider>;
 };
 
-// 其他完整的 code 如下
+// Query 寫法如下
 
-import fetch from 'cross-fetch';
-import { createHttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloClient } from 'apollo-client';
-import { ApolloProvider } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 export const SHOP_CATEGORY_LIST = gql`
@@ -53,11 +48,17 @@ export const SHOP_CATEGORY_LIST = gql`
     }
 `;
 
+// ApolloClient 完整的 code 如下
 
+import fetch from 'cross-fetch';
+import { createHttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
+import { ApolloProvider } from '@apollo/react-hooks';
 
 const apolloClient = new ApolloClient({
     link: createHttpLink({
-        uri: `${apiConfig?.bffHost}/pythia/graphql?shopId=${shopId}&lang=${locale}`,
+        uri: `${apiConfig?.xxx}/ooo/graphql?shopId=${shopId}&lang=${locale}`,
         fetch,
         // useGETForQueries: true,  若要設定 http request 是 GET 可加入此設定
     }),
@@ -80,6 +81,76 @@ const ShopCategory = ({
 
 export default ShopCategory;
 ```
+## useQuery 使用 fetchMore 實作無限下拉卷軸
+1. 實際輸出 fetchMoreProducts 給外部使用
+2. 在觸發 fetchMore 時，若加入 `notifyOnNetworkStatusChange: true` 設定， 會 a. 改變 networkStatus 號碼變成 `3` b. 改變 loading 變成 `false`
+3. 外部可以判斷 loading 狀態決定是否使用 fetchMoreProducts
+```js
+
+import { useQuery } from '@apollo/react-hooks';
+import { SHOP_CATEGORY_PRODUCT_LIST, ShopCategory } from '../gqls';
+
+const useFetchProducts = ({
+    shopId,
+    categoryId,
+    orderBy,
+}: {
+    shopId: number;
+    categoryId: number;
+    orderBy: string;
+}) => {
+    const { loading: isFetching, data, fetchMore, networkStatus } = useQuery<ShopCategory>(SHOP_CATEGORY_PRODUCT_LIST, {
+        variables: { shopId, categoryId, startIndex: 0, fetchCount: 40, orderBy },
+        notifyOnNetworkStatusChange: true,
+    });
+
+    const {
+        shopCategory: {
+            salePageList: { salePageList, totalSize, orderByDef, shopCategoryName },
+        },
+    } =
+        data ||
+        ({
+            shopCategory: { salePageList: { salePageList: [], totalSize: 0, orderByDef: '', shopCategoryName: '' } },
+        } as ShopCategory);
+
+    const productList = salePageList.map(({ salePageId: id, picUrl: imageSrc, salePageCode, ...productData }) => ({
+        ...productData,
+        id,
+        imageSrc,
+        link: `/xxx/ooo/${salePageCode || id}`,
+        currency: '$',
+    }));
+
+    const fetchMoreProducts = () =>
+        fetchMore({
+            variables: { startIndex: salePageList.length },
+            updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) return prev;
+                
+                setCanFetchMore(true);
+                return {
+                    ...prev,
+                    shopCategory: {
+                        ...prev.shopCategory,
+                        salePageList: {
+                            ...prev.shopCategory.salePageList,
+                            salePageList: [
+                                ...prev.shopCategory.salePageList.salePageList,
+                                ...fetchMoreResult.shopCategory.salePageList.salePageList,
+                            ],
+                        },
+                    },
+                };
+            },
+        });
+
+    return { isFetching, totalSize, productList, shopCategoryName, fetchMoreProducts };
+};
+
+export default useFetchProducts;
+```
+
 ## useMutation 取得回傳值
 
 1. [官方範例，使用起來無法取得data](https://www.apollographql.com/docs/react/api/react-hooks/#usemutation)
@@ -90,7 +161,7 @@ export default ShopCategory;
 // 錯用時無法直接取得 feedbackData
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import gql from 'graphql-tag';
 
 const ADD_BOOK_MUTATION = gql`
   mutation($name: String!, $genre: String!, $authorId: ID!) {
