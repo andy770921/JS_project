@@ -85,6 +85,9 @@ export default ShopCategory;
 1. 實際輸出 fetchMoreProducts 給外部使用
 2. 在觸發 fetchMore 時，若加入 `notifyOnNetworkStatusChange: true` 設定， 會 a. 改變 networkStatus 號碼變成 `3` b. 改變 loading 變成 `false`
 3. 外部可以判斷 loading 狀態決定是否使用 fetchMoreProducts
+4. Ref: https://www.apollographql.com/docs/react/data/pagination/
+5. Ref: https://github.com/apollographql/apollo-client/blob/master/src/core/networkStatus.ts
+6. Ref: https://www.apollographql.com/docs/react/data/queries/
 ```js
 
 import { useQuery } from '@apollo/react-hooks';
