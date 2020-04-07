@@ -114,13 +114,14 @@ const useFetchProducts = ({
     } =
         data ||
         ({
-            shopCategory: { salePageList: { salePageList: [], totalSize: 0, orderByDef: '', shopCategoryName: '' } },
+            shopCategory: { 
+                salePageList: { salePageList: [], totalSize: 0, orderByDef: '', shopCategoryName: '' } 
+            },
         } as ShopCategory);
 
-    const productList = salePageList.map(({ salePageId: id, picUrl: imageSrc, salePageCode, ...productData }) => ({
+    const productList = salePageList.map(({ salePageId: id, salePageCode, ...productData }) => ({
         ...productData,
         id,
-        imageSrc,
         link: `/xxx/ooo/${salePageCode || id}`,
         currency: '$',
     }));
