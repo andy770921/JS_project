@@ -381,22 +381,19 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import fetch from 'cross-fetch';
 import { createHttpLink } from 'apollo-link-http';
 
-const cache = new InMemoryCache();
-const link = createHttpLink({
-    uri: 'http://demo.tw/graphql',
-    fetch,
-});
 const apolloClient = new ApolloClient({
-    link,
-    cache,
+    link: createHttpLink({
+        uri: 'http://demo.tw/graphql',
+        fetch,
+        // useGETForQueries: true,  若要設定 http request 是 GET 可加入此設定
+    }),
+    cache: new InMemoryCache(),
 });
 
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <div id="main">
-        <h1>Reading List</h1>
-      </div>
+      <JSXComponent /> 
     </ApolloProvider>
   );
 }
