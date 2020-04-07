@@ -379,10 +379,10 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from '@apollo/react-hooks';
 import fetch from 'cross-fetch';
-import { HttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 
 const cache = new InMemoryCache();
-const link = new HttpLink({
+const link = createHttpLink({
     uri: 'http://demo.tw/graphql',
     fetch,
 });
