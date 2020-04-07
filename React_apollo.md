@@ -128,7 +128,6 @@ const useFetchProducts = ({
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 
-                setCanFetchMore(true);
                 return {
                     ...prev,
                     shopCategory: {
