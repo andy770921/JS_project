@@ -15,6 +15,7 @@
 4. [React 相關的 Webpack 設定](https://github.com/andy770921/JS_project/blob/master/webpack_setup.md)
 5. [React Apollo and GraphQL Demo Repo](https://github.com/andy770921/graphQL-demo)
 6. [React Basic Concept PPT](https://docs.google.com/presentation/d/1p6PZNSPW96AjDvDJQbiB1u7-ODK4aEC7maxrlV6Bte0/edit?fbclid=IwAR1VVzbVAjxLmE79iD67T-9OiCRdtNTtyKgGl4hwt2TAa3mRpIYlnER4TpI#slide=id.p)
+7. [React Apollo PPT](https://docs.google.com/presentation/d/1bAmFctbrHhEwfnreLyj7x8kpQyvO6z28Hcg_9a9zMqc/edit#slide=id.p)
 
 ### Redux
 
