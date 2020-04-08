@@ -50,6 +50,6 @@
 1. [esLint + Prettier](https://github.com/andy770921/react-ts-eslint)
 2. [React + TypeScript + Redux-observable + Others](https://github.com/andy770921/react-redux-router)
 
-## 自動化產生 css 的 Repo
+## 自動化產生 css 字型的 Repo
 
 https://github.com/andy770921/sketch-to-css-fonts
