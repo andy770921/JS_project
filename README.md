@@ -12,7 +12,7 @@
 1. [React](https://github.com/andy770921/JS_project/blob/master/React_note.md)
 2. [Context](https://github.com/andy770921/JS_project/blob/master/context.md)
 3. [React Apollo](https://github.com/andy770921/JS_project/blob/master/React_apollo.md)
-4. [React Apollo and GraphQL Demo Code](https://github.com/andy770921/graphQL-demo)
+4. [React Apollo and GraphQL Demo Repo](https://github.com/andy770921/graphQL-demo)
 5. [React 相關的 Webpack 設定](https://github.com/andy770921/JS_project/blob/master/webpack_setup.md)
 
 ### Redux
