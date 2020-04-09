@@ -337,7 +337,3 @@ export default rootReducer;
 ## 19. Redux 使用 switch 的補充，若 case 內變數重複命名報錯誤，可加上大括號解決
 https://medium.com/@e_himmelfarb/use-curly-braces-with-es6-let-and-const-in-switch-blocks-react-redux-reducers-c0b01b37d748
 
-
-
-## 20. 資料夾切分的補充
-https://github.com/erikras/ducks-modular-redux?fbclid=IwAR2jiwzX1sRET7kLhwr0sDVx0F81yhGZyf8KN_V6eh5kAkqkmJCRebIVRDs
