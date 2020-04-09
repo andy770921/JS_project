@@ -39,7 +39,7 @@ Note:
   
 ## 為何 Middleware 通常用函式呢？
   
-- 函式可以代入 Action 物件，輸出另一個新 Action 物件，而輸出的新 Action 物件，再被 Reducer 接收到，依照 type 的內容，執行 Reducer 更新 store 的任務  
+- 函式可以代入 `Action` 物件，輸出另一個新 `Action` 物件，而輸出的新 `Action` 物件，再被 `Reducer` 接收到，依照 `type` 的內容，執行 `Reducer` 更新 `store` 的任務  
     
 ## 各個 `Middleware` 套件，怎麼用函式實作呢？    
     
