@@ -41,7 +41,7 @@ Note:
   
 - 函式可以代入 `Action` 物件，輸出另一個新 `Action` 物件，再輸出的新 `Action` 物件，再被 `Reducer` 接收到，依照 `type` 的內容，執行 `Reducer` 更新 `store` 的任務  
     
-## 各個 `Middleware` 套件，怎麼用函式實作呢？    
+## 各個 Middleware 套件，怎麼用函式實作呢？    
     
 1. `redux-thunk` 的實作方法為，擴展 `dispatch` 函式成為多型函式，讓 `dispatch` 既可以代入 `Action` 物件，也可以代入函式  
   
