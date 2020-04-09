@@ -33,10 +33,10 @@ Note:
 
 ## 甚麼是 Middleware?
 
-A: Middleware 是在 Action 進 Reducer 前，中間的一個階段，通常用函式來實做這功能。  
+### Ans: Middleware 是在 Action 進 Reducer 前，中間的一個階段，通常用函式來實做這功能。  
   
-Action 是一個物件，規定一定要有一對 key-value pair 是 type: "SOMETHING"  
-為何 Middleware 通常用函式呢？函式可以帶入 Action 物件，輸出另一個新 Action 物件，而輸出的新 Action 物件，再被 Reducer 接收到，依照 type 的內容，執行 Reducer 更新 store 的任務  
+`Action` 是一個物件，規定一定要有一對 key-value pair 是 `type: "SOMETHING"` 
+為何 `Middleware` 通常用函式呢？函式可以代入 `Action` 物件，輸出另一個新 `Action` 物件，而輸出的新 `Action` 物件，再被 `Reducer` 接收到，依照 `type` 的內容，執行 `Reducer` 更新 `store` 的任務  
   
 各個 Middleware 套件，實作法不同。  
   
