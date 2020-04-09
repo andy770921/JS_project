@@ -39,7 +39,7 @@
 6. [Mac 開發設定](https://github.com/andy770921/JS_project/blob/master/mac.md)
 7. [esLint 設定](https://github.com/andy770921/JS_project/blob/master/esLint.md)
 8. [Jest 單元測試](https://github.com/andy770921/JS_project/blob/master/jest.md)
-9. [3D 套件 - three.js](https://github.com/andy770921/JS_project/blob/master/threeJS.md)
+9. [3D 函式庫 - three.js](https://github.com/andy770921/JS_project/blob/master/threeJS.md)
 
 ## 後端
 
