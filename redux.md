@@ -35,7 +35,7 @@ Note:
 
 ### Middleware 是在 Action 進 Reducer 前，中間的一個階段，通常用函式來實作這功能。  
   
-- `Action` 是一個物件，規定一定要有一對 key-value pair 是 `type: "SOMETHING"` 
+- `Action` 是一個物件，規定一定要有一對 key-value 是 `type: "SOMETHING"` 
   
 ## 為何 Middleware 通常用函式呢？
   
@@ -51,7 +51,7 @@ Note:
 2. `redux-observable` 的實作方法為，`dispatch` 還是只能接收物件，但是在 `dispatch` 執行之後，一律進入 `redux-observable` 官方自定義的函式
     
 - 函式通常取名為 `oneEpic`, `twoEpic` 等  
-- 這些 `Epic` 函式會在代入 `Action` 物件的 `dispacth` 函式執行後，自動觸發所有的 `Epic`  
+- 這些 `Epic` 函式會在代入 `Action` 物件的 `dispacth` 函式執行後，自動觸發所有的 `Epic` 函式 
 - 因此，每個 `Epic` 在函式的起頭，一定會先過濾出是哪個 `Action` 需要執行以下內容，若符合條件就會接著執行  
 - 函式結束前，會再使用 `dispatch` 函式，並代入新的 `Action` 物件  
 - 因為又執行了 `dispatch` 函式，又會自動觸發所有的 `Epic` ，檢查是否有 `type` 符合過濾條件，重複以上過程。直到 `Action` 沒有進入任何一個 `Epic` ，才會進入 `Reducer`
