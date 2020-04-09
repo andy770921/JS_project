@@ -31,13 +31,13 @@ Note:
   <img src="https://dpzbhybb2pdcj.cloudfront.net/garreau/Figures/11fig05_alt.jpg"/>
 </div>
 
-## 甚麼是 `Middleware`?
+## 甚麼是 Middleware?
 
-### Ans: `Middleware` 是在 `Action` 進 `Reducer` 前，中間的一個階段，通常用函式來實作這功能。  
+### Ans: Middleware 是在 Action 進 Reducer 前，中間的一個階段，通常用函式來實作這功能。  
   
 `Action` 是一個物件，規定一定要有一對 key-value pair 是 `type: "SOMETHING"`   
-## 為何 `Middleware` 通常用函式呢？
-### Ans: 函式可以代入 `Action` 物件，輸出另一個新 `Action` 物件，而輸出的新 `Action` 物件，再被 `Reducer` 接收到，依照 `type` 的內容，執行 `Reducer` 更新 `store` 的任務  
+## 為何 Middleware 通常用函式呢？
+### Ans: 函式可以代入 Action 物件，輸出另一個新 Action 物件，而輸出的新 Action 物件，再被 Reducer 接收到，依照 type 的內容，執行 Reducer 更新 store 的任務  
   
 各個 `Middleware` 套件，實作法不同。    
   
@@ -45,7 +45,7 @@ Note:
 - 若 `dispatch` 代入物件，則直接進 `Reducer`。   
 - 若 `dispatch` 代入函式，則先執行函式，這個函式結束前，再使用 `dispatch` 並代入物件，這時 `dispatch` 函式的執行，就會真正進入 `Reducer`  
 
-2. redux-observable 的實作方法為，dispatch 還是只能接收物件，但是在 dispatch 執行之後，一律進入 redux-observable 官方自定義的函式
+2. `redux-observable` 的實作方法為，`dispatch` 還是只能接收物件，但是在 `dispatch` 執行之後，一律進入 `redux-observable` 官方自定義的函式
 - 函式通常取名為 `oneEpic`, `twoEpic` 等  
 - 這些 `Epic` 函式會在代入 `Action` 物件的 `dispacth` 函式執行後，自動觸發所有的 `Epic`  
 - 因此，每個 `Epic` 在函式的起頭，一定會先過濾出是哪個 `Action` 需要執行以下內容，若符合條件就會接著執行  
