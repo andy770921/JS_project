@@ -47,12 +47,10 @@ class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-            <div>
                 <NavbarUi />
                 <Route exact path="/" component={AllUi}/>
                 <Route path="/ongoing" component={OngoingUi} />
                 <Route path="/finished" component={FinishedUi} /> 
-            </div>
             </BrowserRouter>
         )
     }
