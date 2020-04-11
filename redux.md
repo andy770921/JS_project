@@ -55,7 +55,15 @@ Note:
 - 因此，每個 `Epic` 在函式的起頭，總是會先過濾出是哪個 `Action` 需要執行以下內容，若符合條件就會接著執行  
 - 函式結束前，會再使用 `dispatch` 函式，並代入新的 `Action` 物件  
 - 因為又執行了 `dispatch` 函式，又會自動觸發所有的 `Epic` ，檢查是否有 `type` 符合過濾條件，重複以上過程。直到 `Action` 沒有進入任何一個 `Epic` ，才會進入 `Reducer`
+
+
+## 邏輯在哪處理？  
+
+1. [Redux 官方](https://redux.js.org/style-guide/style-guide#structure-files-as-feature-folders-or-ducks)：Reducer 內
   
+2. 原因：
+- Reducer 是 pure function 容易測試、immutable、debugging 容易，可以依照時間軸順序，回上一步
+- 以後要找邏輯，就通通在 Reducer 內找，不會分散各處
 
 ## -------------- 使用 Redux --------------
 ## 1. 終端機打指令如下
