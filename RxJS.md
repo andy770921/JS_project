@@ -4,6 +4,9 @@
 ## Callbacks vs Promises vs RxJs Observables vs async/ await
 https://youtu.be/jgWnccjXR4I  
 
+## Redux-observable and other middleware
+https://www.youtube.com/watch?v=SsYYQ4UlnzI
+
 ## RxJS 教學
 https://youtu.be/T9wOu11uU6U  
 
