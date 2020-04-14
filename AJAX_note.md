@@ -148,7 +148,7 @@ function getFeedback() {
 getFeedback();
 
 ```
-前者 ajax 函數，可使用簡化寫法
+前者 ajax 函數，可使用簡化寫法  
 ```js
 function ajax(src) {
  return new Promise(function(resolve, reject){ 
@@ -162,8 +162,51 @@ function ajax(src) {
     xhr.send();
     });
 }
-```
 
+function getFeedback() {
+  let promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  promise.then(function(parsedData){
+    console.log(parsedData);
+  });
+}
+
+getFeedback();
+```
+前者 ajax 函數，可使用完整的寫法，包含錯誤處理  
+
+```js
+function ajax(src) {
+  return new Promise(function(resolve, reject){ 
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      try {
+        if (this.status === 200) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(this.status + " " + this.statusText);
+          } 
+        } catch (e){
+          reject(e.message);
+        }
+    };
+    xhr.onerror = function () {
+      reject(this.status + " " + this.statusText);
+    };
+    xhr.open('GET', src);
+    xhr.send();
+  });
+}
+
+function getFeedback() {
+  let promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  promise.then(function(parsedData){
+    console.log(parsedData);
+  });
+}
+
+getFeedback();
+
+```
 
 1. 補充: resolve 內的值，會對應到 .then(function(parsedData)...)， function 內的(parsedData)值
 2. 補充: reject 內的值，會對應到 .catch(function(error)...)， function 內的(error)值，通常用來處理錯誤
