@@ -345,6 +345,71 @@ const safeGetFeedback = handleError(getFeedback);
 safeGetFeedback();
 ```
 
+# 使用 generator 與 iterator， 實作 async/await
+```js
+function ajax(src) {
+  return new Promise(function(resolve, reject){ 
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      try {
+        if (this.status === 200) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(this.status + " " + this.statusText);
+          } 
+        } catch (e){
+          reject(e.message);
+        }
+    };
+    xhr.onerror = function () {
+      reject(this.status + " " + this.statusText);
+    };
+    xhr.open('GET', src);
+    xhr.send();
+  });
+}
+
+function getFeedback() {
+  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  Promise.all([promise1, promise2]).then(function(results){
+    console.log("inside Promise.all: ",results);
+    // inside Promise.all: [{next_paging: 1, data: Array(6)}, {data: Array(3)}]
+  });
+}
+
+getFeedback();
+
+
+function async(generator){
+  var iterator = generator();
+
+  function handle(iteratorResult) {
+    if(iteratorResult.done) { return; }
+    const iteratorValue = iteratorResult.value;
+    if(iteratorValue instanceof Promise) {
+      iteratorValue.then(res => handle(iterator.next(res)))
+                   .catch(err => itorator.throw(err))
+    }
+  }
+  try {
+    handle(iterator.next());
+  } catch (e) {
+    iterator.throw(e);
+  }
+}
+
+async(function*(){
+  try {
+    const data1 = yield ajax('https://api.appworks-school.tw/api/1.0/products/all');
+    const data2 = yield ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+    console.log("inside async: ", data1, data2);
+    // inside async: {next_paging: 1, data: Array(6)} {data: Array(3)}
+  } catch (e) {
+    // handle error
+  }
+});
+```
 # 原生 XMLHttpRequest 概念說明
 
 1. 可在同一頁面，因使用者行為而讀取更多資料( google 地圖未顯示的部份、下拉網頁更多留言等)，且不會讓網頁停下
