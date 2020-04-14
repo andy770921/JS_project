@@ -292,9 +292,9 @@ getFeedback();
 5. 補充: 同時發送 ajax ，避免等較久的做法
 ```js
 function async getFeedback() {
-  const result1Promise = ajax('https://api.appworks-school.tw/api/1.0/products/all');
-  const result2Promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
-  const [result1, result2] = await Promise.all([result1Promise, result2Promise]);
+  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const [result1, result2] = await Promise.all([promise1, promise2]);
   console.log(result1, result2);
 }
 
@@ -373,10 +373,10 @@ function ajax(src) {
 function getFeedbackOne() {
   const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
   promise1.then(function(data){
-    console.log("data1",data);
+    console.log("result1",data);
     return ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   }).then(function(data){
-    console.log("data2",data);
+    console.log("result2",data);
     });
 }
 
@@ -394,7 +394,7 @@ getFeedbackTwo();
 
 // 使用 Generator 與 Iterator 的寫法：
 function async(generator){
-  var iterator = generator();
+  const iterator = generator();
 
   function handle(iteratorResult) {
     if(iteratorResult.done) { return; }
