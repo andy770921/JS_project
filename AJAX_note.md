@@ -345,7 +345,7 @@ const safeGetFeedback = handleError(getFeedback);
 safeGetFeedback();
 ```
 
-# 使用 generator 與 iterator， 實作 async/await
+# 使用 Generator 與 Iterator， 實作 async/await
 ```js
 function ajax(src) {
   return new Promise(function(resolve, reject){ 
@@ -369,7 +369,19 @@ function ajax(src) {
   });
 }
 
-function getFeedback() {
+// 使用 promise.then 的寫法：
+function getFeedbackOne() {
+  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  promise1.then(function(data){
+    console.log("data1",data);
+    return ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  }).then(function(data){
+    console.log("data2",data);
+    });
+}
+
+// 使用 Promise.all 的寫法：
+function getFeedbackTwo() {
   const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
   const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   Promise.all([promise1, promise2]).then(function(results){
@@ -378,9 +390,9 @@ function getFeedback() {
   });
 }
 
-getFeedback();
+getFeedbackTwo();
 
-
+// 使用 Generator 與 Iterator 的寫法：
 function async(generator){
   var iterator = generator();
 
