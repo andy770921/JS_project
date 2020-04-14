@@ -125,7 +125,7 @@ postAjax(sentURL, sentJsonObj, getFeedback);
 ```js
 
 function ajax(src) {
-  let p = new Promise(function(resolve, reject){ 
+  const p = new Promise(function(resolve, reject){ 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status == 200) {
@@ -139,7 +139,7 @@ function ajax(src) {
 }
 
 function getFeedback() {
-  let promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   promise.then(function(parsedData){
     console.log(parsedData);
   });
@@ -151,7 +151,7 @@ getFeedback();
 前者 ajax 函數，可使用簡化寫法  
 ```js
 function ajax(src) {
- return new Promise(function(resolve, reject){ 
+  return new Promise(function(resolve, reject){ 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status == 200) {
@@ -164,7 +164,7 @@ function ajax(src) {
 }
 
 function getFeedback() {
-  let promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   promise.then(function(parsedData){
     console.log(parsedData);
   });
@@ -177,7 +177,7 @@ getFeedback();
 ```js
 function ajax(src) {
   return new Promise(function(resolve, reject){ 
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.onload = function () {
       try {
         if (this.status === 200) {
@@ -198,7 +198,7 @@ function ajax(src) {
 }
 
 function getFeedback() {
-  let promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   promise.then(function(parsedData){
     console.log(parsedData);
   });
@@ -213,7 +213,7 @@ getFeedback();
 
 ```js
 function ajax(src) {
- return new Promise(function(resolve, reject){ 
+  return new Promise(function(resolve, reject){ 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status == 200) {
@@ -225,7 +225,7 @@ function ajax(src) {
     });
 }
 function getFeedback() {
-  let promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const promise = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   promise.then(function(parsedData){
     console.log(parsedData);
   }).catch(function(error){
@@ -239,8 +239,8 @@ getFeedback();
 3. 補充: 若要等到兩個非同步的函數，都完成後，再做下一步( result1, result2 同時開始跑 -> 最慢的取得到了 -> 再下一行)，可使用 Promise.all 的語法，會輸出結果的陣列
 ```js
 function getFeedback() {
-  let promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
-  let promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   Promise.all([promise1, promise2]).then(function(results){
     console.log(results);
   });
@@ -270,7 +270,7 @@ function ajax(src) {
 }
 
 async function getFeedback() {
-  let parsedData = await ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  const parsedData = await ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   console.log(parsedData);
 }
 
@@ -306,8 +306,8 @@ getFeedback();
 ```js
 async function getFeedback() {
   try {
-    let result1 = await ajax('https://api.appworks-school.tw/api/1.0/products/all');
-    let result2 = await ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+    const result1 = await ajax('https://api.appworks-school.tw/api/1.0/products/all');
+    const result2 = await ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
     console.log(result1, result2);
   } catch(error) {
     console.log(error);
