@@ -172,7 +172,7 @@ function getFeedback() {
 
 getFeedback();
 ```
-前者 ajax 函數，可使用完整的寫法，包含錯誤處理  
+前者 ajax 函數，可使用完整的寫法，包含錯誤處理 [Ref: Secrets of the JavaScript Ninja](https://github.com/sakataa/Paper/blob/master/JS/Secrets%20of%20the%20JavaScript%20Ninja%2C%202nd%20Edition.pdf?fbclid=IwAR0dZsY8dbslDcDY5H5Im4kVSxSwJTIDru58robGeFOrD0RQpTH5YHWPYEc)  
 
 ```js
 function ajax(src) {
