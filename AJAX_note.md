@@ -17,7 +17,7 @@ https://github.com/axios/axios
 ## 彭彭講 AJAX
 https://youtu.be/OkphAk_cWPM?t=362
 
-## 概念說明
+## 原生 XMLHttpRequest 概念說明
 
 1. 可在同一頁面，因使用者行為而讀取更多資料( google 地圖未顯示的部份、下拉網頁更多留言等)，且不會讓網頁停下
 2. AJAX = 非同步 JS and XML (XML Request Object)
@@ -137,6 +137,7 @@ xhttp.onreadystatechange = function () {
 xhttp.open("GET", `https://api.appworks-school.tw/api/1.0/marketing/hots`, true);
 xhttp.send();
 ```
+# 非同步程式的處理
 
 ## callback 使用
 ```js
@@ -177,7 +178,7 @@ A(function(x){
   })
 });
 ``` 
-## GET 使用
+## GET 使用 - 原生 XMLHttpRequest 封裝成 callback
 
 ```js
 
@@ -201,7 +202,7 @@ ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns', getFeedback);
 
 ```
 
-## POST 使用
+## POST 使用 - 原生 XMLHttpRequest 封裝成 callback
 
 1. 簡潔寫法 Ref: https://gist.github.com/EtienneR/2f3ab345df502bd3d13e
 2. 英文說明 Ref: https://www.quora.com/What-is-the-way-to-send-a-JSON-object-via-a-POST-request-in-JavaScript-not-jQuery-or-Nodejs 
