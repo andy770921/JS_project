@@ -6,23 +6,25 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect, FC } from 'react';
 
-// 使用需注意，引用的 AddQueryString 的 component，外層需被 'react-router-dom' 提供的 <BrowserRouter> 包含
+// 使用需注意，引用的 AddQueryStringWhenFirstEnter 的 component，外層需被 'react-router-dom' 提供的 <BrowserRouter> 包含
 
-const AddQueryString: FC<{ queryKey: string; queryValue: string }> = ({ queryKey, queryValue }) => {
+const AddQueryStringWhenFirstEnter: FC<{ queryKey: string; queryValue: string }> = ({ queryKey, queryValue }) => {
     const history = useHistory();
 
     useEffect(() => {
-        if (queryKey && queryValue) {
-            history.push({ search: `?${queryKey}=${queryValue}` });
+        // history.location.search === '' 為確認是否第一次頁面，且沒加 query string
+        // 如果是，且 query key and value 正確，就加上
+        if (queryKey && queryValue && history.location.search === '') {
+            history.replace({ search: `?${queryKey}=${queryValue}` });
         }
     }, [queryKey, queryValue, history]);
 
     return null;
 };
 
-export default AddQueryString;
+export default AddQueryStringWhenFirstEnter;
 
-// 實際用法 <AddQueryString queryKey="someKey" queryValue="someValue" />
+// 實際用法 <AddQueryStringWhenFirstEnter queryKey="someKey" queryValue="someValue" />
 
 
 ```
