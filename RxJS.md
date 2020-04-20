@@ -25,6 +25,10 @@ https://rxmarbles.com/
 
 https://blog.angular-university.io/rxjs-higher-order-mapping/
 
+## Polling
+
+https://codepen.io/markgoodyear/pen/NwrOZx/
+
 ## 保哥課程投影片
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg1.png"/>
