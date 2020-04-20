@@ -21,6 +21,10 @@ https://github.com/piotrwitek/react-redux-typescript-guide
 https://reactive.how  
 https://rxmarbles.com/
 
+## 運算子 - exhaustMap
+
+https://blog.angular-university.io/rxjs-higher-order-mapping/
+
 ## 保哥課程投影片
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg1.png"/>
