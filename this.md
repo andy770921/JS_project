@@ -339,7 +339,14 @@ Object.defineProperty(
   }
 );
 
-const Ninja = new Ninja();
+const ninja = new Ninja();
 ```
 ## 使用 instanceof: (p.215)
 檢查 instanceof 右側函式的 prototype 屬性的值，是否在 instanceof 左側物件的原型鏈上
+```js
+function Ninja(){}
+const ninja = new Ninja();
+Ninja.prototype = {}; 
+
+console.log(ninja instanceof Ninja); // false
+```
