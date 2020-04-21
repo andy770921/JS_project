@@ -328,5 +328,16 @@ function Ninja(){}
 Ninja.prototype = new Person(); // 或是 Ninja.prototype = Person.prototype; 也行，意義不同。
 // 註解的寫法不推薦，會改 Ninja.prototype 連帶影響到 Person.prototype
 
+Object.defineProperty(
+  Ninja.prototype,
+  'constructor',
+  {
+    configurable: false, // 屬性不可被改變或被刪除，若未宣告預設值為 false
+    enumerable: false,   // 不可在 for-in 迴圈出現，若未宣告預設值為 false
+    value: Ninja,        // 屬性的值，若未宣告預設值為 undefined
+    writable: true       // 可透過 = 改變其值，若未宣告預設值為 false
+  }
+);
+
 const Ninja = new Ninja();
 ```
