@@ -300,4 +300,21 @@ console.log(ninja2);
 //          constructor: ƒ Ninja()
 //          __proto__: Object
 ```
+## 不重複使用原本的 constructor function 寫法: (p.206)
+```js
+// --- 重複使用原本的 constructor function 寫法 ---
+function Ninja(){
+    this.swung = true;
+}
+const ninja1 = new Ninja(); 
+const ninja2 = new Ninja(); 
+console.log(ninja1 !== ninja2); // true
 
+// --- 不重複使用原本的 constructor function 寫法 ---
+function Ninja(){
+    this.swung = true;
+}
+const ninja1 = new Ninja(); 
+const ninja2 = new ninja1.constructor(); 
+console.log(ninja1 !== ninja2);  // true
+```
