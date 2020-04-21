@@ -70,7 +70,7 @@ y4(); // undefined
 1. class B 中，sayOutsideConst 使用箭頭函數，效用等於在 constructor 內宣告 say。效用等於在 function A 內定義 say，而不是指在原型定義。可查關鍵字 class field
 2. class B 中，sayOutsideConstN 使用一般函數，效用等於在 function A 定義在原型的 sayProtoN，且又附帶了嚴格模式
 
-# JS 中的 Class 與 function 實做繼承
+# JS 中的 Class 與 function 實作繼承
 
 ## class
 https://codepen.io/jackblackevo/pen/veyNKJ?editors=0010&fbclid=IwAR0yaCXye7ogklCrUK0avmi5-CYXRC2Gn03G0Q4UMfNSQJ4nx77ria2DCLQ
@@ -159,6 +159,7 @@ console.log(ryan.hasOwnProperty('programLang'));
 ```
 
 # JS 中的原型
+Ref: 忍者: JavaScript 開發技巧探祕 第二版
 ## 定義:
 尋找一個屬性時，可以被委派這項任務的物件 (p.191)。  
 如下例，`tree.black`，tree 尋找 black 屬性時，自己沒有。noctis 物件可以被委派這項 (調出 black) 的任務  
@@ -317,4 +318,15 @@ function Ninja(){
 const ninja1 = new Ninja(); 
 const ninja2 = new ninja1.constructor(); 
 console.log(ninja1 !== ninja2);  // true
+```
+## 使用原型實作繼承: (p.210)
+```js
+function Person(){}
+Ninja.prototype.dance = function (){};
+
+function Ninja(){}
+Ninja.prototype = new Person(); // 或是 Ninja.prototype = Person.prototype; 也行，意義不同。
+// 註解的寫法不推薦，會改 Ninja.prototype 連帶影響到 Person.prototype
+
+const Ninja = new Ninja();
 ```
