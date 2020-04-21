@@ -319,7 +319,7 @@ const ninja1 = new Ninja();
 const ninja2 = new ninja1.constructor(); 
 console.log(ninja1 !== ninja2);  // true
 ```
-## 使用原型實作繼承: (p.210)
+## 使用原型實作繼承: (p.210 - 213)
 ```js
 function Person(){}
 Ninja.prototype.dance = function (){};
