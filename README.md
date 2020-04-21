@@ -26,7 +26,7 @@
 
 1. [JS 基礎](https://github.com/andy770921/JS_project/blob/master/JS_concept.md)
 2. [AJAX, Promise 實作, 與 Cookie](https://github.com/andy770921/JS_project/blob/master/AJAX_note.md)
-3. [JS - this](https://github.com/andy770921/JS_project/blob/master/this.md)
+3. [JS 中的 this, class, prototype](https://github.com/andy770921/JS_project/blob/master/this.md)
 
 
 ### Others
