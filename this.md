@@ -175,7 +175,7 @@ console.log(tree.black);
 ## 原型鍊:
 每個物件都可以有一個原型，而物件原型也可以有自己的原型，依此類推，就能得到所謂的原型鍊 (p.195)。
 ## function, constructor function 與原型:
-解析以下程式碼
+解析以下程式碼  
 ```js
 function A(){};
 console.log(A);  
@@ -193,6 +193,7 @@ console.log({x:A, y:123});
 //    [[FunctionLocation]]: VM105:1
 //    [[Scopes]]: Scopes[2]
 ```
-
+1. 函式被建立時，它會得到一個新物件，是指派到 `prototype` 屬性。
+2. 一開始，這個 prototype 物件只有一個屬性 `constructor`，而這個屬性，是指向原來函式的位址 (p.198)
 
 
