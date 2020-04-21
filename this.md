@@ -256,7 +256,7 @@ constructor: ƒ Ninja()
 __proto__: Object
 ```
 2. 完整說法為: ninja1 的原型為， Ninja 函式的 prototype 屬性的值，這個值是 `{constructor: ƒ Ninja()}`
-3. 觀察 1. 中的 `constructor` 值為 `ƒ Ninja()`。得知 `constructor` 指向 Ninja 函式的位址。意義為現在這個 `prototype` 是被 Ninja 函式建立的
+3. 觀察 1. 中的 `constructor` 值為 `ƒ Ninja()`。得知 `constructor` 指向 Ninja 函式的位址。意義為現在這個 instance (ninja1) 是被 Ninja 函式建立的
 4. 展開 1. 中的 `constructor` 得到如下。證明 Ninja 函式擁有 `prototype` 屬性，值是 `{constructor: ƒ Ninja()}`，與 2. 的說法符合
 ```
 constructor: ƒ Ninja()
