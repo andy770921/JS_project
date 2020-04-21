@@ -195,7 +195,7 @@ console.log({x:A, y:123});
 //    [[Scopes]]: Scopes[2]
 //  y: 123
 ```
-1. 函式被建立時，它會得到一個新物件，是指派到 `prototype` 屬性。
+1. 函式被建立時，它會得到一個新物件，是指派到 `prototype` 屬性。 (p.198)
 2. 一開始，這個 prototype 物件只有一個屬性 `constructor`，而這個屬性，是指向原來函式的位址 (p.198)
 ```js
 function A(){};
