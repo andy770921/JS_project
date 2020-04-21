@@ -157,3 +157,42 @@ ryan.greeting();
 console.log(ryan.hasOwnProperty('name'));
 console.log(ryan.hasOwnProperty('programLang'));
 ```
+
+# JS 中的原型
+## 定義:
+尋找一個屬性時，可以被委派這項任務的物件 (p.191)。  
+如下例，`tree.black`，tree 尋找 black 屬性時，自己沒有。noctis 物件可以被委派這項 (調出 black) 的任務  
+稱 noctis 是 tree 的原型
+```js
+const tree = { green: true };
+const noctis = { black: true };
+
+Object.setPrototypeOf(tree, noctis); // 後者為前者的原型
+
+console.log(tree.black);
+// true
+```
+## 原型鍊:
+每個物件都可以有一個原型，而物件原型也可以有自己的原型，依此類推，就能得到所謂的原型鍊 (p.195)。
+## function, constructor function 與原型:
+解析以下程式碼
+```js
+function A(){};
+console.log(A);  
+// ƒ A() {}
+console.log({x:A, y:123}); 
+// {y: 123, x: ƒ}
+// 點開 x 細看內容後
+// x: ƒ A()
+//    length: 0
+//    name: "A"
+//    arguments: null
+//    caller: null
+//    prototype: {constructor: ƒ}
+//    __proto__: ƒ ()
+//    [[FunctionLocation]]: VM105:1
+//    [[Scopes]]: Scopes[2]
+```
+
+
+
