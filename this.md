@@ -1,5 +1,5 @@
 
-# JS 中的 this
+# JS 中的 this, class, prototype
 
 ## constructor function 及 class 的 this
 
@@ -200,15 +200,10 @@ console.log({x:A, y:123});
 function A(){};
 let b = new A(); 
 console.log(b);
-// A {}  看不出來細節
-console.log({x:b, y:123}); 
-// {x: A, y: 123}
-// 點開 x 細看內容後
-// x: A
+// A {}  點開後可得到以下結果
 //    __proto__:
 //          constructor: ƒ A()
 //          __proto__: Object
-// y: 123
 
 ```
 ```js
@@ -218,18 +213,14 @@ C.prototype.sayHi = function(){
 };
 let d = new C(); 
 console.log(d);
-// C {}  看不出來細節
-console.log({x:d, y:123}); 
-// 點開 x 細看內容後
-// x: C
+// C {}  點開後可得到以下結果
 //    __proto__: 
 //          sayHi: ƒ ()
 //          constructor: ƒ C()
 //          __proto__: Object
-// y: 123
 
-console.log({m:C, n:234});
-// m: ƒ C()
+console.log({x:C, y:234});
+// x: ƒ C()
 //    length: 0
 //    name: "C"
 //    arguments: null
@@ -238,11 +229,43 @@ console.log({m:C, n:234});
 //    __proto__: ƒ ()
 //    [[FunctionLocation]]: VM518:1
 //    [[Scopes]]: Scopes[2]
-// n: 234
+// y: 234
 
 
 ```
 3. 當我們把函式當成建構器使用時，所建立出來的新物件，其原型會被設定為，建構器函式原型所參照的物件 (p.198)
 4. d 的原型會被設定為 `function C(){}` 的 prototype 屬性的 value (這個 value 是 `{sayHi: ƒ, constructor: ƒ}`)
 5.  [補充] d 的原型可用 `__proto__` 得知
-6. 使用 new 運算子，也會發生的事：建立新的空物件 -> 將函式的 this 指向該空物件 (設定該函式的背景空間) -> 回傳值指向這個新物件的位址 (p.197)
+6. 使用 new 運算子，也會發生的事：建立新的空物件 -> 將函式的 this 指向該空物件 (設定該函式的背景空間) -> 回傳值指向這個新物件的位址 (p.197)  
+
+## 原型複寫:
+解析以下程式碼 (p.202)
+```js
+function Ninja(){
+    this.swung = true;
+}
+const ninja1 = new Ninja(); 
+console.log(ninja1);
+//  Ninja {swung: true}  點開後可得到以下結果
+//      swung: true
+//      __proto__: Object
+```
+1. 展開上式 `__proto__` 可到如下結果。得知 ninja1 的原型為 Ninja 
+```
+constructor: ƒ Ninja()
+__proto__: Object
+```
+2. 完整說法為: ninja1 的原型為， Ninja 函式的 prototype 屬性的值，這個值是 `{constructor: ƒ Ninja()}`
+3. 觀察 1. 中的 `constructor` 值為 `ƒ Ninja()`。得知 `constructor` 指向 Ninja 函式的位址。意義為現在這個 `prototype` 是被 Ninja 函式建立的
+4. 展開 1. 中的 `constructor` 得到如下。證明 Ninja 函式擁有 `prototype` 屬性，值是 `{constructor: ƒ Ninja()}`，與 2. 的說法符合
+```
+constructor: ƒ Ninja()
+  length: 0
+  name: "Ninja"
+  arguments: null
+  caller: null
+  prototype: {constructor: ƒ}
+  __proto__: ƒ ()
+  [[FunctionLocation]]: VM274:1
+  [[Scopes]]: Scopes[2]
+```
