@@ -192,6 +192,7 @@ console.log({x:A, y:123});
 //    __proto__: ƒ ()
 //    [[FunctionLocation]]: VM105:1
 //    [[Scopes]]: Scopes[2]
+//  y: 123
 ```
 1. 函式被建立時，它會得到一個新物件，是指派到 `prototype` 屬性。
 2. 一開始，這個 prototype 物件只有一個屬性 `constructor`，而這個屬性，是指向原來函式的位址 (p.198)
@@ -208,7 +209,7 @@ console.log({x:b, y:123});
 //          constructor: ƒ A()
 //          __proto__: Object
 // y: 123
-// __proto__: Object
+
 ```
 ```js
 function C(){}; 
@@ -216,14 +217,30 @@ C.prototype.sayHi = function(){
     return 'hi';
 };
 let d = new C(); 
+console.log(d);
+// C {}  看不出來細節
 console.log({x:d, y:123}); 
 // 點開 x 細看內容後
 // x: C
-//    __proto__:
+//    __proto__: 
 //          sayHi: ƒ ()
 //          constructor: ƒ C()
 //          __proto__: Object
 // y: 123
-// __proto__: Object
+
+console.log({m:C, n:234});
+// m: ƒ C()
+//    length: 0
+//    name: "C"
+//    arguments: null
+//    caller: null
+//    prototype: {sayHi: ƒ, constructor: ƒ}
+//    __proto__: ƒ ()
+//    [[FunctionLocation]]: VM518:1
+//    [[Scopes]]: Scopes[2]
+// n: 234
+
+
 ```
 3. 當我們把函式當成建構器使用時，所建立出來的新物件，其原型會被設定為，建構器函式原型所參照的物件 (p.198)
+4. d 的原型會被設定為 `function C(){}` 的 prototype 屬性的 value (這個 value 是 `{sayHi: ƒ, constructor: ƒ}`)
