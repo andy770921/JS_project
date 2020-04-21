@@ -269,3 +269,26 @@ constructor: ƒ Ninja()
   [[FunctionLocation]]: VM274:1
   [[Scopes]]: Scopes[2]
 ```
+5. [不佳] 丟失 constructor 資訊的原型複寫方式如下，已建立的 instance 仍會參照到舊的原型 (p.203)
+```js
+function Ninja(){
+    this.swung = true;
+}
+const ninja1 = new Ninja(); 
+Ninja.prototype.saySwung = function(){
+  return this.swung;
+};
+Ninja.prototype = {
+    sayHi: function() {
+        return 'hi';
+    }
+};
+console.log(ninja1);
+//  Ninja {swung: true}
+//      swung: true
+//      __proto__:
+//          saySwung: ƒ ()
+//          constructor: ƒ Ninja()
+//          __proto__: Object
+```
+
