@@ -276,7 +276,7 @@ function Ninja(){
     this.swung = true;
 }
 const ninja1 = new Ninja(); 
-Ninja.prototype.saySwung = function(){
+Ninja.prototype.doSwung = function(){
   return this.swung;
 };
 Ninja.prototype = {
@@ -288,7 +288,7 @@ console.log(ninja1);
 //  Ninja {swung: true}
 //      swung: true
 //      __proto__:
-//          saySwung: ƒ ()
+//          doSwung: ƒ ()
 //          constructor: ƒ Ninja()
 //          __proto__: Object
 
@@ -322,7 +322,7 @@ console.log(ninja1 !== ninja2);  // true
 ## 使用原型實作繼承: (p.210 - 213)
 ```js
 function Person(){}
-Ninja.prototype.dance = function (){};
+Person.prototype.dance = function (){};
 
 function Ninja(){}
 Ninja.prototype = new Person(); // 或是 Ninja.prototype = Person.prototype; 也行，意義不同。
@@ -350,3 +350,35 @@ Ninja.prototype = {};
 
 console.log(ninja instanceof Ninja); // false
 ```
+## class 與 constructor function 互轉: (p.219)
+```js
+// constructor function
+function Ninja(name){
+    this.name = name;
+}
+Ninja.prototype.doSwung = function(){
+    return true;
+};
+Ninja.checkSpecies = function(){
+    return 'human';
+};
+console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
+console.log(Ninja.checkSpecies()); // human
+
+// class
+class Ninja{
+    constructor(name){
+        this.name = name;
+    }
+    doSwung(){
+        return true;
+    }
+    static checkSpecies(){
+        return 'human';
+    }
+}
+console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
+console.log(Ninja.checkSpecies()); // human
+```
+
+## class 與 constructor function 實現繼承: (p.2)
