@@ -160,6 +160,7 @@ console.log(ryan.hasOwnProperty('programLang'));
 
 # JS 中的原型
 Ref: 忍者: JavaScript 開發技巧探祕 第二版
+Ref: 忍者: JavaScript 開發技巧探祕 [英文版](https://github.com/sakataa/Paper/blob/master/JS/Secrets%20of%20the%20JavaScript%20Ninja%2C%202nd%20Edition.pdf)
 ## 定義:
 - 尋找一個屬性時，可以被委派這項任務的物件 (p.191)。 
 - 如下例，`tree.black`，tree 尋找 black 屬性時，自己沒有。noctis 物件可以被委派這項 (調出 black) 的任務，稱 noctis 是 tree 的原型
@@ -206,7 +207,6 @@ console.log(b);
 //    __proto__:
 //          constructor: ƒ A()
 //          __proto__: Object
-
 ```
 ```js
 function C(){}; 
@@ -320,6 +320,46 @@ const ninja1 = new Ninja();
 const ninja2 = new ninja1.constructor(); 
 console.log(ninja1 !== ninja2);  // true
 ```
+
+## 使用 instanceof: (p.215)
+檢查 instanceof 右側函式的 prototype 屬性的值，是否在 instanceof 左側物件的原型鏈上
+```js
+function Ninja(){}
+const ninja = new Ninja();
+Ninja.prototype = {}; 
+
+console.log(ninja instanceof Ninja); // false
+```
+## class 與 constructor function 互轉: (p.219)
+```js
+// constructor function
+function Ninja(name) {
+    this.name = name;
+}
+Ninja.prototype.doSwung = function(){
+    return true;
+};
+Ninja.checkSpecies = function() {
+    return 'human';
+};
+console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
+console.log(Ninja.checkSpecies()); // human
+
+// class
+class Ninja{
+    constructor(name){
+        this.name = name;
+    }
+    doSwung(){
+        return true;
+    }
+    static checkSpecies(){
+        return 'human';
+    }
+}
+console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
+console.log(Ninja.checkSpecies()); // human
+```
 ## 使用 constructor function 的原型 (p.210 - 213) 及 class (p.221) 實作繼承:
 ```js
 // constructor function
@@ -367,43 +407,3 @@ const ninja = new Ninja('Bob', 'sword');
 console.log(ninja.dance());  //true
 
 ```
-## 使用 instanceof: (p.215)
-檢查 instanceof 右側函式的 prototype 屬性的值，是否在 instanceof 左側物件的原型鏈上
-```js
-function Ninja(){}
-const ninja = new Ninja();
-Ninja.prototype = {}; 
-
-console.log(ninja instanceof Ninja); // false
-```
-## class 與 constructor function 互轉: (p.219)
-```js
-// constructor function
-function Ninja(name) {
-    this.name = name;
-}
-Ninja.prototype.doSwung = function(){
-    return true;
-};
-Ninja.checkSpecies = function() {
-    return 'human';
-};
-console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
-console.log(Ninja.checkSpecies()); // human
-
-// class
-class Ninja{
-    constructor(name){
-        this.name = name;
-    }
-    doSwung(){
-        return true;
-    }
-    static checkSpecies(){
-        return 'human';
-    }
-}
-console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
-console.log(Ninja.checkSpecies()); // human
-```
-
