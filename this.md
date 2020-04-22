@@ -319,12 +319,16 @@ const ninja1 = new Ninja();
 const ninja2 = new ninja1.constructor(); 
 console.log(ninja1 !== ninja2);  // true
 ```
-## 使用原型實作繼承: (p.210 - 213)
+## 使用 constructor function 的原型 (p.210 - 213) 及 class (p.221) 實作繼承:
 ```js
+// constructor function
 function Person(){}
-Person.prototype.dance = function (){};
+Person.prototype.dance = function (){
+    return true;
+};
 
 function Ninja(){}
+
 Ninja.prototype = new Person(); // 或是 Ninja.prototype = Person.prototype; 也行，意義不同。
 // 註解的寫法不推薦，會改 Ninja.prototype 連帶影響到 Person.prototype
 
@@ -340,6 +344,27 @@ Object.defineProperty(
 );
 
 const ninja = new Ninja();
+console.log(ninja.dance());  //true
+
+// class
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    dance(){
+        return true;
+    }
+}
+class Ninja extends Person {
+    constructor(name, weapon) {
+        super(name);
+        this.weapon = weapon;
+    }
+}
+
+const ninja = new Ninja('Bob', 'sword');
+console.log(ninja.dance());  //true
+
 ```
 ## 使用 instanceof: (p.215)
 檢查 instanceof 右側函式的 prototype 屬性的值，是否在 instanceof 左側物件的原型鏈上
@@ -353,13 +378,13 @@ console.log(ninja instanceof Ninja); // false
 ## class 與 constructor function 互轉: (p.219)
 ```js
 // constructor function
-function Ninja(name){
+function Ninja(name) {
     this.name = name;
 }
 Ninja.prototype.doSwung = function(){
     return true;
 };
-Ninja.checkSpecies = function(){
+Ninja.checkSpecies = function() {
     return 'human';
 };
 console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
@@ -381,4 +406,3 @@ console.log(new Ninja('Bob'));     // Ninja {name: "Bob"}
 console.log(Ninja.checkSpecies()); // human
 ```
 
-## class 與 constructor function 實現繼承: (p.2)
