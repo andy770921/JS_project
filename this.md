@@ -161,9 +161,10 @@ console.log(ryan.hasOwnProperty('programLang'));
 # JS 中的原型
 Ref: 忍者: JavaScript 開發技巧探祕 第二版
 ## 定義:
-尋找一個屬性時，可以被委派這項任務的物件 (p.191)。  
-如下例，`tree.black`，tree 尋找 black 屬性時，自己沒有。noctis 物件可以被委派這項 (調出 black) 的任務  
-稱 noctis 是 tree 的原型
+- 尋找一個屬性時，可以被委派這項任務的物件 (p.191)。 
+- 如下例，`tree.black`，tree 尋找 black 屬性時，自己沒有。noctis 物件可以被委派這項 (調出 black) 的任務，稱 noctis 是 tree 的原型
+- 如果在目標物件找不到所要的屬性，原型會指向接下來要繼續在上頭尋找該屬性的物件 (p.225)。
+
 ```js
 const tree = { green: true };
 const noctis = { black: true };
