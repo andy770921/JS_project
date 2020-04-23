@@ -13,6 +13,8 @@ https://www.youtube.com/watch?v=DwQJ_NPQWWo
 ## 同步/非同步 - event loop
 https://youtu.be/cCOL7MC4Pl0  
 https://www.youtube.com/watch?v=8aGhZQkoFbQ  
+## async/await, event loop
+https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
 ## ES6語法與ES5差異，及call by ref解析27:22
 https://youtu.be/pr7JFQaAYjg
 ## constructor function 寫法，new 的意義
