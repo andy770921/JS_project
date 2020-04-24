@@ -189,7 +189,9 @@ export default App;
 10. 修完 bug 任務結束後，要按 F1 ，輸入 Gitflow: Release: finish，此時會自動移除 release 的分支，並將最新 commit 合併進 master 及 develop，並自動將目前分支位置，移動到 develop。
 11. 此時可以 push 本地端的 develop 分支到 github 。再用 git checkout 切換到 master 分支，再 push 本地端的 master 分支到 github。本地端再用 git checkout 移動到 develop 分支。
 12. 按 F1 ，輸入 Gitflow: Feature: start，繼續開發新功能
+## npm 指令
 
+1. [npm i and npm update](https://stackoverflow.com/questions/12478679/npm-install-vs-update-whats-the-difference)
 
 ## 其他外掛
 
