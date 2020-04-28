@@ -26,7 +26,24 @@ export default AddQueryStringWhenFirstEnter;
 
 // 實際用法 <AddQueryStringWhenFirstEnter queryKey="someKey" queryValue="someValue" />
 
+```
 
+## 點擊後保持 Quert String 寫法
+```js
+const CategoryMenu: FC = () => {
+    const history = useHistory();
+    const { search } = useLocation();
+    
+   // ...
+   
+    const itemClickHandler = (item) => () => {
+        history.push({
+            pathname: `${baseUrl}/${item.id}`,
+            search,
+        });
+    };
+    return <SubMenu itemClickHandler={itemClickHandler} />;
+}
 ```
 
 ## -------------- 使用 React Router 功能 ，配合 VSCode live server --------------
