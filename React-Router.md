@@ -45,7 +45,66 @@ const CategoryMenu: FC = () => {
     return <SubMenu itemClickHandler={itemClickHandler} />;
 }
 ```
+## Query String 相關好用函式
+```js
+// ----取得網址問號後的 Query 字串----
+// Node JS 升版後可用其他方式取得 Query 字串
+// https://shunnien.github.io/2017/07/03/Get-Query-String-Parameters-with-JavaScript/
 
+export default function getQueryValueByName(name: string, url: string) {
+    const safeName = name.replace(/[[\]]/g, '\\$&');
+    const regex = new RegExp(`[?&]${safeName}(=([^&#]*)|&|#|$)`);
+    const results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+// var queryStr = '?foo=lorem&bar=&baz';
+// var foo = getQueryValueByName('foo', queryStr); // "lorem"
+// var bar = getQueryValueByName('bar', queryStr); // "" (present with empty value)
+// var baz = getQueryValueByName('baz', queryStr); // "" (present with no value)
+// var qux = getQueryValueByName('qux', queryStr); // null (absent)
+
+export function updateUrlParameter(url: string, param: string, value: string) {
+    const index = url.indexOf('?');
+
+    if (index > 0) {
+        const u = url.substring(index + 1).split('&');
+        const params = new Array(u.length);
+        let found = false;
+
+        for (let i = 0; i < u.length; i += 1) {
+            params[i] = u[i].split('=');
+            if (params[i][0] === param) {
+                params[i][1] = value;
+                found = true;
+            }
+        }
+
+        if (!found) {
+            params.push(new Array(2));
+            params[params.length - 1][0] = param;
+            params[params.length - 1][1] = value;
+        }
+
+        let res = `${url.substring(0, index + 1) + params[0][0]}=${params[0][1]}`;
+        for (let i = 1; i < params.length; i += 1) {
+            res += `&${params[i][0]}=${params[i][1]}`;
+        }
+        return res;
+    }
+    return `?${param}=${value}`;
+}
+// console.log(updateUrlParameter('https://www.example.com/some.aspx?mid=1&id=2','id','5'));
+// => ?mid=1&id=5
+
+// console.log(updateUrlParameter('https://www.example.com/?mid=1&id=2','id','5'));
+// => ?mid=1&id=5
+
+// console.log(updateUrlParameter('https://www.example.com/some.aspx','id','5'));
+// => ?id=5
+```
 ## -------------- 使用 React Router 功能 ，配合 VSCode live server --------------
 
 ## 1. 用 React Router 功能
