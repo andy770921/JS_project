@@ -50,7 +50,7 @@ const TitleWrapper = styled.div`
     }
 `;
 
-const KeptFocusedTitle: FC<{ onClick?: MouseEventHandler<HTMLButtonElement> }> = ({ onClick }) => {
+const KeptFocusedTitle: FC<{ onClick?: MouseEventHandler<HTMLDivElement> }> = ({ onClick }) => {
     return (
         <TitleWrapper onClick={onClick} tabIndex={-1}>
             {children}
