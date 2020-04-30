@@ -37,7 +37,7 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
 ```
 ## Styled-components，div 使用 fouus 效果 ( 使用 TypeScript )
 ```ts
-import React, { FC, MouseEvent } from 'react';
+import React, { FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
 const TitleWrapper = styled.div`
@@ -50,7 +50,7 @@ const TitleWrapper = styled.div`
     }
 `;
 
-const KeptFocusedTitle: FC<{ onClick?: (event: MouseEvent<HTMLButtonElement>) => void }> = ({ onClick }) => {
+const KeptFocusedTitle: FC<{ onClick?: MouseEventHandler<HTMLButtonElement> }> = ({ onClick }) => {
     return (
         <TitleWrapper onClick={onClick} tabIndex={-1}>
             {children}
