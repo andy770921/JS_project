@@ -8,6 +8,7 @@
 5. 文字垂直置中2種方式: https://ithelp.ithome.com.tw/articles/10205421
 6. CSS動畫相關: https://www.oxxostudio.tw/articles/201803/css-animation.html
 7. CSS動畫，在JS設定重新撥放，使用網頁方法4: https://www.jianshu.com/p/4bfc167946f0
+8. 展開卡片與收合卡片: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
 
 ## 面試題: 
 https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8%80-box-model-box-sizing-56ddc49ac89e
