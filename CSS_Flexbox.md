@@ -15,9 +15,9 @@ Q: 請問三個 flex item 寬度如何分配?
 A: 平分，不受 width 設定影響   
 ```html
 <div class="flex">
-  <div class = "a">A</div>
-  <div class = "b">B</div>
-  <div class = "c">C</div>
+  <div class="a">A</div>
+  <div class="b">B</div>
+  <div class="c">C</div>
 </div>
 ```
 ```css
