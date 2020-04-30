@@ -35,6 +35,32 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
     }};
 `;
 ```
+## Styled-components，div 使用 fouus 效果 ( 使用 TypeScript )
+```ts
+import React, { FC, MouseEvent } from 'react';
+import styled from 'styled-components';
+
+const TitleWrapper = styled.div`
+    &:hover {
+        background: rgb(245, 247, 249);
+    }
+    &:focus {
+        background: rgb(245, 247, 249);
+        outline: none;
+    }
+`;
+
+const KeptFocusedTitle: FC<{ onClick?: (event: MouseEvent<HTMLButtonElement>) => void }> = ({ onClick }) => {
+    return (
+        <TitleWrapper onClick={onClick} tabIndex={-1}>
+            {children}
+        </TitleWrapper>
+    );
+};
+
+export default KeptFocusedTitle;
+```
+
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
 1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
 2. 若打開註解，使用 provider value={{orderBy, setOrderBy}}，在 notAdd 函數觸發時，console.log 會出現 re-render
