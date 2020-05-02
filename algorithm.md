@@ -328,6 +328,52 @@ function bucketSortLSB(arr){
 // 適用正數、非小數，數字可重複。若是負數、小數，要寫額外邏輯，另外處理
 bucketSortLSB([1, 200, 2, 300, 2, 50]); // [1, 2, 2, 50, 200, 300]
 ```
+5. Straight-Radix sort 應用 (找出最新版本號)
+
+```js
+function findLatestTagInfo(tagInfoList) {
+    const maxDigit = tagInfoList[0].tag.split('.').length;
+    let maxNumber = 0;
+    tagInfoList.forEach(tagInfoItem => {
+        const numberList = tagInfoItem.tag.split('.');
+        numberList.forEach(numStr => {
+            if (maxNumber < Number(numStr)) {
+                maxNumber = Number(numStr);
+            }
+        });
+    });
+
+    // all element are initially in a global stack
+    const globalQueue = [...tagInfoList];
+
+    // Sort
+    for (let i = maxDigit; i >= 1; i -= 1) {
+        // initialize bucket queue to be empty
+        const digitBucket = [];
+        for (let x = 0; x < maxNumber + 1; x += 1) {
+            digitBucket.push([]);
+        }
+
+        // 從 Global Queue 取出並分類
+        while (globalQueue.length > 0) {
+            const tagInfo = globalQueue.shift();
+            const d = Number(tagInfo.tag.split('.')[i - 1]);   
+            digitBucket[d].push(tagInfo);
+        }
+
+        // 分類好之後，逐一放回 Global Queue
+        for (let j = 0; j < maxNumber + 1 ; j += 1) {
+            for (let k = 0; k < digitBucket[j].length; k += 1) {
+                globalQueue.push(digitBucket[j][k]);
+            }
+        }
+    }
+ 
+    return globalQueue.pop();
+}
+console.log(findLatestTagInfo([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}])); // { tag:'4.6.6' }
+```
+
 
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
