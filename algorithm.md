@@ -374,7 +374,7 @@ function findLatestVersion(tagInfoList) {
  
     return globalQueue.pop();
 }
-console.log(findLatestVersion([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}])); // { tag:'4.6.6' }
+console.log(findLatestVersion([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}])); // { tag:'4.6.6'}
 ```
 
 
