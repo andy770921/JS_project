@@ -302,7 +302,7 @@ function bucketSortLSB(arr){
     
     // 從 Global Queue 取出並分類
     while(globalQueue.length > 0){
-      const numberStr = globalQueue.pop();
+      const numberStr = globalQueue.shift();
       const d = Number(numberStr[i-1]);
       digitBucket[d].push(numberStr);
     }
@@ -326,7 +326,7 @@ function bucketSortLSB(arr){
 }
 
 // 適用正數、非小數，數字可重複。若是負數、小數，要寫額外邏輯，另外處理
-bucketSortLSB([1, 200, 2, 300, 2]); // [1, 2, 2, 200, 300]
+bucketSortLSB([1, 200, 2, 300, 2, 50]); // [1, 2, 2, 50, 200, 300]
 ```
 
 ## Maze Problem - Using stack data structure
