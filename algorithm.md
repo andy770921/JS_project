@@ -209,7 +209,7 @@ heapSort([1, -100, 200, 2, 300, -5]); // [-100, -5, 1, 2, 200, 300]
 ```
 ## Bucket Sort (Radix sort 基數排序): 不是 comparison based ，時間複雜度 O(nk)
 1. n 個數字、最高 k 位數
-2. k 決定了進行多少輪處理，而 n 是每輪處理的運算元目
+2. k 決定了進行多少輪處理，而 n 是每輪處理的運算數目
 3. Radix-Exchange sort (most significant bit MSB)
 ```js
 function bucketSortMSB(arr){
@@ -329,9 +329,12 @@ function bucketSortLSB(arr){
 bucketSortLSB([1, 200, 2, 300, 2, 50]); // [1, 2, 2, 50, 200, 300]
 ```
 5. Straight-Radix sort 應用 (找出最新版本號)
-
+- `tagInfoList` 可能的值為 `[{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}]`
+- n 個數字 (陣列有 4 個元素)、最高 k 位數 (被點點隔開有 3 個數字)，時間複雜度 O(nk) = O(4 * 3)
+- k 決定了進行多少輪處理，而 n 是每輪處理的運算數目
+- 若陣列元素從 4 個擴展到 n 個，時間複雜度 O(3n)
 ```js
-function findLatestTagInfo(tagInfoList) {
+function findLatestVersion(tagInfoList) {
     const maxDigit = tagInfoList[0].tag.split('.').length;
     let maxNumber = 0;
     tagInfoList.forEach(tagInfoItem => {
@@ -371,7 +374,7 @@ function findLatestTagInfo(tagInfoList) {
  
     return globalQueue.pop();
 }
-console.log(findLatestTagInfo([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}])); // { tag:'4.6.6' }
+console.log(findLatestVersion([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}])); // { tag:'4.6.6' }
 ```
 
 
