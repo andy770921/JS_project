@@ -308,9 +308,9 @@ function bucketSortLSB(arr){
     }
     
     // 分類好之後，逐一放回 Global Queue
-    for(let j = 0; j < 10; j++){
-      for(let k = 0; k < digitBucket[j].length; k++){
-        globalQueue.push(digitBucket[j][k]);
+    for(let i = 0; i < 10; i++){
+      for(let j = 0; j < digitBucket[i].length; j++){
+        globalQueue.push(digitBucket[i][j]);
       }
     }
   }
