@@ -346,7 +346,7 @@ function findLatestVersion(tagInfoList) {
         });
     });
 
-    // all element are initially in a global stack
+    // all element are initially in a Global Queue
     const globalQueue = [...tagInfoList];
 
     // Sort
