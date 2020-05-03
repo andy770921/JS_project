@@ -12,10 +12,11 @@
 1. [React](https://github.com/andy770921/JS_project/blob/master/React_note.md)
 2. [Context](https://github.com/andy770921/JS_project/blob/master/context.md)
 3. [React Apollo](https://github.com/andy770921/JS_project/blob/master/React_apollo.md)
-4. [React 相關的 Webpack 設定](https://github.com/andy770921/JS_project/blob/master/webpack_setup.md)
-5. [React Apollo and GraphQL Demo Repo](https://github.com/andy770921/graphQL-demo)
-6. [React Basic Concept PPT](https://docs.google.com/presentation/d/1p6PZNSPW96AjDvDJQbiB1u7-ODK4aEC7maxrlV6Bte0/edit?fbclid=IwAR1VVzbVAjxLmE79iD67T-9OiCRdtNTtyKgGl4hwt2TAa3mRpIYlnER4TpI#slide=id.p)
-7. [React Apollo PPT](https://docs.google.com/presentation/d/1bAmFctbrHhEwfnreLyj7x8kpQyvO6z28Hcg_9a9zMqc/edit#slide=id.p)
+4. [styled-components](https://github.com/andy770921/JS_project/blob/master/styled-components.md)
+5. [React 相關的 Webpack 設定](https://github.com/andy770921/JS_project/blob/master/webpack_setup.md)
+6. [React Apollo and GraphQL Demo Repo](https://github.com/andy770921/graphQL-demo)
+7. [React Basic Concept PPT](https://docs.google.com/presentation/d/1p6PZNSPW96AjDvDJQbiB1u7-ODK4aEC7maxrlV6Bte0/edit?fbclid=IwAR1VVzbVAjxLmE79iD67T-9OiCRdtNTtyKgGl4hwt2TAa3mRpIYlnER4TpI#slide=id.p)
+8. [React Apollo PPT](https://docs.google.com/presentation/d/1bAmFctbrHhEwfnreLyj7x8kpQyvO6z28Hcg_9a9zMqc/edit#slide=id.p)
 
 ### Redux
 
@@ -27,7 +28,7 @@
 1. [JS 基礎](https://github.com/andy770921/JS_project/blob/master/JS_concept.md)
 2. [AJAX, Promise 實作, 與 Cookie](https://github.com/andy770921/JS_project/blob/master/AJAX_note.md)
 3. [JS 中的 this, class, prototype](https://github.com/andy770921/JS_project/blob/master/this.md)
-
+4. [JS 中的 higher order function](https://github.com/andy770921/JS_project/blob/master/higher-order-fn.md)
 
 ### Others
 
