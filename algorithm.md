@@ -472,8 +472,8 @@ function fib(n){
     if(n < 2) return 1;           // Base Case (terminal condition)           
     return fib(n-1) + fib(n-2);   // Recursive Case
 }
-console.log(fib(10))
-// 89
+console.log(fib(8))
+// 34
 
 ```
 
