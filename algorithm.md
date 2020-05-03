@@ -461,9 +461,11 @@ findPath();
   2. 容易找出有效率的演算法
   3. 利於平行運算 ( 因為需要計算的小單元彼此獨立，可獨立計算 )
   4. 利於記憶體存取 ( 資料可分散存在不同的 cache，不用都在主記憶體 )
+
 ## Recurrence
 - 定義: 一個等式或不等式。這個等式或不等式的描述為一個函式，用「代入更小輸入值的函式本身」表示。
 - [Ref](https://youtu.be/ywJJvBwha4s?t=809)
+- Ex: F(n) = F(n-1) + F(n-2)
 ```js
 // Fibonacci
 function fib(n){
