@@ -25,7 +25,7 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
     }};
 `;
 ```
-## Styled-components，div 使用 fouus 效果 ( 使用 TypeScript )
+## Styled-components，div 使用 focus 效果 ( 使用 TypeScript )
 ```ts
 import React, { FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
