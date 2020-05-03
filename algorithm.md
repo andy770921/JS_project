@@ -455,8 +455,8 @@ findPath();
 ```
 
 # Devide and Conquer
-step: Devide -> Conquer -> Conbine
-
+- Step: Devide -> Conquer -> Conbine
+- 優點: 大的問題拆小容易思考、容易找出有效率的演算法、利於平行運算 ( 因為需要計算的小單元彼此獨立，可獨立計算 )、利於記憶體存取 (資料可分散存在不同的 cache，不用都在主記憶體)
 ## Recurrence
 ```js
 // Fibonacci
