@@ -191,6 +191,58 @@ https://ithelp.ithome.com.tw/articles/10185430
     } = data || { shopCategoryList: { categoryList: [] } };
     console.log(categoryList); // []
 ```
+```js
+const defaultButtonStyle = { x: 'styleX', y: 'styleY' };
+
+const possibleInputStyle1 = { button: { x: 'customX', y: 'customY' }, text: { a: 'customA' } };
+const possibleInputStyle2 = { button: { x: 'customX', y: 'customY' } };
+const possibleInputStyle3 = {};
+const possibleInputStyle4 = { button: {}, text: {} };
+const possibleInputStyle5 = { button: { x: '' }, text: { y: '' } };
+const possibleInputStyle6 = { text: { a: 'customA' } };
+
+const getButtonStyle = possibleInputStyle => {
+    const { button } = possibleInputStyle;
+    let outputX = '';
+    let outputY = '';
+    if (button) {
+        outputX = button.x ? button.x : defaultButtonStyle.x;
+        outputY = button.y ? button.y : defaultButtonStyle.y;
+    } else {
+        outputX = defaultButtonStyle.x;
+        outputY = defaultButtonStyle.y;
+    }
+    return { x: outputX, y: outputY };
+};
+
+console.log(getButtonStyle(possibleInputStyle1)); // {x: "customX", y: "customY"}
+console.log(getButtonStyle(possibleInputStyle2)); // {x: "customX", y: "customY"}
+console.log(getButtonStyle(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(getButtonStyle(possibleInputStyle4)); // {x: "styleX", y: "styleY"}
+console.log(getButtonStyle(possibleInputStyle5)); // {x: "styleX", y: "styleY"}
+console.log(getButtonStyle(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
+
+const getStyleDeconstructure = possibleInputStyle => {
+    const { x: defaultX, y: defaultY } = defaultButtonStyle;
+    const {
+        button: { x, y },
+    } =
+        Object.keys(possibleInputStyle).length > 0
+            ? possibleInputStyle
+            : {
+                  button: {
+                      x: defaultX,
+                      y: defaultY,
+                  },
+              };
+    return { x, y };
+};
+
+console.log(getStyleDeconstructure(possibleInputStyle1)); // {x: "customX", y: "customY"}
+console.log(getStyleDeconstructure(possibleInputStyle2)); // {x: "customX", y: "customY"}
+console.log(gettyleDeconstructure(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+```
+
 ## hoisting 提升
 https://blog.techbridge.cc/2018/11/10/javascript-hoisting/?fbclid=IwAR3No5aPr4uqhVN3CiusRV37RDQa6TTCeW7zw_1k3uCm_r_1LF9sLkXCNTg
 ## Array 常用的方法
