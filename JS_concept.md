@@ -248,7 +248,7 @@ console.log(solutionOne(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
 const solutionTwo = possibleInputStyle => {
     const { x: defaultX, y: defaultY } = defaultButtonStyle;
     const {
-        button: { x = defaultX , y = defaultY } = {  x: defaultX, y: defaultY } 
+        button: { x = defaultX , y = defaultY } = { x: defaultX, y: defaultY } 
     } =
         Object.keys(possibleInputStyle).length > 0
             ? possibleInputStyle
