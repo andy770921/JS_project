@@ -181,8 +181,10 @@ https://youtu.be/XJzDF9bj368
 ## 計算機概論
 https://youtu.be/QuCu4iDpPTU
 ## 解構賦值
-文章關鍵字:使用於函式的傳入參數之中的解構賦值  
-https://ithelp.ithome.com.tw/articles/10185430  
+文章關鍵字: 使用於函式的傳入參數之中的解構賦值  
+https://ithelp.ithome.com.tw/articles/10185430    
+解構賦值加預設值
+https://medium.com/@pyrolistical/destructuring-nested-objects-9dabdd01a3b8  
 深層的解構賦值  
 ```js
     const data = null;
@@ -222,7 +224,7 @@ console.log(getButtonStyle(possibleInputStyle4)); // {x: "styleX", y: "styleY"}
 console.log(getButtonStyle(possibleInputStyle5)); // {x: "styleX", y: "styleY"}
 console.log(getButtonStyle(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
 
-const getStyleDeconstructure = possibleInputStyle => {
+const solutionOne = possibleInputStyle => {
     const { x: defaultX, y: defaultY } = defaultButtonStyle;
     const {
         button: { x, y },
@@ -238,9 +240,50 @@ const getStyleDeconstructure = possibleInputStyle => {
     return { x, y };
 };
 
-console.log(getStyleDeconstructure(possibleInputStyle1)); // {x: "customX", y: "customY"}
-console.log(getStyleDeconstructure(possibleInputStyle2)); // {x: "customX", y: "customY"}
-console.log(getStyleDeconstructure(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(solutionOne(possibleInputStyle1)); // {x: "customX", y: "customY"}
+console.log(solutionOne(possibleInputStyle2)); // {x: "customX", y: "customY"}
+console.log(solutionOne(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+
+
+const solutionTwo = possibleInputStyle => {
+    const { x: defaultX, y: defaultY } = defaultButtonStyle;
+    const {
+        button: { x = defaultX , y = defaultY } = {  x: defaultX, y: defaultY } 
+    } =
+        Object.keys(possibleInputStyle).length > 0
+            ? possibleInputStyle
+            : {
+                  button: {
+                      x: defaultX,
+                      y: defaultY,
+                  },
+              };
+    return { x, y };
+};
+
+console.log(solutionTwo(possibleInputStyle1)); // {x: "customX", y: "customY"}
+console.log(solutionTwo(possibleInputStyle2)); // {x: "customX", y: "customY"}
+console.log(solutionTwo(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(solutionTwo(possibleInputStyle4)); // {x: "styleX", y: "styleY"}
+console.log(solutionTwo(possibleInputStyle5)); // {x: "", y: "styleY"}
+console.log(solutionTwo(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
+
+const solutionThree = possibleInputStyle => {
+    const { x: defaultX, y: defaultY } = defaultButtonStyle;
+    const {
+        button: { x = null , y = null } = {} 
+    } = possibleInputStyle;
+       
+    return (x && y) ? {x, y} : {x: defaultX, y: defaultY};
+};
+
+console.log(solutionThree(possibleInputStyle1)); // {x: "customX", y: "customY"}
+console.log(solutionThree(possibleInputStyle2)); // {x: "customX", y: "customY"}
+console.log(solutionThree(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(solutionThree(possibleInputStyle4)); // {x: "styleX", y: "styleY"}
+console.log(solutionThree(possibleInputStyle5)); // {x: "styleX", y: "styleY"}
+console.log(solutionThree(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
+
 ```
 
 ## hoisting 提升
