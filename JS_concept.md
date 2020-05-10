@@ -223,24 +223,20 @@ console.log(getButtonStyle(possibleInputStyle5)); // {x: "styleX", y: "styleY"}
 console.log(getButtonStyle(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
 
 const getStyleDeconstructure = possibleInputStyle => {
-    const { x: defaultX, y: defaultY } = defaultButtonStyle;
     const {
         button: { x, y },
     } =
         Object.keys(possibleInputStyle).length > 0
             ? possibleInputStyle
             : {
-                  button: {
-                      x: defaultX,
-                      y: defaultY,
-                  },
+                  button: defaultButtonStyle,
               };
     return { x, y };
 };
 
 console.log(getStyleDeconstructure(possibleInputStyle1)); // {x: "customX", y: "customY"}
 console.log(getStyleDeconstructure(possibleInputStyle2)); // {x: "customX", y: "customY"}
-console.log(gettyleDeconstructure(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(getStyleDeconstructure(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
 ```
 
 ## hoisting 提升
