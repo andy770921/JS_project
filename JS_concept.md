@@ -243,6 +243,9 @@ const solutionOne = possibleInputStyle => {
 console.log(solutionOne(possibleInputStyle1)); // {x: "customX", y: "customY"}
 console.log(solutionOne(possibleInputStyle2)); // {x: "customX", y: "customY"}
 console.log(solutionOne(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(solutionOne(possibleInputStyle4)); // {x: undefined, y: undefined}
+console.log(solutionOne(possibleInputStyle5)); // {x: "", y: undefined}
+console.log(solutionOne(possibleInputStyle6)); // error: Uncaught TypeError: Cannot read property 'x' of undefined
 
 
 const solutionTwo = possibleInputStyle => {
