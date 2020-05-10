@@ -223,13 +223,17 @@ console.log(getButtonStyle(possibleInputStyle5)); // {x: "styleX", y: "styleY"}
 console.log(getButtonStyle(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
 
 const getStyleDeconstructure = possibleInputStyle => {
+    const { x: defaultX, y: defaultY } = defaultButtonStyle;
     const {
         button: { x, y },
     } =
         Object.keys(possibleInputStyle).length > 0
             ? possibleInputStyle
             : {
-                  button: defaultButtonStyle,
+                  button: {
+                      x: defaultX,
+                      y: defaultY,
+                  },
               };
     return { x, y };
 };
