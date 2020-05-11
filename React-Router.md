@@ -1,32 +1,5 @@
 # React-Router
 
-## 加 Quert String 純功能 Component 寫法
-
-```js
-import { useHistory } from 'react-router-dom';
-import { useEffect, FC } from 'react';
-
-// 使用需注意，引用的 AddQueryStringWhenFirstEnter 的 component，外層需被 'react-router-dom' 提供的 <BrowserRouter> 包含
-
-const AddQueryStringWhenFirstEnter: FC<{ queryKey: string; queryValue: string }> = ({ queryKey, queryValue }) => {
-    const history = useHistory();
-
-    useEffect(() => {
-        // history.location.search === '' 為確認是否第一次頁面，且沒加 query string
-        // 如果是，且 query key and value 正確，就加上
-        if (queryKey && queryValue && history.location.search === '') {
-            history.replace({ search: `?${queryKey}=${queryValue}` });
-        }
-    }, [queryKey, queryValue, history]);
-
-    return null;
-};
-
-export default AddQueryStringWhenFirstEnter;
-
-// 實際用法 <AddQueryStringWhenFirstEnter queryKey="someKey" queryValue="someValue" />
-
-```
 
 ## 點擊後保持 Quert String 寫法
 ```js
@@ -104,6 +77,83 @@ export function updateUrlParameter(url: string, param: string, value: string) {
 
 // console.log(updateUrlParameter('https://www.example.com/some.aspx','id','5'));
 // => ?id=5
+
+export const getQueryString = (name: string, url?: string) => {
+    try {
+        const match = RegExp(`[?&]${name}=([^&]*)`).exec(url || document.location.search);
+        return match && decodeURIComponent(decodeURIComponent(match[1].replace(/\+/g, ' ')));
+    } catch (e) {
+        return null;
+    }
+};
+
+// Source code from
+// http://stackoverflow.com/questions/6953944/how-to-add-parameters-to-a-url-that-already-contains-other-parameters-and-maybe
+export const appendParameter = (url: string, key: string, value: string, atStart = false) => {
+    const replaceDuplicates = true;
+
+    // Get url without hash
+    let urlhash = '';
+    let urlLength = url.length;
+    if (url.indexOf('#') > 0) {
+        urlLength = url.indexOf('#');
+        urlhash = url.substring(url.indexOf('#'), url.length);
+    }
+
+    const sourceUrl = url.substring(0, urlLength);
+
+    // Get url search part
+    const urlParts = sourceUrl.split('?');
+    let newQueryString = '';
+
+    // Get new parameter query string
+    if (urlParts.length > 1) {
+        const parameters = urlParts[1].split('&');
+        for (let i = 0; i < parameters.length; i++) {
+            const parameterParts = parameters[i].split('=');
+            if (!(replaceDuplicates && parameterParts[0] === key)) {
+                if (newQueryString === '') {
+                    newQueryString = '?';
+                } else {
+                    newQueryString += '&';
+                }
+                newQueryString += `${parameterParts[0]}=${parameterParts[1] ? parameterParts[1] : ''}`;
+            }
+        }
+    }
+    if (newQueryString === '') {
+        newQueryString = '?';
+    }
+
+    // Append to url
+    if (atStart) {
+        newQueryString = `?${key}=${value + (newQueryString.length > 1 ? `&${newQueryString.substring(1)}` : '')}`;
+    } else {
+        if (newQueryString !== '' && newQueryString !== '?') {
+            newQueryString += '&';
+        }
+        newQueryString += `${key}=${value || ''}`;
+    }
+    return urlParts[0] + newQueryString + urlhash;
+};
+
+export const removeQueryStringParam = (key: string, sourceURL: string) => {
+    let alteredURL = sourceURL.split('?')[0];
+    let param: string;
+    let paramsArr: string[] = [];
+    const queryString = sourceURL.includes('?') ? sourceURL.split('?')[1] : '';
+    if (queryString !== '') {
+        paramsArr = queryString.split('&');
+        for (let i = paramsArr.length - 1; i >= 0; i -= 1) {
+            param = paramsArr[i].split('=')[0];
+            if (param === key) {
+                paramsArr.splice(i, 1);
+            }
+        }
+        alteredURL = `${alteredURL}?${paramsArr.join('&')}`;
+    }
+    return alteredURL;
+};
 ```
 ## -------------- 使用 React Router 功能 ，配合 VSCode live server --------------
 
