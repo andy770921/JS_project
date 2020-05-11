@@ -38,7 +38,60 @@ export default BookList;
 </div>
 
 
-## useQuery 文字說明
+## useLazyQuery 文字說明
+在一進入頁面不取資料，使用者操作才取資料的情境下，可用 `useLazyQuery` 
+
+使用法如下
+```js
+import React, { useState } from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
+const GET_BOOK_QUERY = gql`
+  query($id: ID!) {
+    book(id: $id) {
+      name
+      genre
+      id
+      author {
+        name
+        age
+      }
+    }
+  }
+`;
+
+function BookDetails() {
+  const [selectedBookId, setSelectedBookId] = useState(null);
+  // const apolloFnAndStatusArray = useLazyQuery(GET_BOOK_QUERY, { variables: { id: selectedBookId } });
+  const [getBookQuery, { error, data: bookQueryData }] = useLazyQuery(GET_BOOK_QUERY, {
+    variables: { id: selectedBookId }
+  });
+  const handleChange = e => {
+    setSelectedBookId(e.target.value);
+    getBookQuery();
+  };
+  if (error) return <p>Error :(</p>;
+  return (
+    <div>
+      <h2> Select Book for Details: </h2>
+      <select onChange={handleChange}>
+        <option> Select Book </option>
+        {[{name: 'book1', id: 1}, {name: 'book2', id: 2}].map(book => (
+          <option key={book.id} value={book.id}>
+            {book.name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+export default BookDetails;
+```
+
+- 使用 `useLazyQuery` 後，會立刻回傳一個陣列。在未來某兩個時間點，useQuery 回傳會回傳新的陣列，引發 react component 再渲染兩次。  
+- 陣列的內容，可使用 JS 陣列解構賦值的方式，重新命名陣列元素名稱，陣列的第一個元素為函數、第二個元素為物件，不論取什麼名稱，功能不變。如可以取名為 `[getBookQuery, getBookObj]` ，也可取為 `[bananaFn, bananaObject]`。
 
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
