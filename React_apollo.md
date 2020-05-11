@@ -36,26 +36,9 @@ export default BookList;
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useQuery_1.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useQuery_2.png"/>
 </div>
-- 典型的 loading, error, data 處理方法如下
-```js
-function BookList() {
-  const { loading, error, data: booksQueryData } = useQuery(GET_BOOKS_QUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-  return (
-    <div>
-      <ul id="book-list">
-        {booksQueryData.books.map(book => (
-          <li key={book.id}>{book.name}</li>
-        ))}
-      </ul>
-      <BookDetails booksList={booksQueryData.books} />
-    </div>
-  );
-}
-export default BookList;
 
-```
+
+## useQuery 文字說明
 
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
