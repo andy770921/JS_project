@@ -20,7 +20,7 @@ const GET_BOOKS_QUERY = gql`
 `;
 
 function BookList() {
-  // const apolloObject = useQuery(GET_BOOKS_QUERY);
+  // const apolloStatusObject = useQuery(GET_BOOKS_QUERY);
   const { loading, error, data } = useQuery(GET_BOOKS_QUERY);
   return (
     <p>
