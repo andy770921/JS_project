@@ -101,6 +101,7 @@ const [getBookQuery, { loading, error, data }] = useLazyQuery(GET_BOOK_QUERY, { 
 ```
 - 首次渲染畫面的時候，上述 `loading, error, data` 分別為 `false, undefined, undefined`
 - 當呼叫陣列第一個元素回傳的函式 (`getBookQuery`) 時，開始發送請求給 graphQL server，這時上述 `loading, error, data` 更新為 `true, undefined, undefined`
+- 當收到資料或是收到錯誤時，上述 `loading, error, data` 更新為 `false, undefined, dataObject{...}` 或 `false, errObject{...}, undefined`
 
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
