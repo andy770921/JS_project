@@ -22,11 +22,7 @@ const GET_BOOKS_QUERY = gql`
 function BookList() {
   // const apolloStatusObject = useQuery(GET_BOOKS_QUERY);
   const { loading, error, data } = useQuery(GET_BOOKS_QUERY);
-  return (
-    <p>
-        Test
-    </p>
-  );
+  return <p>Test</p>;
 }
 export default BookList;
 ```
