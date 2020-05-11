@@ -63,14 +63,17 @@ const GET_BOOK_QUERY = gql`
 
 function BookDetails() {
   const [selectedBookId, setSelectedBookId] = useState(null);
+  
   // const apolloFnAndStatusArray = useLazyQuery(GET_BOOK_QUERY, { variables: { id: selectedBookId } });
   const [getBookQuery, { error, data: bookQueryData }] = useLazyQuery(GET_BOOK_QUERY, {
     variables: { id: selectedBookId }
   });
+  
   const handleChange = e => {
     setSelectedBookId(e.target.value);
     getBookQuery();
   };
+  
   if (error) return <p>Error :(</p>;
   return (
     <div>
@@ -90,8 +93,14 @@ function BookDetails() {
 export default BookDetails;
 ```
 
-- 使用 `useLazyQuery` 後，會立刻回傳一個陣列。在未來某兩個時間點，useQuery 回傳會回傳新的陣列，引發 react component 再渲染兩次。  
-- 陣列的內容，可使用 JS 陣列解構賦值的方式，重新命名陣列元素名稱，陣列的第一個元素為函數、第二個元素為物件，不論取什麼名稱，功能不變。如可以取名為 `[getBookQuery, getBookObj]` ，也可取為 `[bananaFn, bananaObject]`。
+- 使用 `useLazyQuery` 後，會立刻回傳一個陣列。未來若依不同情境變更了狀態， useLazyQuery 會回傳新的陣列，引發 react component 再渲染。  
+- 陣列的內容，可使用 JS 陣列解構賦值的方式，重新命名陣列元素名稱，陣列的第一個元素為函數、第二個元素為物件，不論取什麼名稱，功能不變。如可以取名為 `[getBookQuery, bookObj]` ，也可取為 `[bananaFn, bananaObject]`。
+- 可再將陣列取出來的第二個元素，再解構賦值，如 
+```js
+const [getBookQuery, { loading, error, data }] = useLazyQuery(GET_BOOK_QUERY, { variables: { id: selectedBookId } });
+```
+- 首次渲染畫面的時候，上述 `loading, error, data` 分別為 `false, undefined, undefined`
+- 當呼叫陣列第一個元素回傳的函式 (`getBookQuery`) 時，開始發送請求給 graphQL server，這時上述 `loading, error, data` 更新為 `true, undefined, undefined`
 
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
