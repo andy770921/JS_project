@@ -32,10 +32,10 @@ export default BookList;
 - 首次渲染畫面的時候，useQuery 的狀態分別是：`{ loading: true, error: undefined, data: undefined }` 代表的意義是，useQuery 已發送請求給 graphQL server，並在等待資料回來，在 loading 中
 - 未來某一個時間點，資料回來或是收到錯誤，會回傳新的物件，進而讓 react-hook 再次渲染畫面。若正確收到資料，useQuery 的狀態分別是：`{ loading: false, error: undefined, data: dataObject{...} }` 代表的意義是，useQuery 已不在 loading 中，並可讓我們取到 data 物件。若收到錯誤，useQuery 的狀態分別是：`{ loading: false, error: errObject{...} , data: undefined }`，可針對錯誤進行處理
 - 以下範例 console.log 可幫助理解，共發生兩次渲染
-
-  <img style="float: left;" src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useQuery_1.png"/>
-  <img style="float: right;" src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useQuery_2.png"/>
-
+<div align="center" >
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useQuery_1.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useQuery_2.png"/>
+</div>
 
 
 ## useLazyQuery 文字說明
@@ -102,6 +102,11 @@ const [getBookQuery, { loading, error, data }] = useLazyQuery(GET_BOOK_QUERY, { 
 - 首次渲染畫面的時候，上述 `loading, error, data` 分別為 `false, undefined, undefined`
 - 當呼叫陣列第一個元素回傳的函式 (`getBookQuery`) 時，開始發送請求給 graphQL server，這時上述 `loading, error, data` 更新為 `true, undefined, undefined`
 - 當收到資料或是收到錯誤時，上述 `loading, error, data` 更新為 `false, undefined, dataObject{...}` 或 `false, errObject{...}, undefined`
+- 以下範例 console.log 可幫助理解，一進入發生畫面發生了一次渲染，在使用者選完下拉選單後，再發生兩次渲染
+<div align="center" >
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useLazyQuery_1.png"/>
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useLazyQuery_2.png"/>
+</div>
 
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
