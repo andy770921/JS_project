@@ -1,5 +1,61 @@
 # React-Apollo Note
 
+## useQuery 文字說明
+
+在一進入頁面，就取資料回來的情境下，可用 `useQuery` 
+
+使用法如下
+```js
+import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
+const GET_BOOKS_QUERY = gql`
+  {
+    books {
+      name
+      id
+    }
+  }
+`;
+
+function BookList() {
+  // const apolloObject = useQuery(GET_BOOKS_QUERY);
+  const { loading, error, data } = useQuery(GET_BOOKS_QUERY);
+  return (
+    <p>
+        Test
+    </p>
+  );
+}
+export default BookList;
+```
+
+- 使用 `useQuery` 後，會立刻回傳一個物件。在未來某一個時間點，useQuery 回傳會回傳新的物件，引發 react component 再渲染一次。  
+- 物件的內容，可使用 JS 解構賦值的方式，取出內部的狀態 key，對應到的值，比如可以取出 loading ，這個狀態是布林值。
+- 首次渲染畫面的時候，useQuery 的狀態分別是：`{ loading: true, error: undefined, data: undefined }` 代表的意義是，useQuery 已發送請求給 graphQL server，並在等待資料回來，在 loading 中
+- 未來某一個時間點，資料回來或是收到錯誤，會回傳新的物件，進而讓 react-hook 再次渲染畫面。若正確收到資料，useQuery 的狀態分別是：`{ loading: false, error: undefined, data: dataObject{...} }` 代表的意義是，useQuery 已不在 loading 中，並可讓我們取到 data 物件。若收到錯誤，useQuery 的狀態分別是：`{ loading: false, error: errObject{...} , data: undefined }`，可針對錯誤進行處理
+- 典型的 loading, error, data 處理方法如下
+```js
+function BookList() {
+  const { loading, error, data: booksQueryData } = useQuery(GET_BOOKS_QUERY);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  return (
+    <div>
+      <ul id="book-list">
+        {booksQueryData.books.map(book => (
+          <li key={book.id}>{book.name}</li>
+        ))}
+      </ul>
+      <BookDetails booksList={booksQueryData.books} />
+    </div>
+  );
+}
+export default BookList;
+
+```
+
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
 ```js
