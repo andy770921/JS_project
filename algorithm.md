@@ -419,15 +419,21 @@ console.log(strMatching(p1, t1)); // 2
 - 實作步驟一: 使用 failed array，記錄上次比對失敗的例子中，有哪些字串頭尾重複的部分。可定義 failed array 的長度，跟 p (字串模板) 長度一樣
 - 實作步驟二: 使用 failure function (又稱 prefix function) 找出 failed array，即 p (字串模板) 最前和最後的最大重複字串
 - failure function: p 為字串模板， q 為字元所在的 index，k 為函式回傳值，意義為最大重複字串的長度，比如字串長度兩個字元可對應到 k = 2
-- Π (pi) 意義為，從最右邊往左數，數幾個字元，會完全跟從頭往右數一樣
+- Π (pi) 意義為，把 index 為 q 的字元當成最右邊的字元，最右邊往左數，數幾個字元，會跟從頭往右數完全一樣
 ```js
 const p1 = "ababaca";
 
-function failureFn(p){
+function failureFn(p, q){
   
 }
 
-console.log(failureFn(p1)); // 2
+console.log(failureFn(p1, 0)); // 0
+console.log(failureFn(p1, 1)); // 0
+console.log(failureFn(p1, 2)); // 1
+console.log(failureFn(p1, 3)); // 2
+console.log(failureFn(p1, 4)); // 3
+console.log(failureFn(p1, 5)); // 0
+console.log(failureFn(p1, 6)); // 1
 ```
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
