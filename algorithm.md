@@ -379,7 +379,7 @@ console.log(findLatestVersion([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {
 ## String Matching - KMP
 
 1. 定義: 
-- input: 兩參數，p 為字串模板、t 為待比對字串
+- input: 兩參數，p 為字串模板、t 為待比對字串。p 字串長度為 m、t 字串長度為 n
 - output: 若有完全符合模版者，回傳字串開始的 index，若無符合者，回傳 -1 
 ```js
 const p1 = "ABABC";
@@ -393,6 +393,28 @@ console.log(strMatching(p1, t1)); // 2
 // ||ABABC
 // ABABABCCA
 ```
+2. 一般解法: 複雜度 O(mn)
+```js
+const p1 = "ABABC";
+const t1 = "ABABABCCA";
+
+function strMatching(p, t){
+  for(let i = 0; i < t.length; i++){
+    let j = 0;
+    while(t[i+j] === p[j] && j < p.length){
+      j++;
+    }
+    // max compared times: p.length
+    // j last time at the begining of while loop: p.length -1;
+    // j last time at the end of while loop: p.length;   
+    if (j === p.length) return i;
+  }
+  return -1;
+}
+
+console.log(strMatching(p1, t1)); // 2
+```
+3. KMP: 複雜度 O(m+n)
 
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
