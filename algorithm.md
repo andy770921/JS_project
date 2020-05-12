@@ -376,7 +376,23 @@ function findLatestVersion(tagInfoList) {
 }
 console.log(findLatestVersion([{tag: '1.2.3'}, {tag: '4.5.6'}, {tag: '4.5.7'}, {tag: '4.6.6'}])); // { tag:'4.6.6'}
 ```
+## String Matching - KMP
 
+1. 定義: 
+- input: 兩參數，p 為字串模板、t 為待比對字串
+- output: 若有完全符合模版者，回傳字串開始的 index，若無符合者，回傳 -1 
+```js
+const p1 = "ABABC";
+const t1 = "ABABABCCA";
+
+function strMatching(p, t){
+  // TODOS
+}
+
+console.log(strMatching(p1, t1)); // 2
+// ||ABABC
+// ABABABCCA
+```
 
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
