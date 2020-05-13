@@ -1,4 +1,4 @@
-## forEach, map (HOF)
+## forEach, map, reduce (HOF)
 ```js
 // Q:
 function forEach(list, fn){
