@@ -1,7 +1,6 @@
 ## forEach, map (HOF)
 ```js
 // Q:
-
 function forEach(list, fn){
   // CODE HERE:
 };
@@ -16,7 +15,6 @@ function forEach(list, fn){
 };
 
 // Q:
-
 function map(list, fn){
   // CODE HERE:
 }
@@ -31,6 +29,24 @@ function map(list, fn){
     newList.push(fn(list[i]));
   }
   return newList;
+}
+
+// Q:
+function reduce(list, fn){
+  // CODE HERE:
+
+}
+
+console.log(reduce([1, 2, 3], (acc, cur) => (acc + cur))); // 6
+console.log(reduce([1, 2, 3], (acc, cur) => (acc * acc * cur))); // 12
+
+// A:
+function reduce(list, fn){
+  let sum = list[0];
+  for (let i = 1; i < list.length; i++){
+    sum = fn(sum, list[i]);
+  }
+  return sum;
 }
 
 ```
