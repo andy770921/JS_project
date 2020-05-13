@@ -124,7 +124,7 @@ Ref: https://gist.github.com/nmsdvid/8807205
 ## pipe (closure, HOF, rest parameter)
 ```js
 // Q:
-function pipe(...fns){
+function pipe(...funcs){
   // TODOS
   
 }
