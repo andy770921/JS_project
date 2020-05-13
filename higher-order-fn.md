@@ -152,10 +152,9 @@ console.log(testFuncB(2, 1)) // 643180
 // A:
 const pipe = (...funcs) => {
   return (...args) => {
-    let returnValue;
-    for(let i = 0; i < funcs.length; i++){
-      if (i === 0) returnValue = funcs[0](...args);
-      else returnValue = funcs[i](returnValue);
+    let returnValue = funcs[0](...args);
+    for(let i = 1; i < funcs.length; i++){
+      returnValue = funcs[i](returnValue);
     }
     return returnValue;
   }
