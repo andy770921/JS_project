@@ -42,6 +42,10 @@
 8. [Jest 單元測試](https://github.com/andy770921/JS_project/blob/master/jest.md)
 9. [3D 函式庫 - three.js](https://github.com/andy770921/JS_project/blob/master/threeJS.md)
 
+## Airbnb JavaScript Style Guide
+
+https://github.com/jigsawye/javascript
+
 ## 後端
 
 1. [Docker](https://github.com/andy770921/JS_project/blob/master/docker.md)
