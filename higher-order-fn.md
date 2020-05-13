@@ -36,10 +36,10 @@ function map(list, fn){
 ```
 ## Once (HOF, closure)
 ```js
-Q:
+// Q:
 function once(fn){
-  // TODO
-
+  // TODOS
+  
 }
 
 const log = () => console.log("hello");
@@ -49,7 +49,7 @@ onceLog();
 onceLog();
 
 
-A:
+// A:
 function once(fn){
   let times = 0;
   return () => {
@@ -120,3 +120,45 @@ function A(x){
 let B = debounce(()=>A("hi"), 2000);
 ```
 Ref: https://gist.github.com/nmsdvid/8807205
+
+## pipe (closure, HOF, rest parameter)
+```js
+// Q:
+function pipe(...fns){
+  // TODOS
+  
+}
+
+const testFuncA = pipe(
+  value => value + 5,
+  value => value * 9,
+  value => `$${value}`,
+);
+
+console.log(testFuncA(2)) // $63
+
+const testFuncB = pipe(
+  (value1, value2) => value1 + value2,
+  value => value - 654,
+  value => value * 987.987,
+  Math.abs,
+  Math.round
+);
+
+console.log(testFuncB(17, 10)) // 619468
+console.log(testFuncB(2, 1)) // 643180
+
+
+// A:
+const pipe = (...funcs) => {
+  return (...args) => {
+    let returnValue;
+    for(let i = 0; i < funcs.length; i++){
+      if (i === 0) returnValue = funcs[0](...args);
+      else returnValue = funcs[i](returnValue);
+    }
+    return returnValue;
+  }
+}
+```
+
