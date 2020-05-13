@@ -175,5 +175,9 @@ const pipe = (...funcs) => {
     return returnValue;
   }
 }
+// another Ans:
+const pipe = (...funcs) => {
+  return funcs.reduce((res, func) => (...args) => func(res(...args)));
+}
 ```
 
