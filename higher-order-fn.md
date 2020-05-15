@@ -179,6 +179,7 @@ const pipe = (...funcs) => {
 const pipe = (...funcs) => {
   return funcs.reduce((res, func) => (...args) => func(res(...args)));
 }
+
 // another Ans:
 const pipe = (...funcs) => {
   const recurFn = (fn, ...args) => {
@@ -204,6 +205,18 @@ const pipe = (...funcs) => {
     }(res));
   }
   return res;
+}
+
+// another Ans:
+const pipe = (...funcs) => {
+  function combineTwoFns (innerFn ,outerFn) {
+    return (...args) => outerFn(innerFn(...args));
+  }
+  let accumulator = funcs[0];
+  for (let i = 1; i < funcs.length; i ++){
+    accumulator = combineTwoFns(accumulator, funcs[i]);
+  }
+  return accumulator;
 }
 ```
 
