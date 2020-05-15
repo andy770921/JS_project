@@ -176,8 +176,7 @@ const pipe = (...funcs) => {
   }
 }
 
-// Ans 類別一 - 最精簡的版本:
-
+// Ans - 最精簡的版本:
 const pipe = (...funcs) => {
   return  (...args) => funcs.reduce((res, func, i) =>  i === 1 ? func(...args): func(res));
 }
@@ -203,7 +202,6 @@ const pipe = (...funcs) => {
 const pipe = (...funcs) => {
   return funcs.reduce((res, func) => (...args) => func(res(...args)));
 }
-
 
 // another Ans:
 const pipe = (...funcs) => {
