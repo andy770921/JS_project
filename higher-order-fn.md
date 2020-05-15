@@ -165,7 +165,7 @@ console.log(testFuncB(17, 10)) // 619468
 console.log(testFuncB(2, 1)) // 643180
 
 
-// A:
+// Ans 類別一 - 使用 accumulator 記錄運算結果:
 const pipe = (...funcs) => {
   return (...args) => {
     let returnValue = funcs[0](...args);
@@ -175,9 +175,11 @@ const pipe = (...funcs) => {
     return returnValue;
   }
 }
-// another Ans:
+
+// Ans 類別一 - 最精簡的版本:
+
 const pipe = (...funcs) => {
-  return funcs.reduce((res, func) => (...args) => func(res(...args)));
+  return  (...args) => funcs.reduce((res, func, i) =>  i === 1 ? func(...args): func(res));
 }
 
 // another Ans:
@@ -195,6 +197,13 @@ const pipe = (...funcs) => {
     // return recurFn(funcs[1], (recurFn(funcs[0], ...args)));
   }
 }
+
+
+// Ans 類別二 - 使用 accumulator 記錄越包越多層的函式:
+const pipe = (...funcs) => {
+  return funcs.reduce((res, func) => (...args) => func(res(...args)));
+}
+
 
 // another Ans:
 const pipe = (...funcs) => {
@@ -218,5 +227,6 @@ const pipe = (...funcs) => {
   }
   return accumulator;
 }
+
 ```
 
