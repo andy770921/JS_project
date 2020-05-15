@@ -165,7 +165,7 @@ console.log(testFuncB(17, 10)) // 619468
 console.log(testFuncB(2, 1)) // 643180
 
 
-// Ans 類別一 - 使用 accumulator 記錄運算結果:
+// Ans 類別一 - 使用 accumulator (returnValue) 記錄運算結果:
 const pipe = (...funcs) => {
   return (...args) => {
     let returnValue = funcs[0](...args);
@@ -179,6 +179,17 @@ const pipe = (...funcs) => {
 // Ans - 最精簡的版本:
 const pipe = (...funcs) => {
   return  (...args) => funcs.reduce((res, func, i) =>  i === 1 ? func(...args): func(res));
+}
+
+// Ans - 遞迴版本，不用 accumulator 記錄:
+function pipe(...funcs){
+  return (...args) => {
+    function recursiveFn(n){
+      if (n === 1) return funcs[1](funcs[0](...args))
+      return funcs[n](recursiveFn(n-1))
+    }
+    return recursiveFn(funcs.length - 1);
+  }
 }
 
 // another Ans:
@@ -224,17 +235,6 @@ const pipe = (...funcs) => {
     accumulator = combineTwoFns(accumulator, funcs[i]);
   }
   return accumulator;
-}
-
-// Ans 類別三 - 使用遞迴，不用 accumulator 記錄:
-function pipe(...funcs){
-  return (...args) => {
-    function recursiveFn(n){
-      if (n === 1) return funcs[1](funcs[0](...args))
-      return funcs[n](recursiveFn(n-1))
-    }
-    return recursiveFn(funcs.length - 1);
-  }
 }
 
 ```
