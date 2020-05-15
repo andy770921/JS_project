@@ -226,5 +226,16 @@ const pipe = (...funcs) => {
   return accumulator;
 }
 
+// Ans 類別三 - 使用遞迴，不用 accumulator 記錄:
+function pipe(...funcs){
+  return (...args) => {
+    function recursiveFn(n){
+      if (n === 1) return funcs[1](funcs[0](...args))
+      return funcs[n](recursiveFn(n-1))
+    }
+    return recursiveFn(funcs.length - 1);
+  }
+}
+
 ```
 
