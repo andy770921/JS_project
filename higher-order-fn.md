@@ -179,5 +179,31 @@ const pipe = (...funcs) => {
 const pipe = (...funcs) => {
   return funcs.reduce((res, func) => (...args) => func(res(...args)));
 }
+// another Ans:
+const pipe = (...funcs) => {
+  const recurFn = (fn, ...args) => {
+    return fn(...args);
+  }
+  return (...args) => {
+    let sum = recurFn(funcs[0], ...args);
+    for(let i = 1; i < funcs.length; i++){
+        sum = recurFn(funcs[i], sum);
+        if (i === funcs.length -1) return sum;
+    }
+    // TARGET: 
+    // return recurFn(funcs[1], (recurFn(funcs[0], ...args)));
+  }
+}
+
+// another Ans:
+const pipe = (...funcs) => {
+  let res = funcs[0];
+  for (let i = 1; i < funcs.length; i ++){
+    res = (function(f){
+      return (...args) => funcs[i](f(...args));
+    }(res));
+  }
+  return res;
+}
 ```
 
