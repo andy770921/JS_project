@@ -181,17 +181,6 @@ const pipe = (...funcs) => {
   return  (...args) => funcs.reduce((res, func, i) =>  i === 1 ? func(...args): func(res));
 }
 
-// Ans - 遞迴版本，不用 accumulator 記錄:
-function pipe(...funcs){
-  return (...args) => {
-    function recursiveFn(n){
-      if (n === 1) return funcs[1](funcs[0](...args))
-      return funcs[n](recursiveFn(n-1))
-    }
-    return recursiveFn(funcs.length - 1);
-  }
-}
-
 // another Ans:
 const pipe = (...funcs) => {
   const recurFn = (fn, ...args) => {
@@ -237,5 +226,24 @@ const pipe = (...funcs) => {
   return accumulator;
 }
 
+// Ans 類別三 - 遞迴 + 累計值:
+function pipe(...funcs){
+  return (...args) => {
+    function recursiveFn(n){
+      if (n === 1) return funcs[1](funcs[0](...args))
+      return funcs[n](recursiveFn(n-1))
+    }
+    return recursiveFn(funcs.length - 1);
+  }
+}
+
+// Ans 類別三 - 遞迴 + 累計越包越多層的函式:
+function pipe(...funcs){
+    function recursiveFn(n, ...args){
+      if (n === 0) return funcs[0](...args)
+      return funcs[n](recursiveFn(n-1, ...args))
+    }
+    return (...args) => recursiveFn(funcs.length - 1, ...args);
+}
 ```
 
