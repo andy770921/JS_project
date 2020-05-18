@@ -73,7 +73,7 @@ y4(); // undefined
 ## class, 代入匿名函式, 及箭頭函式的 this
 
 ```js
-const FB = {login:function(cb){let res = 100; cb(res);}}
+const FB = {login: function(cb){let res = 100; cb(res);}}
 //FB3.login(function(res){console.log('in Window 1', this, res)})
 //FB3.login((res) =>{console.log('in Window 2', this, res)})
 
@@ -83,8 +83,8 @@ class Test {
   }
   sayThisInProto(){
     //console.log('sayThisInProto',this);
-    //function anonomous(res){console.log('in sayThisInProto 1', this, res)}
-    //FB3.login(anonomous);
+    //function anonymous(res){console.log('in sayThisInProto 1', this, res)}
+    //FB3.login(anonymous);
     FB.login(function(res){console.log('in sayThisInProto 1', this, res)})
     //const ano = (res) =>{console.log('in sayThisInProto 2', this, res)};
     //FB3.login(ano);
