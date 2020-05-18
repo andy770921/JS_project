@@ -239,9 +239,9 @@ function pipe(...funcs){
 
 // Ans 類別三 - 遞迴 + 累計越包越多層的函式:
 function pipe(...funcs){
-    function recursiveFn(n, ...args){
-      if (n === 0) return funcs[0](...args)
-      return funcs[n](recursiveFn(n-1, ...args))
+    function recursiveFn(n, ...arguments){
+      if (n === 0) return funcs[0](...arguments)
+      return funcs[n](recursiveFn(n-1, ...arguments))
     }
     return (...args) => recursiveFn(funcs.length - 1, ...args);
 }
