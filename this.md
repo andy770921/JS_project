@@ -70,6 +70,35 @@ y4(); // undefined
 1. class B 中，sayOutsideConst 使用箭頭函數，效用等於在 constructor 內宣告 say。效用等於在 function A 內定義 say，而不是指在原型定義。可查關鍵字 class field
 2. class B 中，sayOutsideConstN 使用一般函數，效用等於在 function A 定義在原型的 sayProtoN，且又附帶了嚴格模式
 
+## class, 代入匿名函式, 及箭頭函式的 this
+
+```js
+const FB = {login:function(cb){let res = 100; cb(res);}}
+//FB3.login(function(res){console.log('in Window 1', this, res)})
+//FB3.login((res) =>{console.log('in Window 2', this, res)})
+
+class Test {
+  constructor(){
+    this.sayHi = 'hi';
+  }
+  sayThisInProto(){
+    //console.log('sayThisInProto',this);
+    //function anonomous(res){console.log('in sayThisInProto 1', this, res)}
+    //FB3.login(anonomous);
+    FB.login(function(res){console.log('in sayThisInProto 1', this, res)})
+    //const ano = (res) =>{console.log('in sayThisInProto 2', this, res)};
+    //FB3.login(ano);
+    FB.login((res) =>{console.log('in sayThisInProto 2', this, res)})
+  }
+}
+
+const test = new Test();
+test.sayThisInProto();
+
+// const testObj = {a: "hi", b: function(){ console.log('testObj', this)}};
+// testObj.b();
+```
+
 # JS 中的 Class 與 function 實作繼承
 
 ## class
