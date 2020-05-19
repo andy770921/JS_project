@@ -429,7 +429,7 @@ function computeFailureArray(p){
   const failureArray = [0];           // index = 0 只有一個字元，不會重複
   for (let q = 1; q < p.length; q++){ // index = 1 兩個字元，最大的 index = 字串模板長度減一，故用小於字串模板長度
     while( k > 0 && p[k] !== p[q]){
-      k = failureArray[k];            // 如果發現末字不同，現存最大長度，減一再減一，退位檢查
+      k = failureArray[k];            // 如果發現末字不同，現存最大長度，減一再減一，退位檢查字元是否相同
     }
     if (p[k] === p[q]) k++;           // 如果末字一樣，重複字元長度加一
     failureArray[q] = k;
