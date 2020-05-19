@@ -420,7 +420,7 @@ console.log(strMatching(p1, t1)); // 2
 - 實作步驟二: 使用 failure function (又稱 prefix function) 找出 failure array，即 p (字串模板) 最前和最後的最大重複字元
 - failure function: p 為字串模板， q 為字元所在的 index，k 為函式回傳值，意義為最大重複字元的長度，比如兩個字元可對應到 k = 2
 - Π (pi) 或 k 的意義為，把 index 為 q 的字元當成最右邊的字元，最右邊往左數，數幾個字元，會跟從頭往右數完全一樣
-- k < q + 1 (最右邊字元的 index + 1，意為所取範圍的總字元長度)
+- k 一定小於 q + 1 ( q + 1 為最右邊字元的 index + 1，意為所取範圍的總字元長度)
 ```js
 const p1 = "ababaca";
 
