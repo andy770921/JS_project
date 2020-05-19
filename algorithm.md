@@ -416,24 +416,35 @@ console.log(strMatching(p1, t1)); // 2
 ```
 3. KMP: 複雜度 O(m+n)
 - 核心精神: 若比對失敗，一次不要只右移一個 index
-- 實作步驟一: 使用 failed array，記錄上次比對失敗的例子中，有哪些字串頭尾重複的部分。可定義 failed array 的長度，跟 p (字串模板) 長度一樣
-- 實作步驟二: 使用 failure function (又稱 prefix function) 找出 failed array，即 p (字串模板) 最前和最後的最大重複字串
-- failure function: p 為字串模板， q 為字元所在的 index，k 為函式回傳值，意義為最大重複字串的長度，比如字串長度兩個字元可對應到 k = 2
-- Π (pi) 意義為，把 index 為 q 的字元當成最右邊的字元，最右邊往左數，數幾個字元，會跟從頭往右數完全一樣
+- 實作步驟一: 使用 failure array，記錄上次比對失敗的例子中，有哪些字串頭尾重複的部分。可定義 failed array 的長度，跟 p (字串模板) 長度一樣
+- 實作步驟二: 使用 failure function (又稱 prefix function) 找出 failure array，即 p (字串模板) 最前和最後的最大重複字元
+- failure function: p 為字串模板， q 為字元所在的 index，k 為函式回傳值，意義為最大重複字元的長度，比如兩個字元可對應到 k = 2
+- Π (pi) 或 k 的意義為，把 index 為 q 的字元當成最右邊的字元，最右邊往左數，數幾個字元，會跟從頭往右數完全一樣
+- k < q + 1 (最右邊字元的 index + 1，意為所取範圍的總字元長度)
 ```js
 const p1 = "ababaca";
 
-function failureFn(p, q){
-  
+function computeFailureArray(p){
+  let k = 0;
+  const failureArray = [0];           // index = 0 只有一個字元，不會重複
+  for (let q = 1; q < p.length; q++){ // index = 1 兩個字元，
+    while( k > 0 && p[k] !== p[q]){
+      k = failureArray[k];            // 如果發現末字不同，現存最大長度，減一再減一，退位檢查
+    }
+    if (p[k] === p[q]) k++;           // 如果末字一樣，重複字元長度加一
+    failureArray[q] = k;
+  }
+  return failureArray;
 }
 
-console.log(failureFn(p1, 0)); // 0
-console.log(failureFn(p1, 1)); // 0
-console.log(failureFn(p1, 2)); // 1
-console.log(failureFn(p1, 3)); // 2
-console.log(failureFn(p1, 4)); // 3
-console.log(failureFn(p1, 5)); // 0
-console.log(failureFn(p1, 6)); // 1
+console.log(computeFailureArray(p1));    // [0,0,1,2,3,0,1]
+console.log(computeFailureArray(p1)[0]); // 0
+console.log(computeFailureArray(p1)[1]); // 0
+console.log(computeFailureArray(p1)[2]); // 1
+console.log(computeFailureArray(p1)[3]); // 2
+console.log(computeFailureArray(p1)[4]); // 3
+console.log(computeFailureArray(p1)[5]); // 0
+console.log(computeFailureArray(p1)[6]); // 1
 ```
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
