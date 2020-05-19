@@ -427,7 +427,7 @@ const p1 = "ababaca";
 function computeFailureArray(p){
   let k = 0;
   const failureArray = [0];           // index = 0 只有一個字元，不會重複
-  for (let q = 1; q < p.length; q++){ // index = 1 兩個字元，
+  for (let q = 1; q < p.length; q++){ // index = 1 兩個字元，最大的 index = 字串模板長度 - 1，故用 < p.length
     while( k > 0 && p[k] !== p[q]){
       k = failureArray[k];            // 如果發現末字不同，現存最大長度，減一再減一，退位檢查
     }
