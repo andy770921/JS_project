@@ -438,13 +438,6 @@ function computeFailureArray(p){
 }
 
 console.log(computeFailureArray(p1));    // [0,0,1,2,3,0,1]
-console.log(computeFailureArray(p1)[0]); // 0
-console.log(computeFailureArray(p1)[1]); // 0
-console.log(computeFailureArray(p1)[2]); // 1
-console.log(computeFailureArray(p1)[3]); // 2
-console.log(computeFailureArray(p1)[4]); // 3
-console.log(computeFailureArray(p1)[5]); // 0
-console.log(computeFailureArray(p1)[6]); // 1
 ```
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
