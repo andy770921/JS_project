@@ -442,14 +442,40 @@ function computeFailureArray(p){
 console.log(computeFailureArray(p1));    // [0,0,1,2,3,0,1]
 console.log(computeFailureArray(p1)[2]); // 字串為 aba ，最大重複字元長度為 1 ，不能是 3 ( 一定要小於總字元長度 )
 console.log(computeFailureArray(p1)[4]); // 字串為 ababa ，最大重複字元長度為 3 ，不能是 5 ( 理由同上 )
-
+```
+```js
+const p1 = "ababaca";
 const t1 = "bacbabababacaab"
 
 function kmp(p, t){
+  function computeFailureFunction(patternStr){
+    let k = 0;
+    const failureArray = [0];
+    for (let q = 1; q < patternStr.length; q++){
+      while( k > 0 && patternStr[k] !== patternStr[q]){
+        k = failureArray[k];
+      }
+      if (patternStr[k] === patternStr[q]) k++;
+      failureArray[q] = k;
+    }
+    return (index) => failureArray[index];
+  }
 
+  let matchedCharNum = 0;
+  const failureFunction = computeFailureFunction(p);
+  for (let i = 0; i < t.length; i++){
+    while(matchedCharNum > 0 && p[matchedCharNum] !== t[i]){
+      // 進入此迴圈的範例如下
+      // 5 > 0 且 p[5] !== t[9] ，意為之前有 5 個字母吻合，現在第 6 個字母 (在 t 第 9 個 index) 不吻合 
+      // 之前有 5 個字母吻合，failureFunction 要代入吻合字串的最右 index，即 5 - 1= 4
+      matchedCharNum = failureFunction(matchedCharNum - 1); 
+    }
+    if ( p[matchedCharNum] === t[i]) matchedCharNum++;
+    if ( matchedCharNum === p.length) return i - p.length + 1
+  }
 }
 
-console.log(kmp(p1, t1));    // 6 (t1 第六個 index 開始後的字串，比對後完全符合)
+console.log(kmp(p1, t1));    // 6 (t1 第 6 個 index 開始後的字串，比對後完全符合)
 ```
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
