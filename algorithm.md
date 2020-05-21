@@ -416,12 +416,12 @@ console.log(strMatching(p1, t1)); // 2
 ```
 3. KMP(Knuth-Morris-Pratt) 演算法: 複雜度 O(m+n)
 - 核心精神: 若比對失敗，一次不要只右移一個 index
-- 實作步驟一: 使用 failure array，記錄上次比對失敗的例子中，有哪些字串頭尾重複的部分。可定義 failed array 的長度，跟 p (字串模板) 長度一樣
-- 實作步驟二: 使用 failure function (又稱 prefix function) 找出 failure array，即 p (字串模板) 最前和最後的最大重複字元
+- 實作步驟一: 使用 failure array，記錄上次比對失敗的例子中，有哪些字串頭尾重複的部分。可定義 failed array 的長度，跟 p ( 字串模板 ) 長度一樣
+- 實作步驟二: 使用 failure function ( 又稱 prefix function ) 找出 failure array，即 p (字串模板) 最前和最後的最大重複字元
 - failure function: p 為字串模板， q 為字元所在的 index，k 為函式回傳值，意義為最大重複字元的長度，比如兩個字元可對應到 k = 2
 - Π (pi) 或 k 的意義為，把 index 為 q 的字元當成最右邊的字元，最右邊往左數，數幾個字元，會跟從頭往右數完全一樣
-- k 一定小於 q + 1 ( q + 1 為最右邊字元的 index + 1，意為所取範圍的總字元長度)
-- 實作步驟三: 搜尋待比對字串 (t)
+- k 一定小於 q + 1 ( q + 1 為最右邊字元的 index + 1，意為所取範圍的總字元長度 )
+- 實作步驟三: 搜尋待比對字串 t
 - 複雜度: 計算 failure array 為 O(m)；搜尋待比對字串為 O(n)。總複雜度為 O(m+n)
 ```js
 const p1 = "ababaca";
