@@ -445,14 +445,16 @@ console.log(computeFailureArray(p1)[4]); // 字串為 ababa ，最大重複字�
 ```
 ```js
 const p1 = "ababaca";
-const t1 = "bacbabababacaab"
+const t1 = "bacbabababacaab";
+const p2 = "ABABC";
+const t2 = "ABABABCCA";
 
 function kmp(p, t){
   function computeFailureFunction(patternStr){
     let k = 0;
     const failureArray = [0];
     for (let q = 1; q < patternStr.length; q++){
-      while( k > 0 && patternStr[k] !== patternStr[q]){
+      while(k > 0 && patternStr[k] !== patternStr[q]){
         k = failureArray[k];
       }
       if (patternStr[k] === patternStr[q]) k++;
@@ -470,12 +472,14 @@ function kmp(p, t){
       // 之前有 5 個字母吻合，failureFunction 要代入吻合字串的最右 index，即 5 - 1= 4
       matchedCharNum = failureFunction(matchedCharNum - 1); 
     }
-    if ( p[matchedCharNum] === t[i]) matchedCharNum++;
-    if ( matchedCharNum === p.length) return i - p.length + 1
+    if (p[matchedCharNum] === t[i]) matchedCharNum++;
+    if (matchedCharNum === p.length) return i - p.length + 1;
   }
+  return -1;
 }
 
 console.log(kmp(p1, t1));    // 6 (t1 第 6 個 index 開始後的字串，比對後完全符合)
+console.log(kmp(p2, t2));    // 2
 ```
 ## Maze Problem - Using stack data structure
 Q: 迷宮左上進，右下出，可以走的路線為 0 ，牆壁為 1，求路線為何 ?     
