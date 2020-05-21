@@ -399,9 +399,9 @@ const p1 = "ABABC";
 const t1 = "ABABABCCA";
 
 function strMatching(p, t){
-  for(let i = 0; i < t.length; i++){
+  for (let i = 0; i < t.length; i++){
     let j = 0;
-    while(t[i+j] === p[j] && j < p.length){
+    while (t[i+j] === p[j] && j < p.length){
       j++;
     }
     // max compared times: p.length
@@ -430,7 +430,7 @@ function computeFailureArray(p){
   let k = 0;
   const failureArray = [0];           // index = 0 只有一個字元，不會重複
   for (let q = 1; q < p.length; q++){ // 範圍是從 index = 1 兩個字元，到最大的 index = 字串模板長度減一 ( 小於 p.length )
-    while( k > 0 && p[k] !== p[q]){
+    while (k > 0 && p[k] !== p[q]){
       k = failureArray[k];            // 如果發現末字不同，現存最大長度，減一再減一，退位檢查字元是否相同
     }
     if (p[k] === p[q]) k++;           // 如果末字一樣，重複字元長度加一
@@ -454,7 +454,7 @@ function kmp(p, t){
     let k = 0;
     const failureArray = [0];
     for (let q = 1; q < patternStr.length; q++){
-      while(k > 0 && patternStr[k] !== patternStr[q]){
+      while (k > 0 && patternStr[k] !== patternStr[q]){
         k = failureArray[k];
       }
       if (patternStr[k] === patternStr[q]) k++;
@@ -466,7 +466,7 @@ function kmp(p, t){
   let matchedCharNum = 0;
   const failureFunction = computeFailureFunction(p);
   for (let i = 0; i < t.length; i++){
-    while(matchedCharNum > 0 && p[matchedCharNum] !== t[i]){
+    while (matchedCharNum > 0 && p[matchedCharNum] !== t[i]){
       // 進入此迴圈的範例如下
       // 5 > 0 且 p[5] !== t[9] ，意為之前有 5 個字母吻合，現在第 6 個字母 (在 t 第 9 個 index) 不吻合 
       // 之前有 5 個字母吻合，failureFunction 要代入吻合字串的最右 index，即 5 - 1= 4
