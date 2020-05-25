@@ -108,6 +108,15 @@ const [getBookQuery, { loading, error, data }] = useLazyQuery(GET_BOOK_QUERY, { 
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useLazyQuery_2.png"/>
 </div>
 
+## useMutation 文字說明
+- 使用 `useMutation` 後，會立刻回傳一個陣列。未來若依不同情境變更了狀態， useMutation 會回傳新的陣列，引發 react component 再渲染。  
+- 陣列的內容，可使用 JS 陣列解構賦值的方式取出，像 useLazyQuery 一樣
+- 這個陣列的第一個元素是函式。觸發這個函式，就會開始發送請求給 graphQL server
+- 這個陣列的第二個元素是物件。可知道各個時間點的 `loading, error, data` 狀態
+<div align="center" >
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs_apollo/useMutation_1.png"/>
+</div>
+
 ## useQuery 帶變數與取得回傳值
 若 hook 因為 props 變動或其他變動而多次刷新，並不會每刷新一次就打一次 API
 ```js
