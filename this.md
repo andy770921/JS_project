@@ -12,7 +12,7 @@ function A(){
     console.log("A nornal",this);
   }
 }
-A.prototype.sayProto = () =>{
+A.prototype.sayProto = () => {
   console.log("A proto arrow",this);
 }
 A.prototype.sayProtoN = function() {
@@ -33,16 +33,16 @@ x3();  // window
 x4();  // window
 
 
-class B  {
+class B {
   constructor(){
-    this.say = () =>{
+    this.say = () => {
       console.log("B arrow",this);
     }
     this.sayN = function () {
       console.log("B nornal",this);
     }
   }
-  sayOutsideConstructor = () =>{
+  sayOutsideConstructor = () => {
     console.log("B outside arrow",this);
   }
   sayOutsideConstructorN = function (){
