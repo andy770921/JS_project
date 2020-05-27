@@ -158,7 +158,7 @@ app.listen(3000);
 
 ```
 8. 在本地端的server打可以回覆瀏覽器GET指令的code。在 app.js檔案中，打如下，再在終端機按鍵盤crtl + C終止server，再在command line使用指令node app.js，重啟server。
-```
+```js
 const express = require('express');
 const app = express();
 
@@ -261,7 +261,7 @@ res.locals.prompt = "Who is buried?";
 app.get('/cards', (req, res)=> { res.render('cards');});
 ```
 
-```
+```js
 const express = require('express');
 const app = express();
 
@@ -302,7 +302,7 @@ const colors = [
 ## 送出(post) 瀏覽器的資料給server的流程
 
 1. 在終端機根目錄下，打指令npm install body-parser --save。在app.js加入已下程式碼，使其可以解析文字
-```
+```js
 const express = require('express');
 const app = express();
 
