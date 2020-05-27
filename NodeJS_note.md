@@ -1,6 +1,9 @@
 # Node JS 觀念
 
-## 取得https網頁的資料流程
+## thread
+https://www.youtube.com/watch?v=zphcsoSJMvM
+
+## 取得 https 網頁的資料流程
 
 1. 連到網頁提供的API的URL (https://teamtreehouse.com/username.json)
 2. 讀取資料
@@ -8,7 +11,7 @@
 4. 印出資料
 5. 實做法: 先用require函數，導入https模組，再連到網頁提供的API的URL+讀取資料+解析資料(將字串轉成可用的JSON原生物件)，再印出資料。
 6. 邏輯: 先用.get方法，去某server網址取得資料。當server有回應時，會取得該server的"response"物件。此物件下有.on方法(函數，on an event)，函數中第一個參數是，甚麼事件被觸發了? data為server傳資料事件(data event)、第二個參數是，串流的斷斷續續的從server來的原始data，資料型態為"buffer物件"，如若干個```<Buffer 37 2e 30 30 30 5a  ... >```，兩位數為16進位，可對應到ascii code的文字 。如果需要使用，要先將斷斷續續的資料累加起來，再轉成字串。當資料都傳完時，end event會被觸發。通常data event一旦發生，結束時就一定會有end event。
-```
+```js
 const https = require('https');
 const username = "chalkers";
 
@@ -41,7 +44,7 @@ request.on ('error', (error) => { console.error(`Problem with request: ${error.m
 ```
 
 
-```
+```js
 const https = require('https');
 const username = "chalkers";
 
@@ -72,7 +75,7 @@ try {
 }
 ```
 8. 再加入a. 非回傳JSON物件(非以{ or [ 開頭者 )會報錯，b.伺服器端報錯，輸出號碼與狀態。再獨立一個.js文件，輸出get 函數給其他js文件
-```
+```js
 const https = require('https');
 const http = require('http');
 const username = "chalkers";
@@ -117,7 +120,7 @@ function get(username) {
 // 輸出get函數給其他JS文件，其他JS文件要調用時，要使用getProfile之名稱
 module.exports.getProfile = get;
 ```
-```
+```js
 // 其他JS文件直接使用，可引入
 const profile = require('./profile.js');
 
@@ -130,7 +133,7 @@ users.forEach(getProfile);
 1. command line指令如node app.js AA BB CC，可用console.log(process.argv)，看出尾綴(AA BB CC)會加在陣列第三個元素及其之後
 2. 用.slice(2)可取出尾綴元素
 3. 可再用.forEach，個別對尾綴元素操作。getProfile是單一變數函數，可將本來如下的寫法省略 users.forEach( username => { getProfile(username); });
-```
+```js
 const users = process.argv.slice(2);
 users.forEach(getProfile);
 ```
@@ -147,7 +150,7 @@ users.forEach(getProfile);
 5. app.js檔案中，第一行打```const express = require('express');```
 6. 在node_module資料夾按右鍵，選擇"Add to .gitignore"。此法要先灌VS外掛套件gitignore
 7. 在本地端開始運轉server。在 app.js檔案中，打如下，再在command line使用指令node app.js，再chrome輸入網址為localhost:3000就可找到頁面。
-```
+```js
 const express = require('express');
 const app = express();
 
@@ -169,7 +172,7 @@ app.listen(3000);
 
 10. 新增route，路徑為http://localhost:3000/getData，會回傳文字Lack of Parameter，並加入終端機的易讀狀態console.log，如下
 
-```
+```js
 const express = require('express');
 const app = express();
 
@@ -196,7 +199,7 @@ html(lang="en")
     p#mainContent Hi!
 ```
 &emsp; 轉成HTML:
-```
+```html
 <html lang="en">
   <head>
   </head>
@@ -220,7 +223,7 @@ html(lang="en")
 ```
 4. 在app.js將程式碼```res.send```換成```res.render```，如下
 
-```
+```js
 const express = require('express');
 const app = express();
 
@@ -253,7 +256,7 @@ html(lang="en")
       p abcd
 ```
 6. app.js加入程式碼，如下。```app.get('/cards', (req, res)=> { res.render('cards', { prompt: "Who is buried?"});});```可拆成兩行寫
-```
+```js
 res.locals.prompt = "Who is buried?";
 app.get('/cards', (req, res)=> { res.render('cards');});
 ```
@@ -282,7 +285,7 @@ ul
 ```
 &emsp; app.js:
 
-```
+```js
 const colors = [
   'red',
   'orange',
@@ -308,7 +311,7 @@ app.use(bodyParser.urlencoded: { (extended: false) });
 
 ```
 2. 建好模版頁hello.pug後，app.js加入如下程式碼
-```
+```js
 app.get('/hello', (req, res)=> {
   res.render('hello');
 });
@@ -330,7 +333,7 @@ block content
 
 1. cookies功能: 在客戶端存下資料，資料類型為「小型文字檔案」。當客戶端送出request給server時，會一併送出cookie給server
 2. 在終端機根目錄下，打指令npm install cookie-parser --save。在app.js加入已下程式碼，使其可以解析文字
-```
+```js
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -341,7 +344,7 @@ app.use(cookieParser());
 
 ```
 3. 建好模版頁hello.pug後，app.js加入如下程式碼可儲存使用者輸入的username，存入cookie
-```
+```js
 app.get('/hello', (req, res)=> {
   res.render('hello', name: req.cookies.username);
 });
@@ -352,7 +355,7 @@ app.post('/hello', (req, res)=> {
 ```
 4. 打完名字後，從/hello重新導向主頁面。app.js加入如下程式碼
 
-```
+```js
 app.get('/', (req, res)=> {
   res.render('index', {name: req.cookies.username});
 });
@@ -365,7 +368,7 @@ app.post('/hello', (req, res)=> {
 });
 ```
 5. 若無cookie，主頁面將重新導向/hello。app.js加入如下程式碼
-```
+```js
 app.get('/', (req, res)=> {
   if (req.cookies.username) {
     res.render('index', {name: req.cookies.username}); 
@@ -375,7 +378,7 @@ app.get('/', (req, res)=> {
 });
 ```
 6. 若有cookie，/hello將重新導向主頁面。app.js加入如下程式碼
-```
+```js
 app.get('/hello', (req, res)=> {
   if (req.cookies.username) {
     res.redirect('/');
@@ -385,12 +388,12 @@ app.get('/hello', (req, res)=> {
 });
 ```
 7. 加入清除cookie按鈕，在index.pug打如下程式碼
-```
+```js
 form(action='/goodbye', method='post')
   button(type='submit') Goodbye
 ```
 &emsp; 在app.js打如下程式碼
-```
+```js
 app.post('/goodbye', (req, res)=> {
   res.clearCookie('username');
   res.redirect('/hello');
@@ -399,7 +402,7 @@ app.post('/goodbye', (req, res)=> {
 
 ## 中介軟體 Middleware 使用介紹
 1. .use，使用閉包的原理，函數內再回傳函數。函數內出現 next()，或是送出response時，即結束此段程式，到下個程式碼
-```
+```js
 const express = require('express');
 const app = express();
 
@@ -411,14 +414,14 @@ app.use(
 
 ```
 &emsp; 可簡化寫如下
-```
+```js
 app.use( (req, res, next) => {
     console.log("hello");
     next();
 });
 ```
 2. .use直接呼叫其他函式
-```
+```js
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -433,7 +436,7 @@ app.use(cookieParser());
 
 1. 自己創造出error code = 500 的 Bug，並傳出Error原生物件，加入如下程式碼
 
-```
+```js
 
 app.use((req, res, next) => {
     console.log("hello");
@@ -445,7 +448,7 @@ app.use((req, res, next) => {
 ```
 2. 當error發生，渲染出error.pug頁面，在app.listen前，加入如下程式碼
 
-```
+```js
 
 app.use((err,req, res, next) => {
     res.locals.error = err;
@@ -470,7 +473,7 @@ block content
 
 1. 創建data資料夾，下創建flashcardData.json物件
 
-```
+```js
 {
     "data": {
         "title": "JavaScript Flashcards",
@@ -497,7 +500,7 @@ block content
 
 ```
 2. card.js下，加入如下程式碼，讓資料庫的資料，能夠被取得。```const {cards} = data;```，等於```const cards = data.cards;```
-```
+```js
 const express = require('express');
 const router = express.Router();
 const {data} = require('../data/flashcardData.json');
@@ -513,7 +516,7 @@ router.get('/', (req, res) => {
 module.exports = router;
 ```
 3. card.js下，修改程式碼，讓資料庫的資料，能夠與URL的後詞綴相關。如http://localhost:3000/cards/1
-```
+```js
 const express = require('express');
 const router = express.Router();
 const {data} = require('../data/flashcardData.json');
@@ -529,7 +532,7 @@ router.get('/:id', (req, res) => {
 module.exports = router;
 ```
 4. card.js下，修改程式碼，讓資料庫的資料，能夠與URL的?後詞綴(query)相關。如http://localhost:3000/cards/1?side=answer、http://localhost:3000/cards/1?side=question
-```
+```js
 const express = require('express');
 const router = express.Router();
 const {data} = require('../data/flashcardData.json');
@@ -560,7 +563,7 @@ block content
 
 ```
 &emsp; card.js下
-```
+```js
 router.get('/:id', (req, res) => {
   const {side} = req.query;
   const {id} = req.params;
@@ -581,7 +584,7 @@ router.get('/:id', (req, res) => {
 module.exports = router;
 ```
 6. card.js下，加入重新導向至不同id的連結
-```
+```js
 router.get('/', (req, res)=>{
   const numOfCards = cards.length;
   const flashcardId= Math.floor( Math.random() * numOfCards);
@@ -589,7 +592,7 @@ router.get('/', (req, res)=>{
 })
 ```
 7. card.js下，加入非預期網址http://localhost:3000/cards/1時，強迫指定side=question
-```
+```js
 router.get('/:id', (req, res) => {
   const {side} = req.query;
   const {id} = req.params;
@@ -614,10 +617,10 @@ router.get('/:id', (req, res) => {
 
 1. 根目錄下，建資料夾public，下建資料夾stylesheets，下建檔案style.css
 2. app.js，新增如下程式碼
-```
+```js
 app.use('/static', express.static('public'));
 ```
 3. 在layout.png下，title的下一行，加入如下程式碼
-```
+```js
 link(rel='stylesheet', href='/static/stylesheets/style.css')
 ```
