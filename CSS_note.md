@@ -10,10 +10,11 @@
 7. CSS動畫，在JS設定重新撥放，使用網頁方法4: https://www.jianshu.com/p/4bfc167946f0
 8. 展開卡片與收合卡片: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
 
-## 面試題: 
+## Box Model & Box-sizing 面試題: 
 https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8%80-box-model-box-sizing-56ddc49ac89e
 
-## 置中
+## 垂直置中與水平置中寫法:
+1. HTML
 ```html
 <body>
   <div class="outer">
@@ -23,6 +24,7 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
   </div>
 </body>
 ```
+2. css
 ```css
 .outer {
   position: absolute;
@@ -73,7 +75,7 @@ the browser has to download the styles each time a new page is loaded.
 ## 引入外部CSS
 1. 加入新檔案名style.css
 2. 在HTML加入以下段落。rel=為 relationship between HTML and link document
-```
+```html
   <head>
     <title>Lake Tahoe</title>
     <link rel="stylesheet" href="css/style.css">
@@ -83,11 +85,11 @@ the browser has to download the styles each time a new page is loaded.
 
 ## CSS中再引入另外的CSS (風格模組化)
 1. 在style.css中，第一行加入如下文字，可以再引入style.css同一層中的important-style.css
-```
+```js
    @import "important-style.css";
 ```
 2. 或是直接在HTML中，加入如下```<style>```內文字
-```
+```html
   <head>
     <title>Lake Tahoe</title>
     <link rel="stylesheet" href="css/style.css">
@@ -99,7 +101,7 @@ the browser has to download the styles each time a new page is loaded.
 ## 寫CSS的方式
 &emsp; 在.css檔案中編輯  
 1. Universal selector，效用最強，覆蓋全HTML頁面。EX:
-```
+```css
 * {
   margin: 0;
   padding: 0;
@@ -107,19 +109,19 @@ the browser has to download the styles each time a new page is loaded.
 }
 ```
 2. Type selector (or element selector)，用HTML Tag 作為選擇標準。EX:
-```
+```css
   header {
     background-color: orange;
   }
 ```
 3. ID selector，前面加#，用ID作為選擇標準。一個```<div id="xxx">```中只能有一個id，一個id只能在同一HTML出現一次。EX:
-```
+```css
   #specific-id {
     border: 3px solid orange;
   }
 ```
 4. Class selector，前面加.，用Class作為選擇標準，如```<div class="xxx">```。在 React JSX中要用```<div className="xxx">```。EX:  
-```
+```css
   .primary-content {
     background-color: orange;
   }
@@ -127,7 +129,7 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; Note: 若同時出現ID及Class定義同個property的CSS樣式，ID selector的優先級大於Class selector、Type selector  
 
 5. Descendant selector。和Type selector類似，可指定到下一層HTML Tag 作為選擇標準。如，可指定到header下的span、ul下的li，EX:    
-```
+```css
   header span{
     color: white;
     font-size: 26px;
@@ -140,7 +142,7 @@ the browser has to download the styles each time a new page is loaded.
   }
 ```  
 &emsp; 可指定到某class下的span，EX:  
-```
+```css
   .main-header span{
     color: white;
     font-size: 26px;
