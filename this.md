@@ -42,10 +42,10 @@ class B  {
       console.log("B nornal",this);
     }
   }
-  sayOutsideConst = () =>{
+  sayOutsideConstructor = () =>{
     console.log("B outside arrow",this);
   }
-  sayOutsideConstN = function (){
+  sayOutsideConstructorN = function (){
     console.log("B outside normal",this);
   }
 }
@@ -54,21 +54,21 @@ const y = new B;
 
 y.say();
 y.sayN();
-y.sayOutsideConst();
-y.sayOutsideConstN();
+y.sayOutsideConstructor();
+y.sayOutsideConstructorN();
 
 const y1 = y.say;
 const y2 = y.sayN;
-const y3 = y.sayOutsideConst;
-const y4 = y.sayOutsideConstN;
+const y3 = y.sayOutsideConstructor;
+const y4 = y.sayOutsideConstructorN;
 y1();
 y2(); // undefined
 y3();
 y4(); // undefined
 ```
 
-1. class B 中，sayOutsideConst 使用箭頭函數，效用等於在 constructor 內宣告 say。效用等於在 function A 內定義 say，而不是指在原型定義。可查關鍵字 class field
-2. class B 中，sayOutsideConstN 使用一般函數，效用等於在 function A 定義在原型的 sayProtoN，且又附帶了嚴格模式
+1. class B 中，sayOutsideConstructor 使用箭頭函數，效用等於在 constructor 內宣告 say。效用等於在 function A 內定義 say，而不是指在原型定義。可查關鍵字 class field
+2. class B 中，sayOutsideConstructorN 使用一般函數，效用等於在 function A 定義在原型的 sayProtoN，且又附帶了嚴格模式
 
 ## class, 代入匿名函式, 及箭頭函式的 this
 
