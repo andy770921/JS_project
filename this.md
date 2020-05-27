@@ -67,7 +67,7 @@ y3();
 y4(); // undefined
 ```
 
-1. class B 中，sayOutsideConstructor 使用箭頭函數，效用等於在 constructor 內宣告 say。效用等於在 function A 內定義 say，而不是指在原型定義。可查關鍵字 class field
+1. class B 中，sayOutsideConstructor 使用箭頭函數，效用等於在 constructor 內宣告 say。效用等於在 function A 內定義 say，而不是指在原型定義。即 ```y3()``` 等於 ```x1()```，效果可查關鍵字 class field
 2. class B 中，sayOutsideConstructorN 使用一般函數，效用等於在 function A 定義在原型的 sayProtoN，且又附帶了嚴格模式
 
 ## class, 代入匿名函式, 及箭頭函式的 this
