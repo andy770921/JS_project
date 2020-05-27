@@ -5,7 +5,7 @@
 
 ```js
 function A(){
-  this.say = () =>{
+  this.say = () => {
     console.log("A arrow", this);
   }
   this.sayN = function () {
