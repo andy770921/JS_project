@@ -5,6 +5,9 @@ https://github.com/erikras/ducks-modular-redux
 https://redux.js.org/style-guide/style-guide/#structure-files-as-feature-folders-or-ducks  
 https://livebook.manning.com/book/redux-in-action/chapter-11/51  
 
+## Ryan 的 Redux 筆記
+https://hackmd.io/@jackblackevo/rkcdqrh8-#React-Context--useReducer-vs-React-Redux
+
 ## Redux 官網 及 Redux in Action 書
 ```
 An example folder structure might look something like:
