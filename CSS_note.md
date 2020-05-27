@@ -12,10 +12,41 @@
 
 ## 面試題: 
 https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8%80-box-model-box-sizing-56ddc49ac89e
+
+## 置中
+```html
+<body>
+  <div class="outer">
+    <div class="inner">
+      hi
+    </div>
+  </div>
+</body>
+```
+```css
+.outer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.inner {
+  background-color: red;
+  width: 200px;
+  height: 300px;
+  
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+```
 ## 加入自定義CSS方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
 2. internal style: EX:  
-```
+```html
   <head>
     <title>Lake Tahoe</title>
     <style>
