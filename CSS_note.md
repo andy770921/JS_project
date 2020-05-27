@@ -156,7 +156,7 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes  
 &emsp; Ref: https://stringpiggy.hpd.io/pseudo-element-pseudo-class-difference/  
 &emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，點擊前、點擊中、點擊後、滑鼠滑過時的顏色設定，可在CSS打如下程式碼。  
-```
+```css
   a:link {
     color: orange;
   }
@@ -173,7 +173,7 @@ the browser has to download the styles each time a new page is loaded.
 ``` 
 
 &emsp; EX: link pseudo-class: 在HTML，anchor element```<a>```下的link，在網頁按下Tab時，連結的字會反橘底、改白字。點擊輸入文字區塊時，區塊底下出現顏色底線
-``` 
+```css
   a:focus {
     background-color: orange;
     color: white;
@@ -184,26 +184,26 @@ the browser has to download the styles each time a new page is loaded.
   }
 ``` 
 &emsp; EX: CSS取消a:focus的寫法，寫成:focus，效果範圍變成不限於```<a>```，HTML全域可互動的物件通用(也包含本來的```<a>```連結)
-``` 
+```css
   :focus {
     background-color: orange;
     color: white;
   }
 ``` 
 &emsp; li:last-child、:first-child、:only-child、:empty   EX: 
-``` 
+``` css
   li:last-child {
     border: none;
   }
 ``` 
 &emsp; input:disabled 選擇在disable狀態的元素，若刻意需要disable元素，需在HTML加入disabled如```<input class="xxx" disabled>```，之後會取消點擊或輸入功能   EX: 
-``` 
+```css
   input:disabled {
     background: #ddd;
   }
 ``` 
 &emsp; :checked，勾選方框點擊後，出現樣式變化   EX: 
-``` 
+```css
   input[type="checkbox"]:checked + label {
     font-weight: bold;
   }
@@ -211,14 +211,14 @@ the browser has to download the styles each time a new page is loaded.
 &emsp; :nth-child(even)、:nth-child(odd)、:nth-child(3)、:nth-child(2n+3)、:nth-child(-n+3)、div:nth-of-type(4) 
 &emsp; :root、:target
 &emsp; :not() 可跳過第一個元素，加上後面元素的左邊margin  EX: 
-``` 
+```css
   .col:not(:first-child:) {
     margin-left: 15px;
   }
 ``` 
 
 8. 可相同類別重複宣告(不同屬性)、同時宣告兩者類別。EX:  
-```
+```css
   .primary-content {
     background-color: orange;
   }
@@ -230,7 +230,7 @@ the browser has to download the styles each time a new page is loaded.
   
 ```
 9. Attribute selector、begin-with attribute selector(搜尋起始文字的，加^)、end-with attribute selector(搜尋結尾文字的，加$)、contained attribute selector(搜尋所有內文的，加*)，Ex:
-```
+```css
   [class] {
     color: red;
   }
@@ -250,7 +250,7 @@ the browser has to download the styles each time a new page is loaded.
   }
 ```  
 10. Attribute selector配cursor如下，另外一個方法為再創一個addCursor class並指定HTML的Class
-```
+```css
   input[type="button"],
   input[type="reset"],
   input[type="submit"] {
@@ -263,7 +263,7 @@ the browser has to download the styles each time a new page is loaded.
 ```  
 11. Child (>), Adjacent Sibling (+), and General Sibling (~) Combinators: 
 Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元素，加些甚麼特性。General Sibling不常用
-```
+```css
   form > a {
     font-size: .7em;
   }
@@ -272,7 +272,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ``` 
 12. pseudo-element，偽element，直接在元素內部份元素，實現樣式效果，讓原始HTML更乾淨。標準上要用雙冒號，與pseudo-class區分，但瀏覽器執行上兩者都可以接受
-```
+```css
   .intro::first-line {
     font-size: 1.4em;
     font-weight: bold;
@@ -289,7 +289,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ``` 
 13. 用::before、::after，生成某些內容，在指定的元素前or後。content後可接著用attr函數，調出HTML該元素的attribite。實際上創建出來的內容，可視為原本元素的child，在原本元素位置之前or之後
-```
+```css
   .jpg::before {
     content: "JPG - ";
     font-size: .75em;
@@ -338,7 +338,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 1. text-align: center; 水平置中
 2. text-transform: uppercase; 全大寫
 3. text-decoration: none; 去除底線，在link常用，如下
-```
+```css
   a:link {
     color: orange;
     text-decoration: none;
@@ -351,7 +351,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 6. font-style: italic; 斜體、font-style: oblique; 字型常不支援、font-style: normal; 
 7. letter-spacing: .065em;，可設定字元間距
 8. 在css引入需要的字型(如Abolition Regular)，可新建一個字體資料夾font將相關字型檔案放入，與css資料夾平行，並在css開頭設定如下
-```
+```css
   @font-face {
     font-family: "Abolition Regular";
     ....貼上字體文件夾中的snippet.css，預設的url;
@@ -381,7 +381,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 15. 當Width: 60%時，可以加入敘述margin: auto;，讓左、右留白平衡，上下也留白平衡
 16. 若設定width: 或height:，除此值外要加上padding才是總高度
 17. 若設定width: 或height:，且希望總高度就是這樣，必須加入box-sizing: border-box;，如下
-```
+```css
   .primary content {
     width: 960px;
     box-sizing: border-box;
@@ -395,7 +395,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 1. display: none; 不顯示，可不顯示某個區塊
 2. display: block; 將原先inline顯示的(比如link)，轉為block區塊式顯示
 3. display: inline; 將原先block顯示的(比如li)，轉為inline顯示。inline不能用margin(用margin無效)
-```
+```css
   li {
     display: inline;
     padding: 0 12px;
@@ -403,7 +403,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 ```
 4. display: inline-block; 將原先block顯示的(比如li)，轉為inline顯示。可用margin
 5. 設定超連結之綜合範例
-```
+```css
   .callout {
     display: inline-block;
     font-size: 1.25em
@@ -414,7 +414,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 ```
 ## CSS img設定
 1. img加入max-width: 100%; 可讓圖片隨視窗大小縮放。若寫max-width: 900px; 意為縮放到寬度900px後，就不會再大
-```
+```css
   img {
     max-width: 100%;
   }
@@ -422,7 +422,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 2. 設定背景圖片，及大小，可如下寫。寫相對路徑，起始位置要從css檔案位置出發推算路徑，不是從html檔案出發。
 
 3. 大小設定百分比，若過小會重複出現，填滿畫面，要再設定background-repeat: ;
-```
+```css
 .main-header {
     background-color: #ffa949;
     background-image: url("../img/mountains.jpg");
@@ -431,7 +431,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ```
 4. 大小設定cover，可自動調整大小至塞進container
-```
+```css
 .main-header {
     background-color: #ffa949;
     background-image: url("../img/mountains.jpg");
@@ -444,7 +444,8 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 6. background-position: center top; 背景圖左右置中、上下置上，若四方置中可寫成 background-position: center;
 7. 也可設定位置百分比如 background-position: 20% 50%; 
 8. 綜合寫如下，分別為顏色、檔案路徑、是否重複、位置、/尺寸。或是顏色、檔案路徑、是否重複、位置，尺寸再加一行background-size: cover;
-```.main-header {
+```css
+.main-header {
     padding-top: 170px;
     height: 850px;
     background: #ffa949 url("../img/mountains.jpg") no-repeat center /cover;
@@ -453,7 +454,8 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 ## 設定div並排
 1. 先在```<html>```希望並排的兩個```<div>```分別加入class="tips"、class="resorts"
 2. 進行如下設定，引入float: ;，完畢後，可能會出現以下問題: a. footer文字飄到兩圖中間空白 b. 父元素設定的height 崩潰
-```.tips, 
+```css
+.tips, 
    .resorts {
     width: 46.5%;
   }
@@ -465,7 +467,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ```
 3. 修正父元素設定的height 崩潰，可在父元素的css class說明內，加入overflow: auto;，此法缺點a.不同瀏覽器，可能出現非預期的下拉捲軸 b.可能截到content
-```
+```css
   .secondary-content {
     padding-top: 80px;
     padding-bottom: 70px;
