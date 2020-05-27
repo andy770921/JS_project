@@ -1,4 +1,5 @@
 # Redux
+
 ## Code structure: Duck Pattern
 
 https://github.com/erikras/ducks-modular-redux  
@@ -7,6 +8,9 @@ https://livebook.manning.com/book/redux-in-action/chapter-11/51
 
 ## Ryan 的 Redux 筆記
 https://hackmd.io/@jackblackevo/rkcdqrh8-#React-Context--useReducer-vs-React-Redux
+
+## useSelector 實作
+https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux#unstable_batchedupdates
 
 ## Redux 官網 及 Redux in Action 書
 ```
