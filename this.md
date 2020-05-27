@@ -6,17 +6,17 @@
 ```js
 function A(){
   this.say = () =>{
-    console.log("A arrow",this);
+    console.log("A arrow", this);
   }
   this.sayN = function () {
-    console.log("A nornal",this);
+    console.log("A nornal", this);
   }
 }
 A.prototype.sayProto = () => {
-  console.log("A proto arrow",this);
+  console.log("A proto arrow", this);
 }
 A.prototype.sayProtoN = function() {
-  console.log("A proto normal",this);
+  console.log("A proto normal", this);
 }
 const x = new A();
 x.say(); 
@@ -36,17 +36,17 @@ x4();  // window
 class B {
   constructor(){
     this.say = () => {
-      console.log("B arrow",this);
+      console.log("B arrow", this);
     }
     this.sayN = function () {
-      console.log("B nornal",this);
+      console.log("B nornal", this);
     }
   }
   sayOutsideConstructor = () => {
-    console.log("B outside arrow",this);
+    console.log("B outside arrow", this);
   }
   sayOutsideConstructorN = function (){
-    console.log("B outside normal",this);
+    console.log("B outside normal", this);
   }
 }
 
