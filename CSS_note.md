@@ -35,11 +35,16 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
   background-color: red;
   width: 200px;
   height: 300px;
-  
+  /*  方法一 */
   position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  /*  方法二 */
+  /*   position: relative;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%); */
 }
 
 ```
