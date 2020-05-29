@@ -20,6 +20,79 @@ https://codepen.io/jreid/pen/HgCwD
 https://codepen.io/anastasialanz/pen/oLXeVp
 https://codepen.io/tjdunklee/pen/coqyj
 
+## Loading + styled-component + typescript:
+
+1. tsconfig.json
+```js
+{
+  "compilerOptions": {
+  // ...
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./test/**/*.spec.ts",
+    "./test/**/*.steps.tsx",
+    "./test/**/*.steps.ts", 
+    "./src/declaration.d.ts", // 載入 gif 時，需要在 TS declare module, 見註一
+  ],
+  "exclude": ["node_modules", "dist", "webpack/**/**"]
+}
+
+// 註一:
+// https://stackoverflow.com/questions/52759220/importing-images-in-typescript-react-cannot-find-module
+```
+2. webpack.config.js
+```js
+module.exports = {
+    // ...
+    module: {
+        rules: [
+            {
+                test: /\.(woff(2)?|ttf|eot|svg|gif)(\?v=\d+\.\d+\.\d+)?$/,
+                loaders: ['file-loader']
+            }
+        ],
+    },
+};
+
+```
+3. src/declaration.d.ts
+```js
+declare module '*.gif';
+```
+4. Loading 的 React Component
+```js
+import React from 'react';
+import styled from 'styled-components';
+import imgUrl from '../asset/loading.gif';
+
+const LoadingWrapper = styled.div`
+    position: fixed;
+    width: inherit;
+    top: 0;
+    bottom: 0;
+`;
+
+const LoadingIcon = styled.img`
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+`;
+
+const Loading = () => {
+    return (
+        <LoadingWrapper>
+            <LoadingIcon src={imgUrl} alt="loading..." />
+        </LoadingWrapper>
+    );
+};
+
+export default Loading;
+```
+
 ## 設計範例
 
 https://dribbble.com/
