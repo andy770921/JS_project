@@ -628,6 +628,7 @@ Move 1-level disk from A to C
   2. conquer - base case: O(1)
   3. conquer - recursive case: O(logn)
   4. combine - O(n)
+- 複雜度計算: 當 T(1) 的複雜度為已知值 O(1)，故當 T(n/2^k) 為 T(1) 時，可確知複雜度為 O(1)，推導出 2^k = n
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/merge_sort_1.png) 
 ```js
 function mergeSort(arr, startIndex, endIndex){
