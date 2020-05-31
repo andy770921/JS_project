@@ -568,6 +568,8 @@ findPath();
 ## Recurrence
 - 定義: 一個等式或不等式。這個等式或不等式的描述為一個函式，用「代入更小輸入值的函式本身」表示。
 - [Ref](https://youtu.be/ywJJvBwha4s?t=809)
+- 優點: 結構清晰
+- 缺點: 效率不好
 - Ex: F(n) = F(n-1) + F(n-2)
 ```js
 // Fibonacci
@@ -575,9 +577,26 @@ function fib(n){
     if(n < 2) return 1;           // Base Case (terminal condition)           
     return fib(n-1) + fib(n-2);   // Recursive Case
 }
-console.log(fib(8))
+console.log(fib(8));
 // 34
+```
 
+## Non-Recurrence
+- 優點: 效率好
+- 缺點: 結構不清晰
+
+```js
+// Non-recursive Fibonacci
+function nonRecurFib(n){
+    if(n < 2) return 1;
+    const a = [1, 1];
+    for (let i = 2; i <= n; i++){
+      a[i] = a[i-1] + a[i-2];
+    }
+    return a[n];
+}
+console.log(nonRecurFib(8));
+// 34
 ```
 
 
