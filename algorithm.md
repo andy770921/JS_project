@@ -63,9 +63,9 @@ function binarySearch(arr, inputNum){
   let rightIndex = arr.length - 1;
   while (leftIndex <= rightIndex){
     let middle = Math.floor((leftIndex + rightIndex) /2);
-    if (arr[middle] > inputNum) {rightIndex = middle - 1;}
-    else if (arr[middle] < inputNum) {leftIndex = middle + 1;}
-    else { return arr[middle]}
+    if (arr[middle] > inputNum) rightIndex = middle - 1;
+    else if (arr[middle] < inputNum) leftIndex = middle + 1;
+    else return arr[middle]
   }
 }
 console.log(binarySearch([-100, 1, 2, 200, 300],200));
