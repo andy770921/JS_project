@@ -598,5 +598,28 @@ function nonRecurFib(n){
 console.log(nonRecurFib(8));
 // 34
 ```
+## Recurrence 範例 - 河內塔
+```js
+// hanoi ( n disk )
+function hanoi(n, srcRod, destinationRod, sapreRad){
+    if(n == 1){
+        console.log(`Move ${n}-level disk from ${srcRod} to ${destinationRod}`);
+    } else {
+        hanoi(n-1, srcRod, sapreRad, destinationRod);
+        console.log(`Move ${n}-level disk from ${srcRod} to ${destinationRod}`);
+        hanoi(n-1, sapreRad, destinationRod, srcRod);
+    }
+}
+hanoi(3, 'A', 'C', 'B');
+/*
+Move 1-level disk from A to C
+Move 2-level disk from A to B
+Move 1-level disk from C to B
+Move 3-level disk from A to C
+Move 1-level disk from B to A
+Move 2-level disk from B to C
+Move 1-level disk from A to C
+*/
+```
 
 
