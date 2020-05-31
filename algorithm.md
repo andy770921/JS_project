@@ -621,5 +621,19 @@ Move 2-level disk from B to C
 Move 1-level disk from A to C
 */
 ```
-
-
+##  Recurrence 範例 - Merge Sort: 時間複雜度 O(nlogn)
+- Devide => conquer => combine
+- 時間複雜度分析: 
+  1. devide: O(1)
+  2. conquer - base case: O(1)
+  3. conquer - recursive case: O(logn)
+  4. combine - O(n)
+  
+```js
+function mergeSort(arr, startIndex, endIndex){
+  
+}
+function merge(left, right){
+  
+}
+```
