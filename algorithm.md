@@ -640,7 +640,7 @@ function mergeSort(arr, startIndex, endIndex){
     // 2. conquer
     mergeSort(arr, startIndex, midIndex);
     mergeSort(arr, midIndex+1, endIndex);
-    // combine
+    // 3. combine
     merge(arr, startIndex, midIndex, endIndex);
     return arr;
 }
