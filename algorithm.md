@@ -632,9 +632,34 @@ Move 1-level disk from A to C
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/merge_sort_1.png) 
 ```js
 function mergeSort(arr, startIndex, endIndex){
-  
+    // base case
+    if (startIndex == endIndex) return;
+    // recursive case
+    // 1. devide
+    const q = Math.floor((startIndex + endIndex) / 2);
+    // 2. conquer
+    mergeSort(arr, startIndex, q);
+    mergeSort(arr, q+1, endIndex);
+    // combine
+    merge(arr, startIndex, q, endIndex);
+    return arr;
 }
-function merge(left, right){
-  
+
+function merge(arr, p, q, r) {
+  console.log('start',p, q, r, arr )
+    let indexOne = p;
+    let indexTwo = q+1;
+    while (indexOne <= q && indexTwo <= r){
+      if(arr[indexOne] < arr[indexTwo]){
+          indexOne++;
+      } else {
+          const temp = arr[indexOne];
+          arr[indexOne] = arr[indexTwo];
+          arr[indexTwo] = temp;
+          indexTwo++;
+      }
+    } 
+    console.log('end',p, q, r, arr )
 }
+console.log(mergeSort([5,2,3,4,1], 0, 4))
 ```
