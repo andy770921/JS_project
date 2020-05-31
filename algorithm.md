@@ -598,7 +598,7 @@ function nonRecurFib(n){
 console.log(nonRecurFib(8));
 // 34
 ```
-## Recurrence 範例 - 河內塔
+## Recurrence 範例 - 河內塔: 時間複雜度 O(2^n)
 ```js
 // hanoi ( n disk )
 function hanoi(n, srcRod, destinationRod, sapreRad){
