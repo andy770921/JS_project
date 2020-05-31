@@ -628,7 +628,7 @@ Move 1-level disk from A to C
   2. conquer - base case: O(1)
   3. conquer - recursive case: O(logn)
   4. combine - O(n)
-  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/merge_sort_1.png) 
 ```js
 function mergeSort(arr, startIndex, endIndex){
   
