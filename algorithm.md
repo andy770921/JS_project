@@ -636,12 +636,12 @@ function mergeSort(arr, startIndex, endIndex){
     if (startIndex == endIndex) return;
     // recursive case
     // 1. devide
-    const q = Math.floor((startIndex + endIndex) / 2);
+    const midIndex = Math.floor((startIndex + endIndex) / 2);
     // 2. conquer
-    mergeSort(arr, startIndex, q);
-    mergeSort(arr, q+1, endIndex);
+    mergeSort(arr, startIndex, midIndex);
+    mergeSort(arr, midIndex+1, endIndex);
     // combine
-    merge(arr, startIndex, q, endIndex);
+    merge(arr, startIndex, midIndex, endIndex);
     return arr;
 }
 
