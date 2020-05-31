@@ -646,20 +646,27 @@ function mergeSort(arr, startIndex, endIndex){
 }
 
 function merge(arr, p, q, r) {
-  console.log('start',p, q, r, arr )
+    const originalArr = [...arr];
     let indexOne = p;
     let indexTwo = q+1;
-    while (indexOne <= q && indexTwo <= r){
-      if(arr[indexOne] < arr[indexTwo]){
-          indexOne++;
-      } else {
-          const temp = arr[indexOne];
-          arr[indexOne] = arr[indexTwo];
-          arr[indexTwo] = temp;
-          indexTwo++;
-      }
-    } 
-    console.log('end',p, q, r, arr )
+    for (let i = p; i < r+1; i++){
+        if(indexOne <= q && indexTwo <= r){
+            if (originalArr[indexOne] < originalArr[indexTwo]){
+                arr[i] = originalArr[indexOne];
+                indexOne++;
+            } else {
+                arr[i] = originalArr[indexTwo];
+                indexTwo++;
+            }
+        } else if(indexOne <= q){
+            arr[i] = originalArr[indexOne];
+            indexOne++;
+        } else if(indexTwo <= r){
+            arr[i] = originalArr[indexTwo];
+            indexTwo++;
+        }
+    }
 }
-console.log(mergeSort([5,2,3,4,1], 0, 4))
+console.log(mergeSort([5,2,3,4,1], 0, 4)); // [1,2,3,4,5]
+console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
