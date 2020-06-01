@@ -291,6 +291,61 @@ console.log(solutionThree(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
 
 ## hoisting 提升
 https://blog.techbridge.cc/2018/11/10/javascript-hoisting/?fbclid=IwAR3No5aPr4uqhVN3CiusRV37RDQa6TTCeW7zw_1k3uCm_r_1LF9sLkXCNTg
+
+## 物件的位址
+1. 跳出三次各不同的名字
+```js
+function sayHi(person) {
+  const name = person.name;
+  setTimeout(() => {
+    alert('Hello, ' + name);
+  }, 3000);
+}
+
+let someone = {name: 'Dan'};
+sayHi(someone);
+
+someone = {name: 'Yuzhi'};
+sayHi(someone);
+
+someone = {name: 'Dominic'};
+sayHi(someone);
+```
+2. 跳出三次各不同的名字
+```js
+function sayHi(person) {
+  setTimeout(() => {
+    alert('Hello, ' + person.name);
+  }, 3000);
+}
+
+let someone = {name: 'Dan'};
+sayHi(someone);
+
+someone.name= 'Yuzhi';
+sayHi(someone);
+
+someone.name='Dominic';
+sayHi(someone);
+```
+3. 跳出三次相同的名字 (Dominic)
+```js
+function sayHi(person) {
+  setTimeout(() => {
+    alert('Hello, ' + person.name);
+  }, 3000);
+}
+
+let someone = {name: 'Dan'};
+sayHi(someone);
+
+someone = {name: 'Yuzhi'};
+sayHi(someone);
+
+someone = {name: 'Dominic'};
+sayHi(someone);
+
+```
 ## Array 常用的方法
 https://wcc723.github.io/javascript/2017/06/29/es6-native-array/
 1. .push(1, 2, 3): 變更原陣列-多三個元素(可文字或數字)在陣列最後面，並回傳新增後的陣列長度
