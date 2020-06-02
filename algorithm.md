@@ -671,3 +671,4 @@ console.log(mergeSort([5,2,3,4,1], 0, 4)); // [1,2,3,4,5]
 console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
 ##  Recurrence 範例 - Maximum Subarray Problem: 時間複雜度 O(nlogn)
+- Note: 用動態 Programming 可降至 O(n)
