@@ -734,7 +734,6 @@ const Component = () => {
         <Overlay isShow={isShow} onClick={dismissAlter}>
             <AlertBox>
                 <AlertContent>{alterContent}</AlertContent>
-                <AlertLoader themeColor={primaryThemeColor}><div></div><div></div><div></div><div></div></AlertLoader>
             </AlertBox>
         </Overlay>
     )
