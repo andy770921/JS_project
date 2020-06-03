@@ -721,15 +721,18 @@ function attachListBtn(li) {
 - 使用 `if(e.target === e.currentTarget)`
 - currentTarget: 綁定事件的元素
 - target: 點擊到的元素
-
+- 以下範例，將綁定事件的元素，設定為父層、滿版。子層顯示在父層上
+- 點擊子層 ( Alert 彈窗) 時 `if(e.target === e.currentTarget)` 為 `if( 子層元素 === 父層元素)`，故不會觸發關閉彈窗
 ```js
 import React, { useState } from 'react';
+import { render } from "react-dom";
 import styled from 'styled-components';
 
 const Overlay = styled.div`
     position: fixed;
-    color: #333;
-    width: 100vw:
+    background-color: #333;
+    box-sizing: border-box;
+    width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
@@ -742,13 +745,13 @@ const Component = () => {
         if(e.target === e.currentTarget) setIsShow(false);
     }
     return (
-        <Overlay isShow={isShow} onClick={closeAlertBox}>
-            <div>Alert</div>
+        <Overlay style={{display: isShow? 'block': 'none'}} onClick={closeAlertBox}>
+            <div style={{backgroundColor: 'red'}}>Alert</div>
         </Overlay>
     )
 }
 
-export default Component;
+render(<Component />, document.getElementById('root'));
 ```
 ## Scroll事件相關，當捲軸下拉到底，用AJAX擴展頁面
 
