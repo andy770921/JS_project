@@ -723,15 +723,16 @@ function attachListBtn(li) {
 - target: 點擊到的元素
 
 ```js
-import React from 'react';
+import React, { useState } from 'react';
 
 const Component = () => {
-    //.....
-    const dismissAlter = (e: React.BaseSyntheticEvent) => {
-        if(e.target === e.currentTarget) setShowAlter(false);
+    const [isShow, setIsShow] = useState(true);
+    
+    const closeAlertBox = (e: React.BaseSyntheticEvent) => {
+        if(e.target === e.currentTarget) setIsShow(false);
     }
     return (
-        <Overlay isShow={isShow} onClick={dismissAlter}>
+        <Overlay isShow={isShow} onClick={closeAlertBox}>
             <AlertBox>
                 <AlertContent>{alterContent}</AlertContent>
             </AlertBox>
