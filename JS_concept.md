@@ -717,6 +717,31 @@ function attachListBtn(li) {
 }
 ```
 
+## 點擊子層之外，關閉父層
+- 使用 `if(e.target === e.currentTarget)`
+- currentTarget: 綁定事件的元素
+- target: 點擊到的元素
+
+```js
+import React from 'react';
+
+const Component = () => {
+    //.....
+    const dismissAlter = (e: React.BaseSyntheticEvent) => {
+        if(e.target === e.currentTarget) setShowAlter(false);
+    }
+    return (
+        <Overlay isShow={isShow} onClick={dismissAlter}>
+            <AlertBox>
+                <AlertContent>{alterContent}</AlertContent>
+                <AlertLoader themeColor={primaryThemeColor}><div></div><div></div><div></div><div></div></AlertLoader>
+            </AlertBox>
+        </Overlay>
+    )
+}
+
+export default Component;
+```
 ## Scroll事件相關，當捲軸下拉到底，用AJAX擴展頁面
 
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/  
