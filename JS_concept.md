@@ -720,7 +720,7 @@ function attachListBtn(li) {
 ## 點擊子層之外，關閉父層
 - 使用 `if(e.target === e.currentTarget)`
 - e.currentTarget: 綁定事件的元素
-- e.target: 點擊到的元素
+- e.target: 觸發事件的元素
 - 以下範例，將綁定事件的元素，設定為父層滿版。子層顯示在父層上
 - 點擊子層 ( Alert 彈窗) 時 `if(e.target === e.currentTarget)` 為 `if(子層元素 === 父層元素)`，故不會觸發關閉彈窗
 - 補充: event.currentTarget 是註冊事件時所指向的元素，而 event.target 是響應事件的最小子元素，也就是最深層級的觸發事件的元素
