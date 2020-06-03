@@ -54,6 +54,8 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 - 若未設定 `top: 0` 或 `left: 0` ，表現出的行為，像是 *position: static* 的位置但是附加螢幕固定效果，不受滑動卷軸影響
 - 若有設定 `top: 0` 或 `left: 0` ，表現出的行為，直接對齊 `<body>` (根元素) 的左上且因 `top`, `left` 的設定而位移，且附加螢幕固定效果
 - Note: 有設定 `top: 0` 或 `left: 0` 時，效果不同於 *position: absolute* ，因為 *position: absolute* 會受外層的 *position: relative* 影響，但是 *position: fixed* 不受影響 
+- [demo link](https://codepen.io/yf_ashu/pen/yLeLpLp?fbclid=IwAR2SwUfP9jkS0lAeWUm1JH6C5jIHd4LT1p8xcDjtkTE1XsW5lHGTRm9zFfk)
+
 ```html
 <div class="a">
 	<div class="d">
