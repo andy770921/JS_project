@@ -50,7 +50,49 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 }
 
 ```
-## 加入自定義CSS方式 (Author Style)
+## position: fixed 的現象
+- 若未設定 `top: 0` 或 `left: 0` ，表現出的行為，像是 *position: static* 的位置但是附加螢幕固定效果，不受滑動卷軸影響
+- 若有設定 `top: 0` 或 `left: 0` ，表現出的行為，直接對齊 `<body>` (根元素) 的左上且因 `top`, `left` 的設定而位移，且附加螢幕固定效果
+- Note: 有設定 `top: 0` 或 `left: 0` 時，效果不同於 *position: absolute* ，因為 *position: absolute* 會受外層的 *position: relative* 影響，但是 *position: fixed* 不受影響 
+```html
+<div class="a">
+	<div class="d">
+		<div class="b">
+		</div>
+	</div>
+	<div class="c">
+	</div>
+</div>
+```
+```css
+.a {
+	position: relative;
+	width: 1000px;
+	height: 500px;
+	background: red;
+	top: 100px;
+}
+.b {
+	position: fixed;
+	width: 200px;
+	height: 200px;
+	background: yellow;
+/* 	top: 0; */
+}
+.c {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	background: blue;
+}
+.d {
+	width: 600px;
+	height: 600px;
+	background: pink;
+/* 	margin-top: 50px; */
+}
+```
+## 加入自定義 CSS 方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
 2. internal style: EX:  
 ```html
