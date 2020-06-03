@@ -722,7 +722,7 @@ function attachListBtn(li) {
 - e.currentTarget: 綁定事件的元素
 - e.target: 觸發事件的元素
 - 以下範例，將綁定事件的元素，設定為父層滿版。子層顯示在父層上
-- 點擊子層 ( Alert 彈窗) 時 `if(e.target === e.currentTarget)` 為 `if(子層元素 === 父層元素)`，故不會觸發關閉彈窗
+- 點擊子層 ( Alert 彈窗 ) 時 `if(e.target === e.currentTarget)` 為 `if(子層元素 === 父層元素)`，故不會觸發關閉彈窗
 - 補充: event.currentTarget 是註冊事件時所指向的元素，而 event.target 是響應事件的最小子元素，也就是最深層級的觸發事件的元素
 ```js
 import React, { useState } from 'react';
@@ -757,11 +757,11 @@ render(<Component />, document.getElementById('root'));
 ## Scroll 事件相關，當捲軸下拉到底，用 AJAX 擴展頁面
 
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/  
-2. (圖中A.B) 動態取得相對於目前視窗座標軸上，元件座標位置: document.getElementsByClassName('container-5')[0].getBoundingClientRect().bottom; (或.top)  
+2. (圖中 A B) 動態取得相對於目前視窗座標軸上，元件座標位置: document.getElementsByClassName('container-5')[0].getBoundingClientRect().bottom; (或.top)  
 https://juejin.im/entry/59c1fd23f265da06594316a9?fbclid=IwAR1j1TZ7TWBkqipedDJMi5EDLj3v9ZEdI9WHnrZ34ZAEGmM8G4A7NNqwhps  
-3. (圖中C) 動態取得目前scroll bar捲動長度，可直接使用範例程式碼。: 引入事件監聽函數，隨時可取得當下位置y座標 scroll_pos，或自己一次性使用window.scrollY  
+3. (圖中 C) 動態取得目前scroll bar捲動長度，可直接使用範例程式碼。: 引入事件監聽函數，隨時可取得當下位置y座標 scroll_pos，或自己一次性使用window.scrollY  
 https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event  
-4. (圖中D) 取得瀏覽器當下視窗高度: window.innerHeight  
+4. (圖中 D) 取得瀏覽器當下視窗高度: window.innerHeight  
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/294280/  
-5. (圖中E) 靜態取得網頁總高度: document.body.clientHeight  
+5. (圖中 E) 靜態取得網頁總高度: document.body.clientHeight  
 https://blog.csdn.net/china_skag/article/details/30512877  
