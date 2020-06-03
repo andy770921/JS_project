@@ -719,10 +719,11 @@ function attachListBtn(li) {
 
 ## 點擊子層之外，關閉父層
 - 使用 `if(e.target === e.currentTarget)`
-- currentTarget: 綁定事件的元素
-- target: 點擊到的元素
+- e.currentTarget: 綁定事件的元素
+- e.target: 點擊到的元素
 - 以下範例，將綁定事件的元素，設定為父層滿版。子層顯示在父層上
 - 點擊子層 ( Alert 彈窗) 時 `if(e.target === e.currentTarget)` 為 `if(子層元素 === 父層元素)`，故不會觸發關閉彈窗
+- 補充: event.currentTarget 是註冊事件時所指向的元素，而 event.target 是響應事件的最小子元素，也就是最深層級的觸發事件的元素
 ```js
 import React, { useState } from 'react';
 import { render } from 'react-dom';
@@ -753,7 +754,7 @@ const Component = () => {
 
 render(<Component />, document.getElementById('root'));
 ```
-## Scroll事件相關，當捲軸下拉到底，用AJAX擴展頁面
+## Scroll 事件相關，當捲軸下拉到底，用 AJAX 擴展頁面
 
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/  
 2. (圖中A.B) 動態取得相對於目前視窗座標軸上，元件座標位置: document.getElementsByClassName('container-5')[0].getBoundingClientRect().bottom; (或.top)  
