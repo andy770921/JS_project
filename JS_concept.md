@@ -622,7 +622,7 @@ HTML:
   </body>
 ```
 app.js:
-```
+```js
 const listDiv = document.querySelector('.list');
 listDiv.addEventListener('mouseover', (event) => {
   if(event.target.tagName == "LI"){
@@ -639,7 +639,7 @@ listDiv.addEventListener('mouseout', (event) => {
 ## Traverse 穿越: 到上層父元素，用.parentNode
 刪除Child，用法如下  
 HTML:
-```
+```html
 <ul class="list">
   <li>grapes <button>Remove</button></li>
   <li>amethyst <button>Remove</button></li>
@@ -649,7 +649,7 @@ HTML:
 ```
 
 JS:
-```
+```js
 const listUl = document.querySelector('.list');
 listUl.addEventListener('click', (event) => {
   if(event.target.tagName == BUTTON"){
@@ -664,7 +664,7 @@ listUl.addEventListener('click', (event) => {
 .previousSibling，與.previousElementSibling 差異為，全部節點都選(有元素節點、文字節點、註釋節點等)，或是只選元素節點(含```<  >```的才選)，一般用.previousElementSibling  
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/273054/  
 HTML:
-```
+```html
 <ul class="list">
   <li>grapes <button class="up">Up</button></li>
   <li>amethyst <button class="up">Up</button></li>
@@ -673,7 +673,7 @@ HTML:
 </ul>
 ```
 將元素往上移動的JS:
-```
+```js
 listUl.addEventListener('click', (event) => {
   if (event.target.className== 'up') {
     let li = event.target.parentNode;
@@ -686,7 +686,7 @@ listUl.addEventListener('click', (event) => {
 });
 ```
 將元素往下移動的JS:
-```
+```js
 listUl.addEventListener('click', (event) => {
   if (event.target.className== 'down') {
     let li = event.target.parentNode;
@@ -701,14 +701,14 @@ listUl.addEventListener('click', (event) => {
 ## Traverse 穿越: 到第一個/最後一個子元素，用.firstElementChild / .lastElementChild
 1. .firstElementChild同義於.children[0]
 2. .children可全選所有該元素的其下child
-```
+```js
 const firstListItem = document.querySelector('.list > ul').firstElementChild;
 firstListItem.style.backgroundColor = 'lightskyblue'
 ```
 
 
 ## 創建附帶按鈕之函數，用.appendChild
-```
+```js
 function attachListBtn(li) {
   let up = document.createElement('button');
   up.className = "up";
@@ -724,6 +724,16 @@ function attachListBtn(li) {
 
 ```js
 import React, { useState } from 'react';
+import styled from 'styled-components';
+
+const Overlay = styled.div`
+    position: fixed;
+    color: #333;
+    width: 100vw:
+    height: 100vh;
+    top: 0;
+    left: 0;
+`;
 
 const Component = () => {
     const [isShow, setIsShow] = useState(true);
@@ -733,9 +743,7 @@ const Component = () => {
     }
     return (
         <Overlay isShow={isShow} onClick={closeAlertBox}>
-            <AlertBox>
-                <AlertContent>{alterContent}</AlertContent>
-            </AlertBox>
+            <div>Alert</div>
         </Overlay>
     )
 }
