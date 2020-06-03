@@ -486,7 +486,7 @@ for (var i = 0; i < questions.length; i += 1) {
 1. 事件監聽，以ID選: addEventListener()。```<script src="app.js"></script>```要在</body>前加，否則會讀取不到HTML的Tag出現錯誤
 https://ithelp.ithome.com.tw/articles/10192015  
 HTML:
-```
+```html
   <body>
     <h1 id="myHeading">JavaScript and the DOM</h1>
     <p>Making a web page interactive</p>
@@ -494,7 +494,7 @@ HTML:
   </body>
 ```
 &emsp;  JS:
-```
+```js
 const myHeading = document.getElementById('myHeading');
 myHeading.addEventListener('click', ()=>{
   myHeading.style.color = 'red';
@@ -509,7 +509,7 @@ myHeading.addEventListener('click', ()=>{
 8. ul的ID，其下層的li全選，寫成document.querySelectorAll('#rainbow li');
 9. ```HTML: <p title="label">123456</p>```可用 document.querySelector('[title=label]'); 找到
 10. 偽class與document.querySelectorAll('li:nth-child(even)');搭配使用
-```
+```js
 const evens = document.querySelectorAll('li:nth-child(even)');
 
 for (let i = 0; i < evens.length; i++ ){
@@ -517,15 +517,15 @@ for (let i = 0; i < evens.length; i++ ){
 }
 ```
 11. 選擇某nav下的超連結，可如下
-```
+```js
 let navigationLinks =  document.querySelectorAll('nav > ul > li > a');
 ```
 12.選擇某p下的class(名稱description) 第一個出現的物件，可如下
-```
+```js
 let p = document.querySelector('p.description');
 ```
 13.可用.innerHTML，取得內部資料回傳值，也可重新指定HTML Tag內部資料
-```
+```js
 let ul =  document.querySelector('ul');
 ul.innerHTML = "<li>red</li> <li>blue</li>";
 
@@ -537,21 +537,21 @@ button.addEventListener('click', ()=>{
 });
 ```
 14.可用.textContent，取得文字內容回傳值，也可重新指定HTML Tag內部文字
-```
+```js
 let myHeading =  document.querySelector('h1');
 h1.textContent = "This is new Heading";
 ```
 15. 取得 <input type="text" id="linkName"> 輸入字串欄位的值:
-```
+```js
 var inputValue = document.getElementById('linkName').value;
 ```
 16. .createElement('li');
-```
+```js
 let li = document.createElement('li');
 li.textContent = addItemInput.value;
 ```
 17. .appendChild(li);與createElement合用，最後清除字串欄位的值
-```
+```js
 let ul = document.getElementsByTagName('ul')[0];
 let li = document.createElement('li');
   li.textContent = addItemInput.value;
@@ -559,21 +559,21 @@ let li = document.createElement('li');
   addItemInput.value = '';
 ```
 18. 指定HTML元素class:
-```
+```js
 newParagraph.className = "panel";
 ```
 ## 設計 HTML 互動的流程 - 按鈕可移除最後文字
 
 1. 在HTML創造按鈕如下
-```
+```html
 <button class="removeItemButton">Remove Last Item</button>
 ```
 2. 創建query selector，在JS打如下
-```
+```js
 const removeItemButton = document.querySelector('button.removeItemButton');
 ```
 3. 創建addEventListener，在JS打如下
-```
+```js
 removeItemButton.addEventListener('click', () => {
   let ul = document.getElementByTagName('ul')[0];
   let li = document.querySelector('li:last-child');
@@ -585,13 +585,13 @@ removeItemButton.addEventListener('click', () => {
 意義: We want to call it back after certain amount of time has passed.
 
 Ex: (something) 為 Callback function
-```
+```js
 window.setTimeout((something) => {
   console.log(something);
   }, 3000 ,'Hi');
 ```
 Ex: listener 為 Callback function，常被稱呼為event handler，因為其目的為處理事件
-```
+```js
 target.addEventListener(type, listener[, options]);
 ```
 ## Event Bubbling 、 Event Delegation
@@ -607,7 +607,7 @@ event.target，會指向第一個收到此事件(如點擊)的元素
 ## 綜合練習
 
 HTML:
-```
+```html
   <body>
     <div class="list">
       <p class="description">Things that are purple:</p>
