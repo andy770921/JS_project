@@ -721,7 +721,7 @@ function attachListBtn(li) {
 - 使用 `if(e.target === e.currentTarget)`
 - currentTarget: 綁定事件的元素
 - target: 點擊到的元素
-- 以下範例，將綁定事件的元素，設定為父層、滿版。子層顯示在父層上
+- 以下範例，將綁定事件的元素，設定為父層滿版。子層顯示在父層上
 - 點擊子層 ( Alert 彈窗) 時 `if(e.target === e.currentTarget)` 為 `if( 子層元素 === 父層元素)`，故不會觸發關閉彈窗
 ```js
 import React, { useState } from 'react';
