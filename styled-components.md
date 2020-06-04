@@ -50,3 +50,43 @@ const KeptFocusedTitle: FC<{ onClick?: MouseEventHandler<HTMLDivElement> }> = ({
 
 export default KeptFocusedTitle;
 ```
+
+## Styled-components，傳 style 方法 ( 使用 TypeScript )
+```js
+import * as React from 'react';
+import { FC, CSSProperties } from 'react';
+import styled from 'styled-components';
+
+const Title = styled.div.attrs(props => ({ style: props.style }))<{ isVertical: boolean }>`
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    height: calc(20px * ${props => (props.isVertical ? 2 : 3)});
+
+    overflow: hidden;
+    word-break: break-all;
+
+    font-weight: 700;
+    font-size: 13px;
+    color: #666666;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: normal;
+
+    display: -webkit-box;
+    -webkit-line-clamp: ${props => (props.isVertical ? 2 : 3)};
+    -webkit-box-orient: vertical;
+`;
+
+interface Props {
+    isVertical: boolean;
+    customStyle?: { titleStyle?: CSSProperties };
+}
+
+const CardTitle: FC<Props> = ({ isVertical, customStyle, children }) => (
+    <Title isVertical={isVertical} style={customStyle && customStyle.titleStyle}>
+        {children}
+    </Title>
+);
+
+export default CardTitle;
+```
