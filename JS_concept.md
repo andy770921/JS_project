@@ -754,6 +754,30 @@ const Component = () => {
 
 render(<Component />, document.getElementById('root'));
 ```
+## Scroll 事件相關，彈窗使用 Position: fixed 時，隱藏瀏覽器滑動捲軸
+```js
+import React, { FC, useState, useEffect } from 'react';
+
+const Component: FC<{ list: [] }> = ({ list }) => {
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const handleModalClose = () => {
+        setIsOpenModal(false);
+    };
+    useEffect(() => {
+        document.body.style.overflowY = isOpenModal ? 'hidden' : 'auto';
+    }, [isOpenModal]);
+    return (
+        <>
+            {list.map(
+                // ...
+            )}
+            {isOpenModal && (
+                <ProductToCartModal onClose={handleModalClose} />
+            )}
+        </>
+    );
+};
+```
 ## Scroll 事件相關，當捲軸下拉到底，用 AJAX 擴展頁面
 
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/  
