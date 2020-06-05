@@ -51,7 +51,7 @@ const KeptFocusedTitle: FC<{ onClick?: MouseEventHandler<HTMLDivElement> }> = ({
 export default KeptFocusedTitle;
 ```
 
-## Styled-components，傳 style 方法 ( 使用 TypeScript )
+## Styled-components，超過兩行多餘字出現點點點，及傳 style 方法 ( 使用 TypeScript )
 ```js
 import * as React from 'react';
 import { FC, CSSProperties } from 'react';
@@ -89,4 +89,37 @@ const CardTitle: FC<Props> = ({ isVertical, customStyle, children }) => (
 );
 
 export default CardTitle;
+```
+## Styled-components，SVG 置中及傳 style ( 使用 TypeScript )
+```js
+import React, { FC, CSSProperties } from 'react';
+import styled from 'styled-components';
+
+const TickSvg = styled.svg<{ customStyle?: CSSProperties }>`
+    background-color: red;
+    ${({ customStyle }) => (customStyle ? { ...customStyle } : {})}
+`;
+
+const TickIcon: FC<{ size?: number; customStyle?: CSSProperties }> = ({ size = 45, customStyle }) => (
+    <TickSvg
+        width={`${size}px`}
+        height={`${size}px`}
+        viewBox={`${(45 - size) / 2} ${(45 - size) / 2} ${size} ${size}`}
+        customStyle={customStyle}
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <g id="loading-copy" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <path
+                d="M20.9146095,24.2707354 L28.556449,16.4301507 L28.556449,16.4301507 C29.1154451,15.8566164 30.0217568,15.8566164 30.5807529,16.4301507 C31.139749,17.0036849 31.139749,17.9335675 30.5807529,18.5071017 L21.7477303,27.5698493 C21.1887342,28.1433836 20.2824224,28.1433836 19.7234263,27.5698493 L15.4192471,23.1537291 C14.860251,22.5801949 14.860251,21.6503122 15.4192471,21.076778 C15.9782432,20.5032438 16.8845549,20.5032438 17.443551,21.076778 L20.5565471,24.2707354 C20.652917,24.3696116 20.8111952,24.3716434 20.9100714,24.2752735 C20.9116034,24.2737803 20.9131163,24.2722675 20.9146095,24.2707354 Z"
+                id="Combined-Shape"
+                fill="#FFFFFF"
+                fillRule="nonzero"
+            />
+        </g>
+    </TickSvg>
+);
+
+export default TickIcon;
+// 使用範例
+// <TickIcon size={20} customStyle={{ padding: '2px', borderRadius: '50%' }} />
 ```
