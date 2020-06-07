@@ -581,7 +581,7 @@ console.log(fib(8));
 // 34
 ```
 
-## Fibonacci 數列的 Non-Recurrence 寫法
+## Fibonacci 數列的 Non-Recurrence 寫法 ( dynamic programming with bottom-up memorization )
 - 優點: 效率好
 - 缺點: 結構不清晰
 
@@ -699,6 +699,20 @@ function memorizedFibAux (n, memoArr){
     }
 }
 
+console.log(memorizedFib(8));
+// 34
+```
+- Bottom-up with memorization
+```js
+// Fibonacci: Bottom-up with memorization
+function memorizedFib(n){
+    if(n < 2) return 1;
+    const a = [1, 1];
+    for (let i = 2; i <= n; i++){
+      a[i] = a[i-1] + a[i-2];
+    }
+    return a[n];
+}
 console.log(memorizedFib(8));
 // 34
 ```
