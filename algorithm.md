@@ -676,3 +676,24 @@ console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 (time-varying tubular method)
 - 核心精神: 將問題拆成相依且彼此重疊的子問題，可避免重複計算
+- Ex: Fibonacci
+```js
+// Fibonacci: Top-down with memorization
+function memorizedFib(n){
+    // initialize memo array a[]
+    const a = [...Array(n)].map(() => 0);
+    a[0] = 1;
+    a[1] = 1;
+    return memorizedFibAux(n, a);
+}
+
+function memorizedFibAux (n, memoArr){
+    if (memoArr[n] > 0) return memoArr[n];
+    else {
+        memoArr[n] = memorizedFibAux(n-1, memoArr) + memorizedFibAux(n-2, memoArr);
+        return memoArr[n];
+    }
+}
+
+console.log(memorizedFib(8));
+```
