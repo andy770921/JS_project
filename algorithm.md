@@ -565,7 +565,7 @@ findPath();
   3. 利於平行運算 ( 因為需要計算的小單元彼此獨立，可獨立計算 )
   4. 利於記憶體存取 ( 資料可分散存在不同的 cache，不用都在主記憶體 )
 
-## Recurrence
+## Recurrence 範例 - Fibonacci 數列: 時間複雜度 O(2^n)
 - 定義: 一個等式或不等式。這個等式或不等式的描述為一個函式，用「代入更小輸入值的函式本身」表示。
 - [Ref](https://youtu.be/ywJJvBwha4s?t=809)
 - 優點: 結構清晰
@@ -581,7 +581,7 @@ console.log(fib(8));
 // 34
 ```
 
-## Non-Recurrence
+## Fibonacci 數列的 Non-Recurrence 寫法
 - 優點: 效率好
 - 缺點: 結構不清晰
 
@@ -674,9 +674,12 @@ console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 - Note: 用動態 Programming 可降至 O(n)
 
 # Dynamic Programming 動態規劃
-- 隨時間而陸續新增資料的填表法 (time-varying tubular method)
+- 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
 - 核心精神: 將問題拆成相依且彼此重疊的子問題，可避免重複計算
 - Ex: Fibonacci
+
+## Dynamic Programming 範例 - Fibonacci 數列: 時間複雜度 O(n)
+- Top-down with memorization
 ```js
 // Fibonacci: Top-down with memorization
 function memorizedFib(n){
@@ -690,10 +693,12 @@ function memorizedFib(n){
 function memorizedFibAux (n, memoArr){
     if (memoArr[n] > 0) return memoArr[n];
     else {
+        // save the result to avoid recomputation
         memoArr[n] = memorizedFibAux(n-1, memoArr) + memorizedFibAux(n-2, memoArr);
         return memoArr[n];
     }
 }
 
 console.log(memorizedFib(8));
+// 34
 ```
