@@ -440,8 +440,8 @@ function computeFailureArray(p){
 }
 
 console.log(computeFailureArray(p1));    // [0,0,1,2,3,0,1]
-console.log(computeFailureArray(p1)[2]); // 字串為 aba ，最大重複字元長度為 1 ，不能是 3 ( 一定要小於總字元長度 )
-console.log(computeFailureArray(p1)[4]); // 字串為 ababa ，最大重複字元長度為 3 ，不能是 5 ( 理由同上 )
+console.log(computeFailureArray(p1)[2]); // 字串為 aba，最大重複字元長度為 1，不能是 3 ( 一定要小於總字元長度 )
+console.log(computeFailureArray(p1)[4]); // 字串為 ababa，最大重複字元長度為 3，不能是 5 ( 理由同上 )
 ```
 ```js
 const p1 = "ababaca";
