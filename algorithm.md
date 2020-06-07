@@ -675,7 +675,8 @@ console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
-- 核心精神: 將問題拆成相依且彼此重疊的子問題，可避免重複計算
+- 核心精神 1 : 將問題拆成相依且彼此重疊的子問題，可避免重複計算
+- 核心精神 2 : 大問題的最佳解，是由每個子問題的最佳解，建構出來 
 - Ex: Fibonacci
 
 ## Dynamic Programming 範例 - Fibonacci 數列: 時間複雜度 O(n)
