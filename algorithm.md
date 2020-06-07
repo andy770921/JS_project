@@ -672,3 +672,6 @@ console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
 ##  Recurrence 範例 - Maximum Subarray Problem: 時間複雜度 O(nlogn)
 - Note: 用動態 Programming 可降至 O(n)
+
+# Dynamic Programming 動態規劃
+- 隨時間而陸續新增資料的填表法 (time-varying tubular method)
