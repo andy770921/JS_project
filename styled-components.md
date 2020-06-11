@@ -123,3 +123,11 @@ export default TickIcon;
 // 使用範例
 // <TickIcon size={20} customStyle={{ padding: '2px', borderRadius: '50%' }} />
 ```
+## Styled-components 使用 props 控制全有 css 或全無
+```ts
+import styled from 'styled-components';
+
+const Link = styled.a<{ isEnabled: boolean }>`
+    ${({ isEnabled }) => (isEnabled ? {} : { cursor: 'default', 'text-decoration': 'none', color: 'black' })}
+`;
+```
