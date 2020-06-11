@@ -99,3 +99,58 @@ it("Validate Treble Keyboard", () => {
 });
 ```
 7. 測試成功時，會顯示 pass ，且自動創立 _snapshots_ 資料夾，裡面有.snap 檔，日後都用此檔案當標準比對。
+
+## Jest 設定檔配合 TypeScript
+
+1. 新增 package.json 檔案下的 script，之後終端機輸入```npm run test```即可測試
+```js
+{
+  "name": "XXXX",
+  "version": "1.0.0",
+  ....
+  "scripts": {
+    "test": "jest --config=./test/jest.config.json",
+    "test:update": "jest -u --config=./test/jest.config.json",
+    "test:coverage": "jest --silent --config=./test/jest.config.json --coverage",
+    ....
+  },
+}
+```
+
+2. test 資料夾下新增 jest.config.json 檔案
+```js
+{
+  "rootDir": "../",
+  "coverageDirectory": "<rootDir>/test/coverage",
+  "moduleFileExtensions": ["js", "json", "ts", "tsx"],
+  "preset": "ts-jest",
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+  "testMatch": ["**/?(*.)steps.(ts|tsx)", "**/?(*.)spec.(ts|tsx)"],
+  "coveragePathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/test"],
+  "moduleNameMapper": {
+    "@client/(.*)": "<rootDir>/src/$1"
+  },
+  "moduleDirectories": ["node_modules", "src"]
+}
+```
+3. tsconfig.json 檔，設定如下
+```js
+{
+  "compilerOptions": {
+    
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx", 
+    "./test/**/*.ts",
+    "./test/**/*.tsx",
+    "./test/**/*.spec.ts",
+    "./test/**/*.spec.tsx",
+    "./test/**/*.steps.tsx",
+    "./test/**/*.steps.ts", 
+  ],
+  "exclude": ["node_modules", "dist", "webpack/**/**"]
+}
+```
