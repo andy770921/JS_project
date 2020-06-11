@@ -96,7 +96,7 @@ export default Loading;
 ## SVG 勾勾
 
 ```js
-import React, { FC, CSSProperties } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 const TickSvg = styled.svg`
