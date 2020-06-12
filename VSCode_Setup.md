@@ -161,7 +161,7 @@ export default App;
 9. `git branch -a` 查看本機及遠端的所有分支
 10. `git push --set-upstream origin feature_xxxx` 推上遠端分支，並順便建立當下分支與遠端分支連結
 11. `git rebase develop` 在功能分支下此指令，會將目前所有的新 commit 再 re-commit 一份，逐個解完衝突後，接在 develop 分支後面，結束後，功能分支的指標停在最新的 commit 、 develop 的指標停在原先 的 commit
-12. `git rebase -i develop`在功能分支下此指令，新 commit 接在 develop 分支後面，並可以統一處理需要的 (或想移除的) commit 想移除的 pick 換成 drop
+12. `git rebase -i develop` 在功能分支下此指令，新 commit 接在 develop 分支後面，並可以統一處理需要的 (或想移除的) commit 想移除的 pick 換成 drop
 13. 調整完後按 `control + {` 或是 ESC，再打 `:wq` (存檔跳出) 或是 `:q!` 不存檔強制跳出
 14. 單個 commit 解完衝突後要下指令 `git rebase --continue` 繼續解下個 commit 的衝突
 15. 如果要調整第一個 commit 要下指令 `git rebase -i --root`
@@ -170,7 +170,16 @@ export default App;
 18. `git fetch --all` 可讓本機知道遠端所有分支 
 19. `git clone --single-branch --branch <branchname> <remote-repo>` 可 clone 遠端特定分支
 20. `git branch -D feature` 可刪除特定分支
-21. 
+
+
+## Git 合併 commit:
+
+1. `git rebase -i xxxx`，xxxx 為 commit 編號，如 c43f1a5d。Note: 這個 commit 需要是最終不會動到的 commit
+2. 此時終端機，會列出一串 1. commit 之後的所有 commit，由舊到新，從上往下排
+3. 最舊的 commit 維持前綴 `pick`，需要被合併的 commit 加前綴 `squash`，較晚的（排列在下的）commit 會合併到較早的。 
+4. `:qw` 存檔並離開
+5. 會自動跳出 Vim 介面，自行輸入新 commit 名稱
+
 ## git flow 套件: gitflow
 
 0. 建議配合 VS Code 套件 Git Graph 觀察分支狀況
