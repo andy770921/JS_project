@@ -84,16 +84,16 @@ git clone https://github.com/andy770921/remote-assignments.git
 </html>
 
 ```
-4. 在github網址中，進入Repository的Settings，下拉找到GitHub Pages，Source下拉捲軸從none改成master branch。此時會出現網址https://andy770921.github.io/remote-assignments/
+4. 在 github 網址中，進入Repository的Settings，下拉找到GitHub Pages，Source下拉捲軸從none改成master branch。此時會出現網址https://andy770921.github.io/remote-assignments/
 5. 將網址改為子資料夾下，如改成https://andy770921.github.io/remote-assignments/week1
 6. 此連結即可開啟week1資料夾下index.html  
 
 
 ## 不裝Webpack直接用React
 
-1. 灌Node JS
+1. 灌 Node JS
 2. 建新資料夾
-3. 新資料夾下，在VSCode下終端機依序輸入如下指令，可在myapp資料夾下創react專案。此專案已有Git功能   
+3. 新資料夾下，在 VSCode 下終端機依序輸入如下指令，可在myapp資料夾下創react專案。此專案已有 Git 功能   
   npx create-react-app myapp  
   cd myapp  
   npm start  
@@ -106,7 +106,7 @@ git clone https://github.com/andy770921/remote-assignments.git
 7. 刪除app.js中的第二行import logo from './logo.svg'、第八行\<img src={logo} className="App-logo" alt="logo" /\>;，並刪除檔案logo.svg
 8. 按npm start可開啟預覽
 9. 刪除App.js以下文字
-    
+```html
        <header className="App-header">
           <p>
             Edit <code>src/App.js</code> and save to reload.
@@ -120,18 +120,18 @@ git clone https://github.com/andy770921/remote-assignments.git
             Learn React
           </a>
         </header>
-
+```
 ## 使用Create-React-App後，npm run build後，無法顯示index.html
 1. 狀況: index.html白屏，開發人員工具顯示Failed to load resource: net::ERR_FILE_NOT_FOUND
 2. 問題點: homepage路徑錯誤 Ref: https://www.andreasreiterer.at/fix-whitescreen-static-react-app/
 3. 解法: at your package.json add "homepage": "."     Ref: https://github.com/facebook/create-react-app/issues/6369
 
-## 使用Create-React-App後，要接著用Router功能
-1. terminal中，cd 到專案資料夾
-2. terminal中，輸入npm install react-router-dom
-3. 可在App.js檔中，加入import { BrowserRouter , Route } from 'react-router-dom';
-4. 可接著在App.js檔中，加入以下
-```
+## 使用 Create-React-App 後，要接著用 Router 功能
+1. terminal 中，cd 到專案資料夾
+2. terminal 中，輸入 `npm install react-router-dom`
+3. 可在 `App.js` 檔中，加入 `import { BrowserRouter , Route } from 'react-router-dom'`;
+4. 可接著在 `App.js` 檔中，加入以下
+```js
  function App() {
   return (
     <BrowserRouter>
