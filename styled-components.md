@@ -131,3 +131,65 @@ const Link = styled.a<{ isEnabled: boolean }>`
     ${({ isEnabled }) => (isEnabled ? {} : { cursor: 'default', 'text-decoration': 'none', color: 'black' })}
 `;
 ```
+
+## Styled-components: Hover ul 名稱後，後打開 li 列表
+```ts
+const NavDropDownBox = styled.ul`
+    position: absolute;
+    top: 75px;
+    left: -15px;
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 20px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+`;
+
+const NavItem = styled.li`
+    position: relative;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content:  
+    flex: none;
+    padding-right: 25px;
+    list-style-type: none;
+    cursor: pointer;
+    
+    &:hover:not(${NavDropDownBox}) {
+        ${NavDropDownBox} {
+            opacity: 1;
+            visibility: visible;
+            transition: 0.5s;
+        }
+    }
+`;
+
+const NavInfoList = () => {
+    return (
+        <NavInfoListWrap>
+            <ul>
+            {navInfoListConfig.map((navItem) => {
+                return (
+                    <NavItem key={navItem.name}>   
+                        <NavItemTextLink href="https://www.google.com.tw/">
+                            {navItem.name}
+                        </NavItemTextLink>
+                        <NavDropDownBox>
+                             <ElementOne />
+                             <ElementTwo />
+                        </NavDropDownBox>
+                    </NavItem> 
+                )
+            })}
+            </ul>
+        </NavInfoListWrap>
+    )
+};
+
+
+```
