@@ -171,6 +171,32 @@ interface SalePageProduct {
     ImageUrl: string;
 }
 
+class ListMarkedByType<T> {
+    private arr: { type: string; list: T[] }[];
+
+    constructor(array: { type: string; list: T[] }[] = []) {
+        this.arr = array.slice();
+    }
+
+    moveChildToTopByType(typeName: string) {
+        const topItemIndex = this.arr.findIndex(listItem => listItem.type === typeName);
+        if (topItemIndex > -1) {
+            const topItem = this.arr.splice(topItemIndex, 1)[0];
+            this.arr = [topItem, ...this.arr];
+        }
+        return this;
+    }
+
+    filterEmptyChildList() {
+        this.arr = this.arr.filter(listItem => listItem.list.length > 0);
+        return this;
+    }
+
+    get list() {
+        return this.arr;
+    }
+}
+
 const dummyProductListByTitle = [
     {
         SalePageId: 81498,
