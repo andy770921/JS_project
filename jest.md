@@ -154,3 +154,61 @@ it("Validate Treble Keyboard", () => {
   "exclude": ["node_modules", "dist", "webpack/**/**"]
 }
 ```
+## Jest 範例配合 TypeScript
+- `it` 可用 `test` 取代: https://stackoverflow.com/questions/45778192/what-is-the-difference-between-it-and-test-in-jest/47399770
+```ts
+enum productListType {
+    TITLE = 'OrderByTitle',
+    OUTER_ID = 'OrderByOuterId',
+}
+
+interface SalePageProduct {
+    SalePageId: number;
+    Title: string;
+    Price: number;
+    SuggestPrice: number;
+    Type: string;
+    ImageUrl: string;
+}
+
+const dummyProductListByTitle = [
+    {
+        SalePageId: 81498,
+        Title: 'test 1',
+        Price: 1900,
+        SuggestPrice: 1900,
+        Type: 'Normal',
+        ImageUrl: 'link1',
+    },
+    {
+        SalePageId: 81538,
+        Title: 'test 2',
+        Price: 4500,
+        SuggestPrice: 4500,
+        Type: 'SoldOut',
+        ImageUrl: 'link2',
+    },
+];
+
+describe('測試 product List 為空陣列的情況', () => {
+    const testingDataOne = [
+        { type: 'test1', list: [] },
+        { type: 'test2', list: [] },
+    ];
+    const testingDataTwo = [
+        { type: productListType.OUTER_ID, list: [] },
+        { type: productListType.TITLE, list: dummyProductListByTitle },
+    ];
+
+    it('when child lists are all empty', () => {
+        const productListsWithMark = new ListMarkedByType<SalePageProduct>(testingDataOne);
+        const finalList = productListsWithMark.filterEmptyChildList().list;
+        expect(finalList).toEqual([]);
+    });
+
+    it('when child lists has one empty array', () => {
+        const productListsWithMark = new ListMarkedByType<SalePageProduct>(testingDataTwo);
+        const finalList = productListsWithMark.filterEmptyChildList().list;
+        expect(finalList).toEqual([{ type: productListType.TITLE, list: dummyProductListByTitle }]);
+    });
+});
