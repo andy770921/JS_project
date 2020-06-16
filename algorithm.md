@@ -671,7 +671,26 @@ console.log(mergeSort([5,2,3,4,1], 0, 4)); // [1,2,3,4,5]
 console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
 ##  Recurrence 範例 - Maximum Subarray Problem: 時間複雜度 O(nlogn)
+- 找出某區間，區間內所有數累加後會是最大，回傳區間的起始 index 與結束 index
 - Note: 用動態 Programming 可降至 O(n)
+
+```js
+const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
+const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
+const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
+
+function findMaxInterval(a){
+    // TODOS
+
+}
+console.log(findMaxInterval(testArrayOne)); 
+// { startIndex: 0, endIndex: 9 }
+console.log(findMaxInterval(testArrayTwo)); 
+// { startIndex: 3, endIndex: 5 }
+console.log(findMaxInterval(testArrayThree)); 
+// { startIndex: 0, endIndex: 0 }
+```
+
 
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
