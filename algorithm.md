@@ -713,6 +713,7 @@ function findMaxAndIndex(squreMatrix){
 }
 
 function findMaxInterval(a){
+    // initialize a squre matrix
     const s = [];
     for(let i = 0; i < a.length; i++){
         s[i] = [];
@@ -720,6 +721,7 @@ function findMaxInterval(a){
             s[i][j] = -Infinity;
         }
     }
+    // For each possible interval, save summation in the squre matrix
     for(let i = 0; i < a.length; i++){
         for(let j = i; j < a.length; j++){
             let sum = 0;
