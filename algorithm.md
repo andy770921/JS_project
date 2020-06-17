@@ -672,7 +672,7 @@ console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
 ##  Recurrence 範例 - Maximum Subarray Problem: 時間複雜度 O(nlogn)
 - 找出某區間，區間內所有數累加後會是最大，回傳區間的起始 index 與結束 index
-- Note: 用動態 Programming 可降至 O(n)
+- Note: 用動態規劃可降至 O(n)
 
 ```js
 const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
@@ -745,7 +745,7 @@ console.log(findMaxInterval(testArrayTwo));
 console.log(findMaxInterval(testArrayThree)); 
 // { max:-3, startIndex: 0, endIndex: 0 }
 ```
-- Brute Force with dynamic programming: O(n^2)
+- Brute Force: O(n^2)
 ```js
 const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
 const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
