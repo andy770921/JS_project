@@ -690,7 +690,54 @@ console.log(findMaxInterval(testArrayTwo));
 console.log(findMaxInterval(testArrayThree)); 
 // { startIndex: 0, endIndex: 0 }
 ```
+- Brute Force: O(n^3)
+```js
+const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
+const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
+const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
 
+function findMaxAndIndex(squreMatrix){
+    let max = -Infinity;
+    let startIndex = -1;
+    let endIndex = -1;
+    for(let i = 0; i < squreMatrix.length; i++){
+        for(let j = 0; j < squreMatrix.length; j++){
+            if(max < squreMatrix[i][j]) {
+                max = squreMatrix[i][j];
+                startIndex = i;
+                endIndex = j;
+            }
+        }
+    }
+    return { max, startIndex, endIndex };
+}
+
+function findMaxInterval(a){
+    const s = [];
+    for(let i = 0; i < a.length; i++){
+        s[i] = [];
+        for(let j = 0; j < a.length; j++){
+            s[i][j] = -Infinity;
+        }
+    }
+    for(let i = 0; i < a.length; i++){
+        for(let j = i; j < a.length; j++){
+            let sum = 0;
+            for(let k = i; k <= j; k++){
+                sum += a[k];
+            }
+            s[i][j] = sum;
+        }
+    }
+    return findMaxAndIndex(s);
+}
+console.log(findMaxInterval(testArrayOne)); 
+// { max:118, startIndex: 0, endIndex: 9 }
+console.log(findMaxInterval(testArrayTwo)); 
+// { max:40, startIndex: 3, endIndex: 5 }
+console.log(findMaxInterval(testArrayThree)); 
+// { max:-3, startIndex: 0, endIndex: 0 }
+```
 
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
