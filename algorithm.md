@@ -691,12 +691,15 @@ console.log(findMaxInterval(testArrayThree));
 // { startIndex: 0, endIndex: 0 }
 ```
 - Brute Force: O(n^3)
+- initialize a squre matrix: O(n^2)
+- calculate summation and save: O(n^3)
+= find champion: O(n^2)
 ```js
 const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
 const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
 const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
 
-function findMaxAndIndex(squreMatrix){
+function findChampion(squreMatrix){
     let max = -Infinity;
     let startIndex = -1;
     let endIndex = -1;
@@ -731,7 +734,7 @@ function findMaxInterval(a){
             s[i][j] = sum;
         }
     }
-    return findMaxAndIndex(s);
+    return findChampion(s);
 }
 console.log(findMaxInterval(testArrayOne)); 
 // { max:118, startIndex: 0, endIndex: 9 }
