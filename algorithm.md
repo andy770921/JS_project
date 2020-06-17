@@ -718,7 +718,7 @@ function findChampion(squreMatrix){
 }
 
 function findMaxInterval(a){
-    // initialize a squre matrix
+    // initialize a squre matrix: O(n^2)
     const s = [];
     for(let i = 0; i < a.length; i++){
         s[i] = [];
@@ -726,7 +726,7 @@ function findMaxInterval(a){
             s[i][j] = -Infinity;
         }
     }
-    // For each possible interval, save summation in the squre matrix
+    // For each possible interval, save summation in the squre matrix: O(n^3)
     for(let i = 0; i < a.length; i++){
         for(let j = i; j < a.length; j++){
             let sum = 0;
@@ -736,7 +736,7 @@ function findMaxInterval(a){
             s[i][j] = sum;
         }
     }
-    return findChampion(s);
+    return findChampion(s); // O(n^2)
 }
 console.log(findMaxInterval(testArrayOne)); 
 // { max:118, startIndex: 0, endIndex: 9 }
@@ -745,7 +745,58 @@ console.log(findMaxInterval(testArrayTwo));
 console.log(findMaxInterval(testArrayThree)); 
 // { max:-3, startIndex: 0, endIndex: 0 }
 ```
+- Brute Force with dynamic programming: O(n^2)
+```js
+const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
+const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
+const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
 
+function findChampion(squreMatrix){
+    let max = -Infinity;
+    let startIndex = -1;
+    let endIndex = -1;
+    for(let i = 0; i < squreMatrix.length; i++){
+        for(let j = 0; j < squreMatrix.length; j++){
+            if(max < squreMatrix[i][j]) {
+                max = squreMatrix[i][j];
+                startIndex = i;
+                endIndex = j;
+            }
+        }
+    }
+    return { max, startIndex, endIndex };
+}
+
+function findMaxInterval(a){
+    // initialize a squre matrix: O(n^2)
+    const s = [];
+    for(let i = 0; i < a.length; i++){
+        s[i] = [];
+        for(let j = 0; j < a.length; j++){
+            s[i][j] = -Infinity;
+        }
+    }
+    // build summation table in an array: O(n)
+    const r = [0];
+    for (let i = 1; i <= a.length; i++){
+        r[i] = r[i-1] + a[i-1];
+    }
+    // save result in the squre matrix: O(n^2)
+    for(let i = 0; i < a.length; i++){
+        for(let j = i; j < a.length; j++){
+            s[i][j] = r[j+1] - r[i];
+        }
+    }
+
+    return findChampion(s); // O(n^2)
+}
+console.log(findMaxInterval(testArrayOne)); 
+// { max:118, startIndex: 0, endIndex: 9 }
+console.log(findMaxInterval(testArrayTwo)); 
+// { max:40, startIndex: 3, endIndex: 5 }
+console.log(findMaxInterval(testArrayThree)); 
+// { max:-3, startIndex: 0, endIndex: 0 }
+```
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
 - 核心精神 1 : 將問題拆成相依且彼此重疊的子問題，可避免重複計算
