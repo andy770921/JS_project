@@ -804,6 +804,7 @@ const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
 const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
 const testArrayFour = [-1, -1, 10, 10, -1, 1, 5, -1, -11, 10];
 
+// findMaxCrossInterval 時間複雜度為 O(j-i+1) = O(n)
 function findMaxCrossInterval(array, startIndex, splittedIndex, endIndex){
     let leftMax = -Infinity;
     let rightMax = -Infinity;
@@ -829,15 +830,18 @@ function findMaxCrossInterval(array, startIndex, splittedIndex, endIndex){
 }
 
 function findMaxInterval(a, i, j){
-    // base case
+    // base case: O(1)
     if (i === j) return { max: a[i], startIndex: i, endIndex: i };
     else { 
-        // recursive case
+        // recursive case: T(n/2) + O(n) = O(nlogn)
+        // 1. devide
         const k = Math.floor((i + j)/2);
+        // 2. conquer
         const { max: leftM, startIndex: leftSI, endIndex: leftEI } = findMaxInterval(a, i, k);
         const { max: rightM, startIndex: rightSI, endIndex: rightEI } = findMaxInterval(a, k+1, j);
         const { max: crossM, startIndex: crossSI, endIndex: crossEI } = findMaxCrossInterval(a, i, k, j);
 
+        // 3. combine: O(1)
         if (leftM > rightM && leftM > crossM) { 
             // case 1
             return { max: leftM, startIndex: leftSI, endIndex: leftEI };
