@@ -791,12 +791,75 @@ function findMaxInterval(a){
     return findChampion(s); // O(n^2)
 }
 console.log(findMaxInterval(testArrayOne)); 
-// { max:118, startIndex: 0, endIndex: 9 }
+// { max: 118, startIndex: 0, endIndex: 9 }
 console.log(findMaxInterval(testArrayTwo)); 
-// { max:40, startIndex: 3, endIndex: 5 }
+// { max: 40, startIndex: 3, endIndex: 5 }
 console.log(findMaxInterval(testArrayThree)); 
-// { max:-3, startIndex: 0, endIndex: 0 }
+// { max: -3, startIndex: 0, endIndex: 0 }
 ```
+- Devide and conquer: O(nlogn)
+```js
+const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
+const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
+const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
+const testArrayFour = [-1, -1, 10, 10, -1, 1, 5, -1, -11, 10];
+
+function findMaxCrossInterval(array, startIndex, splittedIndex, endIndex){
+    let leftMax = -Infinity;
+    let rightMax = -Infinity;
+    let leftSum = 0;
+    let rightSum = 0;
+    let leftIndex = -1;
+    let rightIndex = -1;
+    for(let i = splittedIndex; i >= startIndex; i--){
+        leftSum += array[i];
+        if(leftSum > leftMax){
+            leftMax = leftSum;
+            leftIndex = i;
+        }
+    }
+    for(let j = splittedIndex + 1; j <= endIndex; j++){
+        rightSum += array[j];
+        if(rightSum > rightMax){
+            rightMax = rightSum;
+            rightIndex = j;
+        }
+    }
+    return { max: leftMax + rightMax, startIndex: leftIndex, endIndex: rightIndex };
+}
+
+function findMaxInterval(a, i, j){
+    // base case
+    if (i === j) return { max: a[i], startIndex: i, endIndex: i };
+    else { 
+        // recursive case
+        const k = Math.floor((i + j)/2);
+        const { max: leftM, startIndex: leftSI, endIndex: leftEI } = findMaxInterval(a, i, k);
+        const { max: rightM, startIndex: rightSI, endIndex: rightEI } = findMaxInterval(a, k+1, j);
+        const { max: crossM, startIndex: crossSI, endIndex: crossEI } = findMaxCrossInterval(a, i, k, j);
+
+        if (leftM > rightM && leftM > crossM) { 
+            // case 1
+            return { max: leftM, startIndex: leftSI, endIndex: leftEI };
+        } else if (rightM > leftM && rightM > crossM) { 
+            // case 2
+            return { max: rightM, startIndex: rightSI, endIndex: rightEI };
+        } else {
+            // case 3
+            return { max: crossM, startIndex: crossSI, endIndex: crossEI };
+        }
+    }
+}
+console.log(findMaxInterval(testArrayOne, 0, testArrayOne.length - 1)); 
+// { max: 118, startIndex: 0, endIndex: 9 }
+console.log(findMaxInterval(testArrayTwo, 0, testArrayTwo.length - 1)); 
+// { max: 40, startIndex: 3, endIndex: 5 }
+console.log(findMaxInterval(testArrayThree, 0, testArrayThree.length - 1)); 
+// { max: -3, startIndex: 0, endIndex: 0 }
+console.log(findMaxInterval(testArrayFour, 0, testArrayFour.length - 1)); 
+// { max: 25, startIndex: 2, endIndex: 6 }
+```
+
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
 - 核心精神 1 : 將問題拆成相依且彼此重疊的子問題，可避免重複計算
