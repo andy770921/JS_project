@@ -833,7 +833,7 @@ function findMaxInterval(a, i, j){
     // base case: O(1)
     if (i === j) return { max: a[i], startIndex: i, endIndex: i };
     else { 
-        // recursive case: T(n/2) + O(n) = O(nlogn)
+        // recursive case: 2T(n/2) + O(n) = O(nlogn)
         // 1. devide
         const k = Math.floor((i + j)/2);
         // 2. conquer
