@@ -513,3 +513,47 @@ https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav
 ```
 ## --------------- 補充 : npm run 設定 ---------------
 https://www.tutorialdocs.com/article/npm-scripts-tutorial.html
+
+## ------------------- 依環境變數打 API  -------------------
+
+ - webpack.config.js 內，將 `/api` 之前的網址路徑換成 `https://domain.com`
+```js
+module.exports = {
+  // ...
+          devServer: {
+            historyApiFallback: true,
+            hot: true,
+            allowedHosts: ['https://domain.com'],
+            proxy: { //***新增此節點***
+                '/api': {
+                target: 'https://domain.com', //domain
+                secure: true,
+                changeOrigin: true,
+                headers: {
+                    'X-Service-Catalog': 'abc',
+                    'Authorization': 'Bearer xyz',
+                    }
+                }
+            }
+        },
+};
+```
+ - apiPath.js 內
+ ```js
+ export const API_PATH = `${process.env.DOMAIN_NAME}/api/v2`;
+ ```
+  - package.json 內
+ ```js
+{
+  "name": "test",
+  // ...
+  "scripts": {
+    "test": "jest --config=./test/jest.config.json",
+    "dev": "webpack-dev-server --env.DOMAIN_NAME=http://localhost:8080 --open --mode development --config=./webpack/webpack.config.dev.js ",
+    "build:prod": "webpack --env.DOMAIN_NAME=https://production.domain --mode production --config=./webpack/webpack.config.prod.js ",
+
+  },
+  // ...
+}
+
+ ```
