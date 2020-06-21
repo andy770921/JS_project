@@ -8,6 +8,9 @@ https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
 2. 有用useCallback，特定條件下才會是不同的address  
 https://kentcdodds.com/blog/usememo-and-usecallback  
 https://overreacted.io/a-complete-guide-to-useeffect/?fbclid=IwAR0V2KB1vCC9QhrRwrE8_fsgGurO6JEZNqaSaG9oY1cmr3Jv_Fe3F0ELYhM  
+3. useMemo 意義：存下運算的結果 ( 緩存計算結果 ) 在特定 react 開給我們的記憶體位置，useMemo 第二個參數的陣列值改變，才重新運算第一個參數的函式。  
+4. 兩大適用場景：a. 函式在每次 hook 都要執行，且跑很慢，可將函式運算值記憶。 b. 為了物件和陣列的 referential equality，確保物件或陣列的真實內容不變時，物件或陣列的 reference 跟上一次渲染相同。若這些物件或陣列，會被放在 useEffect 第二個參數的陣列時，需要這樣處理，避免不必要的觸發 useEffect  
+https://youtu.be/THL1OPn72vo?t=66
 
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
 1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
