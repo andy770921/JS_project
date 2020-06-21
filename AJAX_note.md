@@ -14,7 +14,10 @@ https://medium.com/enjoy-life-enjoy-coding/jacascript-fetch-%E8%AE%93-es6-%E6%93
 ## Axios 使用法
 https://ithelp.ithome.com.tw/articles/10212120  
 https://github.com/axios/axios  
-  
+
+## JWT
+https://youtu.be/7Q17ubqLfaM  
+
 ## 彭彭講 AJAX
 https://youtu.be/OkphAk_cWPM?t=362
 
