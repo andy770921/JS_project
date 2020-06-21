@@ -3,14 +3,39 @@
 https://app.codacy.com/projects
 ## Ryan React 筆記
 https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
-## useMemo, useCallback
+## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
 2. 有用 useCallback，函式特定條件下才會是不同的 address，特定條件由 useCallback 第二個陣列參數內的值而定  
 https://kentcdodds.com/blog/usememo-and-usecallback  
 https://overreacted.io/a-complete-guide-to-useeffect/?fbclid=IwAR0V2KB1vCC9QhrRwrE8_fsgGurO6JEZNqaSaG9oY1cmr3Jv_Fe3F0ELYhM  
 3. useMemo 意義：存下運算的結果 ( 緩存計算結果 ) 在特定 react 開給我們的記憶體位置，useMemo 第二個參數的陣列值改變，才重新運算第一個參數的函式。  
-4. 兩大適用場景：a. 函式在每次 hook 都要執行，且跑很慢，可將函式運算值記憶。 b. 為了物件和陣列的 referential equality，確保物件或陣列的真實內容不變時，物件或陣列的 reference 跟上一次渲染相同。若這些物件或陣列，會被放在 useEffect 第二個參數的陣列時，需要這樣處理，避免不必要的觸發 useEffect  
-https://youtu.be/THL1OPn72vo?t=66
+4. 兩大適用場景：a. 函式在每次 hook 都要執行，且跑很慢，可將函式運算值記憶。 b. 為了物件和陣列的 referential equality，確保物件或陣列的真實內容不變時，物件或陣列的 reference 跟上一次渲染相同。若這些物件或陣列，會被放在 useEffect 第二個參數的陣列時，需要這樣處理，避免不必要的觸發 useEffect   https://blog.webdevsimplified.com/2020-05/memoization-in-react/  
+https://youtu.be/THL1OPn72vo?t=66   
+5. useRef 意義：開出記憶體空間儲存某個值，在每次 render 時都會保存這個值，此值的初始值為 useRef 代入之參數，當這個值改變，不會重新渲染畫面。效果很像 useState，差別在不會因為值改變而渲染畫面
+6. useRef 使用時機： 
+- a. 想要保存前一次狀態，又不希望 react 幫我們值更新後自動重新渲染的話可用 
+- b. 取得 HTML DOM element。用法為 useRef 初始化時不代參數，直接 useRef()，並在 JSX 內使用名為 ref 的 props，首次渲染畫面後會將此元件的 HTML DOM element 存在 useRef 的值
+- c. 保留前次 state 的值，如下範例
+```js
+function Component() {
+  const [name, setName] = useState('Kyle')
+  const previousName = useRef(null)
+
+  useEffect(() => {
+    previousName.current = name
+  }, [name])
+
+  return (
+    <>
+      <input value={name} onChange={e => setName(e.target.value)} />
+      <div>{previousName.current} => {name}</div>
+    </>
+  )
+}
+```
+https://blog.webdevsimplified.com/2020-05/use-ref/   
+https://youtu.be/t2ypzz6gJm0?t=46  
+7. Note: functional component 只有使用 useRef 才有辦法在兩次渲染間保留值（不會自動觸發重新渲染的值）。class component 不必使用 useRef，直接在 class 內新增變數即可。
 
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
 1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
@@ -264,6 +289,7 @@ https://www.youtube.com/watch?v=7TaBhrnPH78
 https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
 
 ## 為何 Hook 沒用到 React 還要 import?
+
 1. Ans: Babel 將 JSX 轉成 React.createElement 後，需要 React 接著處理 createElement
 2. Babel 負責處理 JSX 的 plug-in ()，可以將 JSX 語法，轉成 React.createElement 
 3. React.createElement: JSX 解析後產生出來的 React.createElement(xxx,ooo) 需要被接著處理。xxx ooo 經過 createElement 函式處理後，變成 react 自己用的物件，範例如下  
