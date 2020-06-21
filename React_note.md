@@ -4,8 +4,8 @@ https://app.codacy.com/projects
 ## Ryan React 筆記
 https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
 ## useMemo, useCallback
-1. 沒有用useCallback，每次都是不同的address
-2. 有用useCallback，特定條件下才會是不同的address  
+1. 沒有用 useCallback，函式每次都是不同的 address
+2. 有用 useCallback，函式特定條件下才會是不同的 address，特定條件由 useCallback 第二個陣列參數內的值而定  
 https://kentcdodds.com/blog/usememo-and-usecallback  
 https://overreacted.io/a-complete-guide-to-useeffect/?fbclid=IwAR0V2KB1vCC9QhrRwrE8_fsgGurO6JEZNqaSaG9oY1cmr3Jv_Fe3F0ELYhM  
 3. useMemo 意義：存下運算的結果 ( 緩存計算結果 ) 在特定 react 開給我們的記憶體位置，useMemo 第二個參數的陣列值改變，才重新運算第一個參數的函式。  
