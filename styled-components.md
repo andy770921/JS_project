@@ -282,26 +282,29 @@ export enum ToastType {
     SELECT = 'SELECT',
     ALERT = 'ALERT',
 }
+
 export enum ToastActionType {
     ADD_NEW_TOAST = 'ADD_NEW_TOAST',
     REMOVE_TOAST = 'REMOVE_TOAST',
     REMOVE_ALL_TOAST = 'REMOVE_ALL_TOAST',
 }
+
 interface Toast {
     toastState: ToastState[];
-    addNewToast: ({ text, toastType }: { text: string; toastType?: ToastType }) => void;
+    publishNewToast: ({ text, toastType }: { text: string; toastType?: ToastType }) => void;
     removeAllToast: () => void;
 }
 
 const toastInitialContextState: Toast = {
     toastState: [],
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    addNewToast: () => {},
+    publishNewToast: () => {},
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     removeAllToast: () => {},
 };
 
 export const ToastProviderContext = createContext(toastInitialContextState);
+
 interface ToastState {
     id: number;
     text: string;
@@ -354,7 +357,7 @@ const toastReducer = (
 export const ToastProvider: FC = ({ children }) => {
     const [toastState, dispatch] = useReducer(toastReducer, toastInitialState);
 
-    const addNewToast = ({ text, toastType = ToastType.NORMAL }: { text: string; toastType?: ToastType }) => {
+    const publishNewToast = ({ text, toastType = ToastType.NORMAL }: { text: string; toastType?: ToastType }) => {
         const createdTime = Date.now();
         dispatch({
             type: ToastActionType.ADD_NEW_TOAST,
@@ -377,7 +380,7 @@ export const ToastProvider: FC = ({ children }) => {
     const context = useMemo(
         () => ({
             toastState,
-            addNewToast,
+            publishNewToast,
             removeAllToast,
         }),
         [toastState]
