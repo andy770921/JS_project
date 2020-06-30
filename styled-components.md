@@ -198,7 +198,7 @@ const NavInfoList = () => {
 ## 提示字在地平線上升起與消失，父層使用 overflow: hidden，子層使用 animation
 ```ts
 import React, { FC, CSSProperties, useContext } from 'react';
-import ReactDOM{ createPortal } from 'react-dom';
+import ReactDOM, { createPortal } from 'react-dom';
 import styled, { keyframes } from 'styled-components';
 
 const riseAndFall = keyframes`
@@ -274,6 +274,116 @@ export const Toast: FC = () => {
 
 ReactDOM.render(<Toast />, document.getElementById('root'));
 
+// 補充：Context 控制 toastState 用法
+import React, { createContext, useState, FC, useReducer, useMemo } from 'react';
+
+export enum ToastType {
+    NORMAL = 'NORMAL',
+    SELECT = 'SELECT',
+    ALERT = 'ALERT',
+}
+export enum ToastActionType {
+    ADD_NEW_TOAST = 'ADD_NEW_TOAST',
+    REMOVE_TOAST = 'REMOVE_TOAST',
+    REMOVE_ALL_TOAST = 'REMOVE_ALL_TOAST',
+}
+interface Toast {
+    toastState: ToastState[];
+    addNewToast: ({ text, toastType }: { text: string; toastType?: ToastType }) => void;
+    removeAllToast: () => void;
+}
+
+const toastInitialContextState: Toast = {
+    toastState: [],
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    addNewToast: () => {},
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    removeAllToast: () => {},
+};
+
+export const ToastProviderContext = createContext(toastInitialContextState);
+interface ToastState {
+    id: number;
+    text: string;
+    toastType: ToastType;
+    createdTime: number;
+    yAxisOrder: number;
+}
+
+interface ToastActionPayload {
+    id: number;
+    text: string;
+    toastType: ToastType;
+    createdTime: number;
+}
+
+interface ToastActionWithPayload<T> {
+    type: ToastActionType;
+    payload: T;
+}
+interface ToastActionWithoutPayload {
+    type: ToastActionType;
+}
+
+const toastInitialState = [] as ToastState[];
+
+const toastReducer = (
+    state: ToastState[],
+    action: ToastActionWithPayload<ToastActionPayload> | ToastActionWithPayload<number> | ToastActionWithoutPayload
+) => {
+    switch (action.type) {
+        case ToastActionType.ADD_NEW_TOAST: {
+            const { payload: newToastItem } = action as ToastActionWithPayload<ToastActionPayload>;
+            const addedState = [...state, newToastItem]
+                .sort((toastItemA, toastItemB) => toastItemB.createdTime - toastItemA.createdTime)
+                .map((toastItem, index) => ({ ...toastItem, yAxisOrder: index }));
+            return addedState;
+        }
+        case ToastActionType.REMOVE_TOAST: {
+            const { payload: id } = action as ToastActionWithPayload<number>;
+            const filteredState = state.filter(toastStatus => toastStatus.id !== id);
+            return filteredState;
+        }
+        case ToastActionType.REMOVE_ALL_TOAST:
+            return [];
+        default:
+            return state;
+    }
+};
+
+export const ToastProvider: FC = ({ children }) => {
+    const [toastState, dispatch] = useReducer(toastReducer, toastInitialState);
+
+    const addNewToast = ({ text, toastType = ToastType.NORMAL }: { text: string; toastType?: ToastType }) => {
+        const createdTime = Date.now();
+        dispatch({
+            type: ToastActionType.ADD_NEW_TOAST,
+            payload: { id: createdTime, text, toastType, createdTime },
+        });
+        setTimeout(() => {
+            dispatch({
+                type: ToastActionType.REMOVE_TOAST,
+                payload: createdTime,
+            });
+        }, 5000);
+    };
+
+    const removeAllToast = () => {
+        dispatch({
+            type: ToastActionType.REMOVE_ALL_TOAST,
+        });
+    };
+
+    const context = useMemo(
+        () => ({
+            toastState,
+            addNewToast,
+            removeAllToast,
+        }),
+        [toastState]
+    );
+    return <ToastProviderContext.Provider value={context}>{children}</ToastProviderContext.Provider>;
+};
 ```
 
 
