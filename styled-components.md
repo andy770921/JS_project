@@ -1,4 +1,6 @@
-## Styled-components，傳變數方法 ( 使用 TypeScript )
+## Styled-components
+
+## 傳變數方法 ( 使用 TypeScript )
 ```ts
 const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
     display: flex;
@@ -25,7 +27,7 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
     }};
 `;
 ```
-## Styled-components，div 使用 focus 效果 ( 使用 TypeScript )
+## div 使用 focus 效果 ( 使用 TypeScript )
 ```ts
 import React, { FC, MouseEventHandler } from 'react';
 import styled from 'styled-components';
@@ -51,7 +53,7 @@ const KeptFocusedTitle: FC<{ onClick?: MouseEventHandler<HTMLDivElement> }> = ({
 export default KeptFocusedTitle;
 ```
 
-## Styled-components，超過兩行多餘字出現點點點，及傳 style 方法 ( 使用 TypeScript )
+## 超過兩行多餘字出現點點點，及傳 style 方法 ( 使用 TypeScript )
 ```js
 import * as React from 'react';
 import { FC, CSSProperties } from 'react';
@@ -90,7 +92,7 @@ const CardTitle: FC<Props> = ({ isVertical, customStyle, children }) => (
 
 export default CardTitle;
 ```
-## Styled-components，SVG 置中及傳 style ( 使用 TypeScript )
+## SVG 置中及傳 style ( 使用 TypeScript )
 ```js
 import React, { FC, CSSProperties } from 'react';
 import styled from 'styled-components';
@@ -123,7 +125,7 @@ export default TickIcon;
 // 使用範例
 // <TickIcon size={20} customStyle={{ padding: '2px', borderRadius: '50%' }} />
 ```
-## Styled-components 使用 props 控制全有 css 或全無
+## 使用 props 控制全有 css 或全無
 ```ts
 import styled from 'styled-components';
 
@@ -132,7 +134,7 @@ const Link = styled.a<{ isEnabled: boolean }>`
 `;
 ```
 
-## Styled-components: Hover ul 名稱後，後打開 li 列表
+## Hover ul 名稱後，後打開 li 列表
 ```ts
 const NavDropDownBox = styled.ul`
     position: absolute;
@@ -191,5 +193,87 @@ const NavInfoList = () => {
     )
 };
 
+```
+
+## 提示字在地平線上升起與消失，父層使用 overflow: hidden，子層使用 animation
+```ts
+import React, { FC, CSSProperties, useContext } from 'react';
+import ReactDOM{ createPortal } from 'react-dom';
+import styled, { keyframes } from 'styled-components';
+
+const riseAndFall = keyframes`
+    0% {
+        transform: translateY(100px);
+    }
+    10% {
+        transform: translateY(0px);
+    }
+    80% {
+        opacity: 100;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+`;
+
+const ToastContainer = styled.div<{ yAxisOrder: number }>`
+    position: fixed;
+    width: 100%;
+    height: 13vh;
+    bottom: ${({ yAxisOrder }) => `${yAxisOrder * 13}vh`};
+    left: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 1.5rem;
+    padding: 5px 15px;
+`;
+
+const ToastAnimation = styled.div`
+    animation: ${riseAndFall} 5s linear;
+`;
+
+const ToastContent = styled.div`
+    background-color: rgba(44, 46, 65, 0.9);
+    width: 100%;
+    height: 100%;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+`;
+
+const PureToast: FC<{ yAxisOrder: number }> = ({ children, yAxisOrder }) => (
+    <ToastContainer yAxisOrder={yAxisOrder}>
+        <ToastAnimation>
+            <ToastContent>
+                {children}
+            </ToastContent>
+        </ToastAnimation>
+    </ToastContainer>
+);
+
+// 可用 Context 控制 toastState
+
+export const Toast: FC = () => {
+    const toastState = [{ id: 1, text: 'test1', yAxisOrder: 0}, { id: 2, text: 'test2', yAxisOrder: 1}];
+    const content = toastState.map(toastItem => (
+        <PureToast
+            key={toastItem.id}
+            yAxisOrder={toastItem.yAxisOrder}>
+            {toastItem.text}
+        </PureToast>
+    ));
+    if (toastState.length === 0) return null;
+    return createPortal(content, document.getElementById('root') || document.body);
+};
+
+// 外部使用 Component 方式
+
+ReactDOM.render(<Toast />, document.getElementById('root'));
 
 ```
+
+
