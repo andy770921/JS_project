@@ -388,5 +388,74 @@ export const ToastProvider: FC = ({ children }) => {
     return <ToastProviderContext.Provider value={context}>{children}</ToastProviderContext.Provider>;
 };
 ```
+## 背景圖片模糊，不影響圖片上方文字，使用 before 並將背景圖片配合 filter 寫在裡面
+```ts
+import React, { FC } from 'react';
+import styled from 'styled-components';
 
+const MaskWrapper = styled.div<{ isShow: boolean }>`
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: ${({ isShow }) => (isShow ? 'flex' : 'none')};
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+`;
+
+const CenterText = styled.span`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0 , 0.7);
+    color: white;
+    font-size: 17px;
+`;
+
+const Mask: FC<{ isShow: boolean; text: string }> = ({ isShow, text }) => (
+    <MaskWrapper isShow={isShow}>
+        <CenterText>{text}</CenterText>
+    </MaskWrapper>
+);
+
+const Picture = styled.div<{ url: string; isLighterImgBg?: boolean }>`
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(${({ url }) => url});
+        background-size: cover;
+        background-color: #f8f9fb;
+        filter: ${({ isLighterImgBg }) => (isLighterImgBg ? 'opacity(20%)' : 'unset')};
+    }
+`;
+
+const PictureWithMask: FC<{
+    imgUrl: string;
+    isShowMaskAndDisabledBtn?: boolean;
+    maskText?: string;
+    isLighterImgBg?: boolean;
+
+}> = ({
+    imgUrl,
+    maskText = '',
+    isLighterImgBg = false,
+    isShowMaskAndDisabledBtn = false,
+}) => (
+    <Picture url={imgUrl} isLighterImgBg={isLighterImgBg}>
+        <Mask isShow={isShowMaskAndDisabledBtn} text={maskText} />
+    </Picture>
+);
+```
 
