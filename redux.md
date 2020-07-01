@@ -12,6 +12,10 @@ https://hackmd.io/@jackblackevo/rkcdqrh8-#React-Context--useReducer-vs-React-Red
 ## useSelector 實作
 https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux#unstable_batchedupdates
 
+## Redux Partial
+https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux  
+https://hackmd.io/@jackblackevo/rkcdqrh8-#Stale-props-and-zombie-children-in-Redux  
+
 ## Redux 官網 及 Redux in Action 書
 ```
 An example folder structure might look something like:
