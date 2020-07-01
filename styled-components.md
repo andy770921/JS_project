@@ -27,6 +27,8 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
     }};
 `;
 ```
+## keyframes 傳變數方法
+https://stackoverflow.com/questions/50802681/how-to-pass-props-to-keyframes-in-styled-component-with-react
 ## div 使用 focus 效果 ( 使用 TypeScript )
 ```ts
 import React, { FC, MouseEventHandler } from 'react';
