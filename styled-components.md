@@ -278,15 +278,11 @@ const ChildOne = () => {
     const handleClick = () => {
         publishNewToast({
             text: '加入成功',
-            toastType: ToastType.SELECT,
+            // toastType: ToastType.SELECT,
         });
     };
 
-    return (
-        <>
-            <button onClick={handleClick}>Click Me</button>
-        </>
-    );
+    return <button onClick={handleClick}> Click Me </button>;
 };
 
 const AppContent = () => (
