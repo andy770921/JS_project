@@ -366,15 +366,14 @@ https://codeburst.io/polling-vs-sse-vs-websocket-how-to-choose-the-right-one-185
 ## Dan 說明 super 在 React 中的使用
 https://overreacted.io/zh-hant/why-do-we-write-super-props/
 
-## Redux Partial
-https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux  
-https://hackmd.io/@jackblackevo/rkcdqrh8-#Stale-props-and-zombie-children-in-Redux
+## 點擊 Component 外部關閉本體的 Hook 寫法
+https://stackoverflow.com/questions/54560790/detect-click-outside-react-component-using-hooks
 
 ## npm 第三方套件
 
 https://addyosmani.com/blog/react-window/
 
-# React 寫法
+# React  語法使用
 
 ## React: 改 JSX inline-css 用法
 - style={todo.status===true? {color: 'red', textDecoration: 'line-through'} : {color: 'black'}}
