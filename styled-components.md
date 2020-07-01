@@ -270,9 +270,40 @@ export const Toast: FC = () => {
     return createPortal(content, document.getElementById('root') || document.body);
 };
 
-// 外部使用 Component 方式
+// 使用 Toast Component 方式
 
-ReactDOM.render(<Toast />, document.getElementById('root'));
+const ChildOne = () => {
+    const { publishNewToast } = useContext(ToastProviderContext);
+
+    const handleClick = () => {
+        publishNewToast({
+            text: '加入成功',
+            toastType: ToastType.SELECT,
+        });
+    };
+
+    return (
+        <>
+            <button onClick={handleClick}>Click Me</button>
+        </>
+    );
+};
+
+const AppContent = () => (
+    <>
+        <ChildOne />
+        <ChildTwo />
+        <Toast />
+    </>
+);
+
+const App: FC = () => (
+    <ToastProvider>
+        <AppContent />
+    </ToastProvider>
+);
+
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // 補充：Context 控制 toastState 用法
 import React, { createContext, useState, FC, useReducer, useMemo, useCallback } from 'react';
