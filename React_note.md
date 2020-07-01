@@ -37,8 +37,14 @@ https://blog.webdevsimplified.com/2020-05/use-ref/
 https://youtu.be/t2ypzz6gJm0?t=46  
 7. Note: functional component 只有使用 useRef 才有辦法在兩次渲染間保留值（不會自動觸發重新渲染的值）。class component 不必使用 useRef，直接在 class 內新增變數即可。
 
+## 記憶物件或陣列的 useDeepMemo hook (Ref: React Apollo)
+https://github.com/benjamn/wryware/blob/main/packages/equality/src/equality.ts  
+https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useDeepMemo.ts  
+https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useBaseQuery.ts  
+
 ## 封裝 fetch API 的 Hook (Dan 文章推薦):
 https://www.robinwieruch.de/react-hooks-fetch-data
+
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
 1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
 2. 若打開註解，使用 provider value={{orderBy, setOrderBy}}，在 notAdd 函數觸發時，console.log 會出現 re-render
