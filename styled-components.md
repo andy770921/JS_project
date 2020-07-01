@@ -275,7 +275,7 @@ export const Toast: FC = () => {
 ReactDOM.render(<Toast />, document.getElementById('root'));
 
 // 補充：Context 控制 toastState 用法
-import React, { createContext, useState, FC, useReducer, useMemo } from 'react';
+import React, { createContext, useState, FC, useReducer, useMemo, useCallback } from 'react';
 
 export enum ToastType {
     NORMAL = 'NORMAL',
@@ -304,47 +304,35 @@ const toastInitialContextState: Toast = {
 };
 
 export const ToastProviderContext = createContext(toastInitialContextState);
-
-interface ToastState {
-    id: number;
-    text: string;
-    toastType: ToastType;
-    createdTime: number;
+interface ToastState extends AddToastPayload {
     yAxisOrder: number;
 }
 
-interface ToastActionPayload {
+interface AddToastPayload {
     id: number;
     text: string;
     toastType: ToastType;
     createdTime: number;
+    timer: ReturnType<typeof setTimeout>;
 }
 
-interface ToastActionWithPayload<T> {
-    type: ToastActionType;
-    payload: T;
-}
-interface ToastActionWithoutPayload {
-    type: ToastActionType;
-}
+type Actions =
+    | { type: ToastActionType.ADD_NEW_TOAST; payload: AddToastPayload }
+    | { type: ToastActionType.REMOVE_TOAST; payload: { id: number } }
+    | { type: ToastActionType.REMOVE_ALL_TOAST };
 
 const toastInitialState = [] as ToastState[];
 
-const toastReducer = (
-    state: ToastState[],
-    action: ToastActionWithPayload<ToastActionPayload> | ToastActionWithPayload<number> | ToastActionWithoutPayload
-) => {
+const toastReducer = (state: ToastState[], action: Actions) => {
     switch (action.type) {
         case ToastActionType.ADD_NEW_TOAST: {
-            const { payload: newToastItem } = action as ToastActionWithPayload<ToastActionPayload>;
-            const addedState = [...state, newToastItem]
+            const addedState = [...state, action.payload]
                 .sort((toastItemA, toastItemB) => toastItemB.createdTime - toastItemA.createdTime)
                 .map((toastItem, index) => ({ ...toastItem, yAxisOrder: index }));
             return addedState;
         }
         case ToastActionType.REMOVE_TOAST: {
-            const { payload: id } = action as ToastActionWithPayload<number>;
-            const filteredState = state.filter(toastStatus => toastStatus.id !== id);
+            const filteredState = state.filter(toastStatus => toastStatus.id !== action.payload.id);
             return filteredState;
         }
         case ToastActionType.REMOVE_ALL_TOAST:
@@ -354,28 +342,35 @@ const toastReducer = (
     }
 };
 
+
 export const ToastProvider: FC = ({ children }) => {
     const [toastState, dispatch] = useReducer(toastReducer, toastInitialState);
 
     const publishNewToast = ({ text, toastType = ToastType.NORMAL }: { text: string; toastType?: ToastType }) => {
         const createdTime = Date.now();
+        
+       // 設定 Timer 在 5000 ms 後，發送移除 Toast 的 Action
+        const timer = setTimeout(() => {
+             dispatch({
+                    type: ToastActionType.REMOVE_TOAST,
+                    payload: { id: createdTime },
+                });
+            }, 5000);
+        
+        // 發送新加 Toast 的 Action
         dispatch({
             type: ToastActionType.ADD_NEW_TOAST,
-            payload: { id: createdTime, text, toastType, createdTime },
+            payload: { id: createdTime, text, toastType, createdTime, timer },
         });
-        setTimeout(() => {
-            dispatch({
-                type: ToastActionType.REMOVE_TOAST,
-                payload: createdTime,
-            });
-        }, 5000);
     };
 
-    const removeAllToast = () => {
-        dispatch({
-            type: ToastActionType.REMOVE_ALL_TOAST,
+    const removeAllToast = useCallback(() => {
+        // 若手動關閉全部 Toasts，先清除所有 Timer，再發送移除所有 Toast 的 Action
+        toastState.forEach(toastItem => {
+            clearTimeout(toastItem.timer);
         });
-    };
+        dispatch({ type: ToastActionType.REMOVE_ALL_TOAST });
+    }, [toastState]);
 
     const context = useMemo(
         () => ({
@@ -383,7 +378,7 @@ export const ToastProvider: FC = ({ children }) => {
             publishNewToast,
             removeAllToast,
         }),
-        [toastState]
+        [toastState, removeAllToast]
     );
     return <ToastProviderContext.Provider value={context}>{children}</ToastProviderContext.Provider>;
 };
