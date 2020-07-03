@@ -797,9 +797,8 @@ const Component: FC<{ list: [] }> = ({ list }) => {
 ```
 ## 手機觸控事件，與滑鼠點擊事件
 
-1. 事件觸發順序為以下
-touchstart 手指放上螢幕 => touchmove 手指在螢幕上移動 (optional，若手指完全沒有位移則不會觸發) => touchend (手指抬離螢幕) =>  
-mouseover => mousemove (只會發生一次) => mousedown => mouseup => click  
+1. 事件觸發順序為以下  
+touchstart 手指放上螢幕 => touchmove 手指在螢幕上移動 (optional，若手指完全沒有位移則不會觸發) => touchend (手指抬離螢幕) => mouseover => mousemove (只會發生一次) => mousedown => mouseup => click  
 https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent   
 2. touchend 事件，可使用 preventDefault()，停止 mouse event 的派送。touchstart、touchmove 無法用 preventDefault()
 https://medium.com/frochu/touch-and-mouse-together-76fb69114c04  
