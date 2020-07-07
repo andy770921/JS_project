@@ -9,6 +9,7 @@ console.log(checkIsUniqueChars('abc')); // true
 console.log(checkIsUniqueChars('aabc')); // false
 ```
 - 字元: 分為 ASCII (使用 8 bit，共定義了 128 個字元，首位為 0 ) 及 Unicode ( 使用 16 bit，可以表示 2^16 = 65536 個字元 )
+- Unicode, UTF-8, UTF-16: [Ref](https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/709738/)
 - EASCII = Extended ASCII，是將 ASCII 碼由 7 bit 擴充為 8 bit 而成
 - ASCII characters are a subset of Unicode. [Ref](https://stackoverflow.com/questions/40008875/can-we-convert-unicode-to-ascii-in-javascript-charcodeat-is-only-for-unicode)
 - JS string 可用 .charCodeAt(index)，執行此方法後，可得到 0 到 65535 之間的整數，表示給定索引處的 UTF-16 代碼單元
