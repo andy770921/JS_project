@@ -482,6 +482,39 @@ for (var i = 0; i < questions.length; i += 1) {
   } 
 }
 ```
+5. 更新陣列裡面的物件
+https://stackoverflow.com/questions/4689856/how-to-change-value-of-object-which-is-inside-an-array-using-javascript-or-jquer  
+```js
+const state = [
+{
+    userId: 1,
+    id: 100,
+    title: "delectus aut autem",
+    completed: false
+},
+{
+    userId: 1,
+    id: 101,
+    title: "quis ut nam facilis et officia qui",
+    completed: false
+},
+{
+    userId: 1,
+    id: 102,
+    title: "fugiat veniam minus",
+    completed: false
+},
+{
+    userId: 1,
+    id: 103,
+    title: "et porro tempora",
+    completed: true
+}]
+
+const newState = state.map(obj =>
+    obj.id === "101" ? { ...obj, completed: true } : obj
+);
+```
 ## 與 HTML DOM 的互動
 1. 事件監聽，以ID選: addEventListener()。```<script src="app.js"></script>```要在</body>前加，否則會讀取不到HTML的Tag出現錯誤
 https://ithelp.ithome.com.tw/articles/10192015  
