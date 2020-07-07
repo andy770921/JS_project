@@ -1,5 +1,5 @@
 ## Array
-1. 找出字串中是否所有字元都是唯一
+1. 確認一個字串是否所有字元都是唯一
 ```js
 function checkIsUniqueChars(str) {
   // TODOS
@@ -8,7 +8,8 @@ function checkIsUniqueChars(str) {
 console.log(checkIsUniqueChars('abc')); // true
 console.log(checkIsUniqueChars('aabc')); // false
 ```
-- 字元: 分為 ASCII (使用 8 bit，共定義了 128 個字元，首位為 0 ) 及 Unicode ( 使用 16 bit，可以表示 2^16 = 65536 個字元 )
+- 做題前確認: 字元編碼為何
+- 字元編碼: 分為 ASCII (使用 8 bit，共定義了 128 個字元，首位為 0 ) 及 Unicode ( 使用 16 bit，可以表示 2^16 = 65536 個字元 )
 - Unicode, UTF-8, UTF-16: [Ref](https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/709738/)
 - EASCII = Extended ASCII，是將 ASCII 碼由 7 bit 擴充為 8 bit 而成
 - ASCII characters are a subset of Unicode. [Ref](https://stackoverflow.com/questions/40008875/can-we-convert-unicode-to-ascii-in-javascript-charcodeat-is-only-for-unicode)
@@ -35,6 +36,32 @@ console.log(checkIsUniqueChars('aabc')); // false
 ```
 - 其他解法: 巢狀迴圈比字串的每個字元、先排序再比鄰近的
 
+2. 確認兩字串是否重組後會一致
+```js
+function checkIsPermutation(strX, strY) {
+  // TODOS
+}
+
+console.log(checkIsPermutation('abc', 'xyz')); // false
+console.log(checkIsUniqueChars('god', 'dog')); // true
+console.log(checkIsPermutation('God', 'dog')); // false
+```
+- 做題前確認: 輸入字串的大小寫是判定為不同的、空白會被計入字元
+- 解法一: 運用陣列排序比較，易讀
+```js
+function sortString(str) {
+  return Array.from(str).sort().join('');
+}
+
+function checkIsPermutation(strX, strY) {
+  if (strX.length !== strY.length) return false;
+  return sortString(strX) === sortString(strY);
+}
+
+console.log(checkIsPermutation('abc', 'xyz')); // false
+console.log(checkIsPermutation('god', 'dog')); // true
+console.log(checkIsPermutation('God', 'dog')); // false
+```
 ## Linked List
 Ref: https://hiskio.com/courses/126/lectures/4310  
 Ex: 製造兩個節點的 Linked List  
