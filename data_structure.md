@@ -1,3 +1,37 @@
+## Array
+1. 找出字串中是否所有字元都是唯一
+```js
+function checkIsUniqueChars(str) {
+  // TODOS
+}
+  
+console.log(checkIsUniqueChars('abc')); // true
+console.log(checkIsUniqueChars('aabc')); // false
+```
+- 字元: 分為 ASCII (使用 8 bit，共定義了 128 個字元，首位為 0 ) 及 Unicode ( 使用 16 bit，可以表示 2^16 = 65536 個字元 )
+- EASCII = Extended ASCII，是將 ASCII 碼由 7 bit 擴充為 8 bit 而成
+- ASCII characters are a subset of Unicode. [Ref](https://stackoverflow.com/questions/40008875/can-we-convert-unicode-to-ascii-in-javascript-charcodeat-is-only-for-unicode)
+- JS string 可用 .charCodeAt(index)，執行此方法後，可得到 0 到 65535 之間的整數，表示給定索引處的 UTF-16 代碼單元
+
+```js
+function checkIsUniqueChars(str) {
+  // assume using ASCII 
+  if (str.length > 128) return false;
+  const existedCharCodeList = [...Array(128)].map(() => false);
+  for (let i = 0; i < str.length; i++){
+    const code = str.charCodeAt(i);
+    if (existedCharCodeList[code]) {
+      // was appeared once
+      return false;
+    }
+    existedCharCodeList[code] = true;
+  }
+  return true;
+}
+  
+console.log(checkIsUniqueChars('abc')); // true
+console.log(checkIsUniqueChars('aabc')); // false
+```
 ## Linked List
 Ref: https://hiskio.com/courses/126/lectures/4310  
 Ex: 製造兩個節點的 Linked List  
