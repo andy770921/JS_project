@@ -19,7 +19,9 @@ console.log(checkIsUniqueChars('aabc')); // false
 function checkIsUniqueChars(str) {
   // assume using ASCII 
   if (str.length > 128) return false;
+  
   const existedCharCodeList = [...Array(128)].map(() => false);
+  
   for (let i = 0; i < str.length; i++){
     const code = str.charCodeAt(i);
     if (existedCharCodeList[code]) {
