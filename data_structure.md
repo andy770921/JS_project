@@ -13,7 +13,7 @@ console.log(checkIsUniqueChars('aabc')); // false
 - EASCII = Extended ASCII，是將 ASCII 碼由 7 bit 擴充為 8 bit 而成
 - ASCII characters are a subset of Unicode. [Ref](https://stackoverflow.com/questions/40008875/can-we-convert-unicode-to-ascii-in-javascript-charcodeat-is-only-for-unicode)
 - JS string 可用 .charCodeAt(index)，執行此方法後，可得到 0 到 65535 之間的整數，表示給定索引處的 UTF-16 代碼單元
-
+- 以下解法，若字串長度為 n，時間複雜度 O(n), 空間複雜度 O(128) = O(1)
 ```js
 function checkIsUniqueChars(str) {
   // assume using ASCII 
@@ -33,6 +33,8 @@ function checkIsUniqueChars(str) {
 console.log(checkIsUniqueChars('abc')); // true
 console.log(checkIsUniqueChars('aabc')); // false
 ```
+- 其他解法: 巢狀迴圈比字串的每個字元、先排序再比鄰近的
+
 ## Linked List
 Ref: https://hiskio.com/courses/126/lectures/4310  
 Ex: 製造兩個節點的 Linked List  
