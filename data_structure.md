@@ -10,7 +10,7 @@ for(let i = 0; i < strArray.length; i++){
     sentence += strArray[i];
 }
 ```
-### Array 實作出 Hash Table
+### Array 實作出 Hash Table 的題目範例
 
 1. 確認一個字串是否所有字元都是唯一
 ```js
