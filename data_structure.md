@@ -1,7 +1,7 @@
 ## Array
 - 可實作出 Hash Table
-- Array List (動態長度的 Array)
-- String Builder ( 避免以下範例 sentence 複製 5個、10個、15個字元，若每複製一個字元時間相等，時間複雜度會變成 O(n^2))
+- Array List ( 動態長度的 Array )
+- String Builder ( 避免以下範例 sentence 複製 5 個、10 個、15 個字元，若每複製一個字元時間相等，時間複雜度會變成 O(n^2) )
 - Note: 共複製三次，每次複製的字元個數越來越多
 ```js
 const strArray = ['aaaaa', 'bbbbb', 'ccccc'];
