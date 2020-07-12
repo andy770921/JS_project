@@ -4,7 +4,7 @@
 - String Builder ( 避免以下範例 sentence 複製 5 個、10 個、15 個字元，若每複製一個字元時間相等，時間複雜度會變成 O(n^2) )
 - Note: 共複製三次，每次複製的字元個數越來越多
 ```js
-const strArray = ['aaaaa', 'bbbbb', 'ccccc'];
+const strArray = ['aaaaa', 'bbbbb', 'ccccc']; // Array 長度 n，此例為 3
 const sentence = '';
 for(let i = 0; i < strArray.length; i++){
     sentence += strArray[i];
