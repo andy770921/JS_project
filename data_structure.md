@@ -59,7 +59,7 @@ function checkIsPermutation(strX, strY) {
 }
 
 console.log(checkIsPermutation('abc', 'xyz')); // false
-console.log(checkIsUniqueChars('god', 'dog')); // true
+console.log(checkIsPermutation('god', 'dog')); // true
 console.log(checkIsPermutation('God', 'dog')); // false
 ```
 - 做題前確認：輸入字串的大小寫是判定為不同的、空白會被計入字元
