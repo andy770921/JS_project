@@ -156,13 +156,14 @@ insert50(nodeTen);
 console.log(first);         //  [Object] { data: 10, link: [Object] }
 console.log(first.link);    //  [Object] { data: 50, link: [Object] }
 ```
-### 建構 Linked List
+### 建構 Linked List、新增節點、刪除節點
 ```js
 class Node {
   constructor(d){
     this.next = null;
     this.data = d;
   }
+
   appendToTail(d){
     const endNode = new Node(d);
     let currentNode = this;
@@ -172,11 +173,33 @@ class Node {
     currentNode.next = endNode;
     return this;
   }
+
+  deleteNode(head, dataToBeDeleted){
+    if (head.data === dataToBeDeleted){
+      // 如果首節點的資料和待刪除資料一致，移動首節點
+      return head.next;
+    }
+
+    const currentNode = head;
+    while (currentNode.next !== null){
+      if (currentNode.next.data === dataToBeDeleted){
+        currentNode.next = currentNode.next.next;
+        return head;
+      }
+      currentNode = currentNode.next;
+    }
+    return head;
+  }
 }
 
 const headNode = new Node(1);
-console.log(headNode.appendToTail(2).appendToTail(3));
+const linkedList = headNode.appendToTail(2).appendToTail(3);
+
+console.log(linkedList);
 // Node { next: { next: { next: null, data:3 }, data:2 }, data:1 }
+
+console.log(linkedList.deleteNode(headNode, 2));
+// Node { next: { next: null, data:3 }, data:1 }
 ```
 
 ## Binary Tree
