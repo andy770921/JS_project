@@ -414,7 +414,7 @@ function async(generator){
   }
 }
 
-async(function*(){
+async(function* (){
   try {
     const data1 = yield ajax('https://api.appworks-school.tw/api/1.0/products/all');
     const data2 = yield ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
