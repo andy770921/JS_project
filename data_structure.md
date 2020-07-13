@@ -154,7 +154,29 @@ function insert50 (x){
 insert50(nodeTen);
 
 console.log(first);         //  [Object] { data: 10, link: [Object] }
-console.log(first.link);    //  [Object] { data: 50, link: [Object] }/
+console.log(first.link);    //  [Object] { data: 50, link: [Object] }
+```
+### 建構 Linked List
+```js
+class Node {
+  constructor(d){
+    this.next = null;
+    this.data = d;
+  }
+  appendToTail(d){
+    const endNode = new Node(d);
+    let currentNode = this;
+    while(currentNode.next !== null){
+      currentNode = currentNode.next;
+    }
+    currentNode.next = endNode;
+    return this;
+  }
+}
+
+const headNode = new Node(1);
+console.log(headNode.appendToTail(2).appendToTail(3));
+// Node { next: { next: { next: null, data:3 }, data:2 }, data:1 }
 ```
 
 ## Binary Tree
