@@ -82,11 +82,14 @@ console.log(checkIsPermutation('God', 'dog')); // false
 ```js
 function checkIsPermutation(strX, strY) {
   if (strX.length !== strY.length) return false;
-  // assume using ASCII 
+  
+  // assume using ASCII, initial 0 means times of appearance 
   const existedLetterCodeList = [...Array(128)].map(() => 0);
+
   for (let i = 0; i < strX.length; i++){
     existedLetterCodeList[strX.charCodeAt(i)] += 1;
   }
+  
   for (let i = 0; i < strY.length; i++){
     existedLetterCodeList[strY.charCodeAt(i)] -= 1;
     if(existedLetterCodeList[strY.charCodeAt(i)] < 0) {
