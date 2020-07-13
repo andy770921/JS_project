@@ -79,6 +79,28 @@ console.log(checkIsPermutation('god', 'dog')); // true
 console.log(checkIsPermutation('God', 'dog')); // false
 ```
 - 解法二：使用 hash table 記錄出現的字元次數
+```js
+function checkIsPermutation(strX, strY) {
+  if (strX.length !== strY.length) return false;
+  // assume using ASCII 
+  const existedLetterCodeList = [...Array(128)].map(() => 0);
+  for (let i = 0; i < strX.length; i++){
+    existedLetterCodeList[strX.charCodeAt(i)] += 1;
+  }
+  for (let i = 0; i < strY.length; i++){
+    existedLetterCodeList[strY.charCodeAt(i)] -= 1;
+    if(existedLetterCodeList[strY.charCodeAt(i)] < 0) {
+      return false;
+    } 
+  }
+  return true;
+}
+
+console.log(checkIsPermutation('abc', 'xyz')); // false
+console.log(checkIsPermutation('god', 'dog')); // true
+console.log(checkIsPermutation('God', 'dog')); // false
+```
+
 ## Linked List
 Ref: https://hiskio.com/courses/126/lectures/4310  
 Ex: 製造兩個節點的 Linked List  
