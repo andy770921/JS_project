@@ -30,6 +30,10 @@
 3. [JS 中的 this, class, prototype](https://github.com/andy770921/JS_project/blob/master/this.md)
 4. [JS 中的 higher order function](https://github.com/andy770921/JS_project/blob/master/higher-order-fn.md)
 
+### TypeScript
+
+[TypeScript](https://github.com/andy770921/JS_project/blob/master/typescript.md)
+
 ### Others
 
 1. [HTML](https://github.com/andy770921/JS_project/blob/master/HTML_note.md)
@@ -40,9 +44,10 @@
 6. [Mac 開發設定](https://github.com/andy770921/JS_project/blob/master/mac.md)
 7. [esLint 設定](https://github.com/andy770921/JS_project/blob/master/esLint.md)
 8. [Jest 單元測試](https://github.com/andy770921/JS_project/blob/master/jest.md)
-9. [3D 函式庫 - three.js](https://github.com/andy770921/JS_project/blob/master/threeJS.md)
-10. [網頁效能與 SEO](https://github.com/andy770921/JS_project/blob/master/speed-and-seo.md)
-11. [進階前端知識](https://f2e.kalan.dev/fan-wai-pian/zai-tan-redux)
+9. [Storybook](https://github.com/andy770921/JS_project/blob/master/storybook.md)
+10. [3D 函式庫 - three.js](https://github.com/andy770921/JS_project/blob/master/threeJS.md)
+11. [網頁效能與 SEO](https://github.com/andy770921/JS_project/blob/master/speed-and-seo.md)
+12. [進階前端知識](https://f2e.kalan.dev/fan-wai-pian/zai-tan-redux)
 
 ## Airbnb JavaScript Style Guide
 
