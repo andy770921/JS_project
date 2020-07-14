@@ -60,8 +60,8 @@ https://github.com/jigsawye/javascript
 
 ## 快速建置，開始專案使用的 Repo
 
-1. [esLint + Prettier](https://github.com/andy770921/react-ts-eslint)
-2. [React + TypeScript + Redux-observable + Styled-Component + React-Router + esLint + GitHub pages](https://github.com/andy770921/react-redux-router)
+1. [esLint + Prettier](https://github.com/andy770921/react-ts-boilerplate)
+2. [React + TypeScript + Redux-observable + Styled-Component + React-Router + esLint + GitHub pages](https://github.com/andy770921/react-redux-boilerplate)
 
 ## 自動化產生 css 字型的 Repo
 
