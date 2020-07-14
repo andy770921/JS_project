@@ -601,6 +601,7 @@ module.exports = {
 3. 終端機輸入指令：`npm login` 登入自己 npm 帳號
  
 4. 終端機輸入指令：`npm publish` 發佈整個 repo 在官網如下圖
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/npm.png) 
 
 5. 終端機輸入指令：`npm unpublish react-ts-npm-boilerplate@1.0.0 -f` 可移除自己上傳的、官網的 package
 Ref: https://docs.npmjs.com/unpublishing-packages-from-the-registry
