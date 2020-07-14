@@ -557,3 +557,50 @@ module.exports = {
 }
 
  ```
+ 
+ ## ------------------- 發佈至 npm 官網  -------------------
+ 
+ 1. 在 npm 官網創帳號：https://www.npmjs.com/
+ 2. 設定專案的 package.json
+  ```js
+{
+  "name": "react-ts-npm-boilerplate",
+  "version": "1.0.0",
+  "description": "A template for a React + TypeScript + esLint package",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andy770921/react-ts-boilerplate.git"
+  },
+  "license": "ISC",
+  "author": "Andy Chou",
+  "main": "./dist/index.html",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "eslint"
+  ],
+  "scripts": {
+    "build": "webpack --config webpack.prod-config.js",
+    "start": "webpack-dev-server --open --config webpack.dev-config.js",
+    "watch": "tsc -w",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    // ...
+  },
+  "devDependencies": {
+    // ...
+  }
+}
+ ```
+2. 終端機輸入指令：`npm run build` 產生 bundle 後的程式碼
+
+3. 終端機輸入指令：`npm login` 登入自己 npm 帳號
+ 
+4. 終端機輸入指令：`npm publish` 發佈整個 repo 在官網如下圖
+
+5. 終端機輸入指令：`npm unpublish react-ts-npm-boilerplate@1.0.0 -f` 可移除自己上傳的、官網的 package
+Ref: https://docs.npmjs.com/unpublishing-packages-from-the-registry
