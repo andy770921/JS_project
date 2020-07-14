@@ -595,7 +595,7 @@ module.exports = {
     // ...
   }
 }
- ```
+```
 2. 終端機輸入指令：`npm run build` 產生 bundle 後的程式碼
 
 3. 終端機輸入指令：`npm login` 登入自己 npm 帳號
@@ -603,5 +603,31 @@ module.exports = {
 4. 終端機輸入指令：`npm publish` 發佈整個 repo 在官網如下圖
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/npm.png) 
 
-5. 終端機輸入指令：`npm unpublish react-ts-npm-boilerplate@1.0.0 -f` 可移除自己上傳的、官網的 package
+5. 輸出檔案為，dist 資料夾下的所有檔案，以及 package.json、README.md
+
+6. 若 `src/index.tsx` 如下
+```ts
+import React, { FC } from 'react'
+
+const Package: FC = () => (
+  <div>
+    <h2>Do cool stuff</h2>
+  </div>
+)
+
+export default Package;
+```
+其他專案可以使用 npm 安裝`npm i react-ts-npm-boilerplate`，之後如此引用
+```ts
+import React, { FC } from 'react';
+import CustomName from 'testttest';
+
+const Component: FC = () => {
+    return <CustomName />;
+};
+
+export default Component;
+```
+
+7. 終端機輸入指令：`npm unpublish react-ts-npm-boilerplate@1.0.0 -f` 可移除自己上傳的、官網的 package
 Ref: https://docs.npmjs.com/unpublishing-packages-from-the-registry
