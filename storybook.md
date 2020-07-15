@@ -45,7 +45,9 @@ module.exports = {
 ```
 3. package.json 新增以下 script
 ```
-
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
 ```
 4. 終端機執行指令
 ```
