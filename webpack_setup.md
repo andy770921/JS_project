@@ -667,14 +667,17 @@ export default Package;
 ```
 其他專案可以使用 npm 安裝`npm i react-ts-npm-boilerplate`，之後如此引用
 ```ts
+// TypsScript
 import React, { FC } from 'react';
-import CustomName from 'testttest';
+import { Button } from 'react-ts-npm-boilerplate';
 
-const Component: FC = () => {
-    return <CustomName />;
-};
+const MyComponent: FC = () => (
+    <div>
+        <Button>My Button</Button>
+    </div>
+);
 
-export default Component;
+export default MyComponent;
 ```
 
 7. 終端機輸入指令：`npm unpublish react-ts-npm-boilerplate@1.0.0 -f` 可移除自己上傳的、官網的 package
