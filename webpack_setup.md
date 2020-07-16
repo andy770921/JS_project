@@ -580,40 +580,69 @@ module.exports = {
  ## ------------------- 發佈至 npm 官網  -------------------
  
  1. 在 npm 官網創帳號：https://www.npmjs.com/
- 2. 設定專案的 package.json
-  ```js
+ 2. 安裝套件 [rollup](https://pjchender.github.io/2020/01/08/npm-rollup-js-%E4%BD%BF%E7%94%A8%E7%AD%86%E8%A8%98/)，設定專案的 package.json, rollup.config.js
+```js
+// package.json
 {
   "name": "react-ts-npm-boilerplate",
-  "version": "1.0.0",
-  "description": "A template for a React + TypeScript + esLint package",
+  "version": "1.1.0",
+  "description": "A template for a React + TypeScript + npm package",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andy770921/react-ts-boilerplate.git"
+    "url": "https://github.com/andy770921/react-ts-npm-boilerplate.git"
   },
   "license": "ISC",
   "author": "Andy Chou",
-  "main": "./dist/index.html",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "keywords": [
     "react",
     "typescript",
-    "eslint"
+    "eslint",
+    "storybook",
+    "npm"
   ],
   "scripts": {
-    "build": "webpack --config webpack.prod-config.js",
+    "build": "rollup -c",
     "start": "webpack-dev-server --open --config webpack.dev-config.js",
     "watch": "tsc -w",
-    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "build-storybook": "build-storybook -c .storybook -o demo"
   },
   "dependencies": {
-    // ...
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     // ...
   }
 }
+```
+
+```js
+// rollup.config.js
+import typescript from 'rollup-plugin-typescript2';
+
+import pkg from './package.json';
+
+export default {
+    input: 'src/index.tsx',
+    output: [
+        {
+            file: pkg.main,
+            format: 'cjs',
+            exports: 'named',
+            sourcemap: true,
+            strict: false,
+        },
+    ],
+    plugins: [typescript()],
+    external: ['react', 'react-dom'],
+};
 ```
 2. 終端機輸入指令：`npm run build` 產生 bundle 後的程式碼
 
