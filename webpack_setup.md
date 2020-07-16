@@ -516,6 +516,23 @@ https://babeljs.io/docs/en/babel-plugin-transform-runtime#docsNav
 ## --------------- 補充 : npm run 設定 ---------------
 https://www.tutorialdocs.com/article/npm-scripts-tutorial.html
 
+
+
+
+## ------------------- 設定環境變數  -------------------
+ - webpack.config.js 內，使用 webpack.DefinePlugin
+```js
+const webpack = require('webpack');
+const commonConfig = require('./webpack.common-config.js');
+const { merge } = require('webpack-merge');
+
+module.exports = merge(commonConfig, {
+    mode: 'development',
+    plugins: [
+        new webpack.DefinePlugin({'process.env': JSON.stringify({MODE: 'DEV'})})
+    ],
+});
+```
 ## ------------------- 依環境變數打 API  -------------------
 
  - webpack.config.js 內，將 `/api` 之前的網址路徑換成 `https://domain.com`
