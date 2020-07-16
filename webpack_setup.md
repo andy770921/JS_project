@@ -414,7 +414,9 @@ module.exports = {
     }
 
 ```
-
+```js
+    "start": "webpack-dev-server --open --config webpack.dev-config.js",
+```
 ## 4. 開發時打指令 npm run start 即可運作 server
 
 
