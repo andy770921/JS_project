@@ -532,6 +532,16 @@ module.exports = merge(commonConfig, {
         new webpack.DefinePlugin({'process.env': JSON.stringify({MODE: 'DEV'})})
     ],
 });
+``` 
+- 實際 index.tsx 使用
+```ts
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Button from './components/Button';
+
+if (process.env.MODE === 'DEV') {
+    ReactDOM.render(<Button>rendered button for dev</Button>, document.querySelector('#root'));
+}
 ```
 ## ------------------- 依環境變數打 API  -------------------
 
