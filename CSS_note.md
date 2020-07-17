@@ -124,6 +124,38 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 	background: pink;
 }
 ```
+- Note: 外層是 *position: fixed* ，內層若設定 *position: absolute* 加上 *right: 0*，會以 fixed 為對齊對象
+```css
+.a {
+	position: relative;
+	width: 1000px;
+	height: 800px;
+	background: red;
+	top: 50px;
+}
+.b {
+	position: absolute;
+	/* position: absolute; */
+	/* position: fixed; */
+	right: 0;
+  
+	width: 200px;
+	height: 200px;
+	background: grey;
+}
+.c {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+	background: blue;
+}
+.d {
+	position: fixed;
+	width: 600px;
+	height: 600px;
+	background: pink;
+}
+```
 ## 加入自定義 CSS 方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
 2. internal style: EX:  
