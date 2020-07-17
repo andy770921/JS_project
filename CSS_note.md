@@ -104,9 +104,9 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 	top: 100px;
 }
 .b {
-  position: relative;
-  /* position: absolute; */
-  /* position: fixed; */
+	position: relative;
+	/* position: absolute; */
+	/* position: fixed; */
 	width: 200px;
 	height: 200px;
 	background: grey;
@@ -118,7 +118,7 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 	background: blue;
 }
 .d {
-  position: fixed;
+	position: fixed;
 	width: 600px;
 	height: 600px;
 	background: pink;
