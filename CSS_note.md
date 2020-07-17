@@ -116,7 +116,7 @@ the browser has to download the styles each time a new page is loaded.
   
 3. external style sheet
 
-## 引入外部CSS
+## 引入外部 CSS
 1. 加入新檔案名style.css
 2. 在HTML加入以下段落。rel=為 relationship between HTML and link document
 ```html
@@ -127,7 +127,7 @@ the browser has to download the styles each time a new page is loaded.
 ```
 &emsp; Note: 在index.html 同一層有個資料夾css，資料夾下有檔案style.css
 
-## CSS中再引入另外的CSS (風格模組化)
+## CSS 中再引入另外的 CSS (風格模組化)
 1. 在style.css中，第一行加入如下文字，可以再引入style.css同一層中的important-style.css
 ```js
    @import "important-style.css";
@@ -364,21 +364,21 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 &emsp; Q: internal styles在大型專案的缺點是啥  
 &emsp; A: 1. 載入新html頁面每次都要讀取一次浪費資源 2. 開啟多頁時，花時間重複載入相同的style  
 
-## CSS單位說明
+## CSS 單位說明
 1. px 為絕對單位。但非實體pixel之意。比如，相同螢幕長寬，硬體解析度高一倍的螢幕，同px的圖在螢幕中的長寬一樣。
 2. % 為相對單位: 相對於父元素中定義的大小，要乘的比例。
 3. em 為相對單位: 相對於父元素中定義的大小，要乘的值。150%=1.5em、50%=.5em
 4. em會有加成影響。如body(或是body的class屬性)設定font-size: 2em、body下的h1又設定font-size: 5em，最終h1會變成10em
 5. rem 為相對單位: 相對於root元素(即```<html>```元素)中定義的大小，要乘的值。不受父元素影響
 
-## CSS顏色編碼說明
+## CSS 顏色編碼說明
 1. 常見色直接打英文字
 2. RGB 16進位色碼: 如#ff0033 ，ff為R、00為G、33為B
 3. RGB 16進位色碼簡寫: RGB若雙碼相同，可簡寫為單碼。如#ff0033可縮為#f03
 4. RGB 函數式寫法: 如rgb(255, 169, 73)
 5. RGB 函數式寫法加透明度alpha: 如rgba(255, 169, 73, .4) 或rgba(255, 169, 73, 40%)
 
-## CSS文字樣式說明
+## CSS 文字樣式說明
 1. text-align: center; 水平置中
 2. text-transform: uppercase; 全大寫
 3. text-decoration: none; 去除底線，在link常用，如下
@@ -403,12 +403,12 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 ```
 9.  文字顏色，直接用color: red; 設定即可
 
-## CSS行高設定
+## CSS 行高設定
 &emsp; 通常在```<body>```下設定
 1. line-height: 1.5; 1.5倍行高，通常設1.5易於閱讀。 雖然也可用px、em等，通常用無單位的，這樣會隨著元素內font size不同而縮放變化。
 2. 含行高、字體大小、字型等綜合寫法: font: normal 1em/1.5 "Helvetica Neue"，分別對應font-weight(是否粗體)、字體大小、行高、字型。字體大小、字型必須要定義。可簡略成font: 1em/1.5 "Helvetica Neue"
 
-## CSS邊界設定
+## CSS 邊界設定
 1. padding: 若文字有設定背景顏色，此顏色會延伸出去。分padding-top、padding-bottom、padding-right、padding-left
 2. padding: 單一值; 四邊都一樣。如 padding: 100px;
 3. padding: 第一值 第二值; 第一值設定上下，第二值設定左右。如 padding: 100px 120px;
@@ -435,7 +435,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ```
 
-## CSS Display設定
+## CSS Display 設定
 1. display: none; 不顯示，可不顯示某個區塊
 2. display: block; 將原先inline顯示的(比如link)，轉為block區塊式顯示
 3. display: inline; 將原先block顯示的(比如li)，轉為inline顯示。inline不能用margin(用margin無效)
@@ -456,7 +456,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
     margin-top: 20px;
   }
 ```
-## CSS img設定
+## CSS img 設定
 1. img加入max-width: 100%; 可讓圖片隨視窗大小縮放。若寫max-width: 900px; 意為縮放到寬度900px後，就不會再大
 ```css
   img {
@@ -495,7 +495,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
     background: #ffa949 url("../img/mountains.jpg") no-repeat center /cover;
   }
 ```
-## 設定div並排
+## 設定 div 並排
 1. 先在```<html>```希望並排的兩個```<div>```分別加入class="tips"、class="resorts"
 2. 進行如下設定，引入float: ;，完畢後，可能會出現以下問題: a. footer文字飄到兩圖中間空白 b. 父元素設定的height 崩潰
 ```css
@@ -527,7 +527,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
     clear: both;
   }
 ```
-## 改變list前綴符號
+## 改變 list 前綴符號
 1. 在css加入如下，也可取消前綴符號，打為list-style-type: none;
 ```
   ul {
