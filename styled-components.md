@@ -29,6 +29,63 @@ const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
 ```
 ## keyframes 傳變數方法
 https://stackoverflow.com/questions/50802681/how-to-pass-props-to-keyframes-in-styled-component-with-react
+## 用  props 控制 css 全有或全無方法
+```ts
+const ToastContainer = styled.div<{ customStyle?: CSSProperties; yAxisOrder: number; toastHeight: string }>`
+    position: fixed;
+    width: 100%;
+    height: ${({ toastHeight }) => toastHeight};
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: 1.3rem;
+    padding: 5px 15px;
+    left: 0;
+    ${({ yAxisOrder, toastHeight }) => `bottom: calc(${yAxisOrder} * ${toastHeight});`}
+
+    ${({ customStyle }) => (customStyle ? { ...customStyle } : {})}
+`;
+```
+```js
+const Box = styled.div`
+    height:100px;
+    width:100px;
+    ${props => props.Size === 'Small' && css`
+         height:20px;
+         width:20px;
+`}
+`
+```
+```ts
+const riseAndFall = (yOffset: string) => keyframes`
+    0% {
+        transform: translateY(${yOffset});
+    }
+    10% {
+        transform: translateY(0px);
+    }
+    80% {
+        opacity: 100;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(${yOffset});
+    }
+`;
+
+const ToastContent = styled.div<{ animationYOffset: string; animationDuration: number; theme: Theme }>`
+    background-color: rgba(44, 46, 65, 0.9);
+    width: 100%;
+    height: 100%;
+    color: ${({ theme }) => theme.white};
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    animation: ${({ animationYOffset }) => riseAndFall(animationYOffset)}
+        ${({ animationDuration }) => animationDuration}s linear;
+`;
+```
 ## div 使用 focus 效果 ( 使用 TypeScript )
 ```ts
 import React, { FC, MouseEventHandler } from 'react';
