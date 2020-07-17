@@ -137,7 +137,7 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 	position: absolute;
 	/* position: absolute; */
 	/* position: fixed; */
-	right: 0;
+	right: 50px;
   
 	width: 200px;
 	height: 200px;
@@ -146,13 +146,13 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 .c {
 	position: absolute;
 	width: 300px;
-	height: 200px;
+	height: 100px;
 	background: blue;
 }
 .d {
 	position: fixed;
-	width: 600px;
-	height: 600px;
+	width: 300px;
+	height: 300px;
 	background: pink;
 }
 ```
