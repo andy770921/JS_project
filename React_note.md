@@ -375,7 +375,7 @@ https://stackoverflow.com/questions/54560790/detect-click-outside-react-componen
 2. react-select
 3. react-spring : https://www.react-spring.io/
 4. react-visibility-sensor : https://www.npmjs.com/package/react-visibility-sensor
-
+5. react-reveal: [截至 2020/7/20] 不支援 iOS 12 版，及部分功能不支援 iOS 13.15.1
 
 # React  語法使用
 
