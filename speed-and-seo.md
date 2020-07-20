@@ -7,6 +7,14 @@
 4. Pingdom: https://www.pingdom.com/
 5. Sitespeed: https://www.notion.so/Sitespeed-io-05d71c887be140c98ef0d35361eaad2e
 
+## 錄製 http request 跟 response 網站
+
+https://proxyman.io/
+
+## 產生 http 網址，使用手機開網頁，檢查手機版排版
+
+https://blog.techbridge.cc/2018/05/24/ngrok/
+
 ## 輪詢與 Websocket 效能
 
 1. polling / long-polling 
@@ -23,3 +31,4 @@
 - 且戰且走HTML5(2) 應用主軸：WebSocket https://ithelp.ithome.com.tw/articles/10102394
 
 ## SEO 檢測標準
+
