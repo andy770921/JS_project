@@ -369,9 +369,13 @@ https://overreacted.io/zh-hant/why-do-we-write-super-props/
 ## 點擊 Component 外部關閉本體的 Hook 寫法
 https://stackoverflow.com/questions/54560790/detect-click-outside-react-component-using-hooks
 
-## npm 第三方套件
+## npm react 相關的第三方套件
 
-https://addyosmani.com/blog/react-window/
+1. react-window: https://addyosmani.com/blog/react-window/  
+2. react-select
+3. react-spring : https://www.react-spring.io/
+4. react-visibility-sensor : https://www.npmjs.com/package/react-visibility-sensor
+
 
 # React  語法使用
 
