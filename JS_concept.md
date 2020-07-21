@@ -515,6 +515,8 @@ const newState = state.map(obj =>
     obj.id === "101" ? { ...obj, completed: true } : obj
 );
 ```
+## 雙陣列依照特定排序，API 設計與前端寫法
+https://codesandbox.io/s/elated-bash-u6z0v?file=/src/App.js&fbclid=IwAR28jDta3RzOuNRpdwMhT6il4H63996C0bPxRZ6PGtgjJhQXoAWWQ1llifE
 ## 與 HTML DOM 的互動
 1. 事件監聽，以ID選: addEventListener()。```<script src="app.js"></script>```要在</body>前加，否則會讀取不到HTML的Tag出現錯誤
 https://ithelp.ithome.com.tw/articles/10192015  
