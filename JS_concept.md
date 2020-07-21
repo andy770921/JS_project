@@ -830,6 +830,18 @@ const Component: FC<{ list: [] }> = ({ list }) => {
     );
 };
 ```
+
+## css，去除 px 留下數字
+
+```ts
+const convertPxToNumber = (str: string) => {
+    const parsedNumber = parseInt(str.replace(/[^0-9]+/g, ''), 10);
+    if (Number.isNaN(parsedNumber)) {
+        return 1;
+    }
+    return parsedNumber;
+};
+```
 ## 手機觸控事件，與滑鼠點擊事件
 
 1. 事件觸發順序為以下  
