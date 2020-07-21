@@ -126,6 +126,22 @@ const CardTitle: FC<Props> = ({ isVertical, customStyle, children }) => (
 
 export default CardTitle;
 ```
+
+## 樣式繼承並轉換 HTML type
+
+```js
+const BaseText = styled.span`
+    font-size: 32px;
+    color: red;
+    line-height: 25px;
+`;
+
+const RetryBtn = styled(BaseText).attrs({ as: 'button' })`
+    color: blue;
+    background-color: unset;
+`;
+```
+
 ## SVG 置中及傳 style ( 使用 TypeScript )
 ```js
 import React, { FC, CSSProperties } from 'react';
