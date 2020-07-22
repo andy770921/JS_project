@@ -3,18 +3,28 @@
 ```js
 function insertionSort(arr){
   for (let i = 1; i < arr.length; i++){
-    const numToBeSorted = arr[i];
-    let j = 0;
-    for (j = i; j > 0 && arr[j-1] > numToBeSorted; j--){
-      //  第 j 個 和第 j-1 個交換，步驟 1.: j-1 的值往後移至 j
+    // 記住當前值 arr[i]
+    const temp = arr[i];
+    let j = i;
+    //  當次 i 左邊的值若比 arr[i] 大，右移一格
+    while(j > 0 && arr[j-1] > temp){
+      //  步驟 1.: 若 j-1 的值比較大，往右移至 j
+      //  此時右邊會最大
       arr[j] = arr[j-1];
+      j--;
     }
-    // 步驟 2.: 原先最右邊的值 ( arr[i] ) 指定到最左邊 第 j 個 ( 內層迴圈跑完後， j 是在需要交換的一串數字中最左邊的位置 )
-    arr[j] = numToBeSorted;
+    //  步驟 2.: 當前值指定到最左邊
+    //  內層迴圈跑完後， arr[j] 是在需要交換的一串數字中最左邊的位置
+    arr[j] = temp;
+    console.log(`round ${i}:`, arr)
   }
-  console.log(arr);
 }
-insertionSort([1, -100, 200, 2, 300]);
+insertionSort([1, -100, -200, 2, -5]);
+
+// round 1: [-100, 1,  -200, 2, -5]  => 1 往前調動，到最前停止    ; -100 順右移
+// round 2: [-200, -100,  1, 2, -5]  => -200 往前調動，到最前停止 ; -100, 1 順右移
+// round 3: [-200, -100,  1, 2, -5]
+// round 4: [-200, -100, -5, 1,  2]  => -5 往前調動，到 index = 2 停止 ; 1, 2 順右移
 ```
 ## Selection Sort: 時間複雜度 O(n^2)
 
