@@ -731,3 +731,16 @@ describe('generateCategoryMap', () => {
 });
 
 ```
+
+## 白板題
+
+1. 輸入一陣列，每個元素代表大樓高度，最右邊是海。輸出和輸入陣列等長的布林值陣列，標示該棟大樓是否看得到海
+```js
+// input example: [6, 3, 4, 1, 2, 1] ~~sea~~
+
+function checkIsSeaVisable(arr){
+  // TODOS
+}
+console.log([6, 3, 4, 1, 2, 1]);
+// [true, false, true, false, true, true]
+```
