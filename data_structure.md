@@ -738,9 +738,9 @@ describe('generateCategoryMap', () => {
 ```js
 // input example: [6, 3, 4, 1, 2, 1] ~~sea~~
 
-function checkIsSeaVisible(arr){
+function checkIfSeaCanBeSeen(arr){
   // TODOS
 }
-console.log(checkIsSeaVisible([6, 3, 4, 1, 2, 1]));
+console.log(checkIfSeaCanBeSeen([6, 3, 4, 1, 2, 1]));
 // [true, false, true, false, true, true]
 ```
