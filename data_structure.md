@@ -741,6 +741,6 @@ describe('generateCategoryMap', () => {
 function checkIsSeaVisible(arr){
   // TODOS
 }
-console.log([6, 3, 4, 1, 2, 1]);
+console.log(checkIsSeaVisible([6, 3, 4, 1, 2, 1]));
 // [true, false, true, false, true, true]
 ```
