@@ -174,7 +174,7 @@ css 樣式有分
 .u {
   color: unset;
   /* 字還是紅色的 */
-  /* 字要變成黑色的，要設定 color: initial */
+  /* 若希望字變黑色，要設定 color: initial */
 }
 ```
 
