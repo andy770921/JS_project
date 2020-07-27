@@ -261,6 +261,32 @@ const NavInfoList = () => {
 
 ```
 
+## 外層設定 border radius，需要加上 overflow: hidden 才能影響內層 div
+
+```
+const ManuWrapper = styled.div`
+    display: inline-block;
+
+    width: 375px;
+    border-radius: 13px;
+    overflow: hidden;
+    box-shadow: 0 0 50px 10px rgba(153, 153, 153, 0.5);
+    background-color: white;
+`;
+
+const Item = styled.div`
+    background-color: red;
+`;
+
+const MenuComponent: FC = () => (
+    <ManuWrapper>
+        <Item>123</Item>
+        <Item>456</Item>
+        <Item>789</Item>
+    </ManuWrapper>
+);
+```
+
 ## 提示字在地平線上升起與消失，父層使用 overflow: hidden，子層使用 animation
 ```ts
 import React, { FC, CSSProperties, useContext } from 'react';
