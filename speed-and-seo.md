@@ -30,5 +30,17 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 - JavaScript - Polling、WebSocket 與 SSE 介紹 https://ithelp.ithome.com.tw/articles/10230335
 - 且戰且走HTML5(2) 應用主軸：WebSocket https://ithelp.ithome.com.tw/articles/10102394
 
+
+## 跨瀏覽器 css 樣式
+- scroll 要配合 -webkit-overflow-scrolling: touch
+
+```css
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+```
+- 外層 display: flex ，若內層高度異常可加 min-height: fit-content
+```css
+   min-height: fit-content; // 避免 safari 吃錯每列高度
+```
 ## SEO 檢測標準
 
