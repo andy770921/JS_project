@@ -156,6 +156,28 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 	background: pink;
 }
 ```
+## unset 的說明
+css 樣式有分  
+1. 自然繼承的，如 color，自然狀態下，內層會繼承外層
+2. 不繼承的，如 border，自然狀態下，只會該層有效
+3. 針對 自然繼承的，color: unset 等於 color: inherit
+4. 針對 不繼承的，border: unset 等於 border: initial
+```html
+  <div class='red'>
+    <div class='u'>123</div>
+  </div>
+```
+```css
+.red {
+  color: red;
+}
+.u {
+  color: unset;
+  /* 字還是紅色的 */
+  /* 字要變成黑色的，要設定 color: initial */
+}
+```
+
 ## 加入自定義 CSS 方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
 2. internal style: EX:  
