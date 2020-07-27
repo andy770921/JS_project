@@ -789,7 +789,7 @@ const Component = () => {
 
 render(<Component />, document.getElementById('root'));
 ```
-## 跳出彈窗，不顯示瀏覽器下拉捲軸
+## Scroll 事件相關，跳出彈窗，不顯示瀏覽器下拉捲軸
 ```js
 const ComponentWithModal: FC = () => {
     const [isOpenModal, setIsOpenModal] = useState(false);
@@ -802,30 +802,6 @@ const ComponentWithModal: FC = () => {
         <>
             <SomeComponent />
             {isOpenModal && <Modal />}
-        </>
-    );
-};
-```
-## Scroll 事件相關，彈窗使用 Position: fixed 時，隱藏瀏覽器滑動捲軸
-```js
-import React, { FC, useState, useEffect } from 'react';
-
-const Component: FC<{ list: [] }> = ({ list }) => {
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const handleModalClose = () => {
-        setIsOpenModal(false);
-    };
-    useEffect(() => {
-        document.body.style.overflowY = isOpenModal ? 'hidden' : 'auto';
-    }, [isOpenModal]);
-    return (
-        <>
-            {list.map(
-                // ...
-            )}
-            {isOpenModal && (
-                <ProductToCartModal onClose={handleModalClose} />
-            )}
         </>
     );
 };
