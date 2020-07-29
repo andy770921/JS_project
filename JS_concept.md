@@ -838,3 +838,14 @@ https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/294280/  
 5. (圖中 E) 靜態取得網頁總高度: document.body.clientHeight  
 https://blog.csdn.net/china_skag/article/details/30512877  
+
+## 正規表達式
+- str 與 正規表達式 轉換： https://stackoverflow.com/questions/10940137/regex-test-v-s-string-match-to-know-if-a-string-matches-a-regular-expression
+- regexObject.test( String )
+```ts
+const validSalePageIdList = map(
+            filter(salePageIdList, idString => /[0-9]/.test(idString)),
+            id => parseInt(id, 10)
+        );
+```
+- string.match( RegExp )
