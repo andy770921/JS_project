@@ -13,6 +13,7 @@ https://ithelp.ithome.com.tw/articles/10216626
 - type 也可擴充，透過 & 達成  
 - https://ithelp.ithome.com.tw/users/20120614/ironman/2685
 - https://stackoverflow.com/questions/37233735/typescript-interfaces-vs-types  
+- 官方文件： https://www.typescriptlang.org/docs/handbook/advanced-types.html#interfaces-vs-type-aliases
 
 ## 讓 interface 內的 key 可變成 optional：使用 Partial
 https://stackoverflow.com/questions/39713349/make-all-properties-within-a-typescript-interface-optional
