@@ -841,11 +841,11 @@ https://blog.csdn.net/china_skag/article/details/30512877
 
 ## 正規表達式
 - str 與 正規表達式 轉換： https://stackoverflow.com/questions/10940137/regex-test-v-s-string-match-to-know-if-a-string-matches-a-regular-expression
-- regexObject.test( String )
+- regexObject.test( String )，return 布林值
 ```ts
 const validSalePageIdList = map(
             filter(salePageIdList, idString => /[0-9]/.test(idString)),
             id => parseInt(id, 10)
         );
 ```
-- string.match( RegExp )
+- string.match( RegExp )，return 符合字的陣列或 null
