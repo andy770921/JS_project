@@ -6,6 +6,10 @@ type fbqSdkType = typeof window.fbq & {
     (eventType: string, eventName: string, parameters: {}, { external_id: string }): void;
 };
 ```
+## 物件使用 type 或 interface ?
+- 若希望被擴充（extends）則用 interface。會使用到 union 或 intersection 則用 type
+https://ithelp.ithome.com.tw/articles/10216626  
+
 ## 讓 interface 內的 key 可變成 optional：使用 Partial
 https://stackoverflow.com/questions/39713349/make-all-properties-within-a-typescript-interface-optional
 
