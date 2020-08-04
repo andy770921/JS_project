@@ -31,6 +31,10 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 - 且戰且走HTML5(2) 應用主軸：WebSocket https://ithelp.ithome.com.tw/articles/10102394
 
 
+## 圖片載入優化 - BlurHash
+
+https://www.slideshare.net/kewang/blurhash
+
 ## 跨瀏覽器 css 樣式
 - scroll 要配合 -webkit-overflow-scrolling: touch
 
