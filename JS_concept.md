@@ -839,6 +839,39 @@ https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/294280/
 5. (圖中 E) 靜態取得網頁總高度: document.body.clientHeight  
 https://blog.csdn.net/china_skag/article/details/30512877  
 
+## keydown 事件相關
+1. https://www.w3.org/TR/uievents/#keydown
+2. 按 Enter 預設行為是：點擊螢幕上的按鈕再按 enter， input 與 button 元件會是 onFocus，此時 keydown 預設行為會一起觸發 button (or input) 的 onClick
+3. 若要阻止此預設行為，可以在 keydown 事件的監聽函式，加入 e.preventDefault()
+```
+    const handleKeydown = (e) => {
+        switch (e.code) {
+            case 'Enter':
+                e.preventDefault();
+                onKeydownEnter();
+                break;
+            case 'Backspace':
+                deleteNumber();
+                break;
+            case 'Digit0':
+            case 'Digit1':
+            case 'Digit2':
+            case 'Digit3':
+            case 'Digit4':
+            case 'Digit5':
+            case 'Digit6':
+            case 'Digit7':
+            case 'Digit8':
+            case 'Digit9':
+                appendNumber(parseInt(e.code, 10));
+                break;
+            default:
+                break;
+        }
+    };
+document.addEventListener('keydown', handleKeydown, false);
+```
+
 ## 正規表達式
 - str 與 正規表達式 轉換： https://stackoverflow.com/questions/10940137/regex-test-v-s-string-match-to-know-if-a-string-matches-a-regular-expression
 - regexObject.test( String )，return 布林值
