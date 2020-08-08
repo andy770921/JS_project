@@ -138,6 +138,7 @@ let B = debounce(()=>A("hi"), 2000);
 Ref: https://gist.github.com/nmsdvid/8807205
 
 ## pipe (closure, HOF, rest parameter)
+https://playcode.io/603416/
 ```js
 // Q:
 function pipe(...funcs){
