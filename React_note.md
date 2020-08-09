@@ -52,6 +52,12 @@ https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils
 ## 封裝 fetch API 的 Hook (Dan 文章推薦):
 https://www.robinwieruch.de/react-hooks-fetch-data
 
+## 使用 portal，處理 popup
+優點:  
+- 避免 css 外層 z-index 覆蓋影響到 popup overlay 所在的內層
+- 事件傳遞符合虛擬 DOM 的內外層傳遞，真實瀏覽器畫面上不是內外層關係，是看 createPortal 寫的，產生在不同 div
+https://www.youtube.com/watch?v=LyLa7dU5tp8
+
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
 1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
 2. 若打開註解，使用 provider value={{orderBy, setOrderBy}}，在 notAdd 函數觸發時，console.log 會出現 re-render
