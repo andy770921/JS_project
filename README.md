@@ -61,6 +61,7 @@ https://github.com/jigsawye/javascript
 ## 面試經驗與題目
 
 1. [2019/10/23](https://pttcareer.com/soft_job/M.1571823381.A.B68.html)
+2. [從輸入網址列到渲染畫面，過程經歷了什麼事？](https://w3c.hexschool.com/blog/8d691e4f?fbclid=IwAR2-_4Gt23OuyWpTYhdaT43s_PmNPepKN4DEdRRG6zCr9tsbhJwkLQrmJ-o)
 
 ## 快速建置，開始專案使用的 Repo
 
