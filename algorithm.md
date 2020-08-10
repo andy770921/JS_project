@@ -153,6 +153,8 @@ console.log(
   mergeSort([1, -100, 200, 2, 300, -5, 400, -500])
   );
 ```
+## Quick Sort: 時間複雜度 O(nlogn)
+https://ithelp.ithome.com.tw/articles/10219151
 
 ## Heap Sort: 不是 comparison based ，時間複雜度 O(nlogn)
 
