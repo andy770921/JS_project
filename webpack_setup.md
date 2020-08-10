@@ -692,3 +692,70 @@ export default MyComponent;
 
 7. 終端機輸入指令：`npm unpublish react-ts-npm-boilerplate@1.0.0 -f` 可移除自己上傳的、官網的 package
 Ref: https://docs.npmjs.com/unpublishing-packages-from-the-registry
+
+ ## ------------------- 動態設定 proxy header  -------------------
+ 
+```js
+const merge = require('webpack-merge');
+const path = require('path');
+const common = require('./webpack.config.common.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = (env) => merge(common(env), {
+    mode: 'development',
+    entry: './src/index.dev.tsx' ,
+    output: {
+        filename: 'index.js',
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: '/'
+    },
+    devtool: 'inline-source-map',
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        allowedHosts: ['https://domain.api.tw'],
+        proxy: { 
+            '/abc': {
+                target: 'https://domain.api.tw', //domain
+                secure: true,
+                changeOrigin: true,
+                // headers: {
+                //     'X-Service-Catalog': 'myService',
+                //     'Authorization': 'Bearer xyz,
+                //     'X-DeviceSource': 'App',
+                //     'X-DeviceModel': 'Mac',
+                //     'X-AgentVersion': '12.1.1',
+                //     'X-ApplicationVersion': '1.0.1',
+                // },
+                // bypass: function(req, res, proxyOptions) {
+                //     if (req.headers.hasOwnProperty('referer')) {
+                //         if (req.headers.referer.includes('/def/g')) {
+                //             delete proxyOptions.headers.Authorization;
+                //         }
+                //     }
+                // }
+                headers: {},
+                bypass: function(req, res, proxyOptions) {
+                    proxyOptions.headers['X-Service-Catalog'] = req.headers['x-service-catalog'];
+                    proxyOptions.headers.Authorization = req.headers.authorization;
+                    proxyOptions.headers['X-DeviceSource'] = req.headers['x-devicesource'];
+                    proxyOptions.headers['X-DeviceModel'] = req.headers['x-devicemodel'];
+                    proxyOptions.headers['X-AgentVersion'] = req.headers['x-agentversion'];
+                    proxyOptions.headers['X-ApplicationVersion'] = req.headers['x-applicationversion'];
+                    if (req.headers.hasOwnProperty('referer')) {
+                        if (req.headers.referer.includes('/login/verify-location')) {
+                            delete proxyOptions.headers.Authorization;
+                        }
+                    }
+                },
+            }
+        }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            minify: false,
+        }),
+    ]
+});
+```
