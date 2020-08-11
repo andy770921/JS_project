@@ -1,5 +1,13 @@
 # Node JS 觀念
-
+## 檔案中註解方式
+```js
+/**
+ * 說明
+ * @param { String } shopDomainName - 變數說明
+ * @param { Boolean } isClearCache=false - 變數說明
+ * @returns { Promise<Object> }
+ */
+```
 ## thread
 https://www.youtube.com/watch?v=zphcsoSJMvM
 
