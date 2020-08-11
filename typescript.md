@@ -35,3 +35,8 @@ if (currentState === ValidCase.NOT_ENTER)
 ```
 ## as const
 https://stackoverflow.com/questions/55230653/whats-the-difference-between-typescript-const-assertions-and-declarations
+
+## react component 可使用泛型如下
+```
+<CheckedIconArea<T> />
+```
