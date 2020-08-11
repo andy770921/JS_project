@@ -33,3 +33,5 @@ let [currentState, setCurrentState] =  useState(ValidCase.NOT_ENTER);
 //....
 if (currentState === ValidCase.NOT_ENTER)
 ```
+## as const
+https://stackoverflow.com/questions/55230653/whats-the-difference-between-typescript-const-assertions-and-declarations
