@@ -202,6 +202,59 @@ console.log(linkedList.deleteNode(headNode, 2));
 // Node { next: { next: null, data:3 }, data:1 }
 ```
 
+## Stack 
+- 使用不變長度的 Array ，實作三等份 Stack
+```js
+class FixedMultiStack {
+  constructor(originalArr, numOfStacks){
+    this.values = [...originalArr];
+    this.numOfStacks = numOfStacks;
+    this.maxStackSize = originalArr.length / numOfStacks;
+    this.currentStackSizes = [...Array(numOfStacks)].map((_, stackNum) => {
+        let currentSize = 0;
+        for(let i = stackNum * this.maxStackSize; i < (stackNum + 1) * this.maxStackSize; i++){
+          if (originalArr[i] !== undefined) currentSize++
+        }
+        return currentSize
+      });
+  }
+
+  isEmpty(stackNum){
+    return this.currentStackSizes[stackNum] === 0;
+  }
+
+  isFull(stackNum){
+    return this.currentStackSizes[stackNum] === this.maxStackSize;
+  }
+
+  indexOfTop(stackNum){
+    const offset = stackNum * this.maxStackSize;
+    const size = this.currentStackSizes[stackNum];
+    return offset + size - 1;
+  }
+  push(stackNum, value){
+    if(this.isFull(stackNum)) throw new Error(`stack number ${stackNum} is full`);
+    this.currentStackSizes[stackNum]++;
+    this.values[this.indexOfTop(stackNum)] = value;
+    return value;
+  }
+  pop(stackNum){
+    if(this.isEmpty(stackNum)) throw new Error(`stack number ${stackNum} is empty`);
+    const value = this.values[this.indexOfTop(stackNum)];
+        this.values[this.indexOfTop(stackNum)] = 0;
+    this.currentStackSizes[stackNum]--;
+    return value;
+  }
+}
+const testMultiStack = new FixedMultiStack([1,2,3,4,5,6,7,8,9,10,11,12], 3);
+console.log(testMultiStack.pop(1)); // 8
+console.log(testMultiStack.pop(1)); // 7
+console.log(testMultiStack.pop(2)); // 12
+console.log(testMultiStack.push(1, 100)); // 100
+console.log(testMultiStack.values) 
+// [1,2,3,4,5,6,100,0,9,10,11,0]
+```
+
 ## Binary Tree
 1. Inorder, post-order, pre-order, level-order Traverse:
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/BinaryTree_2.png) 
