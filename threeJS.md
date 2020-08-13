@@ -129,7 +129,7 @@ Ref: https://github.com/kriscfoster/threejs-import-from-blender/blob/master/publ
 </html>
 ```
 載入 3D 物件及 外觀材料
-```
+```js
  const objLoader = new THREE.OBJLoader();
     objLoader.setPath('/blender-files/');
     const mtlLoader = new THREE.MTLLoader();
@@ -148,7 +148,7 @@ Ref: https://github.com/kriscfoster/threejs-import-from-blender/blob/master/publ
     });
 ```
 設定 載入到畫面中的 obj 旋轉
-```
+```js
     let cube;
     new Promise((resolve) => {
       mtlLoader.load('cube.mtl', (materials) => {
