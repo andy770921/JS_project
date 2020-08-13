@@ -109,7 +109,7 @@ class Test {
 }
 
 const test = new Test();
-test.sayThisInProto();
+test.sayThisInProto(); // in sayThisInProto 1 undefined 100      in sayThisInProto 2 Test {sayHi: "hi"} 100
 
 // const testObj = {a: "hi", b: function(){ console.log('testObj', this)}};
 // testObj.b();
