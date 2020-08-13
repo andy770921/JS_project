@@ -1,6 +1,22 @@
 
 # JS 中的 this, class, prototype
 
+## 物件中的 this
+```js
+const a = {
+  x: this,
+  y: function(){
+    return this;
+  },
+  z: () => {
+    return this;
+  }
+}
+
+console.log(a.x); // Window
+console.log(a.y()); // {x: Window, y: ƒ, z: ƒ}
+console.log(a.z()); // Window
+```
 ## constructor function 及 class 的 this
 
 ```js
