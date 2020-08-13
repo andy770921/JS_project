@@ -16,6 +16,10 @@ const a = {
 console.log(a.x); // Window
 console.log(a.y()); // {x: Window, y: ƒ, z: ƒ}
 console.log(a.z()); // Window
+
+const { y: deconstructoredY } = a;
+console.log('execute deconstructored Y', deconstructoredY()); // Window
+
 ```
 ## constructor function 及 class 的 this
 
