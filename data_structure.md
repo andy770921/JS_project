@@ -238,6 +238,7 @@ class FixedMultiStack {
     this.values[this.indexOfTop(stackNum)] = value;
     return value;
   }
+  
   pop(stackNum){
     if(this.isEmpty(stackNum)) throw new Error(`stack number ${stackNum} is empty`);
     const value = this.values[this.indexOfTop(stackNum)];
@@ -245,11 +246,17 @@ class FixedMultiStack {
     this.currentStackSizes[stackNum]--;
     return value;
   }
+
+  peek(stackNum){
+    if(this.isEmpty(stackNum)) throw new Error(`stack number ${stackNum} is empty`);
+    return this.values[this.indexOfTop(stackNum)];;
+  }
 }
 const testMultiStack = new FixedMultiStack([1,2,3,4,5,6,7,8,9,10,11,12], 3);
 console.log(testMultiStack.pop(1)); // 8
 console.log(testMultiStack.pop(1)); // 7
 console.log(testMultiStack.pop(2)); // 12
+console.log(testMultiStack.peek(2)); // 11
 console.log(testMultiStack.push(1, 100)); // 100
 console.log(testMultiStack.values) 
 // [1,2,3,4,5,6,100,0,9,10,11,0]
