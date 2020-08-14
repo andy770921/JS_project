@@ -1,6 +1,9 @@
 # Promise 相關問題
 
-## Ref: https://ithelp.ithome.com.tw/articles/10228649  
+Ref: https://ithelp.ithome.com.tw/articles/10228649 
+
+## 問題
+
 1. 請問 console 會出現甚麼
 ```js
 function afterDelay(ms, value){
@@ -102,5 +105,14 @@ second().then(console.log);
 // value: world
 // hello
 ```
+5. 請問 console 會出現甚麼
+```js
+(async () => {
+  console.log('1');
+  await (async() => { console.log('3')})();
+  console.log('2');
+})();
+```
+
 
 
