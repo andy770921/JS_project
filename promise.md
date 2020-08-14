@@ -1,7 +1,7 @@
 # Promise 相關問題
 
 ## Ref: https://ithelp.ithome.com.tw/articles/10228649  
-- 1.
+1.
 ```js
 function afterDelay(ms, value){
   return new Promise (resolve =>{
@@ -35,11 +35,12 @@ ex2();
 // end
 
 ```
-- 2.
+2.
 ```js
 async function ex3(){
   console.log('start');
-  const msg = await 'hello world';
+  const msg = await 'hello world';  
+  // or: const msg = await Promise.resolve('hello world');
   console.log('msg: ', msg);
   console.log('end');
 }
@@ -48,4 +49,6 @@ ex3();
 // start
 // msg: hello world
 // end
+
+
 ```
