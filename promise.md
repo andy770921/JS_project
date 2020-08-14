@@ -37,11 +37,10 @@ ex2();
 // value: hello world
 
 ```
-2. 下列程式碼何處有何問題
+2. 下列程式碼有無問題
 ```js
 async function ex3(){
-  const msg = await 'hello world'; // TypeScript Error: 'await' has no effect on the type of this expression.
-  // 應修正為: const msg = await Promise.resolve('hello world');
+  const msg = await 'hello world'; 
   console.log('msg: ', msg);
 }
 
@@ -51,6 +50,9 @@ async function ex4(){
 
 ex3(); 
 ex4(); 
+
+// const msg = await 'hello world'; 寫法不佳 JS 不會報錯，但 TypeScript 會報錯: 'await' has no effect on the type of this expression.
+// 應修正為: const msg = await Promise.resolve('hello world');
 ```
 3. 請問 console 會出現甚麼
 ```js
