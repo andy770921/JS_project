@@ -1,7 +1,7 @@
 # Promise 相關問題
 
 ## Ref: https://ithelp.ithome.com.tw/articles/10228649  
-1.
+1. 請問 console 會出現甚麼
 ```js
 function afterDelay(ms, value){
   return new Promise (resolve =>{
@@ -35,22 +35,38 @@ ex2();
 // end
 
 ```
-2.
+2. 下列程式碼何處有何問題
 ```js
 async function ex3(){
-  console.log('start');
   const msg = await 'hello world'; // TypeScript Error: 'await' has no effect on the type of this expression.
   // 應修正為: const msg = await Promise.resolve('hello world');
   console.log('msg: ', msg);
-  console.log('end');
+}
+
+async function ex4(){
+  return 100;
 }
 
 ex3(); 
-// start
-// msg: hello world
-// end
+ex4(); 
 ```
-3.
+3. 請問 console 會出現甚麼
+```js
+async function ex3(){
+  const msg = await Promise.resolve('hello world');
+  console.log('msg: ', msg);
+}
+
+async function ex4(){
+  return 100;
+}
+
+ex3();
+console.log(ex4());
+// Promise {<fulfilled>: 100}
+// msg:  hello world
+```
+4. 請問 console 會出現甚麼
 ```js
 function afterDelay(ms, value){
   return new Promise (resolve =>{
