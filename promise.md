@@ -49,6 +49,42 @@ ex3();
 // start
 // msg: hello world
 // end
-
-
 ```
+3.
+```js
+function afterDelay(ms, value){
+  return new Promise (resolve =>{
+    setTimeout(()=>{ 
+      console.log('value: ', value);
+      resolve(value); 
+      }, ms);
+  });
+}
+
+async function first(){
+  console.log('enter first');
+  return await afterDelay(1000, 'hello');
+}
+
+async function second(){
+  console.log('enter second');
+  const result = await first();
+  console.log('in the middle');
+  await afterDelay(2000, 'world');
+  return result;
+}
+
+second().then(console.log); 
+
+}
+
+second().then(console.log); 
+// enter second
+// enter first
+// value: hello
+// in the middle
+// value: world
+// hello
+```
+
+
