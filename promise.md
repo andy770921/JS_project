@@ -16,26 +16,25 @@ function afterDelay(ms, value){
 }
 
 async function ex1(){
-  console.log('start');
+  console.log('ex1 start');
   const msg = afterDelay(1000, 'hello world');
-  console.log('end');
+  console.log('ex1 end. print msg: ', msg);
 }
 
 async function ex2(){
-  console.log('start');
-  const msg = await afterDelay(1000, 'hello world');
-  console.log('end');
+  console.log('ex2 start');
+  const msg = await afterDelay(500, 'hello world 2');
+  console.log('ex2 end. print msg: ', msg);
 }
 
 ex1(); 
-// start
-// end
-// value: hello world
-
 ex2(); 
-// start
+// ex1 start
+// ex1 end. print msg: Promise {<pending>}
+// ex2 start
+// value: hello world 2
+// ex2 end. print msg: hello world 2
 // value: hello world
-// end
 
 ```
 2. 下列程式碼何處有何問題
