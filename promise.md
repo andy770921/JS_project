@@ -39,8 +39,8 @@ ex2();
 ```js
 async function ex3(){
   console.log('start');
-  const msg = await 'hello world';  
-  // or: const msg = await Promise.resolve('hello world');
+  const msg = await 'hello world'; // TypeScript Error: 'await' has no effect on the type of this expression.
+  // 應修正為: const msg = await Promise.resolve('hello world');
   console.log('msg: ', msg);
   console.log('end');
 }
