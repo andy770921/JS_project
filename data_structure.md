@@ -203,6 +203,56 @@ console.log(linkedList.deleteNode(headNode, 2));
 ```
 
 ## Stack 
+- 使用 Linked List，實作 Stack (TypeScript)
+```ts
+class StackNode<T> {
+  public data: T;
+  public next: StackNode<T> | null;
+
+  constructor(data: T){
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class Stack<T> {
+  private top: StackNode<T> | null;
+
+  constructor(){
+    this.top = null;
+  }
+
+  public pop(){
+    if(this.top === null) throw new Error('stack is empty');
+    const item: T = this.top.data;
+    this.top = this.top.next;
+    return item;
+  } 
+
+  public push(item: T){
+    const node = new StackNode<T>(item);
+    node.next = this.top;
+    this.top = node;
+  } 
+
+  public peek(){
+    if (this.top === null) throw new Error('stack is empty');
+    return this.top.data;
+  }
+
+  public isEmpty(){
+    return this.top === null;
+  }
+}
+
+const myStack = new Stack<number>();
+myStack.push(100);
+console.log(myStack.peek()); // 100
+myStack.push(200);
+console.log(myStack.peek()); // 200
+myStack.pop();
+console.log(myStack.peek()); // 100
+```
 - 使用不變長度的 Array ，實作三等份 Stack
 ```js
 class FixedMultiStack {
