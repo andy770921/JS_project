@@ -95,10 +95,6 @@ async function second(){
 }
 
 second().then(console.log); 
-
-}
-
-second().then(console.log); 
 // enter second
 // enter first
 // value: hello
