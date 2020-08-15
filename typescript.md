@@ -40,3 +40,15 @@ https://stackoverflow.com/questions/55230653/whats-the-difference-between-typesc
 ```
 <CheckedIconArea<T> />
 ```
+
+## class 擴充語法
+- constructor 內宣告 instance 的 key，同名可簡寫
+```ts
+class StackNode<T> {
+  public next: StackNode<T> | null = null;
+
+  constructor(public data: T){
+    this.next = null;
+  }
+}
+```
