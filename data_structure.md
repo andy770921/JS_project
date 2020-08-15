@@ -205,9 +205,9 @@ console.log(linkedList.deleteNode(headNode, 2));
 ## Stack 
 - 使用 Linked List，實作 Stack (TypeScript)
 ```ts
-class StackNode<T> {
+class Node<T> {
   public data: T;
-  public next: StackNode<T> | null;
+  public next: Node<T> | null;
 
   constructor(data: T){
     this.data = data;
@@ -216,10 +216,15 @@ class StackNode<T> {
 }
 
 class Stack<T> {
-  private top: StackNode<T> | null;
+  private top: Node<T> | null;
 
-  constructor(){
+  constructor(arr?: T[]){
     this.top = null;
+    if(arr?.length > 1) {
+      for(let i = 0; i < arr.length; i++){
+        this.push(arr[i]);
+      }
+    }
   }
 
   public pop(){
@@ -230,7 +235,7 @@ class Stack<T> {
   } 
 
   public push(item: T){
-    const node = new StackNode<T>(item);
+    const node = new Node<T>(item);
     node.next = this.top;
     this.top = node;
   } 
@@ -245,13 +250,13 @@ class Stack<T> {
   }
 }
 
-const myStack = new Stack<number>();
+const myStack = new Stack<number>([1,2,3]);
+myStack.pop();
+console.log(myStack.peek()); // 2
 myStack.push(100);
 console.log(myStack.peek()); // 100
-myStack.push(200);
-console.log(myStack.peek()); // 200
 myStack.pop();
-console.log(myStack.peek()); // 100
+console.log(myStack.peek()); // 2
 ```
 - 使用不變長度的 Array ，實作三等份 Stack
 ```js
