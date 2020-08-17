@@ -175,6 +175,54 @@ export default TickIcon;
 // 使用範例
 // <TickIcon size={20} customStyle={{ padding: '2px', borderRadius: '50%' }} />
 ```
+
+
+## 文字置中，文字過長時出現捲軸，客製卷軸長、寬、長條棒
+```ts
+const ErrorMessage = styled.div<{ isMobile: boolean }>`
+    width: 100%;
+    color: ${props => props.theme.darkGreyFour};
+    font-size: ${({ theme, isMobile }) => (isMobile ? theme.fontSize.M : theme.fontSize['3XL'])};
+    margin-bottom: 6px;
+    line-height: normal;
+`;
+
+const ErrorMessagesWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+`;
+
+const ScrollWrapper = styled.div<{ isMobile: boolean }>`
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    ::-webkit-scrollbar:vertical {
+        width: 11px;
+    }
+    ::-webkit-scrollbar:horizontal {
+        height: 11px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid white; /* should match background, can't be transparent */
+        background-color: ${({ theme }) => theme.greyThree};
+    }
+`;
+
+
+const ErrorComponent: FC<{ isMobile: boolean; message: string; }> = ({ isMobile, message }) => (
+    <ErrorMessagesWrapper>
+        <ScrollWrapper isMobile={isMobile}>
+            <ErrorMessage isMobile={isMobile}>{message}</ErrorMessage>
+        </ScrollWrapper>
+    </ErrorMessagesWrapper>
+)
+```
 ## 使用 props 控制全有 css 或全無
 ```ts
 import styled from 'styled-components';
