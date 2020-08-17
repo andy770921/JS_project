@@ -148,6 +148,10 @@ git clone https://github.com/andy770921/remote-assignments.git
 export default App;
 ```
 
+## Git 練習網站
+
+https://learngitbranching.js.org/?locale=zh_TW
+
 ## Git 進階指令
 
 1. `git reset --hard xxx`: 清掉 xxx 之後的 commit ，並且回到 xxx commit，如`git reset 85e7e30`，另一種寫法為 `git reset master^`，在 master 分支倒回一個版本
