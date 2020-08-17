@@ -187,7 +187,7 @@ const ErrorMessage = styled.div<{ isMobile: boolean }>`
     line-height: normal;
 `;
 
-const ErrorMessagesWrapper = styled.div`
+const ErrorMessageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -216,11 +216,11 @@ const ScrollWrapper = styled.div<{ isMobile: boolean }>`
 
 
 const ErrorComponent: FC<{ isMobile: boolean; message: string; }> = ({ isMobile, message }) => (
-    <ErrorMessagesWrapper>
+    <ErrorMessageWrapper>
         <ScrollWrapper isMobile={isMobile}>
             <ErrorMessage isMobile={isMobile}>{message}</ErrorMessage>
         </ScrollWrapper>
-    </ErrorMessagesWrapper>
+    </ErrorMessageWrapper>
 )
 ```
 ## 使用 props 控制全有 css 或全無
