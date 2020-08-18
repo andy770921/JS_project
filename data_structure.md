@@ -317,6 +317,96 @@ console.log(testMultiStack.push(1, 100)); // 100
 console.log(testMultiStack.values) 
 // [1,2,3,4,5,6,100,0,9,10,11,0]
 ```
+- 在 O(1) 的限制下，實作能取出最小值的 Stack (TypeScript)
+```ts
+class Node<T> {
+  public data: T;
+  public next: Node<T> | null;
+
+  constructor(data: T){
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class Stack<T> {
+  private top: Node<T>| null;
+
+  constructor(arr?: T[]){
+    this.top = null;
+    if(arr?.length > 1) {
+      for(let i = 0; i < arr.length; i++){
+        this.push(arr[i]);
+      }
+    }
+  }
+
+  public pop(){
+    if(this.top === null) throw new Error('stack is empty');
+    const item: T = this.top.data;
+    this.top = this.top.next;
+    return item;
+  } 
+
+  public push(item: T){
+    const node = new Node(item);
+    node.next = this.top;
+    this.top = node;
+  } 
+
+  public peek(){
+    if (this.top === null) throw new Error('stack is empty');
+    return this.top.data;
+  }
+
+  public isEmpty(){
+    return this.top === null;
+  }
+}
+
+class NodeWithMin {
+  min: number;
+  value: number;
+  constructor(value: number, min: number){
+    this.value = value;
+    this.min = min;
+  }
+}
+
+class StackWithMin extends Stack<NodeWithMin> {
+
+  constructor(arr?: number[]){
+    super();
+    if(arr?.length > 1) {
+      for(let i = 0; i < arr.length; i++){
+        this.push(arr[i]);
+      }
+    }
+  }
+  
+  min(){
+    if(this.isEmpty()){
+      return Infinity; 
+    } else {
+      return this.peek().min;
+    }
+  }
+
+  push(value: any){ // 應為 number
+    const newMin = Math.min(value, this.min());
+    super.push(new NodeWithMin(value, newMin));
+  }
+}
+
+const myStackWithMin = new StackWithMin([2,1,3]);
+myStackWithMin.push(100);
+console.log(myStackWithMin.peek().value); // 100
+console.log(myStackWithMin.peek().min); // 1
+myStackWithMin.pop();
+console.log(myStackWithMin.peek().value); // 3
+console.log(myStackWithMin.peek().min); // 1
+```
+- Note: TypeScript 型別在繼承後，要統一，不然會出錯，本處使用的型別不同，難以修正，[Ref](https://stackoverflow.com/questions/38025364/typescript-child-class-function-overloading)
 
 ## Binary Tree
 1. Inorder, post-order, pre-order, level-order Traverse:
