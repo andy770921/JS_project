@@ -386,13 +386,13 @@ class StackWithMin extends Stack<NodeWithMin> {
   
   min(){
     if(this.isEmpty()){
-      return Infinity; 
+      return null;
     } else {
       return this.peek().min;
     }
   }
 
-  push(value: any){ // 應為 number
+  push(value: any){ // 型別應為 number
     const newMin = Math.min(value, this.min());
     super.push(new NodeWithMin(value, newMin));
   }
