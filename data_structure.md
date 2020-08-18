@@ -374,7 +374,6 @@ class NodeWithMin {
 }
 
 class StackWithMin extends Stack<NodeWithMin> {
-
   constructor(arr?: number[]){
     super();
     if(arr?.length > 1) {
@@ -386,13 +385,13 @@ class StackWithMin extends Stack<NodeWithMin> {
   
   min(){
     if(this.isEmpty()){
-      return null;
+      return Infinity; // edge value
     } else {
       return this.peek().min;
     }
   }
 
-  push(value: any){ // 型別應為 number
+  push(value: any){ // type should be number
     const newMin = Math.min(value, this.min());
     super.push(new NodeWithMin(value, newMin));
   }
@@ -405,6 +404,12 @@ console.log(myStackWithMin.peek().min); // 1
 myStackWithMin.pop();
 console.log(myStackWithMin.peek().value); // 3
 console.log(myStackWithMin.peek().min); // 1
+myStackWithMin.pop();
+console.log(myStackWithMin.peek().value); // 1
+console.log(myStackWithMin.peek().min); // 1
+myStackWithMin.pop();
+console.log(myStackWithMin.peek().value); // 2
+console.log(myStackWithMin.peek().min); // 2
 ```
 - Note: TypeScript 型別在繼承後，要統一，不然會出錯，本處使用的型別不同，難以修正，[Ref](https://stackoverflow.com/questions/38025364/typescript-child-class-function-overloading)
 
