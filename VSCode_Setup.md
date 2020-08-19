@@ -74,7 +74,7 @@ node_modules
 .DS_Store
 ```
 
-2. .setting.json 設定
+2. VSCode setting.json 設定
 ```
 {
   "files.autoSave": "afterDelay",
