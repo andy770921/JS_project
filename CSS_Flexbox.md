@@ -11,8 +11,7 @@
 4. 第三個 auto: flex-basis，若有設定，指元件要占的最小寬度。若沒設定 flex-basis 但有設定 ```flex: 1```，預設值是 0。若沒設定 flex-basis 也沒設定 ```flex: 1```，預設值是 auto，指的是寬度依元件 width 為主
 5. 若只有寫 ```flex: 1```，flex-shrink 預設是 1 ，flex-basis ，預設是 0
 ## 面試題
-Q: 請問三個 flex item 寬度如何分配?   
-A: 平分，不受 width 設定影響   
+Q: 請問三個 flex item 寬度如何分配?    
 ```html
 <div class="flex">
   <div class="a">A</div>
@@ -20,6 +19,31 @@ A: 平分，不受 width 設定影響
   <div class="c">C</div>
 </div>
 ```
+Case 1 Ans: 扣掉寬度後，平分剩餘 margin，受 width 設定影響，最終 A, B, C 寬度為 20px, 20px, 30px  
+```css
+.flex{
+  display: flex;
+  width: 100px;
+  background-color: red;
+}
+
+.a{
+  width: 10px;
+  flex-grow: 1;
+  background-color: blue;
+}
+.b{
+  width: 10px;
+  flex-grow: 1;
+  background-color: yellow;
+}
+.c{
+  width: 20px;
+  flex-grow: 1;
+  background-color: green;
+}
+```
+Case 2 Ans: 平分，不受 width 設定影響  
 ```css
 .flex{
   display: flex;
