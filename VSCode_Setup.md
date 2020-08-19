@@ -62,6 +62,53 @@
 6. 點+(加到git add加到stage)，輸入註解文字，再按勾勾(git commit)
 7. 按F1，再輸入git history，會出現新分頁，可看到文件commit狀況
 
+## 若用 Mac 可加入以下設定，取消將 .DS_Store 上傳
+
+1. .gitignore 設定
+```
+# package directories
+node_modules
+# JetBrains Rider
+.idea
+# macOS
+.DS_Store
+```
+
+2. .setting.json 設定
+```
+{
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 16,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js.map": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    ".history": true,
+    ".idea": true
+  },
+  "search.exclude": {
+    "**/.history": true,
+    "**/.idea": true,
+    "**/obj/Debug": true,
+    "**/*.snap": true,
+    "**/coverage": true
+  },
+  "files.autoSaveDelay": 60000,
+  "editor.tabSize": 4,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": false,
+  "eslint.enable": true
+}
+```
 ## 使用github page  
 Ref: https://blog.wawajohn.net/11322.html  
 
