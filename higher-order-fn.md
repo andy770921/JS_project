@@ -5,7 +5,8 @@ function forEach(list, fn){
   // CODE HERE:
 };
 
-forEach([2, 3, 4], console.log); // 2 3 4
+const log = (text) => console.log(text);
+forEach([2, 3, 4], log); // 2 3 4
 
 // A:
 function forEach(list, fn){
