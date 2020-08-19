@@ -51,6 +51,25 @@ function reduce(list, fn){
 }
 
 ```
+## Reduce 寫成 instance 的方法
+```js
+class CustomArray {
+    constructor(arr){
+        this.arr = arr;
+    }
+    reduce(fn){
+        let sum = this.arr[0];
+        for (let i = 1; i < this.arr.length; i++){
+            sum = fn(sum, this.arr[i]);
+        }
+        return sum;
+    }
+}
+
+const a = new CustomArray([1,2,3]);
+console.log(a.reduce((acc, cur) => (acc + cur))); //6
+console.log(a.reduce((acc, cur) => (acc * acc * cur))); //12
+```
 ## Once (HOF, closure)
 ```js
 // Q:
