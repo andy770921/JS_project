@@ -124,6 +124,65 @@ App.type("pear");
 App = React.render(Component); // {count: 2, text: "pear"}
 ```
 
+```js
+// 完成 useEffect，在 render 前執行
+const React = (function (){
+  let hooks = [];
+  let idx = 0;
+
+  function useState(initVal){
+    const state = hooks[idx] || initVal;
+    const _idx = idx;
+    const setState = newVal => {
+      hooks[_idx] = newVal;
+    }
+    idx++;
+    return [state, setState];
+  }
+
+  function useEffect(cb, depArray){
+    const oldDep = hooks[idx];
+    let hasChanged = true;
+    if(oldDep){
+      hasChanged = depArray.some((dep, i) => !Object.is(dep, oldDep[i]));
+      // Note: console.log(NaN === NaN)  false
+      // Note: console.log(Object(NaN, NaN))  true
+    }
+    if (hasChanged) cb();
+    hooks[idx] = depArray;
+    idx++;
+  }
+
+  function render(Component){
+    idx = 0;
+    const C = Component();
+    C.render();
+    return C;
+  }
+  return { useState, useEffect, render };
+})();
+
+function Component(){
+  const [count, setCount] = React.useState(1);
+  const [text, setText] = React.useState("apple");
+
+  React.useEffect(()=>{
+    console.log("hello world");
+  }, []);
+
+  return {
+    render: () => console.log({count, text}),
+    click: () => setCount(count + 1),
+    type: word => setText(word),
+  }
+}
+
+let App = React.render(Component); // hello world  {count: 1, text: "apple"}
+App.click();
+App = React.render(Component); // {count: 2, text: "apple"}
+App.type("pear");
+App = React.render(Component); // {count: 2, text: "pear"}
+```
 ## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
 2. 有用 useCallback，函式特定條件下才會是不同的 address，特定條件由 useCallback 第二個陣列參數內的值而定  
