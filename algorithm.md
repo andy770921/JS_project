@@ -1022,7 +1022,7 @@ console.log(checkIfSeaCanBeSeen([6,3,4,1,2]));
 console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
 // [ false, false, true, false, true ]
 ```
-- Ans 3: 先從後到前 scan 陣列一次，建立 Hash Table，再用另一個 for 迴圈從前到後 scan 陣列一次
+- Ans 3: 先從後到前 scan 陣列一次，建立 Hash Table，再用另一個 for 迴圈從前到後 scan 陣列一次 (時間複雜度 O(n)，空間複雜度 O(n))
 ```js
 function generateMaxValueHashTable(arr){
   const hashTable = {};
