@@ -46,6 +46,7 @@ console.log(count()); // 2
 // 封裝成 React library，將 useState 的狀態 (_val) 拉到高層，及完成 render 函式
 const React = (function (){
   let _val;
+  
   function useState(initVal){
     const state = _val || initVal;
     const setState = newVal => {
@@ -53,16 +54,19 @@ const React = (function (){
     }
     return [state, setState];
   }
+  
   function render(Component){
     const C = Component();
     C.render();
     return C;
   }
+  
   return { useState, render };
 })();
 
 function Component(){
   const [count, setCount] = React.useState(1);
+  
   return {
     render: () => console.log(count),
     click: () => setCount(count + 1),
@@ -81,6 +85,7 @@ App = React.render(Component); // 3
 const React = (function (){
   let hooks = [];
   let idx = 0;
+  
   function useState(initVal){
     const state = hooks[idx] || initVal;
     const _idx = idx;
@@ -90,12 +95,14 @@ const React = (function (){
     idx++;
     return [state, setState];
   }
+  
   function render(Component){
     idx = 0;
     const C = Component();
     C.render();
     return C;
   }
+  
   return { useState, render };
 })();
 
