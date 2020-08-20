@@ -168,7 +168,7 @@ function Component(){
 
   React.useEffect(()=>{
     console.log("hello world");
-  }, []);
+  }, [count]);
 
   return {
     render: () => console.log({count, text}),
@@ -179,7 +179,7 @@ function Component(){
 
 let App = React.render(Component); // hello world  {count: 1, text: "apple"}
 App.click();
-App = React.render(Component); // {count: 2, text: "apple"}
+App = React.render(Component); // hello world   {count: 2, text: "apple"}
 App.type("pear");
 App = React.render(Component); // {count: 2, text: "pear"}
 ```
