@@ -936,7 +936,7 @@ console.log(checkIfSeaCanBeSeen([6, 3, 4, 1, 2, 1]));
 // [true, false, true, false, true, true]
 ```
 
-- Ans 1: 遞迴 (時間複雜度 O(n^2)，空間複雜度 O(n))
+- Ans 1: 遞迴 + 遞迴函式內跑迴圈找最大值 (時間複雜度 O(n^2)，空間複雜度 O(n))
 ```js
 function findRightmostMaxIdxAfter(startIdx, arr){
   let max = -1;
@@ -978,4 +978,48 @@ console.log(checkIfSeaCanBeSeen([6,3,4,1,2]));
 console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
 // [ false, false, true, false, true ]
 ```
-- Ans 2: 動態規劃 (Bottom-up with memorization) 從後到前用 for 迴圈 scan 一次，每次 scan 紀錄最大值 (時間複雜度 O(n)，空間複雜度 O(1))
+- Ans 2: 遞迴 + 遞迴函式外用 Hash Table 記錄最大值 (時間複雜度 O(n)，空間複雜度 O(n))
+```js
+function generateMaxIdxHashTable(arr){
+  const hashTable = {};
+  let max = -1;
+  let maxIdx = -1;
+  for(let i = arr.length - 1; i >= 0; i--){
+    if(arr[i] > max) {
+      max = arr[i];
+      maxIdx = i;
+    }
+    hashTable[i] = maxIdx;
+  }
+  return hashTable;
+}
+
+console.log(generateMaxIdxHashTable([6,3,4,4,1,2]));
+// { 0:0, 1:3, 2:3, 3:3, 4:5, 5:5 }
+ 
+
+function checkIfSeaCanBeSeen(arr){
+  const output = [];
+  const arrMaxLength = arr.length;
+  const maxIdxHashTable = generateMaxIdxHashTable(arr);
+
+  function recursiveFillingBoolean(startIdx, arr){
+    const maxIdx = maxIdxHashTable[startIdx];
+
+    output[maxIdx] = true;
+    for(let i = startIdx; i < maxIdx; i++){
+      output[i] = false;
+    }
+    if ( maxIdx === arrMaxLength - 1) return;
+    recursiveFillingBoolean(maxIdx + 1, arr);
+  }
+  recursiveFillingBoolean(0, arr);
+  return output;
+}
+
+console.log(checkIfSeaCanBeSeen([6,3,4,1,2])); 
+// [ true, false, true, false, true ]
+console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
+// [ false, false, true, false, true ]
+```
+- Ans 3: 動態規劃 (Bottom-up with memorization) 從後到前用 for 迴圈 scan 一次，每次 scan 紀錄最大值 (時間複雜度 O(n)，空間複雜度 O(1))
