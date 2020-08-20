@@ -121,8 +121,22 @@ obj.pri;
 
 ## 深層複製 / 淺層複製
 https://medium.com/javascript-in-plain-english/how-to-deep-copy-objects-and-arrays-in-javascript-7c911359b089
-## 函數內部變數往外傳遞 - 閉包
+## 函數內部變數，若被參考，會一直被保留 - 閉包
 https://ithelp.ithome.com.tw/articles/10193009
+
+```js
+function getAdd(){
+  let foo = 1;
+  return function(){
+    foo = foo + 1;
+    return foo;
+  }
+}
+const add = getAdd();
+console.log(add()); // 2
+console.log(add()); // 3
+
+```
 ## new創造物件，與建立建構式
 https://ithelp.ithome.com.tw/articles/10193747
 ## 原型鍊，實現 class 繼承功能
