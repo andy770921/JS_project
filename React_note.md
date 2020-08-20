@@ -75,6 +75,48 @@ App = React.render(Component); // 2
 App.click();
 App = React.render(Component); // 3
 ```
+
+```js
+// 將 useState 的狀態變成陣列，不同次呼叫 useState 時，可存取到對應的狀態
+const React = (function (){
+  let hooks = [];
+  let idx = 0;
+  function useState(initVal){
+    const state = hooks[idx] || initVal;
+    const _idx = idx;
+    const setState = newVal => {
+      hooks[_idx] = newVal;
+    }
+    idx++;
+    return [state, setState];
+  }
+  function render(Component){
+    idx = 0;
+    const C = Component();
+    C.render();
+    return C;
+  }
+  return { useState, render };
+})();
+
+function Component(){
+  const [count, setCount] = React.useState(1);
+  const [text, setText] = React.useState("apple");
+
+  return {
+    render: () => console.log({count, text}),
+    click: () => setCount(count + 1),
+    type: word => setText(word),
+  }
+}
+
+let App = React.render(Component); // {count: 1, text: "apple"}
+App.click();
+App = React.render(Component); // {count: 2, text: "apple"}
+App.type("pear");
+App = React.render(Component); // {count: 2, text: "pear"}
+```
+
 ## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
 2. 有用 useCallback，函式特定條件下才會是不同的 address，特定條件由 useCallback 第二個陣列參數內的值而定  
