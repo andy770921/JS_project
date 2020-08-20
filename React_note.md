@@ -9,7 +9,39 @@ https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
 1. https://pomb.us/build-your-own-react/
 2. COSCUP: https://youtu.be/fqdOAPLLueo
 3. 實作 React-hook: https://www.youtube.com/watch?v=9jWwO7McMbU&feature=youtu.be&t=9480
+```js
+// useState 取得最新變數 (影片 3.: https://youtu.be/9jWwO7McMbU?t=9928 )
+// 以下無效
+function useState(initVal){
+  let _val = initVal;
+  const state = _val; 
+  const setState = newVal => {
+    _val = newVal;
+  }
+  return [state, setState];
+}
 
+const [count, setCount] = useState(1);
+console.log(count); // 1
+setCount(2);
+console.log(count); // 1
+
+// 以下有效
+function useState(initVal){
+  let _val = initVal;
+  const state = () => _val;
+  const setState = newVal => {
+    _val = newVal;
+  }
+  return [state, setState];
+}
+
+const [count, setCount] = useState(1);
+console.log(count()); // 1
+setCount(2);
+console.log(count()); // 2
+
+```
 ## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
 2. 有用 useCallback，函式特定條件下才會是不同的 address，特定條件由 useCallback 第二個陣列參數內的值而定  
