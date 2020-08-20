@@ -40,7 +40,40 @@ const [count, setCount] = useState(1);
 console.log(count()); // 1
 setCount(2);
 console.log(count()); // 2
+```
 
+```js
+// 封裝成 React library，將 useState 的狀態 (_val) 拉到高層，及完成 render 函式
+const React = (function (){
+  let _val;
+  function useState(initVal){
+    const state = _val || initVal;
+    const setState = newVal => {
+      _val = newVal;
+    }
+    return [state, setState];
+  }
+  function render(Component){
+    const C = Component();
+    C.render();
+    return C;
+  }
+  return { useState, render };
+})();
+
+function Component(){
+  const [count, setCount] = React.useState(1);
+  return {
+    render: () => console.log(count),
+    click: () => setCount(count + 1),
+  }
+}
+
+let App = React.render(Component); // 1
+App.click();
+App = React.render(Component); // 2
+App.click();
+App = React.render(Component); // 3
 ```
 ## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
