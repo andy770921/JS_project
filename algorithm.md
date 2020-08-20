@@ -1022,4 +1022,39 @@ console.log(checkIfSeaCanBeSeen([6,3,4,1,2]));
 console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
 // [ false, false, true, false, true ]
 ```
-- Ans 3: 動態規劃 (Bottom-up with memorization) 從後到前用 for 迴圈 scan 一次，每次 scan 紀錄最大值 (時間複雜度 O(n)，空間複雜度 O(1))
+- Ans 3: 先從後到前 scan 陣列一次，建立 Hash Table，再用另一個 for 迴圈從前到後 scan 陣列一次
+```js
+function generateMaxValueHashTable(arr){
+  const hashTable = {};
+  let max = -1;
+  for(let i = arr.length - 1; i >= 0; i--){
+    if(arr[i] > max) {
+      max = arr[i];
+    } else if (arr[i] === max){
+      max = arr[i] + 0.1; // for same max-value left house case
+    }
+    hashTable[i] = max;
+  }
+  return hashTable;
+}
+console.log(generateMaxValueHashTable([6,3,4,4,1,2]));
+// { 0:6, 1:4.1, 2:4.1, 3:4, 4:2, 5:2 }
+ 
+
+function checkIfSeaCanBeSeen(arr){
+  const output = [];
+  const maxValueHashTable = generateMaxValueHashTable(arr);
+
+  for (let i = 0; i < arr.length; i++){
+    if(arr[i] >= maxValueHashTable[i]) output[i] = true;
+    else output[i] = false;
+  }
+  return output;
+}
+
+console.log(checkIfSeaCanBeSeen([6,3,4,1,2])); 
+// [ true, false, true, false, true ]
+console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
+// [ false, false, true, false, true ]
+```
+- Ans 4: 動態規劃 (Bottom-up with memorization) 從後到前用 for 迴圈 scan 一次，每次 scan 紀錄最大值 (時間複雜度 O(n)，空間複雜度 O(1))
