@@ -125,7 +125,7 @@ App = React.render(Component); // { count: 2, text: "pear" }
 ```
 
 ```js
-// 完成 useEffect，在 render 前執行
+// 完成 useEffect，( 與 React 不同的是，在 render 前執行 )
 const React = (function (){
   let hooks = [];
   let idx = 0;
