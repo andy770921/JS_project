@@ -111,17 +111,17 @@ function Component(){
   const [text, setText] = React.useState("apple");
 
   return {
-    render: () => console.log({count, text}),
+    render: () => console.log({ count, text }),
     click: () => setCount(count + 1),
     type: word => setText(word),
   }
 }
 
-let App = React.render(Component); // {count: 1, text: "apple"}
+let App = React.render(Component); // { count: 1, text: "apple" }
 App.click();
-App = React.render(Component); // {count: 2, text: "apple"}
+App = React.render(Component); // { count: 2, text: "apple" }
 App.type("pear");
-App = React.render(Component); // {count: 2, text: "pear"}
+App = React.render(Component); // { count: 2, text: "pear" }
 ```
 
 ```js
@@ -171,17 +171,17 @@ function Component(){
   }, [count]);
 
   return {
-    render: () => console.log({count, text}),
+    render: () => console.log({ count, text }),
     click: () => setCount(count + 1),
     type: word => setText(word),
   }
 }
 
-let App = React.render(Component); // hello world  {count: 1, text: "apple"}
+let App = React.render(Component); // hello world  { count: 1, text: "apple" }
 App.click();
-App = React.render(Component); // hello world   {count: 2, text: "apple"}
+App = React.render(Component); // hello world   { count: 2, text: "apple" }
 App.type("pear");
-App = React.render(Component); // {count: 2, text: "pear"}
+App = React.render(Component); // { count: 2, text: "pear" }
 ```
 ## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
