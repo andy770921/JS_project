@@ -956,3 +956,47 @@ function checkIfSeaCanBeSeen(arr){
 console.log(checkIfSeaCanBeSeen([6, 3, 4, 1, 2, 1]));
 // [true, false, true, false, true, true]
 ```
+
+- Ans 1: 遞迴 (時間複雜度 O(n)，空間複雜度 O(n))
+```js
+function findRightmostMaxIdxAfter(startIdx, arr){
+  let max = -1;
+  let maxIdx = -1;
+  for(let i = startIdx; i < arr.length; i++){
+    // find Rightmost Max Idx
+    if(arr[i] >= max){ 
+      max = arr[i];
+      maxIdx = i;
+    }
+  }
+  return maxIdx;
+}
+
+console.log(findRightmostMaxIdxAfter(0, [6,3,4,1,2])); // 0
+console.log(findRightmostMaxIdxAfter(1, [6,3,4,1,2])); // 2
+console.log(findRightmostMaxIdxAfter(1, [6,3,4,4,2])); // 3
+
+function checkIfSeaCanBeSeen(arr){
+  const output = [];
+  const arrMaxLength = arr.length;
+
+  function recursiveFillingBoolean(startIdx, arr){
+    const maxIdx = findRightmostMaxIdxAfter(startIdx, arr);
+
+    output[maxIdx] = true;
+    for(let i = startIdx; i < maxIdx; i++){
+      output[i] = false;
+    }
+    if ( maxIdx === arrMaxLength - 1) return;
+    recursiveFillingBoolean(maxIdx + 1, arr);
+  }
+  recursiveFillingBoolean(0, arr);
+  return output;
+}
+
+console.log(checkIfSeaCanBeSeen([6,3,4,1,2])); 
+// [ true, false, true, false, true ]
+console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
+// [ false, false, true, false, true ]
+```
+- Ans 2: 從後到前用 for 迴圈 scan 一次，每次 scan 紀錄最大值 (時間複雜度 O(n)，空間複雜度 O(1))
