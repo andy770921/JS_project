@@ -1058,3 +1058,36 @@ console.log(checkIfSeaCanBeSeen([1,3,4,2,2]));
 // [ false, false, true, false, true ]
 ```
 - Ans 4: 動態規劃 (Bottom-up with memorization) 從後到前用 for 迴圈 scan 一次，每次 scan 紀錄最大值 (時間複雜度 O(n)，空間複雜度 O(1))
+
+2. 輸入一字串，找出連續重複三次者，並輸出重複的字串，放入陣列
+- Q:
+```js
+function findThreeTimesStrList(str){
+  // TODOS
+}
+console.log(findThreeTimesStrList('abcdefffghghghee')); // ['f', 'gh']
+```
+- A:
+```js
+function findThreeTimesStrList(str){
+  let possibleMatchingStr = '';
+  let accTimes = 1;
+  let currentTheSame = false;
+  const outputArr = [];
+  for (let i = 0; i < str.length; i++){
+    if (possibleMatchingStr === str[i]){
+      currentTheSame = true;
+      accTimes++;
+      if (accTimes === 3 ){
+        outputArr.push(possibleMatchingStr)
+        accTimes = 1;
+      }
+    } else {
+      currentTheSame = false;
+      possibleMatchingStr = str[i];
+    }
+  }
+  return outputArr;
+}
+console.log(findThreeTimesStrList('abcdefffghghghe')); // ['f', 'gh']
+```
