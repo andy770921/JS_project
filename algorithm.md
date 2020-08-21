@@ -1072,22 +1072,20 @@ console.log(findThreeTimesStrList('abcdefffghghghee')); // ['f', 'gh']
 function findThreeTimesStrList(str){
   let possibleMatchingStr = '';
   let accTimes = 1;
-  let currentTheSame = false;
   const outputArr = [];
+  
   for (let i = 0; i < str.length; i++){
     if (possibleMatchingStr === str[i]){
-      currentTheSame = true;
       accTimes++;
-      if (accTimes === 3 ){
+      if (accTimes === 3){
         outputArr.push(possibleMatchingStr)
         accTimes = 1;
       }
     } else {
-      currentTheSame = false;
       possibleMatchingStr = str[i];
     }
   }
   return outputArr;
 }
-console.log(findThreeTimesStrList('abcdefffghghghe')); // ['f', 'gh']
+console.log(findThreeTimesStrList('abcdefffeee')); // ['f', 'e']
 ```
