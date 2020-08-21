@@ -1033,3 +1033,42 @@ HTML:
     clear: both;
 }
 ```
+
+## 面試實作題:
+1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
+- `animation: name duration timing-function delay iteration-count direction fill-mode play-state;`
+- ex: `animation: move 2s infinite;`
+```css
+@keyframes move {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(200px, 0, 0) rotate(360deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+```
+- Ref: https://cythilya.github.io/2017/08/27/css-animation/
+- Ans:
+```html
+<body>
+  <div class="red"></div>
+</body>
+```
+```css
+.red {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50vh;
+  right: 0;
+  transform: translate(-50%, -50%);
+  animation-name: move-to-center;
+  animation-duration: 2s;
+}
+```
