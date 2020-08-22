@@ -35,6 +35,11 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 
 https://www.slideshare.net/kewang/blurhash
 
+
+## XSS 攻擊介紹
+
+https://www.youtube.com/watch?v=M6N7gEZ-IUQ
+
 ## 跨瀏覽器 css 樣式
 - scroll 要配合 -webkit-overflow-scrolling: touch
 
