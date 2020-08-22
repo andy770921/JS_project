@@ -1062,17 +1062,36 @@ HTML:
 </body>
 ```
 ```css
-.red {
+.ball {
   background-color: red;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   position: absolute;
-  top: 50vh;
-  right: 0;
-  transform: translate(-50%, -50%);
-  animation-name: move-to-center;
-  animation-duration: 2s;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  animation: 5s move-to-center, 3s 5s infinite alternate bumpBall;
+}
+@keyframes move-to-center{
+  from {
+    top: 0;
+    right: 0;
+  }
+  to {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
+@keyframes bumpBall {
+  from {
+    transform: translate(50%, -70%);
+  }
+  to{
+    transform: translate(50%, -30%);
+  }
 }
 ```
 Ans 2:
