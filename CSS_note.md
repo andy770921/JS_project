@@ -1003,7 +1003,7 @@ HTML:
     clear: both;
   }
 ```
-&emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（CSS-hack）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
+&emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（ CSS-hack ）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container ）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
 13. 雙colomn顯示法-2:  
 HTML:  
 ```
@@ -1036,7 +1036,7 @@ HTML:
 
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
-- `animation: name duration timing-function delay iteration-count direction fill-mode play-state;`
+- `animation:name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
 - ex: `animation: move 2s infinite;`
 - ex: `animation: 0.5s centerBall, 0.1s 0.5s infinite alternate bumpBall;` 
 - explain: 播放 centerBall 名稱的動畫持續 0.5 秒，(預設)播放 1 次，再播放 bumpBall 名稱的動畫持續 0.1 秒，延時 0.5 秒後開始播放，無限重複，(預設)播放 1 次，正反轉輪流播放，奇數次為 0% 到 100%，偶數次為 100% 到 0%
@@ -1053,11 +1053,11 @@ HTML:
   }
 }
 ```
-- Ref: https://cythilya.github.io/2017/08/27/css-animation/
+- Ref: https://www.oxxostudio.tw/articles/201803/css-animation.html
 - Ans:
 ```html
 <body>
-  <div class="red"></div>
+  <div class="ball"></div>
 </body>
 ```
 ```css
@@ -1109,6 +1109,38 @@ Ans 2:
   }
   to{
     transform: translate(var(--center-x), var(--ball-down));
+  }
+}
+```
+- Ans 3:
+```css
+.ball {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 50px);
+  right: calc(50% - 50px);
+  animation: 0.5s move-to-center, 0.1s 0.5s infinite alternate bumpBall;
+}
+@keyframes move-to-center{
+  from {
+      top: 0;
+      right: 0;
+  }
+  to {
+      top: calc(50% - 50px);
+      right: calc(50% - 50px);
+  }
+}
+
+@keyframes bumpBall {
+  from {
+    transform: translateY(-10px);
+  }
+  to{
+    transform: translateY(10px);
   }
 }
 ```
