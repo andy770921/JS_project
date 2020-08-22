@@ -1038,8 +1038,8 @@ HTML:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
 - ex: `animation: 0.5s centerBall, 0.1s 0.5s infinite alternate bumpBall;` 
-- 1. 播放 centerBall 名稱的動畫持續 0.5 秒，(預設) 播放 1 次
-- 2. 再播放 bumpBall 名稱的動畫持續 0.1 秒，延時 0.5 秒後開始播放，無限重複，(預設) 播放 1 次，正反轉輪流播放，奇數次為 0% 到 100%，偶數次為 100% 到 0%
+1. 播放 centerBall 名稱的動畫持續 0.5 秒，(預設) 播放 1 次
+2. 再播放 bumpBall 名稱的動畫持續 0.1 秒，延時 0.5 秒後開始播放，無限重複，(預設) 播放 1 次，正反轉輪流播放，奇數次為 0% 到 100%，偶數次為 100% 到 0%
 - ex: `animation: move 2s infinite;`
 ```css
 @keyframes move {
