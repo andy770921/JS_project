@@ -1038,6 +1038,8 @@ HTML:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name duration timing-function delay iteration-count direction fill-mode play-state;`
 - ex: `animation: move 2s infinite;`
+- ex: `animation: 0.5s centerBall, 0.1s 0.5s infinite alternate bumpBall;` 
+- explain: 播放 centerBall 名稱的動畫持續 0.5 秒，(預設)播放 1 次，再播放 bumpBall 名稱的動畫持續 0.1 秒，延時 0.5 秒後開始播放，無限重複，(預設)播放 1 次，正反轉輪流播放，奇數次為 0% 到 100%，偶數次為 100% 到 0%
 ```css
 @keyframes move {
   0% {
@@ -1070,5 +1072,43 @@ HTML:
   transform: translate(-50%, -50%);
   animation-name: move-to-center;
   animation-duration: 2s;
+}
+```
+Ans 2:
+```css
+.ball {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border-radius: 50px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  animation: 0.5s centerBall, 0.1s 0.5s infinite alternate bumpBall;
+}
+
+:root {
+  --center-x: calc(-50vw + 50px);
+  --center-y: calc(50vh - 50px);
+  --ball-up: calc(49vh - 50px);
+  --ball-down: calc(51vh - 50px);
+}
+
+@keyframes centerBall{
+  from {
+    transform: translate(0px, 0px);
+  }
+  to {
+    transform: translate(var(--center-x), var(--center-y));
+  }
+}
+
+@keyframes bumpBall {
+  from {
+    transform: translate(var(--center-x), var(--ball-up));
+  }
+  to{
+    transform: translate(var(--center-x), var(--ball-down));
+  }
 }
 ```
