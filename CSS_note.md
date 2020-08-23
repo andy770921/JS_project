@@ -1071,25 +1071,28 @@ HTML:
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
-  animation: 5s move-to-center, 3s 5s infinite alternate bumpBall;
+  animation: 5s move-to-center, 1s 5s infinite alternate vibrate;
 }
 @keyframes move-to-center{
-  from {
-    top: 0;
-    right: 0;
+  0% {
+      top: 0;
+      right: 0;
   }
-  to {
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
+  90% {
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+  }
+  100% {
+      transform: translate(50%, -70%);
   }
 }
 
-@keyframes bumpBall {
+@keyframes vibrate {
   from {
     transform: translate(50%, -70%);
   }
-  to{
+  to {
     transform: translate(50%, -30%);
   }
 }
