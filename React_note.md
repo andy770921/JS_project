@@ -183,6 +183,29 @@ App = React.render(Component); // hello world   { count: 2, text: "apple" }
 App.type("pear");
 App = React.render(Component); // { count: 2, text: "pear" }
 ```
+
+## React Lazy Evaluation 的概念
+Ref: https://overreacted.io/react-as-a-ui-runtime/#lazy-evaluation  
+```js
+function A(){
+  console.log('A executed')
+  return 'AAA'
+}
+
+function Page(isLogin, children) {
+  if (!isLogin) {
+    return 'not login';
+  }
+  if (typeof children === "function"){
+    return children();   // JSX is a function
+  }
+  return children; 
+}
+
+console.log(Page(false, A));   // not login
+console.log(Page(false, A())); // A executed   not login
+// If we called A() directly, it would execute immediately regardless of whether Page wants to render them or not
+```
 ## useMemo, useCallback, useRef
 1. 沒有用 useCallback，函式每次都是不同的 address
 2. 有用 useCallback，函式特定條件下才會是不同的 address，特定條件由 useCallback 第二個陣列參數內的值而定  
