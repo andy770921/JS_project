@@ -198,8 +198,10 @@ https://youtu.be/QuCu4iDpPTU
 ## 解構賦值
 文章關鍵字: 使用於函式的傳入參數之中的解構賦值  
 https://ithelp.ithome.com.tw/articles/10185430    
-解構賦值加預設值
+解構賦值加預設值 1   
 https://medium.com/@pyrolistical/destructuring-nested-objects-9dabdd01a3b8  
+解構賦值加預設值 2   
+https://stackoverflow.com/questions/48433008/js-es6-destructuring-of-undefined
 深層的解構賦值  
 ```js
     const data = null;
