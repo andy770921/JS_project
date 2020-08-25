@@ -184,7 +184,7 @@ App.type("pear");
 App = React.render(Component); // { count: 2, text: "pear" }
 ```
 
-## React Lazy Evaluation 的概念
+## React Lazy Evaluation (惰性求值) 的概念
 Ref: https://overreacted.io/react-as-a-ui-runtime/#lazy-evaluation  
 ```js
 function A(){
