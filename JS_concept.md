@@ -14,6 +14,12 @@ https://www.youtube.com/watch?v=DwQJ_NPQWWo
 ## 同步/非同步 - event loop
 https://youtu.be/cCOL7MC4Pl0  
 https://www.youtube.com/watch?v=8aGhZQkoFbQ  
+-  event loop，它扮演的角色很簡單，用白話文講就是：
+```
+不斷偵測 call stack 是否為空，如果是空的話就把 callback queue 裡面的東西丟到 call stack
+```
+https://blog.huli.tw/2019/10/04/javascript-async-sync-and-callback/  
+  
 ## async/await, event loop
 https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
 ## ES6語法與ES5差異，及call by ref解析27:22
