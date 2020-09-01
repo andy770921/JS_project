@@ -620,4 +620,38 @@ const PictureWithMask: FC<{
     </Picture>
 );
 ```
+## 桌機滑鼠及手機觸控筆 hover 有效，可使用 `:hover { @media (pointer: fine) { // TODOS  } }`
+```js
+const ConceptMapWrap = styled.div`
+    position: relative;
+    left: 0.6vw;
+    width: 54.5vw;
+    height: 33vw;
+    transition: 0.2s;
 
+    // 當 ConceptMapWrap 被 hover 時，會讓 ConceptItem 先「全部先變暗」，接著「被 hover 的 ConceptItem 會才變亮」
+    &:hover {
+        @media (pointer: fine) {
+            ${ConceptItemWrap} {
+                cursor: pointer;
+                transition: 0.2s;
+                filter: brightness(0.6);
+
+                :hover {
+                    filter: brightness(1);
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        left: -1vw;
+    }
+
+    @media screen and (max-width: 414px) {
+        left: -0.1vw;
+        width: 87vw;
+        height: 73vw;
+    }
+`;
+```
