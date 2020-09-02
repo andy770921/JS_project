@@ -311,7 +311,7 @@ const NavInfoList = () => {
 
 ## 外層設定 border radius，需要加上 overflow: hidden 才能影響內層 div
 
-```
+```ts
 const ManuWrapper = styled.div`
     display: inline-block;
 
