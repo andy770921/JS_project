@@ -44,6 +44,10 @@ https://www.youtube.com/watch?v=M6N7gEZ-IUQ
 
 https://blog.huli.tw/2017/03/12/csrf-introduction/
 
+## Safari debug
+
+https://www.busbud.com/blog/debug-ios-safari-mac/
+
 ## 跨瀏覽器 css 樣式
 - scroll 要配合 -webkit-overflow-scrolling: touch
 
