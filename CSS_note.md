@@ -1034,11 +1034,12 @@ HTML:
 }
 ```
 ## 跨裝置 css 滿頁面調整:
+
 1. body `position: relative` 拿掉，因為如果 body 內元件下 `position: absolute`，若找不到上層的 position: relative，就會以 body 為對齊的父元素
-2. body 加 `min-height: 100vh`，配合 `height: 100%`
-3. `position: fixed` 或 `position: absolute` 的情況要記得加 `padding-bottom: calc(原本預設 padding + env(safe-area-inset-bottom));`
-4. `position: fixed, top: 0, bottom: 0; right: 0, left: 0`
-5. Ref: https://buy.line.me/
+2. `position: fixed` 或 `position: absolute` 的情況要記得加 `padding-bottom: calc(原本預設 padding + env(safe-area-inset-bottom));`
+3. `position: fixed, top: 0, bottom: 0; right: 0, left: 0`
+4. Ref: https://buy.line.me/
+
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
