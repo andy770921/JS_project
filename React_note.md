@@ -433,6 +433,9 @@ componentWillUnmount = () => {
 ```
 ## HOC
 
+- https://www.pluralsight.com/guides/higher-order-composition-typescript-react
+- Ex 1:
+
 ```js
 const HOC = WrappedComponent => {
   const products = [
@@ -473,6 +476,32 @@ class App extends Component {
 const WrappedApp = HOC(App);
 const rootElement = document.getElementById("root");
 ReactDOM.render(<WrappedApp />, rootElement);
+```
+
+- Ex 2 (TS):
+- Note: `<T extends unknown>` is a (Workaround)[https://stackoverflow.com/questions/32308370/what-is-the-syntax-for-typescript-arrow-functions-with-generics]
+```ts
+import React, { FC, ComponentType } from 'react';
+
+const LocationTaskWithTranslation = <T extends unknown>(WrappedComponent: ComponentType<T>) => {
+    const abc = 'ABC';
+    const bcd = 'BCD';
+
+    const ComponentWithTranslation: ComponentType<T> = (props: T) => (
+        <WrappedComponent
+            abc={abc}
+            bcd={bcd}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...props}
+        />
+    );
+    return ComponentWithTranslation;
+};
+
+const LocationTask = LocationTaskWithTranslation(LocationTaskContent);
+
+export default LocationTask;
+
 ```
 ## React hooks 拆分 fetch 範例 
 https://codesandbox.io/s/fetch-optimize-620rt?fbclid=IwAR0H9ugelbNPGju78KcGULyhTGdQiycfygOFBlFfldXV5OG7XKahQnhF1Qg
