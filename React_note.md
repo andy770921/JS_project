@@ -503,6 +503,102 @@ const LocationTask = LocationTaskWithTranslation(LocationTaskContent);
 export default LocationTask;
 
 ```
+
+## Render Props 實作
+
+```ts
+import React, { ReactType } from 'react';
+import styled from 'styled-components';
+
+// ...
+
+
+
+const Card = ({
+    topAreaChildren: TopAreaChildren,
+    bottomAreaChildren: BottomAreaChildren,
+    topBackgroundColor,
+    bottomBackgroundColor,
+}: {
+    topAreaChildren: ReactType;
+    bottomAreaChildren: ReactType;
+    topBackgroundColor: string;
+    bottomBackgroundColor: string;
+}) => (
+    <CardWrapper>
+        <TopArea backgroundColor={topBackgroundColor}>
+            <TopAreaChildren />
+        </TopArea>
+        <BottomArea backgroundColor={bottomBackgroundColor}>
+            <BottomAreaChildren />
+        </BottomArea>
+    </CardWrapper>
+);
+
+export const LightTopWhiteBottomCard = ({
+    topAreaChildren: TopAreaChildren,
+    bottomAreaChildren: BottomAreaChildren,
+}: {
+    topAreaChildren: ReactType;
+    bottomAreaChildren: ReactType;
+}) => (
+    <Card
+        topAreaChildren={TopAreaChildren}
+        bottomAreaChildren={BottomAreaChildren}
+        topBackgroundColor={theme.greyTen}
+        bottomBackgroundColor={theme.white}
+    />
+);
+
+export const MemberConnectAndSelfPickCard: FC<{
+    title: string;
+    iconText: string;
+    hintText: string;
+    totalNotContactCount: string;
+    isNewList: boolean;
+    isChecked?: boolean;
+}> = ({
+    title,
+    iconText,
+    hintText,
+    totalNotContactCount,
+}) => {
+    return (
+            <LightTopWhiteBottomCard
+                topAreaChildren={() => (
+                    <MemberConnectAndSelfPickCardTitle title={title} iconText={iconText} />
+                )}
+                bottomAreaChildren={() => (
+                    <MemberConnectAndSelfPickCardContent
+                        totalNotContactCount={totalNotContactCount}
+                        hintText={hintText}
+                    />
+                )}
+            />
+    );
+};
+
+const MemberConnectAndSelfPickCardTitle: FC<{ title: string; iconText: string; isShowRedIcon: boolean }> = ({
+    title,
+    iconText,
+    isShowRedIcon,
+}) => (
+    <TopAreaChildrenWrapper>
+        <Title>{title}</Title>
+        {isShowRedIcon && <RedEllipseIcon>{iconText}</RedEllipseIcon>}
+    </TopAreaChildrenWrapper>
+);
+
+const MemberConnectAndSelfPickCardContent: FC<{ totalNotContactCount: string; hintText: string }> = ({
+    totalNotContactCount,
+    hintText,
+}) => (
+    <BottomAreaChildrenWrapper>
+        <HightlightBoldText>{totalNotContactCount}</HightlightBoldText>
+        <HintText>{hintText}</HintText>
+    </BottomAreaChildrenWrapper>
+);
+```
 ## React hooks 拆分 fetch 範例 
 https://codesandbox.io/s/fetch-optimize-620rt?fbclid=IwAR0H9ugelbNPGju78KcGULyhTGdQiycfygOFBlFfldXV5OG7XKahQnhF1Qg
 ## React 運作原理
