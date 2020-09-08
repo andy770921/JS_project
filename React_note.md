@@ -479,7 +479,7 @@ ReactDOM.render(<WrappedApp />, rootElement);
 ```
 
 - Ex 2 (TS):
-- Note: `<T extends unknown>` is a (Workaround)[https://stackoverflow.com/questions/32308370/what-is-the-syntax-for-typescript-arrow-functions-with-generics]
+- Note: `<T extends unknown>` is a [Workaround](https://stackoverflow.com/questions/32308370/what-is-the-syntax-for-typescript-arrow-functions-with-generics)
 ```ts
 import React, { FC, ComponentType } from 'react';
 
