@@ -509,10 +509,9 @@ export default LocationTask;
 ```ts
 import React, { ReactType } from 'react';
 import styled from 'styled-components';
+import theme from '@client/global-theme-variable';
 
 // ...
-
-
 
 const Card = ({
     topAreaChildren: TopAreaChildren,
@@ -599,7 +598,7 @@ const MemberConnectAndSelfPickCardContent: FC<{ totalNotContactCount: string; hi
     </BottomAreaChildrenWrapper>
 );
 ```
-## Props 傳 React Node 實作
+## 不用 Render Props，Props 傳 React Node 實作
 ```ts
 interface CommonProps {
     selectionList: { id: string; name: string }[];
@@ -665,7 +664,7 @@ const MenuContent: FC<MenuContentProps> = ({
 
 // 實際用
 
-const RightTopDropdown: FC<{
+export const Dropdown: FC<{
     // ...
 }> = ({
     menuSettings = {},
