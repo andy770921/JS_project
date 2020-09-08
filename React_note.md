@@ -599,6 +599,107 @@ const MemberConnectAndSelfPickCardContent: FC<{ totalNotContactCount: string; hi
     </BottomAreaChildrenWrapper>
 );
 ```
+## Props 傳 React Node 實作
+```ts
+interface CommonProps {
+    selectionList: { id: string; name: string }[];
+    menuSettings?: MenuSettings;
+    customMenuStyles?: CustomMenuStyles;
+    onSelect: (selectedItem: { id: string; name: string }) => void;
+}
+
+interface MenuContentProps extends CommonProps {
+    onClose: () => void;
+    isLoadingModal?: boolean;
+}
+
+const MenuContent: FC<MenuContentProps> = ({
+    selectionList,
+    menuSettings = {},
+    customMenuStyles = {},
+    isLoadingModal = false,
+    onSelect,
+    onClose,
+}) => {
+    const {
+        title,
+        leftTopComponent: LeftTopComponent = null,
+        rightTopComponent: RightTopComponent = null,
+        bottomComponent: BottomComponent = null,
+    } = menuSettings;
+
+    const { wrapperStyle, headerStyle, contentStyle, itemStyle } = customMenuStyles;
+
+    const makeSelectHandler = (id: string, name: string) => () => {
+        onSelect({ id, name });
+    };
+
+    return (
+        <MenuWrapper style={wrapperStyle}>
+            <MenuHeader style={headerStyle}>
+                {LeftTopComponent}
+                <MenuTitle>{title}</MenuTitle>
+                {RightTopComponent}
+            </MenuHeader>
+            {isLoadingModal ? (
+                <LoadingWrapper>
+                    <LoadingGif src={imgUrl} alt="loading..." />
+                </LoadingWrapper>
+            ) : (
+                <MenuBody style={contentStyle}>
+                    {selectionList.map(item => (
+                        <MenuItem
+                            style={itemStyle}
+                            type="button"
+                            key={item.id}
+                            onClick={makeSelectHandler(item.id, item.name)}>
+                            {item.name}
+                        </MenuItem>
+                    ))}
+                    {BottomComponent}
+                </MenuBody>
+            )}
+        </MenuWrapper>
+    );
+};
+
+// 實際用
+
+const RightTopDropdown: FC<{
+    // ...
+}> = ({
+    menuSettings = {},
+    customMenuStyles = {},
+    isLoadingModal = false,
+    onSelect,
+    onClose,
+}) => (
+  const handleLogout = () => { //... };
+  const handleRightTopComponentClick = () => { //... };
+  
+    return (
+      <Wrapper>
+          <MenuContent
+              selectionList={[
+                      { id: '123', name: '員工一' },
+                      { id: '456', name: '員工二' },
+                  ]}
+              isLoadingModal={isLoadingModal}
+              onSelect={onSelect}
+              onClose={onClose}
+              menuSettings={{
+                  title: 'MY TITLE',
+                  leftTopComponent: null,
+                  rightTopComponent: <TextButton text="TEXT IN RIGHT TOP" onClick={handleRightTopComponentClick} />,
+                  bottomComponent: <LogoutText onClick={handleLogout} />
+              }}
+              customMenuStyles={customMenuStyles}
+          />
+      </Wrapper>
+    )
+);
+
+```
 ## React hooks 拆分 fetch 範例 
 https://codesandbox.io/s/fetch-optimize-620rt?fbclid=IwAR0H9ugelbNPGju78KcGULyhTGdQiycfygOFBlFfldXV5OG7XKahQnhF1Qg
 ## React 運作原理
