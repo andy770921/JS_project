@@ -1040,6 +1040,57 @@ HTML:
 3. `position: fixed, top: 0, bottom: 0; right: 0, left: 0`
 4. Ref: https://buy.line.me/
 
+## margin collapse:
+
+- ref: https://www.w3.org/TR/css-flexbox-1/#flex-containers
+- 元素只有分 block-level 和 inline-level
+- margin collapse 只發生在 block-level 的元素
+- display 設定可影響是什麼 level
+- `display: flex` 會將元素轉成 `block-level`
+- `display: inline-block` 及 `display: inline-flex` 會將元素轉成 `inline-level`
+ 
+HTML:  
+```
+<body>	
+  <div class='a'>a
+  </div>
+  <div class='b'>b
+  </div>	
+</body>
+```
+&emsp; CSS:  
+&emsp; 實驗 1 ( 以下有 margin collapse ):
+```
+.a {
+  width: 100%;
+  display: flex;
+  margin-bottom: 100px;
+  background-color: red;
+}
+
+.b {
+  width: 100%;
+  display: flex;
+  margin-top: 100px;
+  background-color: blue;
+}
+```
+&emsp; 實驗 2 ( 以下無 margin collapse ):
+```
+.a {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 100px;
+  background-color: red;
+}
+
+.b {
+  width: 100%;
+  display: inline-block;
+  margin-top: 100px;
+  background-color: blue;
+}
+```
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
