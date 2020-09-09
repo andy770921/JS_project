@@ -1099,6 +1099,14 @@ CSS:
     width: -webkit-fill-available;
     display: block;
 ```
+- 相關設定加完後如下，但缺點是 `-webkit-fill-available` 會[不兼容 IE 及 Edge](https://stackoverflow.com/questions/62299546/how-to-use-webkit-fill-available-on-edge-and-ie11)，在 2020/6 仍不兼容
+```css
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: stretch;
+```
+- 解法是較大幅度改動 css ，元素本身使用加 `padding` 方式，排版不一處，調整父層 `margin`
+
 - 前綴補充
 ```
 這些瀏覽器引擎前綴(Vendor Prefix)主要是各種瀏覽器用來試驗或測試新出現的CSS3屬性特徵。可以總結為以下 3 點：
