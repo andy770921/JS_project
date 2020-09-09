@@ -1005,7 +1005,7 @@ HTML:
 ```
 &emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（ CSS-hack ）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container ）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
 13. 雙colomn顯示法-2:  
-HTML:  
+&emsp; HTML:  
 ```html
 <div class="container clearfix">	
   <div class="secondary col">
@@ -1049,7 +1049,7 @@ HTML:
 - `display: flex` 會將元素轉成 `block-level`
 - `display: inline-block` 及 `display: inline-flex` 會將元素轉成 `inline-level`
  
-HTML:  
+&emsp; HTML:  
 ```html
 <body>	
   <div class='a'>a
