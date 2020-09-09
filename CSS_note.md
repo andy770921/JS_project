@@ -1091,6 +1091,14 @@ HTML:
   background-color: blue;
 }
 ```
+
+## div 預設的 width 是 -webkit-fill-available;
+- Ref: https://www.cnblogs.com/xiaohuochai/p/7210540.html
+- 若要 `<div>` 改寫成 `<button>`，需要在 button 加入兩項 css 設定
+```css
+    width: -webkit-fill-available;
+    display: block;
+```
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
