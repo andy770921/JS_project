@@ -604,7 +604,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ```
 4. [推薦] 修正父元素設定的height 崩潰，可在css，加入.group的說明如下，專門設定clearfix，然後再在```<html>```中的父元素```<div>```加入class="group"
-```
+```css
   .group:after {
     content: "";
     display: table;
@@ -613,19 +613,19 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
 ```
 ## 改變 list 前綴符號
 1. 在css加入如下，也可取消前綴符號，打為list-style-type: none;
-```
+```css
   ul {
     list-style-type: square;
   }
 ```
 2. 在css加入如下，也可編號01 02等
-```
+```css
   ol {
     list-style-type: decimal-leading-zero;
   }
 ```
 3. 在css加入如下，可將編號或前綴符號，納入content，並設定最左留白的寬度為0。可順便設定上下margin，將margin-left: 0; 改寫成margin-left: 30px 0;
-```
+```css
   ul,
   ol {
     list-style-position: inside;
@@ -634,7 +634,7 @@ Adjacent Sibling意義為，當兩個鄰接出現時，要在加號後者的元�
   }
 ```
 4. 在css加入如下，可設定行距
-```
+```css
 li {
     margin-bottom: 10px;
   }
@@ -644,14 +644,14 @@ li {
 2. 加入區塊陰影 box-shadow: 5px 8px 10px #222; 數值意義同上。也可引入第五個參數擴散(spread)半徑，在第四個值，讓四邊都有陰影，也可設定負值創造圖案四週邊緣柔合效果，加入spread設定20px，如box-shadow: 15px 15px 10px 20px #222;
 3. 創造圖案四週邊緣柔合效果，可設定如下 box-shadow: inset 0px 0px 50px 10px #222;，inset為向圖的padding內延伸
 4. 如要設定多層，需要用逗號間隔如下
-```
+```css
 .main-header{
   box-shadow: 0px 2px 15px #aaa,
               inset 0px 0px 60px 5px firebrick;
 }
 ```
 5. 區塊四邊倒角設定如下，若設定border-radius: 50%; 為圓形效果、border-radius: 100% 25px; 為45度角眼睛形狀效果
-```
+```css
 .box {
   border-top-left-radius: 20px;
   border-top-right-radius: 10px;
@@ -668,19 +668,19 @@ li {
 }
 ```
 6. 設定雙色漸層，使用函數linear-gradient(to right, steelblue, darkslateblue);或radial-gradient(); 如下
-```
+```css
 .main-header{
   background-image: radial-gradient(circle at top right, #ffa949, firebrick);
 }
 ```
 7. 設定三色漸層，及顏色停止位置，要加上百分比，使用函數radial-gradient(); 如下
-```
+```css
 .main-header{
   background-image: radial-gradient(circle at top right, #ffa949 0%, firebrick 20%, dodgerblue 120%);
 }
 ```
 8. 在背景圖設定透明漸層，如下。有圖層之概念，逗號前的是最上層，漸層要加在此。設定透明90%，意為到寬度90%處，之後就沒有任何漸層，第一層圖層結束
-```
+```css
 .main-header{
   background: 
     linear-gradient(#ffa949, transparent 90%);
@@ -690,7 +690,7 @@ li {
 ## 不同視窗大小/平台，響應式顯示 - media query
 
 1. 在css檔案，打如下code，可讓螢幕或視窗寬度小於等於960px時，顯示藍底白字。括號內會判斷true或false，若true則會引入其下的css
-```
+```css
 @ media (max-width: 960px) {
   body{
     background: blue;
@@ -701,7 +701,7 @@ p{
 }
 ```
 2. 若需設定，螢幕或視窗寬度為一範圍時，引入css，可如下設定
-```
+```css
 @ media (min-width: 481px) and (max-width: 700px) {
   body{
     background: green;
@@ -712,7 +712,7 @@ p{
 }
 ```
 3. 實用上，若視窗縮小到一定程度(比如小於等於1024px)，要減少最左、最右之留白，可設定如下
-```
+```css
 @ media (max-width: 1024px) {
   .primary-content,
   .secondary-content{
@@ -721,7 +721,7 @@ p{
 }
 ```
 4. 若視窗再縮小到一定程度(比如小於等於768px)，要減少padding、取消border，可設定如下
-```
+```css
 @ media (max-width: 768px) {
   .primary-content,
   .secondary-content{
@@ -732,7 +732,7 @@ p{
 }
 ```
 5. 在寬度限制的基礎下，再設定高度及字體大小相關的css、取消並排的css，可設定如下
-```
+```css
 @ media (max-width: 768px) {
   .primary-content,
   .secondary-content{
@@ -763,11 +763,11 @@ p{
 }
 ```
 6. 記得在```<html>```的```<head>```下，加入使用不同電子產品的寬度設定code，如下
-```
+```html
   <meta name="viewport" content="width=device-width">
 ```
 7. 手機可能轉成橫向使用(landscape)，可加入設定orientation: landscape，如下範例。逗號意為，當A或B其中一者為真，就觸發大括號內CSS效果。A為only screen and (min-width: 768px)。B為only screen and (min-width: 700px) and (orientation: landscape)
-```
+```css
 @media only screen and (min-width: 768px),
          only screen and (min-width: 700px) and (orientation: landscape) {
   
@@ -790,7 +790,7 @@ p{
 
 1. 若無另外指定其他class為position: relative，則absolute的元素，會被抽離出原先的block，以獨立的圖層，配置在頁面上。上下左右距離，相對於視窗邊界  
 HTML:
-```
+```html
 <header class="main-header">
   <ul class="main-nav">
     <li class="ice-cream"><a href="#">ice cream</a></li>
@@ -801,7 +801,7 @@ HTML:
 </header>
 ```
 &emsp; CSS:
-```
+```css
 .ice-cream {
   position: absolute;
   top: 100px;
@@ -816,7 +816,7 @@ HTML:
 ```
 2. 若碰到第一個父元素的class為position: relative，則absolute的元素，會相對於class元素的邊界，設定上下左右距離，如下例，ice-cream及tea的位置相對於```<ul class="main-nav">```配置  
 CSS:
-```
+```css
 .main-nav {
   position: relative;
 }
@@ -833,7 +833,7 @@ CSS:
 }
 ```
 3. position: fixed; 為凍結窗格。可讓nav bar總是置頂，不論卷軸是否下拉。上下左右位置，總是相對於視窗邊界。須調整body上方padding，避免凍結窗格擋到header內容。須加入z-index: 1;，越大圖層優先度越大，未設定者為0，設定1，圖層可壓過所有未設定者。
-```
+```css
 .body {
   padding-top: 68px;
 }
@@ -851,11 +851,11 @@ CSS:
 1. 不同瀏覽器，會有預設的字體大小與邊界寬等，先消除之，避免不同瀏覽器影響自己的網頁。複製normalize.css檔案(或code)，到css資料夾下  
 &emsp; normalize.css Ref:https://necolas.github.io/normalize.css/
 2. 在index.html的```<head>```下，引入normalize.css，如下
-```
+```html
     <link rel="stylesheet" href="css/normalize.css">
 ```
 3. 設定style.css，可能需要加入index.html中的```<div class="xx">```調整樣式。比如，希望上header滿版且左右留有背景色，要在html加如下
-```
+```css
     <header class="main-header">
         <div class="container">
 		......
@@ -863,7 +863,7 @@ CSS:
     </header>
 ```
 &emsp; 要在css加如下。外層設定顏色、內層設定margin: 0 auto;置中，才能顏色滿版
-```
+```css
 .main-header {
   background: #3acec2;
   margin-bottom: 30px;
@@ -875,13 +875,13 @@ CSS:
 ```
 4. 修正最上方不滿版問題: collapsing margin，即標題(h1)字的margin超過了標題的content。由於h1與body中間沒有其他物件，h1的margin上緣與body的上緣貼齊  
   解法一: 修正h1的上margin  
-```
+```css
   h1 {
   top-margin: 0;
   }
 ```  
 &emsp;&ensp;   解法二: 修正main-header clsss的上padding
-```
+```css
   .main-header {
   background: #3acec2;
   padding: 1em 0;
@@ -889,7 +889,7 @@ CSS:
 ```
 5. 可先做出小螢幕的layout，single-block content(各區塊接續往下排列)較簡單，code不複雜，之後再@media 加入breakpoint做大螢幕的layout。(mobile-first layout)  
 小螢幕如下
-```
+```css
 .container {
     padding-left: 1em;
     padding-right: 1em;
@@ -897,7 +897,7 @@ CSS:
 }
 ```
 &emsp; 大螢幕@media 如下
-```
+```css
 @media (min-width: 769px) {
   .container {
     width: 70%;
@@ -907,13 +907,13 @@ CSS:
 }
 ```
 6. 加入box-sizing: border-box;全域宣告，避免layout總長寬，再加上padding，而超乎自己預期
-```
+```css
   * {
     box-sizing: border-box;
   } 
 ```
 7. 將footer置底，避免下緣留白。留白之原因: 中央內文較短，比瀏覽器視窗的高度還短，內文後馬上接到footer，導致footer未貼底。解法: 設定內文寬度一定大於螢幕高度，設定法如下，先在Html設定新class，包住body除了footer以外的部分:
-```
+```css
   <div class="wrap">
     <header class="main-header">
     </header>
@@ -922,14 +922,14 @@ CSS:
   </div>
 ```
 &emsp; 再設定css如下。100vh意為100% viewport height，89px為footer高度，扣掉後才不會高度過高出現下拉捲軸
-```
+```css
   .wrap {
     min-height: calc(100vh - 89px);
   }
 ```
 8. 調整nav bar，設定如下
 display: block;可讓整個content都可點擊
-```
+```css
   .name a,
   .main-nav a {
     padding: 10px 15px;
@@ -937,7 +937,7 @@ display: block;可讓整個content都可點擊
 }
 ```
 &emsp; display: inline-block; 可避免nav bar換行
-```
+```css
   .name,
   .main-nav,
   .main-nav li{
@@ -945,14 +945,14 @@ display: block;可讓整個content都可點擊
   }
 ```
 9. 去除inline-block或是inline之間的空白，空白起因為，瀏覽器判斷此物件為文字，文字之間會有預設空白。解法一: 改寫html的li寫法。解法二: css加入負margin
-```
+```css
 .main-nav li {    
   margin-right: -4px;
 }
 ```
 10. 雙colomn顯示法-1:  
 HTML:
-```
+```html
 <div class="container">	
   <div class="primary col">
   </div>		
@@ -961,7 +961,7 @@ HTML:
 </div>
 ```
 &emsp; CSS:
-```
+```css
 .col {    
   display: inline-block;
   width: 50%; 
@@ -974,7 +974,7 @@ HTML:
 11. float之使用- 圖片在左、文字在右，希望留圖及文字之間的空白，不能直接加文字的margin-right，如此這般無法拉大圖文間的空間，會拉大視窗邊界與文字邊界。正解: 要增加圖的margin-right  
 12. float之使用2- 標題在左、Nav. Bar在右，若float設定一左、一右，會導致上方顏色高度崩潰。  
 解法一:在有顏色的部份(main-header)加入overflow: hidden;或overflow: auto;，但可能會有藏到不該藏的內容，或是出現非預期下拉捲軸之問題
-```
+```css
 .main-header {
   padding-top: 1.5em;
   padding-bottom: 1.5em;
@@ -996,7 +996,7 @@ HTML:
 }
 ```
 &emsp; 解法二: 在html與container同層的 class，加入```<div class="container clearfix">```，並將clearfix補進css
-```
+```css
 .clearfix::after {
     content: "";
     display: table;
@@ -1006,7 +1006,7 @@ HTML:
 &emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（ CSS-hack ）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container ）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
 13. 雙colomn顯示法-2:  
 HTML:  
-```
+```html
 <div class="container clearfix">	
   <div class="secondary col">
   </div>			
@@ -1015,7 +1015,7 @@ HTML:
 </div>
 ```
 &emsp; CSS:
-```
+```css
 .col {    
   float: left;
   padding-left: 1em;
@@ -1050,7 +1050,7 @@ HTML:
 - `display: inline-block` 及 `display: inline-flex` 會將元素轉成 `inline-level`
  
 HTML:  
-```
+```html
 <body>	
   <div class='a'>a
   </div>
@@ -1060,7 +1060,7 @@ HTML:
 ```
 &emsp; CSS:  
 &emsp; 實驗 1 ( 以下有 margin collapse ):
-```
+```css
 .a {
   width: 100%;
   display: flex;
@@ -1076,7 +1076,7 @@ HTML:
 }
 ```
 &emsp; 實驗 2 ( 以下無 margin collapse ):
-```
+```css
 .a {
   width: 100%;
   display: inline-block;
