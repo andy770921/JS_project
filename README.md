@@ -59,6 +59,10 @@ https://github.com/jigsawye/javascript
 1. [Docker](https://github.com/andy770921/JS_project/blob/master/docker.md)
 2. [NodeJS](https://github.com/andy770921/JS_project/blob/master/NodeJS_note.md)
 
+## 機器學習與 AI
+
+1. [Google Course of Machine Learning](https://developers.google.com/machine-learning/crash-course/ml-intro)
+
 ## 面試經驗與題目
 
 1. [2019/10/23](https://pttcareer.com/soft_job/M.1571823381.A.B68.html)
