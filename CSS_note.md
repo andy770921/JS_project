@@ -1099,6 +1099,19 @@ HTML:
     width: -webkit-fill-available;
     display: block;
 ```
+- 前綴補充
+```
+這些瀏覽器引擎前綴(Vendor Prefix)主要是各種瀏覽器用來試驗或測試新出現的CSS3屬性特徵。可以總結為以下 3 點：
+1. 試驗一些還未成為標準的的CSS屬性——也許永遠不會成為標準
+2. 對新出現的標準的 CSS3 屬性特徵做實驗性的實現
+3. 對 CSS3 中一些新屬性做等效語義的個性實現
+
+這些前綴並非所有都是需要的，但通常你加上這些前綴不會有任何害處 ——— 只要記住一條，把不帶前綴的版本放到最後一行：
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-o-border-radius: 10px;
+border-radius: 10px;
+```
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
