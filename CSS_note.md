@@ -1003,7 +1003,7 @@ HTML:
     clear: both;
   }
 ```
-&emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（ CSS-hack ）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container ）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。
+&emsp; 解法三: 開發者再不用使用 clearfix 這種取巧（ CSS-hack ）的方法了，因為我們可以直接在承載 float 元素的容器中（ .container ）採用 display:flow-root，效果跟 clearfix 一樣但更簡單。  
 13. 雙colomn顯示法-2:  
 &emsp; HTML:  
 ```html
@@ -1049,7 +1049,7 @@ HTML:
 - `display: flex` 會將元素轉成 `block-level`
 - `display: inline-block` 及 `display: inline-flex` 會將元素轉成 `inline-level`
  
-&emsp; HTML:  
+HTML:  
 ```html
 <body>	
   <div class='a'>a
@@ -1058,7 +1058,7 @@ HTML:
   </div>	
 </body>
 ```
-&emsp; CSS:  
+CSS:  
 &emsp; 實驗 1 ( 以下有 margin collapse ):
 ```css
 .a {
