@@ -4,6 +4,13 @@
 ## iTerm2
 - https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f
 - font-sourcecodepro-nerd-font 2020 年後安裝法：https://medium.com/@prinswu/zsh-oh-my-zsh-powerlevel9k-in-2020-macbook-pro-13-c85f6a409bee
+- VSCode Setting.josn 設定如下
+```json
+{    
+    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+    "terminal.integrated.fontSize": 14
+}
+```
 ## docker engine download  
 https://hub.docker.com/editions/community/docker-ce-desktop-mac  
 Ref:  
