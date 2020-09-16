@@ -16,10 +16,10 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
    c. 輸入 `nvm install 10.15.3` 下載穩定版 ( LTS ) 的 NodeJS 版本  
    d. 再輸入 `nvm list` 確認電腦中的NodeJS版本  
    e. 輸入 `nvm use 10.15.3` 切換到該版本  
-   f. 輸入 `nvm alias default v10.19.0` 設定預設版本
-   NOTE: 可按 node -v 確認有無裝好 nodeJS  
-   NOTE: 此時也會裝好 npm (node JS 套件管理工具)  
-         可按npm -v確認有無版本號出現  
+   f. 輸入 `nvm alias default v10.19.0` 設定預設版本  
+   NOTE: 可按 node -v 確認有無裝好 nodeJS    
+   NOTE: 此時也會裝好 npm (node JS 套件管理工具)    
+         可按npm -v確認有無版本號出現    
 ## 4. 創建資料夾 "Webpack_demo"  
   用 VSCode 在資料夾下新增 "webpack.config.js" 文件  
 ## 5. 貼上 webpack 官網文字
