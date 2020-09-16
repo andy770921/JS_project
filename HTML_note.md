@@ -3,6 +3,9 @@
 ## 從使用者在瀏覽器 enter 網址到畫面出現，中間經過了哪些事
 https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-the-browser-and-press-enter-bb0aa2449c1a
 
+## `<meta>`
+https://ithelp.ithome.com.tw/articles/10195279
+
 ## DOM 觀念
 https://ithelp.ithome.com.tw/articles/10191666
 ## 常用標籤
