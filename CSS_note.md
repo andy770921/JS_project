@@ -13,6 +13,9 @@
 ## Box Model & Box-sizing 面試題: 
 https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8%80-box-model-box-sizing-56ddc49ac89e
 
+## Functional CSS:
+https://blog.techbridge.cc/2019/01/26/functional-css/  
+
 ## 垂直置中與水平置中寫法:
 1. HTML
 ```html
@@ -51,6 +54,10 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 
 ```
 ## position: fixed 的說明
+- 是對應到 HTML viewport. Ref: https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/
+```
+A fixed position element is positioned relative to the viewport, or the browser window itself. 
+```
 - 若未設定 `top: 0` 或 `left: 0` ，表現出的行為，像是 *position: static* 的位置但是附加螢幕固定效果，不受滑動卷軸影響
 - 若有設定 `top: 0` 或 `left: 0` ，表現出的行為，直接對齊 `<body>` (根元素) 的左上且因 `top`, `left` 的設定而位移，且附加螢幕固定效果
 - Note: 有設定 `top: 0` 或 `left: 0` 時，效果不同於 *position: absolute* ，因為 *position: absolute* 會受外層的 *position: relative* 影響，但是 *position: fixed* 不受影響 
