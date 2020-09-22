@@ -1083,7 +1083,7 @@ span {
     }
 
     &::-webkit-scrollbar-thumb {
-      border: 2px solid transparent;
+      border: 2px solid #f1f1f1;
       border-radius: 8px;
       background-color: #bbb;
     }
