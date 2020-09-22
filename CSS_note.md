@@ -1067,7 +1067,32 @@ span {
   */
 }
 ```
+## 客製 css 卷軸:
+```css
+.list-content {
+   height: 100%;
+   overflow-y: auto;
 
+   &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 11px;
+      height: 11px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border: 2px solid transparent;
+      border-radius: 8px;
+      background-color: #bbb;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #888;
+    }
+}
+```
 ## 跨裝置 css 滿頁面調整:
 
 1. body `position: relative` 拿掉，因為如果 body 內元件下 `position: absolute`，若找不到上層的 position: relative，就會以 body 為對齊的父元素
