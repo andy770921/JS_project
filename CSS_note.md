@@ -1040,6 +1040,34 @@ HTML:
     clear: both;
 }
 ```
+## text-overflow 設定 - 文字過長，最後出現點點點:
+
+1. 需要同時設定 ```overflow, width (or max-width), display, and white-space```  
+Ref: https://stackoverflow.com/questions/7993067/text-overflow-ellipsis-not-working  
+```css
+span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100px;
+    display: block;
+    overflow: hidden
+}
+```
+
+2. 若多行，要使用非標準屬性如下
+```css
+span {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /*
+  word-break: break-word;
+  line-height: 33px;
+  */
+}
+```
+
 ## 跨裝置 css 滿頁面調整:
 
 1. body `position: relative` 拿掉，因為如果 body 內元件下 `position: absolute`，若找不到上層的 position: relative，就會以 body 為對齊的父元素
