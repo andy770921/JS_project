@@ -9,14 +9,6 @@ https://ithelp.ithome.com.tw/articles/10195279
 ## DOM 觀念
 https://ithelp.ithome.com.tw/articles/10191666
 
-## CORS
-
-https://shubo.io/what-is-cors/
-
-## Cookie
-
-https://shubo.io/cookies/
-
 ## 常用標籤
 1. ```<h1> - <h6>```標題
 2. ```<a>``` 錨，通常後面加屬性```href="網址"```或  ```href="#"```，超連結，可連結到網頁中的某位置、外部網頁等。後面加屬性```target="_blank"```意為在新分頁開啟新連結
