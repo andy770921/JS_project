@@ -1,12 +1,17 @@
 # AJAX 觀念
 ## Cookie
-https://medium.com/@hulitw/session-and-cookie-15e47ed838bc
+https://medium.com/@hulitw/session-and-cookie-15e47ed838bc  
+https://shubo.io/cookies/  
 https://blog.miniasp.com/post/2008/02/22/Explain-HTTP-Cookie-in-Detail  
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/24542/  
 https://yu-jack.github.io/2019/06/02/ajax-with-session/  
 https://flaviocopes.com/cookies/  
 ## Fetch 和 Axios 差別
 https://medium.com/@thejasonfile/fetch-vs-axios-js-for-making-http-requests-2b261cdd3af5
+
+## CORS
+
+https://shubo.io/what-is-cors/
 
 ## 使用 Fetch API 處理 Error 的方式
 https://medium.com/enjoy-life-enjoy-coding/jacascript-fetch-%E8%AE%93-es6-%E6%93%81%E6%9C%89%E4%B8%80%E5%B0%8D%E7%BF%85%E8%86%80-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8-2f98efe55ba4
