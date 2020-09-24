@@ -446,6 +446,13 @@ class BinaryTree{
       this.preorderTraverse(currentNode.rightChild);
     }
   }
+  static postorderTraverse = (currentNode) => {
+    if(currentNode){
+      this.preorderTraverse(currentNode.leftChild);
+      this.preorderTraverse(currentNode.rightChild);
+      console.log(currentNode.data);
+    }
+  }
   static inorderNonRecursive = (currentNode) => {
     const stack = [];
     while (true){
@@ -518,6 +525,9 @@ BinaryTree.inorderNonRecursive(demoTree.root);  // D B E A C
 
 console.log("preorderTraverse:");
 BinaryTree.preorderTraverse(demoTree.root);  // A B D E C
+
+console.log("postorderTraverse:");
+BinaryTree.postorderTraverse(demoTree.root);  // D E B C A
 
 console.log("levelOrderTraverse:");
 BinaryTree.levelOrderTraverse(demoTree.root);  // A B C D E
