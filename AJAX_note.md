@@ -27,10 +27,26 @@ const getData = async (url) => {
 };
 
 getData('https://api.appworks-school.tw/api/1.0/marketing/campaigns').then(data => {
+    console.log('resolved: ', data);
+}).catch(err => {
+    console.log('rejected: ', err);
+});
+// resolved: {data: Array(3)}
+
+getData('https://api.appworks-school.tw/api/9.0').then(data => {
+    console.log('resolved: ', data);
+}).catch(err => {
+    console.log('rejected: ', err);
+});
+// rejected:  Error: cannot fetch the data, status code: 404
+
+getData('https://abc').then(data => {
     console.log('resolved', data);
 }).catch(err => {
     console.log('rejected', err);
 });
+// rejected: TypeError: Failed to fetch
+
 ```
 
 ## Axios 使用法
