@@ -14,7 +14,24 @@ https://medium.com/@thejasonfile/fetch-vs-axios-js-for-making-http-requests-2b26
 https://shubo.io/what-is-cors/
 
 ## 使用 Fetch API 處理 Error 的方式
+- Ref 1: 
 https://medium.com/enjoy-life-enjoy-coding/jacascript-fetch-%E8%AE%93-es6-%E6%93%81%E6%9C%89%E4%B8%80%E5%B0%8D%E7%BF%85%E8%86%80-%E5%9F%BA%E7%A4%8E%E6%95%99%E5%AD%B8-2f98efe55ba4
+- Ref 2: https://www.youtube.com/watch?v=AoBSB00vW5A
+```js
+const getData = async (url) => {
+    const response = await fetch(url);
+    if (response.status !== 200){
+        throw new Error('cannot fetch the data');
+    }
+    return response.json();
+};
+
+getData('https://api.appworks-school.tw/api/1.0/marketing/campaigns').then(data => {
+    console.log('resolved', data);
+}).catch(err => {
+    console.log('rejected', err);
+});
+```
 
 ## Axios 使用法
 https://ithelp.ithome.com.tw/articles/10212120  
