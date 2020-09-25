@@ -33,40 +33,51 @@ https://youtu.be/OkphAk_cWPM?t=362
 ```js
 function A(fn){
   console.log('first');
-  fn();
+  fn('X');
 }
 function B(fn){
   console.log('second');
-  fn();
+  fn('Y');
 }
-A(function(){
-  B(function(){
+A(function(dataOne){
+  B(function(dataTwo){
       console.log('last');
+      console.log('data list: ', dataOne, dataTwo);
    })
 });
+
+// first
+// second
+// last
+// data list: X Y
 ``` 
 
 ```js
 function A(fn){
-  let a = 0; 
   console.log('first');
   setTimeout(()=>{
-    a = 100
-    fn(a);
+    fn('X');
   }, 2000);
 }
 
-function B(b, fn){ 
-  console.log('second', b);
+function B(fn){ 
+  console.log('second');
   setTimeout(()=>{
-    fn(b + 100);
+    fn('Y');
   }, 2000);
 }
-A(function(x){
-  B(x, function(y){
-    console.log('last', y);
+
+A(function(dataOne){
+  B(function(dataTwo){
+    console.log('last');
+    console.log('data list: ', dataOne, dataTwo);
   })
 });
+
+// first
+// second
+// last
+// data list: X Y
 ``` 
 ## GET 使用 - 原生 XMLHttpRequest 封裝成 callback
 
