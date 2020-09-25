@@ -21,7 +21,7 @@ https://medium.com/enjoy-life-enjoy-coding/jacascript-fetch-%E8%AE%93-es6-%E6%93
 const getData = async (url) => {
     const response = await fetch(url);
     if (response.status !== 200){
-        throw new Error('cannot fetch the data');
+        throw new Error(`cannot fetch the data, status code: ${response.status}`);
     }
     return response.json();
 };
