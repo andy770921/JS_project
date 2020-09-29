@@ -920,7 +920,15 @@ function memorizedFib(n){
 console.log(memorizedFib(8));
 // 34
 ```
-
+## Dynamic Programming 範例 - Sequence Alignment Problem O(n)
+- Input: `x = banana`, `y = aeniqadikjaz`
+- Output: minimum cost of transformation from `x` to `y`
+```js
+// Explain
+x: ba-n--an---a-
+y: -aeniqadikjaz
+// 1 deletion, 7 insertion, 1 substitution => cost 9 operations
+```
 
 ## 白板題
 
