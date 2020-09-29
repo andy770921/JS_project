@@ -929,6 +929,35 @@ x: ba-n--an---a-
 y: -aeniqadikjaz
 // 1 deletion, 7 insertion, 1 substitution => cost 9 operations
 ```
+- Normal Sol:
+```js
+// 矩陣共 m x n 個元素，每格都須運算，跟上、左上、左比最小值，時間複雜度 O(mn) 
+function sequenceAlign(x, y, costDel, costInsert, costSub){
+  const m = x.length;
+  const n = y.length;
+  let M = [...Array(m+1)].map(() => []);
+  for(let j = 0; j < n + 1; j++){
+    M[0][j] = j * costInsert;
+  }
+  for(let i = 1; i < m + 1; i++){
+    M[i][0] = i * costDel;
+  }
+  for(let i = 1; i < m + 1; i++){
+    for(let j = 1; j < n + 1; j++){
+      if(x[i-1] === y[j-1]) M[i][j] = M[i-1][j-1];
+      else M[i][j] = Math.min(M[i-1][j-1] + costSub, M[i-1][j] + costDel, M[i][j-1] + costInsert);
+    }
+  }
+  return M[m][n];
+}
+
+// O(m + n)
+function findSol(){
+
+}
+
+console.log(sequenceAlign('banana', 'aeniqadikjaz', 4, 4, 7)); // 39
+```
 
 ## 白板題
 
