@@ -927,7 +927,8 @@ console.log(memorizedFib(8));
 // Explain
 x: ba-n--an---a-
 y: -aeniqadikjaz
-// 1 deletion, 7 insertion, 1 substitution => cost 9 operations
+// 1 deletion, 7 insertion, 1 substitution => total 9 operations
+// if cost deletion = insert = 4, substitution = 7  => total 39 cost
 ```
 - Normal Sol:
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_1.png) 
@@ -945,8 +946,11 @@ function sequenceAlign(x, y, costDel, costInsert, costSub){
   }
   for(let i = 1; i < m + 1; i++){
     for(let j = 1; j < n + 1; j++){
-      if(x[i-1] === y[j-1]) M[i][j] = M[i-1][j-1];
-      else M[i][j] = Math.min(M[i-1][j-1] + costSub, M[i-1][j] + costDel, M[i][j-1] + costInsert);
+      if(x[i-1] === y[j-1]){
+        M[i][j] = M[i-1][j-1];
+      } else {
+        M[i][j] = Math.min(M[i-1][j-1] + costSub, M[i-1][j] + costDel, M[i][j-1] + costInsert);
+      }
     }
   }
   return M[m][n];
