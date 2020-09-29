@@ -930,6 +930,7 @@ y: -aeniqadikjaz
 // 1 deletion, 7 insertion, 1 substitution => cost 9 operations
 ```
 - Normal Sol:
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_1.png) 
 ```js
 // 矩陣共 m x n 個元素，每格都須運算，跟上、左上、左比最小值，時間複雜度 O(mn) 
 function sequenceAlign(x, y, costDel, costInsert, costSub){
