@@ -759,3 +759,38 @@ module.exports = (env) => merge(common(env), {
     ]
 });
 ```
+- devServer 中各項意義：
+1. Ref1: https://segmentfault.com/a/1190000016199721  
+2. Ref2: https://github.com/chimurai/http-proxy-middleware  
+3. 範例：
+```js
+module.exports = {
+  // ...
+  devServer: {
+    proxy: {
+      '/ssoapi': {
+        target: 'https://abc.com',
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          '^/ssoapi': ''
+        }
+      },
+      '/api': {
+        target: 'https://def.com',
+        changeOrigin: true,
+        ws: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
+  }
+};
+```
+4. 說明：`changeOrigin` 的意義是，要不要換網址。同義於，要不要把 http://localhost:8080/ 換成 https://def.com/
+5. 使用 `axios`，設定是 `axios.create({ baseURL: '/api' })`
+6. 如果把 `changeOrigin` 設成 false ，不換網址，就會真的打到 http://localhost:8080/api/xx/oo
+7. 如果把 `changeOrigin` 設成 true ，加上 `pathRewrite: { '^/api': '' }`   
+    開發人員工具看到的：Request URL: http://localhost:8080/api/xx/oo     
+    實際打出去的，轉換後變這樣：https://def.com/xx/oo  
