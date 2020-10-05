@@ -40,17 +40,28 @@
 8. React相關: 輸入rafc創造箭頭函式、rfc 或 rfce 創造函式、rcc創造component
 9. ctrl+H，可修改該文件全部相同的字
 
-## Live Server port設定  
+## Live Server port 設定  
 
-1. 若按主畫面下Go Live，無法顯示網頁，要點檔案->喜好設定->設定
-2. 搜尋server，找到 在 setting.json 內編輯  
+1. 若按主畫面下 Go Live，無法顯示網頁，要點 `檔案->喜好設定->設定`
+2. 搜尋 server，找到 在 setting.json 內編輯  
     Live Server › Settings: Port  
     Set Custom Port Number of Live Server. Set 0 if you want random port.  
     在 setting.json 內編輯  
 3. 在大括號如下寫，之後存檔，即可用  
+
+```
   {  
       "liveServer.settings.port":5500  
   }  
+```
+## 字體大小設定 
+- settings.json 內
+```
+{    
+    "terminal.integrated.fontSize": 14,
+    "editor.fontSize": 16,
+}
+```
 
 ## 使用版本控制  
 
