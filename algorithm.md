@@ -1109,25 +1109,58 @@ function findThreeTimesStrList(str){
 }
 console.log(findThreeTimesStrList('abcdefffghghghee')); // ['f', 'gh']
 ```
-- A:
+- A: brute force
 ```js
-function findThreeTimesStrList(str){
-  let possibleMatchingStr = '';
-  let accTimes = 1;
-  const outputArr = [];
-  
+function generateSubstringCollection(str){
+  const substringCollection = {};
+  // initialize a table: key is srting length, value is substring list
   for (let i = 0; i < str.length; i++){
-    if (possibleMatchingStr === str[i]){
-      accTimes++;
-      if (accTimes === 3){
-        outputArr.push(possibleMatchingStr)
-        accTimes = 1;
-      }
-    } else {
-      possibleMatchingStr = str[i];
+    substringCollection[i+1] = [];
+  }
+  // build table
+  for (let i = 0; i < str.length; i++){
+    for(let j = i; j < str.length; j++){
+      const subString = str.slice(i, j + 1);
+      substringCollection[subString.length].push(subString);
+    }
+  }
+  return substringCollection;
+}
+console.log(generateSubstringCollection('abcde'));
+/*
+  {
+    1: ["a", "b", "c", "d", "e"],
+    2: ["ab", "bc", "cd", "de"],
+    3: ["abc", "bcd", "cde"],
+    4: ["abcd", "bcde"],
+    5: ["abcde"]
+  }
+*/
+
+function findSameElementWithCondition(x, y, fn){
+  for (let i = 0; i < x.length; i++){
+    for(let j = 0; j < y.length; j++){
+      const resultOfX = fn(x[i]);
+      if (resultOfX === y[j]) return x[i];
+    }
+  }
+  return null;
+}
+console.log(findSameElementWithCondition(['a','bc'], ['d','bcbcbc'], (s) => (s + s + s)));
+// ['bc']
+
+function findThreeTimesStrList(str){
+  const substringCollection = generateSubstringCollection(str);
+  const outputArr = [];
+  for (let key in substringCollection){
+    if(substringCollection[key * 3]){
+      const sameElement = findSameElementWithCondition(substringCollection[key], substringCollection[key * 3], (s) => (s + s + s));
+      if (sameElement !== null) outputArr.push(sameElement);
     }
   }
   return outputArr;
 }
-console.log(findThreeTimesStrList('abcdefffeee')); // ['f', 'e']
+
+console.log(findThreeTimesStrList('abcdefffeee')); // ["e"]
+console.log(findThreeTimesStrList('abcdefdefdefggg')); // ["g", "def"]
 ```
