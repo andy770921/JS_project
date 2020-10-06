@@ -1109,7 +1109,7 @@ function findThreeTimesStrList(str){
 }
 console.log(findThreeTimesStrList('abcdefffghghghee')); // ['f', 'gh']
 ```
-- A: brute force: 時間複雜度 O(n^)
+- A: brute force: 時間複雜度 O(n^3)
 ```js
 function removeSameChildren(arr){
   return Array.from(new Set(arr));
