@@ -1157,7 +1157,7 @@ console.log(generateSubstringCollection('aabaa'));
 
 function findSameElementWithCondition(x, y, fn){
   const sameElementList = [];
-  // O(xy)
+  // O(xy 兩陣列長度相乘)
   for (let i = 0; i < x.length; i++){
     for(let j = 0; j < y.length; j++){
       const resultOfX = fn(x[i]);
@@ -1177,7 +1177,7 @@ function findThreeTimesStrList(str){
 
   for (let key in substringCollection){ // O(n^3)
     if(substringCollection[key * 3]){
-      // findSameElementWithCondition 時間複雜度 O(xy), x 陣列最大長度為 n; y 陣列最大長度為 n; 故 O(n^2)
+      // findSameElementWithCondition 時間複雜度 O(xy 兩陣列長度相乘), x 陣列最大長度為 n; y 陣列最大長度為 n; 故 O(n^2)
       const sameStrList = findSameElementWithCondition(substringCollection[key], substringCollection[key * 3], (s) => (s + s + s));
       if (sameStrList.length > 0) outputArr.push(...sameStrList);
     }
