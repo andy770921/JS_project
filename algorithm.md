@@ -1111,6 +1111,10 @@ console.log(findThreeTimesStrList('abcdefffghghghee')); // ['f', 'gh']
 ```
 - A: brute force
 ```js
+function removeSameChildren(arr){
+  return Array.from(new Set(arr));
+}
+
 function generateSubstringCollection(str){
   const substringCollection = {};
   // initialize a table: key is srting length, value is substring list
@@ -1124,6 +1128,10 @@ function generateSubstringCollection(str){
       substringCollection[subString.length].push(subString);
     }
   }
+  // remove same children in substring list
+  for (let key in substringCollection){
+    substringCollection[key] = removeSameChildren(substringCollection[key]);
+  }
   return substringCollection;
 }
 console.log(generateSubstringCollection('abcde'));
@@ -1136,31 +1144,46 @@ console.log(generateSubstringCollection('abcde'));
     5: ["abcde"]
   }
 */
+console.log(generateSubstringCollection('aabaa'));
+/*
+  {
+    1: ["a", "b"],
+    2: ["aa", "ab", "ba"],
+    3: ["aab", "aba", "baa"],
+    4: ["aaba", "abaa"],
+    5: ["aabaa"]
+  }
+*/
 
 function findSameElementWithCondition(x, y, fn){
+  const sameElementList = [];
   for (let i = 0; i < x.length; i++){
     for(let j = 0; j < y.length; j++){
       const resultOfX = fn(x[i]);
-      if (resultOfX === y[j]) return x[i];
+      if (resultOfX === y[j]) sameElementList.push(x[i]);
     }
   }
-  return null;
+  return sameElementList;
 }
 console.log(findSameElementWithCondition(['a','bc'], ['d','bcbcbc'], (s) => (s + s + s)));
 // ['bc']
+console.log(findSameElementWithCondition(['a','c'], ['aaa', 'ccc'], (s) => (s + s + s)));
+// ['a', 'c']
 
 function findThreeTimesStrList(str){
   const substringCollection = generateSubstringCollection(str);
   const outputArr = [];
+  
   for (let key in substringCollection){
     if(substringCollection[key * 3]){
-      const sameElement = findSameElementWithCondition(substringCollection[key], substringCollection[key * 3], (s) => (s + s + s));
-      if (sameElement !== null) outputArr.push(sameElement);
+      const sameElementList = findSameElementWithCondition(substringCollection[key], substringCollection[key * 3], (s) => (s + s + s));
+      if (sameElementList.length > 0) outputArr.push(...sameElementList);
     }
   }
+  
   return outputArr;
 }
 
-console.log(findThreeTimesStrList('abcdefffeee')); // ["e"]
-console.log(findThreeTimesStrList('abcdefdefdefggg')); // ["g", "def"]
+console.log(findThreeTimesStrList('abcdefffeee')); // ['e', 'f']
+console.log(findThreeTimesStrList('abcdefdefdefggg')); // ['g', 'def']
 ```
