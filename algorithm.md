@@ -1109,7 +1109,7 @@ function findThreeTimesStrList(str){
 }
 console.log(findThreeTimesStrList('abcdefffghghghee')); // ['f', 'gh']
 ```
-- A: brute force
+- A: brute force: 時間複雜度 O(n^)
 ```js
 function removeSameChildren(arr){
   return Array.from(new Set(arr));
@@ -1121,7 +1121,7 @@ function generateSubstringCollection(str){
   for (let i = 0; i < str.length; i++){
     substringCollection[i+1] = [];
   }
-  // build table
+  // build table: O(n^2)
   for (let i = 0; i < str.length; i++){
     for(let j = i; j < str.length; j++){
       const subString = str.slice(i, j + 1);
@@ -1157,6 +1157,7 @@ console.log(generateSubstringCollection('aabaa'));
 
 function findSameElementWithCondition(x, y, fn){
   const sameElementList = [];
+  // O(xy)
   for (let i = 0; i < x.length; i++){
     for(let j = 0; j < y.length; j++){
       const resultOfX = fn(x[i]);
@@ -1173,9 +1174,10 @@ console.log(findSameElementWithCondition(['a','c'], ['aaa', 'ccc'], (s) => (s + 
 function findThreeTimesStrList(str){
   const substringCollection = generateSubstringCollection(str);
   const outputArr = [];
-  
-  for (let key in substringCollection){
+
+  for (let key in substringCollection){ // O(n^3)
     if(substringCollection[key * 3]){
+      // findSameElementWithCondition 時間複雜度 O(xy), x 陣列最大長度為 n; y 陣列最大長度為 n; 故 O(n^2)
       const sameStrList = findSameElementWithCondition(substringCollection[key], substringCollection[key * 3], (s) => (s + s + s));
       if (sameStrList.length > 0) outputArr.push(...sameStrList);
     }
