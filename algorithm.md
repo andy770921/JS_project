@@ -1177,7 +1177,7 @@ function findThreeTimesStrList(str){
   for (let key in substringCollection){
     if(substringCollection[key * 3]){
       const sameStrList = findSameElementWithCondition(substringCollection[key], substringCollection[key * 3], (s) => (s + s + s));
-      if (sameStrList.length > 0) outputArr.push(...sameElementList);
+      if (sameStrList.length > 0) outputArr.push(...sameStrList);
     }
   }
   
