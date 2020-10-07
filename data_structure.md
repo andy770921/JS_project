@@ -730,7 +730,10 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
     2. LR: Y 在 A 的 Left 子樹的 Right  
     3. RR: Y 在 A 的 Right 子樹的 Right  
     4. RL: Y 在 A 的 Right 子樹的 Left   
-    
+- 圖示說明如下
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/AVL_1.png) 
+
+
 ## Stack 實際應用
 
 ```ts
