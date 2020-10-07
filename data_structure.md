@@ -723,7 +723,8 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 1. 二元平衡樹 - AVL Tree
 - Proposed by Adelson-Velsky, Evgenii Landis in 1962
 - 特性：對任意節點，左子樹與右子樹高度平衡。
-- 高度平衡意義：左樹高減右樹高，絕對值 >= 1
+- 高度平衡意義：左樹高減右樹高 (又叫平衡因子 balance factor)，絕對值 >= 1
+- 數學表示：BF(T)= -1, 0, 1  (某個代號 T 的 Tree Node 的左樹高減右樹高，可能為 -1, 0, 1 )
 
 ## Stack 實際應用
 
