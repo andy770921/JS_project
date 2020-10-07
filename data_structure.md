@@ -725,7 +725,7 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 - 特性：對任意節點，左子樹與右子樹高度平衡。
 - 高度平衡意義：左樹高減右樹高 (又叫平衡因子 balance factor)，絕對值 >= 1
 - 數學表示：BF(T)= -1, 0, 1  (某個代號 T 的 Tree Node 的左子樹高減右子樹高，可能為 -1, 0, 1 )
-- 若插入的 Node A，違反了 BF(T)= -1, 0, 1，再插入一個 Node Y 時，此時會有以下四種狀況，依照不同狀況調整
+- 若插入 Node Y，使上方的祖父 Node A 違反了 BF(T)= -1, 0, 1，此時會有以下四種狀況，依照不同狀況調整
     1. LL: Y 在 A 的 Left 子樹的 Left  
     2. LR: Y 在 A 的 Left 子樹的 Right  
     3. RR: Y 在 A 的 Right 子樹的 Right  
