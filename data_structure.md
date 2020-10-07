@@ -718,6 +718,13 @@ console.log(demoTree.findKth(5)); // TreeNode {key: 40, ...}
 console.log(demoTree.insert(1)); // TreeNode {key: 30, leftSize: 4 ...}
 console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 ```
+## Balanced Tree
+
+1. 二元平衡樹 - AVL Tree
+- Proposed by Adelson-Velsky, Evgenii Landis in 1962
+- 特性：對任意節點，左子樹與右子樹高度平衡。
+- 高度平衡意義：左樹高減右樹高，絕對值 >= 1
+
 ## Stack 實際應用
 
 ```ts
