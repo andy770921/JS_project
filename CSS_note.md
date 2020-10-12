@@ -1180,6 +1180,10 @@ CSS:
 -o-border-radius: 10px;
 border-radius: 10px;
 ```
+## height: 0 配合 padding: bottom 做出等比例縮放:
+
+https://stackoverflow.com/questions/35814653/automatic-height-when-embedding-a-youtube-video
+
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
