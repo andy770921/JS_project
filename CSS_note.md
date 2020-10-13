@@ -17,6 +17,7 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 https://blog.techbridge.cc/2019/01/26/functional-css/  
 
 ## 垂直置中與水平置中寫法:
+- 說明: https://stackoverflow.com/questions/28080910/what-does-top-0-left-0-bottom-0-right-0-mean
 1. HTML
 ```html
 <body>
