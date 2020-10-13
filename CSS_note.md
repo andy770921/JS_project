@@ -163,6 +163,8 @@ A fixed position element is positioned relative to the viewport, or the browser 
 	background: pink;
 }
 ```
+## z-index 的說明
+https://andyyou.github.io/2016/03/03/z-index/
 ## unset 的說明
 css 樣式有分  
 1. 自然繼承的，如 color，自然狀態下，內層會繼承外層
