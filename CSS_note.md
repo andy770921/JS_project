@@ -132,7 +132,7 @@ A fixed position element is positioned relative to the viewport, or the browser 
 	background: pink;
 }
 ```
-- Note: 外層是 *position: fixed* ，內層若設定 *position: absolute* 加上 *right: 0*，會以 fixed 為對齊對象
+- Note: 外層是 *position: fixed* ，內層若設定 *position: absolute* 加上 *right: 50px*，會以 fixed 為對齊對象
 ```css
 .a {
 	position: relative;
