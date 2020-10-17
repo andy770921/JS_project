@@ -23,7 +23,10 @@ https://blog.huli.tw/2019/10/04/javascript-async-sync-and-callback/
 ## async/await, event loop
 https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
 ## ES6語法與ES5差異，及call by ref解析27:22
-https://youtu.be/pr7JFQaAYjg
+https://youtu.be/pr7JFQaAYjg  
+## Immutable.js，mori.js 及資料結構 Trie 的觀念  
+https://www.youtube.com/watch?v=Wo0qiGPSV-s  
+
 ## constructor function 寫法，new 的意義
 1. 建立空物件 `{}`
 2. 將 function 內的 this 指向此空物件
