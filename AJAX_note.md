@@ -381,20 +381,27 @@ InitFBLogin();
 ```
 ## 使用 async/await ，及高階函數，處理錯誤的寫法 (包裝 .catch)
 ```js
+// 方法一
 function handleError(fn) {
   return function (...params)  {
     return fn(...params).catch(function (err){
         // DO SOMETHING FOR ERROR
-        console.error('Oops', err)
+        console.error('Oops', err.response);
       }
     )
   }
 }
 async function getFeedback() {
-  const result = await axios.get('https://api.appworks-school.tw/api/1.0/products/all');
+  const result = await axios.get('https://api.appworks-school.tw/api/1.0/products/all2');
 }
 const safeGetFeedback = handleError(getFeedback);
 safeGetFeedback();
+
+// 方法二
+async function getFeedback() {
+  const result = await axios.get('https://api.appworks-school.tw/api/1.0/products/all2');
+}
+getFeedback().catch(err => console.error("Oops", err.response));
 ```
 
 # 使用 Generator 與 Iterator， 實作 async/await
