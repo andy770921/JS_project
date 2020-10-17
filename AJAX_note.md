@@ -397,10 +397,7 @@ async function getFeedback() {
 const safeGetFeedback = handleError(getFeedback);
 safeGetFeedback();
 
-// 方法二
-async function getFeedback() {
-  const result = await axios.get('https://api.appworks-school.tw/api/1.0/products/all2');
-}
+// 方法二，不用 HOC 而是呼叫當下處理
 getFeedback().catch(err => console.error("Oops", err.response));
 ```
 
