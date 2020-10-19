@@ -965,7 +965,28 @@ console.log(cutRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 - Tip 1: 若子問題重覆計算，加上題目型式為「父問題是子問題的最優解 (optimal substructure)」可以考慮用動態規劃，如上 Sol 3
 - Tip 2: 若子問題數量增幅為多項式成長，如  n 平方，則使用動態規劃可期望將時間複雜度降至 O(多項式)
 - Tip 3: 若子問題數量增幅為指數，用動態規劃將時間複雜度成為 O(指數)，並無太大意義
+```js
+// Top down with memorization
+function memorizedCutRod(p, n){
+    // initialize memo ( array r[] to keep max revenue )
+    // r[i] = max revenue for rod with length i
+    const r = [...Array(n + 1)].map(() => -Infinity);
+    r[0] = 0;
+    return memorizedCutRodAux(p, n, r);
+}
 
+function memorizedCutRodAux(table, n, memo){
+  if (memo[n] >= 0) return memo[n]; // return saved solution
+  let q = -Infinity;
+  for(let i = 1; i <= n; i++){
+    q = Math.max(q, table[i] + memorizedCutRodAux(table, n-i, memo));
+  }
+  memo[n] = q // update q
+  return q;
+}
+console.log(memorizedCutRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
+// 10
+```
 
 ## Dynamic Programming 範例 - Sequence Alignment Problem
 - Input: `x = banana`, `y = aeniqadikjaz`
