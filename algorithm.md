@@ -943,6 +943,19 @@ console.log(memorizedFib(8));
 ```
  r(n) = max(p(i) + r(n-i)) where 1 <= i <= n
 ```
+```js
+function cutRod(table, n){
+  if (n === 0) return 0;
+  let q = -Infinity;
+  for(let i = 1; i <= n; i++){
+    // q 為前幾次的最大值，如現在運算到 i = 3， q 為 i = 1 及 2 運算完後再比完的最大值
+    q = Math.max(q, table[i] + cutRod(table, n-i));
+  }
+  return q;
+}
+console.log(cutRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
+
+```
 
 ## Dynamic Programming 範例 - Sequence Alignment Problem
 - Input: `x = banana`, `y = aeniqadikjaz`
