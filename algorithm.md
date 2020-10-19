@@ -945,7 +945,10 @@ console.log(memorizedFib(8));
 ```
 ```js
 function cutRod(table, n){
+  // base case
   if (n === 0) return 0;
+  
+  // recursive case
   let q = -Infinity;
   for(let i = 1; i <= n; i++){
     // q 為前幾次的最大值，如現在運算到 i = 3， q 為 i = 1 及 2 運算完後再比完的最大值
