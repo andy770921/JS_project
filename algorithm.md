@@ -939,7 +939,7 @@ console.log(memorizedFib(8));
  // 如上例 r(4) = max(9, r(1)+r(3), r(2)+r(2), r(3)+r(1))
  //             = max(9, 1 + max(8, r(1)+r(2), r(2)+r(1)), max(5, r(1)+r(1))*2, max(8, r(1)+r(2) + 1)
 ```
-- Sol 3: 遞迴優化，減少子問題數量，只注意最左邊的切點 (即，左鋼條已是最佳情況，不能再切了)
+- Sol 3: 遞迴優化，減少子問題數量，只注意最左邊的切點 (即，左鋼條已是最佳情況，不能再切了)，時間複雜度 O(2^n)
 ```
  r(n) = max(p(i) + r(n-i)) where 1 <= i <= n
 ```
@@ -954,8 +954,9 @@ function cutRod(table, n){
   return q;
 }
 console.log(cutRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
-
+// 10
 ```
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_2.png) 
 
 ## Dynamic Programming 範例 - Sequence Alignment Problem
 - Input: `x = banana`, `y = aeniqadikjaz`
