@@ -920,7 +920,22 @@ function memorizedFib(n){
 console.log(memorizedFib(8));
 // 34
 ```
-## Dynamic Programming 範例 - Sequence Alignment Problem O(n)
+## Dynamic Programming 範例 - Rod Cutting Problem
+- 說明: 給鋼條長度價目表，若 4 公尺鋼條，該如何切，才會賣到最高價
+- Given: `const lengthVsPrice = { 1: 1, 2: 5, 3: 8, 4: 9, 5: 10}`
+- Input: `length = 4`
+- output: `max price = 10` (長度分成 2 + 2，可得價錢 5 + 5 = 10)
+- Sol 1: Brute force 窮舉法，鋼條長度 n ，中間有 n - 1 個切點，每個切點可選切與不切，共 2^(n-1) 種可能，時間複雜度 O(2^(n-1))
+```
+// Ex: 長度為 4 m
+|---------------|
+|---|---|---|---|
+    a   b   c
+// 中間可能的切點有 3 處 (a, b, c)
+```
+
+
+## Dynamic Programming 範例 - Sequence Alignment Problem
 - Input: `x = banana`, `y = aeniqadikjaz`
 - Output: minimum cost of transformation from `x` to `y`
 ```js
