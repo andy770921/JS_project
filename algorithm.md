@@ -961,6 +961,7 @@ console.log(cutRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 ```
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_2.png) 
 - Sol 4: 動態規劃
+- 概念: 用空間換時間
 - Tip 1: 若子問題重覆計算，加上題目型式為「父問題是子問題的最優解 (optimal substructure)」可以考慮用動態規劃，如上 Sol 3
 - Tip 2: 若子問題數量增幅為多項式成長，如  n 平方，則使用動態規劃可期望將時間複雜度降至 O(多項式)
 - Tip 3: 若子問題數量增幅為指數，用動態規劃將時間複雜度成為 O(指數)，並無太大意義
