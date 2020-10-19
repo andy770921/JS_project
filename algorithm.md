@@ -939,9 +939,9 @@ console.log(memorizedFib(8));
  // 如上例 r(4) = max(9, r(1)+r(3), r(2)+r(2), r(3)+r(1))
  //             = max(9, 1 + max(8, r(1)+r(2), r(2)+r(1)), max(5, r(1)+r(1))*2, max(8, r(1)+r(2) + 1)
 ```
-- Sol 3: 遞迴優化，只注意最左邊的切點 (即，左鋼條已是最佳情況，不能再切了)
+- Sol 3: 遞迴優化，減少子問題數量，只注意最左邊的切點 (即，左鋼條已是最佳情況，不能再切了)
 ```
- r(n) = max(p(i), r(n-i))
+ r(n) = max(p(i) + r(n-i)) where 1 <= i <= n
 ```
 
 ## Dynamic Programming 範例 - Sequence Alignment Problem
