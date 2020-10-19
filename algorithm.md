@@ -1001,6 +1001,43 @@ function bottomUpRod(table, n){
 }
 console.log(bottomUpRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 // 10
+
+//  Bottom-up with tabulation + save cutting index
+function extendedBottomUpRod(table, n){
+  const r = [0];
+  const cut = [];
+  for (let j = 1; j <= n; j++){  // compute r[1], r[2], ... in order
+    let q = -Infinity;
+    for(let i = 1; i <= j; i++){
+      if(q < table[i] + r[j - i]){
+        q = table[i] + r[j - i];
+        cut[j] = i; // the best first cut for length j rod
+      }
+    }
+    r[j] = q;
+  }
+  return {revenue: r[n], cut: cut};
+}
+console.log(extendedBottomUpRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
+// {
+//   cut: [undefined, 1, 2, 3, 2],
+//   revenue: 10
+// }
+// cut array's key-value pair means total length Vs Best First Cut Index
+// Ex:  if total length 1, Best First Cut Index = 1. 
+//      if total length 4, Best First Cut Index = 2.
+
+function printCutRodSolution(p, n){
+  const { revenue, cut } = extendedBottomUpRod(p, n);
+  while(n > 0){
+    console.log("Best First Cut Index (cut length): ", cut[n]);
+    n = n - cut[n]; // remove the first piece
+  }
+}
+
+console.log(printCutRodSolution({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
+// Best First Cut Index (cut length): 2
+// Best First Cut Index (cut length): 2
 ```
 
 ## Dynamic Programming 範例 - Sequence Alignment Problem
