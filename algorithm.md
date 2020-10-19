@@ -906,7 +906,7 @@ function memorizedFibAux (n, memoArr){
 console.log(memorizedFib(8));
 // 34
 ```
-- Bottom-up with memorization
+- Bottom-up with tabulation
 ```js
 // Fibonacci: Bottom-up with memorization
 function memorizedFib(n){
@@ -985,6 +985,21 @@ function memorizedCutRodAux(table, n, memo){
   return q;
 }
 console.log(memorizedCutRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
+// 10
+
+//  Bottom-up with tabulation
+function bottomUpRod(table, n){
+  const r = [0];
+  for (let j = 1; j <= n; j++){  // compute r[1], r[2], ... in order
+    let q = -Infinity;
+    for(let i = 1; i <= j; i++){
+      q = Math.max(q, table[i] + r[j - i]);
+    }
+    r[j] = q;
+  }
+  return r[n];
+}
+console.log(bottomUpRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 // 10
 ```
 
