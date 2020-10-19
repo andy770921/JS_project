@@ -1024,8 +1024,8 @@ console.log(extendedBottomUpRod({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 //   revenue: 10
 // }
 // cut array's key-value pair means total length Vs Best First Cut Index
-// Ex:  if total length 1, Best First Cut Index = 1. 
-//      if total length 4, Best First Cut Index = 2.
+// Ex:  if total length = 1, Best First Cut Index = 1. 
+//      if total length = 4, Best First Cut Index = 2.
 
 function printCutRodSolution(p, n){
   const { revenue, cut } = extendedBottomUpRod(p, n);
