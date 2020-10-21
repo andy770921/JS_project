@@ -164,6 +164,97 @@ A fixed position element is positioned relative to the viewport, or the browser 
 	background: pink;
 }
 ```
+## position: sticky 的說明
+- 實際上可用在 header 或 footer: https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46
+- 不論卷軸如何捲動，最終希望 sticky element 保持的狀態，可想成將 sticky 改為 fixed 的定位情況
+
+```css
+.sticky {
+  position: sticky;
+  bottom: -10px;
+} 
+/* 可想成，不論卷軸如何捲動，最終希望保持的狀態是以下 */
+.sticky {
+  position: fixed;
+  bottom: -10px;
+} 
+```
+- sticky 和 fixed 差別在於，sticky 會以有設定 `overflow` 的父層對位，fixed 則是和 viewport
+- 當 sticky element 未達到理想的位置 (fixed 的定位) 時，會在畫面中本來的位置，隨卷軸移動
+- Note: 心中想像，若保持在本來位置，隨卷軸移動，永遠無法達到 fixed 的定位，就會是 fixed 狀態
+- 實驗
+```html
+<dl>
+  <div>
+    <dt>A</dt>
+    <dd>Andrew W.K.</dd>
+    <dd>Apparat</dd>
+    <dd>Arcade Fire</dd>
+    <dd>At The Drive-In</dd>
+    <dd>Aziz Ansari</dd>
+  </div>
+  <div>
+    <dt>C</dt>
+    <dd>Chromeo</dd>
+    <dd>Common</dd>
+    <dd>Converge</dd>
+    <dd>Crystal Castles</dd>
+    <dd>Cursive</dd>
+  </div>
+  <div>
+    <dt>E</dt>
+    <dd>Explosions In The Sky</dd>
+  </div>
+  <div>
+    <dt>T</dt>
+    <dd>Ted Leo &amp; The Pharmacists</dd>
+    <dd>T-Pain</dd>
+    <dd>Thrice</dd>
+    <dd>TV On The Radio</dd>
+    <dd>Two Gallants</dd>
+  </div>
+  <dt>G</dt>
+</dl>
+```
+
+```css
+* {
+  box-sizing: border-box;
+}
+dl {
+  height: 30vh;
+  overflow: auto
+}
+dl > div {
+  background: #FFF;
+  padding: 24px 0 0 0;
+}
+
+dt {
+  background: #B8C1C8;
+  border-bottom: 1px solid #989EA4;
+  border-top: 1px solid #717D85;
+  color: #FFF;
+  font: bold 18px/21px Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 2px 0 0 12px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
+  /* bottom: -10px; */
+} 
+
+dd {
+  font: bold 20px/45px Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 0 12px;
+  white-space: nowrap;
+}
+
+dd + dd {
+  border-top: 1px solid #CCC;
+}
+```
 ## z-index 的說明
 https://andyyou.github.io/2016/03/03/z-index/
 ## unset 的說明
