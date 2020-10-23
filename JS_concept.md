@@ -198,7 +198,8 @@ https://overreacted.io/zh-hant/why-do-we-write-super-props/
 3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
 4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b = Object.assign({}, a);
 5. copy Object方法 2，用展開運算子，會是新的記憶體位置: b = { ...a };
-
+## 比較兩個 Array 的值 - 交集和差集 
+https://stackoverflow.com/questions/1187518/how-to-get-the-difference-between-two-arrays-in-javascript
 ## this的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
