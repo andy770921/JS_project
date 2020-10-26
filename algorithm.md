@@ -920,7 +920,7 @@ function memorizedFib(n){
 console.log(memorizedFib(8));
 // 34
 ```
-## Dynamic Programming 範例 - Rod Cutting Problem
+## Dynamic Programming 範例 - Rod Cutting Problem - O(n^2)
 - 說明: 給鋼條長度價目表，若 4 公尺鋼條，該如何切，才會賣到最高價
 - Given: `const lengthVsPrice = {1: 1, 2: 5, 3: 8, 4: 9, 5: 10}`
 - Input: `length = 4`
@@ -1044,7 +1044,7 @@ console.log(printCutRodSolution({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 - Given: `const stampPrice = [3, 5, 7, 12]`
 - Input: `money = 15`
 - output: `min stampNum = 2` (可買 12 + 3，也可買 5 + 5 + 5，前者只需兩張)
-- n 為金額，k 為郵票共幾種金額選擇，時間複雜度 O(kn)。若郵票金額陣列為常數，如 4 組，則時間複雜度為 O(n)
+- n 為金額，k 為郵票共幾種金額選擇，用遞迴解，時間複雜度 O(k^n)；用 DP 解，時間複雜度 O(kn)。若郵票金額陣列為常數，如 4 組，則時間複雜度為 O(n)
 ```js
 // v 為郵票金額陣列，n 為用多少錢買郵票
 function stamp(v, n){
