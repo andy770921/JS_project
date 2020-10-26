@@ -233,7 +233,11 @@ https://learngitbranching.js.org/?locale=zh_TW
 19. `git clone --single-branch --branch <branchname> <remote-repo>` 可 clone 遠端特定分支
 20. `git branch -D feature` 可刪除特定分支
 21. 若 push 且發 PR 至遠端後，要改之前的 commit，`git reset HEAD^`，再重新 commit，後可接 `git push origin {branch名稱} --force`
-
+22. 變更 git 作者名稱及信箱
+```
+git config user.name "YOUR NAME"
+git config user.email "YOUR EMAIL"
+```
 
 ## Git 合併 commit:
 
