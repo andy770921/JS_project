@@ -1039,7 +1039,13 @@ console.log(printCutRodSolution({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 // Best First Cut Index (cut length): 2
 // Best First Cut Index (cut length): 2
 ```
-
+## Dynamic Programming 範例 - Stamp Problem
+- 說明: 給郵票價目表，郵票可購買的張數不限，若有 15 元，該如何買，才會買到最少張數郵票
+- Given: `const stampPrice = [3, 5, 7, 12]`
+- Input: `money = 15`
+- output: `min stampNum = 2` (可買 12 + 3，也可買 5 + 5 + 5，前者只需兩張)
+```js
+```
 ## Dynamic Programming 範例 - Sequence Alignment Problem
 - Input: `x = banana`, `y = aeniqadikjaz`
 - Output: minimum cost of transformation from `x` to `y`
