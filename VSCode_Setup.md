@@ -247,6 +247,10 @@ git config user.email "YOUR EMAIL"
 4. 按 `ESC`，`:wq` 存檔並離開
 5. 會自動跳出 Vim 介面，自行輸入新 commit 名稱
 
+## Git 改 commit Author:
+
+https://yulun.me/2014/git-tips-change-author-and-email-in-previous-commits/
+
 ## git flow 套件: gitflow
 
 0. 建議配合 VS Code 套件 Git Graph 觀察分支狀況
