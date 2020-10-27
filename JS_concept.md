@@ -1,6 +1,7 @@
 # JS 觀念
 ## clean code 中文版
-https://github.com/AllJointTW/clean-code-javascript
+https://github.com/AllJointTW/clean-code-javascript  
+https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/clean-code-index-51e209cc47db  
 ## 同步/非同步
 https://www.youtube.com/watch?v=NOprCnnjHm0  
 https://youtu.be/yswb4SkDoj0  
