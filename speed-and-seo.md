@@ -7,6 +7,10 @@
 4. Pingdom: https://www.pingdom.com/
 5. Sitespeed: https://www.notion.so/Sitespeed-io-05d71c887be140c98ef0d35361eaad2e
 
+## React SSR
+
+https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ssr-in-reactjs-part1-d2a11890abfc
+
 ## 錄製 http request 跟 response 網站
 
 https://proxyman.io/
