@@ -1,5 +1,10 @@
 ## Styled-components
 
+## 搭配 functional css 使用的套件
+
+- styled-system: https://styled-system.com/
+- GitHub 使用 styled-system + styled-components 開源元件庫: https://primer.style/components/B
+
 ## 傳變數方法 ( 使用 TypeScript )
 ```ts
 const IconCircle = styled.a<{ circleSize?: number; iconId?: string }>`
