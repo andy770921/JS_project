@@ -21,6 +21,10 @@ https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ss
 - ref: https://medium.com/@mingjunlu/lazy-loading-images-via-the-intersection-observer-api-72da50a884b7
 - 原生`<img loading="lazy">` ref: https://web.dev/browser-level-image-lazy-loading/
 
+## 不用 iframe 嵌入 YouTube 影片，提升速度的套件
+
+https://github.com/paulirish/lite-youtube-embed
+
 ## 錄製 http request 跟 response 網站
 
 https://proxyman.io/
