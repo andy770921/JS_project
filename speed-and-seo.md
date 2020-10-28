@@ -11,6 +11,16 @@
 
 https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ssr-in-reactjs-part1-d2a11890abfc
 
+## 前 Facebook JavaScript 優化部門的 Josh Duck 提到的效能優化方向
+
+- https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/reactconf-au-2020-note-part1-2f309361a908
+
+## 圖片 lazy loading:
+- demo: https://mingjunlu.github.io/lazy-loading-example/
+- code: https://github.com/mingjunlu/lazy-loading-example
+- ref: https://medium.com/@mingjunlu/lazy-loading-images-via-the-intersection-observer-api-72da50a884b7
+- 原生`<img loading="lazy">` ref: https://web.dev/browser-level-image-lazy-loading/
+
 ## 錄製 http request 跟 response 網站
 
 https://proxyman.io/
