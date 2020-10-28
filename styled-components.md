@@ -3,7 +3,7 @@
 ## 搭配 functional css 使用的套件
 
 - styled-system: https://styled-system.com/
-- GitHub 使用 styled-system + styled-components 開源元件庫: https://primer.style/components/B
+- GitHub 使用 styled-system + styled-components 開源元件庫: https://primer.style/components/Box
 
 ## 傳變數方法 ( 使用 TypeScript )
 ```ts
