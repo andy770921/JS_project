@@ -810,6 +810,7 @@ https://stackoverflow.com/questions/54560790/detect-click-outside-react-componen
 3. react-spring : https://www.react-spring.io/
 4. react-visibility-sensor : https://www.npmjs.com/package/react-visibility-sensor
 5. react-reveal: [截至 2020/7/20] 不支援 iOS 12 版，及部分功能不支援 iOS 13.15.1
+6. 取 API 的 hook - swr: https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/react-swr-485b8e41ef78
 
 # React  語法使用
 
