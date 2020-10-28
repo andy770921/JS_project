@@ -1,5 +1,9 @@
 # jest 單元測試流程
 
+## React + Jest 教學
+
+https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/nextjs-testing-tutorial-1-ed4b27563761
+
 ## React 環境下，測試 React Component snapshot
 
 
