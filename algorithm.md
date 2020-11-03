@@ -1093,7 +1093,7 @@ printStampSelection([3, 5, 7, 12], 15);
 x: ba-n--an---a-
 y: -aeniqadikjaz
 // 1 deletion, 7 insertion, 1 substitution => total 9 operations
-// if cost deletion = insert = 4, substitution = 7  => total 39 cost
+// if cost of deletion = insert = 4, substitution = 7  => total 39 cost
 ```
 - Normal Sol:
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_1.png) 
