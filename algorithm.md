@@ -1118,15 +1118,47 @@ function sequenceAlign(x, y, costDel, costInsert, costSub){
       }
     }
   }
-  return M[m][n];
+  return { M, cost: M[m][n]};
 }
 
 // O(m + n)
-function findSol(){
+function findSol(m, n, x, y, M, costDel, costInsert, costSub, ans = []){
+  if(m === 0 && n === 0){
+    return;
+  }
+  if(m === 0 && n > 0){
+    findSol(m, n-1, x, y, M, costDel, costInsert, costSub, ans);
+    ans.push('-');
+    return;
+  }
+  if(m > 0 && n === 0){
+    findSol(m-1, n, x, y, M, costDel, costInsert, costSub, ans);
+    ans.push('|');
+    return;
+  }
+  const isTheSameChar = x[m-1] === y[n-1];
+  const costSubOrZero = isTheSameChar? 0: costSub;
+  const v = Math.min(M[m-1][n-1] + costSubOrZero, M[m-1][n] + costDel, M[m][n-1] + costInsert);
+  if(v === M[m-1][n] + costDel){
+    findSol(m-1, n, x, y, M, costDel, costInsert, costSub, ans);
+    ans.push('|');
+  } else if (v === M[m][n-1] + costInsert){
+    findSol(m, n-1, x, y, M, costDel, costInsert, costSub, ans);
+    ans.push('-');
+  } else {
+    findSol(m-1, n-1, x, y, M, costDel, costInsert, costSub, ans);
+    ans.push(x[m-1]);
+  }
 
+  return ans.join('');
 }
+const { M, cost } = sequenceAlign('banana', 'aeniqadikjaz', 4, 4, 7);
+console.log('cost: ' + cost); // cost: 39
+console.log(findSol('banana'.length, 'aeniqadikjaz'.length, 'banana', 'aeniqadikjaz', M, 4, 4, 7)); 
+//    |a-n--an---a-
+// x: ba-n--an---a-
+// y: -aeniqadikjaz
 
-console.log(sequenceAlign('banana', 'aeniqadikjaz', 4, 4, 7)); // 39
 ```
 
 ## 白板題
