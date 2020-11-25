@@ -1087,14 +1087,25 @@ printStampSelection([3, 5, 7, 12], 15);
 ```
 ## Dynamic Programming 範例 - Sequence Alignment Problem
 - Input: `x = banana`, `y = aeniqadikjaz`
-- Output: minimum cost of transformation from `x` to `y`
+- Output: 1. minimum cost of transformation from `x` to `y` 2. how to transform
 ```js
 // Explain
 x: ba-n--an---a-
 y: -aeniqadikjaz
 // 1 deletion, 7 insertion, 1 substitution => total 9 operations
 // if cost of deletion = insert = 4, substitution = 7  => total 39 cost
+
+function sequenceAlign(x, y, costDel, costInsert, costSub){
+  // TODOS
+}
+function findSol(params){
+  // TODOS
+}
+
+console.log(sequenceAlign('banana', 'aeniqadikjaz', 4, 4, 7).cost); // 39
+console.log(findSol(SOME_PARAMS)); // |a-n--an---a-
 ```
+
 - Normal Sol:
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_1.png) 
 ```js
