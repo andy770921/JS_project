@@ -1049,7 +1049,7 @@ console.log(printCutRodSolution({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 // v 為郵票金額陣列，n 為用多少錢買郵票
 function stamp(v, n){
   const extV = ['unused value', ...v]; // index 1 為第一張郵票價格，2 為第二張，依此類推
-  const s = [0]; // 用 index 的金額去買，最少買的張數，如 [0, 6, 7]，用 2 元去買，最少買 6 張
+  const s = [0]; // 用 index 的金額去買，最少買的張數，如 [0, 6, 7]，用 2 元去買，最少買 7 張
   const b = [];  // backtracking for stamp with v[j]， 用此陣列記錄該買第幾張郵票
   for(let i = 1; i < n + 1; i++){
     let rMin = Infinity;
