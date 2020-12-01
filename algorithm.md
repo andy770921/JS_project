@@ -645,7 +645,7 @@ Move 1-level disk from A to C
 ```js
 function mergeSort(arr, startIndex, endIndex){
     // base case
-    if (startIndex == endIndex) return;
+    if (startIndex === endIndex) return;
     // recursive case
     // 1. devide
     const midIndex = Math.floor((startIndex + endIndex) / 2);
