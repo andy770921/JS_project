@@ -147,7 +147,7 @@ console.log(add()); // 2
 console.log(add()); // 3
 
 ```
-## new創造物件，與建立建構式
+## new 創造物件，與建立建構式
 https://ithelp.ithome.com.tw/articles/10193747
 ## 原型鍊，實現 class 繼承功能
 https://www.youtube.com/watch?v=Fsp42zUNJYU
@@ -192,16 +192,16 @@ elaine.say();
 ```
 ## Dan 說明 super 在 React 中的使用
 https://overreacted.io/zh-hant/why-do-we-write-super-props/
-## Array 或 Object ，避免用= 指定，因為這兩者為 call by ref
+## Array 或 Object ，避免用 = 指定，因為這兩者為 call by ref
 1. [1]==[1]，會是false，因為指向不同記憶體位置
 2. 若要比較，要用_.isEqual([1],[1])，會回傳true
-2-2. 實際安裝.isEqual Ref: https://stackoverflow.com/questions/43479464/how-to-import-a-single-lodash-function
-3. copy array方法，將a複製進b，用slice複製完全一樣的出來到不同記憶體位置: b = a.slice();
-4. copy Object方法，將a複製進b，把a放到空陣列，會是新的記憶體位置: b = Object.assign({}, a);
+2-2. 實際安裝. isEqual Ref: https://stackoverflow.com/questions/43479464/how-to-import-a-single-lodash-function
+3. copy array方法，將 a 複製進 b，用 slice 複製完全一樣的出來到不同記憶體位置: b = a.slice();
+4. copy Object方法，將 a 複製進 b，把 a 放到空陣列，會是新的記憶體位置: b = Object.assign({}, a);
 5. copy Object方法 2，用展開運算子，會是新的記憶體位置: b = { ...a };
 ## 比較兩個 Array 的值 - 交集和差集 
 https://stackoverflow.com/questions/1187518/how-to-get-the-difference-between-two-arrays-in-javascript
-## this的用法
+## this 的用法
 https://www.youtube.com/watch?v=tpheRywjVQk  
 https://youtu.be/XJzDF9bj368
 ## 計算機概論
@@ -212,7 +212,7 @@ https://ithelp.ithome.com.tw/articles/10185430
 解構賦值加預設值 1   
 https://medium.com/@pyrolistical/destructuring-nested-objects-9dabdd01a3b8  
 解構賦值加預設值 2   
-https://stackoverflow.com/questions/48433008/js-es6-destructuring-of-undefined
+https://stackoverflow.com/questions/48433008/js-es6-destructuring-of-undefined  
 深層的解構賦值  
 ```js
     const data = null;
