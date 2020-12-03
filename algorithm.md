@@ -1185,7 +1185,7 @@ const jobList = [
 ```
 - Goal: 總時間 (1 ~ 9) 內，不能同一時間做兩份工作的前提下，選任意工作讓收益最大
 ```js
-function WeightedIntervalScheduling(jobList){
+function weightedIntervalScheduling(jobList){
   // TODOS
 }
 function findSol(params){
@@ -1200,10 +1200,31 @@ const testList = [
   { id: 'job_6', start: 6, end: 9, value: 3}
 ];
 
-console.log(WeightedIntervalScheduling(testList)); // 選第一、三、六份 = 1 + 3 + 3 = 7
+console.log(weightedIntervalScheduling(testList)); // 選第一、三、六份 = 1 + 3 + 3 = 7
 console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
 ```
+- Sol: O(n)
 ```js
+// O(n)
+function weightedIntervalScheduling(jobList){
+  
+}
+
+// O(n)
+function findSol(params){
+  
+}
+const testList = [
+  { id: 'job_1', start: 1, end: 3, value: 1}, 
+  { id: 'job_2', start: 1, end: 5, value: 3},
+  { id: 'job_3', start: 3, end: 5, value: 3},
+  { id: 'job_4', start: 3, end: 7, value: 4}, 
+  { id: 'job_5', start: 7, end: 8, value: 1},
+  { id: 'job_6', start: 6, end: 9, value: 3}
+];
+
+console.log(weightedIntervalScheduling(testList)); // 7
+console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
 ```
 
 ## 白板題
