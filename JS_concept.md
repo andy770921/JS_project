@@ -448,7 +448,7 @@ const seperateList = list
   );
 console.log(seperateList);
 ```
-
+16. 去重複: `[...new Set(arr)]` 或 `Array.from(new Set(arr))`
 ## String 常用的方法
 1. slice 不會改到本來的
 ## Object 常用的方法
