@@ -79,7 +79,7 @@ For inputString = "bbc", the output should be isBeautifulString(inputString) = f
 Although there are more bs than cs, this string is not beautiful because there are no as, so therefore there are more bs than as.
 ```
 
-- Input/Output 
+- Input/Output     
     execution time limit: 4 seconds (js)
 ```
 [input] string inputString
