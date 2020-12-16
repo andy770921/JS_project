@@ -67,6 +67,7 @@ https://github.com/jigsawye/javascript
 
 1. [2019/10/23](https://pttcareer.com/soft_job/M.1571823381.A.B68.html)
 2. [從輸入網址列到渲染畫面，過程經歷了什麼事？](https://w3c.hexschool.com/blog/8d691e4f?fbclid=IwAR2-_4Gt23OuyWpTYhdaT43s_PmNPepKN4DEdRRG6zCr9tsbhJwkLQrmJ-o)
+3. [考題筆記](https://github.com/andy770921/JS_project/blob/master/interview_question.md)
 
 ## 快速建置，開始專案使用的 Repo
 
