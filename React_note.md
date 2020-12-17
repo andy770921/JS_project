@@ -239,7 +239,8 @@ function Component() {
 https://blog.webdevsimplified.com/2020-05/use-ref/   
 https://youtu.be/t2ypzz6gJm0?t=46  
 7. Note: functional component 只有使用 useRef 才有辦法在兩次渲染間保留值（不會自動觸發重新渲染的值）。class component 不必使用 useRef，直接在 class 內新增變數即可。
-
+## useLayoutEffect
+https://medium.com/@xyz030206/%E9%97%9C%E6%96%BC-uselayouteffect-%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B-89a0fba46116
 ## 記憶物件或陣列的 useDeepMemo hook (Ref: React Apollo)
 https://github.com/benjamn/wryware/blob/main/packages/equality/src/equality.ts  
 https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useDeepMemo.ts  
