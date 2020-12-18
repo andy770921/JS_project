@@ -433,7 +433,7 @@ HTML:
 ```
 ## 黏底footer (將Footer固定在頁面底部)
 1. HTML:
-```
+```html
 <body>
 <div class="row">		
   <div class="primary col">
@@ -450,7 +450,7 @@ HTML:
 </body>
 ```
 2. CSS
-```
+```css
 body {
   display: flex;
   flex-direction: column;
