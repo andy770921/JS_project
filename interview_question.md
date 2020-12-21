@@ -60,7 +60,7 @@ console.log(boundGetElem.apply(b, 10));  // TypeError: CreateListFromArrayLike c
 
 # Algorithm
 
-## String - check if string is beautiful
+## String, Array, Hash Table - check if string is beautiful
 
 - Explain & Example:
 
@@ -117,4 +117,112 @@ function isBeautifulString(inputString) {
     }
     return true;
 }
+```
+## Object Oriented Programming - Implement the missing code
+
+- You may not modify the pre-existing code.
+- allocate(hostType): reserves the first available hostname and returns it;
+- deallocate(hostname): release that hostname back into the pool.
+- Example:
+```
+>> tracker.allocate('apibox');
+"apibox1"
+
+>> tracker.allocate('apibox');
+"apibox2"
+
+>> tracker.deallocate('apibox1');
+
+>> tracker.allocate('apibox');
+"apibox1"
+
+>> tracker.allocate('sitebox');
+"sitebox1"
+```
+
+- Q:
+```js
+// Given
+function hostAllocation(queries) {
+  const tracker = new Tracker();
+  const results = [];
+  queries.forEach((query) => {
+    const [action, name] = query.split(' ');
+    if (action === 'A') {
+      results.push(tracker.allocate(name));
+    } else if (action === 'D') {
+      tracker.deallocate(name);
+    }
+  });
+  return results;
+}
+
+class Tracker {
+  // TODOS
+}
+
+console.log(hostAllocation(['A apibox',
+  'A apibox',
+  'D apibox1',
+  'A apibox',
+  'A sitebox']));
+// to be: ['apibox1', 'apibox2', 'apibox1', 'sitebox1'] 
+```
+
+- A:
+```js
+// Given
+function hostAllocation(queries) {
+  const tracker = new Tracker();
+  const results = [];
+  queries.forEach((query) => {
+    const [action, name] = query.split(' ');
+    if (action === 'A') {
+      results.push(tracker.allocate(name));
+    } else if (action === 'D') {
+      tracker.deallocate(name);
+    }
+  });
+  return results;
+}
+
+class Tracker {
+  reservedList = [];
+
+  allocate(name) {
+    const existingNumberHashTable = [-1];
+    const sameNameItem = this.reservedList.map((str) => {
+      existingNumberHashTable[Number(str.slice(-1))] = Number(str.slice(-1));
+      return str.slice(0, str.length - 1);
+    }).find((str) => str === name);
+
+    if (sameNameItem) {
+      let i;
+      [...existingNumberHashTable].forEach((num, idx) => {
+        if (typeof num === 'undefined') {
+          i = idx;
+        }
+      });
+
+      if (i === undefined) {
+        this.reservedList = [...this.reservedList, name + existingNumberHashTable.length];
+        return name + existingNumberHashTable.length;
+      }
+      this.reservedList = [...this.reservedList, name + i];
+      return name + i;
+    }
+    this.reservedList = [...this.reservedList, name + 1];
+    return name + 1;
+  }
+
+  deallocate(name) {
+    this.reservedList = this.reservedList.filter((item) => item !== name);
+  }
+}
+console.log(hostAllocation(['A apibox',
+  'A apibox',
+  'D apibox1',
+  'A apibox',
+  'A sitebox']));
+// to be: ['apibox1', 'apibox2', 'apibox1', 'sitebox1'] 
 ```
