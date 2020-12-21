@@ -126,13 +126,16 @@ function isBeautifulString(inputString) {
 - `deallocate(hostname)`: release that hostname back into the pool.
 
 - Input/Output
+
+```
 * [execution time limit] 4 seconds (js)
 * [input] array.string queries An array of strings representing queries to the tracker.
     * queries[i] = "A <hostType>" means that you should call tracker.allocate(<hostType>) and return the reserved hostname.
     * queries[i] = "D <hostname>" means that you should call tracker.deallocate(<hostname>) and return nothing.
 * It is guaranteed that all host numbers of the deallocating queries won't exceed 999. Guaranteed constraints: 1 ≤ queries.length ≤ 103. 
 * [output] array.string An array of responses from the tracker.
-  
+```
+
 - Example:
 ```
 >> tracker.allocate('apibox');
