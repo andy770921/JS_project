@@ -224,8 +224,8 @@ class Tracker {
                     return `${hostType}${i + 1}`;
                 }
             }
-            this.reservedList = [...this.reservedList, `${hostType}${existedNumberList.length + 1}` ];
-            return `${hostType}${existedNumberList.length + 1}`;
+            this.reservedList = [...this.reservedList, `${hostType}${allNumberSeries.length + 1}` ];
+            return `${hostType}${allNumberSeries.length + 1}`;
         }
     }
     deallocate(hostname) {
