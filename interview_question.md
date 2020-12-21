@@ -209,8 +209,8 @@ class Tracker {
         this.reservedList = [...this.reservedList, name + existingNumberHashTable.length];
         return name + existingNumberHashTable.length;
       }
-      this.reservedList = [...this.reservedList, name + i];
-      return name + i;
+      this.reservedList = [...this.reservedList, name + emptyIndex];
+      return name + emptyIndex;
     }
     this.reservedList = [...this.reservedList, name + 1];
     return name + 1;
