@@ -191,20 +191,21 @@ class Tracker {
 
   allocate(name) {
     const existingNumberHashTable = [-1];
-    const sameNameItem = this.reservedList.map((str) => {
+    const isExistingSameName = this.reservedList.map((str) => {
       existingNumberHashTable[Number(str.slice(-1))] = Number(str.slice(-1));
       return str.slice(0, str.length - 1);
     }).find((str) => str === name);
 
-    if (sameNameItem) {
-      let i;
-      [...existingNumberHashTable].forEach((num, idx) => {
+    if (isExistingSameName) {
+      let emptyIndex;
+      [...existingNumberHashTable].some((num, idx) => {
         if (typeof num === 'undefined') {
-          i = idx;
+          emptyIndex = idx;
+          return true;
         }
       });
 
-      if (i === undefined) {
+      if (emptyIndex === undefined) {
         this.reservedList = [...this.reservedList, name + existingNumberHashTable.length];
         return name + existingNumberHashTable.length;
       }
