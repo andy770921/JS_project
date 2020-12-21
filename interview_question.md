@@ -200,39 +200,39 @@ function hostAllocation(queries) {
 }
 
 class Tracker {
-  reservedList = [];
-
-  allocate(name) {
-    const existingNumberHashTable = [-1];
-    const isExistingSameName = this.reservedList.map((str) => {
-      existingNumberHashTable[Number(str.slice(-1))] = Number(str.slice(-1));
-      return str.slice(0, str.length - 1);
-    }).find((str) => str === name);
-
-    if (isExistingSameName) {
-      let emptyIndex;
-      [...existingNumberHashTable].some((num, idx) => {
-        if (typeof num === 'undefined') {
-          emptyIndex = idx;
-          return true;
+    reservedList = [];
+    
+      allocate(hostType){
+        const sameTypeList = this.reservedList.filter((name) =>
+            name.slice(0, hostType.length) === hostType);
+        if(sameTypeList.length === 0){
+            this.reservedList = [...this.reservedList, hostType + 1];
+            return hostType + 1;
+        } else {
+            const existedNumberList = sameTypeList.map((name) => {
+                return parseInt(name.slice(hostType.length, name.length), 10)
+            });
+            
+            const allNumberSeries = [...Array(existedNumberList[existedNumberList.length-1])].map((_, idx) => {
+                if(existedNumberList.includes(idx)) return idx;
+                return null;
+            })
+            
+            for(let i = 0; i < allNumberSeries.length - 1; i++){
+                if(allNumberSeries[i + 1] - allNumberSeries[i] !== 1){
+                    this.reservedList = [...this.reservedList, `${hostType}${i + 1}`]; 
+                    return `${hostType}${i + 1}`;
+                }
+            }
+            this.reservedList = [...this.reservedList, `${hostType}${existedNumberList.length + 1}` ];
+            return `${hostType}${existedNumberList.length + 1}`;
         }
-      });
-
-      if (emptyIndex === undefined) {
-        this.reservedList = [...this.reservedList, name + existingNumberHashTable.length];
-        return name + existingNumberHashTable.length;
-      }
-      this.reservedList = [...this.reservedList, name + emptyIndex];
-      return name + emptyIndex;
     }
-    this.reservedList = [...this.reservedList, name + 1];
-    return name + 1;
-  }
-
-  deallocate(name) {
-    this.reservedList = this.reservedList.filter((item) => item !== name);
-  }
+    deallocate(hostname) {
+        this.reservedList = this.reservedList.filter(name => name !== hostname);
+    }
 }
+
 console.log(hostAllocation(['A apibox',
   'A apibox',
   'D apibox1',
