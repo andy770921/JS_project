@@ -167,6 +167,7 @@ A fixed position element is positioned relative to the viewport, or the browser 
 	background: pink;
 }
 ```
+
 ## position: sticky 的說明
 - 實際上可用在 header 或 footer: https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46
 - 不論卷軸如何捲動，最終希望 sticky element 保持的狀態，可想成將 sticky 改為 fixed 的定位情況
@@ -281,6 +282,11 @@ css 樣式有分
   /* 若希望字變黑色，要設定 color: initial */
 }
 ```
+## height: max-content 的說明
+https://stackoverflow.com/questions/51285308/how-do-min-content-and-max-content-work
+
+## height: 100%，safari 無效的說明，與四種解法
+https://stackoverflow.com/questions/33636796/chrome-safari-not-filling-100-height-of-flex-parent
 
 ## 加入自定義 CSS 方式 (Author Style)
 1. inline style: EX: ```<body style="background-color: orange;">```、```<h1 style="color: orange;">```
