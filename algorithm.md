@@ -1174,7 +1174,7 @@ console.log(findSol('banana'.length, 'aeniqadikjaz'.length, 'banana', 'aeniqadik
 ## Dynamic Programming 範例 - Weighted Interval Scheduling
 - Given: a job list which includes start time, end time, value
 - 假設 job list 照結束時間由早到晚排序好  
-![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_1.png) 
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_3.png) 
 ```js
 const jobList = [
   { id: 'job_1', start: 1, end: 3, value: 1}, 
