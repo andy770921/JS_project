@@ -1172,7 +1172,9 @@ console.log(findSol('banana'.length, 'aeniqadikjaz'.length, 'banana', 'aeniqadik
 
 ```
 ## Dynamic Programming 範例 - Weighted Interval Scheduling
-- Given: start time, end time, value per job
+- Given: a job list which includes start time, end time, value
+- 假設 job list 照結束時間由早到晚排序好  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_1.png) 
 ```js
 const jobList = [
   { id: 'job_1', start: 1, end: 3, value: 1}, 
@@ -1205,6 +1207,35 @@ console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
 ```
 - Sol: O(n)
 ```js
+const testList = [
+  { id: 'job_1', start: 1, end: 3, value: 1}, 
+  { id: 'job_2', start: 1, end: 5, value: 3},
+  { id: 'job_3', start: 3, end: 5, value: 3},
+  { id: 'job_4', start: 3, end: 7, value: 4}, 
+  { id: 'job_5', start: 7, end: 8, value: 1},
+  { id: 'job_6', start: 6, end: 9, value: 3}
+];
+
+// p 函數意義: 若在 list 中選了該 index 的工作，則只能再選 index 為 1 ~ 回傳值的工作
+function p(index ,list){
+  const listWithNonZeroIndex = [null, ...list];
+  
+  for(let i = index - 1; i > 0; i--){
+    if(listWithNonZeroIndex[index].start >= listWithNonZeroIndex[i].end){
+      return i;
+    }
+  }
+  
+  return 0;
+}
+
+console.log(p(6, testList)); // 3
+console.log(p(5, testList)); // 4
+console.log(p(4, testList)); // 1
+console.log(p(3, testList)); // 1
+console.log(p(2, testList)); // 0
+console.log(p(1, testList)); // 0
+
 // O(n)
 function weightedIntervalScheduling(jobList){
   
@@ -1214,14 +1245,6 @@ function weightedIntervalScheduling(jobList){
 function findSol(params){
   
 }
-const testList = [
-  { id: 'job_1', start: 1, end: 3, value: 1}, 
-  { id: 'job_2', start: 1, end: 5, value: 3},
-  { id: 'job_3', start: 3, end: 5, value: 3},
-  { id: 'job_4', start: 3, end: 7, value: 4}, 
-  { id: 'job_5', start: 7, end: 8, value: 1},
-  { id: 'job_6', start: 6, end: 9, value: 3}
-];
 
 console.log(weightedIntervalScheduling(testList)); // 7
 console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
