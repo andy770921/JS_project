@@ -1248,17 +1248,15 @@ function weightedIntervalScheduling(jobList){
 }
 
 // O(n)
-const ans = [];
-
-function findSol(jobList, n, m){
+function findSol(jobList, n, m, ans = []){
   const listWithNonZeroIndex = [null, ...jobList];
   
   if(n === 0) return ans;
   if(listWithNonZeroIndex[n].value + m[p(n, jobList)] > m[n - 1]){
     ans.push(listWithNonZeroIndex[n].id);
-    return findSol(jobList, p(n, jobList), m);
+    return findSol(jobList, p(n, jobList), m, ans);
   } else {
-    return findSol(jobList, n-1, m);
+    return findSol(jobList, n-1, m, ans);
   }
 }
 
