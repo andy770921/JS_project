@@ -1255,12 +1255,22 @@ function findSol(jobList, n, m){
   if(listWithNonZeroIndex[n].value + m[p(n, jobList)] > m[n - 1]){
     return [listWithNonZeroIndex[n].id, ...findSol(jobList, p(n, jobList), m)];
   } else {
-    return [listWithNonZeroIndex[n].id, ...findSol(jobList, n-1, m)];
+    return findSol(jobList, n-1, m);
   }
 }
 
 console.log(weightedIntervalScheduling(testList)); // { maxValue: 7, m: [0, 1, 3, 4, 5, 6, 7] }
 console.log(findSol(testList, testList.length, weightedIntervalScheduling(testList).m)); // ['job_6', 'job_3', 'job_1']
+
+const testList2 = [
+  { id: 'job_1', start: 1, end: 3, value: 1}, 
+  { id: 'job_2', start: 1, end: 5, value: 3},
+  { id: 'job_3', start: 3, end: 5, value: 3},
+  { id: 'job_4', start: 3, end: 7, value: 4}, 
+  { id: 'job_5', start: 7, end: 8, value: 9},
+  { id: 'job_6', start: 6, end: 9, value: 3}
+];
+console.log(findSol(testList2, testList2.length, weightedIntervalScheduling(testList2).m)); // ['job_5', 'job_4', 'job_1']
 ```
 
 ## 白板題
