@@ -1235,6 +1235,7 @@ console.log(p(4, testList)); // 1
 console.log(p(3, testList)); // 1
 console.log(p(2, testList)); // 0
 console.log(p(1, testList)); // 0
+// TODOS: 找出 O(n) 的方法，一次性建出 p 的 mapping 表，如 {1: 0, 2: 0, 3: 1, 4: 1, 5: 4, 6: 3}
 
 // O(n)
 function weightedIntervalScheduling(jobList){
