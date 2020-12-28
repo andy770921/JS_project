@@ -1238,16 +1238,32 @@ console.log(p(1, testList)); // 0
 
 // O(n)
 function weightedIntervalScheduling(jobList){
+  const listWithNonZeroIndex = [null, ...jobList];
+  const m = [0];
   
+  for(let i = 1; i < listWithNonZeroIndex.length; i++){
+    m[i]= Math.max(listWithNonZeroIndex[i].value + m[p(i, jobList)], m[i-1])
+  }
+  return { maxValue: m[jobList.length], m };
 }
 
 // O(n)
-function findSol(params){
+const ans = [];
+
+function findSol(jobList, n, m){
+  const listWithNonZeroIndex = [null, ...jobList];
   
+  if(n === 0) return ans;
+  if(listWithNonZeroIndex[n].value + m[p(n, jobList)] > m[n - 1]){
+    ans.push(listWithNonZeroIndex[n].id);
+    return findSol(jobList, p(n, jobList), m);
+  } else {
+    return findSol(jobList, n-1, m);
+  }
 }
 
-console.log(weightedIntervalScheduling(testList)); // 7
-console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
+console.log(weightedIntervalScheduling(testList)); // { maxValue: 7, m: [0, 1, 3, 4, 5, 6, 7] }
+console.log(findSol(testList, testList.length, weightedIntervalScheduling(testList).m)); // ['job_6', 'job_3', 'job_1']
 ```
 
 ## 白板題
