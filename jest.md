@@ -242,3 +242,8 @@ describe('測試 product List 為空陣列的情況', () => {
         expect(finalList).toEqual([{ type: productListType.TITLE, list: dummyProductListByTitle }]);
     });
 });
+```
+## 範本
+
+- https://codepen.io/SitePoint/pen/XXzXLX
+- https://codesandbox.io/s/mocha-unit-test-pipe-pgojx?file=/src/index.js
