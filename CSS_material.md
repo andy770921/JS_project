@@ -134,6 +134,72 @@ const TickIcon: FC<{ size?: number }> = ({ size = 45 }) => (
 
 export default TickIcon;
 ```
+## Collapse 元件，不用 JS
+Ref: https://letswrite.tw/css-target-tab-collapse/
+```html
+<div class="w-480">
+  <!-- collapse-->
+  <h2>Collapse</h2>
+  <div class="collapse">
+    <a class="collapse__title" href="#collapse1">Collapse1</a>
+    <div class="collapse__content" id="collapse1">
+      <p>collapse1</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut neque ab natus quas, enim delectus. Pariatur nemo suscipit repellendus corrupti aliquam aspernatur iste eligendi quis fugit, molestias temporibus dolorem modi?</p>
+    </div>
+    <a class="collapse__title" href="#collapse2">Collapse2</a>
+    <div class="collapse__content" id="collapse2">
+      <p>collapse2</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut neque ab natus quas, enim delectus. Pariatur nemo suscipit repellendus corrupti aliquam aspernatur iste eligendi quis fugit, molestias temporibus dolorem modi?</p>
+    </div>
+    <a class="collapse__title" href="#collapse3">Collapse3</a>
+    <div class="collapse__content collapse--content-active" id="collapse3">
+      <p>collapse3</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut neque ab natus quas, enim delectus. Pariatur nemo suscipit repellendus corrupti aliquam aspernatur iste eligendi quis fugit, molestias temporibus dolorem modi?</p>
+    </div>
+  </div>
+</div>
+```
+
+```css
+.w-480 {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1rem;
+  max-width: 480px;
+}
+
+.collapse .collapse__title {
+  display: block;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem 1rem;
+  background-color: #42A6F7;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: #FFF;
+}
+.collapse .collapse__content {
+  padding: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s, padding-top 0.2s, padding-bottom 0.2s;
+}
+.collapse .collapse__content:target {
+  padding: 1rem;
+  height: auto;
+  opacity: 1;
+}
+.collapse .collapse--content-active {
+  padding: 1rem;
+  height: auto;
+  opacity: 1;
+}
+.collapse .collapse__content:target ~ .collapse--content-active {
+  padding: 0;
+  height: 0;
+  opacity: 0;
+}
+```
 
 ## 設計範例
 
