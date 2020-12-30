@@ -62,6 +62,7 @@ console.log(boundGetElem.apply(b, 10));  // TypeError: CreateListFromArrayLike c
 
 ## String, Array, Hash Table - check if string is beautiful
 
+- Coding with test: https://codesandbox.io/s/mocha-unit-test-isbeautifulstr-vcer9?file=/src/index.js
 - Explain & Example:
 
 ```
