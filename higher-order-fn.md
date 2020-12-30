@@ -1,5 +1,6 @@
 ## forEach, map, reduce (HOF)
 - map: https://codesandbox.io/s/mocha-unit-test-map-yf80h?file=/src/index.js
+- reduce: https://codesandbox.io/s/mocha-unit-test-reduce-f8d1r?file=/src/index.js
 ```js
 // Q:
 function forEach(list, fn){
@@ -68,8 +69,8 @@ class CustomArray {
 }
 
 const a = new CustomArray([1,2,3]);
-console.log(a.reduce((acc, cur) => (acc + cur))); //6
-console.log(a.reduce((acc, cur) => (acc * acc * cur))); //12
+console.log(a.reduce((acc, cur) => (acc + cur))); // 6
+console.log(a.reduce((acc, cur) => (acc * acc * cur))); // 12
 ```
 ## Once (HOF, closure)
 ```js
