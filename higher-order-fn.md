@@ -1,4 +1,5 @@
 ## forEach, map, reduce (HOF)
+- map: https://codesandbox.io/s/mocha-unit-test-map-yf80h?file=/src/index.js
 ```js
 // Q:
 function forEach(list, fn){
