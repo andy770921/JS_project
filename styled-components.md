@@ -1,10 +1,11 @@
 ## Styled-components
 
-## 搭配 functional css 使用的套件
+## 搭配 styled-system 使用
 
 - styled-system: https://styled-system.com/
 - styled-system 中文介紹: https://cythilya.github.io/2019/11/08/styeld-system/
 - GitHub 使用 styled-system + styled-components 開源元件庫: https://primer.style/components/Box
+- styled-system 使用心得: https://anna-su.com/tech/styled-system-the-next-generation-css-technology/
 
 ## 傳變數方法 ( 使用 TypeScript )
 ```ts
