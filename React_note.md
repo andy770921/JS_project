@@ -1094,3 +1094,7 @@ const ShopCategoryContent: FC<{ baseUrl: string; shopCategoryMapContext: Context
     );
 };
 ```
+# Next.js
+
+## Tutorial
+- https://www.youtube.com/watch?v=Sklc_fQBmcs
