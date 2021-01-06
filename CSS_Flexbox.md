@@ -11,6 +11,16 @@
 4. 第三個 auto: flex-basis，若有設定，指元件要占的最小寬度。若沒設定 flex-basis 但有設定 ```flex: 1```，預設值是 0。若沒設定 flex-basis 也沒設定 ```flex: 1```，預設值是 auto，指的是寬度依元件 width 為主
 5. 若只有寫 ```flex: 1```，flex-shrink 預設是 1 ，flex-basis ，預設是 0
 6. Flex-basis and width: [Ref 1](https://stackoverflow.com/questions/34352140/what-are-the-differences-between-flex-basis-and-width), [Ref 2](https://www.itread01.com/content/1545475562.html)
+
+## flex-grow + 捲軸: 加上 height: 0px;
+https://stackoverflow.com/questions/14962468/how-can-i-combine-flexbox-and-vertical-scroll-in-a-full-height-app  
+```css
+#container {
+    flex-grow: 1;
+    overflow-y: auto;
+    height: 0px;
+}
+```
 ## 面試題
 Q: 請問三個 flex item 寬度如何分配?    
 ```html
