@@ -20,10 +20,14 @@ https://www.youtube.com/watch?v=8aGhZQkoFbQ
 不斷偵測 call stack 是否為空，如果是空的話就把 callback queue 裡面的東西丟到 call stack
 ```
 https://blog.huli.tw/2019/10/04/javascript-async-sync-and-callback/  
-  
+
+## 同步/非同步 - 用 Promise.all 或 reduce 處理多個 Promise 物件的寫法
+https://stackoverflow.com/questions/30823653/is-node-js-native-promise-all-processing-in-parallel-or-sequentially  
+
 ## async/await, event loop
-https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
-## ES6語法與ES5差異，及call by ref解析27:22
+https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke  
+
+## ES6 語法與 ES5 差異，及 call by ref 解析 27:22
 https://youtu.be/pr7JFQaAYjg  
 ## Immutable.js，mori.js 及資料結構 Trie 的觀念  
 https://www.youtube.com/watch?v=Wo0qiGPSV-s  
