@@ -24,6 +24,9 @@ https://blog.huli.tw/2019/10/04/javascript-async-sync-and-callback/
 ## 同步/非同步 - 用 Promise.all 或 reduce 處理多個 Promise 物件的寫法
 https://stackoverflow.com/questions/30823653/is-node-js-native-promise-all-processing-in-parallel-or-sequentially  
 
+## 同步/非同步 - 用 Promise.all + Progress bar
+https://stackoverflow.com/questions/42341331/es6-promise-all-progress  
+
 ## async/await, event loop
 https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke  
 
