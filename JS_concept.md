@@ -28,62 +28,38 @@ https://stackoverflow.com/questions/30823653/is-node-js-native-promise-all-proce
 https://stackoverflow.com/questions/42341331/es6-promise-all-progress  
 
 ```js
-class ProgressEvent extends Event {
-  constructor (type, { loaded = 0, total = 0, lengthComputable = (total > 0) } = {}) {
-    super(type);
-    this.lengthComputable = lengthComputable;
-    this.loaded = loaded;
-    this.total = total;
+function allProgress(proms, progress_cb) {
+  let d = 0;
+
+  for (const p of proms) {
+    p.then(()=> {    
+      d ++;
+      progress_cb( Math.floor((d * 100) / proms.length) );
+    });
   }
+  return Promise.all(proms);
 }
-Promise.progress = async function progress (iterable, onprogress) {
-  // consume iterable synchronously and convert to array of promises
-  const promises = Array.from(iterable).map(this.resolve, this);
-  let resolved = 0;
 
-  // helper function for emitting progress events
-  const progress = increment => this.resolve(
-    onprogress(
-      new ProgressEvent('progress', {
-        total: promises.length,
-        loaded: resolved += increment
-      })
-    )
-  );
-
-  // lift all progress events off the stack
-  await this.resolve();
-  // emit 0 progress event
-  await progress(0);
-
-  // emit a progress event each time a promise resolves
-  return this.all(
-    promises.map(
-      promise => promise.finally(
-        () => progress(1)
-      ) 
-    )
-  );
-};
 
 function test(ms) {
   return new Promise((resolve) => {
     setTimeout(() => {
-       console.log(`Waited ${ms}`);
-       resolve();
+       resolve(ms + 'ms_data');
      }, ms);
   });
 }
 
 
-Promise.progress([test(1000), test(3000), test(2000), test(3500)],
-  (p) => {
-     console.log(`% Done = ${p.toFixed(2)}`);
-});
-// "Waited 1000"
-// "Waited 2000"
-// "Waited 3000"
-// "Waited 3500"
+allProgress([test(1000), test(3000), test(2000), test(3500)],
+  (percent) => {
+     console.log(`${percent}%`);
+}).then((dataList)=>console.log('dataList', dataList));
+
+// "25%"
+// "50%"
+// "75%"
+// "100%"  "dataList"  ["1000ms_data", "3000ms_data", "2000ms_data", "3500ms_data"]
+
 ```
 ## async/await, event loop
 https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke  
