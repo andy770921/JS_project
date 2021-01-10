@@ -1287,6 +1287,17 @@ function findSol(params){
 }
 
 ```
+- Ans: 要填 2 維表格，橫軸為重量 ( 0 ~ W ) 縱軸為第幾件物品 ( 0 ~ n )，故時間複雜度 O(nW)
+
+```js
+function ZeroOneKP(n, v, w){
+  // TODOS
+}
+function findSol(params){
+  // TODOS
+}
+
+```
 ## 白板題
 
 1. 輸入一陣列，每個元素代表大樓高度，最右邊是海。輸出布林值陣列，標示該棟大樓是否看得到海
