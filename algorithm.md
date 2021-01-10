@@ -1288,6 +1288,7 @@ function findSol(params){
 
 ```
 - Ans: 要填 2 維表格，橫軸為重量 ( 0 ~ W ) 縱軸為第幾件物品 ( 0 ~ n )，故時間複雜度 O(nW)
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_4.png) 
 
 ```js
 function ZeroOneKP(n, v, w){
