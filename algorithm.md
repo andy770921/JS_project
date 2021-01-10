@@ -1273,7 +1273,20 @@ const testList2 = [
 ];
 console.log(findSol(testList2, testList2.length, weightedIntervalScheduling(testList2).m)); // ['job_5', 'job_4', 'job_1']
 ```
+## Dynamic Programming 範例 - 0-1 Knapsack Problem
+- Given: n items where i-th item has value vi and weight wi. The knapsack capacity W.
+- 每個物品只有一件，只能挑或不挑，放進包包，選到的物品總重量不超過 W 
+- Goal: 找出最大價值的挑法 & 最大價值為多少
 
+```js
+function ZeroOneKP(n, v, w){
+  // TODOS
+}
+function findSol(params){
+  // TODOS
+}
+
+```
 ## 白板題
 
 1. 輸入一陣列，每個元素代表大樓高度，最右邊是海。輸出布林值陣列，標示該棟大樓是否看得到海
