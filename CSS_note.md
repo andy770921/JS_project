@@ -1307,7 +1307,7 @@ https://stackoverflow.com/questions/35814653/automatic-height-when-embedding-a-y
   }
 }
 ```
-- Ref: https://www.oxxostudio.tw/articles/201803/css-animation.html
+- Ref: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
 - Ans:
 ```html
 <body>
