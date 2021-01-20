@@ -6,6 +6,9 @@ https://medium.com/@maneesha.wijesinghe1/what-happens-when-you-type-an-url-in-th
 ## `<meta>`
 https://ithelp.ithome.com.tw/articles/10195279
 
+## `<iframe>`
+- 嵌入 iframe ，互相傳遞訊息：https://stackoverflow.com/questions/25098021/securityerror-blocked-a-frame-with-origin-from-accessing-a-cross-origin-frame
+
 ## DOM 觀念
 https://ithelp.ithome.com.tw/articles/10191666
 
