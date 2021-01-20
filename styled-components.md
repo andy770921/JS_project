@@ -5,6 +5,7 @@
 - styled-system: https://styled-system.com/
 - styled-system 中文介紹: https://cythilya.github.io/2019/11/08/styeld-system/
 - GitHub 使用 styled-system + styled-components 開源元件庫: https://primer.style/components/Box
+- GitHub 使用 styled-system 用法導讀文: https://medium.com/starbugs/styled-system-is-the-path-to-primer-99b8d7cdecce
 - styled-system 使用心得: https://anna-su.com/tech/styled-system-the-next-generation-css-technology/
 
 ## 傳變數方法 ( 使用 TypeScript )
