@@ -55,6 +55,8 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 - JavaScript - Polling、WebSocket 與 SSE 介紹 https://ithelp.ithome.com.tw/articles/10230335
 - 且戰且走HTML5(2) 應用主軸：WebSocket https://ithelp.ithome.com.tw/articles/10102394
 
+## SSO
+https://yu-jack.github.io/2020/04/06/sso-1/
 
 ## 圖片載入優化 - BlurHash
 
