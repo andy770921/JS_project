@@ -56,7 +56,8 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 - 且戰且走HTML5(2) 應用主軸：WebSocket https://ithelp.ithome.com.tw/articles/10102394
 
 ## SSO
-https://yu-jack.github.io/2020/04/06/sso-1/
+- https://stackoverflow.com/questions/11434866/automatic-cookie-single-sign-on-on-multiple-domains-like-google?fbclid=IwAR35Uq7H3nfG8yGsmouPBDQrUA0dGGii3mGR286Cf-4Y9zjZ-H-jiOik2dI
+- https://yu-jack.github.io/2020/04/06/sso-1/
 
 ## 圖片載入優化 - BlurHash
 
