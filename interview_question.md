@@ -57,7 +57,7 @@ console.log(getElem.call(a, 10));  // 50
 console.log(boundGetElem.apply(b, 10));  // TypeError: CreateListFromArrayLike called on non-object
 
 ```
-## this, expressions statement, and comma
+## this, expression statement, and comma
 - Ref: https://github.com/mqyqingfeng/Blog/issues/7
 - Ref2: https://github.com/aszx87410/blog/issues/39?fbclid=IwAR3lBkCCba53zGAKCactSgz3bOeFqVA7XRlA5FJljGWasJO7Ro3C1o08nZc
 ```js
