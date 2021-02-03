@@ -57,7 +57,24 @@ console.log(getElem.call(a, 10));  // 50
 console.log(boundGetElem.apply(b, 10));  // TypeError: CreateListFromArrayLike called on non-object
 
 ```
+## this, expressions statement, and comma
+```js
+var value = 1;
 
+var obj = {
+    value: 2,
+
+    foo: function () {
+        return this.value;
+    },
+};
+
+console.log(obj.foo()); // 2
+console.log((obj.foo)()); // 2
+console.log((obj.foo = obj.foo)()); // 1
+console.log((false || obj.foo)());  // 1
+console.log((obj.foo, obj.foo)());  // 1
+```
 # Algorithm
 
 ## String, Array, Hash Table - check if string is beautiful
