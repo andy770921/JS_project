@@ -798,7 +798,8 @@ module.exports = {
 ## ------------------- 加入環境變數  -------------------
 
 - 不用 Dotenv  
-webpack.config.js:  
+
+1. webpack.config.js:  
 ```js
 const webpack = require('webpack');
 
@@ -808,7 +809,7 @@ module.exports = {
     plugins: [new webpack.DefinePlugin({ 'process.env': JSON.stringify({ MODE: 'DEV' }) })]
 };
 ```
-index.tsx:  
+2. index.tsx:  
 ```ts
 import ReactDOM from 'react-dom';
 import MyButton from './components/button/MyButton';
@@ -818,8 +819,9 @@ if (process.env.MODE === 'DEV') {
 }
 ReactDOM.render(<MyButton>rendered button for dev</MyButton>, document.querySelector('#root'));
 ```
+
 - 用 Dotenv ( 需 `npm i -D dotenv-webpack` )   
-webpack.config.js:  
+1. webpack.config.js:  
 ```js
 const Dotenv = require('dotenv-webpack');
 
@@ -829,8 +831,28 @@ module.exports = {
     plugins: [
         new Dotenv({
             path: './env/.env.dev', // load this now instead of the ones in '.env'
-            allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+            allowEmptyValues: true, // allow empty variables (e.g. `FOO=`)
         }),
     ]
 };
+```
+2. env/.env.dev
+```
+MODE=DEV
+SOME_SRC=http://1.2.3.4/
+```
+3. env/.env.prod
+```
+MODE=PROD
+SOME_SRC=http://5.6.7.8/
+```
+4. index.tsx:  
+```ts
+import ReactDOM from 'react-dom';
+import MyButton from './components/button/MyButton';
+
+if (process.env.MODE === 'DEV') {
+    // ADD CODES HERE
+}
+ReactDOM.render(<MyButton>rendered button for dev</MyButton>, document.querySelector('#root'));
 ```
