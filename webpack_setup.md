@@ -794,3 +794,43 @@ module.exports = {
 7. 如果把 `changeOrigin` 設成 true ，加上 `pathRewrite: { '^/api': '' }`   
     開發人員工具看到的：Request URL: http://localhost:8080/api/xx/oo     
     實際打出去的，轉換後變這樣：https://def.com/xx/oo  
+    
+## ------------------- 加入環境變數  -------------------
+
+- 不用 Dotenv  
+webpack.config.js:  
+```js
+const webpack = require('webpack');
+
+module.exports = {
+    mode: 'development',
+    // ...
+    plugins: [new webpack.DefinePlugin({ 'process.env': JSON.stringify({ MODE: 'DEV' }) })]
+};
+```
+index.tsx:  
+```ts
+import ReactDOM from 'react-dom';
+import MyButton from './components/button/MyButton';
+
+if (process.env.MODE === 'DEV') {
+    // ADD CODES HERE
+}
+ReactDOM.render(<MyButton>rendered button for dev</MyButton>, document.querySelector('#root'));
+```
+- 用 Dotenv ( 需 `npm i -D dotenv-webpack` )   
+webpack.config.js:  
+```js
+const Dotenv = require('dotenv-webpack');
+
+module.exports = {
+    mode: 'development',
+    // ...
+    plugins: [
+        new Dotenv({
+            path: './env/.env.dev', // load this now instead of the ones in '.env'
+            allowEmptyValues: true, // allow empty variables (e.g. `FOO=`) (treat it as empty string, rather than missing)
+        }),
+    ]
+};
+```
