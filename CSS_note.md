@@ -887,6 +887,19 @@ p{
     }
   }
 ```
+8. 考慮 Android devive 跨裝置兼容， 可用 `min-aspect-ratio: 13/9` 取代 `orientation: landscape`
+```css
+// it's an alternative of (orientation: landscape) for Android devive
+// Android devive will change orientation while keyboard popup 
+// ref: https://stackoverflow.com/questions/8883163/css-media-query-soft-keyboard-breaks-css-orientation-rules-alternative-solut/13686041
+
+@media only screen and (max-width: 815px) and (min-aspect-ratio: 13/9) {
+    .title {
+      float: left;
+      font-size: 1.4em;
+    }
+};  
+```
 ## CSS 補充
 1. Cascade(串聯)意思是，當在不同selector重複宣告同一物如color:等特性時，會依優先順序，串列處理，最終決定一個最重要的套用進頁面。避免重複宣告的衝突
 2. "最重要"與否的判斷原則: 重要性、特別程度、來源順序
