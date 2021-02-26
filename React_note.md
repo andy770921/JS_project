@@ -255,6 +255,12 @@ https://www.robinwieruch.de/react-hooks-fetch-data
 - 事件傳遞符合虛擬 DOM 的內外層傳遞，真實瀏覽器畫面上不是內外層關係，是看 createPortal 寫的，產生在不同 div
 https://www.youtube.com/watch?v=LyLa7dU5tp8
 
+## useReducer + context vs Redux 差別：
+https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/react-interactive-paycard-8ef9fe0d88e0
+```
+(useReducer + context) 仍然不能夠拿來完全取代 Redux，useReducer 適合用在維護小量的資料，而且不用在很深的元件之間傳遞。畢竟 useReducer 沒有像 react-redux 這麼方便的工具，當你用 Context API 傳遞資料時，所有的元件將會因為某個 Context 的資料改變而被強迫重新渲染。
+```
+
 ## 使用 useMemo，封裝 context 方法 ( 使用 TypeScript )
 1. 如下例，若使用 useMemo，可在 notAdd 函數觸發時，console.log 不會出現 re-render
 2. 若打開註解，使用 provider value={{orderBy, setOrderBy}}，在 notAdd 函數觸發時，console.log 會出現 re-render
