@@ -169,6 +169,7 @@ A fixed position element is positioned relative to the viewport, or the browser 
 ```
 
 ## position: sticky 的說明
+- 實作範例與說明：https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/side-project-coscup-2019-conference-schedule-22e609b4f407
 - 實際上可用在 header 或 footer: https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46
 - 不論卷軸如何捲動，最終希望 sticky element 保持的狀態，可想成將 sticky 改為 fixed 的定位情況
 
