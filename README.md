@@ -4,7 +4,8 @@
 
 1. [演算法](https://github.com/andy770921/JS_project/blob/master/algorithm.md)
 2. [資料結構](https://github.com/andy770921/JS_project/blob/master/data_structure.md)
-
+3. [設計模式](https://github.com/andy770921/JS_project/blob/master/design-patterns.md)
+ 
 ## 前端
 
 ### React
