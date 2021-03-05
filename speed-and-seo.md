@@ -58,6 +58,15 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 ## SSO
 - https://stackoverflow.com/questions/11434866/automatic-cookie-single-sign-on-on-multiple-domains-like-google?fbclid=IwAR35Uq7H3nfG8yGsmouPBDQrUA0dGGii3mGR286Cf-4Y9zjZ-H-jiOik2dI
 - https://yu-jack.github.io/2020/04/06/sso-1/
+- 
+ youtube 和 google 的作法，還不賴，解釋蠻清楚的，沒有跨域寫 cookie 的問題，沒有 iframe, 不會不能用
+—-
+1. 兩個網站一個 api，mail.google.com, account.google.com(這有點像是 api 不是頁面), www.youtube.com
+2. mail.google.com 或是 www.youtube.com 一律先 302 導到 account.google.com
+3. account.google.com 如果檢查後，如果是登入中，導回原站
+4. 導回的如果是同子網域，寫 cookie (沒有跨域寫的問題）比如導回 mail.google.com 可以直接由後端寫 cookie
+5. 導回的是跨域的，會加上 query string 如 www.youtube.con/signin?sessionid=123，前端從 query string 寫 cookie 並移除 query string
+https://stackoverflow.com/questions/11434866/automatic-cookie-single-sign-on-on-multiple-domains-like-google
 
 ## 圖片載入優化 - BlurHash
 
