@@ -361,6 +361,15 @@ console.log(solutionThree(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
 ## hoisting 提升
 https://blog.techbridge.cc/2018/11/10/javascript-hoisting/?fbclid=IwAR3No5aPr4uqhVN3CiusRV37RDQa6TTCeW7zw_1k3uCm_r_1LF9sLkXCNTg
 
+## a = b = c 的意義解釋
+- https://stackoverflow.com/questions/7511279/javascript-a-b-c-statements
+- `a = b = c;` which can be written as `a = (b = c);`
+- is equivalent to
+```js
+b = c;
+a = b;
+```
+
 ## 物件的位址
 1. 跳出三次各不同的名字
 ```js
