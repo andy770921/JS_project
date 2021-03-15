@@ -49,7 +49,8 @@
 9. [Storybook](https://github.com/andy770921/JS_project/blob/master/storybook.md)
 10. [3D 函式庫 - three.js](https://github.com/andy770921/JS_project/blob/master/threeJS.md)
 11. [網頁效能與 SEO](https://github.com/andy770921/JS_project/blob/master/speed-and-seo.md)
-12. [進階前端知識](https://f2e.kalan.dev/fan-wai-pian/zai-tan-redux)
+12. [進階前端知識](https://f2e.kalan.dev/)
+13. [git 指令實作教學網](https://learngitbranching.js.org/)
 
 ## Airbnb JavaScript Style Guide
 
