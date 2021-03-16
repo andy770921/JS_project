@@ -296,7 +296,7 @@ var longestPalindrome = function(s) {
 };
 ```
 
-- A1 (dynamic programming):
+- A1 (dynamic programming): https://leetcode.com/problems/longest-palindromic-substring/discuss/2921/Share-my-Java-solution-using-dynamic-programming
 - Time complexity : O(n^2), Space complexity : O(n^2)
 ```js
 var longestPalindrome = function(s) {
