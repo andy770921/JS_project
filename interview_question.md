@@ -260,3 +260,67 @@ console.log(hostAllocation(['A apibox',
   'A sitebox']));
 // to be: ['apibox1', 'apibox2', 'apibox1', 'sitebox1'] 
 ```
+
+## LeetCode - 5. Longest Palindromic Substring (Medium)
+- Given a string `s`, return the *longest palindromic substring* in `s`
+- Ex1
+```
+Input: s = "babad"
+Output: "bab"
+Note: "aba" is also a valid answer.
+```
+- Ex2
+```
+Input: s = "cbbd"
+Output: "bb"
+```
+- Ex3
+```
+Input: s = "a"
+Output: "a"
+```
+- Ex4
+```
+Input: s = "ac"
+Output: "a"
+```
+- Q:
+```js
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(s) {
+    // TODOS
+};
+```
+
+- A1 (dynamic programming):
+```js
+var longestPalindrome = function(s) {
+    const n = s.length;
+    let maxLength = 0;
+    let palindromeStartsAt = 0;
+    
+    const dpBooleanTable = [...Array(n)].map(() => []);
+    
+    for(let i = n - 1; i >= 0; i--){
+        for(let j = i; j < n; j++){
+            if (j - i < 3){
+                dpBooleanTable[i][j] = s.charAt(i) === s.charAt(j);
+            }  else {
+                dpBooleanTable[i][j] = 
+                    s.charAt(i) === s.charAt(j) && dpBooleanTable[i+1][j-1];
+            }
+            
+            if(dpBooleanTable[i][j] && (j-i+1 > maxLength)) {
+                palindromeStartsAt = i;
+                maxLength = j-i+1;
+            }
+        }
+    }
+    
+    return s.substring(palindromeStartsAt, palindromeStartsAt + maxLength);
+};
+```
+- A2 (normal way): https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution
