@@ -262,6 +262,7 @@ console.log(hostAllocation(['A apibox',
 ```
 
 ## LeetCode - 5. Longest Palindromic Substring (Medium)
+- https://leetcode.com/problems/longest-palindromic-substring/
 - Given a string `s`, return the *longest palindromic substring* in `s`
 - Ex1
 ```
@@ -296,6 +297,7 @@ var longestPalindrome = function(s) {
 ```
 
 - A1 (dynamic programming):
+- Time complexity : O(n^2), Space complexity : O(n^2)
 ```js
 var longestPalindrome = function(s) {
     const n = s.length;
@@ -323,4 +325,41 @@ var longestPalindrome = function(s) {
     return s.substring(palindromeStartsAt, palindromeStartsAt + maxLength);
 };
 ```
-- A2 (normal way): https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution
+- A2 (Expand Around Center): https://leetcode.com/problems/longest-palindromic-substring/discuss/2928/Very-simple-clean-java-solution
+- Time complexity : O(n^2), Space complexity : O(1)
+```js
+var longestPalindrome = function(s) {
+    let maxLength = 0;
+    let maxPalindromic = '';
+    
+    s.split("").forEach((element, currentIndex, array)=>{
+        let leftIndex = currentIndex - 1;
+        let rightIndex = currentIndex + 1;
+        let currentPalindromicLength = 1;
+        let currentStr = element;
+        
+        while(element === array[rightIndex]){
+            currentPalindromicLength++;
+            currentStr += element;
+            rightIndex++;
+        }
+        
+        while(leftIndex > 0 || rightIndex < array.length){
+            if(array[leftIndex] === array[rightIndex]){
+                currentPalindromicLength+=2;
+                currentStr = array[leftIndex] + currentStr + array[leftIndex];
+                leftIndex--;
+                rightIndex++;
+            } else {
+                break;
+            }
+        }
+        if(currentPalindromicLength > maxLength){
+            maxLength = currentPalindromicLength;
+            maxPalindromic = currentStr;
+        }
+    })
+    
+    return maxPalindromic;
+};
+```
