@@ -48,7 +48,41 @@ getData('https://abc').then(data => {
 // rejected: TypeError: Failed to fetch
 
 ```
-
+## 使用 Fetch API 帶 query string 的方式
+```js
+(function () {
+    const url = new URL(
+        'https://a.b.com/api/'
+    );
+    url.search = new URLSearchParams({ first: 'valueX', second: 'valueY' }).toString();
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (json) {
+            console.log(json);
+        });
+})();
+```
+## 使用 Fetch API 用 POST 帶 body 的方式
+```js
+(function () {
+    const data = {
+        foo: 'bar',
+        hello: ['world']
+    };
+    fetch(
+        'https://a.b.com/api/',
+        { body: JSON.stringify(data), method: 'POST' }
+    )
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (json) {
+            console.log(json);
+        });
+})();
+```
 ## Axios 使用法
 https://ithelp.ithome.com.tw/articles/10212120  
 https://github.com/axios/axios  
