@@ -491,7 +491,7 @@ function async(generator){
     const iteratorValue = iteratorResult.value;
     if(iteratorValue instanceof Promise) {
       iteratorValue.then(res => handle(iterator.next(res)))
-                   .catch(err => itorator.throw(err))
+                   .catch(err => iterator.throw(err))
     }
   }
   try {
