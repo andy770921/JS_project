@@ -109,7 +109,7 @@ it("Validate Treble Keyboard", () => {
 1. 所需要 `npm i -D` 安裝的 packages: jest, ts-jest, @testing-library/react, @testing-library/jest-dom
 
 2. 新增 package.json 檔案下的 script，之後終端機輸入```npm run test```即可測試
-```js
+```json
 {
   "name": "XXXX",
   "version": "1.0.0",
@@ -124,7 +124,7 @@ it("Validate Treble Keyboard", () => {
 ```
 
 3. test 資料夾下新增 jest.config.json 檔案
-```js
+```json
 {
   "rootDir": "../",
   "coverageDirectory": "<rootDir>/test/coverage",
@@ -144,7 +144,7 @@ it("Validate Treble Keyboard", () => {
 
 4. 若要在 `xxx.test..tsx` 擴充 TS 簡寫路徑，如 `import DesktopOnlyHint from '@components/Home/DesktopOnlyHint';`，可在 `jest.config.json` 以下欄位添加
 
-```js
+```json
 {
   // ...
     "moduleNameMapper": {
@@ -162,7 +162,7 @@ it("Validate Treble Keyboard", () => {
 
 5. 若 `xxx.test..tsx` 引用的檔案，有需要支援 `import svgIcon from '@asset/some.svg';`，要下指令安裝 `npm i -D jest-svg-transformer`，並在 `jest.config.json` 以下欄位添加
 
-```js
+```json
 {
   // ...
     "transform": {
@@ -172,7 +172,7 @@ it("Validate Treble Keyboard", () => {
 }
 ```
 5. tsconfig.json 檔，設定如下
-```js
+```json
 {
   "compilerOptions": {
     
