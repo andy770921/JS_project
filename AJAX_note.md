@@ -462,12 +462,16 @@ function ajax(src) {
 function getFeedbackOne() {
   const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
   promise1.then(function(data){
-    console.log("result1",data);
+    console.log("result1", data);
     return ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   }).then(function(data){
-    console.log("result2",data);
-    });
+    console.log("result2", data);
+  });
 }
+
+getFeedbackOne();
+// result1 {data: Array(6), next_paging: 1}
+// result2 {data: Array(3)}
 
 // 使用 Promise.all 的寫法：
 function getFeedbackTwo() {
@@ -475,11 +479,11 @@ function getFeedbackTwo() {
   const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
   Promise.all([promise1, promise2]).then(function(results){
     console.log("inside Promise.all: ",results);
-    // inside Promise.all: [{next_paging: 1, data: Array(6)}, {data: Array(3)}]
   });
 }
 
 getFeedbackTwo();
+// inside Promise.all: [{next_paging: 1, data: Array(6)}, {data: Array(3)}]
 ```
 
 # 使用 Generator 與 Iterator， 實作 async/await
