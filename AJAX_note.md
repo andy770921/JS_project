@@ -486,7 +486,7 @@ getFeedbackTwo();
 // inside Promise.all: [{next_paging: 1, data: Array(6)}, {data: Array(3)}]
 ```
 
-# 使用 Generator 與 Iterator， 實作 async/await
+# 使用 Generator 與 Iterator，實作 async/await
 ```js
 function ajax(src) {
   return new Promise(function(resolve, reject){ 
@@ -541,7 +541,7 @@ async(function* (){
 });
 ```
 - async/await 實際上的意義：在函式前加 async，意義是，接下來大括號內，不是在寫函式了，是在寫 generator，await 就是 yield。
-- 執行 async 函式，既不是執行一般函式 也不是單純執行 generator。 程式會在背後，幫我們先執行 generator ( 把 generator 變成 iterator ) 後，再有個 for-of 迴圈，幫我們的 iterator 持續執行 next，直到沒有 yield
+- 執行 async 函式，既不是執行一般函式，也不是單純執行 generator。 程式會在背後，幫我們先執行 generator ( 把 generator 變成 iterator ) 後，再有個 for-of 迴圈，幫我們的 iterator 持續執行 next，直到沒有 yield
 
 # 原生 XMLHttpRequest 概念說明
 
