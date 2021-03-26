@@ -434,6 +434,53 @@ safeGetFeedback();
 // 方法二，不用 HOC 而是呼叫當下處理
 getFeedback().catch(err => console.error("Oops", err.response));
 ```
+# 使用 Promise.then 接連執行與 Promise.all 同時執行
+```js
+function ajax(src) {
+  return new Promise(function(resolve, reject){ 
+    const xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      try {
+        if (this.status === 200) {
+            resolve(JSON.parse(xhr.response));
+          } else {
+            reject(this.status + " " + this.statusText);
+          } 
+        } catch (e){
+          reject(e.message);
+        }
+    };
+    xhr.onerror = function () {
+      reject(this.status + " " + this.statusText);
+    };
+    xhr.open('GET', src);
+    xhr.send();
+  });
+}
+
+// 使用 Promise.then 的寫法：
+function getFeedbackOne() {
+  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  promise1.then(function(data){
+    console.log("result1",data);
+    return ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  }).then(function(data){
+    console.log("result2",data);
+    });
+}
+
+// 使用 Promise.all 的寫法：
+function getFeedbackTwo() {
+  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
+  const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
+  Promise.all([promise1, promise2]).then(function(results){
+    console.log("inside Promise.all: ",results);
+    // inside Promise.all: [{next_paging: 1, data: Array(6)}, {data: Array(3)}]
+  });
+}
+
+getFeedbackTwo();
+```
 
 # 使用 Generator 與 Iterator， 實作 async/await
 ```js
@@ -458,29 +505,6 @@ function ajax(src) {
     xhr.send();
   });
 }
-
-// 使用 promise.then 的寫法：
-function getFeedbackOne() {
-  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
-  promise1.then(function(data){
-    console.log("result1",data);
-    return ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
-  }).then(function(data){
-    console.log("result2",data);
-    });
-}
-
-// 使用 Promise.all 的寫法：
-function getFeedbackTwo() {
-  const promise1 = ajax('https://api.appworks-school.tw/api/1.0/products/all');
-  const promise2 = ajax('https://api.appworks-school.tw/api/1.0/marketing/campaigns');
-  Promise.all([promise1, promise2]).then(function(results){
-    console.log("inside Promise.all: ",results);
-    // inside Promise.all: [{next_paging: 1, data: Array(6)}, {data: Array(3)}]
-  });
-}
-
-getFeedbackTwo();
 
 // 使用 Generator 與 Iterator 的寫法：
 function async(generator){
@@ -512,6 +536,9 @@ async(function* (){
   }
 });
 ```
+- async/await 實際上的意義：在函式前加 async，意義是，接下來大括號內，不是在寫函式了，是在寫 generator，await 就是 yield。
+- 執行 async 函式，既不是執行一般函式 也不是單純執行 generator。 程式會在背後，幫我們先執行 generator ( 把 generator 變成 iterator ) 後，再有個 for-of 迴圈，幫我們的 iterator 持續執行 next，直到沒有 yield
+
 # 原生 XMLHttpRequest 概念說明
 
 1. 可在同一頁面，因使用者行為而讀取更多資料( google 地圖未顯示的部份、下拉網頁更多留言等)，且不會讓網頁停下
