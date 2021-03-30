@@ -849,20 +849,20 @@ function findMaxInterval(a, i, j){
         // 1. devide
         const k = Math.floor((i + j)/2);
         // 2. conquer
-        const { max: leftM, startIndex: leftSI, endIndex: leftEI } = findMaxInterval(a, i, k);
-        const { max: rightM, startIndex: rightSI, endIndex: rightEI } = findMaxInterval(a, k+1, j);
-        const { max: crossM, startIndex: crossSI, endIndex: crossEI } = findMaxCrossInterval(a, i, k, j);
+        const { max: leftMax, ...leftIntervalIndices } = findMaxInterval(a, i, k);
+        const { max: rightMax, ...rightIntervalIndices } = findMaxInterval(a, k+1, j);
+        const { max: crossMax, ...crossIntervalIndices } = findMaxCrossInterval(a, i, k, j);
 
         // 3. combine: O(1)
-        if (leftM > rightM && leftM > crossM) { 
+        if (leftMax > rightMax && leftMax > crossMax) { 
             // case 1
-            return { max: leftM, startIndex: leftSI, endIndex: leftEI };
-        } else if (rightM > leftM && rightM > crossM) { 
+            return { max: leftMax, ...leftIntervalIndices };
+        } else if (rightMax > leftMax && rightMax > crossMax) { 
             // case 2
-            return { max: rightM, startIndex: rightSI, endIndex: rightEI };
+            return { max: rightMax, ...rightIntervalIndices };
         } else {
             // case 3
-            return { max: crossM, startIndex: crossSI, endIndex: crossEI };
+            return { max: crossMax, ...crossIntervalIndices };
         }
     }
 }
