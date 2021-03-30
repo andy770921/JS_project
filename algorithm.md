@@ -684,7 +684,7 @@ console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
 ##  Recurrence 範例 - Maximum Subarray Problem: 時間複雜度 O(nlogn)
 - 找出某區間，區間內所有數累加後會是最大，回傳區間的起始 index 與結束 index
-- Note: 用動態規劃可降至 O(n)
+- Note: 用動態規劃或是 Linear Scan 可降至 O(n)
 
 ```js
 const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
@@ -875,7 +875,41 @@ console.log(findMaxInterval(testArrayThree, 0, testArrayThree.length - 1));
 console.log(findMaxInterval(testArrayFour, 0, testArrayFour.length - 1)); 
 // { max: 25, startIndex: 2, endIndex: 6 }
 ```
+- Linear Scan ([Ref](https://medium.com/starbugs/js-%E7%9A%84%E6%BC%94%E7%AE%97%E6%B3%95%E9%A4%8A%E6%88%90%E4%B9%8B%E8%B7%AF-maximum-subarray-a125bd6f1b2e)): O(n)
 
+```js
+const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
+const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
+const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
+
+const findMaxInterval = function(nums) {
+  let startIndex = 0;
+  let endIndex = 0;
+  let currentSum = maxSum = nums[0];
+
+  for(let i = 1; i < nums.length; i += 1) {
+    currentSum += nums[i];
+    if (currentSum < nums[i]) {
+      startIndex = i;
+      currentSum = nums[i];
+    }
+
+    if (currentSum > maxSum) {
+      endIndex = i;
+      maxSum = currentSum;
+    }
+  }
+
+  return { max: maxSum, startIndex, endIndex };
+};
+
+console.log(findMaxInterval(testArrayOne)); 
+// { max:118, startIndex: 0, endIndex: 9 }
+console.log(findMaxInterval(testArrayTwo)); 
+// { max:40, startIndex: 3, endIndex: 5 }
+console.log(findMaxInterval(testArrayThree)); 
+// { max:-3, startIndex: 0, endIndex: 0 }
+```
 # Dynamic Programming 動態規劃
 - 隨時間而陸續新增資料的填表法 ( time-varying tubular method )
 - 核心精神 1 : 將問題拆成相依且彼此重疊的子問題，可避免重複計算
