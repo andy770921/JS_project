@@ -683,7 +683,7 @@ console.log(mergeSort([5,2,3,4,1], 0, 4)); // [1,2,3,4,5]
 console.log(mergeSort([3,5,2,4,1], 0, 4)); // [1,2,3,4,5]
 ```
 ##  Recurrence 範例 - Maximum Subarray Problem: 時間複雜度 O(nlogn)
-- 找出某區間，區間內所有數累加後會是最大，回傳區間的起始 index 與結束 index
+- 找出某區間，區間內所有數累加後會是最大，回傳區間的起始 index 與結束 index 與累加後的最大值
 - Note: 用動態規劃或是 Linear Scan 可降至 O(n)
 
 ```js
@@ -691,16 +691,16 @@ const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
 const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
 const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
 
-function findMaxInterval(a){
+function findMaxSubarray(a){
     // TODOS
 
 }
-console.log(findMaxInterval(testArrayOne)); 
-// { startIndex: 0, endIndex: 9 }
-console.log(findMaxInterval(testArrayTwo)); 
-// { startIndex: 3, endIndex: 5 }
-console.log(findMaxInterval(testArrayThree)); 
-// { startIndex: 0, endIndex: 0 }
+console.log(findMaxSubarray(testArrayOne)); 
+// { max: 118, startIndex: 0, endIndex: 9 }
+console.log(findMaxSubarray(testArrayTwo)); 
+// { max: 40, startIndex: 3, endIndex: 5 }
+console.log(findMaxSubarray(testArrayThree)); 
+// { max: -3, startIndex: 0, endIndex: 0 }
 ```
 - Brute Force: O(n^3)
 
@@ -729,7 +729,7 @@ function findChampion(squreMatrix){
     return { max, startIndex, endIndex };
 }
 
-function findMaxInterval(a){
+function findMaxSubarray(a){
     // initialize a squre matrix: O(n^2)
     const s = [];
     for(let i = 0; i < a.length; i++){
@@ -750,12 +750,12 @@ function findMaxInterval(a){
     }
     return findChampion(s); // O(n^2)
 }
-console.log(findMaxInterval(testArrayOne)); 
-// { max:118, startIndex: 0, endIndex: 9 }
-console.log(findMaxInterval(testArrayTwo)); 
-// { max:40, startIndex: 3, endIndex: 5 }
-console.log(findMaxInterval(testArrayThree)); 
-// { max:-3, startIndex: 0, endIndex: 0 }
+console.log(findMaxSubarray(testArrayOne)); 
+// { max: 118, startIndex: 0, endIndex: 9 }
+console.log(findMaxSubarray(testArrayTwo)); 
+// { max: 40, startIndex: 3, endIndex: 5 }
+console.log(findMaxSubarray(testArrayThree)); 
+// { max: -3, startIndex: 0, endIndex: 0 }
 ```
 - Brute Force: O(n^2)
 ```js
@@ -779,7 +779,7 @@ function findChampion(squreMatrix){
     return { max, startIndex, endIndex };
 }
 
-function findMaxInterval(a){
+function findMaxSubarray(a){
     // initialize a squre matrix: O(n^2)
     const s = [];
     for(let i = 0; i < a.length; i++){
@@ -802,11 +802,11 @@ function findMaxInterval(a){
 
     return findChampion(s); // O(n^2)
 }
-console.log(findMaxInterval(testArrayOne)); 
+console.log(findMaxSubarray(testArrayOne)); 
 // { max: 118, startIndex: 0, endIndex: 9 }
-console.log(findMaxInterval(testArrayTwo)); 
+console.log(findMaxSubarray(testArrayTwo)); 
 // { max: 40, startIndex: 3, endIndex: 5 }
-console.log(findMaxInterval(testArrayThree)); 
+console.log(findMaxSubarray(testArrayThree)); 
 // { max: -3, startIndex: 0, endIndex: 0 }
 ```
 - Devide and conquer: O(nlogn)
@@ -866,13 +866,18 @@ function findMaxInterval(a, i, j){
         }
     }
 }
-console.log(findMaxInterval(testArrayOne, 0, testArrayOne.length - 1)); 
+
+function findMaxSubarray(a){
+    return findMaxInterval(a, 0, a.length - 1);
+}
+
+console.log(findMaxSubarray(testArrayOne)); 
 // { max: 118, startIndex: 0, endIndex: 9 }
-console.log(findMaxInterval(testArrayTwo, 0, testArrayTwo.length - 1)); 
+console.log(findMaxSubarray(testArrayTwo)); 
 // { max: 40, startIndex: 3, endIndex: 5 }
-console.log(findMaxInterval(testArrayThree, 0, testArrayThree.length - 1)); 
+console.log(findMaxSubarray(testArrayThree)); 
 // { max: -3, startIndex: 0, endIndex: 0 }
-console.log(findMaxInterval(testArrayFour, 0, testArrayFour.length - 1)); 
+console.log(findMaxSubarray(testArrayFour)); 
 // { max: 25, startIndex: 2, endIndex: 6 }
 ```
 - Linear Scan ([Ref](https://medium.com/starbugs/js-%E7%9A%84%E6%BC%94%E7%AE%97%E6%B3%95%E9%A4%8A%E6%88%90%E4%B9%8B%E8%B7%AF-maximum-subarray-a125bd6f1b2e)): O(n)
@@ -882,7 +887,7 @@ const testArrayOne = [3, 7, 9, 17, 5, 28, 21, 18, 6, 4];
 const testArrayTwo = [-3, 7, -9, 17, -5, 28, -21, 18, -6, 4];
 const testArrayThree = [-3, -7, -9, -17, -5, -28, -21, -18, -6, -4];
 
-const findMaxInterval = function(nums) {
+function findMaxSubarray(nums) {
   let startIndex = 0;
   let endIndex = 0;
   let currentSum = maxSum = nums[0];
@@ -903,11 +908,11 @@ const findMaxInterval = function(nums) {
   return { max: maxSum, startIndex, endIndex };
 };
 
-console.log(findMaxInterval(testArrayOne)); 
+console.log(findMaxSubarray(testArrayOne)); 
 // { max:118, startIndex: 0, endIndex: 9 }
-console.log(findMaxInterval(testArrayTwo)); 
+console.log(findMaxSubarray(testArrayTwo)); 
 // { max:40, startIndex: 3, endIndex: 5 }
-console.log(findMaxInterval(testArrayThree)); 
+console.log(findMaxSubarray(testArrayThree)); 
 // { max:-3, startIndex: 0, endIndex: 0 }
 ```
 # Dynamic Programming 動態規劃
