@@ -350,3 +350,30 @@ ageInput.addEventListener("keydown", function(e) {
 ```
 ## CSS clip:
 https://www.oxxostudio.tw/articles/201503/css-clip-path.html
+
+
+## breakpoint 中斷點的例子
+
+- material design: https://material.io/archive/guidelines/layout/responsive-ui.html#responsive-ui-breakpoints
+```
+360 / 400 / 480 / 600 / 720 / 840 / 960 / 1024 / 1280 / 1440 / 1600 / 1920 px
+```
+
+- material ui: https://material-ui.com/zh/customization/breakpoints/
+
+```
+0px     600px    960px    1280px   1920px
+```
+- ant design: https://ant.design/components/layout/#components-layout-demo-side
+
+```
+{
+  xs: '480px',
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
+  xl: '1200px',
+  xxl: '1600px',
+}
+```
+
