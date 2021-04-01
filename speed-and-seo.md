@@ -107,8 +107,10 @@ https://www.busbud.com/blog/debug-ios-safari-mac/
 - https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/705049/
 
 - safari 100vh 超出版面出現捲軸，替代方案：https://dev.to/admitkard/mobile-issue-with-100vh-height-100-100vh-3-solutions-3nae
-- safari 100vh 超出版面出現捲軸， `html, body { height: 100% }`：https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html
-- safari 100vh 超出版面出現捲軸，`html, body { height: 100% }` 外，各方案的限制：https://www.reddit.com/r/Frontend/comments/d1czwl/fix_for_100vh_with_mobile_address_bar_visible/
+- safari 100vh 超出版面， `html, body { height: 100% }`：https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html
+- safari 100vh 超出版面，`html, body { height: 100% }` 外，各方案的限制：https://www.reddit.com/r/Frontend/comments/d1czwl/fix_for_100vh_with_mobile_address_bar_visible/
+- safari 100vh 超出版面，用 `position: absolute` 或 `position: fixed` 加上 `top`, `bottom`  https://medium.com/@debbyji/%E8%A7%A3%E6%B1%BA%E9%AB%98%E5%BA%A6100vh%E5%9C%A8safari%E6%89%8B%E6%A9%9F%E4%B8%8A%E7%9A%84%E5%95%8F%E9%A1%8C-7db78417fca1
+- safari 100vh 超出版面，用 `fill-available` : https://medium.com/@littleDog/mobile-view-height%E7%9A%84%E9%80%9A%E9%80%8F%E4%B8%96%E7%95%8C-b896ac234ba9
 - safari 100vh 替代方案：https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/
 - safari 100vh 替代方案：https://github.com/postcss/postcss-100vh-fix
 
