@@ -105,7 +105,7 @@ https://www.busbud.com/blog/debug-ios-safari-mac/
    min-height: fit-content; // 避免 safari 吃錯每列高度
 ```
 - https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/705049/
-
+- flexbox 的 height( 或 flex-grow ) 在 safari 要每層定義且不能混用：https://medium.com/@littleDog/%E7%95%B6flexbox%E9%81%87%E5%88%B0height-100-242703fcaab6
 - safari 100vh 超出版面出現捲軸，替代方案：https://dev.to/admitkard/mobile-issue-with-100vh-height-100-100vh-3-solutions-3nae
 - safari 100vh 超出版面， `html, body { height: 100% }`：https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html
 - safari 100vh 超出版面，`html, body { height: 100% }` 外，各方案的限制：https://www.reddit.com/r/Frontend/comments/d1czwl/fix_for_100vh_with_mobile_address_bar_visible/
