@@ -107,6 +107,7 @@ https://www.busbud.com/blog/debug-ios-safari-mac/
 - https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/705049/
 
 - safari 100vh 超出版面出現捲軸，替代方案：https://dev.to/admitkard/mobile-issue-with-100vh-height-100-100vh-3-solutions-3nae
+- safari 100vh 超出版面出現捲軸， `html, body { height: 100% }`：https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html
 - safari 100vh 其他替代方案：https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/
 - safari 100vh 其他替代方案：https://github.com/postcss/postcss-100vh-fix
 
