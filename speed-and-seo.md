@@ -7,6 +7,9 @@
 4. Pingdom: https://www.pingdom.com/
 5. Sitespeed: https://www.notion.so/Sitespeed-io-05d71c887be140c98ef0d35361eaad2e
 
+## [偏後端] JS 用 Array 取代 Set, 用雙向指標取代 Map 減低複雜度
+https://www.youtube.com/watch?v=oewDaISQpw0
+
 ## React SSR
 
 https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ssr-in-reactjs-part1-d2a11890abfc
