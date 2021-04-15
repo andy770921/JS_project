@@ -960,3 +960,29 @@ const validSalePageIdList = map(
         );
 ```
 - string.match( RegExp )，return 符合字的陣列或 null
+
+- 移除網址第一層: 
+```
+function removeFirstRoute(url){
+  // TODOS
+}
+console.log(removeFirstRoute("/abc/keep")); //  "/keep" 
+console.log(removeFirstRoute("/de/words")); //  "/words" 
+
+// Ans 1:
+function removeFirstRoute(url){
+  return '/' + url.split('/').slice(2).join('/');
+}
+
+// Ans 2:
+function removeFirstRoute(url){
+  return url.replace(/\/\w+/.exec(url)[0],'');;
+}
+
+// Ans 3:
+function removeFirstRoute(url){
+  return /\/\w+$/.exec(url)[0];
+}
+
+
+ ```
