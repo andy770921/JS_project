@@ -983,6 +983,12 @@ function removeFirstRoute(url){
 function removeFirstRoute(url){
   return /\/\w+$/.exec(url)[0];
 }
+ ```
+ - 移除字串最後一格空白
+ ```js
+const lastSpaceRegex = /\s*$/;
 
+const eliminateLastSpace = email => email.replace(lastSpaceRegex, '');
 
+// eliminate Last Space Ex: 'a@b.c ' => 'a@b.c'
  ```
