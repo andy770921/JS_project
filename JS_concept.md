@@ -962,7 +962,7 @@ const validSalePageIdList = map(
 - string.match( RegExp )，return 符合字的陣列或 null
 
 - 移除網址第一層: 
-```
+```js
 function removeFirstRoute(url){
   // TODOS
 }
