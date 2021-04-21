@@ -1297,10 +1297,29 @@ CSS:
 -o-border-radius: 10px;
 border-radius: 10px;
 ```
-## height: 0 配合 padding: bottom 做出等比例縮放:
+## height: 0 配合 padding-bottom 做出等比例縮放:
 
 https://stackoverflow.com/questions/35814653/automatic-height-when-embedding-a-youtube-video
 
+## 取消 input 元素的 autofill:
+1. Ref: https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+2. 方法一：取消背景 = 背景變成透明
+```css
+input:-webkit-autofill {
+    background-clip: text;
+     -webkit-background-clip: text;
+}
+```
+3. 方法二：透過 `box-shadow` 覆蓋背景設定成白色（無法透明）
+```css
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+```
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
