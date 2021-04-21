@@ -1101,6 +1101,95 @@ const ShopCategoryContent: FC<{ baseUrl: string; shopCategoryMapContext: Context
     );
 };
 ```
+## forwardRef 型別與 react-spring 
+- forwardRef 型別 Ref: https://stackoverflow.com/questions/54654303/using-a-forwardref-component-with-children-in-typescript
+- react-spring 元件封裝方式 Ref: https://material-ui.com/zh/components/modal/
+```ts
+import { FC, forwardRef, ComponentPropsWithoutRef } from 'react';
+import styled from 'styled-components';
+import { layout, LayoutProps, flexbox, FlexboxProps } from 'styled-system';
+import { makeStyles } from '@material-ui/core/styles';
+import MaterialUIModal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import { useSpring, animated } from 'react-spring';
+
+const StyledMaterialUIModal = styled(MaterialUIModal)<LayoutProps & FlexboxProps>`
+    ${layout}
+    ${flexbox}
+`;
+
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
+}));
+
+const Fade = forwardRef<
+    HTMLDivElement,
+    ComponentPropsWithoutRef<'div'> & { in: boolean; onEnter?: () => void; onExited?: () => void }
+>((props, ref) => {
+    const { in: open, children, onEnter, onExited, ...other } = props;
+    const style = useSpring({
+        from: { opacity: 0 },
+        to: { opacity: open ? 1 : 0 },
+        config: { duration: 200 },
+        onStart: () => {
+            if (open && onEnter) {
+                onEnter();
+            }
+        },
+        onRest: () => {
+            if (!open && onExited) {
+                onExited();
+            }
+        },
+    });
+
+    return (
+        <animated.div ref={ref} style={style} {...other}>
+            {children}
+        </animated.div>
+    );
+});
+
+const Modal: FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+    const classes = useStyles();
+
+    return (
+        <StyledMaterialUIModal
+            aria-labelledby="spring-modal-title"
+            aria-describedby="spring-modal-description"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            open={isOpen}
+            onClose={onClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+                transitionDuration: 400,
+            }}>
+            <Fade in={isOpen}>
+                <div className={classes.paper}>
+                    <h2 id="spring-modal-title">Spring modal</h2>
+                    <p id="spring-modal-description">react-spring animates me.</p>
+                </div>
+            </Fade>
+        </StyledMaterialUIModal>
+    );
+};
+
+export default Modal;
+
+```
 # Next.js
 
 ## Tutorial
