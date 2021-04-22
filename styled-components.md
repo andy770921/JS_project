@@ -664,11 +664,12 @@ const ConceptMapWrap = styled.div`
 `;
 ```
 
-## 出現警告
+## console 出現紅字警告 `React does not recognize the textColor prop on a DOM element.`
 - 解法一： use `$propsName`, a dollar sign before your props name and it will be passed to a Styled-component ONLY
 - Ref: https://stackoverflow.com/questions/61488512/react-does-not-recognize-the-prop-passed-to-a-styled-component-within-material-u
 - 解法二： use `styled(BaseButton).withConfig({ shouldForwardProp: (props) => !['textColor'].includes(props) })` 或 `styled.div.withConfig({// ...})`
 - Ref: https://github.com/styled-components/styled-components/releases/tag/v5.1.0
+- Ref2: https://github.com/styled-components/styled-components/issues/439
 - Ex: 
 ```ts
 const StyledTextButton = styled(BaseButton).withConfig({
