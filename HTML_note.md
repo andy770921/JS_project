@@ -14,7 +14,7 @@ https://ithelp.ithome.com.tw/articles/10195279
 - Ref: https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component
 - Ref2: https://stackoverflow.com/questions/12030686/html-input-file-selection-event-not-firing-upon-selecting-the-same-file
 - 背後原因：input element 的 value，是圖片的檔案位置。同張圖片會對應到同個檔案位置，所以不會再觸發 onChange
-- React 寫 `e.currentTarget.value = '';` 在 onChange 函式最後 => 無效，要寫在 onClick，觸發順序為點擊後先觸發 onClic，上傳完成後觸發 (2021/4/26 實測結果)
+- React 寫 `e.currentTarget.value = '';` 在 onChange 函式最後 => 無效，要寫在 onClick，觸發順序為點擊後先觸發 onClick，上傳完成後觸發 onChange (2021/4/26 實測結果)
 - onChange 與 onClick 差異為，註冊不同事件，當事件發生就會觸發相應的函式：https://www.quora.com/What-is-the-difference-between-onchange-and-onclick-in-JavaScript
 
 ```ts
