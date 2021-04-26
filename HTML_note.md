@@ -12,6 +12,9 @@ https://ithelp.ithome.com.tw/articles/10195279
 ## `<input type="file">`
 - 若需要避免，再次上傳同一張圖片無法觸發，需要加入 onClick 事件，並寫 `e.currentTarget.value = '';`(in TS) 或是 `e.currentTarget.value = null;`(in JS)
 - Ref: https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component
+- Ref2: https://stackoverflow.com/questions/12030686/html-input-file-selection-event-not-firing-upon-selecting-the-same-file
+- 背後原因：input element 的 value，是圖片的檔案位置。同張圖片會對應到同個檔案位置，所以不會再觸發 onChange
+- onChange 與 onClick 差異為，註冊不同事件，當事件發生就會觸發相應的函式：https://www.quora.com/What-is-the-difference-between-onchange-and-onclick-in-JavaScript
 
 ## DOM 觀念
 https://ithelp.ithome.com.tw/articles/10191666
