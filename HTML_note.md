@@ -17,6 +17,69 @@ https://ithelp.ithome.com.tw/articles/10195279
 - React 寫 `e.currentTarget.value = '';` 在 onChange 函式最後 => 無效，要寫在 onClick，觸發順序為點擊後先觸發 onClic，上傳完成後觸發 (2021/4/26 實測結果)
 - onChange 與 onClick 差異為，註冊不同事件，當事件發生就會觸發相應的函式：https://www.quora.com/What-is-the-difference-between-onchange-and-onclick-in-JavaScript
 
+```ts
+import { FC, ChangeEvent, MouseEvent, useState } from 'react';
+import defaultIcon from '@asset/default.svg';
+
+export enum uploadErrorType {
+    WRONG_FILE_TYPE = 'WRONG_FILE_TYPE',
+    OVER_SIZE_LIMIT = 'OVER_SIZE_LIMIT',
+}
+
+export const UploadableCustomButton: FC<{
+    fileSizeMbLimit?: number;
+    defaultImgUrl: string | null;
+    onChange: (file: File) => void;
+    onError?: (type: uploadErrorType) => void;
+}> = ({ fileSizeMbLimit = 3, defaultImgUrl, onChange, onError }) => {
+    const [currentImgLocalSrc, setCurrentImgLocalSrc] = useState('');
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        // 全部 file type 可能的值: https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types
+        const validFileType = (file: File) => ['image/jpeg'].includes(file.type);
+
+        // e.currentTarget.files 可能為 null
+        // 當上傳一次後取消上傳，e.currentTarget.files 為 FileList {length: 0}
+        if (e.currentTarget.files?.length) {
+            const uploadedFile = e.currentTarget.files[0];
+            const uploadedFileSize = uploadedFile.size / 1024 / 1024; // MB
+
+            if (onError && !validFileType(uploadedFile)) {
+                onError(uploadErrorType.WRONG_FILE_TYPE);
+                return;
+            }
+            if (onError && uploadedFileSize > fileSizeMbLimit) {
+                onError(uploadErrorType.OVER_SIZE_LIMIT);
+                return;
+            }
+
+            setCurrentImgLocalSrc(URL.createObjectURL(uploadedFile));
+            onChange(uploadedFile);
+        }
+    };
+
+    const handleClearInput = (e: MouseEvent<HTMLInputElement>) => {
+        // 清除 input value 避免無法重複上傳同一張圖
+        e.currentTarget.value = '';
+    };
+
+    return (
+        <label htmlFor="icon-button-file" style={{ width: '100%' }}>
+            <span>
+                <div style={{ backgroundImage: `url('${(currentImgLocalSrc || defaultImgUrl) ?? defaultIcon}')` }}></div>
+            </span>
+            <input
+                style={{ position: 'absolute', opacity: 0 }}
+                accept="image/jpeg"
+                id="icon-button-file"
+                type="file"
+                onChange={handleChange}
+                onClick={handleClearInput}
+            />
+        </label>
+    );
+};
+```
 ## DOM 觀念
 https://ithelp.ithome.com.tw/articles/10191666
 
