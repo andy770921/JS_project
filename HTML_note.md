@@ -28,7 +28,7 @@ export enum uploadErrorType {
 
 export const UploadableCustomButton: FC<{
     fileSizeMbLimit?: number;
-    defaultImgUrl: string | null;
+    defaultImgUrl?: string;
     onChange: (file: File) => void;
     onError?: (type: uploadErrorType) => void;
 }> = ({ fileSizeMbLimit = 3, defaultImgUrl, onChange, onError }) => {
@@ -66,7 +66,7 @@ export const UploadableCustomButton: FC<{
     return (
         <label htmlFor="icon-button-file" style={{ width: '100%' }}>
             <span>
-                <div style={{ backgroundImage: `url('${(currentImgLocalSrc || defaultImgUrl) ?? defaultIcon}')` }}></div>
+                <div style={{ backgroundImage: `url('${currentImgLocalSrc || defaultImgUrl || defaultIcon}')` }}></div>
             </span>
             <input
                 style={{ position: 'absolute', opacity: 0 }}
