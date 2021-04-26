@@ -9,6 +9,10 @@ https://ithelp.ithome.com.tw/articles/10195279
 ## `<iframe>`
 - 嵌入 iframe ，互相傳遞訊息：https://stackoverflow.com/questions/25098021/securityerror-blocked-a-frame-with-origin-from-accessing-a-cross-origin-frame
 
+## `<input type="file">`
+- 若需要避免，再次上傳同一張圖片無法觸發，需要加入 onClick 事件，並寫 `e.currentTarget.value = '';`(in TS) 或是 `e.currentTarget.value = null;`(in JS)
+- Ref: https://stackoverflow.com/questions/39484895/how-to-allow-input-type-file-to-select-the-same-file-in-react-component
+
 ## DOM 觀念
 https://ithelp.ithome.com.tw/articles/10191666
 
