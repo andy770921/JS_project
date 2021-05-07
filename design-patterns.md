@@ -103,8 +103,8 @@ const publishArticleAndFacebookAndIgAndLine = publishFacebook(publishIG(publishL
 - Ref: https://medium.com/starbugs/%E7%94%A8-javascript-%E7%8E%A9%E8%BD%89%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F-%E5%90%84%E5%8F%B8%E5%85%B6%E8%81%B7%E7%9A%84-chain-of-responsibility-pattern-%E8%B2%AC%E4%BB%BB%E9%8F%88%E6%A8%A1%E5%BC%8F-864f394cce13
 
 - Before: 
-- 違背 Open/close（開放封閉）原則: 如果要增加一個對錯誤碼 405 的處理邏輯（要擴充新功能），那就得直接修改 httpErrorHandler 中的程式碼（修改原本正確的邏輯）
-- 違背 Single responsibility（單一職責）原則: 把不同錯誤的處理邏輯通通寫在 httpErrorHandler 中，導致我可能在只想要修改對錯誤碼為 400 的邏輯時，還得閱讀一堆不相關的程式碼。
+  違背 Open/close（開放封閉）原則: 如果要增加一個對錯誤碼 405 的處理邏輯（要擴充新功能），那就得直接修改 httpErrorHandler 中的程式碼（修改原本正確的邏輯）
+  違背 Single responsibility（單一職責）原則: 把不同錯誤的處理邏輯通通寫在 httpErrorHandler 中，導致我可能在只想要修改對錯誤碼為 400 的邏輯時，還得閱讀一堆不相關的程式碼。
 ```js
  const httpErrorHandler = (error) => {
    const errorStatus = error.response.status;
