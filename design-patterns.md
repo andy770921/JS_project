@@ -136,7 +136,7 @@ const yellowStyle = (printer) => {
   return decorator;
 };
 ```
-- HOC example:
+- Decorator Pattern HOC example:
 ```js
 const publishArticle = () => {
   console.log('發布文章');
