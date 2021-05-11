@@ -1,5 +1,8 @@
 # Three.js 觀念
 
+## 2021/5/11 latest npm packages with React hook
+- Ref: https://www.youtube.com/watch?v=9ZEjSxDRIik
+- `npm install react-three-fiber drei use-cannon --save` 
 
 ## 1. Webpack 安裝
 輸入```npm install three --save```  
