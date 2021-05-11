@@ -1,5 +1,9 @@
 # React-Apollo Note
 
+## 為什麼需要 BFF 
+
+https://medium.com/starbugs/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC%E8%80%85%E8%A9%B2%E8%B2%A0%E8%B2%AC%E5%AF%AB-api-endpoints-%E5%97%8E-the-backend-for-frontend-pattern-bff-in-microservices-world-1368362c141c
+
 ## useQuery 文字說明
 
 在一進入頁面，就取資料回來的情境下，可用 `useQuery` 
