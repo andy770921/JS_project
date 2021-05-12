@@ -10,6 +10,7 @@
 ## Cache
 1. https://oldmo860617.medium.com/%E6%B2%92%E4%BA%86%E8%A7%A3%E9%81%8E-cache-%E5%B0%B1%E5%88%A5%E8%AA%AA%E7%B6%B2%E7%AB%99%E6%80%A7%E8%83%BD%E6%B2%92%E6%95%91%E4%BA%86-6d9d4cfe3291
 2. https://blog.techbridge.cc/2017/06/17/cache-introduction/
+3. https://ithelp.ithome.com.tw/articles/10225276
 
 ## [偏後端] JS 用 Array 取代 Set, 用雙向指標取代 Map 減低複雜度
 https://www.youtube.com/watch?v=oewDaISQpw0
