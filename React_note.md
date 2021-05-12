@@ -741,7 +741,7 @@ https://www.youtube.com/watch?v=7TaBhrnPH78
 ## Reacr-Router urls don't work when refreshing or writing manually
 https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually
 
-## 為何 Hook 沒用到 React 還要 import?
+## 為何 React 17 版前，functional component 內沒用到 React 還要 import?
 
 1. Ans: Babel 將 JSX 轉成 React.createElement 後，需要 React 接著處理 createElement
 2. Babel 負責處理 JSX 的 plug-in ()，可以將 JSX 語法，轉成 React.createElement 
