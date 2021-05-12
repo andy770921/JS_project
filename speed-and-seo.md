@@ -12,6 +12,10 @@
 2. https://blog.techbridge.cc/2017/06/17/cache-introduction/
 3. https://ithelp.ithome.com.tw/articles/10225276
 
+## 瀏覽器各個 process 的演進與現況，及渲染引擎
+
+https://medium.com/starbugs/%E8%BA%AB%E7%82%BA-web-%E5%B7%A5%E7%A8%8B%E5%B8%AB-%E4%BD%A0%E6%87%89%E8%A9%B2%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E7%80%8F%E8%A6%BD%E5%99%A8%E6%9E%B6%E6%A7%8B%E6%BC%94%E9%80%B2%E5%8F%B2-feat-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E9%81%8B%E4%BD%9C%E6%A9%9F%E5%88%B6-6d95d4d960ee
+
 ## [偏後端] JS 用 Array 取代 Set, 用雙向指標取代 Map 減低複雜度
 https://www.youtube.com/watch?v=oewDaISQpw0
 
