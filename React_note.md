@@ -244,7 +244,10 @@ https://medium.com/@xyz030206/%E9%97%9C%E6%96%BC-uselayouteffect-%E4%BD%A0%E9%9C
 ## 記憶物件或陣列的 useDeepMemo hook (Ref: React Apollo)
 https://github.com/benjamn/wryware/blob/main/packages/equality/src/equality.ts  
 https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useDeepMemo.ts  
-https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useBaseQuery.ts  
+https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useBaseQuery.ts 
+
+## 用 Observer API 實作 useInView
+https://blog.logrocket.com/lazy-loading-using-the-intersection-observer-api/
 
 ## 封裝 fetch API 的 Hook (Dan 文章推薦):
 https://www.robinwieruch.de/react-hooks-fetch-data
