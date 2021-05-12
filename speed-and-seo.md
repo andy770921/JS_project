@@ -18,6 +18,10 @@ https://www.youtube.com/watch?v=oewDaISQpw0
 
 https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ssr-in-reactjs-part1-d2a11890abfc
 
+## CSR, SSG, SSR
+
+https://medium.com/starbugs/%E5%88%9D%E6%8E%A2-server-side-rendering-%E8%88%87-next-js-%E6%8E%A8%E5%9D%91%E8%A8%88%E7%95%AB-d7a9fb48a964
+
 ## 前 Facebook JavaScript 優化部門的 Josh Duck 提到的效能優化方向
 
 - https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/reactconf-au-2020-note-part1-2f309361a908
