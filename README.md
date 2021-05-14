@@ -70,7 +70,8 @@ https://github.com/jigsawye/javascript
 
 1. [2019/10/23](https://pttcareer.com/soft_job/M.1571823381.A.B68.html)
 2. [從輸入網址列到渲染畫面，過程經歷了什麼事？](https://w3c.hexschool.com/blog/8d691e4f?fbclid=IwAR2-_4Gt23OuyWpTYhdaT43s_PmNPepKN4DEdRRG6zCr9tsbhJwkLQrmJ-o)
-3. [考題筆記](https://github.com/andy770921/JS_project/blob/master/interview_question.md)
+3. [從輸入網址列到渲染畫面，過程經歷了什麼事？第二篇](https://medium.com/starbugs/%E8%BA%AB%E7%82%BA-web-%E5%B7%A5%E7%A8%8B%E5%B8%AB-%E4%BD%A0%E6%87%89%E8%A9%B2%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E7%80%8F%E8%A6%BD%E5%99%A8%E6%9E%B6%E6%A7%8B%E6%BC%94%E9%80%B2%E5%8F%B2-feat-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E9%81%8B%E4%BD%9C%E6%A9%9F%E5%88%B6-6d95d4d960ee)
+4. [考題筆記](https://github.com/andy770921/JS_project/blob/master/interview_question.md)
 
 ## 快速建置，開始專案使用的 Repo
 
