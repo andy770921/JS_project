@@ -741,7 +741,9 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 - 目標: 儲存資料在以 key 為索引條件的表格中
 - 實作方法:  將 key 經過函式運算，算出數字的 index (索引)，對應到陣列的某位置
 - Hash Function: 運算 key 的函式，輸入為 key 的資料型別，輸出為數字
-
+- 需要思考的問題:
+  1. 如何設計 hash function 的運算 ? 特別是當 key 的資料型態變複雜時，不單純用 string 當 key
+  2. Equality Test: 如何比較兩個 key 相等 ?
 ## Stack 實際應用
 
 ```ts
