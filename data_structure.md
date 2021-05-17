@@ -846,6 +846,11 @@ console.log(hash(str)); // 30
 
 ### Separate Chaining
 - 1953 年提出，使用 M 長度的 array 加上 Linked List 處理 collision ( M < key 總數 )
+
+<div align="center">
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_3.png"/>
+</div>
+
 - 實作 get 方法
 ```js
 String.prototype.hashCode = function (){
@@ -867,7 +872,7 @@ class Node {
 
 class SeparateChainingHashTable {
   M = 97;  // number of chains，共幾條鏈
-  chainList = [...Array(this.M)].map(() => new Node());  // array of chains，裝有鏈的 array
+  chainList = [...Array(this.M)].map(() => null);  // array of chains，裝有鏈的 array，初始值為 M 個 null
 
   hash(k){
     return (k.hashCode() & 0x7fffffff) % this.M;
