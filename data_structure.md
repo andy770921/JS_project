@@ -774,7 +774,7 @@ String.prototype.hashCode = function (){
 const str = "call";
 
 console.log(str.hashCode()); // 3045982
-// 3045982 = 99 x 31^3 + 97 x 32^2 + 108 x 32^1 + 108 x 32^0
+// 3045982 = 99 x 31^3 + 97 x 31^2 + 108 x 31^1 + 108 x 31^0
 ```
 - 實際上，Java 有優化，加入快取功能，避免重算，邏輯轉寫成 JavaScript 如下
 ```js
