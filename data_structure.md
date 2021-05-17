@@ -815,12 +815,12 @@ console.log(str.hashCode()); // 3045982
   2. 實際上，要取絕對值，但取了又會有 2 的 31 次方，超過範圍的問題，故可用以下方法
 ```js
 function hash(key){
-  return key.hashCode() & 0x7fffffff % M;
+  return (key.hashCode() & 0x7fffffff) % M;
 }
 ```
 ```js
 function hash(key){
-  return key.hashCode() & 0x7fffffff % 32;
+  return (key.hashCode() & 0x7fffffff) % 32;
 }
 
 class HashableString extends String {
