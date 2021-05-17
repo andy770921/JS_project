@@ -745,7 +745,7 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_1.png"/>
 </div>
  
-- 與 JavaScript Object 比較: 
+- 與 JavaScript Object 比較: 儲存 "v" 在以 "key" 為索引條件的表格中，"key" 經過函式運算，算出數字的 3 為 index
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_2.png"/>
 </div>
