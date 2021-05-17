@@ -848,10 +848,13 @@ const str = new HashableString("call");
 console.log(hash(str)); // 30
 ```
 - 假設完全隨機，數學推導結果
-  1. 均勻 hash 假設: 每個 key 都能被運算出 0 到 M - 1 的整數，且均勻分布
+  1. 均勻 hash 假設 : 每個 key 都能被運算出 0 到 M - 1 的整數，且均勻分布
   2. 加入多少 key 才會 collision ? 等於古典機率桶球問題 Birthday Problem，持續丟球，相同桶出現兩顆球，要丟 sqrt(Pi x M / 2) 次
   3. 加入多少 key 才會滿 ? 等於古典機率桶球問題 Coupon Collector Problem，持續丟球，每桶至少出現一顆球，要丟 M x ln(M) 次
   4. 加入 M 個 key，單個 address 中最多幾個值 ? 等於丟 M 次之後，桶內最多有幾顆球，Ans: log M / log log M ( Load Balancing )
+
+### Separate Chaining
+- 1953 年提出，使用 M 長度的 array 加上 Linked List 處理 collision ( M < key 總數 )
 
 ## Stack 實際應用
 
