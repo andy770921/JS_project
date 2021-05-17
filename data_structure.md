@@ -739,8 +739,8 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 ## Hash Table
 
 - Ref: https://www.coursera.org/lecture/algorithms-part1/hash-tables-CMLqa
-- 目標: 儲存資料在以 key 為索引條件的表格中。如下圖，儲存 "it" 在以 "it" 為索引條件的表格中
-- 實作方法:  將 key 經過函式運算，算出數字的 index (索引)，對應到陣列的某位置。如下圖，"it" 經過函式運算，算出數字的 3 為 index
+- 目標: 儲存資料在以 key 為索引條件的表格中。如下圖，儲存黑 "it" 在以紅 "it" 為索引條件的表格中
+- 實作方法:  將 key 經過函式運算，算出數字的 index (索引)，對應到陣列的某位置。如下圖，紅 "it" 經過函式運算，算出數字的 3 為 index
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_1.png) 
 - Hash Function: 運算 key 的函式，輸入為 key 的資料型別，輸出為數字
 - 需要思考的問題:
