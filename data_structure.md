@@ -749,12 +749,14 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 - 如何設計 hash function
   1. 目的: 均勻的將 key 打散至每個 index，且運算有效率
   2. 實務上，不同的 key 型別，會有不同做法
-  3. Javs's hash code convention: 數字，字串，布林值，繼承 `.hashCode()` 方法，回傳 32-bit 的整數
-  4. 必定成立: 若 x 與 y 相同，則 `x.hashCode()` 與 `y.hashCode()` 相同
-  5. 大多數時成立: 若 x 與 y 不同，則 `x.hashCode()` 與 `y.hashCode()` 不同
-- hash function 實作方式
+  3. Java 的做法: 先將各型別，產生 hashCode 數字，再將數字轉成 0 到 array 長度減一 的 index
+  
+- Java's hash code convention: 數字，字串，布林值，繼承 `.hashCode()` 方法，回傳 32-bit 的整數 (值可能為 -2 的 31 次方到 2 的 31 次方 - 1)
+  1. 必定成立: 若 x 與 y 相同，則 `x.hashCode()` 與 `y.hashCode()` 相同
+  2. 大多數時成立: 若 x 與 y 不同，則 `x.hashCode()` 與 `y.hashCode()` 不同
+- hash code 方法實作方式
   1. 預設的實作方式: 回傳該 key 的記憶體位置
-  2. 合法 ( 但很差 ) 的實作方式: 永遠回傳 17
+  2. 合法 (但很差) 的實作方式: 永遠回傳 17
   3. 客製化的實作方式: 針對不同型別 (Integer, Double, String, File...)，不同做法
   4. Java 針對 String 用的 hash function: Horner's method，概念為一個大數字 mod 32，邏輯轉寫成 JavaScript 如下
 ```js
@@ -799,6 +801,10 @@ const str = new HashableString("call");
 
 console.log(str.hashCode()); // 3045982
 ```
+- hash function 實作方式
+  1. 若 array 長度為 M，hash function 希望產生的 index 為 0 到 M - 1，概念上可能的方法為 `key.hashCode() % M`
+
+
 ## Stack 實際應用
 
 ```ts
