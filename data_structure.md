@@ -789,11 +789,6 @@ console.log(str.hashCode()); // 3045982
 class HashableString extends String {
   hash = 0;
 
-  constructor(s){
-    super(s);
-    this.s = s;
-  }
-
   hashCode(){
     const s = this;
     let h = this.hash;
@@ -825,11 +820,6 @@ function hash(key){
 
 class HashableString extends String {
   hash = 0;
-
-  constructor(s){
-    super(s);
-    this.s = s;
-  }
 
   hashCode(){
     const s = this;
