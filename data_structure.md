@@ -752,11 +752,11 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
   3. Javs's hash code convention: 數字，字串，布林值，繼承 `.hashCode()` 方法，回傳 32-bit 的整數
   4. 必定成立: 若 x 與 y 相同，則 `x.hashCode()` 與 `y.hashCode()` 相同
   5. 大多數時成立: 若 x 與 y 不同，則 `x.hashCode()` 與 `y.hashCode()` 不同
- - hash function 實作方式
+- hash function 實作方式
   1. 預設的實作方式: 回傳該 key 的記憶體位置
   2. 合法(但很差)的實作方式: 永遠回傳 17
   3. 客製化的實作方式: 針對不同型別 (Integer, Double, String, File...)，不同做法
-  4. Java 在 String 用的 hash function: Horner's method，邏輯轉寫成 JavaScript 如下
+  4. Java 針對 String 用的 hash function: Horner's method，邏輯轉寫成 JavaScript 如下
 ```js
 String.prototype.hashCode = function (){
   const s = this;
@@ -772,6 +772,32 @@ const str = "call";
 
 console.log(str.hashCode()); // 3045982
 // 3045982 = 99 x 31^3 + 97 x 32^2 + 108 x 32^1 + 108 x 32^0
+```
+  5. 加入快取功能，避免重算
+```js
+class HashableString extends String {
+  hash = 0;
+
+  constructor(s){
+    super(s);
+    this.s = s;
+  }
+
+  hashCode(){
+    const s = this;
+    let h = this.hash;
+    if(h !== 0) return h;
+    for(let i = 0; i < s.length; i++){
+      h = s[i].charCodeAt() + 31 * h;
+    }
+    this.hash = h;
+    return h;
+  }
+}
+
+const str = new HashableString("call");
+
+console.log(str.hashCode()); // 3045982
 ```
 ## Stack 實際應用
 
