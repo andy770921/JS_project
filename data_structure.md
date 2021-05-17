@@ -808,6 +808,7 @@ console.log(str.hashCode()); // 3045982
 - hash function 實作方式
   1. 若 array 長度為 M，hash function 希望產生的 index 為 0 到 M - 1，概念上可能的方法為 `key.hashCode() % M`
   2. 實際上，要取絕對值，但取了又會有 2 的 31 次方，超過範圍的問題，故可用以下方法
+  3. Note: & 意為「位元 AND」
 ```js
 function hash(key){
   return (key.hashCode() & 0x7fffffff) % M;
