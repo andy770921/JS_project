@@ -812,7 +812,41 @@ console.log(str.hashCode()); // 3045982
 ```
 - hash function 實作方式
   1. 若 array 長度為 M，hash function 希望產生的 index 為 0 到 M - 1，概念上可能的方法為 `key.hashCode() % M`
+  2. 實際上，要取絕對值，但取了又會有 2 的 31 次方，超過範圍的問題，故可用以下方法
+```js
+function hash(key){
+  return key.hashCode() & 0x7fffffff % M;
+}
+```
+```js
+function hash(key){
+  return key.hashCode() & 0x7fffffff % 32;
+}
 
+class HashableString extends String {
+  hash = 0;
+
+  constructor(s){
+    super(s);
+    this.s = s;
+  }
+
+  hashCode(){
+    const s = this;
+    let h = this.hash;
+    if(h !== 0) return h;
+    for(let i = 0; i < s.length; i++){
+      h = s[i].charCodeAt() + 31 * h;
+    }
+    this.hash = h;
+    return h;
+  }
+}
+
+const str = new HashableString("call");
+
+console.log(hash(str)); // 30
+```
 
 ## Stack 實際應用
 
