@@ -749,6 +749,7 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_2.png"/>
 </div>
+
 - Hash Function: 運算 key 的函式，輸入為 key 的資料型別，輸出為數字
 - 需要思考的問題:
   1. 如何設計 hash function 的運算 ? 特別是當 key 的資料型態變複雜時，不單純用 string 當 key
