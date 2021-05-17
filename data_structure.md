@@ -848,12 +848,13 @@ console.log(hash(str)); // 30
 - 1953 年提出，使用 M 長度的 array 加上 Linked List 處理 collision ( M < key 總數 )
 - 實作 get 方法
 ```js
-String.prototype.hashCode = function (modBase){
+String.prototype.hashCode = function (){
+  const M = 97;
   const s = this;
   let hash = 0;
   
   for(let i = 0; i < s.length; i++){
-    hash = s[i].charCodeAt() + (modBase - 1) * hash;
+    hash = s[i].charCodeAt() + (M - 1) * hash;
   }
   return hash;
 }
@@ -865,11 +866,11 @@ class Node {
 }
 
 class SeparateChainingHashTable {
-  M = 97;
-  chainList = [...Array(this.M)].map(() => new Node());
+  M = 97;  // number of chains，共幾條鏈
+  chainList = [...Array(this.M)].map(() => new Node());  // array of chains，裝有鏈的 array
 
   hash(k){
-    return (k.hashCode(this.M) & 0x7fffffff) % this.M;
+    return (k.hashCode() & 0x7fffffff) % this.M;
   }
 
   get(k){
