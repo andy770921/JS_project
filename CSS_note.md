@@ -27,7 +27,7 @@ https://www.youtube.com/watch?v=pKO1ktPQByk
 
 - https://youtu.be/5DEq5cWNYt8?t=2587
 
-- 此大括號內針對 primary pointing device 比如桌機或可觸控但以滑鼠為主的筆電，如果 primary pointing device 可以 hover (即 device 能夠 hover)，`card-content` 一進入頁面就加上 `transform: translateY(-65%)`，並在卡片被 hover 到時，再用 `transform: translateY(0)` 覆寫
+- 此大括號內針對 primary pointing device 才生效，比如桌機或可觸控但以滑鼠為主的筆電，如果 primary pointing device 可以 hover ( 即 device 能夠 hover ) ，`card-content` 一進入頁面就加上 `transform: translateY(-65%)`，並在卡片被 hover 到時，再用 `transform: translateY(0)` 覆寫
 ```css
 @media (hover) {
   .card-content {
