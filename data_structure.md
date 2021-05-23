@@ -844,14 +844,14 @@ console.log(hash(str)); // 30
   3. 加入多少 key 才會滿 ? 等於古典機率桶球問題 Coupon Collector Problem，持續丟球，每桶至少出現一顆球，要丟 M x ln(M) 次
   4. 加入 M 個 key，單個 address 中最多幾個值 ? 等於丟 M 次之後，桶內最多有幾顆球，Ans: log M / log log M ( Load Balancing )
 
-### Separate Chaining
+### Separate Chaining (a collision resolution strategy)
 - 1953 年提出，使用 M 長度的 array 加上 Linked List 處理 collision ( M < key 總數 )
 
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_3.png"/>
 </div>
 
-- 實作 get 方法
+- 實作 get, put ( 含 insert 及 update ) 方法
 ```js
 String.prototype.hashCode = function (){
   const M = 97;
@@ -865,9 +865,11 @@ String.prototype.hashCode = function (){
 }
 
 class Node {
-  key = "";
-  value = null;
-  next = null;
+   constructor(key = null, value = null, next = null){
+    this.key = key;
+    this.value = value;
+    this.next = next;
+  }
 }
 
 class SeparateChainingHashTable {
@@ -882,16 +884,34 @@ class SeparateChainingHashTable {
     const i = this.hash(k);
     
     for(let x = this.chainList[i]; x !== null; x = x.next){
-      if(k === x.key) return x.value
+      if(k === x.key) return x.value;
     }
 
     return null;
+  }
+
+  put(k, val){
+    const i = this.hash(k);
+    
+    for(let x = this.chainList[i]; x !== null; x = x.next){
+      if(k === x.key){
+        x.value = val;
+        return 'update succcessfully';
+      }
+    }
+    this.chainList[i] = new Node(k, val, this.chainList[i]);
+    
+    return 'insert succcessfully';
   }
 }
 
 const hashTable = new SeparateChainingHashTable();
 
 console.log(hashTable.get("something"));  // null
+console.log(hashTable.put("awesomeKey", 100));  // insert succcessfully
+console.log(hashTable.get("awesomeKey"));  // 100
+console.log(hashTable.put("awesomeKey", 50));  // update succcessfully
+console.log(hashTable.get("awesomeKey"));  // 50
 ```
 ## Stack 實際應用
 
