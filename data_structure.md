@@ -936,8 +936,8 @@ console.log(hashTable.get("awesomeKey"));  // 50
 - 分析
   1. 可類比於停車場問題: 一條路，我們的車只能往前走，每次往前走 1 公尺，右方有隨機共 M 個車位，隨機被其他車占 N 個，請問我們的車平均往前幾公尺才找到車位 ?
   2. Knuth 於 1963 年，得出近似。當百分之 alpha 滿，單次 search 和 insert 的運算次數，如下公式
-  3. 若半滿 (alpha 等於 0.5): search 3 / 2 次，insert 5 / 2 次  
-  4. 若九分滿 (alpha 等於 0.9): search 11 / 2 次，insert 101 / 2 次 => 糟
+  3. 若半滿 (alpha 等於 0.5): search 1.5 次，insert 2.5 次  
+  4. 若九分滿 (alpha 等於 0.9): search 5.5 次，insert 50.5 次 => 糟
 
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_5.png"/>
