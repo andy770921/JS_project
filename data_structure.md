@@ -919,7 +919,12 @@ console.log(hashTable.get("awesomeKey"));  // 50
   2. list 長度的分布，遵守二項式定理 (圖類似常態分布)
   3. 清單數量 M，key 總數 N，執行比較運算 ( .equal() ) 的次數，正比於 N / M
   4. M 過大會浪費空間，M 過小會讓鏈過長，實務上一般選擇 M 的值，大概是 N / 5
-  
+  5. 綜合比較
+
+<div align="center">
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_4.png"/>
+</div>
+
 ## Stack 實際應用
 
 ```ts
