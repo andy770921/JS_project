@@ -926,7 +926,7 @@ console.log(hashTable.get("awesomeKey"));  // 50
 </div>
 
 ### Linear Probing / Open Addressing (another collision resolution strategy)
-- 1953 年提出，使用 M 長度的 array，若相撞 index 往後順移一位儲存，處理 collision ( M < key 總數 )
+- 1953 年提出，使用 M 長度的 array，若相撞 index 往後順移一位儲存，處理 collision ( M 一定要大於 key 總數 )
 - Hash: Map the key to integer i between 0 and M-1
 - Insert: Put at table index i if free; if not, try i, i+1, i+2, etc.
 - Search: Search table index i; if occupied but no match, try i+1, i+2, etc.
