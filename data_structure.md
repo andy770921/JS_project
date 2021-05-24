@@ -760,14 +760,14 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
   2. 實務上，不同的 key 型別，會有不同做法
   3. Java 的做法: 先將各型別，產生 hashCode 數字，再將數字轉成 0 到 array 長度減一 的 index
   
-- Java's hash code convention: 數字，字串，布林值，繼承 `.hashCode()` 方法，回傳 32-bit 的整數 ( 值可能為 -2 的 31 次方到 2 的 31 次方減1 )
+- Java's hash code convention: 數字，字串，布林值，繼承 `.hashCode()` 方法，回傳 32-bit 的整數 ( 值可能為 -2 的 31 次方到 2 的 31 次方減 1 )
   1. 必定成立: 若 x 與 y 相同，則 `x.hashCode()` 與 `y.hashCode()` 相同
   2. 大多數時成立: 若 x 與 y 不同，則 `x.hashCode()` 與 `y.hashCode()` 不同
 - hash code 方法實作方式
   1. 預設的實作方式: 回傳該 key 的記憶體位置
   2. 合法 ( 但很差 ) 的實作方式: 永遠回傳 17
   3. 客製化的實作方式: 針對不同型別 (Integer, Double, String, File...)，不同做法
-  4. Java 針對 String 用的 hash code 計算法: Horner's method，這樣計算的概念是，稍後要用此大數字 mod 32。邏輯轉寫成 JavaScript 如下
+  4. Java 針對 String 用的 hash code 計算法: Horner's method，這樣計算的概念是，int 可能有 2 的 32 次方種可能。邏輯轉寫成 JavaScript 如下
 ```js
 String.prototype.hashCode = function (){
   const s = this;
@@ -816,7 +816,7 @@ function hash(key){
 ```
 ```js
 function hash(key){
-  return (key.hashCode() & 0x7fffffff) % 32;
+  return (key.hashCode() & 0x7fffffff) % 97;
 }
 
 class HashableString extends String {
@@ -854,12 +854,11 @@ console.log(hash(str)); // 30
 - 實作 get, put ( 含 insert 及 update ) 方法
 ```js
 String.prototype.hashCode = function (){
-  const M = 97;
   const s = this;
   let hash = 0;
   
   for(let i = 0; i < s.length; i++){
-    hash = s[i].charCodeAt() + (M - 1) * hash;
+    hash = s[i].charCodeAt() + 31 * hash;
   }
   return hash;
 }
@@ -932,6 +931,67 @@ console.log(hashTable.get("awesomeKey"));  // 50
 - Search: Search table index i; if occupied but no match, try i+1, i+2, etc.
 - 當 Array 快滿，需要再調整 Array 長度，增長
 - 實作: (省略 Array 增長或減小)
+```js
+String.prototype.hashCode = function (){
+  const s = this;
+  let hash = 0;
+  
+  for(let i = 0; i < s.length; i++){
+    hash = s[i].charCodeAt() + 31 * hash;
+  }
+  return hash;
+}
+
+class Node {
+  constructor(key = null, value = null, next = null){
+    this.key = key;
+    this.value = value;
+    this.next = next;
+  }
+}
+
+class SeparateChainingHashTable {
+  M = 97;  // number of chains，共幾條鏈
+  chainList = [...Array(this.M)].map(() => null);  // array of chains，裝有鏈的 array，初始值為 M 個 null
+
+  hash(k){
+    return (k.hashCode() & 0x7fffffff) % this.M;
+  }
+
+  get(k){
+    const i = this.hash(k);
+    
+    for(let x = this.chainList[i]; x !== null; x = x.next){
+      if(k === x.key) return x.value;
+    }
+
+    return null;
+  }
+
+  put(k, val){
+    const i = this.hash(k);
+    
+    for(let x = this.chainList[i]; x !== null; x = x.next){
+      if(k === x.key){
+        x.value = val;
+        return 'update succcessfully';
+      }
+    }
+    this.chainList[i] = new Node(k, val, this.chainList[i]);
+    
+    return 'insert succcessfully';
+  }
+}
+
+const hashTable = new SeparateChainingHashTable();
+
+console.log(hashTable.get("something"));  // null
+console.log(hashTable.put("awesomeKey", 100));  // insert succcessfully
+console.log(hashTable.get("awesomeKey"));  // 100
+console.log(hashTable.put("awesomeKey", 50));  // update succcessfully
+console.log(hashTable.get("awesomeKey"));  // 50
+```
+
 
 - 分析
   1. 可類比於找停車位問題: 一條路，我們的車只能往前走，右方有隨機共 M 個車位，隨機被其他車占 N 個，請問我們的車，要前進幾車身長才找到車位？
