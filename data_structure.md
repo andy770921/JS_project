@@ -930,7 +930,7 @@ console.log(hashTable.get("awesomeKey"));  // 50
 - Insert: Put at table index i if free; if not, try i, i+1, i+2, etc.
 - Search: Search table index i; if occupied but no match, try i+1, i+2, etc.
 - 當 Array 快滿，需要再調整 Array 長度，增長
-- 實作: (省略 Array 增長或減小)
+- 實作: (省略 Array 倍增或減半)
 ```js
 String.prototype.hashCode = function (){
   const s = this;
@@ -942,53 +942,40 @@ String.prototype.hashCode = function (){
   return hash;
 }
 
-class Node {
-  constructor(key = null, value = null, next = null){
-    this.key = key;
-    this.value = value;
-    this.next = next;
-  }
-}
-
-class SeparateChainingHashTable {
-  M = 97;  // number of chains，共幾條鏈
-  chainList = [...Array(this.M)].map(() => null);  // array of chains，裝有鏈的 array，初始值為 M 個 null
-
+class LinearProbingHashTable {
+  // array 倍增和減半的程式碼省略
+  M = 30001;  // array 空間
+  keyList = [...Array(this.M)] // array of keys，初始值為 M 個 undefined
+  valueList = [...Array(this.M)] // array of values，初始值為 M 個 undefined
+  
   hash(k){
     return (k.hashCode() & 0x7fffffff) % this.M;
   }
 
   get(k){
-    const i = this.hash(k);
-    
-    for(let x = this.chainList[i]; x !== null; x = x.next){
-      if(k === x.key) return x.value;
+    for(let i = this.hash(k); this.keyList[i] !== undefined; i = (i + 1) % this.M){
+      if(k === this.keyList[i]) return this.valueList[i];
     }
 
     return null;
   }
 
   put(k, val){
-    const i = this.hash(k);
-    
-    for(let x = this.chainList[i]; x !== null; x = x.next){
-      if(k === x.key){
-        x.value = val;
-        return 'update succcessfully';
-      }
+    let i;
+    for(i = this.hash(k); this.keyList[i] !== undefined; i = (i + 1) % this.M){
+      if(k === this.keyList[i]) break;
     }
-    this.chainList[i] = new Node(k, val, this.chainList[i]);
-    
-    return 'insert succcessfully';
+    this.keyList[i] = k;
+    this.valueList[i] = val;
   }
 }
 
-const hashTable = new SeparateChainingHashTable();
+const hashTable = new LinearProbingHashTable();
 
 console.log(hashTable.get("something"));  // null
-console.log(hashTable.put("awesomeKey", 100));  // insert succcessfully
+hashTable.put("awesomeKey", 100);
 console.log(hashTable.get("awesomeKey"));  // 100
-console.log(hashTable.put("awesomeKey", 50));  // update succcessfully
+hashTable.put("awesomeKey", 50)
 console.log(hashTable.get("awesomeKey"));  // 50
 ```
 
