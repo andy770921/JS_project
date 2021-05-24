@@ -991,6 +991,33 @@ console.log(hashTable.get("awesomeKey"));  // 50
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/hash_table_5.png"/>
 </div>
 
+### Separate Chaining 與 Linear Probing 比較
+- Separate Chaining 優點: 
+  1. 容易實現 insert 和 delete
+  2. Performance 下降慢
+  3. 當 hash function 設計不佳時，叢集 (資料高度集中在 array 特定一段) 較不會影響
+- Linear Probing 優點:
+  1. 更少記憶體空間浪費
+  2. 有實作快取的情況下，有更好的表現
+- 延伸思考: 
+  1. Linear Probing 如何 delete key? 
+  2. 如何 resize array?
+- 其他進階方式
+  1. Two-Probe Hashing: Separate Chaining 延伸變化
+  2. Double Hashing: Linear Probing 延伸變化
+  3. Cuckoo Hashing: Linear Probing 延伸變化
+  
+### Hash Table 與 平衡搜尋樹 比較
+- Hash Table 優點: 
+  1. 容易實作 ( 若不考慮實作 hash function 的話 )
+  2. 若 key 未排序，hash 不需要進行 compare 的運算，目前 hash table 外並無更有效的方式
+  3. 若 key 很簡單，只需要進行簡單的數學計算，會比平衡搜尋樹進行 log N 次比較更快
+  4. 若用 java 語言，原生系統較支持 ( 如，hashCode 已有幫我們實作了快取 )
+- 平衡搜尋樹優點: 
+  1. 更強的效能保證，不需要隨機分布的假設，直接保證效能 log N
+  2. 支持有排序過的資料
+  3. 容易正確的實作 compareTo() ( 正確的實作 equals() 和 hashCode() 較難 )
+
 ## Stack 實際應用
 
 ```ts
