@@ -873,7 +873,7 @@ class Node {
 
 class SeparateChainingHashTable {
   M = 97;  // number of chains，共幾條鏈
-  chainList = [...Array(this.M)].map(() => null);  // array of chains，裝有鏈的 array，初始值為 M 個 null
+  chainList = [...Array(this.M)].fill(null);  // array of chains，裝有鏈的 array，初始值為 M 個 null
 
   hash(k){
     return (k.hashCode() & 0x7fffffff) % this.M;
