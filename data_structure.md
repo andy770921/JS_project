@@ -1000,8 +1000,8 @@ console.log(hashTable.get("awesomeKey"));  // 50
   1. 更少記憶體空間浪費
   2. 有實作快取的情況下，有更好的表現
 - 延伸思考: 
-  1. Linear Probing 如何 delete key? 
-  2. 如何 resize array?
+  1. 兩者如何 delete key? 
+  2. 兩者如何 resize array?
 - 其他進階方式
   1. Two-Probe Hashing: Separate Chaining 延伸變化
   2. Double Hashing: Linear Probing 延伸變化
