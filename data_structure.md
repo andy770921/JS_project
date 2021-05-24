@@ -767,7 +767,7 @@ console.log(demoTree.insert(500)); // TreeNode {key: 30, leftSize: 3 ...}
   1. 預設的實作方式: 回傳該 key 的記憶體位置
   2. 合法 ( 但很差 ) 的實作方式: 永遠回傳 17
   3. 客製化的實作方式: 針對不同型別 (Integer, Double, String, File...)，不同做法
-  4. Java 針對 String 用的 hash code 計算法: Horner's method，這樣計算的概念是，int 可能有 2 的 32 次方種可能。邏輯轉寫成 JavaScript 如下
+  4. Java 針對 String 用的 hash code 計算法: Horner's method，這樣計算一元高次方程運算速度較快。取 31 的概念是，int 可能有 2 的 32 次方種可能。邏輯轉寫成 JavaScript 如下
 ```js
 String.prototype.hashCode = function (){
   const s = this;
