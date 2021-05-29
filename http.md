@@ -22,7 +22,7 @@ app.use(
 );
 
 app.get("/data", (req, res) => {
-  res.json({ name: Kyle });
+  res.json({ name: "Kyle" });
 });
 
 app.listen(3000);
