@@ -7,7 +7,7 @@
 ## 跨網域傳送 cookie:
 - 前端
 ```js
-fetch("http://localhost:3000/data", { credentials: include })
+fetch("http://localhost:3000/data", { credentials: "include" })
   .then(res => res.json())
   .then(data => console.log(data))
 ```
