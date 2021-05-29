@@ -11,7 +11,7 @@ fetch("http://localhost:3000/data", { credentials: "include" })
   .then(res => res.json())
   .then(data => console.log(data))
 ```
-- 後端
+- 後端: 要在 Response Header 中加入 Access-Control-Allow-Credentials: true
 ```js
 const express = require("express");
 const app = express();
