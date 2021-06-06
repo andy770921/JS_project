@@ -258,8 +258,8 @@ console.log(myStack.peek()); // 100
 myStack.pop();
 console.log(myStack.peek()); // 2
 ```
-- 使用 Resized Array，實作 Stack
-    Ref: https://www.coursera.org/lecture/algorithms-part1/resizing-arrays-WTFO7
+- 使用 Resized Array，實作 Stack  
+  Ref: https://www.coursera.org/lecture/algorithms-part1/resizing-arrays-WTFO7
 ```js
 class Stack {
   arr = [...Array(1)];
