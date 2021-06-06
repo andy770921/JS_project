@@ -261,7 +261,7 @@ console.log(myStack.peek()); // 2
 - 使用 Resized Array，實作 Stack  
   Ref: https://www.coursera.org/lecture/algorithms-part1/resizing-arrays-WTFO7  
   可變大小 array 縮小的邏輯是，當 array 變成 1/4 滿，就減半當下長度 ( 減半後，原本 1/4 滿，變成半滿 )  
-  不設計成當長度半滿時減半，原因是可避免在剛好滿的狀態重複操作 pop push，每操作一次就改變大小一次 ( 避免 thrashing )  
+  不設計成當長度半滿時減半，原因是可避免在剛好滿的狀態重複操作 pop push，每操作一次就改變大小一次 ( 避免 thrashing = 往復移動 )  
 ```js
 class Stack {
   arr = [...Array(1)];
