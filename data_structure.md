@@ -258,6 +258,45 @@ console.log(myStack.peek()); // 100
 myStack.pop();
 console.log(myStack.peek()); // 2
 ```
+- 使用 Resized Array，實作 Stack
+    Ref: https://www.coursera.org/lecture/algorithms-part1/resizing-arrays-WTFO7
+```js
+class Stack {
+  arr = [...Array(1)];
+  N = 0;
+
+  resize(capacity){ // private
+    const copy =  [...Array(capacity)];
+    for(let i = 0; i < this.N; i++){
+      copy[i] = this.arr[i];
+    }
+    this.arr = copy;
+  }
+
+  push(item){
+    if(this.N === this.arr.length) this.resize(2 * this.arr.length);
+    this.arr[this.N++] = item;
+  }
+
+  pop(){
+    const item = this.arr[--this.N];
+    //  this.arr[this.N] = null; <= for Java, avoid loitering (holding reference no longer needed)
+    if(this.N > 0 && this.N === this.arr.length / 4) this.resize(this.arr.length / 2);
+    return item;
+  }
+}
+
+const myStack = new Stack();
+myStack.push(100);
+myStack.push(200);
+console.log(myStack.pop());  // 200
+console.log(myStack.pop());  // 100
+```
+- Resized Array 相比於 Linked List 優點
+  Resized Array 使用更少空間: linked list 每多一筆資料，需要多一個物件，物件裡面又要存 next 和 data，也多一個名稱為 Node 的 class，這些消耗加起來，比可改變大小的 array 大
+- Resized Array 相比於 Linked List 缺點: 
+  Resized Array 在最差的情況 (pop 或 push 剛好要改變 array 大小時)，運算的時間複雜度為 O(N) 
+
 - 使用不變長度的 Array ，實作三等份 Stack
 ```js
 class FixedMultiStack {
