@@ -3,16 +3,15 @@
 ## 參考連結
 1. https://developer.mozilla.org/en-US/docs/Web/CSS     
 2. https://webplatform.github.io/docs/css/  
-3. CSS Data Type: https://developer.mozilla.org/en-US/docs/tag/CSS%20Data%20Type  
-4. 垂直置中23種方式: http://csscoke.com/2018/08/21/css-vertical-align/  
-5. 文字垂直置中2種方式: https://ithelp.ithome.com.tw/articles/10205421
-6. CSS動畫相關: https://www.oxxostudio.tw/articles/201803/css-animation.html
-7. CSS動畫，在JS設定重新撥放，使用網頁方法4: https://www.jianshu.com/p/4bfc167946f0
-8. 展開卡片與收合卡片: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
-9. table: https://ithelp.ithome.com.tw/articles/10195797
-10. float: https://ithelp.ithome.com.tw/articles/10194545
-11. css 渲染流程：https://cythilya.github.io/2018/07/13/critical-rendering-path/#%E6%96%B9%E6%B3%95%E4%BA%8C%E7%B0%A1%E5%8C%96-css-selector-%E7%9A%84%E8%A4%87%E9%9B%9C%E5%BA%A6
-12: 打字特效 css 寫法：https://www.youtube.com/watch?v=w1nhwUGsG6M
+3. 垂直置中23種方式: http://csscoke.com/2018/08/21/css-vertical-align/  
+4. 文字垂直置中2種方式: https://ithelp.ithome.com.tw/articles/10205421
+5. CSS動畫相關: https://www.oxxostudio.tw/articles/201803/css-animation.html
+6. CSS動畫，在JS設定重新撥放，使用網頁方法4: https://www.jianshu.com/p/4bfc167946f0
+7. 展開卡片與收合卡片: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css
+8. table: https://ithelp.ithome.com.tw/articles/10195797
+9. float: https://ithelp.ithome.com.tw/articles/10194545
+10. css 渲染流程：https://cythilya.github.io/2018/07/13/critical-rendering-path/#%E6%96%B9%E6%B3%95%E4%BA%8C%E7%B0%A1%E5%8C%96-css-selector-%E7%9A%84%E8%A4%87%E9%9B%9C%E5%BA%A6
+11: 打字特效 css 寫法：https://www.youtube.com/watch?v=w1nhwUGsG6M
 
 ## Box Model & Box-sizing 面試題: 
 https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8%80-box-model-box-sizing-56ddc49ac89e
