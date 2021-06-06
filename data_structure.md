@@ -292,12 +292,12 @@ myStack.push(200);
 console.log(myStack.pop());  // 200
 console.log(myStack.pop());  // 100
 ```
-- Resized Array 相比於 Linked List 優點
-  Resized Array 使用更少空間: linked list 每多一筆資料，需要多一個物件，物件裡面又要存 next 和 data，也多一個名稱為 Node 的 class，這些消耗加起來，比可改變大小的 array 大
-- Resized Array 相比於 Linked List 缺點: 
+- Resized Array 相比於 Linked List 優點：  
+  Resized Array 使用更少空間，Linked list 每多一筆資料，需要多一個物件，物件裡面又要存 next 和 data，也多一個名稱為 Node 的 class，這些消耗加起來，比可改變大小的 array 大
+- Resized Array 相比於 Linked List 缺點  
   Resized Array 在最差的情況 (pop 或 push 剛好要改變 array 大小時)，運算的時間複雜度為 O(N) 
 
-- 使用不變長度的 Array ，實作三等份 Stack
+- 使用不變長度的 Array，實作三等份 Stack
 ```js
 class FixedMultiStack {
   constructor(originalArr, numOfStacks){
