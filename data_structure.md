@@ -279,6 +279,7 @@ class Stack {
   }
 
   pop(){
+    if(this.N === 0) throw new Error('stack is empty');
     const item = this.arr[--this.N];
     //  this.arr[this.N] = null; <= for Java, avoid loitering (holding reference no longer needed)
     if(this.N > 0 && this.N === this.arr.length / 4) this.resize(this.arr.length / 2);
