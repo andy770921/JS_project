@@ -343,6 +343,35 @@ const MenuComponent: FC = () => (
 );
 ```
 
+## 使用第三方套件，使用 styled component 覆寫已知 class name 的樣式
+- Note: 也可參考第三方套件官方文件，使用 API 開出的 props 控制樣式
+```ts
+import ReactSelect from 'react-select';
+
+const StyledSelect = styled(ReactSelect)`
+    & div[class$='control'] {  // 可覆寫 class name 為 css-1j1y3ui-control 的樣式
+        border: none;
+        box-shadow: none; // This line disable the blue border
+        background-color: #f2f2f2;
+    }
+
+    & div[class$='control'] > div:first-child {
+        // Note: 目標是選出 & div[class$='ValueContainer']
+        // 但在 safari 的 class name ，沒有出現字尾是 ValueContainer 的
+        padding: 10px 12px;
+    }
+
+    & div[class$='placeholder'] {  // 可覆寫 css-zvn2cr-placeholder
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    & div[class$='menu'] {  // 可覆寫 css-b8ldur-menu 
+        margin-top: 4px;
+    }
+`;
+
+```
+
 ## 提示字在地平線上升起與消失，父層使用 overflow: hidden，子層使用 animation
 ```ts
 import React, { FC, CSSProperties, useContext } from 'react';
