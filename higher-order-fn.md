@@ -192,7 +192,8 @@ function throttle(func, threshhold) {
 }
 ```
 ## Debounce & Throttle 中文解釋，與程式碼寫法
-https://medium.com/@alexian853/debounce-throttle-%E9%82%A3%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC%E6%87%89%E8%A9%B2%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%B0%8F%E4%BA%8B-%E4%B8%80-76a73a8cbc39
+- 有簡中及圖: https://jinlong.github.io/2016/04/24/Debouncing-and-Throttling-Explained-Through-Examples/
+- 繁中: https://medium.com/@alexian853/debounce-throttle-%E9%82%A3%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC%E6%87%89%E8%A9%B2%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%B0%8F%E4%BA%8B-%E4%B8%80-76a73a8cbc39
 
 ## pipe (closure, HOF, rest parameter)
 https://playcode.io/603416/
