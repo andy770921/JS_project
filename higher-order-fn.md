@@ -159,6 +159,21 @@ let B = debounce(()=>A("hi"), 2000);
 ```
 Ref: https://gist.github.com/nmsdvid/8807205
 
+```js
+function debounce(func, delay) {
+  var timer = null;
+  return function () {
+    var context = this;
+    var args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      func.apply(context, args)
+    }, delay);
+  }
+}
+```
+Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
+
 ## Debounce & Throttle 中文解釋，與程式碼寫法
 https://medium.com/@alexian853/debounce-throttle-%E9%82%A3%E4%BA%9B%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC%E6%87%89%E8%A9%B2%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E5%B0%8F%E4%BA%8B-%E4%B8%80-76a73a8cbc39
 
