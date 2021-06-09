@@ -136,7 +136,7 @@ function A(){
 }
 let B = debounce(A, 2000);
 ```
-- better (考慮 arguments): Ref: https://gist.github.com/nmsdvid/8807205
+- better: Ref: https://gist.github.com/nmsdvid/8807205
 ```js
 function debounce(fn, interval = 300){
   let timeoutId = null;
@@ -153,7 +153,7 @@ function A(x) {
 }
 let B = debounce(() => A("hi"), 2000);
 ```
-- best (考慮 this 及 arguments): Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
+- better: Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
 
 ```js
 function debounce(func, delay) {
