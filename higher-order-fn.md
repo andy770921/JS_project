@@ -111,9 +111,7 @@ function debounce(fn, interval=300){
     setTimeout(
       () => {
         endTime = Date.now();
-        if (endTime - startTime >= interval){ 
-          fn(); 
-        }
+        if (endTime - startTime >= interval) fn();
       }
       ,interval);
   }
@@ -130,9 +128,7 @@ function debounce(fn, interval = 300){
   let timeoutId = null;
   return () => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(
-      () => fn();
-      ,interval);
+    timeoutId = setTimeout(fn, interval);
   }
 }
 function A(){
@@ -140,24 +136,24 @@ function A(){
 }
 let B = debounce(A, 2000);
 ```
-- better: Ref: https://gist.github.com/nmsdvid/8807205
+- better (考慮 arguments): Ref: https://gist.github.com/nmsdvid/8807205
 ```js
 function debounce(fn, interval = 300){
   let timeoutId = null;
   return (...args) => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(()=>{
+    timeoutId = setTimeout(() => {
       timeoutId = null;
       fn(...args);
       },interval);
   }
 }
-function A(x){
+function A(x) {
   console.log(x);
 }
-let B = debounce(()=>A("hi"), 2000);
+let B = debounce(() => A("hi"), 2000);
 ```
-- best 考慮 this 及 arguments: Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
+- best (考慮 this 及 arguments): Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
 
 ```js
 function debounce(func, delay) {
