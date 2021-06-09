@@ -103,7 +103,7 @@ function once(fn){
 // threashold      : |   |
 // event stream    : |  |  |  |
 // expected outcome:              |
-function debounce(fn, interval=300){
+function debounce(fn, interval = 300){
   let startTime = null;
   let endTime = null;
   return () => {
