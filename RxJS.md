@@ -29,6 +29,10 @@ https://blog.angular-university.io/rxjs-higher-order-mapping/
 
 https://codepen.io/markgoodyear/pen/NwrOZx/
 
+## redux-observable 與 rxjs 筆記 (解釋 redux-observable middleware 觀念有誤)
+- https://www.notion.so/Redux-Observable-f8a3a138436843f08040849dbaf1fa35
+- https://www.notion.so/RxJS-a842cecf71bd465fa7d13cac011f012d
+
 ## 保哥課程投影片
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_rx/pg1.png"/>
