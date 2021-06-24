@@ -247,7 +247,8 @@ https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils
 https://github.com/apollographql/apollo-client/blob/master/src/react/hooks/utils/useBaseQuery.ts 
 
 ## 用 Observer API 實作 useInView
-https://blog.logrocket.com/lazy-loading-using-the-intersection-observer-api/
+- 用法: https://blog.logrocket.com/lazy-loading-using-the-intersection-observer-api/
+- source code: https://github.com/thebuilder/react-intersection-observer/blob/master/src/useInView.tsx
 
 ## 封裝 fetch API 的 Hook (Dan 文章推薦):
 https://www.robinwieruch.de/react-hooks-fetch-data
