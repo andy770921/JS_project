@@ -5,6 +5,7 @@
 - 跨網域取資料，設定 cookie，request method: OPTIONS: https://www.youtube.com/watch?v=PNtFSVU-YTI
 - Note: request method: OPTIONS, status code: 204 No Content 叫做 preflight request，會在 PUT 和 DELETE 方法送出時發生
 ## 跨網域傳送 cookie:
+- https://ithelp.ithome.com.tw/articles/10251693
 - https://www.youtube.com/watch?v=PNtFSVU-YTI
 - 前端
 ```js
