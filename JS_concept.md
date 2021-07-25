@@ -64,6 +64,9 @@ allProgress([test(1000), test(3000), test(2000), test(3500)],
 ## async/await, event loop
 https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke  
 
+## Dynamic Import 使用法 
+https://www.youtube.com/watch?v=ddVm53j80vc  
+
 ## ES6 語法與 ES5 差異，及 call by ref 解析 27:22
 https://youtu.be/pr7JFQaAYjg  
 ## Immutable.js，mori.js 及資料結構 Trie 的觀念  
