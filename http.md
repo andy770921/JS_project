@@ -33,7 +33,9 @@ app.listen(3000);
 - https://stackoverflow.com/questions/29474873/third-party-cookies-using-jquery-cookie
 ## HTTP Cache
 https://blog.techbridge.cc/2017/06/17/cache-introduction/
-## HTTPS的加密
-https://zhuanlan.zhihu.com/p/43789231
+## HTTPS 的加密
+https://zhuanlan.zhihu.com/p/43789231  
+## Bcrypt 的加密
+https://blog.csdn.net/m0_37609579/article/details/100785947
 ## 浏览器的工作原理：新式网络浏览器幕后揭秘
 https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/
