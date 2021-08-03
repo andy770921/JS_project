@@ -81,7 +81,7 @@ class Printer {
 }
 
 const printer = new Printer();
-printer.print('something'); // something
+printer.print('something'); // something 黃色大字
 ```
 - After:
 ```js
@@ -111,6 +111,9 @@ const bigSizeStyle = (printer) => ({
     printer.print(text, `${style}font-size: 36px;`);
   }
 });
+
+const printer = bigSizeStyle(boldStyle(yellowStyle(new Printer())));
+printer.print('something'); // something 黃色大字粗體
 
 // Correct Version
 const copyObj = (originObj) => {
