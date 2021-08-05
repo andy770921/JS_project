@@ -2,7 +2,8 @@
 
 # JS
 ## 一句化解釋
-### 閉包: 函數內部變數，若被參考，會一直被保留
+### 閉包: 
+- 函數內部變數，若被參考，會一直被保留
 ```js
 function getAdd(){
   let foo = 1;
@@ -15,13 +16,17 @@ const add = getAdd();
 console.log(add()); // 2
 console.log(add()); // 3
 ```
-### 原型: 尋找一個屬性時，可以被委派這項任務的物件 ( JavaScript Ninja 中文版 p.191 )
+### 原型: 
+- 尋找一個屬性時，可以被委派這項任務的物件 ( JavaScript Ninja 中文版 p.191 )
 ```js
 const a = { canEat: true };
 const b = { canSleep: true };
 Object.setPrototypeOf(b, a);
 console.log(b.canEat); // true 
 ```
+### Event Loop: 
+- 當事件發生時，瀏覽器會將這些事件，放入 Queue。當瀏覽器執行完主程式後，瀏覽器會檢查事件 Queue，若頂部有事件，處理。若無，持續檢查有無事件在頂部。( JavaScript Ninja 中文版 p.27 )
+
 ## Inheritance
 ```js
 // Q: what does the console show?
