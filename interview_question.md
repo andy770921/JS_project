@@ -15,7 +15,7 @@ const add = getAdd();
 console.log(add()); // 2
 console.log(add()); // 3
 ```
-### 原型: 尋找一個屬性時，可以被委派這項任務的物件 (JavaScript Ninja 中文版 p.191)
+### 原型: 尋找一個屬性時，可以被委派這項任務的物件 ( JavaScript Ninja 中文版 p.191 )
 ```js
 const a = { canEat: true };
 const b = { canSleep: true };
