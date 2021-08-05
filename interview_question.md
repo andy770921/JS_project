@@ -1,7 +1,20 @@
 # Interview Question
 
 # JS
-
+## 一句化解釋
+### 閉包: 函數內部變數，若被參考，會一直被保留
+```js
+function getAdd(){
+  let foo = 1;
+  return function(){
+    foo = foo + 1;
+    return foo;
+  }
+}
+const add = getAdd();
+console.log(add()); // 2
+console.log(add()); // 3
+```
 ## Inheritance
 ```js
 // Q: what does the console show?
