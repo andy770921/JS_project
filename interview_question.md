@@ -25,7 +25,7 @@ Object.setPrototypeOf(b, a);
 console.log(b.canEat); // true 
 ```
 ### Event Loop: 
-- 當事件發生時，瀏覽器會將這些事件，放入 Queue。當瀏覽器執行完主程式後，瀏覽器會檢查事件 Queue，若頂部有事件，處理。若無，持續檢查。( JavaScript Ninja 中文版 p.27 )
+- 當事件發生時，瀏覽器會將這些事件，放入 Queue。當瀏覽器執行完主程式後，會接著檢查事件 Queue，若頂部有事件，處理。若無，持續檢查。( JavaScript Ninja 中文版 p.27 )
 
 ## Inheritance
 ```js
