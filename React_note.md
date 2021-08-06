@@ -815,6 +815,9 @@ https://overreacted.io/zh-hant/why-do-we-write-super-props/
 ## 點擊 Component 外部關閉本體的 Hook 寫法
 https://stackoverflow.com/questions/54560790/detect-click-outside-react-component-using-hooks
 
+## 五種寫 Counter 的方式，使用控制反轉的概念
+https://javascript.plainenglish.io/5-advanced-react-patterns-a6b7624267a6
+
 ## npm react 相關的第三方套件
 
 1. react-window: https://addyosmani.com/blog/react-window/  
