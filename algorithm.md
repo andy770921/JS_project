@@ -110,9 +110,7 @@ function merge(left, right){
   }
   return result;
 }
-console.log(
-  mergeSort([1, -100, 200, 2, 300, -5, 400, -500])
-  );
+console.log(mergeSort([1, -100, 200, 2, 300, -5, 400, -500]));
 ```
 解法二: merge 函數，用雙 index 移動的方式  
 ```js
