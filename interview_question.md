@@ -102,6 +102,38 @@ console.log((obj.foo = obj.foo)()); // 1
 console.log((false || obj.foo)());  // 1
 console.log((obj.foo, obj.foo)());  // 1
 ```
+# 實作原生程式碼
+## Promise.all
+- https://jsvault.com/promise-all/
+- Q:
+```js
+newPromiseAll(promises)
+  .then(results => {
+  })
+  .catch(e => {
+  })
+```
+- A:
+```js
+function myPromiseAll(taskList) {
+  const results = []
+  let promisesCompleted = 0;
+  return new Promise((resolve, reject) => {
+    taskList.forEach((promise, index) => {
+      promise.then((val) => {
+        results[index] = val;
+        promisesCompleted += 1;
+        if (promisesCompleted === taskList.length) {
+          resolve(results)
+        }
+      })
+        .catch(error => {
+          reject(error)
+        })
+    })
+  });
+}
+```
 # Algorithm
 
 ## String, Array, Hash Table - check if string is beautiful
