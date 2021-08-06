@@ -155,7 +155,20 @@ console.log(
 ```
 ## Quick Sort: 時間複雜度 O(nlogn)
 https://ithelp.ithome.com.tw/articles/10219151
+```js
+function quickSort(arr) {
+  if (arr.length < 2) return arr
+  const [p, ...ary] = arr
+  const left = [], right = []
 
+  ary.forEach(c => {
+    if (c < p) left.push(c)
+    else right.push(c)
+  })
+
+  return [...quickSort(left), p, ...quickSort(right)]
+}
+```
 ## Heap Sort: 不是 comparison based ，時間複雜度 O(nlogn)
 
 1. heap 是 complete binary tree，且每個節點上的數值不能比父節點大/小。 heap 常用來實做 priority queue。
