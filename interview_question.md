@@ -28,8 +28,8 @@ console.log(b.canEat); // true
 - 當瀏覽器處理完整份 HTML 時，瀏覽器會將所有已發生的事件，如使用者產生的事件，放入 Task Queue。Event Loop 意思是瀏覽器持續循環的檢查 Task Queue，若有事件，從頂部開始處理。若無，繼續下一輪檢查。( JavaScript Ninja 中文版 p.27 )
 
 - 深入討論一: 處理完整份 HTML 指，重複進行以下兩件事直到全部完成
-1. 從 HTML 建立 DOM 結構
-2. 執行 `<script>` 的 JS 程式碼
+  1. 從 HTML 建立 DOM 結構
+  2. 執行 `<script>` 的 JS 程式碼
 
 - 深入討論二: 所有已發生的事件，共分四類
 1. 瀏覽器事件: 如 onload 事件。可用 `window.onload = function(){}` 註冊
