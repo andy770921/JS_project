@@ -454,4 +454,5 @@ var longestPalindrome = function(s) {
 - Ref: https://blog.techbridge.cc/2017/02/25/csrf-introduction/
 - CSRF 全稱是 Cross Site Request Forgery，跨站請求偽造，是一種 Web 上的攻擊手法
 - 舉例：後端使用的 API 是 `https://small-min.blog.com/delete?id=3` 實作刪除，並會驗證 cookie 有無帶 token
-- 攻擊：使用假前端網站，按鈕設計成 `<a href='https://small-min.blog.com/delete?id=3'>開始測驗</a>`
+- 攻擊：使用假前端網站，按鈕設計成 `<a href='https://small-min.blog.com/delete?id=3'>開始測驗</a>`，或不需要按鈕，直接寫成 
+`<img src='https://small-min.blog.com/delete?id=3' width='0' height='0' />`
