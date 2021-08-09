@@ -444,7 +444,14 @@ var longestPalindrome = function(s) {
 # 網路
 ## 一句化解釋
 ### CORS:
+- Ref: https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/
 - CORS，全名為 Cross-Origin Resource Sharing，跨來源資源共享。是規範：「如果你想在不同 origin 之間傳輸資料的話，你應該怎麼做」
 - 深入討論一: 跨來源，網址第一段斜線前，算不同，可參考同源政策 https://developer.mozilla.org/zh-TW/docs/Web/Security/Same-origin_policy
 - 深入討論二: 規範內容是，後端 Response Header 必須要加 `Access-Control-Allow-Origin: *`，若需要其他限制，還可加 Access-Control-Allow-Headers 跟 Access-Control-Allow-Methods
 - 深入討論三: 若不是「[簡單請求](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS#%E7%B0%A1%E5%96%AE%E8%AB%8B%E6%B1%82)」，會發兩次請求給後端，第一次是 Method 為 OPTIONS 的「預檢請求」( Preflight Request )
+
+### CSRF
+- Ref: https://blog.techbridge.cc/2017/02/25/csrf-introduction/
+- CSRF 全稱是 Cross Site Request Forgery，跨站請求偽造，是一種 Web 上的攻擊手法
+- 舉例：後端使用的 API 是 `https://small-min.blog.com/delete?id=3` 實作刪除，並會驗證 cookie 有無帶 token
+- 攻擊：使用假前端網站，按鈕設計成 `<a href='https://small-min.blog.com/delete?id=3'>開始測驗</a>`
