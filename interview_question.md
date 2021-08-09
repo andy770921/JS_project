@@ -457,3 +457,4 @@ var longestPalindrome = function(s) {
 - 攻擊：使用假前端網站，按鈕設計成 `<a href='https://small-min.blog.com/delete?id=3'>開始測驗</a>`，或不需要按鈕，直接寫成 
 `<img src='https://small-min.blog.com/delete?id=3' width='0' height='0' />`
 - 攻擊二：若後端用 POST 實作刪除，可用 `<form action="https://small-min.blog.com/delete" method="POST">` 及 `document.getElementById("csrf-form").submit()` 自動送出偽造請求
+- 解法：後端檢查 referer，Request 的 Header 裡面會帶一個欄位叫做 referer，代表這個 request 是從哪個地方過來的
