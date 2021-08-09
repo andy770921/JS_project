@@ -32,20 +32,20 @@ console.log(b.canEat); // true
   2. 執行 `<script>` 的 JS 程式碼
 
 - 深入討論二: 所有已發生的事件，共分四類
-1. 瀏覽器事件: 如 onload 事件。可用 `window.onload = function(){}` 註冊
-2. 網路事件: 來自伺服器的回應，AJAX
-3. 使用者事件: 如移動滑鼠，點滑鼠，按鍵盤
-4. 計時器事件: setTimeout / setInterval
+  1. 瀏覽器事件: 如 onload 事件。可用 `window.onload = function(){}` 註冊
+  2. 網路事件: 來自伺服器的回應，AJAX
+  3. 使用者事件: 如移動滑鼠，點滑鼠，按鍵盤
+  4. 計時器事件: setTimeout / setInterval
 
 - 深入討論三: 持續循環的檢查 Task Queue，詳細流程說明如下，會重複進行 1. 到 3.
-1. 檢查 Macrotask queue 使否為空，若有任務，執行一件後再進到 2.
-2. 檢查 Microtask queue 使否為空，若有任務，執行一件後再檢查自己，直到自己都空，再進到 3.
-3. 是否需要更新頁面，要的話，更新後回到 1.
+  1. 檢查 Macrotask queue 使否為空，若有任務，執行一件後再進到 2.
+  2. 檢查 Microtask queue 使否為空，若有任務，執行一件後再檢查自己，直到自己都空，再進到 3.
+  3. 是否需要更新頁面，要的話，更新後回到 1.
 
 - 深入討論四: 哪些事件屬於 Macrotask / Microtask ( JavaScript Ninja 中文版 p.390 )
-1. Microtask: Promise callback, DOM 的修改
-2. Macrotask: Microtask 外的大宗，如滑鼠事件，鍵盤事件，網路事件，計時器事件，解析 HTML
-3. Microtask: 設計理念為，效能不大的任務，盡早在 UI 繪製前處理，避免不必要的繪製 UI
+  1. Microtask: Promise callback, DOM 的修改
+  2. Macrotask: Microtask 外的大宗，如滑鼠事件，鍵盤事件，網路事件，計時器事件，解析 HTML
+  3. Microtask: 設計理念為，效能不大的任務，盡早在 UI 繪製前處理，避免不必要的繪製 UI
  
 ## Inheritance
 ```js
