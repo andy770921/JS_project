@@ -340,28 +340,7 @@ console.log(hostAllocation(['A apibox',
 
 ## LeetCode - 5. Longest Palindromic Substring (Medium)
 - https://leetcode.com/problems/longest-palindromic-substring/
-- Given a string `s`, return the *longest palindromic substring* in `s`
-- Ex1
-```
-Input: s = "babad"
-Output: "bab"
-Note: "aba" is also a valid answer.
-```
-- Ex2
-```
-Input: s = "cbbd"
-Output: "bb"
-```
-- Ex3
-```
-Input: s = "a"
-Output: "a"
-```
-- Ex4
-```
-Input: s = "ac"
-Output: "a"
-```
+
 - Q:
 ```js
 /**
@@ -440,7 +419,62 @@ var longestPalindrome = function(s) {
     return maxPalindromic;
 };
 ```
+## LeetCode - 442. Find All Duplicates in an Array (Medium)
 
+- Q:
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var findDuplicates = function(nums) {
+    // TODOS
+};
+```
+- A1: O(n) 的 sort，見以下 while 內的
+```js
+var findDuplicates = function (nums) {
+  if (nums.length === 1) {
+    return [];
+  }
+  let i = 0;
+  let length = nums.length;
+  while (i < length) {
+    let j = nums[i] - 1;
+    if (nums[i] != nums[j]) {
+      const correctPlaceValue = nums[j];
+      nums[j] = nums[i];
+      nums[i] = correctPlaceValue;
+      console.log({ i, j, nums });
+    } else {
+      i++;
+    }
+  }
+  let result = [];
+  for (let i = 0; i < nums.length; i++) {
+    const element = nums[i];
+    if (element !== i + 1) {
+      result.push(element);
+    }
+  }
+  return result;
+};
+```
+- A2: 變更原始陣列，掃過加入負號
+
+```js
+var findDuplicates = function(nums) {
+    const result = []; nums.unshift(0);
+    
+    for(let i = 0; i < nums.length; i++) {
+        const idx = Math.abs(nums[i]);
+        if(nums[idx] < 0) result.push(idx);
+        nums[idx] *= -1;
+    }
+    return result;    
+};
+
+```
 # 網路
 ## 一句話解釋
 ### CORS:
