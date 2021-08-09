@@ -440,3 +440,7 @@ var longestPalindrome = function(s) {
     return maxPalindromic;
 };
 ```
+# 網路
+## 一句化解釋
+### CORS:
+- CORS，全名為 Cross-Origin Resource Sharing，跨來源資源共享。是規範：「如果你想在不同 origin 之間傳輸資料的話，你應該怎麼做」
