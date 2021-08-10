@@ -49,7 +49,7 @@
 ```
 - Example 加入 `class="special"` 設定後:
 ```html
-<div><!-- 1 -->
+<div class="special"><!-- 1 -->
   <div class="red"><!-- 1.1 --></div>
 </div>
 <div><!-- 2 -->
