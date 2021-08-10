@@ -9,7 +9,62 @@
 ### 什麼是 堆疊環境 Stacking Context
 - Ref: https://andyyou.github.io/2016/03/03/z-index/
 - CSS 為了控制畫面上較靠近使用者的是什麼區塊，會採用一套標準。排序的方式，開始會有一個全域 stacking context，第一層的子元素，各自有各自的 stacking order，越大的排越前面。stack context 也可被創造出來，比如當我們有一個 `<div id="parent">` 包著一群 `<div class="child">` 元素時，它們的堆疊順序通常會一起被移動 ( 從父原則 )，這整個群組的就是 stacking context
+- Example 加入 `class="special"` 設定前:
+```html
+<div><!-- 1 -->
+  <div class="red"><!-- 6 --></div>
+</div>
+<div><!-- 2 -->
+  <div class="green"><!-- 4 --></div>
+</div>
+<div><!-- 3 -->
+  <div class="blue"><!-- 5 --></div>
+</div>
+```
+```css
+.red, .green, .blue {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
 
+.red {
+  z-index: 1;
+  background: red;
+  top: 20px;
+  left: 20px;
+}
+
+.green {
+  background: green;
+  top: 40px;
+  left: 40px;
+}
+
+.blue {
+  background: blue;
+  top: 60px;
+  left: 60px;
+}
+```
+- Example 加入 `class="special"` 設定後:
+```html
+<div><!-- 1 -->
+  <div class="red"><!-- 1.1 --></div>
+</div>
+<div><!-- 2 -->
+  <div class="green"><!-- 4 --></div>
+</div>
+<div><!-- 3 -->
+  <div class="blue"><!-- 5 --></div>
+</div>
+```
+```css
+/* 其他與前者相同 */
+.special {
+  opacity: .99;
+}
+```
 # JS
 ## 一句話解釋
 ### 閉包: 
