@@ -6,6 +6,7 @@
 - 瀏覽器渲染流程為，DOM tree 和 CSS tree 合成 Render tree => Layout => Paint => Composite，使用 `left` 會重新觸發 Layout => Paint => Composite，或稱 Reflow & Repaint，`translate` 只會重新 Composite
 
 ### 什麼是 堆疊環境 Stacking Context
+- Ref: https://andyyou.github.io/2016/03/03/z-index/
 - CSS 為了控制畫面上較靠近使用者的是什麼區塊，會採用一套標準。排序的方式，照 stack order 越大的排越前面。stack order 的基本單位是 stack context。當我們有一個 `<div id="parent">` 包著一群 `<div class="child">` 元素時，它們的堆疊順序通常會一起被移動 ( 從父原則 )，這整個群組的順序就是 stacking context
 
 # JS
