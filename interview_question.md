@@ -8,7 +8,8 @@
 
 ### 什麼是 堆疊環境 Stacking Context
 - Ref: https://andyyou.github.io/2016/03/03/z-index/
-- CSS 為了控制畫面中誰顯示在上面，會採用一套標準。排序的方式，一開始會有一個全域根元素 `<HTML>` 建立的 stacking context，每個子 / 孫子元素，各自有各自的 stacking order，越大的排越前面。stack context 也可被創造出來，比如當我們有一個 `<div id="parent">`，包著一群 `<div class="child">` 元素，且這個 `id="parent"` 加入 CSS 特別設定時，它們的堆疊順序通常會一起被移動 ( 從父原則 )，這整個群組的就是 stacking context
+- CSS 為了控制畫面中誰顯示在上面，會採用一套標準。stacking context 是一個父元素及它的所有子元素總稱，如全域根元素 `<HTML>` 建立的 stacking context，和它包含的每個子 / 孫子元素就算一種。排序的邏輯為：在同個 stacking context 所有子元素會照 stacking order 大小排序，越大的排越前面，不同 stacking context 之間，也會比較 stacking context 唯一父元素的 stacking order 排序。
+- 除了 `<HTML>` 外，若這些元素加入了 CSS 特別設定時，stack context 也可被創造出來，比如當我們有一個 `<div id="special">`，包著一群 `<div class="child">` 元素，這整個群組的就是 stacking context，它們的堆疊順序通常會一起被移動 ( 從父原則 )
 - 可以建立新 stacking context 的 CSS 特別設定如下：
   1. 當元素被設定 position 除了 static 以外的值，然後 z-index 設定為除了 auto 以外的值
   2. 當元素設定了 opacity 且值小於 1
