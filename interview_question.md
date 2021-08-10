@@ -492,8 +492,8 @@ var findDuplicates = function(nums) {
 - Ref: https://blog.techbridge.cc/2017/06/17/cache-introduction/
 - 第一次瀏覽這個網頁的時候需要重新下載，第二次瀏覽的時候，圖片就可以直接從瀏覽器的快取裡面去抓
 - 實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30`，代表快取過期時間是 30 秒
-- 進階實作方法：前端送出的 request header 加入 `If-None-Match: xxx`，server 回傳的 response header 加入 `Cache-Control: max-age=30` 及 `Etag: xxx`，代表快取過期時間是 30 秒
-- 每次都檢查有無新的檔案：前端送出的 request header 加入 `If-None-Match: xxx`，server 回傳的 response header 加入 `Cache-Control: no-cache` 及 `Etag: xxx`，等快取過期之後，瀏覽器就可以拿這個 Etag 去問說檔案是不是有被更動過。
+- 進階實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30` 及 `Etag: xxx`，代表快取過期時間是 30 秒，30 秒後，若前端送出 request 會在 request header 加入 `If-None-Match: xxx` 詢問 server 檔案是不是有被更動過
+- 需要前端每次都檢查有無新的檔案：server 回傳的 response header 加入 `Cache-Control: no-cache` 及 `Etag: xxx`
 - 用在 SPA 的策略：`script-qd3j2orjoa.js` 設定 `Cache-Control: max-age=31536000`，`index.html` 設定 `Cache-Control: no-cache`
 
 ### CSRF
