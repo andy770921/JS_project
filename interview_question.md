@@ -1,5 +1,10 @@
 # Interview Question
 
+# CSS
+## 一句話解釋
+### css `left` and `translate` 渲染有何不同
+- 瀏覽器渲染流程為，DOM tree 和 CSS tree 合成 Render tree => Layout => Paint => Composite，使用 `left` 會重新觸發 Layout => Paint => Composite，或稱 Reflow & Repaint，`translate` 只會重新 Composite
+
 # JS
 ## 一句話解釋
 ### 閉包: 
