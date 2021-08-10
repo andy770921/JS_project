@@ -52,14 +52,16 @@
 }
 ```
 - Example 加入 `class="special"` 設定後:
+  解釋一：單看 1, 2, 3，因為 stacking order 有個規則是，「如果寫了小於 1 的 opacity，那自己就比較其他元素重要」，所以 `<div class="special">` 的排序重要性升為 3 
+  解釋二：單看 3, 3.1，因為 stacking context 有個建立規則是，「如果寫了小於 1 的 opacity，那就建立新的 context」，所以影響了 `<div class="red">` 的排序重要性變成 3.1 
 ```html
-<div class="special"><!-- 1 -->
-  <div class="red"><!-- 1.1 --></div>
+<div class="special"><!-- 3 -->
+  <div class="red"><!-- 3.1 --></div>
 </div>
-<div><!-- 2 -->
+<div><!-- 1 -->
   <div class="green"><!-- 4 --></div>
 </div>
-<div><!-- 3 -->
+<div><!-- 2 -->
   <div class="blue"><!-- 5 --></div>
 </div>
 ```
