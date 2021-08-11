@@ -46,9 +46,9 @@ https://stackoverflow.com/questions/55230653/whats-the-difference-between-typesc
 - class field 需宣告型別，JS 不用
 - class field 在 JS 不需加前綴字，都是 public
 ```ts
-class StackNode<T> {
+class Node<T> {
   public data: T;
-  private next: StackNode<T> | null;
+  private next: Node<T> | null;
 
   constructor(data: T){
     this.data = data;
@@ -59,8 +59,8 @@ class StackNode<T> {
 - constructor 內宣告 instance 的 key，同名可簡寫
 - JS 也支援，可用 class field 等號後加預設值，可不必寫在 constructor 內 
 ```ts
-class StackNode<T> {
-  private next: StackNode<T> | null = null;
+class Node<T> {
+  private next: Node<T> | null = null;
 
   constructor(public data: T){
     this.next = null;
