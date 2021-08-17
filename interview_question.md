@@ -95,6 +95,20 @@ const b = { canSleep: true };
 Object.setPrototypeOf(b, a);
 console.log(b.canEat); // true 
 ```
+- 實際上不會用一個物件指定給另一物件，在 ES5 的用法
+```js
+function Person(){}
+Person.prototype.dance = function(){};
+
+function Tom(){}
+Tom.prototype = new Person();
+
+Object.defineProperty(Tom.prototype, "constructor", {
+    enumerable: false,
+    value: Tom,
+    writable: true
+});
+```
 ### Event Loop: 
 - 當瀏覽器處理完整份 HTML 時，瀏覽器會將所有已發生的事件，如使用者產生的事件，放入 Task Queue。Event Loop 意思是瀏覽器持續循環的檢查 Task Queue，若有事件，從頂部開始處理。若無，繼續下一輪檢查。( JavaScript Ninja 中文版 p.27 )
 
