@@ -578,6 +578,55 @@ function ThreeSum(arr) {
 console.log(ThreeSum([10, 2, 3, 1, 5, 3, 1, 4, -4, -3, -2])); // true
 console.log(ThreeSum([12, 3, 1, -5, -4, 7])); // false
 ```
+# 資料結構
+
+## Array Tree Conversion
+- Given a binary tree `[3,9,1,null,null,7,17]` represent by array:
+```
+    3
+   / \
+  9   1
+    /  \
+   7   17
+```
+and a TreeNode function:
+```js
+function TreeNode(val) {
+     this.val = val;
+     this.left = null;
+     this.right = null;
+}
+```
+write a function which transfer array into binary tree.
+```
+input: {Array}
+
+output: {TreeNode} root
+```
+- Q:
+```js
+ function TreeNode(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+ }
+
+ function arrayToBinaryTree(array) {
+    // TODOS
+ }
+```
+- A:
+```js
+ function TreeNode(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+ }
+
+ function arrayToBinaryTree(array) {
+    // TODOS
+ }
+```
 
 # 網路
 ## 一句話解釋
