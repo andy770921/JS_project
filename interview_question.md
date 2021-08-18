@@ -1,5 +1,8 @@
 # Interview Question
 
+# HTML
+## 何時用 `<script async>` 何時用 `<script defer>`
+https://zellwk.com/blog/javascript-async-and-defer/
 # CSS
 ## 一句話解釋
 ### css `left` and `translate` 渲染有何不同
