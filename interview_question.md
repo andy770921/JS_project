@@ -216,6 +216,105 @@ console.log((obj.foo, obj.foo)());  // 1
 - Ref: https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/implement-promise-aed55f3e84e9
 - Ref: https://realdennis.medium.com/promise-%E9%A1%9E%E7%9A%84%E5%AF%A6%E4%BD%9C%E8%88%87%E9%80%90%E6%AD%A5%E8%A7%A3%E6%9E%90-4a87a4121d35
 ```js
+
+class MyPromise {
+  constructor(fn) {
+    this.state = 0;
+    this.value = undefined;
+    this.todos = [];
+    fn(value => this.resolve(value), reason => this.reject(reason));
+  }
+  fulfill(value) {
+    if (this.state !== 0) return;
+    this.state = 1;
+    this.value = value;
+    this.run();
+  }
+  resolve(result) {
+    let done = false;
+    if (this === result)
+      throw new TypeError('Chaining cycle detected for promise');
+    if (result === Object(result) && typeof result.then === 'function') {
+      // result is thenable
+      try {
+        result.then(
+          value => {
+            if (done) return;
+            done = true;
+            this.resolve(value);
+          },
+          reason => {
+            if (done) return;
+            done = true;
+            this.reject(reason);
+          }
+        );
+      } catch (e) {
+        // resolve thenable fail
+        if (done) return;
+        done = true;
+        this.reject(e);
+      }
+    } else this.fulfill(result);
+  }
+  reject(reason) {
+    if (this.state !== 0) return;
+    this.state = 2;
+    this.value = reason;
+    this.run();
+  }
+  run() {
+    let callbackName, resolver;
+    if (this.state === 0) return;
+    if (this.state === 1) {
+      callbackName = 'onFulfilled';
+      resolver = 'resolve';
+    }
+    if (this.state === 2) {
+      callbackName = 'onRejected';
+      resolver = 'reject';
+    }
+    setTimeout(() => {
+      this.todos.forEach(todo => {
+        try {
+          let cb = todo[callbackName];
+          if (cb) {
+            todo.resolve(cb(this.value));
+          } else todo[resolver](this.value);
+        } catch (e) {
+          todo.reject(e);
+        }
+        this.todos.shift();
+      });
+    });
+  }
+  then(onFulfilled, onRejected) {
+    let todo = new MyPromise(() => {});
+    todo.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
+    todo.onRejected = typeof onRejected === 'function' ? onRejected : null;
+    this.todos.push(todo);
+    this.run();
+    return todo;
+  }
+  catch(onRejected) {
+    this.then(null, onRejected);
+  }
+}
+
+const a = new MyPromise((resolve) => resolve(100));
+a.then((v) => console.log(v));
+const b = new MyPromise((resolve) => setTimeout(()=>{resolve(200)}, 1000));
+b.then((v) => console.log(v));
+const c = new MyPromise((_, reject) => setTimeout(()=>{reject(300)}, 2000));
+c.catch((v) => console.log(v));
+console.log('start');
+
+// start
+// 100
+// 200
+// 300
+```
+```js
 const PENDING = "PENDING";
 const FULFILLED = "FULFILLED";
 const REJECTED = "REJECTED";
@@ -327,19 +426,6 @@ class MyPromise {
     this.then(null, onRejected);
   }
 }
-
-const a = new MyPromise((resolve) => resolve(100));
-a.then((v) => console.log(v));
-const b = new MyPromise((resolve) => setTimeout(()=>{resolve(200)}, 1000));
-b.then((v) => console.log(v));
-const c = new MyPromise((_, reject) => setTimeout(()=>{reject(300)}, 2000));
-c.catch((v) => console.log(v));
-console.log('start');
-
-// start
-// 100
-// 200
-// 300
 ```
 
 ## Promise.all
