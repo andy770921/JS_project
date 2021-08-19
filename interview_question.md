@@ -336,8 +336,8 @@ const c = new MyPromise((_, reject) => setTimeout(()=>{reject(300)}, 2000));
 c.catch((v) => console.log(v));
 console.log('start');
 
-// 100
 // start
+// 100
 // 200
 // 300
 ```
