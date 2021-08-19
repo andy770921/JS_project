@@ -211,6 +211,122 @@ console.log((false || obj.foo)());  // 1
 console.log((obj.foo, obj.foo)());  // 1
 ```
 # 實作原生程式碼
+
+## Promise
+- Ref: https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/implement-promise-aed55f3e84e9
+```js
+const PENDING = "PENDING";
+const FULFILLED = "FULFILLED";
+const REJECTED = "REJECTED";
+
+const HANDLERS = Symbol("handlers");
+const QUEUE = Symbol("queue");
+const STATE = Symbol("state");
+const VALUE = Symbol("value");
+
+
+function processNextTick(promise) {
+  let handler;
+  while (promise[QUEUE].length > 0) {
+    const thenablePromise = promise[QUEUE].shift();
+    if (promise[STATE] === FULFILLED) {
+      handler = thenablePromise[HANDLERS].onFulfilled || ((v) => v);
+    } else if (promise[STATE] === REJECTED) {
+      handler =
+        thenablePromise[HANDLERS].onRejected ||
+        ((r) => {
+          throw r;
+        });
+    }
+    try {
+      const x = handler(promise[VALUE]);
+      resolvePromise(thenablePromise, x);
+    } catch (error) {
+      transition(thenablePromise, REJECTED, error);
+    }
+  }
+}
+
+
+const nextTick = (() => {
+  if (typeof global === "object" && global && global.object === Object && global.process && typeof root.process.nextTick === "function") {
+    return global.process.nextTick;
+  } else {
+    return (f, p) => setTimeout(f.call(this, p));
+  }
+})();
+
+function process(p) {
+  if (p[STATE] === PENDING) return;
+  nextTick(processNextTick, p);
+  return p;
+}
+
+function transition(p, state, value) {
+  if (p[STATE] === state || p[STATE] !== PENDING) return;
+  p[STATE] = state;
+  p[VALUE] = value;
+  return process(p);
+}
+
+function tryFunction(promise, executor) {
+  const resolve = (value) => {
+    transition(promise, FULFILLED, value);
+  };
+  const reject = (reason) => {
+    transition(promise, REJECTED, reason);
+  };
+  try {
+    executor(resolve, reject);
+  } catch (err) {
+    reject(err);
+  }
+}
+
+class Handlers {
+  constructor() {
+    this.onFulfilled = null;
+    this.onRejected = null;
+  }
+}
+
+class MyPromise {
+  constructor(executor) {
+    this[QUEUE] = [];
+    this[HANDLERS] = new Handlers();
+    this[STATE] = PENDING;
+    this[VALUE] = null;
+    if (typeof executor === "function") {
+      tryFunction(this, executor);
+    } else {
+      throw new TypeError(`Promise resolver ${executor} is not a function`);
+    }
+  }
+  
+  then(onFulfilled, onRejected) {
+     const promiseInstance = new MyPromise((resolve, reject) => {
+      if (this[STATE] === FULFILLED && typeof onFulfilled !== "function") {
+        resolve(this[VALUE]);
+      } else if (this[STATE] === REJECTED && typeof onRejected !== "function") {
+        reject(this[VALUE]);
+      }
+    });
+    if (typeof onFulfilled === "function") {
+      promiseInstance[HANDLERS].onFulfilled = onFulfilled;
+    }
+    if (typeof onRejected === "function") {
+      promiseInstance[HANDLERS].onRejected = onRejected;
+    }
+    this[QUEUE].push(promiseInstance);
+    process(this);
+    return promiseInstance;
+  }
+}
+
+const a = new MyPromise((resolve) => resolve(100));
+a.then((v) => console.log(v)); // 100
+```
+
 ## Promise.all
 - https://jsvault.com/promise-all/
 - Q:
