@@ -214,6 +214,7 @@ console.log((obj.foo, obj.foo)());  // 1
 
 ## Promise
 - Ref: https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/implement-promise-aed55f3e84e9
+- Ref: https://realdennis.medium.com/promise-%E9%A1%9E%E7%9A%84%E5%AF%A6%E4%BD%9C%E8%88%87%E9%80%90%E6%AD%A5%E8%A7%A3%E6%9E%90-4a87a4121d35
 ```js
 const PENDING = "PENDING";
 const FULFILLED = "FULFILLED";
@@ -321,10 +322,24 @@ class MyPromise {
     process(this);
     return promiseInstance;
   }
+  
+  catch(onRejected) {
+    this.then(null, onRejected);
+  }
 }
 
 const a = new MyPromise((resolve) => resolve(100));
-a.then((v) => console.log(v)); // 100
+a.then((v) => console.log(v));
+const b = new MyPromise((resolve) => setTimeout(()=>{resolve(200)}, 1000));
+b.then((v) => console.log(v));
+const c = new MyPromise((_, reject) => setTimeout(()=>{reject(300)}, 2000));
+c.catch((v) => console.log(v));
+console.log('start');
+
+// 100
+// start
+// 200
+// 300
 ```
 
 ## Promise.all
