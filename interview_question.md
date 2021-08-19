@@ -358,68 +358,62 @@ function myPromiseAll(taskList) {
   });
 }
 ```
-# Algorithm
 
-## String, Array, Hash Table - check if string is beautiful
+# Object Oriented Programming
 
-- Coding with test: https://codesandbox.io/s/mocha-unit-test-isbeautifulstr-vcer9?file=/src/index.js
-- Explain & Example:
-
+## Design a parking log system
 ```
-For inputString = "bbbaacdafe", the output should be isBeautifulString(inputString) = true.
+Must:
 
-This string contains 3 a, 3 b, 1 c, 1 d, 1 e, and 1 f (and 0 of every other letter), 
-so since there aren't any letters that appear more frequently than the previous letter, this string qualifies as beautiful.
+1. It can hold up to N cars and the fee is M per hour.
 
-For inputString = "aabbb", the output should be isBeautifulString(inputString) = false.
+2. auto record: car registration number, color and allocate slot.
 
-Since there are more bs than as, this string is not beautiful.
+3. calculate the parking fee by car registration number.
 
-For inputString = "bbc", the output should be isBeautifulString(inputString) = false.
+Nice to have:
 
-Although there are more bs than cs, this string is not beautiful because there are no as, so therefore there are more bs than as.
+4. record in/out logs and provide query functions.
+
+5. function show available parking lots.
+
+6. function to return a list of cars by X color.
+
+7. function to show parking lot by car registration number and current fee.
+
+Reminder: your code should be extendable for future use cases.
 ```
-
-- Input/Output     
-    execution time limit: 4 seconds (js)
-```
-[input] string inputString
-
-A string of lowercase English letters.
-
-Guaranteed constraints:
-3 ≤ inputString.length ≤ 50.
-
-[output] boolean
-
-Return true if the string is beautiful, false otherwise.
-```
-
-- Q:
+- Q: 
 ```js
-function isBeautifulString(inputString) {
-  // TODOS
+// Parking lot system
+
+/**
+ * Class Parking {
+ *    constructor (ParkingLotCount, feePerHour) {
+ *       
+ *    }
+ *   
+ *    enter (carNumber, color) {
+ *        
+ *    }
+ *  
+ *    exit (carNumber) {
+ *
+ *       ...
+ *       return fee
+ *    }  
+ * }
+ *
+ **/
+```
+- A: 
+```js
+class Parking {
+
+
 }
 ```
-
-- A:
-```js
-// Ans:
-function isBeautifulString(inputString) {
-    const charTimesHashTable = [...Array(26)].map(() => 0);
-    inputString.split("").forEach(char => {
-        const charCode = char.charCodeAt();
-        if (charCode <= 122 && charCode >= 97) charTimesHashTable[charCode - 97] += 1;
-    });
-    
-    
-    for (let i = 0; i < charTimesHashTable.length - 1; i++){
-        if(charTimesHashTable[i] < charTimesHashTable[i + 1]) return false;
-    }
-    return true;
-}
-```
-## Object Oriented Programming - Implement the missing code
+## Implement the missing code
 
 - You may not modify the pre-existing code.
 - Implement `Tracker` with two methods as follows:
@@ -540,6 +534,68 @@ console.log(hostAllocation(['A apibox',
   'A apibox',
   'A sitebox']));
 // to be: ['apibox1', 'apibox2', 'apibox1', 'sitebox1'] 
+```
+
+# Algorithm
+
+## String, Array, Hash Table - check if string is beautiful
+
+- Coding with test: https://codesandbox.io/s/mocha-unit-test-isbeautifulstr-vcer9?file=/src/index.js
+- Explain & Example:
+
+```
+For inputString = "bbbaacdafe", the output should be isBeautifulString(inputString) = true.
+
+This string contains 3 a, 3 b, 1 c, 1 d, 1 e, and 1 f (and 0 of every other letter), 
+so since there aren't any letters that appear more frequently than the previous letter, this string qualifies as beautiful.
+
+For inputString = "aabbb", the output should be isBeautifulString(inputString) = false.
+
+Since there are more bs than as, this string is not beautiful.
+
+For inputString = "bbc", the output should be isBeautifulString(inputString) = false.
+
+Although there are more bs than cs, this string is not beautiful because there are no as, so therefore there are more bs than as.
+```
+
+- Input/Output     
+    execution time limit: 4 seconds (js)
+```
+[input] string inputString
+
+A string of lowercase English letters.
+
+Guaranteed constraints:
+3 ≤ inputString.length ≤ 50.
+
+[output] boolean
+
+Return true if the string is beautiful, false otherwise.
+```
+
+- Q:
+```js
+function isBeautifulString(inputString) {
+  // TODOS
+}
+```
+
+- A:
+```js
+// Ans:
+function isBeautifulString(inputString) {
+    const charTimesHashTable = [...Array(26)].map(() => 0);
+    inputString.split("").forEach(char => {
+        const charCode = char.charCodeAt();
+        if (charCode <= 122 && charCode >= 97) charTimesHashTable[charCode - 97] += 1;
+    });
+    
+    
+    for (let i = 0; i < charTimesHashTable.length - 1; i++){
+        if(charTimesHashTable[i] < charTimesHashTable[i + 1]) return false;
+    }
+    return true;
+}
 ```
 
 ## LeetCode - 5. Longest Palindromic Substring (Medium)
