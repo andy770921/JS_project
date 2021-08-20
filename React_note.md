@@ -818,6 +818,238 @@ https://stackoverflow.com/questions/54560790/detect-click-outside-react-componen
 ## 五種寫 Counter 的方式，使用控制反轉的概念
 https://javascript.plainenglish.io/5-advanced-react-patterns-a6b7624267a6
 
+## 實作 useFetch, useLazyFetch
+```ts
+import { useEffect, useCallback, useReducer, useContext } from 'react';
+import { fetchApi } from 'SOME_FETCH_LIB';
+import { appendQuery } from 'SOME_QUERY_STR_LIB';
+import { RequestMethod, ErrorDefaultResponse } from '@typings/api';
+import { useDeepMemo } from '@utilities/hooks';
+import { GlobalConfigContext } from '@modules/common/context';
+import { GLOBAL_ERROR_REASON } from '@constants/error';
+
+interface FetchBaseProp {
+    headers?: { [key: string]: string };
+    baseUrl: string;
+    queryList?: { [key: string]: string }[];
+    body?: object;
+}
+export interface FetchProp extends FetchBaseProp {
+    method?: RequestMethod;
+    isShowGlobalErrorModal?: boolean; // 接到 token 錯誤時，是否要顯示全域錯誤彈窗
+}
+
+interface FetchMethodProp extends FetchBaseProp {
+    method: RequestMethod;
+}
+
+const fetch = async <T>({ method, headers, baseUrl, queryList, body }: FetchMethodProp) => {
+    try {
+        const option = { method, headers, body };
+        const url = appendQuery({ url: baseUrl, queryList });
+        const result: T = await fetchApi(url, option);
+        return result;
+    } catch (err) {
+        if (err.response?.body?.Error) {
+            // 獲取與後端規範好，在 Response Body 裡的錯誤資訊
+            const { Message, Reason, LogId, Code, Data } = err.response.body.Error as ErrorDefaultResponse;
+            throw JSON.stringify({ Message: Message || '', Reason, LogId, Code, Data });
+        }
+        if (err.name === 'TimeoutError') {
+            // Note: depends on FETCH_LIB
+            const { name: Reason, message: Message, code: Code } = err;
+            throw JSON.stringify({ ...defaultError, Reason, Message, Code });
+        }
+        if (err.message === offlineError) {
+            throw JSON.stringify({ ...defaultError, Reason: 'Offline', Message: err.message });
+        }
+        if (err.message === serviceUnavailable) {
+            throw JSON.stringify({ ...defaultError, Reason: 'UnexpectedServiceResponse', Message: err.message });
+        }
+        if (err.message) {
+            throw JSON.stringify({ ...defaultError, Message: err.message });
+        }
+        throw JSON.stringify({ ...defaultError, Message: 'unknown error' });
+    }
+};
+
+// Fetch State
+type FetchState<T, U> = {
+    isLoading: boolean;
+    data?: T;
+    error?: U;
+};
+// Fetch Actions
+export enum FetchActionType {
+    START_FETCH = 'START_FETCH',
+    FETCH_FULFILLED = 'FETCH_FULFILLED',
+    FETCH_REJECTED = 'FETCH_REJECTED',
+}
+
+type FetchActions<T, U> =
+    | { type: FetchActionType.START_FETCH }
+    | { type: FetchActionType.FETCH_FULFILLED; payload: { data: T } }
+    | { type: FetchActionType.FETCH_REJECTED; payload: { error: U } };
+
+// Fetch Reducer
+
+const createFetchReducer = <T, U>() => (state: FetchState<T, U>, action: FetchActions<T, U>) => {
+    switch (action.type) {
+        case FetchActionType.START_FETCH:
+            return { ...state, isLoading: true, error: undefined };
+        case FetchActionType.FETCH_FULFILLED:
+            return { ...state, isLoading: false, data: action.payload.data };
+        case FetchActionType.FETCH_REJECTED:
+            return { ...state, isLoading: false, error: action.payload.error };
+        default:
+            return state;
+    }
+};
+
+// 元件載入時就執行
+const useFetch = <T, U extends ErrorDefaultResponse = ErrorDefaultResponse>({
+    method = RequestMethod.GET,
+    headers,
+    baseUrl,
+    queryList,
+    body,
+    isShowGlobalErrorModal = true,
+}: FetchProp) => {
+    const { setGlobalErrorInfo } = useContext(GlobalConfigContext);
+    // 為了代入泛型型別 <T, ErrorDefaultResponse> 而使用如下 createFetchReducer 寫法
+    // https://stackoverflow.com/questions/55396438/generic-type-in-usereducer-for-a-returned-parameter
+    const fetchReducer = createFetchReducer<T, U>();
+    const [state, dispatch] = useReducer(fetchReducer, {
+        isLoading: false,
+    });
+
+    const memorizedHeaders = useDeepMemo(() => ({ ...headers }), headers);
+    const memorizedQueryList = useDeepMemo(() => queryList, queryList);
+    const memorizedBody = useDeepMemo(() => body, body);
+
+    useEffect(() => {
+        // isCancelled 使用法如下
+        // Ref: https://stackoverflow.com/questions/56442582/react-hooks-cant-perform-a-react-state-update-on-an-unmounted-component
+        let isCancelled = false;
+
+        const doFetch = async () => {
+            dispatch({ type: FetchActionType.START_FETCH });
+            try {
+                const response: T = await fetch({
+                    method,
+                    headers: memorizedHeaders,
+                    baseUrl,
+                    queryList: memorizedQueryList,
+                    body: memorizedBody,
+                });
+                if (!isCancelled) {
+                    dispatch({ type: FetchActionType.FETCH_FULFILLED, payload: { data: response } });
+                }
+            } catch (err) {
+                const errorObj: U = JSON.parse(err);
+                const globalError = GLOBAL_ERROR_REASON[errorObj.Reason];
+                if (!isCancelled) {
+                    if (globalError) {
+                        // 會觸發 Global Error Modal
+                        setGlobalErrorInfo({
+                            globalErrorInfo: {
+                                title: globalError.title,
+                                message: globalError.getMessage(errorObj.Data),
+                                hint: globalError.hint,
+                                closeAction: globalError.closeAction,
+                                isJwtTokenExpiredError: globalError.isJwtTokenExpiredError || false,
+                                isShowGlobalErrorModal,
+                            },
+                        });
+                    }
+                    dispatch({ type: FetchActionType.FETCH_REJECTED, payload: { error: errorObj } });
+                }
+            }
+        };
+
+        doFetch();
+        return () => {
+            isCancelled = true;
+        };
+    }, [
+        baseUrl,
+        method,
+        memorizedHeaders,
+        memorizedBody,
+        memorizedQueryList,
+        setGlobalErrorInfo,
+        isShowGlobalErrorModal,
+    ]);
+
+    return state;
+};
+
+// 元件載入時不執行，需綁定事件執行 doFetch
+const useLazyFetch = <T, U extends ErrorDefaultResponse = ErrorDefaultResponse>({
+    method = RequestMethod.GET,
+    headers,
+    baseUrl,
+    queryList,
+    body,
+    isShowGlobalErrorModal = true,
+}: FetchProp) => {
+    const { setGlobalErrorInfo } = useContext(GlobalConfigContext);
+    // 為了代入泛型型別 <T, ErrorDefaultResponse> 而使用如下 createFetchReducer 寫法
+    // https://stackoverflow.com/questions/55396438/generic-type-in-usereducer-for-a-returned-parameter
+    const fetchReducer = createFetchReducer<T, U>();
+    const [state, dispatch] = useReducer(fetchReducer, {
+        isLoading: false,
+    });
+    const memorizedHeaders = useDeepMemo(() => headers, headers);
+    const memorizedQueryList = useDeepMemo(() => queryList, queryList);
+    const memorizedBody = useDeepMemo(() => body, body);
+
+    const doFetch = useCallback(async () => {
+        dispatch({ type: FetchActionType.START_FETCH });
+        try {
+            const response: T = await fetch({
+                method,
+                headers: memorizedHeaders,
+                baseUrl,
+                queryList: memorizedQueryList,
+                body: memorizedBody,
+            });
+            dispatch({ type: FetchActionType.FETCH_FULFILLED, payload: { data: response } });
+        } catch (err) {
+            const errorObj: U = JSON.parse(err);
+            const globalError = GLOBAL_ERROR_REASON[errorObj.Reason];
+            if (globalError) {
+                log.error(errorObj, '全域錯誤情境');
+                // 會觸發 Global Error Modal
+                setGlobalErrorInfo({
+                    globalErrorInfo: {
+                        title: globalError.title,
+                        message: globalError.getMessage(errorObj.Data),
+                        hint: globalError.hint,
+                        closeAction: globalError.closeAction,
+                        isJwtTokenExpiredError: globalError.isJwtTokenExpiredError || false,
+                        isShowGlobalErrorModal,
+                    },
+                });
+            }
+            dispatch({ type: FetchActionType.FETCH_REJECTED, payload: { error: errorObj } });
+        }
+    }, [
+        baseUrl,
+        method,
+        memorizedHeaders,
+        memorizedBody,
+        memorizedQueryList,
+        isShowGlobalErrorModal,
+        setGlobalErrorInfo,
+    ]);
+
+    return [doFetch, state] as [() => Promise<void>, typeof state];
+};
+
+export { useFetch, useLazyFetch };
+```
+
 ## npm react 相關的第三方套件
 
 1. react-window: https://addyosmani.com/blog/react-window/  
