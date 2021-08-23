@@ -325,7 +325,6 @@ sleep(3).then(() => {
 // 400
 ```
 ```js
-
 class MyPromise {
   constructor(fn) {
     this.QUEUE = [];
@@ -371,7 +370,7 @@ class MyPromise {
         }
         try {
           const x = handler(promise.VALUE);
-          resolvePromise(thenablePromise, x);
+          thenablePromise.resolvePromise(x);
         } catch (error) {
           thenablePromise.transitionAndProcess('REJECTED', error);
         }
@@ -379,6 +378,40 @@ class MyPromise {
     })(this);
     setTimeout(result);
     return this;
+  }
+
+  // private
+  resolvePromise(x) {
+    if (this === x) {
+      throw new TypeError('TypeError: Chaining cycle detected for promise');
+    }
+    let called;
+    if (x && (typeof x === 'function' || typeof x === 'object')) {
+      try {
+        const thenFunction = x.then;
+        if (thenFunction && typeof thenFunction === 'function') {
+          const onFulfilled = (y) => {
+            if (called) return;
+            called = true;
+            this.resolvePromise(y);
+          };
+          const onRejected = (r) => {
+            if (called) return;
+            called = true;
+            this.transitionAndProcess('REJECTED', r);
+          };
+          thenFunction.call(x, onFulfilled, onRejected);
+        } else {
+          this.transitionAndProcess('FULFILLED', x);
+        }
+      } catch (error) {
+        if (called) return;
+        called = true;
+        this.transitionAndProcess('REJECTED', error);
+      }
+    } else {
+      this.transitionAndProcess('FULFILLED', x);
+    }
   }
 
   then(onFulfilled, onRejected) {
@@ -427,6 +460,7 @@ sleep(3).then(() => {
 // 100
 // 200
 // 300
+// 400
 ```
 
 ## Promise.all
