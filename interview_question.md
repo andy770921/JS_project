@@ -324,40 +324,6 @@ const QUEUE = Symbol('queue');
 const STATE = Symbol('state');
 const VALUE = Symbol('value');
 
-function process(p) {
-  if (p[STATE] === PENDING) return;
-
-  const result = ((promise) => {
-    let handler;
-    while (promise[QUEUE].length > 0) {
-      const thenablePromise = promise[QUEUE].shift();
-      if (promise[STATE] === FULFILLED) {
-        handler = thenablePromise[HANDLERS].onFulfilled || ((v) => v);
-      } else if (promise[STATE] === REJECTED) {
-        handler = thenablePromise[HANDLERS].onRejected
-                    || ((r) => {
-                      throw r;
-                    });
-      }
-      try {
-        const x = handler(promise[VALUE]);
-        resolvePromise(thenablePromise, x);
-      } catch (error) {
-        transition(thenablePromise, REJECTED, error);
-      }
-    }
-  })(p);
-  setTimeout(result);
-  return p;
-}
-
-function transition(p, state, value) {
-  if (p[STATE] === state || p[STATE] !== PENDING) return;
-  p[STATE] = state;
-  p[VALUE] = value;
-  return process(p);
-}
-
 class Handlers {
   constructor() {
     this.onFulfilled = null;
@@ -375,15 +341,52 @@ class MyPromise {
     if (typeof executor === 'function') {
       try {
         executor(
-          (value) => transition(this, FULFILLED, value),
-          (reason) => transition(this, REJECTED, reason),
+          (value) => this.transitionAndProcess(FULFILLED, value),
+          (reason) => this.transitionAndProcess(REJECTED, reason),
         );
       } catch (err) {
-        transition(this, REJECTED, err);
+        this.transitionAndProcess(REJECTED, err);
       }
     } else {
       throw new TypeError(`Promise resolver ${executor} is not a function`);
     }
+  }
+
+  // private
+  transitionAndProcess(state, value) {
+    if (this[STATE] === state || this[STATE] !== PENDING) return;
+    this[STATE] = state;
+    this[VALUE] = value;
+
+    this.process();
+  }
+
+  // private
+  process() {
+    if (this[STATE] === PENDING) return;
+
+    const result = ((promise) => {
+      let handler;
+      while (promise[QUEUE].length > 0) {
+        const thenablePromise = promise[QUEUE].shift();
+        if (promise[STATE] === FULFILLED) {
+          handler = thenablePromise[HANDLERS].onFulfilled || ((v) => v);
+        } else if (promise[STATE] === REJECTED) {
+          handler = thenablePromise[HANDLERS].onRejected
+                    || ((r) => {
+                      throw r;
+                    });
+        }
+        try {
+          const x = handler(promise[VALUE]);
+          resolvePromise(thenablePromise, x);
+        } catch (error) {
+          thenablePromise.transitionAndProcess(REJECTED, error);
+        }
+      }
+    })(this);
+    setTimeout(result);
+    return this;
   }
 
   then(onFulfilled, onRejected) {
@@ -401,7 +404,7 @@ class MyPromise {
       promiseInstance[HANDLERS].onRejected = onRejected;
     }
     this[QUEUE].push(promiseInstance);
-    process(this);
+    this.process();
     return promiseInstance;
   }
 
