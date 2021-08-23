@@ -315,50 +315,39 @@ console.log('start');
 // 300
 ```
 ```js
-const PENDING = "PENDING";
-const FULFILLED = "FULFILLED";
-const REJECTED = "REJECTED";
+const PENDING = 'PENDING';
+const FULFILLED = 'FULFILLED';
+const REJECTED = 'REJECTED';
 
-const HANDLERS = Symbol("handlers");
-const QUEUE = Symbol("queue");
-const STATE = Symbol("state");
-const VALUE = Symbol("value");
-
-
-function processNextTick(promise) {
-  let handler;
-  while (promise[QUEUE].length > 0) {
-    const thenablePromise = promise[QUEUE].shift();
-    if (promise[STATE] === FULFILLED) {
-      handler = thenablePromise[HANDLERS].onFulfilled || ((v) => v);
-    } else if (promise[STATE] === REJECTED) {
-      handler =
-        thenablePromise[HANDLERS].onRejected ||
-        ((r) => {
-          throw r;
-        });
-    }
-    try {
-      const x = handler(promise[VALUE]);
-      resolvePromise(thenablePromise, x);
-    } catch (error) {
-      transition(thenablePromise, REJECTED, error);
-    }
-  }
-}
-
-
-const nextTick = (() => {
-  if (typeof global === "object" && global && global.object === Object && global.process && typeof root.process.nextTick === "function") {
-    return global.process.nextTick;
-  } else {
-    return (f, p) => setTimeout(f.call(this, p));
-  }
-})();
+const HANDLERS = Symbol('handlers');
+const QUEUE = Symbol('queue');
+const STATE = Symbol('state');
+const VALUE = Symbol('value');
 
 function process(p) {
   if (p[STATE] === PENDING) return;
-  nextTick(processNextTick, p);
+
+  const result = ((promise) => {
+    let handler;
+    while (promise[QUEUE].length > 0) {
+      const thenablePromise = promise[QUEUE].shift();
+      if (promise[STATE] === FULFILLED) {
+        handler = thenablePromise[HANDLERS].onFulfilled || ((v) => v);
+      } else if (promise[STATE] === REJECTED) {
+        handler = thenablePromise[HANDLERS].onRejected
+                    || ((r) => {
+                      throw r;
+                    });
+      }
+      try {
+        const x = handler(promise[VALUE]);
+        resolvePromise(thenablePromise, x);
+      } catch (error) {
+        transition(thenablePromise, REJECTED, error);
+      }
+    }
+  })(p);
+  setTimeout(result);
   return p;
 }
 
@@ -367,20 +356,6 @@ function transition(p, state, value) {
   p[STATE] = state;
   p[VALUE] = value;
   return process(p);
-}
-
-function tryFunction(promise, executor) {
-  const resolve = (value) => {
-    transition(promise, FULFILLED, value);
-  };
-  const reject = (reason) => {
-    transition(promise, REJECTED, reason);
-  };
-  try {
-    executor(resolve, reject);
-  } catch (err) {
-    reject(err);
-  }
 }
 
 class Handlers {
@@ -396,36 +371,57 @@ class MyPromise {
     this[HANDLERS] = new Handlers();
     this[STATE] = PENDING;
     this[VALUE] = null;
-    if (typeof executor === "function") {
-      tryFunction(this, executor);
+
+    if (typeof executor === 'function') {
+      try {
+        executor(
+          (value) => transition(this, FULFILLED, value),
+          (reason) => transition(this, REJECTED, reason),
+        );
+      } catch (err) {
+        transition(this, REJECTED, err);
+      }
     } else {
       throw new TypeError(`Promise resolver ${executor} is not a function`);
     }
   }
-  
+
   then(onFulfilled, onRejected) {
-     const promiseInstance = new MyPromise((resolve, reject) => {
-      if (this[STATE] === FULFILLED && typeof onFulfilled !== "function") {
+    const promiseInstance = new MyPromise((resolve, reject) => {
+      if (this[STATE] === FULFILLED && typeof onFulfilled !== 'function') {
         resolve(this[VALUE]);
-      } else if (this[STATE] === REJECTED && typeof onRejected !== "function") {
+      } else if (this[STATE] === REJECTED && typeof onRejected !== 'function') {
         reject(this[VALUE]);
       }
     });
-    if (typeof onFulfilled === "function") {
+    if (typeof onFulfilled === 'function') {
       promiseInstance[HANDLERS].onFulfilled = onFulfilled;
     }
-    if (typeof onRejected === "function") {
+    if (typeof onRejected === 'function') {
       promiseInstance[HANDLERS].onRejected = onRejected;
     }
     this[QUEUE].push(promiseInstance);
     process(this);
     return promiseInstance;
   }
-  
+
   catch(onRejected) {
     this.then(null, onRejected);
   }
 }
+
+const a = new MyPromise((resolve) => resolve(100));
+a.then((v) => console.log(v));
+const b = new MyPromise((resolve) => setTimeout(()=>{resolve(200)}, 1000));
+b.then((v) => console.log(v));
+const c = new MyPromise((_, reject) => setTimeout(()=>{reject(300)}, 2000));
+c.catch((v) => console.log(v));
+console.log('start');
+
+// 100
+// start
+// 200
+// 300
 ```
 
 ## Promise.all
