@@ -324,17 +324,10 @@ const QUEUE = Symbol('queue');
 const STATE = Symbol('state');
 const VALUE = Symbol('value');
 
-class Handlers {
-  constructor() {
-    this.onFulfilled = null;
-    this.onRejected = null;
-  }
-}
-
 class MyPromise {
   constructor(executor) {
     this[QUEUE] = [];
-    this[HANDLERS] = new Handlers();
+    this[HANDLERS] = { onFulfilled: null, onRejected: null };
     this[STATE] = PENDING;
     this[VALUE] = null;
 
