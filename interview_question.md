@@ -315,30 +315,21 @@ console.log('start');
 // 300
 ```
 ```js
-const PENDING = 'PENDING';
-const FULFILLED = 'FULFILLED';
-const REJECTED = 'REJECTED';
-
-const HANDLERS = Symbol('handlers');
-const QUEUE = Symbol('queue');
-const STATE = Symbol('state');
-const VALUE = Symbol('value');
-
 class MyPromise {
   constructor(executor) {
-    this[QUEUE] = [];
-    this[HANDLERS] = { onFulfilled: null, onRejected: null };
-    this[STATE] = PENDING;
-    this[VALUE] = null;
+    this.QUEUE = [];
+    this.HANDLERS = { onFulfilled: null, onRejected: null };
+    this.STATE = 'PENDING'; // 'PENDING' | 'FULFILLED' | 'REJECTED'
+    this.VALUE = null;
 
     if (typeof executor === 'function') {
       try {
         executor(
-          (value) => this.transitionAndProcess(FULFILLED, value),
-          (reason) => this.transitionAndProcess(REJECTED, reason),
+          (value) => this.transitionAndProcess('FULFILLED', value),
+          (reason) => this.transitionAndProcess('REJECTED', reason),
         );
       } catch (err) {
-        this.transitionAndProcess(REJECTED, err);
+        this.transitionAndProcess('REJECTED', err);
       }
     } else {
       throw new TypeError(`Promise resolver ${executor} is not a function`);
@@ -347,34 +338,34 @@ class MyPromise {
 
   // private
   transitionAndProcess(state, value) {
-    if (this[STATE] === state || this[STATE] !== PENDING) return;
-    this[STATE] = state;
-    this[VALUE] = value;
+    if (this.STATE === state || this.STATE !== 'PENDING') return;
+    this.STATE = state;
+    this.VALUE = value;
 
     this.process();
   }
 
   // private
   process() {
-    if (this[STATE] === PENDING) return;
+    if (this.STATE === 'PENDING') return;
 
     const result = ((promise) => {
       let handler;
-      while (promise[QUEUE].length > 0) {
-        const thenablePromise = promise[QUEUE].shift();
-        if (promise[STATE] === FULFILLED) {
-          handler = thenablePromise[HANDLERS].onFulfilled || ((v) => v);
-        } else if (promise[STATE] === REJECTED) {
-          handler = thenablePromise[HANDLERS].onRejected
+      while (promise.QUEUE.length > 0) {
+        const thenablePromise = promise.QUEUE.shift();
+        if (promise.STATE === 'FULFILLED') {
+          handler = thenablePromise.HANDLERS.onFulfilled || ((v) => v);
+        } else if (promise.STATE === 'REJECTED') {
+          handler = thenablePromise.HANDLERS.onRejected
                     || ((r) => {
                       throw r;
                     });
         }
         try {
-          const x = handler(promise[VALUE]);
+          const x = handler(promise.VALUE);
           resolvePromise(thenablePromise, x);
         } catch (error) {
-          thenablePromise.transitionAndProcess(REJECTED, error);
+          thenablePromise.transitionAndProcess('REJECTED', error);
         }
       }
     })(this);
@@ -384,19 +375,19 @@ class MyPromise {
 
   then(onFulfilled, onRejected) {
     const promiseInstance = new MyPromise((resolve, reject) => {
-      if (this[STATE] === FULFILLED && typeof onFulfilled !== 'function') {
-        resolve(this[VALUE]);
-      } else if (this[STATE] === REJECTED && typeof onRejected !== 'function') {
-        reject(this[VALUE]);
+      if (this.STATE === 'FULFILLED' && typeof onFulfilled !== 'function') {
+        resolve(this.VALUE);
+      } else if (this.STATE === 'REJECTED' && typeof onRejected !== 'function') {
+        reject(this.VALUE);
       }
     });
     if (typeof onFulfilled === 'function') {
-      promiseInstance[HANDLERS].onFulfilled = onFulfilled;
+      promiseInstance.HANDLERS.onFulfilled = onFulfilled;
     }
     if (typeof onRejected === 'function') {
-      promiseInstance[HANDLERS].onRejected = onRejected;
+      promiseInstance.HANDLERS.onRejected = onRejected;
     }
-    this[QUEUE].push(promiseInstance);
+    this.QUEUE.push(promiseInstance);
     this.process();
     return promiseInstance;
   }
