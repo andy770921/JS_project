@@ -316,15 +316,15 @@ console.log('start');
 ```
 ```js
 class MyPromise {
-  constructor(executor) {
+  constructor(fn) {
     this.QUEUE = [];
     this.HANDLERS = { onFulfilled: null, onRejected: null };
     this.STATE = 'PENDING'; // 'PENDING' | 'FULFILLED' | 'REJECTED'
     this.VALUE = null;
 
-    if (typeof executor === 'function') {
+    if (typeof fn === 'function') {
       try {
-        executor(
+        fn(
           (value) => this.transitionAndProcess('FULFILLED', value),
           (reason) => this.transitionAndProcess('REJECTED', reason),
         );
@@ -332,7 +332,7 @@ class MyPromise {
         this.transitionAndProcess('REJECTED', err);
       }
     } else {
-      throw new TypeError(`Promise resolver ${executor} is not a function`);
+      throw new TypeError(`Promise resolver ${fn} is not a function`);
     }
   }
 
