@@ -356,10 +356,7 @@ class MyPromise {
         if (promise.STATE === 'FULFILLED') {
           handler = thenablePromise.HANDLERS.onFulfilled || ((v) => v);
         } else if (promise.STATE === 'REJECTED') {
-          handler = thenablePromise.HANDLERS.onRejected
-                    || ((r) => {
-                      throw r;
-                    });
+          handler = thenablePromise.HANDLERS.onRejected || ((r) => { throw r; });
         }
         try {
           const x = handler(promise.VALUE);
