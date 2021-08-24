@@ -359,24 +359,24 @@ class MyPromise {
   process() {
     if (this.STATE === 'PENDING') return;
 
-    const result = ((promise) => {
+    setTimeout(() => {
       let handler;
-      while (promise.QUEUE.length > 0) {
-        const thenablePromise = promise.QUEUE.shift();
-        if (promise.STATE === 'FULFILLED') {
+      while (this.QUEUE.length > 0) {
+        const thenablePromise = this.QUEUE.shift();
+        if (this.STATE === 'FULFILLED') {
           handler = thenablePromise.HANDLERS.onFulfilled || ((v) => v);
-        } else if (promise.STATE === 'REJECTED') {
+        } else if (this.STATE === 'REJECTED') {
           handler = thenablePromise.HANDLERS.onRejected || ((r) => { throw r; });
         }
         try {
-          const x = handler(promise.VALUE);
+          const x = handler(this.VALUE);
           thenablePromise.resolvePromise(x);
         } catch (error) {
           thenablePromise.transitionAndProcess('REJECTED', error);
         }
       }
-    })(this);
-    setTimeout(result);
+    });
+
     return this;
   }
 
@@ -455,8 +455,8 @@ sleep(3).then(() => {
     () => console.log(400),
   );
 
-// 0
 // start
+// 0
 // 100
 // 200
 // 300
