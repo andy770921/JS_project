@@ -386,7 +386,7 @@ class MyPromise {
       throw new TypeError('TypeError: Chaining cycle detected for promise');
     }
     let called;
-    if (x && (typeof x === 'function' || typeof x === 'object')) {
+    if (typeof x === 'function' || typeof x === 'object') {
       try {
         const thenFunction = x.then;
         if (thenFunction && typeof thenFunction === 'function') {
