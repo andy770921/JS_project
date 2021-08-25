@@ -916,27 +916,62 @@ output: {TreeNode} root
 ```
 - Q:
 ```js
- function TreeNode(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
- }
+function TreeNode(val) {
+  this.val = val;
+  this.left = null;
+  this.right = null;
+}
 
- function arrayToBinaryTree(array) {
-    // TODOS
- }
+function arrayToBinaryTree(array) {
+  // TODOS
+}
 ```
 - A:
 ```js
- function TreeNode(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
- }
+function TreeNode(val) {
+  this.val = val;
+  this.left = null;
+  this.right = null;
+}
 
- function arrayToBinaryTree(array) {
-    // TODOS
- }
+function arrayToBinaryTree(array) {
+  const root = new TreeNode(array.shift());
+  const parentQueue = [root];
+  
+  while(parentQueue.length > 0){
+    const currentParent = parentQueue.shift();
+    if(array.length > 0){
+      const leftValue = array.shift();
+      const leftChild =  leftValue ? new TreeNode(leftValue) : null;
+      currentParent.left = leftChild;
+      parentQueue.push(leftChild);
+    }
+    if(array.length > 0){
+      const rightValue = array.shift();
+      const rightChild =  rightValue ? new TreeNode(rightValue) : null;
+      currentParent.right = rightChild;
+      parentQueue.push(rightChild);
+    }
+  }
+  return root;
+}
+
+console.log(arrayToBinaryTree([3,9,1,null,null,7,17]));
+/*
+ {
+  left: {
+    left: null,
+    right: null,
+    val: 9
+  },
+  right: {
+    left:  { val: 7, left: null, right: null },
+    right: { val: 17, left: null, right: null },
+    val: 1
+  },
+  val: 3
+}
+*/
 ```
 
 # 網路
