@@ -943,13 +943,17 @@ function arrayToBinaryTree(array) {
     if(array.length > 0){
       const leftValue = array.shift();
       const leftChild =  leftValue ? new TreeNode(leftValue) : null;
-      currentParent.left = leftChild;
+      if(currentParent !== null) {
+        currentParent.left = leftChild;
+      }
       parentQueue.push(leftChild);
     }
     if(array.length > 0){
       const rightValue = array.shift();
       const rightChild =  rightValue ? new TreeNode(rightValue) : null;
-      currentParent.right = rightChild;
+      if(currentParent !== null) {
+        currentParent.right = rightChild;
+      }
       parentQueue.push(rightChild);
     }
   }
@@ -966,6 +970,19 @@ console.log(arrayToBinaryTree([3,9,1,null,null,7,17]));
   },
   right: {
     left:  { val: 7, left: null, right: null },
+    right: { val: 17, left: null, right: null },
+    val: 1
+  },
+  val: 3
+}
+*/
+
+console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
+/*
+ {
+  left: null,
+  right: {
+    left:  null,
     right: { val: 17, left: null, right: null },
     val: 1
   },
