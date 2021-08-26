@@ -903,9 +903,9 @@ console.log(ThreeSum([12, 3, 1, -5, -4, 7])); // false
 and a TreeNode function:
 ```js
 function TreeNode(val) {
-     this.val = val;
-     this.left = null;
-     this.right = null;
+  this.val = val;
+  this.left = null;
+  this.right = null;
 }
 ```
 write a function which transfer array into binary tree.
