@@ -192,7 +192,7 @@ console.log(boundGetElem.apply(b, 10));  // TypeError: CreateListFromArrayLike c
 ```
 ## this, expression statement, and comma
 - Ref: https://github.com/mqyqingfeng/Blog/issues/7
-- Ref2: https://github.com/aszx87410/blog/issues/39?fbclid=IwAR3lBkCCba53zGAKCactSgz3bOeFqVA7XRlA5FJljGWasJO7Ro3C1o08nZc
+- Ref2: https://github.com/aszx87410/blog/issues/39
 ```js
 var value = 1;
 
