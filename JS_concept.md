@@ -265,6 +265,17 @@ https://stackoverflow.com/questions/48433008/js-es6-destructuring-of-undefined
     } = data || { shopCategoryList: { categoryList: [] } };
     console.log(categoryList); // []
 ```
+
+```js
+const createElement = (tagName, { attrs = {}, children = [] } = {}) => {
+  return {
+    tagName,
+    attrs,
+    children,
+  };
+};
+```
+
 ```js
 const defaultButtonStyle = { x: 'styleX', y: 'styleY' };
 
