@@ -370,6 +370,17 @@ console.log(solutionThree(possibleInputStyle4)); // {x: "styleX", y: "styleY"}
 console.log(solutionThree(possibleInputStyle5)); // {x: "styleX", y: "styleY"}
 console.log(solutionThree(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
 
+const solutionFour =  ({ button: { x = 'styleX', y = 'styleY' } = {} } = {}) => {
+    return { x, y };
+};
+
+console.log(solutionFour(possibleInputStyle1)); // {x: "customX", y: "customY"}
+console.log(solutionFour(possibleInputStyle2)); // {x: "customX", y: "customY"}
+console.log(solutionFour(possibleInputStyle3)); // {x: "styleX", y: "styleY"}
+console.log(solutionFour(possibleInputStyle4)); // {x: "styleX", y: "styleY"}
+console.log(solutionFour(possibleInputStyle5)); // {x: "", y: "styleY"}
+console.log(solutionFour(possibleInputStyle6)); // {x: "styleX", y: "styleY"}
+
 ```
 
 ## hoisting 提升
