@@ -34,6 +34,10 @@ app.listen(3000);
 ```
 ### 無法在 a 網域讀取到 b 網域的 cookie
 - https://stackoverflow.com/questions/29474873/third-party-cookies-using-jquery-cookie
+
+### fetch(url, { mode: 'no-cors'}) 使用時機
+- https://stackoverflow.com/questions/43262121/trying-to-use-fetch-and-pass-in-mode-no-cors
+- https://stackoverflow.com/questions/39109789/what-limitations-apply-to-opaque-responses/39109790#39109790
 ## HTTP Cache
 https://blog.techbridge.cc/2017/06/17/cache-introduction/
 ## HTTPS 的加密
