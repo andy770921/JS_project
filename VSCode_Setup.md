@@ -239,11 +239,11 @@ git config user.name "YOUR NAME"
 git config user.email "YOUR EMAIL"
 ```
 
-## Git 合併 commit:
+## Git 合併 / 刪除 commit:
 
 1. `git rebase -i xxxx`，xxxx 為 commit 編號，如 c43f1a5d。Note: 這個 commit 需要是最終不會動到的 commit
 2. 此時終端機，會列出一串 1. commit 之後的所有 commit，由舊到新，從上往下排
-3. 按 `a`，最舊的 commit 維持前綴 `pick`，需要被合併的 commit 加前綴 `squash`，較晚的（排列在下的）commit 會合併到較早的。 
+3. 按 `a`，最舊的 commit 維持前綴 `pick`，需要被合併的 commit 加前綴 `squash`，較晚的（排列在下的）commit 會合併到較早的，需要被刪除的 commit 加前綴 `drop`。 
 4. 按 `ESC`，`:wq` 存檔並離開
 5. 會自動跳出 Vim 介面，自行輸入新 commit 名稱
 
