@@ -24,6 +24,10 @@ https://blog.techbridge.cc/2019/01/26/functional-css/
 
 https://www.youtube.com/watch?v=pKO1ktPQByk
 
+## 使用純 css 配合留言建議的 `:focus-within` 做出 dropdown:
+
+https://www.youtube.com/watch?v=S-VeYcOCFZw
+
 ## @media (hover) { //... }
 
 - https://youtu.be/5DEq5cWNYt8?t=2587
