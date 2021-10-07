@@ -31,7 +31,6 @@
 2. [AJAX, Promise 實作, 與 Cookie](https://github.com/andy770921/JS_project/blob/master/AJAX_note.md)
 3. [JS 中的 this, class, prototype](https://github.com/andy770921/JS_project/blob/master/this.md)
 4. [JS 中的 higher order function](https://github.com/andy770921/JS_project/blob/master/higher-order-fn.md)
-5. [JS 中的 promise](https://github.com/andy770921/JS_project/blob/master/promise.md)
 
 ### TypeScript
 
