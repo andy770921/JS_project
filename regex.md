@@ -1,6 +1,7 @@
 # 正規表達式筆記
 
 ## 保哥課程投影片
+- Ref: https://www.facebook.com/will.fans/videos/912301399711805
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_reg/reg_0.png"/>
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs_reg/reg_1.png"/>
