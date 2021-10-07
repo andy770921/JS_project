@@ -51,6 +51,7 @@
 11. [網頁效能與 SEO](https://github.com/andy770921/JS_project/blob/master/speed-and-seo.md)
 12. [進階前端知識](https://f2e.kalan.dev/)
 13. [git 指令實作教學網](https://learngitbranching.js.org/)
+14. [正規表達式](https://github.com/andy770921/JS_project/blob/master/regex.md)
 
 ## Airbnb JavaScript Style Guide
 
