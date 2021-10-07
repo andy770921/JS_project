@@ -8,7 +8,7 @@
 // https://docs.mongodb.com/realm/mongodb/actions/collection.find/
 
 exports = async function(payload, response) {
-    const itemsInDB = await context.services.get('mongodb-atlas').db('lang').collection('ulsee360-frontend').find({}).toArray();
+    const itemsInDB = await context.services.get('mongodb-atlas').db('lang').collection('A_SERVICE').find({}).toArray();
     
     // JSON.parse and JSON.stringify is for removing "_id":{"$oid":"5f86ad1b818c000fb71f05d0"}
     const standardItems = JSON.parse(JSON.stringify(itemsInDB)).map(({_id, ...params}) => ({id: _id, ...params}))
