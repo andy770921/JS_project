@@ -12,11 +12,11 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
 - https://github.com/nvm-sh/nvm
 ## 3. 用命令提示字元下載與安裝 nodeJS  
    a. 輸入 `nvm list` 確認電腦中的 NodeJS 版本  
-   b. 輸入 `nvm list available` 確認網路上可下載的、穩定版 ( LTS ) 的 NodeJS 版本  
-   c. 輸入 `nvm install 10.15.3` 下載穩定版 ( LTS ) 的 NodeJS 版本  
+   b. 輸入 `nvm ls-remote` 確認網路上可下載的、穩定版 ( LTS ) 的 NodeJS 版本  
+   c. 輸入 `nvm install 14.18.0` 下載穩定版 ( LTS ) 的 NodeJS 版本 
    d. 再輸入 `nvm list` 確認電腦中的NodeJS版本  
    e. 輸入 `nvm use 10.15.3` 切換到該版本  
-   f. 輸入 `nvm alias default v10.19.0` 設定預設版本  
+   f. 輸入 `nvm alias default v14.18.0` 設定預設版本  
    NOTE: 可按 node -v 確認有無裝好 nodeJS    
    NOTE: 此時也會裝好 npm (node JS 套件管理工具)    
          可按npm -v確認有無版本號出現    
