@@ -237,6 +237,10 @@ https://learngitbranching.js.org/?locale=zh_TW
 ```
 git config user.name "YOUR NAME"
 git config user.email "YOUR EMAIL"
+
+// 若需要 global
+git config --global user.name "YOUR NAME"
+git config --global user.email "YOUR EMAIL"
 ```
 
 ## Git 合併 / 刪除 commit:
