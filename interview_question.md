@@ -115,7 +115,7 @@ Object.defineProperty(Student.prototype, "constructor", {
 
 const Tom = new Student();
 
-console.log(Tom.__proto__ === Tom.prototype); // true
+console.log(Tom.__proto__ === Student.prototype); // true
 console.log(Student.prototype.__proto__ === Person.prototype); // true
 console.log(Person.prototype.__proto__ === Object.prototype); // true
 console.log(Object.prototype.__proto__); // null
