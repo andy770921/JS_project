@@ -40,7 +40,22 @@ https://stackoverflow.com/questions/55230653/whats-the-difference-between-typesc
 ```
 <CheckedIconArea<T> />
 ```
+## is 的使用：用於函式回傳型別後的補充。如果回傳值是 ture，輸入 params 就會是 is 後的型別 
+```ts
+// BAD:
+  const personBirth = (
+    (data.list as (IPerson | IApple)[]).find(
+      item => item.type === 'some_person'
+    ) as IPerson
+  )?.birth_date;
 
+// GOOD:
+  const personBirth = (
+    data.list as (IPerson | IApple)[]
+  ).find(
+    (item): item is IPerson => item.type === 'insured_person'
+  )?.birth_date;
+```
 ## class 擴充語法
 
 - class field 需宣告型別，JS 不用
