@@ -40,7 +40,8 @@ https://stackoverflow.com/questions/55230653/whats-the-difference-between-typesc
 ```
 <CheckedIconArea<T> />
 ```
-## is 的使用：用於函式回傳型別後的補充。如果回傳值是 ture，輸入 params 就會是 is 後的型別 
+## is 的使用：
+- 用於函式回傳型別後的補充。如果回傳值是 ture，輸入 params 就會是 is 後的型別
 ```ts
 // BAD:
   const personBirth = (
