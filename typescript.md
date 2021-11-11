@@ -72,18 +72,8 @@ interface IApple {
 }
 const listFromApi =
   Math.random() > 0.5
-    ? [
-        {
-          type: 'person',
-          birth_date: '2000/01/01',
-        },
-      ]
-    : [
-        {
-          type: 'fruit',
-          color: 'red',
-        },
-      ];
+    ? [{ type: 'person', birth_date: '2000/01/01' }]
+    : [{ type: 'fruit', color: 'red' }];
 
 // BAD but OK to pass:
   const personBirth = (
