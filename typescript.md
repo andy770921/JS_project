@@ -76,10 +76,10 @@ const listFromApi =
     : [{ type: 'fruit', color: 'red' }];
 
 // BAD but working:
-const personBirth = ((listFromApi as (IPerson | IApple)[]).find(item => item.type === 'person') as IPerson)?.birth_date;
+const birthDate = ((listFromApi as (IPerson | IApple)[]).find(item => item.type === 'person') as IPerson)?.birth_date;
 
 // GOOD:
-const personBirth = (listFromApi as (IPerson | IApple)[]).find(
+const birthDate = (listFromApi as (IPerson | IApple)[]).find(
   (item): item is IPerson => item.type === 'person'
 )?.birth_date;
 ```
