@@ -61,10 +61,20 @@ const d = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(b);
 // OK
 ```
 ```ts
+interface IPerson {
+  type: 'person';
+  birth_date: string;
+}
+
+interface IApple {
+  type: 'person';
+  color: string;
+}
+
 // BAD:
   const personBirth = (
     (data.list as (IPerson | IApple)[]).find(
-      item => item.type === 'some_person'
+      item => item.type === 'person'
     ) as IPerson
   )?.birth_date;
 
