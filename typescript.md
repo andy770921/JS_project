@@ -41,7 +41,22 @@ https://stackoverflow.com/questions/55230653/whats-the-difference-between-typesc
 <CheckedIconArea<T> />
 ```
 ## is 的使用：
-- 用於函式回傳型別後的補充。如果回傳值是 ture，輸入 params 就會是 is 後的型別
+- 用於函式輸入型別的補充。如果回傳值是 ture，輸入 params 就會是 is 後的型別
+```ts
+enum STATE {
+  DRAFT = 'draft',
+  DONE = 'done',
+}
+
+const isQuotationState = (state: any): state is STATE =>
+  Object.values(STATE).includes(state);
+
+const a = Math.random() > 0.5 ? 'unknown' : STATE.DONE;
+const b = isQuotationState(a) ? a : STATE.DRAFT;
+
+const c = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(a); // 類型 '"unknown" | STATE.DONE' 的引數不可指派給類型 'STATE' 的參數。
+const d = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(b); // OK
+```
 ```ts
 // BAD:
   const personBirth = (
