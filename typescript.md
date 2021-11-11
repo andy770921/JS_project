@@ -54,8 +54,11 @@ const isQuotationState = (state: any): state is STATE =>
 const a = Math.random() > 0.5 ? 'unknown' : STATE.DONE;
 const b = isQuotationState(a) ? a : STATE.DRAFT;
 
-const c = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(a); // 類型 '"unknown" | STATE.DONE' 的引數不可指派給類型 'STATE' 的參數。
-const d = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(b); // OK
+const c = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(a);
+// 類型 '"unknown" | STATE.DONE' 的引數不可指派給類型 'STATE' 的參數。
+
+const d = [QUOTATION_STATE.DONE, QUOTATION_STATE.PENDING].includes(b);
+// OK
 ```
 ```ts
 // BAD:
