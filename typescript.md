@@ -75,19 +75,13 @@ const listFromApi =
     ? [{ type: 'person', birth_date: '2000/01/01' }]
     : [{ type: 'fruit', color: 'red' }];
 
-// BAD but OK to pass:
-  const personBirth = (
-    (listFromApi as (IPerson | IApple)[]).find(
-      item => item.type === 'person'
-    ) as IPerson
-  )?.birth_date;
+// BAD but working:
+const personBirth = ((listFromApi as (IPerson | IApple)[]).find(item => item.type === 'person') as IPerson)?.birth_date;
 
 // GOOD:
-  const personBirth = (
-    listFromApi as (IPerson | IApple)[]
-  ).find(
-    (item): item is IPerson => item.type === 'person'
-  )?.birth_date;
+const personBirth = (listFromApi as (IPerson | IApple)[]).find(
+  (item): item is IPerson => item.type === 'person'
+)?.birth_date;
 ```
 ## class 擴充語法
 
