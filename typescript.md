@@ -67,22 +67,36 @@ interface IPerson {
 }
 
 interface IApple {
-  type: 'person';
+  type: 'fruit';
   color: string;
 }
+const listFromApi =
+  Math.random() > 0.5
+    ? [
+        {
+          type: 'person',
+          birth_date: '2000/01/01',
+        },
+      ]
+    : [
+        {
+          type: 'fruit',
+          color: 'red',
+        },
+      ];
 
-// BAD:
+// BAD but OK to pass:
   const personBirth = (
-    (data.list as (IPerson | IApple)[]).find(
+    (listFromApi as (IPerson | IApple)[]).find(
       item => item.type === 'person'
     ) as IPerson
   )?.birth_date;
 
 // GOOD:
   const personBirth = (
-    data.list as (IPerson | IApple)[]
+    listFromApi as (IPerson | IApple)[]
   ).find(
-    (item): item is IPerson => item.type === 'insured_person'
+    (item): item is IPerson => item.type === 'person'
   )?.birth_date;
 ```
 ## class 擴充語法
