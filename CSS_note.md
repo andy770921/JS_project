@@ -1346,6 +1346,13 @@ input:-webkit-autofill:active
  -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 ```
+## 修正 input 元素在 safari ios 的 disable 樣式:
+- https://codepen.io/mr72/pen/BadbarJ
+
+## css var 和主題:
+- https://zpl.io/aRk0OMN
+- https://zpl.io/awlxKqn
+
 ## 面試實作題:
 1. 設計動畫，紅圓形在畫面右上，移到中間，再上下晃動
 - `animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state;`
