@@ -20,7 +20,10 @@ https://hackmd.io/@jackblackevo/rkcdqrh8-#Stale-props-and-zombie-children-in-Red
 - https://blog.isquaredsoftware.com/2020/01/blogged-answers-react-redux-and-context-behavior/
 - https://blog.isquaredsoftware.com/2021/01/context-redux-differences/
 - https://blog.isquaredsoftware.com/2018/03/redux-not-dead-yet/
-- 
+
+## PJChen: Redux 留意那些過去常被視為理所當然的事
+- https://pjchender.dev/webdev/note-without-redux/
+
 ## Redux 官網 及 Redux in Action 書
 ```
 An example folder structure might look something like:
