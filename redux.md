@@ -16,6 +16,11 @@ https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux#unstable_batch
 https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux  
 https://hackmd.io/@jackblackevo/rkcdqrh8-#Stale-props-and-zombie-children-in-Redux  
 
+## Redux 不能被取代的說明
+- https://blog.isquaredsoftware.com/2020/01/blogged-answers-react-redux-and-context-behavior/
+- https://blog.isquaredsoftware.com/2021/01/context-redux-differences/
+- https://blog.isquaredsoftware.com/2018/03/redux-not-dead-yet/
+- 
 ## Redux 官網 及 Redux in Action 書
 ```
 An example folder structure might look something like:
