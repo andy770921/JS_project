@@ -5,6 +5,9 @@ https://app.codacy.com/projects
 ## Ryan React 筆記
 https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
 
+## CH Concurrent mode 筆記
+https://lch9487.medium.com/react-concurrent-mode-4cc81aa33785
+
 ## 實作 React
 1. https://pomb.us/build-your-own-react/
 2. COSCUP: https://youtu.be/fqdOAPLLueo
