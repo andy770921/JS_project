@@ -259,6 +259,19 @@ const ToastContainer = styled.div<{ customStyle?: CSSProperties; yAxisOrder: num
 `;
 ```
 
+```ts
+import styled, { css } from 'styled-components';
+
+const InfoListItem = styled.li<{ $isHighlighted?: boolean }>`
+  margin-bottom: 0.5rem;
+  ${props =>
+    props.$isHighlighted &&
+    css`
+      color: ${props.theme.RED};
+    `}
+`;
+```
+
 ## Hover ul 名稱後，後打開 li 列表
 ```ts
 const NavDropDownBox = styled.ul`
