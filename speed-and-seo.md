@@ -130,5 +130,62 @@ https://www.busbud.com/blog/debug-ios-safari-mac/
 - safari 100vh 替代方案：https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/
 - safari 100vh 替代方案：https://github.com/postcss/postcss-100vh-fix
 
+- safari 使用 `document.body.style.overflowY = 'hidden';` 仍可捲動 body 卷軸，解法如下
+```ts
+// Sol 1:
+// reference: https://stackoverflow.com/questions/3047337/does-overflowhidden-applied-to-body-work-on-iphone-safari
+import { useEffect } from 'react';
+
+export default function useBlockDocumentScroll(shouldBlockScroll) {
+  useEffect(() => {
+    if (shouldBlockScroll) {
+      const _initialOverflowStyle = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      /* fix for ios safari */
+      document.body.style['touch-action'] = 'none';
+      document.body.style['-ms-touch-action'] = 'none';
+      return () => {
+        document.body.style.overflow = _initialOverflowStyle;
+        document.body.style['touch-action'] = '';
+        document.body.style['-ms-touch-action'] = '';
+      };
+    }
+
+    return null;
+  }, [shouldBlockScroll]);
+  return null;
+}
+```
+```ts
+// Sol 2:
+// reference: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
+import { useEffect } from 'react';
+
+const useFixScroll = (enableFix: boolean) => {
+  useEffect(() => {
+    const x = window.scrollX;
+    const y = window.scrollY;
+
+    const fixScroll = () => {
+      window.scrollTo(x, y);
+    };
+
+    if (enableFix) {
+      document.addEventListener('scroll', fixScroll);
+    }
+    return () => {
+      if (enableFix) {
+        document.removeEventListener('scroll', fixScroll);
+      }
+    };
+  }, [enableFix]);
+};
+
+export default useFixScroll;
+```
+
+
+
 ## SEO 檢測標準
 
