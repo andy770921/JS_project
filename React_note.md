@@ -429,6 +429,9 @@ export default MainComponent;
 2. https://kaihao.dev/posts/Stale-props-and-zombie-children-in-Redux?fbclid=IwAR2DzAFYbIn3offrloT1nYX1MXagALLfQ3kSvFghzMaTNfKiqmz52mZ9Khs
 3. https://hackmd.io/@jackblackevo/rkcdqrh8-?fbclid=IwAR2NqkGYVGlMOp3g94ElR-gz_rizmLIZ7IPgncJv_gfID6j8HwZiEQ_zPIo#Stale-props-and-zombie-children-in-Redux
 
+## react-hook-form yup
+https://pjchender.dev/npm/npm-yup/
+
 ## Resize 時，隱藏漢堡選單
 ```js
 componentDidMount = () => {
