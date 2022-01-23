@@ -1012,9 +1012,7 @@ console.log(ThreeSum([12, 3, 1, -5, -4, 7])); // false
 - https://leetcode.com/problems/subsets/
 - Q:  
 Given an integer array `nums` of unique elements, return all possible subsets (the power set).
-
 The solution set must not contain duplicate subsets. Return the solution in any order.
-
 Examples  
 Input: `[1,2,3]` 
 Output: `[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]` 
