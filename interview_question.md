@@ -1013,11 +1013,11 @@ console.log(ThreeSum([12, 3, 1, -5, -4, 7])); // false
 - Q:  
 Given an integer array `nums` of unique elements, return all possible subsets (the power set).
 The solution set must not contain duplicate subsets. Return the solution in any order.
-Examples  
-Input: `[1,2,3]` 
-Output: `[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]` 
-Input: `[0]`  
-Output: `[[],[0]]`  
+Examples    
+Input: `[1,2,3]`    
+Output: `[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]`   
+Input: `[0]`   
+Output: `[[],[0]]`    
 
 ```js
 var subsets = function(nums) { 
@@ -1025,7 +1025,7 @@ var subsets = function(nums) {
 }
  
 ```
-- A: 暴力解，`[] ==> [1],[2],[3] ==> [1,2],[1,3],[2,3] ==> [1,2,3]` 
+- A: 暴力解，依序找出 `[] ==> [1],[2],[3] ==> [1,2],[1,3],[2,3] ==> [1,2,3]` 
 ```js
 var subsets = function(nums) {
   const allPossibilityList = nums;  
