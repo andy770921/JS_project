@@ -1008,6 +1008,57 @@ function ThreeSum(arr) {
 console.log(ThreeSum([10, 2, 3, 1, 5, 3, 1, 4, -4, -3, -2])); // true
 console.log(ThreeSum([12, 3, 1, -5, -4, 7])); // false
 ```
+## LeetCode - 78. Subsets (Medium)
+- https://leetcode.com/problems/subsets/
+- Q:  
+Given an integer array `nums` of unique elements, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+Examples  
+Input: `[1,2,3]` 
+Output: `[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]` 
+Input: `[0]`  
+Output: `[[],[0]]`  
+
+```js
+var subsets = function(nums) { 
+  // code goes here  
+}
+ 
+```
+- A: 暴力解，`[] ==> [1],[2],[3] ==> [1,2],[1,3],[2,3] ==> [1,2,3]` 
+```js
+var subsets = function(nums) {
+  const allPossibilityList = nums;  
+  let answerBatch = nums.map((num) => [num]); 
+  // Ex: answerBatch = [[1],[2],[3],[4]];
+  let ans = [[]];
+  
+  while(ans[ans.length - 1].length < nums.length){
+    ans = [...ans, ...answerBatch];
+    
+    const nextAnswerBatch = answerBatch.reduce((acc, cur) => {
+      const appendList = allPossibilityList.filter((_, index) =>{
+        const lastElement = cur[cur.length - 1];
+        return index > allPossibilityList.indexOf(lastElement);
+      })
+
+      appendList.forEach((appendItem) => {
+        acc = [...acc, [...cur, appendItem]];
+      })
+      
+      return acc;
+    }, []);
+
+    answerBatch = nextAnswerBatch;
+  }
+    
+  return ans;
+};
+
+```
+
 # 資料結構
 
 ## Array Tree Conversion
