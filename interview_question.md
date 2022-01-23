@@ -1025,7 +1025,7 @@ var subsets = function(nums) {
 }
  
 ```
-- A: 暴力解，依序找出 `[] ==> [1],[2],[3] ==> [1,2],[1,3],[2,3] ==> [1,2,3]` 
+- A1: 暴力解，依序找出 `[] ==> [1],[2],[3] ==> [1,2],[1,3],[2,3] ==> [1,2,3]` 
 ```js
 var subsets = function(nums) {
   const allPossibilityList = nums;  
@@ -1055,8 +1055,24 @@ var subsets = function(nums) {
   return ans;
 };
 
+console.log(subsets([1,2,3]));
+// [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 ```
+- A2:
+```js
+var subsets = function(nums) {
+  const res = [[]];
+    
+  for (const num of nums) {
+    res.push(...res.map(x => [...x, num]));
+  }
+  
+  return res;
+};
 
+console.log(subsets([1,2,3]));
+// [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+```
 # 資料結構
 
 ## Array Tree Conversion
