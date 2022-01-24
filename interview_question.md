@@ -1056,7 +1056,7 @@ var subsets = function(nums) {
 console.log(subsets([1,2,3]));
 // [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 ```
-- A2:
+- A2: using stack
 ```js
 var subsets = function (nums) {
   const firstIndexList = [0];
@@ -1097,6 +1097,27 @@ var subsets = function(nums) {
   
   return res;
 };
+
+console.log(subsets([1,2,3]));
+// [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+```
+- A4:
+```js
+function subsets(nums) {
+  const result = [[]];
+  for (const currentEle of nums) {
+    /**
+     * Set is currentEle added to the current result;
+     * [[],[a]] new is b
+     * [[], [a], [b], [a,b]]
+     * */
+    const initialLength = result.length;
+    for (let i = 0; i < initialLength; i++) {
+      result.push([...result[i], currentEle]);
+    }
+  }
+  return result;
+}
 
 console.log(subsets([1,2,3]));
 // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
