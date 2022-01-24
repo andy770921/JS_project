@@ -1037,10 +1037,8 @@ var subsets = function(nums) {
     ans = [...ans, ...answerBatch];
     
     const nextAnswerBatch = answerBatch.reduce((acc, cur) => {
-      const appendList = allPossibilityList.filter((_, index) =>{
-        const lastElement = cur[cur.length - 1];
-        return index > allPossibilityList.indexOf(lastElement);
-      })
+      const lastElement = cur[cur.length - 1];
+      const appendList = allPossibilityList.slice(allPossibilityList.indexOf(lastElement) + 1);
 
       appendList.forEach((appendItem) => {
         acc = [...acc, [...cur, appendItem]];
