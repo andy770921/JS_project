@@ -1574,13 +1574,13 @@ function findThreeTimesStrList(str){
 console.log(findThreeTimesStrList('abcdefffeee')); // ['e', 'f']
 console.log(findThreeTimesStrList('abcdefdefdefggg')); // ['g', 'def']
 ```
-- A2: use stack to find subset string 
+- A2: use stack to find substring 
 ```js
 function removeSameChildren(arr) {
   return [...new Set(arr)];
 }
 
-function subsetsOf(arr) {
+function substringOf(arr) {
   const firstIndexList = [0];
   const stack = [];
   const ans = [];
@@ -1602,7 +1602,7 @@ function subsetsOf(arr) {
 };
 
 function findThreeTimesStrList(str){
-  const strSubsetList = removeSameChildren(subsetsOf(str.split('')));
+  const strSubsetList = removeSameChildren(substringOf(str.split('')));
   return strSubsetList.filter((s, _idx, list) => list.includes(s + s + s))
 }
 
