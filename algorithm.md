@@ -1594,7 +1594,6 @@ function subsetsOf(arr) {
       
     if (lastItem < arr.length - 1) {
       stack.push([lastItem + 1]);
-
       stack.push([...indexList, lastItem + 1]);
     }
   }
