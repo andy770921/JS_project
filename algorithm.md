@@ -1602,8 +1602,8 @@ function substringOf(arr) {
 };
 
 function findThreeTimesStrList(str){
-  const strSubsetList = removeSameChildren(substringOf(str.split('')));
-  return strSubsetList.filter((s, _idx, list) => list.includes(s + s + s))
+  const substringList = removeSameChildren(substringOf(str.split('')));
+  return substringList.filter((s, _idx, list) => list.includes(s + s + s))
 }
 
 console.log(findThreeTimesStrList('abcdefffghghghee')); // ['gh', 'f'] 
