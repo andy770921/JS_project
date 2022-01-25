@@ -1574,3 +1574,38 @@ function findThreeTimesStrList(str){
 console.log(findThreeTimesStrList('abcdefffeee')); // ['e', 'f']
 console.log(findThreeTimesStrList('abcdefdefdefggg')); // ['g', 'def']
 ```
+- A2: use subset 
+```js
+function removeSameChildren(arr) {
+  return [...new Set(arr)];
+}
+
+function subsetsOf(arr) {
+  const firstIndexList = [0];
+  const stack = [];
+  const ans = [];
+
+  stack.push(firstIndexList);
+  while (stack.length > 0) {
+    const indexList = stack.pop();
+    const lastItem = indexList[indexList.length - 1];
+
+    ans.push(indexList.map((i) => arr[i]).join(''));
+      
+    if (lastItem < arr.length - 1) {
+      stack.push([lastItem + 1]);
+
+      stack.push([...indexList, lastItem + 1]);
+    }
+  }
+
+  return ans;
+};
+
+function findThreeTimesStrList(str){
+  const strSubsetList = removeSameChildren(subsetsOf(str.split('')));
+  return strSubsetList.filter((s, _idx, list) => list.includes(s + s + s))
+}
+
+console.log(findThreeTimesStrList('abcdefffghghghee')); // ['gh', 'f'] 
+```
