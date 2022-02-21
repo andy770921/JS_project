@@ -1443,3 +1443,22 @@ export default Modal;
 
 ## Tutorial
 - https://www.youtube.com/watch?v=Sklc_fQBmcs
+
+## React Query 筆記
+- default query fn (https://tkdodo.eu/blog/react-query-and-type-script):
+```ts
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      queryFn: async ({ queryKey: [url] }) => {
+        // ✅ narrow the type of url to string so that we can work with it
+        if (typeof url === 'string') {
+          const { data } = await axios.get(`${baseUrl}/${url.toLowerCase()}`)
+          return data
+        }
+        throw new Error('Invalid QueryKey')
+      },
+    },
+  },
+})
+```
