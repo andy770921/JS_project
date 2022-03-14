@@ -310,5 +310,7 @@ const response400 = (error) => {
   console.log('安安，你是不是給了我奇怪的東西？');
 };
 ```
+## 疊代器模式 Iterator
+- 與責任鏈模式有些相似：https://pjchender.dev/pattern/design-pattern-iterator/
 ## Factory
 - Error example by TS class: https://www.youtube.com/watch?v=zpwrmMgGz3w
