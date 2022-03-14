@@ -312,5 +312,9 @@ const response400 = (error) => {
 ```
 ## 疊代器模式 Iterator
 - 與責任鏈模式有些相似：https://pjchender.dev/pattern/design-pattern-iterator/
+
+## 策略模式 Strategy
+- https://pjchender.dev/pattern/design-pattern-strategy
+
 ## Factory
 - Error example by TS class: https://www.youtube.com/watch?v=zpwrmMgGz3w
