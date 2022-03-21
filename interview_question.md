@@ -1429,3 +1429,12 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 - 解法：後端檢查 referer ( Request 的 Header 裡面會帶一個欄位叫做 referer，代表這個 request 是從哪個地方過來的 )
 - 其他解法：加上圖形驗證碼、簡訊驗證碼，加上 CSRF token，Double Submit Cookie，Cookie 加入 `SameSite: Lax`
 
+# 系統設計
+## grokking the system design interview
+- original: https://www.educative.io/courses/grokking-the-system-design-interview
+- 中文序: https://juejin.cn/post/7051577356754812965
+- 中文第一章 - 短網址: 
+ 1. https://juejin.cn/post/6844903967256739847
+ 2. https://juejin.cn/post/6844903976006057991
+ 3. https://juejin.cn/post/6844903983404810247
+ 4. https://juejin.cn/post/6844903992212848648
