@@ -828,6 +828,50 @@ https://stackoverflow.com/questions/54560790/detect-click-outside-react-componen
 ## 五種寫 Counter 的方式，使用控制反轉的概念
 https://javascript.plainenglish.io/5-advanced-react-patterns-a6b7624267a6
 
+## custom hook: useClickOutside
+```ts
+import { MutableRefObject, useEffect, useRef } from 'react';
+
+const useClickOutside = <T extends HTMLElement>(
+  clickOutside: (event: globalThis.MouseEvent) => void
+): MutableRefObject<T> => {
+  const clickOutsideRef = useRef<Nullable<any>>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: globalThis.MouseEvent) => {
+      if (clickOutsideRef.current && !clickOutsideRef.current.contains(event.target)) {
+        clickOutside(event);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [clickOutside]);
+
+  return clickOutsideRef;
+};
+
+export default useClickOutside;
+
+/* USAGE
+
+const Modal: FC = ({ children }) => {
+  const contentRef = useClickOutside<HTMLDivElement>(() => {
+    console.log('Outside Clicked')
+  });
+
+  return (
+    <div ref={contentRef}>
+      {children}
+    </div>
+  );
+};
+*/
+```
+
 ## 實作 useFetch, useLazyFetch
 ```ts
 import { useEffect, useCallback, useReducer, useContext } from 'react';
