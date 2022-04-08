@@ -1356,7 +1356,7 @@ function findSol(params){
 - 核心精神 2 : 子問題彼此不相依 ( 不會互相影響 )，`最佳解答 = 當下最好的選擇 + 子問題解答`
 
 ## Greedy 範例 - Interval Scheduling
-- Given: a job list which includes start time, end time, value
+- Given: a job list which includes start time, end time
 - 假設 job list 照結束時間由早到晚排序好  
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_1.png) 
 ```js
@@ -1369,9 +1369,9 @@ const jobList = [
   { id: 'job_6', start: 6, end: 9}
 ];
 ```
-- Goal: 總時間 (1 ~ 9) 內，不能同一時間做兩份工作的前提下，選任意工作讓收益最大
+- Goal: 總時間 (1 ~ 9) 內，不能同一時間做兩份工作的前提下，找出最多能做幾件任務，及是哪些任務
 ```js
-function weightedIntervalScheduling(jobList){
+function intervalScheduling(jobList){
   // TODOS
 }
 function findSol(params){
@@ -1386,8 +1386,8 @@ const testList = [
   { id: 'job_6', start: 6, end: 9 }
 ];
 
-console.log(weightedIntervalScheduling(testList)); // 選第一、三、六份 = 1 + 3 + 3 = 7
-console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
+console.log(intervalScheduling(testList)); // 3  選第一、三、五份 ，最多做 3 件
+console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_5']
 ```
 - Sol: O(n)
 - Tip: 可直接刪去時間長度大包小的重疊部分，再往下想演算法，即
