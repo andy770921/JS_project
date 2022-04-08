@@ -1256,6 +1256,7 @@ console.log(weightedIntervalScheduling(testList)); // 選第一、三、六份 =
 console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
 ```
 - Sol: O(n)
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_3-2.png) 
 ```js
 const testList = [
   { id: 'job_1', start: 1, end: 3, value: 1}, 
