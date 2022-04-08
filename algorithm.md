@@ -1227,12 +1227,12 @@ console.log(findSol('banana'.length, 'aeniqadikjaz'.length, 'banana', 'aeniqadik
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_3.png) 
 ```js
 const jobList = [
-  { id: 'job_1', start: 1, end: 3, value: 1}, 
-  { id: 'job_2', start: 1, end: 5, value: 3},
-  { id: 'job_3', start: 3, end: 5, value: 3},
-  { id: 'job_4', start: 3, end: 7, value: 4}, 
-  { id: 'job_5', start: 7, end: 8, value: 1},
-  { id: 'job_6', start: 6, end: 9, value: 3}
+  { id: 'job_1', start: 1, end: 3, value: 1 }, 
+  { id: 'job_2', start: 1, end: 5, value: 3 },
+  { id: 'job_3', start: 3, end: 5, value: 3 },
+  { id: 'job_4', start: 3, end: 7, value: 4 }, 
+  { id: 'job_5', start: 7, end: 8, value: 1 },
+  { id: 'job_6', start: 6, end: 9, value: 3 }
 ];
 ```
 - Goal: 總時間 (1 ~ 9) 內，不能同一時間做兩份工作的前提下，選任意工作讓收益最大
@@ -1244,12 +1244,12 @@ function findSol(params){
   // TODOS
 }
 const testList = [
-  { id: 'job_1', start: 1, end: 3, value: 1}, 
-  { id: 'job_2', start: 1, end: 5, value: 3},
-  { id: 'job_3', start: 3, end: 5, value: 3},
-  { id: 'job_4', start: 3, end: 7, value: 4}, 
-  { id: 'job_5', start: 7, end: 8, value: 1},
-  { id: 'job_6', start: 6, end: 9, value: 3}
+  { id: 'job_1', start: 1, end: 3, value: 1 }, 
+  { id: 'job_2', start: 1, end: 5, value: 3 },
+  { id: 'job_3', start: 3, end: 5, value: 3 },
+  { id: 'job_4', start: 3, end: 7, value: 4 }, 
+  { id: 'job_5', start: 7, end: 8, value: 1 },
+  { id: 'job_6', start: 6, end: 9, value: 3 }
 ];
 
 console.log(weightedIntervalScheduling(testList)); // 選第一、三、六份 = 1 + 3 + 3 = 7
@@ -1259,12 +1259,12 @@ console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_3-2.png) 
 ```js
 const testList = [
-  { id: 'job_1', start: 1, end: 3, value: 1}, 
-  { id: 'job_2', start: 1, end: 5, value: 3},
-  { id: 'job_3', start: 3, end: 5, value: 3},
-  { id: 'job_4', start: 3, end: 7, value: 4}, 
-  { id: 'job_5', start: 7, end: 8, value: 1},
-  { id: 'job_6', start: 6, end: 9, value: 3}
+  { id: 'job_1', start: 1, end: 3, value: 1 }, 
+  { id: 'job_2', start: 1, end: 5, value: 3 },
+  { id: 'job_3', start: 3, end: 5, value: 3 },
+  { id: 'job_4', start: 3, end: 7, value: 4 }, 
+  { id: 'job_5', start: 7, end: 8, value: 1 },
+  { id: 'job_6', start: 6, end: 9, value: 3 }
 ];
 
 // p 函數意義: 若在 list 中選了該 index 的工作，則只能再選 index 為 1 ~ 回傳值的工作
@@ -1361,12 +1361,12 @@ function findSol(params){
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_1.png) 
 ```js
 const jobList = [
-  { id: 'job_1', start: 1, end: 3}, 
-  { id: 'job_2', start: 1, end: 5},
-  { id: 'job_3', start: 3, end: 5},
-  { id: 'job_4', start: 3, end: 7}, 
-  { id: 'job_5', start: 7, end: 8},
-  { id: 'job_6', start: 6, end: 9}
+  { id: 'job_1', start: 1, end: 3 }, 
+  { id: 'job_2', start: 1, end: 5 },
+  { id: 'job_3', start: 3, end: 5 },
+  { id: 'job_4', start: 3, end: 7 }, 
+  { id: 'job_5', start: 7, end: 8 },
+  { id: 'job_6', start: 6, end: 9 }
 ];
 ```
 - Goal: 總時間 (1 ~ 9) 內，不能同一時間做兩份工作的前提下，找出最多能做幾件任務，及是哪些任務
