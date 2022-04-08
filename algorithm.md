@@ -1402,6 +1402,13 @@ const testList = [
 ];
 ```
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_2.png) 
+- 不考慮做或不做兩種情況再取最大值，而是直接做，直接做的結果一定會是最佳解 ( 可用矛盾法證明 )
+- 
+```js
+function intervalScheduling(jobList){
+  // TODOS
+}
+```
 
 ## 白板題
 
