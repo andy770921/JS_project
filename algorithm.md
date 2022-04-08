@@ -1350,6 +1350,56 @@ function findSol(params){
 }
 
 ```
+
+
+## Greedy 範例 - Interval Scheduling
+- Given: a job list which includes start time, end time, value
+- 假設 job list 照結束時間由早到晚排序好  
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_1.png) 
+```js
+const jobList = [
+  { id: 'job_1', start: 1, end: 3}, 
+  { id: 'job_2', start: 1, end: 5},
+  { id: 'job_3', start: 3, end: 5},
+  { id: 'job_4', start: 3, end: 7}, 
+  { id: 'job_5', start: 7, end: 8},
+  { id: 'job_6', start: 6, end: 9}
+];
+```
+- Goal: 總時間 (1 ~ 9) 內，不能同一時間做兩份工作的前提下，選任意工作讓收益最大
+```js
+function weightedIntervalScheduling(jobList){
+  // TODOS
+}
+function findSol(params){
+  // TODOS
+}
+const testList = [
+  { id: 'job_1', start: 1, end: 3, value: 1}, 
+  { id: 'job_2', start: 1, end: 5, value: 3},
+  { id: 'job_3', start: 3, end: 5, value: 3},
+  { id: 'job_4', start: 3, end: 7, value: 4}, 
+  { id: 'job_5', start: 7, end: 8, value: 1},
+  { id: 'job_6', start: 6, end: 9, value: 3}
+];
+
+console.log(weightedIntervalScheduling(testList)); // 選第一、三、六份 = 1 + 3 + 3 = 7
+console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
+```
+- Sol: O(n)
+- Tip: 可直接刪去時間長度大包小的重疊部分，再往下想演算法，即
+```js
+const testList = [
+  { id: 'job_1', start: 1, end: 3, value: 1}, 
+  // { id: 'job_2', start: 1, end: 5, value: 3},
+  { id: 'job_3', start: 3, end: 5, value: 3},
+  // { id: 'job_4', start: 3, end: 7, value: 4}, 
+  { id: 'job_5', start: 7, end: 8, value: 1},
+  // { id: 'job_6', start: 6, end: 9, value: 3}
+];
+```
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_2.png) 
+
 ## 白板題
 
 1. 輸入一陣列，每個元素代表大樓高度，最右邊是海。輸出布林值陣列，標示該棟大樓是否看得到海
