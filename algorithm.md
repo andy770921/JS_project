@@ -1355,7 +1355,7 @@ function findSol(params){
 - 核心精神 1 : 先觀察待解的問題，是否可拆成子問題，可藉由子問題最佳化，得到最終解
 - 核心精神 2 : 子問題彼此不相依 ( 不會互相影響 )，`最佳解答 = 當下最好的選擇 + 子問題解答`
 
-## Greedy 範例 - Interval Scheduling
+## Greedy 範例 - Interval Scheduling ( Activity Selection )
 - Given: a job list which includes start time, end time
 - 假設 job list 照結束時間由早到晚排序好  
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_1.png) 
