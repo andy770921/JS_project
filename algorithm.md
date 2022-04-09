@@ -1460,6 +1460,7 @@ console.log(findSol(testList));
 - 郵票問題無法先選大面額的，因為可能有湊不出來的可能。比如郵票有 `[3, 5, 7, 12, 14]` 元，要湊出 15 元郵費，先選 14 會湊不出來
 - Coin Changing Problem 的天真解法 : 用動態規劃的方式比較所有子問題的最小值，示意如下，實際上用 Greedy 的想法實作的話，不用算出所有可能再取 min 而可以直接先選面額大的
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_3.png)
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_4.png)
 
 
 ## 白板題
