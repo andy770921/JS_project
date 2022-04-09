@@ -1091,7 +1091,7 @@ console.log(printCutRodSolution({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 ```
 ## Dynamic Programming 範例 - Stamp Problem - O(kn)
 - 說明: 給郵票價目表，郵票可購買的張數不限，若有 15 元，該如何買，才會買到最少張數郵票
-- Given: `const stampPrice = [3, 5, 7, 12]`
+- Given: `const stampPrice = [3, 5, 7, 12, 14]`
 - Input: `money = 15`
 - output: `min stampNum = 2` (可買 12 + 3，也可買 5 + 5 + 5，前者只需兩張)
 - n 為金額，k 為郵票共幾種金額選擇，用遞迴解，時間複雜度 O(k^n)；用 DP 解，時間複雜度 O(kn)。若郵票金額陣列為常數，如 4 組，則時間複雜度為 O(n)
@@ -1114,10 +1114,10 @@ function stamp(v, n){
   return {minStampNum: s[n], backTrackingIdxList: b};
 }
 
-console.log(stamp([3, 5, 7, 12], 15)); 
+console.log(stamp([3, 5, 7, 12, 14], 15)); 
 
 // {
-//   backTrackingIdxList: [undefined, undefined, undefined, 1, undefined, 2, 1, 3, 2, 1, 3, 2, 4, 3, 3, 4],
+//   backTrackingIdxList: [undefined, undefined, undefined, 1, undefined, 2, 1, 3, 2, 1, 3, 2, 4, 3, 5, 4],
 //   minStampNum: 2
 // }
 
@@ -1131,7 +1131,7 @@ function printStampSelection(v, n){
   }
 }
 
-printStampSelection([3, 5, 7, 12], 15);
+printStampSelection([3, 5, 7, 12, 14], 15);
 // choose the stamp: 12
 // choose the stamp: 3
 ```
