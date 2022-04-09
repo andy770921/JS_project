@@ -1267,12 +1267,12 @@ const testList = [
   { id: 'job_6', start: 6, end: 9, value: 3 }
 ];
 
-// p 函數意義: 若在 list 中選了該 index 的工作，則只能再選 index 為 1 ~ 回傳值的工作
-function p(index ,list){
+// p 函數意義: nth 從 1 開始算，代表 array 第幾個。若在 list 中選了該 nth 的工作，則只能再選 nth 為 1 ~ 回傳值的工作
+function p(nth ,list){
   const listWithNonZeroIndex = [null, ...list];
   
-  for(let i = index - 1; i > 0; i--){
-    if(listWithNonZeroIndex[index].start >= listWithNonZeroIndex[i].end){
+  for(let i = nth - 1; i > 0; i--){
+    if(listWithNonZeroIndex[nth].start >= listWithNonZeroIndex[i].end){
       return i;
     }
   }
@@ -1411,18 +1411,19 @@ const testList = [
   { id: 'job_5', start: 7, end: 8 },
 ];
 
-// p 函數意義: 若在 list 中選了該 index 的工作，則只能再選 index 為 1 ~ 回傳值的工作
-function p(index ,list){
+// p 函數意義: nth 從 1 開始算，代表 array 第幾個。若在 list 中選了該 nth 的工作，則只能再選 nth 為 1 ~ 回傳值的工作
+function p(nth ,list){
   const listWithNonZeroIndex = [null, ...list];
   
-  for(let i = index - 1; i > 0; i--){
-    if(listWithNonZeroIndex[index].start >= listWithNonZeroIndex[i].end){
+  for(let i = nth - 1; i > 0; i--){
+    if(listWithNonZeroIndex[nth].start >= listWithNonZeroIndex[i].end){
       return i;
     }
   }
   
   return 0;
 }
+
 console.log(p(3, testList)); // 2
 console.log(p(2, testList)); // 1
 console.log(p(1, testList)); // 0
