@@ -1436,7 +1436,17 @@ function intervalScheduling(jobList){
   return M[jobList.length - 1];
 }
 
+function findSol(jobList){
+  const n = jobList.length;
+  if(n === 0) return [];
+  
+  return [ jobList[n - 1], ...findSol(jobList.slice(0, p( n, jobList)))];
+}
+
 console.log(intervalScheduling(testList)); // 3  選第一、三、五份 ，最多做 3 件
+console.log(findSol(testList)); 
+// [{ "id": "job_5", "start": 7,"end": 8 }, { "id": "job_3", "start": 3, "end": 5 },
+//  { "id": "job_1", "start": 1, "end": 3 }]
 
 ```
 
