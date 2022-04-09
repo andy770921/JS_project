@@ -1257,6 +1257,7 @@ console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_6']
 ```
 - Sol: O(n)
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/dp_3-2.png) 
+- p(i) 意義: 選了第 i 個工作後，剩餘任務中，最大 index 的任務，意義和下面 p 函數相同
 ```js
 const testList = [
   { id: 'job_1', start: 1, end: 3, value: 1 }, 
@@ -1404,6 +1405,7 @@ const testList = [
 ];
 ```
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_2.png) 
+- p(i) 意義: 選了第 i 個工作後，剩餘任務中，最大 index 的任務，意義和下面 p 函數相同
 - 不考慮做或不做兩種情況再取最大值，而是直接做，直接做的結果一定會是最佳解 ( 可[證明](https://youtu.be/hetjkYUruwI?t=524) )
 
 ```js
