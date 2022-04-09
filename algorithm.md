@@ -1443,7 +1443,7 @@ function findSol(jobList){
   const n = jobList.length;
   if(n === 0) return [];
   
-  return [ jobList[n - 1], ...findSol(jobList.slice(0, p( n, jobList)))];
+  return [jobList[n - 1], ...findSol(jobList.slice(0, p(n, jobList)))];
 }
 
 console.log(intervalScheduling(testList)); // 3  選第一、三、五份 ，最多做 3 件
