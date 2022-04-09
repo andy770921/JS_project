@@ -1403,11 +1403,41 @@ const testList = [
 ```
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_2.png) 
 - 不考慮做或不做兩種情況再取最大值，而是直接做，直接做的結果一定會是最佳解 ( 可[證明](https://youtu.be/hetjkYUruwI?t=524) )
-- 
+
 ```js
-function intervalScheduling(jobList){
-  // TODOS
+const testList = [
+  { id: 'job_1', start: 1, end: 3 }, 
+  { id: 'job_3', start: 3, end: 5 }, 
+  { id: 'job_5', start: 7, end: 8 },
+];
+
+// p 函數意義: 若在 list 中選了該 index 的工作，則只能再選 index 為 1 ~ 回傳值的工作
+function p(index ,list){
+  const listWithNonZeroIndex = [null, ...list];
+  
+  for(let i = index - 1; i > 0; i--){
+    if(listWithNonZeroIndex[index].start >= listWithNonZeroIndex[i].end){
+      return i;
+    }
+  }
+  
+  return 0;
 }
+console.log(p(3, testList)); // 2
+console.log(p(2, testList)); // 1
+console.log(p(1, testList)); // 0
+
+function intervalScheduling(jobList){
+  const M = [0];
+  for(let i = 0; i < jobList.length; i++){
+    M[i] = 1 + M[p(i, jobList)];
+  }
+  
+  return M[jobList.length - 1];
+}
+
+console.log(intervalScheduling(testList)); // 3  選第一、三、五份 ，最多做 3 件
+
 ```
 
 ## 白板題
