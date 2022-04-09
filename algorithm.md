@@ -1387,7 +1387,9 @@ const testList = [
 ];
 
 console.log(intervalScheduling(testList)); // 3  選第一、三、五份 ，最多做 3 件
-console.log(findSol(SOME_PARAMS)); // ['job_1', 'job_3', 'job_5']
+console.log(findSol(SOME_PARAMS));
+// [{ "id": "job_5", "start": 7,"end": 8 }, { "id": "job_3", "start": 3, "end": 5 },
+//  { "id": "job_1", "start": 1, "end": 3 }]
 ```
 - Sol: O(n)
 - Tip: 可直接刪去時間長度大包小的重疊部分，再往下想演算法，即
