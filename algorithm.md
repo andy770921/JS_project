@@ -1452,8 +1452,15 @@ console.log(intervalScheduling(testList)); // 3  選第一、三、五份 ，最
 console.log(findSol(testList)); 
 // [{ "id": "job_5", "start": 7,"end": 8 }, { "id": "job_3", "start": 3, "end": 5 },
 //  { "id": "job_1", "start": 1, "end": 3 }]
-
 ```
+
+## Greedy 範例 - Coin Changing Problem 找錢問題
+- 問題 : 硬幣共有四種面額，`[1, 5, 10, 50]`，如何找錢可讓總硬幣數最少
+- 和動態規劃的 Stamp Problem 相似，不同之處在於，不需要比較所有子問題的最小值，一定可以選先大面額的硬幣。
+- 郵票問題無法先選大面額的，因為可能有湊不出來的可能。比如郵票有 `[3, 5, 7, 12, 14]` 元，要湊出 15 元郵費，先選 14 會湊不出來
+- Coin Changing Problem 的天真解法 : 用動態規劃的方式比較所有子問題的最小值，示意如下，實際上用 Greedy 的想法實作的話，不用算出所有可能再取 min 而可以直接先選面額大的
+![image](https://github.com/andy770921/JS_project/blob/master/imgs/greedy_3.png)
+
 
 ## 白板題
 
