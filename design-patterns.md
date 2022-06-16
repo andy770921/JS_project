@@ -1,5 +1,7 @@
 # Design Patterns
 
+## All pattern reference:
+- https://www.patterns.dev/posts/rendering-patterns/
 ## Observer Pattern（觀察者模式）
 - Ref: https://medium.com/starbugs/%E9%96%8B%E6%BA%90%E5%B0%88%E6%A1%88%E8%AE%80%E8%B5%B7%E4%BE%86-%E5%BE%9E-swr-%E4%BE%86%E7%9C%8B%E7%9C%8B%E5%AF%A6%E5%8B%99%E4%B8%8A%E7%9A%84-observer-pattern-%E8%A7%80%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F-46c16c6fd724
 ```js
