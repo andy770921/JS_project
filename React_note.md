@@ -1104,6 +1104,31 @@ const useLazyFetch = <T, U extends ErrorDefaultResponse = ErrorDefaultResponse>(
 export { useFetch, useLazyFetch };
 ```
 
+## Lazy loading component 實作 ( 使用 next.js dynamic )
+```ts
+// file 1: MainSidebar/sidebar.ts
+const Sidebar: FC = () => <div>sidebar</div>;
+
+export default Sidebar;
+
+// file 2: MainSidebar/Loadable.ts
+import dynamic from 'next/dynamic';
+
+const LazyPage = dynamic(() => import('./sidebar'), {
+  loading: () => null,
+  ssr: false,
+});
+
+export default LazyPage;
+
+// file 3: HomePage/index.ts
+import { LazySidebar } from 'ABOVE_PATH';
+
+const Home: FC = () => <div><LazySidebar />home</div>;
+
+export default Home;
+```
+
 ## npm react 相關的第三方套件
 
 1. react-window: https://addyosmani.com/blog/react-window/  
