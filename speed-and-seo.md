@@ -105,6 +105,29 @@ https://www.youtube.com/watch?v=M6N7gEZ-IUQ
 - Ref: https://stackoverflow.com/questions/17000835/token-authentication-vs-cookies
 - `Token authentication` 或 `Cookie authentication`，各有優缺
 - 存在 localStorage, sessionStorage, or cookies 各有優缺
+
+## 前端自行解出 JWT 程式碼範例
+```ts
+import { FC, useEffect } from 'react';
+import Cookies from 'js-cookie';
+import { decode } from 'jsonwebtoken';
+
+const MyComponent: FC = () => {
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const token = Cookies.get(COOKIE_ACCESS_TOKEN);
+    if (token) {
+      const payload = decode(token, { json: true });
+      if (payload) {
+        setUsername(payload.user_name);
+      }
+    }
+  }, [setUsername]);
+  
+  return <div>hi</div>;
+}
+```
 ## Safari debug
 
 https://www.busbud.com/blog/debug-ios-safari-mac/
