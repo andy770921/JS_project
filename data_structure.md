@@ -490,8 +490,8 @@ class BinaryTree{
   }
   static postorderTraverse = (currentNode) => {
     if(currentNode){
-      this.preorderTraverse(currentNode.leftChild);
-      this.preorderTraverse(currentNode.rightChild);
+      this.postorderTraverse(currentNode.leftChild);
+      this.postorderTraverse(currentNode.rightChild);
       console.log(currentNode.data);
     }
   }
