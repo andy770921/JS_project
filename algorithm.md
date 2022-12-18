@@ -1096,6 +1096,30 @@ console.log(printCutRodSolution({1: 1, 2: 5, 3: 8, 4: 9, 5: 10}, 4));
 - output: `min stampNum = 2` (可買 12 + 3，也可買 5 + 5 + 5，前者只需兩張)
 - n 為金額，k 為郵票共幾種金額選擇，用遞迴解，時間複雜度 O(k^n)；用 DP 解，時間複雜度 O(kn)。若郵票金額陣列為常數，如 4 組，則時間複雜度為 O(n)
 ```js
+// 遞迴解，時間複雜度 O(k^n)，
+// v 為郵票金額陣列，n 為用多少錢買郵票
+function stamp(v, n){
+  if(n < 0){
+    return null; // base case, 錢已負，不能買此組合
+  }
+  if(n === 0){
+    return 0; // base case
+  }
+  const r = [];
+  let rMin = Infinity;
+  for(let i = 0; i < v.length; i++){
+    r[i] = stamp(v, n - v[i]); // recursive case
+    if(typeof r[i] === 'number' && r[i] < rMin){
+      rMin = r[i];
+    }
+  }
+  return rMin + 1;
+}
+
+console.log(stamp([3, 5, 14], 15)); // 3, 組合為 5 + 5 + 5，時間複雜度可想像為 O(3^15)
+console.log(stamp([3, 5, 7, 12, 14], 15)); // 2, 組合為 12 + 3，時間複雜度可想像為 O(5^15)
+```
+```js
 // v 為郵票金額陣列，n 為用多少錢買郵票
 function stamp(v, n){
   const extV = ['unused value', ...v]; // index 1 為第一張郵票價格，2 為第二張，依此類推
