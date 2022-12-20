@@ -1063,6 +1063,7 @@ console.log(hashTable.get("awesomeKey"));  // 50
 ## Doubly Lisked List 與 HashMap 組成 LRU Cache 的應用
 - LRU Cache: Least Recently Used Cache
 - 說明: 當空間滿時，先刪除最久遠沒被用到的 ( least recently ) 資料，保留最近 ( most recently ) 的資料
+- 題目: https://leetcode.com/problems/lru-cache/description/
 - 實作 1: 利用 ES6 Map 保序的性質 (  Map 在呼叫 `.keys()` 或 `.values()` 時，會回傳 `iterator`，Map 會依照每筆資料 insert 的順序，用 `.next().value` 依序取出最早 insert 的 )
 ```js
 // Ref: https://leetcode.com/problems/lru-cache/solutions/399146/clean-javascript-solution/
