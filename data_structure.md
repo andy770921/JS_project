@@ -1059,7 +1059,119 @@ console.log(hashTable.get("awesomeKey"));  // 50
   1. 更強的效能保證，不需要隨機分布的假設，直接保證效能 log N
   2. 支持有排序過的資料
   3. 容易正確的實作 compareTo() ( 正確的實作 equals() 和 hashCode() 較難 )
+  
+## Doubly Lisked List 與 HashMap 組成 LRU Cache 的應用
+- LRU Cache: Least Recently Used Cache
+- 說明: 當空間滿時，先刪除最久遠沒被用到的 ( least recently ) 資料，保留最近 ( most recently ) 的資料
+- 實作 1: 利用 ES6 Map 保序的性質 (  Map 在呼叫 `.keys()` 或 `.values()` 時，會回傳 `iterator`，Map 會依照每筆資料 insert 的順序，用 `.next().value` 依序取出最早 insert 的 )
+```js
+// Ref: https://leetcode.com/problems/lru-cache/solutions/399146/clean-javascript-solution/
+class LRUCache {
+  constructor(capacity) {
+    this.cache = new Map();
+    this.capacity = capacity;
+  }
 
+  get(key) {
+    if (!this.cache.has(key)) return -1;
+
+    const v = this.cache.get(key);
+    this.cache.delete(key);
+    this.cache.set(key, v);
+    return this.cache.get(key);
+  };
+
+  put(key, value) {
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    }
+    this.cache.set(key, value);
+    if (this.cache.size > this.capacity) {
+      this.cache.delete(this.cache.keys().next().value);  // keys().next().value returns first item's key
+      // 也可寫成 const [keyToDelete] = this.map.keys(); this.cache.delete(keyToDelete);
+    }
+  };
+}
+```
+- 實作 2: 用 Doubly Lisked List 與 HashMap
+```js
+// Ref: https://leetcode.com/problems/lru-cache/solutions/617415/javascript-2-solutions-es6-map-vs-doubly-linked-list/
+class Node {
+  constructor(key, val) {
+      this.key = key;
+      this.val = val;
+      this.next = null;
+      this.prev = null;
+  }
+}
+
+class DoublyLinkedList {
+  constructor() {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+  }
+  
+  push(key, val) {
+      const newNode = new Node(key, val);
+      if(!this.head) {
+          this.head = newNode;
+          this.tail = newNode;
+      } else {
+          this.tail.next = newNode;
+          newNode.prev = this.tail;
+          this.tail = newNode;
+      }
+      this.length++;
+      return newNode;
+  }
+  
+  remove(node) {
+      if(!node.next && !node.prev) { // if there's only 1 node
+          this.head = null;
+          this.tail = null;
+      } else if(!node.next) { // if the node is tail node
+          this.tail = node.prev;
+          this.tail.next = null;
+      } else if(!node.prev) { // if the node is head node
+          this.head = node.next;
+          this.head.prev = null;
+      } else { // if the node is in between
+          const prev = node.prev;
+          const next = node.next;
+          prev.next = next;
+          next.prev = prev;
+      }
+      this.length--;
+  }
+}
+
+class LRUCache {
+  constructor(capacity) {
+      this.DLL = new DoublyLinkedList();
+      this.map = {};
+      this.capacity = capacity;
+  }
+
+  get(key) {
+      if(!this.map[key]) return -1;
+      const value = this.map[key].val;
+      this.DLL.remove(this.map[key]);
+      this.map[key] = this.DLL.push(key, value);
+      return value;
+  }
+
+  put(key, value) {
+      if(this.map[key]) this.DLL.remove(this.map[key]);
+      this.map[key] = this.DLL.push(key, value);
+      if(this.DLL.length > this.capacity) {
+          const currKey = this.DLL.head.key;
+          delete this.map[currKey];
+          this.DLL.remove(this.DLL.head);
+      }
+  }
+}
+```
 ## Stack 實際應用
 
 ```ts
