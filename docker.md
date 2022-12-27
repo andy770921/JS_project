@@ -82,3 +82,6 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
 - ```docker exec 容器名字 指令```，已執行的 container，再執行指令，如 ```docker run ubuntu cat /etc/hosts```，意思是在執行中的 ubuntu container印出 /etc/hosts 資料夾下的內容
 - ```docker stop 容器名字```，暫停執行中的 container，如 ```docker stop silly_sammet```
 - ```docker rm 容器名字```，永久移除 container，如 ```docker rm silly_sammet```
+
+# Kubernetes
+- 用途: AWS, Google, and Azure all offer Kubernetes as a service. It is a tool for packaging and deploying self-contained systems across many servers.
