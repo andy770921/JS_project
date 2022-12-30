@@ -1531,3 +1531,26 @@ const queryClient = new QueryClient({
   },
 })
 ```
+
+## Request Deduplication
+
+When new instances of the query mount, a background refetch will trigger automatically. If you would like to save the requests for reduplication purpose, you can choose one of the following methods to achieve:
+
+## Method 1 - Query Client
+
+Use query client to set `staleTime` option for a specific query key. 
+
+```jsx
+const queryClient = useQueryClient();
+queryClient.setQueryDefaults(['some-query-key'], { staleTime: 1 * 60 * 1000 });
+```
+
+## Method 2 - `staleTime` option per `useQuery`
+
+Set `staleTime`  option for every `useQuery` hooks that share the same query key.
+
+```jsx
+useQuery(['some-query-key'], { staleTime: 1 * 60 * 1000 });
+```
+
+Note that if another query uses the same key with different `staleTime` will be override.
