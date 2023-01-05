@@ -1440,7 +1440,9 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 - 進階實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30` 及 `Etag: xxx`，代表快取過期時間是 30 秒，30 秒後，若前端送出 request 會在 request header 加入 `If-None-Match: xxx` 詢問 server 檔案是不是有被更動過
 - 需要前端每次都檢查有無新的檔案：server 回傳的 response header 加入 `Cache-Control: no-cache` 及 `Etag: xxx`
 - 用在 SPA 的策略：`script-qd3j2orjoa.js` 設定 `Cache-Control: max-age=31536000`，`index.html` 設定 `Cache-Control: no-cache`
-
+### session 
+ - Session 就是它英文的原意之一，代表著：「具有狀態的一段期間」或者是「上下文」
+ - Ref: https://github.com/aszx87410/blog/issues/45
 ### cookies, session storage, local storage
   1. cookies:   
     i. 儲存容量限制較嚴苛: not exceed 50 cookies per domain with a maximum of 4 KB per cookie  
