@@ -10,6 +10,12 @@ https://www.youtube.com/watch?v=BMuFBYw91UQ
 - Ref: https://medium.com/starbugs/%E8%BA%AB%E7%82%BA-web-%E5%B7%A5%E7%A8%8B%E5%B8%AB-%E4%BD%A0%E6%87%89%E8%A9%B2%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E7%80%8F%E8%A6%BD%E5%99%A8%E6%9E%B6%E6%A7%8B%E6%BC%94%E9%80%B2%E5%8F%B2-feat-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E9%81%8B%E4%BD%9C%E6%A9%9F%E5%88%B6-6d95d4d960ee
 - 瀏覽器渲染流程為，DOM tree 和 CSS tree 合成 Render tree => Layout => Paint => Composite，使用 `left` 會重新觸發 Layout => Paint => Composite，或稱 Reflow & Repaint，`translate` 只會重新 Composite
 
+### css `relative, absolute, fix, static` 有何不同
+1. static 是 css position 屬性的預設值，正常由上到下排版，該在甚麼位置就在甚麼位置。
+2. relative: 加入這個屬性後，若再加上 `top/bottom/left/right`，該元素會以目前自己位置的四邊框當基準線，偏離目前所在位置
+3. absolute: 加上這個屬性後，會跳脫目前排版，若再加上 `top/bottom/left/right`，會以父層最靠近的 relative 畫面元件當定位基礎
+4. fixed: 畫面元件會跳脫目前排版。若未設定 `top: 0` 或 `left: 0` ，表現出的行為，像是 `position: static` 的位置但是附加螢幕固定效果，不受滑動卷軸影響。若有設定 `top: 0` 或 `left: 0` ，表現出的行為，直接對齊 `HTML viewport` ( 根元素 `<body>` ) 的左上且因 `top, left` 的設定而位移，且附加螢幕固定效果
+
 ### 什麼是 堆疊環境 Stacking Context
 - Ref: https://andyyou.github.io/2016/03/03/z-index/
 - CSS 為了控制畫面中誰顯示在上面，會採用一套標準。stacking context 是一個父元素及它的所有子元素總稱，如全域根元素 `<HTML>` 建立的 stacking context，和它包含的每個子 / 孫子元素就算一種。排序的邏輯為：在同個 stacking context 所有子元素會照 stacking order 大小排序，越大的排越前面，不同 stacking context 之間，也會比較 stacking context 唯一父元素的 stacking order 排序。
@@ -1418,6 +1424,29 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 - 進階實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30` 及 `Etag: xxx`，代表快取過期時間是 30 秒，30 秒後，若前端送出 request 會在 request header 加入 `If-None-Match: xxx` 詢問 server 檔案是不是有被更動過
 - 需要前端每次都檢查有無新的檔案：server 回傳的 response header 加入 `Cache-Control: no-cache` 及 `Etag: xxx`
 - 用在 SPA 的策略：`script-qd3j2orjoa.js` 設定 `Cache-Control: max-age=31536000`，`index.html` 設定 `Cache-Control: no-cache`
+
+### cookies, session storage, local storage
+  1. cookies: 
+    i. 儲存容量限制較嚴苛: not exceed 50 cookies per domain with a maximum of 4 KB per cookie
+    i. 可前端自己設定，或是後端經由 HTTP response 請前端設定
+    ii. 打 API 時會自動帶上: 每次打 API 時，都會經由 request header 的 Cookie: xxx=ooo; 帶給後端
+    iv. 後端可依照自己需要，請前端紀錄資料，供下一次打 API 用: 後端回給前端的 response header 可帶 Set-Cookie: xxx=ooo;，請求前端設定必要的資料，下一次打同源的 API 時，會自動帶上這些資料
+  2. session storage:
+    i. 儲存容量限制較寬鬆: 5 MB per domain
+    ii. 只能純粹由前端自己設定，後端無法操作
+    iii. 打 API 時不會自動帶上
+    iv. 若網頁操作到一半，關閉頁面，session storage 就會消失
+    v. 新開同個網域的分頁，另個新分頁會是完全空的 session storage。
+  3. local storage:
+    i.- iii. 同 session storage
+    iv. 若網頁操作到一半，關閉頁面，local storage 不會消失，想清除需要在適當時機，自己清除
+    v. 新開同個網域的分頁，另個新分頁會和本來頁面共用 local storage。
+### cookies, session storage, local storage 在 SSR 的 server side 會發生甚麼問題 ? 如何解決 ? 
+  - Ref: https://stackoverflow.com/questions/70835428/how-i-can-get-localstorage-data-inside-getserversideprops/70835625
+  - 因為 cookies/session storage/local storage 都是儲存在瀏覽器的空間內，換句話說，server side 產生頁面時，不會知道 chrome ( 或其他瀏覽器 ) 內有甚麼資料，因此不能直接使用相關的操作方式如 `localStorage.getItem('something')`
+  - 有兩個解法
+    1. 使用 `if(typeof window !== 'undefined')` 避免，如 `if (typeof window !== 'undefined') { const data = JSON.parse(localStorage.getItem('something')); }`
+    2. 使用 dynamic import 加上 ssr 設定避免，以 `React + NextJS` 為例，如 `import dynamic from 'next/dynamic'; const DynamicButtonNoSSR = dynamic(() => import('../components/button'), { ssr: false })`
 
 ### CSRF
 - Ref: https://blog.techbridge.cc/2017/02/25/csrf-introduction/
