@@ -1488,8 +1488,9 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
  2. https://juejin.cn/post/6844903976006057991
  3. https://juejin.cn/post/6844903983404810247
  4. https://juejin.cn/post/6844903992212848648
-## 設計短網址, FB
-- AppWorks School Video: https://www.youtube.com/watch?v=K1PnGF4CwCc
+## AppWorks School Video
+- 短網址: https://www.youtube.com/watch?v=K1PnGF4CwCc
+- FB: https://www.youtube.com/watch?v=kEfB4CGmbeg
 
 ## 設計 Instagram
 - https://www.jyt0532.com/2020/02/11/design-instagram/
