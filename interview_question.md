@@ -1427,20 +1427,20 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 
 ### cookies, session storage, local storage
   1. cookies: 
-    i. 儲存容量限制較嚴苛: not exceed 50 cookies per domain with a maximum of 4 KB per cookie
-    i. 可前端自己設定，或是後端經由 HTTP response 請前端設定
-    ii. 打 API 時會自動帶上: 每次打 API 時，都會經由 request header 的 Cookie: xxx=ooo; 帶給後端
-    iv. 後端可依照自己需要，請前端紀錄資料，供下一次打 API 用: 後端回給前端的 response header 可帶 Set-Cookie: xxx=ooo;，請求前端設定必要的資料，下一次打同源的 API 時，會自動帶上這些資料
+    1. 儲存容量限制較嚴苛: not exceed 50 cookies per domain with a maximum of 4 KB per cookie
+    2. 可前端自己設定，或是後端經由 HTTP response 請前端設定
+    3. 打 API 時會自動帶上: 每次打 API 時，都會經由 request header 的 Cookie: xxx=ooo; 帶給後端
+    4. 後端可依照自己需要，請前端紀錄資料，供下一次打 API 用: 後端回給前端的 response header 可帶 Set-Cookie: xxx=ooo;，請求前端設定必要的資料，下一次打同源的 API 時，會自動帶上這些資料
   2. session storage:
-    i. 儲存容量限制較寬鬆: 5 MB per domain
-    ii. 只能純粹由前端自己設定，後端無法操作
-    iii. 打 API 時不會自動帶上
-    iv. 若網頁操作到一半，關閉頁面，session storage 就會消失
-    v. 新開同個網域的分頁，另個新分頁會是完全空的 session storage。
+    1. 儲存容量限制較寬鬆: 5 MB per domain
+    2. 只能純粹由前端自己設定，後端無法操作
+    3. 打 API 時不會自動帶上
+    4. 若網頁操作到一半，關閉頁面，session storage 就會消失
+    5. 新開同個網域的分頁，另個新分頁會是完全空的 session storage。
   3. local storage:
-    i.- iii. 同 session storage
-    iv. 若網頁操作到一半，關閉頁面，local storage 不會消失，想清除需要在適當時機，自己清除
-    v. 新開同個網域的分頁，另個新分頁會和本來頁面共用 local storage。
+    1.- 3. 同 session storage
+    4. 若網頁操作到一半，關閉頁面，local storage 不會消失，想清除需要在適當時機，自己清除
+    5. 新開同個網域的分頁，另個新分頁會和本來頁面共用 local storage。
 ### cookies, session storage, local storage 在 SSR 的 server side 會發生甚麼問題 ? 如何解決 ? 
   - Ref: https://stackoverflow.com/questions/70835428/how-i-can-get-localstorage-data-inside-getserversideprops/70835625
   - 因為 cookies/session storage/local storage 都是儲存在瀏覽器的空間內，換句話說，server side 產生頁面時，不會知道 chrome ( 或其他瀏覽器 ) 內有甚麼資料，因此不能直接使用相關的操作方式如 `localStorage.getItem('something')`
