@@ -83,6 +83,12 @@ https://www.youtube.com/watch?v=BMuFBYw91UQ
 ```
 # JS
 ## 一句話解釋
+### 提升 hoisting:
+- 中文為「提升」，意義: 變數或函數的宣告，會在程式運行第一行之前就發生，意為提升 ( 賦值不會 )。
+- 詳細規格在 ECMA 有規範，原理為，每當 JS 進入一個 function 的時候，就會產生一個 Execution Contexts，或是在 Global 環境也有 Global Execution Context，裡面儲存跟這個 function 有關的一些資訊。每個 Execution Context 都會有相對應的 variable object，在該 Execution Context 裡面，首先宣告的所有變數跟函式都會被加進裡面，之後再執行程式。
+- 範例如下 `console.log(a); var a = 100; // 印出 undefined 而不是 ReferenceError: a is not defined`
+- Ref: https://blog.techbridge.cc/2018/11/10/javascript-hoisting/?fbclid=IwAR3No5aPr4uqhVN3CiusRV37RDQa6TTCeW7zw_1k3uCm_r_1LF9sLkXCNTg
+
 ### 閉包: 
 - 函數內部變數，若被參考，會一直被保留
 ```js
@@ -1408,6 +1414,16 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 }
 */
 ```
+# React
+## 一句話解釋
+### useRef
+- Ref: https://zh-hant.reactjs.org/docs/hooks-reference.html#useref
+- 在 react component 內使用這個 hook，用法如 `const item = useRef(null)`，可以得到一個不隨 react render 而變化的記憶體空間 (item)，讓我們獨立記憶控制，可以用它取得實際 HTML 畫面上的 DOM 元素，或是需要客製化控制某些值，不希望它與 render 連動時，就可用。官方定義為: useRef 回傳一個 mutable 的 ref object，.current 屬性被初始為傳入的參數（initialValue）。回傳的 object 在 component 的生命週期將保持不變。
+### useMemo
+- 在 react component 內使用這個 hook，用法如 `const list = useMemo(() =>(["a", "b", "c"]), [dep1, dep2])`，可以得到一個不隨 render 變化，只隨 dependency array 變化而變的記憶體空間 (list) ，需要傳入兩個參數，第一個參數帶函式，第二個參數帶陣列，陣列裡看那些東西改變時，需要重新執行第一個參數的函式就放入。得到的值是第一個參數 return 的結果，比如 const list 最後結果會是 `["a", "b", "c"]`，當 dep1, dep2 都沒變化時，不論 react render 幾次，`const list` 都可得到同樣位址的陣列
+### useContext
+- 官方範例 https://beta.reactjs.org/reference/react/useContext
+- 要在 react component 內使用這個 hook，使用前提是，它的父層要被同個 `Context.Provider` 元件包著。同個 `Context.Provider` 元件包住的所有 Children Component，都可共享 Context 內的資料，並用 useContext 取出資料。詳細的用法，要搭配 `createContext` 等，可參考之前的筆記 https://github.com/andy770921/JS_project/blob/master/context.md#%E5%8A%A0%E4%B8%8A-hook-%E7%9A%84%E4%BD%BF%E7%94%A8
 
 # 網路
 ## 一句話解釋
