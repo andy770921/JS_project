@@ -571,6 +571,56 @@ promise.then(value => {
 // 原因是，主线程代码立即执行，setTimeout 是异步代码，then 会马上执行，这个时候判断 Promise 状态，状态是 Pending，然而之前并没有判断等待这个状态
 
 // 實現目標二: 完善 Promise 功能，.then 加入 onFulfilledCallback 及 onRejectedCallback
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
+
+class MyPromise {
+  constructor(executor){
+    executor(this.resolve, this.reject)
+  }
+  status = PENDING;
+  value = null;
+  reason = null;
+  // 存储成功回调函数
+  onFulfilledCallback = null;
+  // 存储失败回调函数
+  onRejectedCallback = null;
+
+  resolve = (value) => {
+    if (this.status === PENDING) {
+      this.status = FULFILLED;
+      this.value = value;
+      // 判断成功回调是否存在，如果存在就调用
+      this.onFulfilledCallback && this.onFulfilledCallback(value);
+    }
+  }
+
+  reject = (reason) => {
+    if (this.status === PENDING) {
+      this.status = REJECTED;
+      this.reason = reason;
+      // 判断失败回调是否存在，如果存在就调用
+      this.onRejectedCallback && this.onRejectedCallback(reason)
+    }
+  }
+  
+  then(onFulfilled, onRejected) {
+    if (this.status === FULFILLED) {
+      onFulfilled(this.value);
+    } else if (this.status === REJECTED) {
+      onRejected(this.reason);
+    } else if (this.status === PENDING) {
+      // ==== 新增 ====
+      // 因为不知道后面状态的变化情况，所以将成功回调和失败回调存储起来
+      // 等到执行成功失败函数的时候再传递
+      this.onFulfilledCallback = onFulfilled;
+      this.onRejectedCallback = onRejected;
+    }
+  }
+}
+
+// 目標三: 完善 Promise 功能
 // 先定义三个常量表示状态
 const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
