@@ -149,11 +149,13 @@ console.log(Object.prototype.__proto__); // null
   1. 檢查 Macrotask queue 使否為空，若有任務，執行一件後再進到 2.
   2. 檢查 Microtask queue 使否為空，若有任務，執行一件後再檢查自己，直到自己都空，再進到 3.
   3. 是否需要更新頁面，要的話，更新後回到 1.
+  4. 可參考圖 https://juejin.cn/post/6945319439772434469
 
 - 深入討論四: 哪些事件屬於 Macrotask / Microtask ( JavaScript Ninja 中文版 p.390 )
   1. Microtask: Promise callback, DOM 的修改
   2. Macrotask: Microtask 外的大宗，如滑鼠事件，鍵盤事件，網路事件，計時器事件，解析 HTML
   3. Microtask: 設計理念為，效能不大的任務，盡早在 UI 繪製前處理，避免不必要的繪製 UI
+  4. 實際上的 Macrotask / Microtask 如何用 NodeJS 及瀏覽器環境產生出來，可參考 https://juejin.cn/post/6945319439772434469
  
 ## Inheritance
 ```js
