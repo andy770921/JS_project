@@ -4,8 +4,8 @@
 ## 何時用 `<script async>` 何時用 `<script defer>`
 - `defer` 意為延遲（Deferred），會讓 `scripts` 的檔案先開始被下載，但在 HTML 文件準備好後才開始執行，同時會確保各個 script 檔案執行的順序
 - `async` 意為非同步（Asynchronous），會讓 scripts 的檔案先開始被下載，但它不會確保各個 script 檔案被執行的順序，先下載好的就先執行
-- `defer` 和傳統只使用 `<script>` 的方式一樣，使用 defer 能夠保證 scripts 的檔案會按照 document 中的順序執行
-- `async` 適合用在每個 `<script>` 的 JS 檔彼此之間沒有相依性，不需要誰先執行才能換另一個執行的這種情況（例如，Google Analytics），async 會在該 JS 檔下載完成後，就會馬上被執行
+- `defer` 和傳統只使用 `<script>` 的方式一樣，使用 defer 能夠保證 scripts 的檔案會按照 document 中的順序執行。因為有不打斷渲染及確保執行順序的特色，基本上沒特別需求的話，`<script>` 都設定一下就對了
+- `async` 適合用在每個 `<script>` 的 JS 檔彼此之間沒有相依性，不需要誰先執行才能換另一個執行的這種情況（例如，Google Analytics），async 會在該 JS 檔下載完成後，就會馬上被執行。一般常見的應用是，設定在完全獨立的小模組，例如 GA、背景 Log、頁面廣告等等，在避免造成使用者體驗變差的同時，盡量提早開始產生效果。
 - 傳統上，為了解決單純使用 `<script>` 會卡住瀏覽器繪製，以及 HTML 可能還沒完全繪製完，會取不到 DOM 的問題（例如，jQuery 取不到元素），因此會把 `<script>` 放到 `<body>` 的最後才執行，看起來看 defer 的效果很像，但最大的差別是該 JS 檔開始被下載的時間點。
 - 動態建立的 `<script>`，預設就會是非同步載入；但可以透過屬性設定將它關閉
 ```js
@@ -18,9 +18,13 @@ script.async = false
 - Ref1: https://pjchender.dev/javascript/js-async-defer/
 - Ref2: https://zellwk.com/blog/javascript-async-and-defer/  
 - Ref3: https://www.youtube.com/watch?v=BMuFBYw91UQ  
+- Ref4: https://medium.com/schaoss-blog/02-html-script-tag-%E5%8A%A0%E4%B8%8A-async-defer-%E7%9A%84%E5%8A%9F%E8%83%BD%E5%8F%8A%E5%B7%AE%E7%95%B0-8205fddbbafc  
 
 ## `<script type="module">`
 在主流的現代瀏覽器中，`<script>` 的屬性可以加上 `type="module"`。這時，瀏覽器會將此檔案認為是一個 JavaScript 模組，其中的解析規則、執行環境會略有不同；這時候的 `<script>` 預設行為會像是 defer 一樣，背景下載，且等待 DOM 解析、渲染完成後才執行，也因此 defer 屬性無法在 `type="module"` 產生作用。但同樣可以透過 async 屬性讓它在下載完成後即刻執行。
+
+## `<script>`外的資源載入
+- `<link>` 的 preload、prefetch: https://www.cythilya.tw/2018/07/31/preload-vs-prefetch/
 
 # CSS
 ## 一句話解釋
