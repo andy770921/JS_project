@@ -6,6 +6,7 @@
 3. GTMmetrix: https://gtmetrix.com/
 4. Pingdom: https://www.pingdom.com/
 5. Sitespeed: https://www.notion.so/Sitespeed-io-05d71c887be140c98ef0d35361eaad2e
+6. google 的行動裝置相容性測試: https://search.google.com/test/mobile-friendly
 
 ## Cache
 1. https://oldmo860617.medium.com/%E6%B2%92%E4%BA%86%E8%A7%A3%E9%81%8E-cache-%E5%B0%B1%E5%88%A5%E8%AA%AA%E7%B6%B2%E7%AB%99%E6%80%A7%E8%83%BD%E6%B2%92%E6%95%91%E4%BA%86-6d9d4cfe3291
