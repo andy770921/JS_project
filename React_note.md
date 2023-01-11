@@ -1513,7 +1513,7 @@ export default Modal;
 ## Tutorial
 - https://www.youtube.com/watch?v=Sklc_fQBmcs
 
-## React Query 筆記
+# React Query 筆記
 - default query fn (https://tkdodo.eu/blog/react-query-and-type-script):
 ```ts
 const queryClient = new QueryClient({
