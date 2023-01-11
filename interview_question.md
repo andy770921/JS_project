@@ -2,8 +2,14 @@
 
 # HTML
 ## 何時用 `<script async>` 何時用 `<script defer>`
-https://zellwk.com/blog/javascript-async-and-defer/  
-https://www.youtube.com/watch?v=BMuFBYw91UQ  
+- `defer` 會讓 `scripts` 的檔案先開始被下載，但在 HTML 文件準備好後才開始執行，同時會確保各個 script 檔案執行的順序
+- `async` 會讓 scripts 的檔案先開始被下載，但它不會確保各個 script 檔案被執行的順序，先下載好的就先執行
+- `defer` 和傳統只使用 `<script>` 的方式一樣，使用 defer 能夠保證 scripts 的檔案會按照 document 中的順序執行
+- `async` 適合用在每個 `<script>` 的 JS 檔彼此之間沒有相依性，不需要誰先執行才能換另一個執行的這種情況（例如，Google Analytics），async 會在該 JS 檔下載完成後，就會馬上被執行
+- 傳統上，為了解決單純使用 `<script>` 會卡住瀏覽器繪製，以及 HTML 可能還沒完全繪製完，會取不到 DOM 的問題（例如，jQuery 取不到元素），因此會把 `<script>` 放到 `<body>` 的最後才執行，看起來看 defer 的效果很像，但最大的差別是該 JS 檔開始被下載的時間點。
+- Ref1: https://pjchender.dev/javascript/js-async-defer/
+- Ref2: https://zellwk.com/blog/javascript-async-and-defer/  
+- Ref3: https://www.youtube.com/watch?v=BMuFBYw91UQ  
 # CSS
 ## 一句話解釋
 ### css `left` and `translate` 渲染有何不同
