@@ -18,6 +18,10 @@ script.async = false
 - Ref1: https://pjchender.dev/javascript/js-async-defer/
 - Ref2: https://zellwk.com/blog/javascript-async-and-defer/  
 - Ref3: https://www.youtube.com/watch?v=BMuFBYw91UQ  
+
+## `<script type="module">`
+在主流的現代瀏覽器中，`<script>` 的屬性可以加上 `type="module"`。這時，瀏覽器會將此檔案認為是一個 JavaScript 模組，其中的解析規則、執行環境會略有不同；這時候的 `<script>` 預設行為會像是 defer 一樣，背景下載，且等待 DOM 解析、渲染完成後才執行，也因此 defer 屬性無法在 `type="module"` 產生作用。但同樣可以透過 async 屬性讓它在下載完成後即刻執行。
+
 # CSS
 ## 一句話解釋
 ### css `left` and `translate` 渲染有何不同
