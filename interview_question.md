@@ -23,8 +23,8 @@ script.async = false
 ## `<script type="module">`
 在主流的現代瀏覽器中，`<script>` 的屬性可以加上 `type="module"`。這時，瀏覽器會將此檔案認為是一個 JavaScript 模組，其中的解析規則、執行環境會略有不同；這時候的 `<script>` 預設行為會像是 defer 一樣，背景下載，且等待 DOM 解析、渲染完成後才執行，也因此 defer 屬性無法在 `type="module"` 產生作用。但同樣可以透過 async 屬性讓它在下載完成後即刻執行。
 
-## `<script>`外的資源載入
-- `<link>` 的 preload、prefetch: https://www.cythilya.tw/2018/07/31/preload-vs-prefetch/
+## `<script>` 外的資源載入
+- `<link>` 的 rel 屬性的 preload、prefetch: https://shubo.io/preload-prefetch-preconnect/#%E7%B5%90%E8%AB%96
 
 # CSS
 ## 一句話解釋
