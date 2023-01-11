@@ -620,12 +620,103 @@ class MyPromise {
   }
 }
 
-/* 目標三與實現: 完善 Promise 功能 
+/* 目標三: 完善 Promise 功能 
   a. 處理多個 promise.then() 都要被執行到 
   b. chaining method 
-  c. 避免 return 自己循環調用
-  d. 程式運作錯誤時，要用 reject 處理
-  e. 靜態方法
+*/
+const promise = new MyPromise((resolve, reject) => {
+  // 目前这里只处理同步的问题
+  resolve('success')
+})
+
+function other () {
+  return new MyPromise((resolve, reject) =>{
+    resolve('other')
+  })
+}
+promise.then(value => {
+  console.log(1)
+  console.log('resolve', value)
+  return other()
+}).then(value => {
+  console.log(2)
+  console.log('resolve', value)
+})
+
+// 希望不要出現 TypeError: Cannot read property 'then' of undefined
+// 而是出現 1 / resolve success / 2 / resolve other
+
+// 實現目標三: 完善 Promise 功能，.then 加入 onFulfilledCallbacks 及 onRejectedCallbacks 及 promise2
+const PENDING = 'pending';
+const FULFILLED = 'fulfilled';
+const REJECTED = 'rejected';
+
+class MyPromise {
+  constructor(executor){
+    executor(this.resolve, this.reject)
+  }
+  status = PENDING;
+  value = null;
+  reason = null;
+  // 存储成功回调函数
+  onFulfilledCallbacks = [];
+  // 存储失败回调函数
+  onRejectedCallbacks = [];
+
+  resolve = (value) => {
+    if (this.status === PENDING) {
+      this.status = FULFILLED;
+      this.value = value;
+      while (this.onFulfilledCallbacks.length) {
+        // Array.shift() 取出数组第一个元素，然后（）调用，shift不是纯函数，取出后，数组将失去该元素，直到数组为空
+        this.onFulfilledCallbacks.shift()(value)
+      }
+    }
+  }
+
+  reject = (reason) => {
+    if (this.status === PENDING) {
+      this.status = REJECTED;
+      this.reason = reason;
+      while (this.onRejectedCallbacks.length) {
+        this.onRejectedCallbacks.shift()(reason)
+      }
+    }
+  }
+  
+  then(onFulfilled, onRejected) {
+    const promise2 = new MyPromise((resolve, reject) => {
+      // 这里的内容在执行器中，会立即执行
+      if (this.status === FULFILLED) {
+        // 获取成功回调函数的执行结果
+        const x = onFulfilled(this.value);
+        if(x instanceof MyPromise) {
+          // 执行 x，调用 then 方法，目的是将其状态变为 fulfilled 或者 rejected
+          // x.then(value => resolve(value), reason => reject(reason))
+          // 简化之后
+          x.then(resolve, reject);
+        } else {
+          // 普通值
+          resolve(x);
+        }
+      } else if (this.status === REJECTED) {
+        onRejected(this.reason);
+      } else if (this.status === PENDING) {
+        this.onFulfilledCallbacks.push(onFulfilled);
+        this.onRejectedCallbacks.push(onRejected);
+      }
+    })
+    
+    return promise2;
+  }
+}
+
+
+/* 目標四與實現: 完善 Promise 功能 
+  a. 避免 return 自己循環調用
+  b. 程式運作錯誤時，要用 reject 處理
+  c. 靜態方法
+  d. .catch()
 */
 // 先定义三个常量表示状态
 const PENDING = 'pending';
