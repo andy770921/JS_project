@@ -1685,6 +1685,8 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 
 # 網路
 ## 一句話解釋
+### HTTP vs HTTPS:
+https://shubo.io/https/
 ### CORS:
 - Ref: https://blog.techbridge.cc/2017/05/20/api-ajax-cors-and-jsonp/
 - CORS，全名為 Cross-Origin Resource Sharing，跨來源資源共享。是規範：「如果你想在不同 origin 之間傳輸資料的話，你應該怎麼做」
