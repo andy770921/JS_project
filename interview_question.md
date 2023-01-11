@@ -567,10 +567,10 @@ promise.then(value => {
 }, reason => {
   console.log('reject', reason)
 })
-// 要印出 'success'，如果用目標一的程式碼，會甚麼都沒印出
+// 希望印出 'success'，如果用目標一的程式碼，會甚麼都沒印出
 // 原因是，主线程代码立即执行，setTimeout 是异步代码，then 会马上执行，这个时候判断 Promise 状态，状态是 Pending，然而之前并没有判断等待这个状态
 
-// 實現目標二: 完善所有 Promise 功能
+// 實現目標二: 完善 Promise 功能，.then 加入 onFulfilledCallback 及 onRejectedCallback
 // 先定义三个常量表示状态
 const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
