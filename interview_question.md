@@ -568,7 +568,8 @@ promise.then(value => {
   console.log('reject', reason)
 })
 // 希望印出 'success'，如果用目標一的程式碼，會甚麼都沒印出
-// 原因是，主线程代码立即执行，setTimeout 是异步代码，then 会马上执行，这个时候判断 Promise 状态，状态是 Pending，然而之前并没有判断等待这个状态
+// 原因是，主线程代码立即执行，setTimeout 是异步代码，then 会马上执行
+// 这个时候判断 Promise 状态，状态是 Pending，然而之前并没有判断等待这个状态
 
 // 實現目標二: 完善 Promise 功能，.then 加入 onFulfilledCallback 及 onRejectedCallback
 const PENDING = 'pending';
@@ -646,7 +647,7 @@ promise.then(value => {
 // 希望不要出現 TypeError: Cannot read property 'then' of undefined
 // 而是出現 1 / resolve success / 2 / resolve other
 
-// 實現目標三: 完善 Promise 功能，.then 加入 onFulfilledCallbacks 及 onRejectedCallbacks 及 promise2
+// 實現目標三: 完善 Promise 功能，.then 修正為 onFulfilledCallbacks 及 onRejectedCallbacks，新增 promise2
 const PENDING = 'pending';
 const FULFILLED = 'fulfilled';
 const REJECTED = 'rejected';
