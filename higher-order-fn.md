@@ -306,3 +306,61 @@ function pipe(...funcs){
 }
 ```
 
+## Array deep flatten ( while, recursion, arr.reduce )
+```js
+// while + stack: https://juejin.cn/post/7118763684209524767
+var arr1 = [1,2,3,[1,2,3,4, [2,3,4]]];
+function flatten(arr) {
+  const stack = [...arr];
+  const res = [];
+  while (stack.length) {
+    // 使用 pop 从 stack 中取出并移除值
+    const next = stack.pop();
+    if (Array.isArray(next)) {
+      // 使用 push 送回内层数组中的元素，不会改动原始输入
+      stack.push(...next);
+    } else {
+      res.push(next);
+    }
+  }
+  // 反转恢复原数组的顺序
+  return res.reverse();
+}
+flatten(arr1);// [1, 2, 3, 1, 2, 3, 4, 2, 3, 4]
+```
+```js
+// recursion: https://www.explainthis.io/zh-hant/interview-guides/javascript-whiteboard/array-flatten
+let array = [1, 2, [3, [4, 5, [6, 7, [8]]]]];
+
+function flatten(arr, output = []) {
+  for (const val of arr) {
+    if (Array.isArray(val)) {
+      flatten(val, output);
+    } else {
+      output.push(val);
+    }
+  }
+  return output;
+}
+
+const flattenArray = flatten(array);
+console.log(flattenArray); // [1,2,3,4,5,6,7,8]
+```
+
+```js
+// arr.reduce: https://www.explainthis.io/zh-hant/interview-guides/javascript-whiteboard/array-flatten
+let array = [1, 2, [3, [4, 5, [6, 7, [8]]]]];
+
+function flatten(arr) {
+  return arr.reduce(
+    (acc, cur) =>
+      // 判斷目前 cur 是否為陣列，如果是陣列，則將遞迴地對該元素呼叫 flatten
+      // 如果不是陣列，就直接加入到新陣列的最後一位
+      Array.isArray(cur) ? [...acc, ...flatten(cur)] : [...acc, cur],
+    []
+  );
+}
+
+const flattenArray = flatten(array);
+console.log(flattenArray); // [1,2,3,4,5,6,7,8]
+```
