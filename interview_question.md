@@ -620,11 +620,12 @@ class MyPromise {
   }
 }
 
-/* 目標三: 完善 Promise 功能 
+/* 目標三與實現: 完善 Promise 功能 
   a. 處理多個 promise.then() 都要被執行到 
   b. chaining method 
   c. 避免 return 自己循環調用
   d. 程式運作錯誤時，要用 reject 處理
+  e. 靜態方法
 */
 // 先定义三个常量表示状态
 const PENDING = 'pending';
