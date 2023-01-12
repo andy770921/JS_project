@@ -239,6 +239,7 @@ const pipe = (...funcs) => {
 const pipe = (...funcs) => {
   return  (...args) => funcs.reduce((res, func, i) =>  i === 1 ? func(...args): func(res));
 }
+// Note: 當 reduce 沒有預設值，index 從 1 開始算，詳見 https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#reduce_%E5%A6%82%E4%BD%95%E9%81%8B%E4%BD%9C
 
 // another Ans:
 const pipe = (...funcs) => {
