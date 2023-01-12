@@ -991,18 +991,18 @@ const p5 = new Promise((resolve, reject) => {
 
 // 所有 Promise 都成功
 myPromiseAny([p1, p2, p3])
-  .then(res => console.log(res)) //p1
+  .then(res => console.log(res)) // p1
   .catch(err => console.log(err)) 
   
 // 兩個 Promise 成功
 myPromiseAny([p1, p2, p4])
-  .then(res => console.log(res))
-  .catch(err => console.log(err)) // p1
+  .then(res => console.log(res)) // p1
+  .catch(err => console.log(err))
 
 // 只有一個延時成功的 Promise
 myPromiseAny([p2, p4, p5])
-  .then(res => console.log(res))
-  .catch(err => console.log(err)) // p2 延時1秒
+  .then(res => console.log(res)) // p2 延時1秒
+  .catch(err => console.log(err))
 
 // 所有 Promise 都失敗
 myPromiseAny([p4, p5])
