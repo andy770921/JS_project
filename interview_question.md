@@ -1824,8 +1824,10 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 
 ### XSS
 - Ref: https://blog.techbridge.cc/2021/05/15/prevent-xss-is-not-that-easy/
+- Ref2: https://tech-blog.cymetrics.io/posts/huli/xss-history/
 - XSS 全稱是 Cross-site Scripting
 - 駭客可以在你的網站上面執行 JavaScript 的程式碼。
+- 可分成三種: Stored XSS（也稱為 Persistent XSS），Reflected（Non-Persistent）以及 DOM-based XSS
 - 可能解法: 透過 CSP（Content-Security-Policy）這個 HTTP response header 防止 inline script 的執行或是限制可以載入 script 的 domain，也可以用 Trusted Types 防止一些潛在的攻擊以及指定規則，或是使用一些過濾 XSS 的 library，例如說 DOMPurify 以及 js-xss。
 
 ### CSRF
