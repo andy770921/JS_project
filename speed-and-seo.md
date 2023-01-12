@@ -93,6 +93,7 @@ https://www.slideshare.net/kewang/blurhash
 
 https://www.youtube.com/watch?v=M6N7gEZ-IUQ  
 https://blog.techbridge.cc/2021/05/15/prevent-xss-is-not-that-easy/  
+https://tech-blog.cymetrics.io/posts/huli/xss-history/  
 
 ## CSRF (Cross Site Request Forgery) 攻擊介紹
 
