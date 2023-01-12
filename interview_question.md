@@ -1008,9 +1008,9 @@ myPromiseAny([p2, p4, p5])
 myPromiseAny([p4, p5])
   .then(res => console.log(res))
   .catch(err => {
-    console.log(err instanceof AggregateError);
-    console.log(err.errors);
-    console.log(err.message);
+    console.log(err instanceof AggregateError)
+    console.log(err.errors)
+    console.log(err.message)
   }) // true ["p4 rejected", "p5 rejected 延時1.5秒"] "All promises were rejected"
 ```
 - A:
