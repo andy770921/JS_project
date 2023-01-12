@@ -19,6 +19,7 @@
 6. [React Apollo and GraphQL Demo Repo](https://github.com/andy770921/graphQL-demo)
 7. [React Basic Concept PPT](https://docs.google.com/presentation/d/1p6PZNSPW96AjDvDJQbiB1u7-ODK4aEC7maxrlV6Bte0/edit?fbclid=IwAR1VVzbVAjxLmE79iD67T-9OiCRdtNTtyKgGl4hwt2TAa3mRpIYlnER4TpI#slide=id.p)
 8. React Apollo: [簡介影片](https://youtu.be/0Bb2btvd6Ns), [簡介 PPT](https://docs.google.com/presentation/d/1bAmFctbrHhEwfnreLyj7x8kpQyvO6z28Hcg_9a9zMqc/edit#slide=id.p), [簡介 md](https://hackmd.io/FQNRLno1Q4WgEpqgdKtrlw?view)
+9. [Vite](https://blog.techbridge.cc/2020/08/07/vite-and-esmodules-snowpack/)
 
 ### Redux
 
