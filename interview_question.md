@@ -31,7 +31,7 @@ script.async = false
 - noopener: 當你從網站 A 使用 `<a target="_blank">` 連結到網站 B 的時候，網站 B 可以拿到 `window.opener`，這就等於是網站 A 的 `window`，因此我只要在網站 B 執行 `window.opener.location = 'phishing_site_url'`，就可以把網站 A 導到其他地方
 - noreferrer: 告訴瀏覽器說：「不要幫我帶 Referer 這個 header」。一般情況，我從網站 A 連到網站 B，網站 B 的 Referer 就會是網站的 A 的 URL，所以它會知道你從哪邊來的。
 - 最新的 spec 定義 noreferrer:「also implies the noopener keyword」，意思是用了 noreferrer 之後就蘊含著 noopener 的效果了。只寫 `rel="noreferrer"` 效果一樣
--  Safari 跟 Firefox 使用 `target=_blank`，預設的 `opener` 就會是 `noopener`。 Chrome 2022 年還沒跟進
+-  Safari 跟 Firefox 及 Chrome ( 88 版後 ) 使用 `target=_blank`，預設的 `opener` 就會是 `noopener`
 
 # CSS
 ## 一句話解釋
@@ -1810,6 +1810,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
     iii. 打 API 時不會自動帶上  
     iv. 若網頁操作到一半，關閉頁面，session storage 就會消失  
     v. 新開同個網域的分頁，另個新分頁會是完全空的 session storage。  
+    vi. 若新開分頁的方式，是透過原網頁的 `<a target="_blank">` 打開，預設行為是會複製一份 session storage 到新分頁，在各自獨立 ( https://blog.techbridge.cc/2020/09/05/session-storage-and-html-spec/ ) 
   3. local storage:   
     i.- iii. 同 session storage  
     iv. 若網頁操作到一半，關閉頁面，local storage 不會消失，想清除需要在適當時機，自己清除  
