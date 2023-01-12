@@ -1822,6 +1822,12 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
     1. 使用 `if(typeof window !== 'undefined')` 避免，如 `if (typeof window !== 'undefined') { const data = JSON.parse(localStorage.getItem('something')); }`
     2. 使用 dynamic import 加上 ssr 設定避免，以 `React + NextJS` 為例，如 `import dynamic from 'next/dynamic'; const DynamicButtonNoSSR = dynamic(() => import('../components/button'), { ssr: false })`
 
+### XSS
+- Ref: https://blog.techbridge.cc/2021/05/15/prevent-xss-is-not-that-easy/
+- XSS 全稱是 Cross-site Scripting
+- 駭客可以在你的網站上面執行 JavaScript 的程式碼。
+- 可能解法: 透過 CSP（Content-Security-Policy）這個 HTTP response header 防止 inline script 的執行或是限制可以載入 script 的 domain，也可以用 Trusted Types 防止一些潛在的攻擊以及指定規則，或是使用一些過濾 XSS 的 library，例如說 DOMPurify 以及 js-xss。
+
 ### CSRF
 - Ref: https://blog.techbridge.cc/2017/02/25/csrf-introduction/
 - CSRF 全稱是 Cross Site Request Forgery，跨站請求偽造，是一種 Web 上的攻擊手法
