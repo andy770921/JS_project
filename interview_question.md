@@ -964,9 +964,9 @@ function myPromiseAll(taskList) {
 - Q:
 ```js
 myPromiseAny(promises)
-  .then(results => {
+  .then(result => {
   })
-  .catch(e => {
+  .catch(errors => {
   })
   
 const p1 = Promise.resolve('p1')
