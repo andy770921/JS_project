@@ -959,7 +959,8 @@ function myPromiseAll(taskList) {
 
 ## Promise.any
 - 程式碼參考 `.all` 風格 https://jsvault.com/promise-all/
-- 測試程式碼參考: https://juejin.cn/post/7109011550660198407
+- 測試程式碼參考 1: https://juejin.cn/post/7109011550660198407
+- 測試程式碼參考 2: https://ithelp.ithome.com.tw/articles/10252463
 - Q:
 ```js
 myPromiseAny(promises)
@@ -1006,7 +1007,11 @@ myPromiseAny([p2, p4, p5])
 // 所有 Promise 都失敗
 myPromiseAny([p4, p5])
   .then(res => console.log(res))
-  .catch(err => console.log(err)) // ["p4 rejected", "p5 rejected 延時1.5秒"]
+  .catch(err => {
+    console.log(err instanceof AggregateError);
+    console.log(err.errors);
+    console.log(err.message);
+  }) // true ["p4 rejected", "p5 rejected 延時1.5秒"] "All promises were rejected"
 ```
 - A:
 ```js
@@ -1022,7 +1027,7 @@ function myPromiseAny(promises) {
           errors[index] = error;
           promisesRejected += 1;
           if (promisesRejected === promises.length) {
-            reject(errors);
+            reject(new AggregateError(errors, 'All promises were rejected'));
           }
         })
     }
