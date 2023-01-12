@@ -929,7 +929,7 @@ sleep(3).then(() => {
 - https://jsvault.com/promise-all/
 - Q:
 ```js
-newPromiseAll(promises)
+myPromiseAll(promises)
   .then(results => {
   })
   .catch(e => {
@@ -953,6 +953,79 @@ function myPromiseAll(taskList) {
           reject(error)
         })
     })
+  });
+}
+```
+
+## Promise.any
+- 程式碼參考 `.all` 風格 https://jsvault.com/promise-all/
+- 測試程式碼參考: https://juejin.cn/post/7109011550660198407
+- Q:
+```js
+myPromiseAny(promises)
+  .then(results => {
+  })
+  .catch(e => {
+  })
+  
+const p1 = Promise.resolve('p1')
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('p2 延時一秒')
+  }, 1000)
+})
+const p3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('p3 延時兩秒')
+  }, 2000)
+})
+
+const p4 = Promise.reject('p4 rejected')
+
+const p5 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject('p5 rejected 延時1.5秒')
+  }, 1500)
+})
+
+// 所有 Promise 都成功
+myPromiseAny([p1, p2, p3])
+  .then(res => console.log(res)) //p1
+  .catch(err => console.log(err)) 
+  
+// 兩個 Promise 成功
+myPromiseAny([p1, p2, p4])
+  .then(res => console.log(res))
+  .catch(err => console.log(err)) // p1
+
+// 只有一個延時成功的 Promise
+myPromiseAny([p2, p4, p5])
+  .then(res => console.log(res))
+  .catch(err => console.log(err)) // p2 延時1秒
+
+// 所有 Promise 都失敗
+myPromiseAny([p4, p5])
+  .then(res => console.log(res))
+  .catch(err => console.log(err)) // ["p4 rejected", "p5 rejected 延時1.5秒"]
+```
+- A:
+```js
+function myPromiseAny(promises) {
+  const errors = [];
+  let promisesRejected = 0;
+  return new Promise((resolve, reject) => {
+    for(let index = 0; index < promises.length; index++){
+      promises[index].then((val) => {
+        resolve(val)
+      })
+        .catch(error => {
+          errors[index] = error;
+          promisesRejected += 1;
+          if (promisesRejected === promises.length) {
+            reject(errors);
+          }
+        })
+    }
   });
 }
 ```
