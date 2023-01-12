@@ -178,6 +178,10 @@ console.log(Object.prototype.__proto__); // null
   2. Macrotask: Microtask 外的大宗，如滑鼠事件，鍵盤事件，網路事件，計時器事件，解析 HTML
   3. Microtask: 設計理念為，效能不大的任務，盡早在 UI 繪製前處理，避免不必要的繪製 UI
   4. 實際上的 Macrotask / Microtask 如何用 NodeJS 及瀏覽器環境產生出來，可參考 https://juejin.cn/post/6945319439772434469
+  
+- 深入討論五: Macrotask / Microtask 實例來看執行時間
+  1. https://f2e.kalan.dev/javascript-basic/5.html#micro-tasks
+  2. https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
  
 ## Inheritance
 ```js
