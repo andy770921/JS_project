@@ -1019,8 +1019,8 @@ function myPromiseAny(promises) {
   const errors = [];
   let promisesRejected = 0;
   return new Promise((resolve, reject) => {
-    for(let index = 0; index < promises.length; index++){
-      promises[index].then((val) => {
+    promises.forEach((promise, index) => {
+      promise.then((val) => {
         resolve(val)
       })
         .catch(error => {
@@ -1030,8 +1030,9 @@ function myPromiseAny(promises) {
             reject(new AggregateError(errors, 'All promises were rejected'));
           }
         })
-    }
+    })
   });
+  // 效果同 return Promise.any(promises)
 }
 ```
 
