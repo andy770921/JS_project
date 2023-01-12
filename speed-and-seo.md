@@ -91,7 +91,8 @@ https://www.slideshare.net/kewang/blurhash
 
 ## XSS 攻擊介紹
 
-https://www.youtube.com/watch?v=M6N7gEZ-IUQ
+https://www.youtube.com/watch?v=M6N7gEZ-IUQ  
+https://blog.techbridge.cc/2021/05/15/prevent-xss-is-not-that-easy/  
 
 ## CSRF (Cross Site Request Forgery) 攻擊介紹
 
