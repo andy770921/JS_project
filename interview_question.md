@@ -1666,7 +1666,8 @@ console.log(subsets([1,2,3]));
 ```
 # 資料結構
 
-## Array Tree Conversion
+## Array Tree Conversion ( LeetCode - 297. Serialize and Deserialize Binary Tree )
+- Ans Ref: https://www.youtube.com/watch?v=cLsWdZd90j8
 - Given a binary tree `[3,9,1,null,null,7,17]` represent by array:
 ```
     3
