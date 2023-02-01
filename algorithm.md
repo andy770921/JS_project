@@ -67,6 +67,7 @@ bubbleSort([1, -100, 200, 2, 300, -5]);
 ```
 
 ## Binary Search: 時間複雜度 O(log n)
+- basic:
 ```js
 function binarySearch(arr, inputNum){
   let leftIndex = 0;
@@ -80,6 +81,31 @@ function binarySearch(arr, inputNum){
 }
 console.log(binarySearch([-100, 1, 2, 200, 300],200));
 ```
+- insert number into sorted array using Binary Search
+```js
+function insertSortedArray(arr, num, leftIdx = 0, rightIdx = arr.length - 1){
+  if(leftIdx > rightIdx){
+    arr.splice(leftIdx, 0, num);
+    return arr;
+  }
+  const midIdx = Math.floor((leftIdx + rightIdx)/2);
+  const mid = arr[midIdx];
+  if(num > mid){
+    return insertSortedArray(arr, num, midIdx + 1, rightIdx);
+  } else {
+    return insertSortedArray(arr, num, leftIdx, midIdx - 1);
+  }
+}
+console.log(insertSortedArray([1,2,3],0)) // [0,1,2,3]
+console.log(insertSortedArray([1,2,3],1)) // [1,1,2,3]
+console.log(insertSortedArray([1,2,3],2)) // [1,2,2,3]
+console.log(insertSortedArray([1,2,3],2.5)) // [1,2,2.5,3]
+console.log(insertSortedArray([1,2,3],4)) // [1,2,3,4]
+```
+- leetcode 35. Search Insert Position: https://leetcode.com/problems/search-insert-position/description/
+  recursive sol: https://leetcode.com/problems/search-insert-position/solutions/274547/fastest-javascript-solution-binary-search-log-n/  
+  while loop sol: https://leetcode.com/problems/search-insert-position/solutions/423166/binary-search-101/  
+
 ## Merge Sort: 時間複雜度 O(nlogn)
 解法一: https://www.youtube.com/watch?v=o1V9J3QR1ZQ  
 ```js
