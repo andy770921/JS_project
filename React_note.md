@@ -7,7 +7,10 @@ https://hackmd.io/@jackblackevo/SyQEEl0tf#React-Context
 
 ## CH Concurrent mode 筆記
 https://lch9487.medium.com/react-concurrent-mode-4cc81aa33785
-
+  
+## 黃玄 ( Meta 開發 react 工程師 ) 講 react 的過去及未來
+https://www.bilibili.com/video/BV1LY411Q7hC/
+  
 ## 實作 React
 1. https://pomb.us/build-your-own-react/
 2. COSCUP: https://youtu.be/fqdOAPLLueo
