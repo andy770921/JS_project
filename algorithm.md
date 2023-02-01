@@ -102,9 +102,9 @@ console.log(insertSortedArray([1,2,3],2)) // [1,2,2,3]
 console.log(insertSortedArray([1,2,3],2.5)) // [1,2,2.5,3]
 console.log(insertSortedArray([1,2,3],4)) // [1,2,3,4]
 ```
-- leetcode 35. Search Insert Position: https://leetcode.com/problems/search-insert-position/description/
-  recursive sol: https://leetcode.com/problems/search-insert-position/solutions/274547/fastest-javascript-solution-binary-search-log-n/  
-  while loop sol: https://leetcode.com/problems/search-insert-position/solutions/423166/binary-search-101/  
+- leetcode 35. Search Insert Position: https://leetcode.com/problems/search-insert-position/description/  
+1. recursive sol: https://leetcode.com/problems/search-insert-position/solutions/274547/fastest-javascript-solution-binary-search-log-n/  
+2. while loop sol: https://leetcode.com/problems/search-insert-position/solutions/423166/binary-search-101/  
 
 ## Merge Sort: 時間複雜度 O(nlogn)
 解法一: https://www.youtube.com/watch?v=o1V9J3QR1ZQ  
