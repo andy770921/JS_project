@@ -1857,5 +1857,8 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 - 短網址: https://www.youtube.com/watch?v=K1PnGF4CwCc
 - FB: https://www.youtube.com/watch?v=kEfB4CGmbeg
 - Yelp & Uber: https://www.youtube.com/watch?v=OiYJl3WnHjY
-## 設計 Instagram
-- https://www.jyt0532.com/2020/02/11/design-instagram/
+## 設計 twitter
+- https://www.youtube.com/watch?v=PMCdWr6ejpw
+
+## 設計 YouTube
+- https://www.youtube.com/watch?v=mp-OSK6jm1c
