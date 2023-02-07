@@ -1866,3 +1866,8 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 
 ## 設計 YouTube
 - https://www.youtube.com/watch?v=mp-OSK6jm1c
+
+## 設計 Messanger ( 講解更清晰的待補 ) 
+- 中文，1.25 倍聽: https://www.youtube.com/watch?v=MNfUqgfBv30
+- 英文，講 websocket vs long polling 清楚: https://www.youtube.com/watch?v=xyLO8ZAk2KE
+- 英文，高人氣: https://www.youtube.com/watch?v=vvhC64hQZMk
