@@ -1766,6 +1766,10 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 }
 */
 ```
+## implement Queue by stack ( LeetCode - 232. Implement Queue using Stacks )
+- Ref1 ( LeetCode official solution, two stack ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/127533/implement-queue-using-stacks/
+- Ref2 ( JavaScript, two stack ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/414089/javascript-solution-beats-98-r-and-100-s/?orderBy=most_votes&languageTags=javascript
+- Ref3 ( JavaScript, one stack and recursion ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/3157240/javascript-solution-using-one-stack-memory-beats-98/
 # React
 ## 一句話解釋
 ### useRef
