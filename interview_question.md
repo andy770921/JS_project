@@ -1871,3 +1871,6 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 - 中文，1.25 倍聽: https://www.youtube.com/watch?v=MNfUqgfBv30
 - 英文，講 websocket vs long polling 清楚: https://www.youtube.com/watch?v=xyLO8ZAk2KE
 - 英文，高人氣: https://www.youtube.com/watch?v=vvhC64hQZMk
+
+# 資料庫設計
+- Calendar: https://www.youtube.com/watch?v=39eAITqeu7g
