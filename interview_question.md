@@ -1873,4 +1873,5 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 - 英文，高人氣: https://www.youtube.com/watch?v=vvhC64hQZMk
 
 # 資料庫設計
+- Q&A and SQL syntax: https://www.softwaretestinghelp.com/database-interview-questions/ 
 - Calendar: https://www.youtube.com/watch?v=39eAITqeu7g
