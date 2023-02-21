@@ -12,7 +12,7 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
 - https://github.com/nvm-sh/nvm
 ## 3. 用命令提示字元下載與安裝 nodeJS  
    a. 輸入 `nvm list` 確認電腦中的 NodeJS 版本  
-   b. 輸入 `nvm ls-remote` 確認網路上可下載的、穩定版 ( LTS ) 的 NodeJS 版本  
+   b. 輸入 `nvm ls-remote` 或 `nvm list available` 確認網路上可下載的、穩定版 ( LTS ) 的 NodeJS 版本  
    c. 輸入 `nvm install 14.18.0` 下載穩定版 ( LTS ) 的 NodeJS 版本 
    d. 再輸入 `nvm list` 確認電腦中的NodeJS版本  
    e. 輸入 `nvm use 10.15.3` 切換到該版本  
