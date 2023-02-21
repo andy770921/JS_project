@@ -1883,6 +1883,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 3. 開始建 table，id 通常是 primary key，可在資料型態上標註為 `primary key, UUID`。同個 table 其他相關的 id 叫做 foreign key，比如 `user_id` 可在資料型態上標註為 `reference user.id` 之類的，其餘資料型態還有 `string`, `int`, `boolean`, `DateTime`, `Timezone`
 4. 若有隸屬關係，一對一或一對多，都可能會用到 foreign key。比如，一家公司有多種產品，產品的 table 會有 `company_id`。一個問題一個答案，答案的 table 會有 `question_id`。一張問卷多個問題，問題的 table 會有 `survey_id`
 5. 若狀況複雜，比如一個群組，多個用戶，每個用戶在每個群組有不同權限。可新建 table 名稱為 TeamUser，底下有三個 key: `team_id`, `user_id`, `role_id`，描述 Team 與 user 的關聯，同時記錄那個 user 在那個群組，是甚麼身分 (admin, viewer, editor 等)。
-6. 或是多種 id 相關，也可以切出另一張 table for mapping relationship 專門描述關聯。比如問卷回饋者 table，可能底下有四個 key: `id`, `user_id`, `survey_id`, `product_id`。問卷回饋 table，可能底下有四個 key: `id`, `question_id`, `choice_id`, `responder_id`。
-7. 問題一: 為何問卷回饋 table 要留 `question_id` ? 答: choice table 只保留回答的選項，比如有沒打勾，true 是 `choice_id: 100`， false 是 `choice_id: 101`，要跟問題一起看才知道整個意義。
+6. 若要維持多對多關係，可能需要增加多一張表格，比如一張問卷可問到多個產品，同時一個產品可以被很多問券提及，這時會需要新建一個 mapping table。比如，新建 ProductSurvey table，底下有三個 key: `id`, `product_id`, `survey_id`, 可從 `product_id` mapping 到 `survey_id`
+7. 多種 id 相關，會切出另一張 mapping table 專門描述關聯。比如問卷回饋者 table，可能底下有四個 key: `id`, `user_id`, `survey_id`, `product_id`。問卷回饋 table，可能底下有四個 key: `id`, `question_id`, `choice_id`, `responder_id`。
+8. 問題: 為何問卷回饋 table 要留 `question_id` ? 答: choice table 只保留回答的選項，比如有沒打勾，true 是 `choice_id: 100`， false 是 `choice_id: 101`，要跟問題一起看才知道整個意義。
 
