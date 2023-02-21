@@ -1886,4 +1886,4 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 6. 若要維持多對多關係，可能需要增加多一張表格，比如一張問卷可問到多個產品，同時一個產品可以被很多問券提及，這時會需要新建一個 mapping table。比如，新建 ProductSurvey table，底下有三個 key: `id`, `product_id`, `survey_id`, 可從 `product_id` mapping 到 `survey_id`
 7. 多種 id 相關，會切出另一張 mapping table 專門描述關聯。比如問卷回饋者 table，可能底下有四個 key: `id`, `user_id`, `survey_id`, `product_id`。問卷回饋 table，可能底下有四個 key: `id`, `question_id`, `choice_id`, `responder_id`。
 8. 問題: 為何問卷回饋 table 要留 `question_id` ? 答: choice table 只保留回答的選項，比如有沒打勾，true 是 `choice_id: 100`， false 是 `choice_id: 101`，要跟問題一起看才知道整個意義。
-
+9. 問題: 說說未來這個表的設計可能的彈性與重用性。答: 因為公司被切出來為獨立 table，且跟 product 有隸屬關係，可支援多家公司。若各問卷間想共用問題，可再創一個 SurveyQuestion Table，底下有三個 key: `id`, `survey_id`, `question_id`，可達成 `survey_id` 1~3 都用 `question_id` 1
