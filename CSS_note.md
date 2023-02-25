@@ -20,6 +20,18 @@ https://medium.com/change-or-die/css-%E5%85%A5%E9%96%80%E7%AD%86%E8%A8%98-%E4%B8
 ## Functional CSS:
 https://blog.techbridge.cc/2019/01/26/functional-css/  
 
+## 不該使用 vw, vh
+- https://www.youtube.com/watch?v=veEqYQlfNx8
+- vw 可能造成問題 ( 橫向卷軸不預期出現 )，原因是 vw 不包括直向選軸寬度
+- vh 可能造成在手機使用時，`100vh` 是不加起始畫面最上方網址列的，從網址列下方開始算高，導致底部被下方功能列擋到
+- 解法一: 可用 svh 加上 fallback
+```
+height: 100vh;
+height: 100svh;
+```
+- 解法二: 可用 `height: 100%` 從 html, body 開始每層都加 `height: 100%`
+- 其他: `font-size` 不該用 vh, vw，非用不可的話，可用函數如 `gap: min(2rem, 5vw)`, `font-size: clamp(1rem, 5vw + .5rem, 2rem)`
+
 ## CSS 使用 var，及 `<a href="#some-position">` 平順滑動:
 
 https://www.youtube.com/watch?v=pKO1ktPQByk
