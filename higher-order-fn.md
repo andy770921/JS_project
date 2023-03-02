@@ -365,3 +365,27 @@ function flatten(arr) {
 const flattenArray = flatten(array);
 console.log(flattenArray); // [1,2,3,4,5,6,7,8]
 ```
+
+## Object deep clone
+- Not handling array and function values
+```js
+// ref: https://dev.to/amitkhonde/javascript-interviews-create-a-deep-copy-of-an-object-4pje
+function copyObject(source) {
+    var target = {};
+
+    // Getting source object keys
+    const keys = Object.keys(source);
+    keys.forEach(key => {
+        // Checking if current value is an object
+        if (typeof source[key] === "object") {
+            // Calling our function recursively for current value
+            target[key] = copyObject(source[key]);
+        } else {
+            // Directly assigning the value
+            target[key] = source[key];
+        }
+    });
+
+    return target;
+}
+```
