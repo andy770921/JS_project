@@ -1800,6 +1800,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 - 進階實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30` 及 `Etag: xxx`，代表快取過期時間是 30 秒，30 秒後，若前端送出 request 會在 request header 加入 `If-None-Match: xxx` 詢問 server 檔案是不是有被更動過
 - 需要前端每次都檢查有無新的檔案：server 回傳的 response header 加入 `Cache-Control: no-cache` 及 `Etag: xxx`
 - 用在 SPA 的策略：`script-qd3j2orjoa.js` 設定 `Cache-Control: max-age=31536000`，`index.html` 設定 `Cache-Control: no-cache`
+- Ref2: https://oldmo860617.medium.com/%E6%A5%B5%E9%99%90%E5%8A%A0%E9%80%9F-web-%E9%96%8B%E7%99%BC%E8%80%85%E4%B8%8D%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84-cache-%E5%A4%A7%E8%A3%9C%E5%B8%96-3c7a9c4241de
 ### session 
  - Session 就是它英文的原意之一，代表著：「具有狀態的一段期間」或者是「上下文」
  - Ref: https://github.com/aszx87410/blog/issues/45
