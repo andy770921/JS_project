@@ -1598,36 +1598,7 @@ var subsets = function(nums) {
 console.log(subsets([1,2,3]));
 // [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 ```
-- A2: using stack
-```js
-var subsets = function (nums) {
-  const firstIndexList = [0];
-  const stack = [];
-  const ans = [[]];
-
-  stack.push(firstIndexList);
-  while (stack.length > 0) {
-    const indexList = stack.pop();
-    const lastItem = indexList[indexList.length - 1];
-
-    ans.push(indexList.map((i) => nums[i]));
-      
-    if (lastItem < nums.length - 1) {
-      stack.push([
-          ...indexList.slice(0, indexList.length - 1),
-          lastItem + 1,
-        ]);
-
-      stack.push([...indexList, lastItem + 1]);
-    }
-  }
-
-  return ans;
-};
-
-console.log(subsets([1,2,3]));
-// [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
-```
+- A2: DFS / BFS: https://leetcode.com/problems/subsets/solutions/1716070/four-javascript-solution-no-recursive-bfs-and-recursive-dfs/
 - A3:
 ```js
 var subsets = function(nums) {
@@ -1693,7 +1664,7 @@ function binaryTreeToArray(root) {
   // TODOS
 }
 ```
-- A (BFS):
+- A ( BFS ):
 ```js
 function TreeNode(val) {
   this.val = val;
