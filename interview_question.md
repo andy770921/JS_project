@@ -1766,6 +1766,70 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
 }
 */
 ```
+## Maximum sum of non-leaf nodes among all levels of the given binary tree
+- https://www.geeksforgeeks.org/maximum-sum-of-non-leaf-nodes-among-all-levels-of-the-given-binary-tree/
+- Given a Binary Tree having positive and negative nodes, the task is to find the maximum sum of non-leaf nodes among all levels of the given binary tree.
+```
+Input:
+                        4
+                      /   \
+                     2    -5
+                    / \   
+                  -1   3 
+Output: 4
+Sum of all non-leaf nodes at 0th level is 4.
+Sum of all non-leaf nodes at 1st level is 2.
+Sum of all non-leaf nodes at 2nd level is 0.
+Hence maximum sum is 4
+```
+```js
+	class Node {
+		constructor(data) {
+		this.left = null;
+		this.right = null;
+		this.data = data;
+		}
+	}
+	
+function maxNonLeafNodesSum(root) {
+	// Base case
+	if (root == null) return 0;
+
+	let result = 0;
+	let q = [];
+	q.push(root);
+
+	while (q.length > 0) {
+		let count = q.length;
+
+		let sum = 0;
+		while (count-- > 0) {
+      let temp = q.shift();
+
+      if (temp.left != null || temp.right != null){
+        sum = sum + temp.data;
+      }
+
+      if (temp.left != null) q.push(temp.left);
+      if (temp.right != null) q.push(temp.right);
+		}
+		result = Math.max(sum, result);
+	}
+	return result;
+}
+	
+let root = new Node(1);
+root.left = new Node(2);
+root.right = new Node(3);
+root.left.left = new Node(4);
+root.left.right = new Node(5);
+root.right.right = new Node(8);
+root.right.right.left = new Node(6);
+root.right.right.right = new Node(7);
+console.log(maxNonLeafNodesSum(root)); // 8
+
+```
+
 ## implement Queue by stack ( LeetCode - 232. Implement Queue using Stacks )
 - Ref1 ( LeetCode official solution, two stack ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/127533/implement-queue-using-stacks/
 - Ref2 ( JavaScript, two stack ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/414089/javascript-solution-beats-98-r-and-100-s/?orderBy=most_votes&languageTags=javascript
