@@ -1645,24 +1645,7 @@ console.log(subsets([1,2,3]));
 ```
 - A4:
 ```js
-function subsets(nums) {
-  const result = [[]];
-  for (const currentEle of nums) {
-    /**
-     * Set is currentEle added to the current result;
-     * [[],[a]] new is b
-     * [[], [a], [b], [a,b]]
-     * */
-    const initialLength = result.length;
-    for (let i = 0; i < initialLength; i++) {
-      result.push([...result[i], currentEle]);
-    }
-  }
-  return result;
-}
 
-console.log(subsets([1,2,3]));
-// [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 ```
 # 資料結構
 
@@ -1684,12 +1667,7 @@ function TreeNode(val) {
   this.right = null;
 }
 ```
-write a function which transfer array into binary tree.
-```
-input: {Array}
-
-output: {TreeNode} root
-```
+write a function which transfer array into binary tree / binary tree into array.
 - Q:
 ```js
 function TreeNode(val) {
@@ -1698,11 +1676,24 @@ function TreeNode(val) {
   this.right = null;
 }
 
+/**
+ * @param {Array} array
+ * @return {TreeNode}
+ */
+
 function arrayToBinaryTree(array) {
   // TODOS
 }
+
+/**
+ * @param {TreeNode} root
+ * @return {Array}
+ */
+function binaryTreeToArray(root) {
+  // TODOS
+}
 ```
-- A:
+- A (BFS):
 ```js
 function TreeNode(val) {
   this.val = val;
@@ -1710,30 +1701,29 @@ function TreeNode(val) {
   this.right = null;
 }
 
-function arrayToBinaryTree(array) {
-  const root = new TreeNode(array.shift());
-  const parentQueue = [root];
-  
-  while(parentQueue.length > 0){
-    const currentParent = parentQueue.shift();
-    if(array.length > 0){
-      const leftValue = array.shift();
-      const leftChild =  leftValue ? new TreeNode(leftValue) : null;
-      if(currentParent !== null) {
-        currentParent.left = leftChild;
-      }
-      parentQueue.push(leftChild);
+function arrayToBinaryTree(arr) {
+    if(arr.length === 0){
+        return null;
     }
-    if(array.length > 0){
-      const rightValue = array.shift();
-      const rightChild =  rightValue ? new TreeNode(rightValue) : null;
-      if(currentParent !== null) {
-        currentParent.right = rightChild;
-      }
-      parentQueue.push(rightChild);
+    const root = new TreeNode(arr.shift());
+    const queue = [root];
+
+    while(queue.length){
+        const node = queue.shift();
+        const leftValue = arr.shift();
+
+        if(typeof leftValue === 'number'){
+            node.left = new TreeNode(leftValue);
+            queue.push(node.left);
+        }
+        const rightValue = arr.shift();
+        if(typeof rightValue === 'number'){
+            node.right = new TreeNode(rightValue);
+            queue.push(node.right);
+        }
     }
-  }
-  return root;
+
+    return root;
 }
 
 console.log(arrayToBinaryTree([3,9,1,null,null,7,17]));
@@ -1765,7 +1755,30 @@ console.log(arrayToBinaryTree([3,null,1,null,null,null,17]));
   val: 3
 }
 */
+
+function binaryTreeToArray(root) {
+    const queue = [root];
+    const result = [];
+
+    while(queue.length) {
+        const node = queue.shift();
+        
+        if(node) {
+            result.push(node.val);
+            queue.push(node.left);
+            queue.push(node.right);
+        } else {
+            result.push(null);
+        }
+    }
+    while(result[result.length - 1] === null) {
+        result.pop();
+    }
+
+    return result;
+}
 ```
+
 ## Maximum sum of non-leaf nodes among all levels of the given binary tree
 - https://www.geeksforgeeks.org/maximum-sum-of-non-leaf-nodes-among-all-levels-of-the-given-binary-tree/
 - Given a Binary Tree having positive and negative nodes, the task is to find the maximum sum of non-leaf nodes among all levels of the given binary tree.
