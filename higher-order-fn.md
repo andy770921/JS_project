@@ -116,11 +116,10 @@ function debounce(fn, interval = 300){
       ,interval);
   }
 }
-function A(){
+function a(){
   console.log("hi");
 }
-let B = debounce(A, 2000);
-
+let b = debounce(a, 2000);
 ```
 
 ```js
@@ -131,10 +130,10 @@ function debounce(fn, interval = 300){
     timeoutId = setTimeout(fn, interval);
   }
 }
-function A(){
+function a(){
   console.log("hi");
 }
-let B = debounce(A, 2000);
+const b = debounce(a, 2000);
 ```
 - better: Ref: https://gist.github.com/nmsdvid/8807205
 ```js
@@ -145,13 +144,13 @@ function debounce(fn, interval = 300){
     timeoutId = setTimeout(() => {
       timeoutId = null;
       fn(...args);
-      },interval);
+    }, interval);
   }
 }
-function A(x) {
+function a(x) {
   console.log(x);
 }
-let B = debounce(() => A("hi"), 2000);
+const b = debounce(() => a("hi"), 2000);
 ```
 - better: Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
 
@@ -169,7 +168,27 @@ function debounce(func, delay) {
 }
 ```
 ## Throttle
-- Ref: https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
+- Ref: https://www.youtube.com/watch?v=IU83Qjax1AI
+- 概念: 將 debounce 的 `clearTimeout` 換成 if + return
+```js
+function throttle(fn, interval = 300){
+  let timeoutId = null;
+  return (...args) => {
+    if(timeoutId) {
+      return;
+    }
+    timeoutId = setTimeout(() => {
+      timeoutId = null;
+      fn(...args);
+    }, interval);
+  }
+}
+function a(x) {
+  console.log(x);
+}
+const b = debounce(() => a("hi"), 2000);
+```
+- Ref (較複雜): https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
 ```js
 function throttle(func, threshhold) {
   var last, timer;
