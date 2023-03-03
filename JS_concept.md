@@ -941,6 +941,9 @@ https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/294280/  
 5. (圖中 E) 靜態取得網頁總高度: document.body.clientHeight  
 https://blog.csdn.net/china_skag/article/details/30512877  
+## Infinite Scroll
+- Ref 使用 Intersection Observer API 實作: https://www.youtube.com/watch?v=r9ppY3wzQok
+- Ref 使用 高度計算 實作: https://youtu.be/IU83Qjax1AI?t=288
 
 ## keydown 事件相關
 1. https://www.w3.org/TR/uievents/#keydown
