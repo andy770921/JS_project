@@ -186,7 +186,7 @@ function throttle(fn, interval = 300){
 function a(x) {
   console.log(x);
 }
-const b = debounce(() => a("hi"), 2000);
+const b = throttle(() => a("hi"), 2000);
 ```
 - Ref (較複雜): https://mropengate.blogspot.com/2017/12/dom-debounce-throttle.html
 ```js
