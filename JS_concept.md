@@ -930,6 +930,10 @@ https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_To
 https://medium.com/frochu/touch-and-mouse-together-76fb69114c04  
 https://w3c.github.io/touch-events/#mouse-events  
 
+## Intersection Observer API
+- 影片: https://www.youtube.com/watch?v=r9ppY3wzQok
+- 文: https://weiyun0912.github.io/Wei-Docusaurus/docs/JavaScript/intersectionObserver/
+
 ## Scroll 事件相關，當捲軸下拉到底，用 AJAX 擴展頁面
 
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/  
@@ -942,8 +946,23 @@ https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event
 https://codertw.com/%E5%89%8D%E7%AB%AF%E9%96%8B%E7%99%BC/294280/  
 5. (圖中 E) 靜態取得網頁總高度: document.body.clientHeight  
 https://blog.csdn.net/china_skag/article/details/30512877  
+
+
 ## Infinite Scroll
-- Ref 使用 Intersection Observer API 實作: https://www.youtube.com/watch?v=r9ppY3wzQok
+- Ref 使用 Intersection Observer API 綁在最後一個元素 ( 比如最後一張商品卡片 ) 實作: https://www.youtube.com/watch?v=r9ppY3wzQok
+```js
+const lastCardObserver = new IntersectionObserver((entries) => {
+  let lastCard = entries[0];
+  if (!lastCard.isIntersecting) return;
+  
+  // TODO: add new content in DOM
+
+  lastCardObserver.unobserve(lastCard.target);
+  lastCardObserver.observe(document.querySelector(".card:last-child"));
+});
+
+lastCardObserver.observe(document.querySelector(".card:last-child"));
+```
 - Ref 使用 高度計算 實作: https://youtu.be/IU83Qjax1AI?t=288
 ```js
 function scroll() {
