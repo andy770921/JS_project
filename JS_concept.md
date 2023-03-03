@@ -935,7 +935,7 @@ https://w3c.github.io/touch-events/#mouse-events
 1. 座標定義 https://andyyou.github.io/2017/01/31/understand-coordinate-of-dom/  
 ![image](https://github.com/andy770921/JS_project/blob/master/imgs/JS_concept_Scroll.bmp)
 2. (圖中 A B) 動態取得相對於目前視窗座標軸上，元件座標位置: document.getElementsByClassName('container-5')[0].getBoundingClientRect().bottom; (或.top)  
-https://juejin.im/entry/59c1fd23f265da06594316a9?fbclid=IwAR1j1TZ7TWBkqipedDJMi5EDLj3v9ZEdI9WHnrZ34ZAEGmM8G4A7NNqwhps  
+https://juejin.im/entry/59c1fd23f265da06594316a9
 3. (圖中 C) 動態取得目前scroll bar捲動長度，可直接使用範例程式碼。: 引入事件監聽函數，隨時可取得當下位置y座標 scroll_pos，或自己一次性使用window.scrollY  
 https://developer.mozilla.org/zh-TW/docs/Web/API/Document/scroll_event  
 4. (圖中 D) 取得瀏覽器當下視窗高度: window.innerHeight  
