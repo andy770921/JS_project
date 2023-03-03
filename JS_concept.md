@@ -944,6 +944,20 @@ https://blog.csdn.net/china_skag/article/details/30512877
 ## Infinite Scroll
 - Ref 使用 Intersection Observer API 實作: https://www.youtube.com/watch?v=r9ppY3wzQok
 - Ref 使用 高度計算 實作: https://youtu.be/IU83Qjax1AI?t=288
+```js
+function scroll() {
+  const clientHeight = document.documentElement.clientHeight;
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight;
+
+  if ((scrollTop + clientHeight) / scrollHeight >= 0.9) {
+    // TODO: add new content in DOM
+  }
+}
+
+document.addEventListener('scroll', scroll);
+// 一般來說，會用 throttle: document.addEventListener('scroll', throttle(scroll));
+```
 
 ## keydown 事件相關
 1. https://www.w3.org/TR/uievents/#keydown
