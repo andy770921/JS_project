@@ -366,6 +366,19 @@ function flatten(arr, output = []) {
   return output;
 }
 
+// 或是
+function flatten(arr) {
+  const output = [];
+  for (const val of arr) {
+    if (Array.isArray(val)) {
+      output.push(...flatten(val));
+    } else {
+      output.push(val);
+    }
+  }
+  return output;
+}
+
 const flattenArray = flatten(array);
 console.log(flattenArray); // [1,2,3,4,5,6,7,8]
 ```
