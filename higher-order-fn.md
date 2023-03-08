@@ -127,7 +127,10 @@ function debounce(fn, interval = 300){
   let timeoutId = null;
   return () => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(fn, interval);
+    timeoutId = setTimeout(() => {
+      timeoutId = null;
+      fn();
+    }, interval);
   }
 }
 function a(){
