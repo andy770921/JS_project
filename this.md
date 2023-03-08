@@ -122,7 +122,7 @@ test.sayThisInProto(); // in sayThisInProto 1 undefined 100      in sayThisInPro
 # JS 中的 Class 與 function 實作繼承
 
 ## class
-https://codepen.io/jackblackevo/pen/veyNKJ?editors=0010&fbclid=IwAR0yaCXye7ogklCrUK0avmi5-CYXRC2Gn03G0Q4UMfNSQJ4nx77ria2DCLQ
+https://codepen.io/jackblackevo/pen/veyNKJ?editors=0010
 ```js
 class Person {
   constructor(name) {
@@ -146,10 +146,10 @@ class Developer extends Person {
 }
 
 var ryan = new Developer("Chiang", "JavaScript");
-ryan.coding();
-ryan.greeting();
-console.log(ryan.hasOwnProperty('name'));
-console.log(ryan.hasOwnProperty('programLang'));
+ryan.coding(); // console.log("Hello world!")
+ryan.greeting(); // Hi! I'm Chiang.
+console.log(ryan.hasOwnProperty('name')); // true
+console.log(ryan.hasOwnProperty('programLang')); // true
 ```
 ## function
 https://codepen.io/jackblackevo/pen/oGYXKL?editors=0010&fbclid=IwAR2UWw5tTT9Pgm_cbZaD5P5MiXIumVtqnXty2JQGurj8PZRwmAUkdVwx8lU
