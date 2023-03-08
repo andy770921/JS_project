@@ -70,7 +70,7 @@ class B {
   }
 }
 
-const y = new B;
+const y = new B();
 
 y.say();
 y.sayN();
