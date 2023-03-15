@@ -111,6 +111,8 @@ https://tech-blog.cymetrics.io/posts/huli/xss-history/
 - 存在 localStorage, sessionStorage, or cookies 各有優缺
 
 ## 前端自行解出 JWT 程式碼範例
+- JWT 會拆三段，這邊只解出中間的 payload，通常沒有敏感資訊，只有使用者名稱及過期時間
+- Ref: https://medium.com/%E9%BA%A5%E5%85%8B%E7%9A%84%E5%8D%8A%E8%B7%AF%E5%87%BA%E5%AE%B6%E7%AD%86%E8%A8%98/%E7%AD%86%E8%A8%98-%E9%80%8F%E9%81%8E-jwt-%E5%AF%A6%E4%BD%9C%E9%A9%97%E8%AD%89%E6%A9%9F%E5%88%B6-2e64d72594f8
 ```ts
 import { FC, useEffect } from 'react';
 import Cookies from 'js-cookie';
