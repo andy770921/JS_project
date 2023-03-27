@@ -1637,7 +1637,8 @@ function HTMLElements(strParam) {
   const closeTags = ['</b>', '</i>', '</em>', '</div>', '</p>'];
 
   const stack = [];
-
+  // 正規表達式意思是，外層圓括號代表有找到的字需要被記錄在結果中，首先要 <，再來是中括號內的形式 ( 非結尾 > 符號都行 ) 出現 0 到無限次，最後收尾在 > 符號。
+  // 值得注意的是，a. `.split(regex)` regex 尾部不用加 `g`，因為掃字串都是全域模式掃 b. 這串邏輯可以換成 A3 的邏輯寫成 `strParam.split(/(<\/?\w*>)/)` 最終答案一樣
   const tags = strParam.split(/(<[^>]*>)/);
   for (let i = 0; i < tags.length; i++) {
     const tag = tags[i];
