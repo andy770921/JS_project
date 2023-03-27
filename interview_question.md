@@ -1693,10 +1693,9 @@ console.log(HTMLElements("<div>")) // "div"
 regex.exec loop Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
 ```js
 function HTMLElements(str) {
-  // Create a stack to keep track of the opening tags
   const stack = [];
 
-  // 表達式意思是: 起始要有 <，接著 0 或 1 個 ?，接著 1 到無限多個 字母數字或底線，結尾是 >
+  // 正規表達式意思是: 起始要有 <，接著 0 或 1 個 ?，接著 1 到無限多個 字母數字或底線，結尾是 >
   const regex = /<\/?\w+>/g;
 
   // Loop through all matches of the regular expression in the string
