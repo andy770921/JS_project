@@ -1703,20 +1703,21 @@ function HTMLElements(str) {
   while ((match = regex.exec(str)) !== null) {
     const tag = match[0];
 
-    // If the tag is an opening tag, push it onto the stack
+    // opening tag case: push tag name (e.g. "div") in stack.
     if (tag[1] !== '/') {
-      stack.push(tag);
+      stack.push(tag.slice(1, -1)); // .slice(1, -1) means remove first and last char, i.e. remove < and >
     } else {
-      // If the tag is a closing tag, check if it matches the last opening tag on the stack
-      const lastOpenTag = stack.pop();
-      if (!lastOpenTag || lastOpenTag.slice(1) !== tag.slice(2)) {
+      // closing tag case:
+      const closeTagName = tag.slice(2, -1); // .slice(2, -1) means remove first, second and last, i.e. remove <, / and >
+      const lastOpenTagName = stack.pop();
+      if (!lastOpenTagName || lastOpenTagName !== closeTagName) {
         // If the closing tag does not match the last opening tag on the stack, return the tag
-        return lastOpenTag ? lastOpenTag.slice(1, -1) : tag.slice(1, -1);
+        return lastOpenTagName || closeTagName;
       }
     }
   }
 
-  return stack.length === 0 ? true : stack.pop().slice(1, -1);
+  return stack.length === 0 ? true : stack.pop();
 }
 
 console.log(HTMLElements("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
