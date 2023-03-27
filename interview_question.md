@@ -1630,7 +1630,7 @@ Output: div
 Input: "<div>abc</div><p><em><i>test test test</b></em></p>"
 Output: i
 ```
-- A1 ( using regex, convert Ref logic to JS ):
+- A1 ( using `str.split(regex)`, convert Ref logic to JS ):
 ```js
 function HTMLElements(strParam) {
   const openTags = ['<b>', '<i>', '<em>', '<div>', '<p>'];
@@ -1688,6 +1688,41 @@ function HTMLElements(str) {
 console.log(HTMLElements("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
 console.log(HTMLElements("<div><div><b></b></div></p>")) // "div"
 console.log(HTMLElements("<div>")) // "div"
+```
+- A3 ( using `regex.exec` ):
+regex.exec loop Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+```js
+function StringChallenge(str) {
+  // Create a stack to keep track of the opening tags
+  const stack = [];
+
+  // Create a regular expression to match the opening and closing tags
+  const regex = /<\/?[\w]+>/g;
+
+  // Loop through all matches of the regular expression in the string
+  let match;
+  while ((match = regex.exec(str)) !== null) {
+    const tag = match[0];
+
+    // If the tag is an opening tag, push it onto the stack
+    if (tag[1] !== '/') {
+      stack.push(tag);
+    } else {
+      // If the tag is a closing tag, check if it matches the last opening tag on the stack
+      const lastOpenTag = stack.pop();
+      if (!lastOpenTag || lastOpenTag.slice(1) !== tag.slice(2)) {
+        // If the closing tag does not match the last opening tag on the stack, return the tag
+        return lastOpenTag ? lastOpenTag.slice(1, -1) : tag.slice(1, -1);
+      }
+    }
+  }
+
+  return stack.length === 0 ? true : stack.pop().slice(1, -1);
+}
+
+console.log(StringChallenge("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
+console.log(StringChallenge("<div><div><b></b></div></p>")) // "div"
+console.log(StringChallenge("<div>")) // "div"
 ```
 
 ## LeetCode 85. Maximal Rectangle ( Hard )
