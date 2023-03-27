@@ -1645,6 +1645,8 @@ function HTMLElements(strParam) {
        b. 這串邏輯可以換成 A3 的邏輯寫成 `strParam.split(/(<\/?\w*>)/)` 最終答案一樣
   */
   const tags = strParam.split(/(<[^>]*>)/);
+  // '<div>abc</div><p><i>test test</b></p>'.split(上方正規表達式) 的結果範例如下
+  // ['', '<div>', 'abc', '</div>', '', '<p>', '', '<i>', 'test test', '</b>', '', '</p>', '']
   for (let i = 0; i < tags.length; i++) {
     const tag = tags[i];
     if (openTags.includes(tag)) {
