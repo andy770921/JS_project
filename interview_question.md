@@ -1670,7 +1670,7 @@ console.log(HTMLElements("<div>abc</div><p><em><i>test test test</b></em></p>"))
 console.log(HTMLElements("<div><div><b></b></div></p>")) // "div"
 console.log(HTMLElements("<div>")) // "div"
 ```
-- A2 ( using stack ): 
+- A2 ( only using stack without regex ): 
 ```js
 function HTMLElements(str) {
   const stack = [];
