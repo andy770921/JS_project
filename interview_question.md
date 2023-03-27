@@ -1532,7 +1532,7 @@ var findDuplicates = function(nums) {
 };
 ```
 
-## LeetCode - 15. 3Sum 及變形 (Medium)
+## LeetCode - 15. 3Sum 及變形 ( Medium )
 - https://leetcode.com/problems/3sum/
 - Q:  
 Have the function ThreeSum(arr) take the array of integers stored in arr, and determine if any three distinct numbers (excluding the first element) in the array can sum up to the first element in the array. For example: if arr is `[8, 2, 1, 4, 10, 5, -1, -1]` then there are actually three sets of triplets that sum to the number 8: `[2, 1, 5]`, `[4, 5, -1]` and `[10, -1, -1]`. Your program should return the string true if 3 distinct elements sum to the first element, otherwise your program should return the string false. The input array will always contain at least 4 elements  
@@ -1550,7 +1550,7 @@ function ThreeSum(arr) {
 console.log(ThreeSum([10, 2, 3, 1, 5, 3, 1, 4, -4, -3, -2])); // true
 console.log(ThreeSum([12, 3, 1, -5, -4, 7])); // false
 ```
-## LeetCode - 78. Subsets (Medium)
+## LeetCode - 78. Subsets ( Medium )
 - https://leetcode.com/problems/subsets/
 - Q:  
 Given an integer array `nums` of unique elements, return all possible subsets (the power set).
@@ -1637,8 +1637,13 @@ function HTMLElements(strParam) {
   const closeTags = ['</b>', '</i>', '</em>', '</div>', '</p>'];
 
   const stack = [];
-  // 正規表達式意思是，外層圓括號代表有找到的字需要被記錄在結果中，首先要 <，再來是中括號內的形式 ( 非結尾 > 符號都行 ) 出現 0 到無限次，最後收尾在 > 符號。
-  // 值得注意的是，a. `.split(regex)` regex 尾部不用加 `g`，因為掃字串都是全域模式掃 b. 這串邏輯可以換成 A3 的邏輯寫成 `strParam.split(/(<\/?\w*>)/)` 最終答案一樣
+  /* 正規表達式意思如下
+     1. 外層圓括號代表有找到的字需要被記錄在結果中，不可省略
+     2. 首先要 <，再來是中括號內的形式 ( 非結尾 > 符號都行 ) 出現 0 到無限次，最後收尾在 > 符號。
+     3. 值得注意的是
+       a. `.split(regex)` regex 尾部不用加 `g`，因為掃字串都是全域模式掃 
+       b. 這串邏輯可以換成 A3 的邏輯寫成 `strParam.split(/(<\/?\w*>)/)` 最終答案一樣
+  */
   const tags = strParam.split(/(<[^>]*>)/);
   for (let i = 0; i < tags.length; i++) {
     const tag = tags[i];
