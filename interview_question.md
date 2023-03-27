@@ -1618,10 +1618,12 @@ console.log(subsets([1,2,3]));
 ## htmlElements
 - Ref: https://github.com/AnoshaRehan/Coding-Challenges/blob/main/htmlElements.py
 
-- Q: Have the function HTMLElements(str) read the str parameter being passed which will be a string of HTML DOM elements and plain text.
+- Q: 
+```
+Have the function HTMLElements(str) read the str parameter being passed which will be a string of HTML DOM elements and plain text.
 The elements that will be used are: b, i, em, div, p. For example: if str is "<div><b><p>hello world</p></b></div>" then this string of
 DOM elements is nested correctly so your program should return the string true.
-```
+
 Examples
 Input: "<div><div><b></b></div></p>"
 Output: div
@@ -1629,7 +1631,7 @@ Input: "<div>abc</div><p><em><i>test test test</b></em></p>"
 Output: i
 ```
 
-## 85. Maximal Rectangle ( Hard )
+## LeetCode 85. Maximal Rectangle ( Hard )
 - Ans: https://leetcode.com/problems/maximal-rectangle/solutions/29064/a-o-n-2-solution-based-on-largest-rectangle-in-histogram/
 
 # 資料結構
