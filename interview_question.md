@@ -1630,6 +1630,65 @@ Output: div
 Input: "<div>abc</div><p><em><i>test test test</b></em></p>"
 Output: i
 ```
+- A1 ( using regex, convert Ref logic to JS ):
+```js
+function HTMLElements(strParam) {
+  const openTags = ['<b>', '<i>', '<em>', '<div>', '<p>'];
+  const closeTags = ['</b>', '</i>', '</em>', '</div>', '</p>'];
+
+  const stack = [];
+
+  const tags = strParam.split(/(<[^>]*>)/);
+  for (let i = 0; i < tags.length; i++) {
+    const tag = tags[i];
+    if (openTags.includes(tag)) {
+      stack.push(tag);
+    } else if (closeTags.includes(tag)) {
+      const check = closeTags.indexOf(tag);
+      if (stack.length > 0 && openTags[check] === stack[stack.length - 1]) {
+        stack.pop();
+      }
+    }
+  }
+
+  if (stack.length > 0) {
+    return stack[stack.length - 1].replace('<', '').replace('>', '');
+  }
+
+  return true;
+}
+
+console.log(HTMLElements("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
+console.log(HTMLElements("<div><div><b></b></div></p>")) // "div"
+console.log(HTMLElements("<div>")) // "div"
+```
+- A2 ( using stack ): 
+```js
+function HTMLElements(str) {
+  const stack = [];
+  
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '<' && str[i+1] !== '/') {
+      stack.push(str.substring(i+1, str.indexOf('>', i)));
+    } else if (str[i] === '<' && str[i+1] === '/') {
+      if (stack.length > 0) {
+        if (stack[stack.length-1] === str.substring(i+2, str.indexOf('>', i))) {
+          stack.pop();
+        } else {
+          return stack[stack.length-1];
+        }
+      } else {
+        return str.substring(i+2, str.indexOf('>', i));
+      }
+    }
+  }
+  
+  return stack.length > 0 ? stack[stack.length-1] : true;
+}
+console.log(HTMLElements("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
+console.log(HTMLElements("<div><div><b></b></div></p>")) // "div"
+console.log(HTMLElements("<div>")) // "div"
+```
 
 ## LeetCode 85. Maximal Rectangle ( Hard )
 - Ans: https://leetcode.com/problems/maximal-rectangle/solutions/29064/a-o-n-2-solution-based-on-largest-rectangle-in-histogram/
