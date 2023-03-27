@@ -1692,12 +1692,12 @@ console.log(HTMLElements("<div>")) // "div"
 - A3 ( using `regex.exec` ):
 regex.exec loop Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
 ```js
-function StringChallenge(str) {
+function HTMLElements(str) {
   // Create a stack to keep track of the opening tags
   const stack = [];
 
-  // Create a regular expression to match the opening and closing tags
-  const regex = /<\/?[\w]+>/g;
+  // 表達式意思是: 起始要有 <，接著 0 或 1 個 ?，接著 1 到無限多個 字母數字或底線，結尾是 >
+  const regex = /<\/?\w+>/g;
 
   // Loop through all matches of the regular expression in the string
   let match;
@@ -1720,9 +1720,9 @@ function StringChallenge(str) {
   return stack.length === 0 ? true : stack.pop().slice(1, -1);
 }
 
-console.log(StringChallenge("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
-console.log(StringChallenge("<div><div><b></b></div></p>")) // "div"
-console.log(StringChallenge("<div>")) // "div"
+console.log(HTMLElements("<div>abc</div><p><em><i>test test test</b></em></p>")) // "i"
+console.log(HTMLElements("<div><div><b></b></div></p>")) // "div"
+console.log(HTMLElements("<div>")) // "div"
 ```
 
 ## LeetCode 85. Maximal Rectangle ( Hard )
