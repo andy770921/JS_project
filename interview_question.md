@@ -1864,7 +1864,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
     iii. 打 API 時不會自動帶上  
     iv. 若網頁操作到一半，關閉頁面，session storage 就會消失  
     v. 新開同個網域的分頁，另個新分頁會是完全空的 session storage。  
-    vi. 若新開分頁的方式，是透過原網頁的 `<a target="_blank">` 打開，預設行為是會複製一份 session storage 到新分頁，在各自獨立 ( https://blog.techbridge.cc/2020/09/05/session-storage-and-html-spec/ ) 
+    vi. 若新開分頁的方式，是透過原網頁的 `<a target="_blank">` 打開，預設行為是會複製一份 session storage 到新分頁，再各自獨立 ( https://blog.techbridge.cc/2020/09/05/session-storage-and-html-spec/ ) 
   3. local storage:   
     i.- iii. 同 session storage  
     iv. 若網頁操作到一半，關閉頁面，local storage 不會消失，想清除需要在適當時機，自己清除  
