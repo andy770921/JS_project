@@ -1734,7 +1734,8 @@ console.log(HTMLElements("<div>")) // "div"
 ```
 
 ## LeetCode 85. Maximal Rectangle ( Hard )
-- Ans: https://leetcode.com/problems/maximal-rectangle/solutions/29064/a-o-n-2-solution-based-on-largest-rectangle-in-histogram/
+- Similar question - 84. Largest Rectangle in Histogram: https://leetcode.com/problems/largest-rectangle-in-histogram/description/
+- Ans 1 derived from 84.: https://leetcode.com/problems/maximal-rectangle/solutions/122456/easiest-solution-build-on-top-of-leetcode84/
 
 # 資料結構
 
