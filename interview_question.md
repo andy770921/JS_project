@@ -52,7 +52,7 @@ script.async = false
 - 可以建立新 stacking context 的 CSS 特別設定如下：
   1. 當元素被設定 position 除了 static 以外的值，然後 z-index 設定為除了 auto 以外的值
   2. 當元素設定了 opacity 且值小於 1
-- Example 加入 `class="special"` 設定前:
+- Example 加入 `class="special"` 設定前 ( 數字越大越重要，會在畫面上壓過別人 ) :
 ```html
 <div><!-- 1 -->
   <div class="red"><!-- 6 --></div>
