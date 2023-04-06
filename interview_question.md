@@ -110,6 +110,13 @@ script.async = false
   opacity: .99;
 }
 ```
+- 在單一堆疊環境 Stacking Context 中的順序，從最下面 (後) 到上面 (前) 規則如下
+  1. 執行堆疊的根元素。
+  2. 有設定 position 且 z-index 為負數的元素和它們的子元素，-1 在 -2 前面。
+  3. 沒有設定 position 的元素，一般元素。
+  4. 有設定 position 且 z-index 為 auto，設定 opacity 小於 1 和其他 transforms 等屬性也在此列。
+  5. 有設定 position 且 z-index 為正數。
+
 # JS
 ## 一句話解釋
 ### 提升 hoisting:
