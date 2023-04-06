@@ -25,7 +25,7 @@ script.async = false
 
 ## `<script>` 外的資源載入
 - `<link>` 的 rel 屬性的 preload、prefetch: https://shubo.io/preload-prefetch-preconnect/#%E7%B5%90%E8%AB%96
-- 
+
 ## `<a rel="noopener noreferrer" target="_blank" href="https://www.google.com/">link</a>` 為何加入 noopener noreferrer
 - Ref: https://blog.techbridge.cc/2020/09/05/session-storage-and-html-spec/
 - noopener: 當你從網站 A 使用 `<a target="_blank">` 連結到網站 B 的時候，網站 B 可以拿到 `window.opener`，這就等於是網站 A 的 `window`，因此我只要在網站 B 執行 `window.opener.location = 'phishing_site_url'`，就可以把網站 A 導到其他地方
