@@ -1402,7 +1402,7 @@ function isBeautifulString(inputString) {
 }
 ```
 
-## LeetCode - 5. Longest Palindromic Substring (Medium)
+## LeetCode - 5. Longest Palindromic Substring ( Medium )
 - https://leetcode.com/problems/longest-palindromic-substring/
 
 - Q:
@@ -1746,6 +1746,7 @@ console.log(HTMLElements("<div>")) // "div"
 
 
 ## LeetCode 560. Subarray Sum Equals K ( Medium )
+- https://leetcode.com/problems/subarray-sum-equals-k/description/
 - 觀念為 DP + HashMap: https://www.youtube.com/watch?v=8C3GZEncJjU
 - Q: 
 ```
