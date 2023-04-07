@@ -1744,6 +1744,50 @@ console.log(HTMLElements("<div>")) // "div"
 - Similar question - 84. Largest Rectangle in Histogram: https://leetcode.com/problems/largest-rectangle-in-histogram/description/
 - Ans 1 derived from 84.: https://leetcode.com/problems/maximal-rectangle/solutions/122456/easiest-solution-build-on-top-of-leetcode84/
 
+
+## LeetCode 560. Subarray Sum Equals K ( Medium )
+- 觀念為 DP + HashMap: https://www.youtube.com/watch?v=8C3GZEncJjU
+- Q: 
+```
+Example 1:
+Input: nums = [1,1,1], k = 2
+Output: 2
+Example 2:
+
+Input: nums = [1,2,3], k = 3
+Output: 2
+```
+- A: 
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarraySum = function(nums, k) {
+    let counts = 0;
+    let currentSum = 0;
+    const map = { 0: 1 }; 
+    // 紀錄 [從 index 0 ~ 某位置的累加值]: 累加值出現的次數
+    // Ex: [1,2,3,-3] ，位置從頭到尾掃一次，map 從頭建立起的過程可想成
+    // {0:1} => {0:1, 1:1} => {0:1, 1:1, 3:1} => 
+    // {0:1, 1:1, 3:1, 6:1} =>  {0:1, 1:1, 3:2, 6:1}
+    for (let i = 0; i < nums.length; i++) {
+        currentSum += nums[i];
+        // 確認 index 0 加到當前數字和，有無等於曾經出現的累加值的某一個 + k
+        if(map[currentSum - k]){
+            counts += map[currentSum - k];
+        } 
+        // 更新 map，供下次 loop 使用
+        if(map[currentSum]){
+            map[currentSum] += 1;
+        } else {
+            map[currentSum] = 1;
+        }
+    }
+    return counts;
+};
+```
 # 資料結構
 
 ## Array Tree Conversion ( LeetCode - 297. Serialize and Deserialize Binary Tree )
