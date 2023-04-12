@@ -59,6 +59,7 @@ https://www.youtube.com/watch?v=S-VeYcOCFZw
 
 ## 垂直置中與水平置中寫法:
 - 說明: https://stackoverflow.com/questions/28080910/what-does-top-0-left-0-bottom-0-right-0-mean
+- Outer css `position: absolute; top: 0; ...` expands the element to take parent's full width and height. If parent is a full page element the styled element will take full page.
 1. HTML
 ```html
 <body>
