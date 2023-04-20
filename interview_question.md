@@ -2053,11 +2053,12 @@ const searchGraph = async (start) => {
       console.log(num);
       visited.add(num);
     });
-    const nextRawNumList = await Promise.all(currentNumList.map(getNeighbor));
-    const nextNumList = nextRawNumList.flat().filter((num) => !visited.has(num));
+    const nextNestedNumList = await Promise.all(currentNumList.map(getNeighbor));
+    const nextNumList = nextNestedNumList.flat().filter((num) => !visited.has(num));
+    const nonRepeatedNumList = [...new Set(nextNumList)];
 
-    if(nextNumList.length){
-      queue.unshift([...new Set(nextNumList)]);
+    if(nonRepeatedNumList.length){
+      queue.unshift(nonRepeatedNumList);
     }
   }
 }
