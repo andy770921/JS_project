@@ -1992,6 +1992,11 @@ console.log(maxNonLeafNodesSum(root)); // 8
 
 ## Graph
 - Q: 用 BSF 實作 `searchGraph`，並盡可能省略多餘等待
+  
+<div align="center">
+  <img src="https://github.com/andy770921/JS_project/blob/master/imgs/search_graph.png"/>
+</div>
+  
 ```js
 const getNeighbor = (num) => {
   const map = {
