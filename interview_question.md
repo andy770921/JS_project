@@ -1989,6 +1989,82 @@ console.log(maxNonLeafNodesSum(root)); // 8
 - Ref1 ( LeetCode official solution, two stack ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/127533/implement-queue-using-stacks/
 - Ref2 ( JavaScript, two stack ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/414089/javascript-solution-beats-98-r-and-100-s/?orderBy=most_votes&languageTags=javascript
 - Ref3 ( JavaScript, one stack and recursion ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/3157240/javascript-solution-using-one-stack-memory-beats-98/
+
+## Graph
+- Q: 用 BSF 實作 `searchGraph`，並盡可能省略多餘等待
+```js
+const getNeighbor = (num) => {
+  const map = {
+    1: [2, 3, 4],
+    2: [1, 5],
+    3: [1, 5],
+    4: [1, 6],
+    5: [2, 3, 7],
+    6: [4, 7],
+    7: [5, 6]
+  };
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(map[num]);
+      }, 1000);
+    });
+}
+
+const searchGraph = async (start) => {
+  const neighborList = await getNeighbor(start);
+  console.log(neighborList); // [2, 3, 4]
+  // TODO:
+}
+
+searchGraph(1);
+```
+- A:
+```js
+const getNeighbor = (num) => {
+  const map = {
+    1: [2, 3, 4],
+    2: [1, 5],
+    3: [1, 5],
+    4: [1, 6],
+    5: [2, 3, 7],
+    6: [4, 7],
+    7: [5, 6]
+  };
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(map[num]);
+      }, 1000);
+    });
+}
+
+const searchGraph = async (start) => {
+  const queue = [];
+  const visited = new Set();
+  queue.unshift([start]);
+  
+  while(queue.length){
+    const currentNumList = queue.pop();
+    currentNumList.forEach((num) => {
+      console.log(num);
+      visited.add(num);
+    });
+    const nextRawNumList = await Promise.all(currentNumList.map(getNeighbor));
+    const nextNumList = nextRawNumList.flat().filter((num) => !visited.has(num));
+
+    if(nextNumList.length){
+      queue.unshift([...new Set(nextNumList)]);
+    }
+  }
+}
+
+searchGraph(1);
+// 1
+// Promise {<pending>}
+// 2 3 4 依序同時
+// 5 6 依序同時
+// 7
+```
+ 
 # React
 ## 一句話解釋
 ### useRef
