@@ -1991,7 +1991,7 @@ console.log(maxNonLeafNodesSum(root)); // 8
 - Ref3 ( JavaScript, one stack and recursion ): https://leetcode.com/problems/implement-queue-using-stacks/solutions/3157240/javascript-solution-using-one-stack-memory-beats-98/
 
 ## Graph
-- Q: 用 BSF 實作 `searchGraph`，並盡可能省略多餘等待
+- Q: 用 BSF 實作 `searchGraph`，並盡可能省略多餘等待。NOTE: 可以假設一定會有節點 1
   
 <div align="center">
   <img src="https://github.com/andy770921/JS_project/blob/master/imgs/search_graph.png"/>
