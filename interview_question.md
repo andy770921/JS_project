@@ -2070,6 +2070,46 @@ searchGraph(1);
 // 5 6 依序同時
 // 7
 ```
+## 資料整理
+
+```js
+// Write a function that accept 2 arguments (apps and appReserves)
+// return the result with following condition that mentioned below. Refer to the sample output for better understanding.
+// if any appReserve has the same id as apps
+// replace that particular app object with appReserve object
+// else append the appReserve object to list
+// Size of apps & appReserves is between 1 < N < 100_000_000
+
+// Input:
+const apps = [
+  { id: 1, name: 'app_1', description: 'App 1' },
+  { id: 2, name: 'app_2', description: 'App 2' },
+  { id: 3, name: 'app_3', description: 'App 3' },
+  { id: 4, name: 'app_4', description: 'App 4' },
+  { id: 5, name: 'app_5', description: 'App 5' },
+];
+
+const appReserves = [
+  { id: 2, name: 'app_reserve_2', description: 'App Reserve 2' },
+  { id: 4, name: 'app_reserve_4', description: 'App Reserve 4' },
+  { id: 6, name: 'app_reserve_6', description: 'App Reserve 6' },
+];
+
+// Output:
+const result = [
+  { id: 1, name: 'app_1', description: 'App 1' },
+  { id: 2, name: 'app_reserve_2', description: 'App Reserve 2' },
+  { id: 3, name: 'app_3', description: 'App 3' },
+  { id: 4, name: 'app_reserve_4', description: 'App Reserve 4' },
+  { id: 5, name: 'app_5', description: 'App 5' },
+  { id: 6, name: 'app_reserve_6', description: 'App Reserve 6' },
+];
+
+
+function solution(apps, appReserves) {
+ // your solution here, please
+}
+```
  
 # React
 ## 一句話解釋
