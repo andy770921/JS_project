@@ -2071,7 +2071,7 @@ searchGraph(1);
 // 7
 ```
 ## 資料整理
-
+- Q:
 ```js
 // Write a function that accept 2 arguments (apps and appReserves)
 // return the result with following condition that mentioned below. Refer to the sample output for better understanding.
@@ -2109,6 +2109,21 @@ const result = [
 function solution(apps, appReserves) {
  // your solution here, please
 }
+```
+- A:
+```js
+function solution(apps, appReserves) {
+ // your solution here, please
+  return [...apps, ...appReserves].reduce((prevArr, currentItem) => {
+    if(prevArr.some(({id}) => id === currentItem.id)){
+      return [...prevArr.filter(({id}) => id !== currentItem.id), currentItem];
+    } else {
+      return [...prevArr, currentItem];
+    }
+  }, []).sort((a, b) => a.id - b.id);
+}
+
+console.log(solution(apps, appReserves));
 ```
  
 # React
