@@ -2184,6 +2184,32 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
     1. 使用 `if(typeof window !== 'undefined')` 避免，如 `if (typeof window !== 'undefined') { const data = JSON.parse(localStorage.getItem('something')); }`
     2. 使用 dynamic import 加上 ssr 設定避免，以 `React + NextJS` 為例，如 `import dynamic from 'next/dynamic'; const DynamicButtonNoSSR = dynamic(() => import('../components/button'), { ssr: false })`
 
+### CSR, SSR, SSR with Hydration 優缺 ? 
+- Ref: https://shubo.io/rendering-patterns/
+- TTFB: Time to First Byte，從瀏覽頁面的動作開始到瀏覽器收到第一個 byte 所需要的時間
+- FCP: First Contentful Paint，使用者可以看到頁面上的重要內容的時間點
+- TTI: Time-to-Interactive，使用者首次可以跟頁面互動的時間點
+- CSR: 
+  1. 使用者互動體驗順暢: 更新或是換頁都不需要刷新頁面
+  1. FCP 差 : CSR 頁面載入 JS 前幾秒，頁面上會沒有東西或是只有一些骨架。
+  2. SEO 差
+- SSR: 
+  1. FCP 佳，TTI 佳: 使用者首次看到頁面上重要內容的時間快，接著要下載並且執行瀏覽器端互動所需要的 JavaScript，完成後使用者首次可以跟頁面互動
+  2. SEO 佳
+  3. TTFB 差: 點按鈕換頁，等很久才看到新頁面
+  4. 使用者互動體驗差
+- SSR with Hydration
+  1. 使用 Server 端的 `renderToString()` 和 Client 端的 `hydrate()`
+  1. Hydration : 客戶端透過 JavaScript 讓伺服器端產生的 HTML 加上 event handler (事件處理器)，使其獲得互動能力的一種過程
+  2. FCP 佳、SEO 佳，互動體驗佳
+  3. TTI 差: 可以較早看到內容呈現在網頁上 ( 較快的 FCP )，但是需要完成 hydration 之後才能互動
+  4. HTML 重複的部分多: HTML 和 JavaScript 的變數值有諸多重複之處
+- Selective Hydration + Streaming HTML ( React 18 )
+  1.  使用 Server 端的 `renderToPipeableStream()` 和 Client 端的 `<Suspense>` 提升效能
+  2.  Streaming HTML 優點: 較佳的 TTFB, FCP, TTI，Node.js Server 可以承受較多請求，支援 SEO
+  3.  Streaming HTML 缺點: 是有些使用情境沒辦法 streaming，比如某些 CSS framework 需要掃一遍頁面以產生 critical CSS
+  4.  例子: 將 `<Comments />` 用 `<Suspense fallback={<Spinner />}>` 包起來，我們告訴 React 不需要等待 `<Comments />`。準備好就可以直接開始以串流的方式傳送 HTML 給客戶端。作為替代，伺服器會輸出 `<Spinner />`
+
 ### XSS
 - Ref: https://blog.techbridge.cc/2021/05/15/prevent-xss-is-not-that-easy/
 - Ref2: https://tech-blog.cymetrics.io/posts/huli/xss-history/
