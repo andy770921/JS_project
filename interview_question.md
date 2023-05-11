@@ -2206,9 +2206,10 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
   4. HTML 重複的部分多: HTML 和 JavaScript 的變數值有諸多重複之處
 - Selective Hydration + Streaming HTML ( React 18 )
   1.  使用 Server 端的 `renderToPipeableStream()` 和 Client 端的 `<Suspense>` 提升效能
-  2.  Streaming HTML 優點: 較佳的 TTFB, FCP, TTI，Node.js Server 可以承受較多請求，支援 SEO
+  2.  Streaming HTML 優點: 與 SSR with Hydration 比較，較佳的 TTFB, FCP, TTI，Node.js Server 可以承受較多請求，支援 SEO
   3.  Streaming HTML 缺點: 是有些使用情境沒辦法 streaming，比如某些 CSS framework 需要掃一遍頁面以產生 critical CSS
-  4.  例子: 將 `<Comments />` 用 `<Suspense fallback={<Spinner />}>` 包起來，我們告訴 React 不需要等待 `<Comments />`。準備好就可以直接開始以串流的方式傳送 HTML 給客戶端。作為替代，伺服器會輸出 `<Spinner />`
+  4.  Selective Hydration: 儘早開始 hydration，即使在 HTML 和 JavaScript 沒有下載完全部的狀態也適用。
+  5.  例子: 將 `<Comments />` 用 `<Suspense fallback={<Spinner />}>` 包起來，我們告訴 React 不需要等待 `<Comments />`。準備好就可以直接開始以串流的方式傳送 HTML 給客戶端。作為替代，伺服器會輸出 `<Spinner />`
 
 ### XSS
 - Ref: https://blog.techbridge.cc/2021/05/15/prevent-xss-is-not-that-easy/
