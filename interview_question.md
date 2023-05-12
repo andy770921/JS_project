@@ -2198,8 +2198,9 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
     1. 使用 `if(typeof window !== 'undefined')` 避免，如 `if (typeof window !== 'undefined') { const data = JSON.parse(localStorage.getItem('something')); }`
     2. 使用 dynamic import 加上 ssr 設定避免，以 `React + NextJS` 為例，如 `import dynamic from 'next/dynamic'; const DynamicButtonNoSSR = dynamic(() => import('../components/button'), { ssr: false })`
 
-### CSR, SSR, SSR with Hydration 優缺 ? 
+### CSR, SSR, SSG, SSR with Hydration 優缺 ? 
 - Ref: https://shubo.io/rendering-patterns/
+- Ref2: https://web.dev/rendering-on-the-web/#server-rendering
 - TTFB: Time to First Byte，從瀏覽頁面的動作開始到瀏覽器收到第一個 byte 所需要的時間 ( time between the browser requesting a page and when it receives the first byte of information from the server. )
 - FCP: First Contentful Paint，使用者可以看到頁面上的重要內容的時間點
 - TTI: Time-to-Interactive，使用者首次可以跟頁面互動的時間點
@@ -2212,6 +2213,10 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
   2. SEO 佳
   3. TTFB 差: 點按鈕換頁，等很久才看到新頁面
   4. 使用者互動體驗差
+- SSG ( Static Rendering )
+  1. 不用等使用者訪問網頁再動態產生，先為每個 URL 製作好 HTML
+  2. TTFB 佳，FCP 佳，TTI 佳
+  3. 當頁面內容無法預測時，頁面數過多時不適用
 - SSR with Hydration
   1. 使用 Server 端的 `renderToString()` 和 Client 端的 `hydrate()`
   1. Hydration : 客戶端透過 JavaScript 讓伺服器端產生的 HTML 加上 event handler (事件處理器)，使其獲得互動能力的一種過程
