@@ -2216,7 +2216,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 - SSG ( Static Rendering )
   1. 不用等使用者訪問網頁再動態產生，先為每個 URL 製作好 HTML
   2. TTFB 佳，FCP 佳，TTI 佳
-  3. 當頁面內容無法預測時，頁面數過多時不適用
+  3. 當頁面內容無法預測 ( 資料更新頻率高或相依第三方 ) 時，頁面數過多時不適用
 - SSR with Hydration
   1. 使用 Server 端的 `renderToString()` 和 Client 端的 `hydrate()`
   1. Hydration : 客戶端透過 JavaScript 讓伺服器端產生的 HTML 加上 event handler (事件處理器)，使其獲得互動能力的一種過程
