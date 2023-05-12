@@ -2132,6 +2132,7 @@ function solution(apps, appReserves) {
   return appReserves.reduce((result, appReserve) => {
     const index = result.findIndex((app) => app.id === appReserve.id);
     return index !== -1 ? [...result.slice(0, index), appReserve, ...result.slice(index + 1)] : [...result, appReserve];
+  }, apps);
 }
 
 console.log(solution(apps, appReserves));
