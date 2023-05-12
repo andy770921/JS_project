@@ -2200,7 +2200,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 
 ### CSR, SSR, SSR with Hydration 優缺 ? 
 - Ref: https://shubo.io/rendering-patterns/
-- TTFB: Time to First Byte，從瀏覽頁面的動作開始到瀏覽器收到第一個 byte 所需要的時間
+- TTFB: Time to First Byte，從瀏覽頁面的動作開始到瀏覽器收到第一個 byte 所需要的時間 ( time between the browser requesting a page and when it receives the first byte of information from the server. )
 - FCP: First Contentful Paint，使用者可以看到頁面上的重要內容的時間點
 - TTI: Time-to-Interactive，使用者首次可以跟頁面互動的時間點
 - CSR: 
