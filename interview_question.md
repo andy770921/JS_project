@@ -2110,6 +2110,7 @@ function solution(apps, appReserves) {
  // your solution here, please
 }
 ```
+
 - A:
 ```js
 function solution(apps, appReserves) {
@@ -2125,6 +2126,7 @@ function solution(apps, appReserves) {
 
 console.log(solution(apps, appReserves));
 ```
+
 - A2:
 ```js
 function solution(apps, appReserves) {
