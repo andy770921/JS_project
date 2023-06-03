@@ -1196,6 +1196,17 @@ HTML:
     clear: both;
 }
 ```
+
+## 文字過長換行
+- Ref: https://shubo.io/word-wrap-vs-word-break/
+- `word-break: break-all` 容易讓過多的英文單詞斷在中間，造成閱讀不適。
+- `overflow-wrap` 屬性的作用是告訴瀏覽器，如果詞斷行後的結果還是會溢出容器元素，該如何處理。
+- `word-wrap` 就是 `overflow-wrap` 的別名。
+- 結論 : 用以下的設定，就可以讓連結或是長文字不會造成跑版 
+
+```css
+overflow-wrap: break-word;
+```
 ## text-overflow 設定 - 文字過長，最後出現點點點:
 
 1. 需要同時設定 ```overflow, width (or max-width), display, and white-space```  
@@ -1218,7 +1229,8 @@ span {
   -webkit-box-orient: vertical;
   overflow: hidden;
   /*
-  word-break: break-word;
+  
+  break: break-word;
   line-height: 33px;
   */
 }
