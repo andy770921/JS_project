@@ -1,7 +1,7 @@
 # VSCode環境建置
 
 ## 參考網站  
-1. https://www.youtube.com/watch?v=bcgL1sCjAJA&t=2s&fbclid=IwAR0QeUHlizXDVjmGHZ6c9EegpNe_RUuslQp-ue2eI2yf4A9ddcnVnxSWkR0
+1. https://www.youtube.com/watch?v=bcgL1sCjAJA&t=2s
 2. https://www.youtube.com/watch?v=ZkDM77ZPkEo
 3. https://www.youtube.com/watch?v=SAX6RMEFVM4
 4. https://youtu.be/ScDWrogElmo?t=1350
