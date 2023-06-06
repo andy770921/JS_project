@@ -23,10 +23,14 @@
 - Path Intellisense (提示檔案路徑)
 - SCSS Refactoring (快速命名SCSS中的變數)
 - ESLint (引入國際規範紅底線)
+- Prettier - Code formatter
+- Code Spell Checker
 6. React相關
 - ES7 React/Redux/GraphQL/React-Native snippets (快速建立 component, 加入 import 等 )
 - Sublime Babel (輔助判斷JSX語法是否正確)
 - Simple React Snippets ( net ninja 推薦， cc 可快速建立 component, imr 或 imrc 可加入 import 等, sfc 可快速建立 functional component)
+- vscode-styled-components
+
 ## 快捷鍵  
 
 1. F1 可開啟命令輸入欄
