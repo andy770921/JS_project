@@ -13,7 +13,7 @@
 2. 版本控制類
 - Gitlens ( 看到每個人、何時編輯哪行 code ，多人開發用 )
 - Gitignore ( 會找到兩個，要看內容介紹，下載右鍵點擊功能的 )
-- Git History
+- Git History / Git Graph
 - Git-autoconfig ( 多個 Github 帳號時切換方便 )
 3. 存檔自動縮排
 - JS, CSS, HTML Formatter
