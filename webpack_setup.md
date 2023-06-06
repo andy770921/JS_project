@@ -8,8 +8,9 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
   https://github.com/coreybutler/nvm-windows/releases  
   下載 nvm-setup.zip
 ## 2-2. 下載 nvm (for Mac) 
-- https://www.onejar99.com/nvm-install-for-unix-like/ 
+- ( 2019/8/18 ) https://www.onejar99.com/nvm-install-for-unix-like/ 
 - https://github.com/nvm-sh/nvm
+- ( 2023/5/28 ) https://pjchender.dev/nodejs/nvm/
 ## 3. 用命令提示字元下載與安裝 nodeJS  
    a. 輸入 `nvm list` 確認電腦中的 NodeJS 版本  
    b. 輸入 `nvm ls-remote` 或 `nvm list available` 確認網路上可下載的、穩定版 ( LTS ) 的 NodeJS 版本  
