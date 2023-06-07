@@ -11,6 +11,11 @@ Ref: https://www.youtube.com/watch?v=vyI-Ko6fvKU
 - ( 2019/8/18 ) https://www.onejar99.com/nvm-install-for-unix-like/ 
 - https://github.com/nvm-sh/nvm
 - ( 2023/5/28 ) https://pjchender.dev/nodejs/nvm/
+## 2-3. 設定 .zshrc 讓 nvm 自動安裝 .nvmrc 的版本
+- ( 2022/10/26 ) https://medium.com/dean-lin/%E4%BD%BF%E7%94%A8-nvm-zsh-script-%E8%AE%93-node-js-%E7%89%88%E6%9C%AC%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E5%B0%88%E6%A1%88%E9%96%93%E8%87%AA%E5%8B%95%E5%88%87%E6%8F%9B-a8362a509440
+- 資料夾下有「.nvmrc」的檔案：若指定的 Node.js 版本已安裝就透過「nvm use」切換，假使該版本尚未安裝就會執行「nvm install」。
+- 資料夾下沒有「.nvmrc」的檔案：切換回 Node.js 默認的版本。
+
 ## 3. 用命令提示字元下載與安裝 nodeJS  
    a. 輸入 `nvm list` 確認電腦中的 NodeJS 版本  
    b. 輸入 `nvm ls-remote` 或 `nvm list available` 確認網路上可下載的、穩定版 ( LTS ) 的 NodeJS 版本  
