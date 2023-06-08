@@ -12,6 +12,7 @@
 1. https://oldmo860617.medium.com/%E6%B2%92%E4%BA%86%E8%A7%A3%E9%81%8E-cache-%E5%B0%B1%E5%88%A5%E8%AA%AA%E7%B6%B2%E7%AB%99%E6%80%A7%E8%83%BD%E6%B2%92%E6%95%91%E4%BA%86-6d9d4cfe3291
 2. https://blog.techbridge.cc/2017/06/17/cache-introduction/
 3. https://ithelp.ithome.com.tw/articles/10225276
+4. https://pjchender.dev/webdev/note-http-cache/
 
 ## 瀏覽器各個 process 的演進與現況，及渲染引擎
 
@@ -72,6 +73,7 @@ https://blog.techbridge.cc/2018/05/24/ngrok/
 - websocket 官方 ： http://www.websocket.org/quantum.html
 - JavaScript - Polling、WebSocket 與 SSE 介紹 https://ithelp.ithome.com.tw/articles/10230335
 - 且戰且走HTML5(2) 應用主軸：WebSocket https://ithelp.ithome.com.tw/articles/10102394
+- [course] 即使通訊與傳輸: https://pjchender.dev/webdev/course-fem-realtime/?fbclid=IwAR2o66-MRHeiZuXRa8QsmZ9AAFaHCAqXu0B7UnkamF3KviyIdQP8CKlbg2o&mibextid=Zxz2cZ
 
 ## SSO
 - https://stackoverflow.com/questions/11434866/automatic-cookie-single-sign-on-on-multiple-domains-like-google?fbclid=IwAR35Uq7H3nfG8yGsmouPBDQrUA0dGGii3mGR286Cf-4Y9zjZ-H-jiOik2dI
