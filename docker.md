@@ -85,3 +85,27 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
 
 # Kubernetes
 - 用途: AWS, Google, and Azure all offer Kubernetes as a service. It is a tool for packaging and deploying self-contained systems across many servers.
+
+# Kubernetes 相關操作指令 with AWS login
+
+## AWS 及 kubectl
+- login: `aws sso login --profile YOUR_CREATED_PROFILE`
+- Link local terminal to remote EKS: aws eks --region ap-southeast-1 update-kubeconfig --name dev-eks --profile YOUR_CREATED_PROFILE  --alias dev
+- 成功後，可用以下指令看，使否有 context 資訊列出 `kubectl config get-contexts`
+- 列出目前所設定的 aws context: `kubectl config get-contexts -o NAME`
+- 看全部 namespace: `kubectl get namespace`
+- 拿 namespace 看其中一個 pod: `kubectl -n development get pod | grep POD_NAME`
+
+
+## kubectx, flux 及 k9s ( 背後操作 kubectl ) 好用指令
+- 切換 cluster: `kubectx TARGET_CLUSTER`
+- 看全部 namespace: kubectl get namespace
+- 看版本: `flux get hr --context prod-tw -n production-tw | grep POD_NAME`
+- 進入總操作模式：`k9s --namespace development --context dev`
+- 進入總操作模式後，常用指令
+  1. enter
+  2. esc: 回上一步
+  3. l: 列出 server log( 即時 )
+  4: d: describe ( 顯示 pod 的資訊 )
+  5. s: shell 進入 pod ( 再輸入 exit 再按 enter 退出 )
+
