@@ -108,4 +108,5 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
   3. l: 列出 server log( 即時 )
   4. d: describe ( 顯示 pod 的資訊 )
   5. s: shell 進入 pod ( 再輸入 exit 再按 enter 退出 )
+  6. c: 複製 log 完整文字
 
