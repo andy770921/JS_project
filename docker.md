@@ -85,6 +85,7 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
 
 # Kubernetes
 - 用途: AWS, Google, and Azure all offer Kubernetes as a service. It is a tool for packaging and deploying self-contained systems across many servers.
+- 觀念與教學：https://cwhu.medium.com/kubernetes-basic-concept-tutorial-e033e3504ec0
 
 # Kubernetes 相關操作指令 with AWS login
 
