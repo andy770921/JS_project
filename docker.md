@@ -106,6 +106,6 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
   1. enter
   2. esc: 回上一步
   3. l: 列出 server log( 即時 )
-  4: d: describe ( 顯示 pod 的資訊 )
+  4. d: describe ( 顯示 pod 的資訊 )
   5. s: shell 進入 pod ( 再輸入 exit 再按 enter 退出 )
 
