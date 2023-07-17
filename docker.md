@@ -90,8 +90,51 @@ https://hub.docker.com/editions/community/docker-ce-desktop-mac
 # Kubernetes 相關操作指令 with AWS login
 
 ## AWS 及 kubectl
+### AWS Cli
+1. 安裝 aws cli:
+```
+$ curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg" 
+$ sudo installer -pkg AWSCLIV2.pkg -target /
+```
+2. 檢查有安裝成功 （ 輸入以下指令按 enter，會出現 aws-cli/2.10.0 Python/3.11.2 Darwin/18.7.0 botocore/2.4.5 ）
+```
+$ aws --version
+```
+3. 設定自己的首個登入資料
+```
+$ aws configure sso
+```
+4. 設定自己第二個登入資料，( 如果要第二組 production
+```
+$ aws configure sso --profile <自己要取的名字>
+```
+5. 設定完成後，未來可用 `open ~/.aws/config` 調整文件內容，比如
+```
+[profile xxx-profile]
+sso_session = ooo
+sso_account_id = 0123456789
+sso_role_name = xxDev
+
+[sso-session XXX]
+sso_start_url = SOME_URL 
+sso_region = ap-southeast-1
+sso_registration_scopes = sso:account:access
+
+[default]
+sso_session = ooo
+sso_account_id = 0123456788
+sso_role_name = xxProd
+```
+
+### Login and Check
 - login: `aws sso login --profile YOUR_CREATED_PROFILE`
-- Link local terminal to remote EKS: aws eks --region ap-southeast-1 update-kubeconfig --name dev-eks --profile YOUR_CREATED_PROFILE  --alias dev
+- Link local terminal to remote EKS: ( 2 examples )
+```
+aws eks --region ap-southeast-1 update-kubeconfig --name dev-eks --profile YOUR_CREATED_PROFILE  --alias dev
+```
+```
+aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile YOUR_CREATED_PROFILE --alias staging
+```
 - 成功後，可用以下指令看，使否有 context 資訊列出 `kubectl config get-contexts`
 - 列出目前所設定的 aws context: `kubectl config get-contexts -o NAME`
 - 看全部 namespace: `kubectl get namespace`
