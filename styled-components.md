@@ -234,6 +234,27 @@ const ErrorComponent: FC<{ isMobile: boolean; message: string; }> = ({ isMobile,
     </ErrorMessageWrapper>
 )
 ```
+其他設定方式，可得到基礎樣式，`background-clip` 目的是讓捲軸四週，距離軌道背景留白邊
+```ts
+
+const ScrollWrapper = styled.div<{ isMobile: boolean }>`
+   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #a3a3a3;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+`;
+
+```
 ## 使用 props 控制全有 css 或全無
 ```ts
 import styled from 'styled-components';
