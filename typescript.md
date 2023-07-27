@@ -57,7 +57,7 @@ const b = isQuotationState(a) ? a : STATE.DRAFT;
 const c = [STATE.DONE, STATE.DRAFT].includes(a);
 // 類型 '"unknown" | STATE.DONE' 的引數不可指派給類型 'STATE' 的參數。
 
-const d = [STATE.DONE, STATE.DRAFT].includes(a);
+const d = [STATE.DONE, STATE.DRAFT].includes(b);
 // OK
 ```
 ```ts
