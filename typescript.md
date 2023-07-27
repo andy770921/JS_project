@@ -41,7 +41,7 @@ https://stackoverflow.com/questions/55230653/whats-the-difference-between-typesc
 <CheckedIconArea<T> />
 ```
 ## is 的使用：
-- 用於函式輸入型別的補充。如果回傳值是 ture，輸入 params 就會是 is 後的型別
+- 用於函式輸入型別的補充。如果回傳值是 true，輸入 params 就會是 is 後的型別
 ```ts
 enum STATE {
   DRAFT = 'draft',
