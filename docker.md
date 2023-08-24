@@ -137,7 +137,7 @@ aws eks --region ap-southeast-1 update-kubeconfig --name dev-eks --profile YOUR_
 aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile YOUR_CREATED_PROFILE --alias staging
 ```
 - 成功後，可用以下指令看，使否有 context 資訊列出 `kubectl config get-contexts`
-- 列出目前所設定的 aws context: `kubectl config get-contexts -o NAME`
+- 或是用以下指令，僅列出目前所設定的 aws context 名稱: `kubectl config get-contexts -o=name`
 - 看全部 namespace: `kubectl get namespace`
 - 拿 namespace 看其中一個 pod: `kubectl -n development get pod | grep POD_NAME`
 
