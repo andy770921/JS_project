@@ -128,7 +128,8 @@ sso_role_name = xxProd
 
 ### Login and Check
 - login: `aws sso login --profile YOUR_CREATED_PROFILE`
-- Link local terminal to remote EKS: ( 2 examples )
+- 看在某個 region 下，所有 cluster 的名稱: `aws eks list-clusters --region YOUR_REGION_NAME_SETTING_IN_AWS --profile YOUR_CREATED_PROFILE`
+- Link local terminal to remote EKS: ( 2 examples, `--name dev-eks` means cluster name )
 ```
 aws eks --region ap-southeast-1 update-kubeconfig --name dev-eks --profile YOUR_CREATED_PROFILE  --alias dev
 ```
