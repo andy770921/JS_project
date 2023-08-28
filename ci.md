@@ -80,3 +80,128 @@ deploy_frontend:
       - frontend/src/**/*
 
 ```
+
+## 指令結合 shell 檔，執行多個指令
+### package.json
+```
+ "scripts": {
+    "release:dev": "COMMAND A",
+    "release:prod": "COMMAND B",
+    "release": "./scripts/release.sh",
+}
+```
+### bash ( release.sh )
+- 使用迴圈，執行多次 `release:prod`
+```bash
+#!/bin/bash
+
+TARGET=$(echo "$TARGET" | tr '[:upper:]' '[:lower:]')
+COUNTRY=$(echo "$COUNTRY" | tr '[:upper:]' '[:lower:]')
+
+export NEXT_VERSION="$(node -p "require('./package.json').version")"
+
+if [ "$TARGET" == "staging" ] && [ "$COUNTRY" == "all" ]; then
+  declare -a RELEASE_ENVS=("staging-sg" "staging-id" "staging-tw" "staging-ph" "staging-th" "staging-my" "staging-vn")
+elif [ "$TARGET" == "production" ] && [ "$COUNTRY" == "all" ]; then
+  declare -a RELEASE_ENVS=("production-sg" "production-id" "production-tw" "production-ph" "production-th" "production-my" "production-vn")
+elif [ "$TARGET" == "dev" ]; then
+  declare -a RELEASE_ENVS=("development")
+else
+  declare -a RELEASE_ENVS=("$TARGET-$COUNTRY")
+fi
+
+for E in ${RELEASE_ENVS[@]}; do
+  echo "###### Preparing for: ${E}"
+
+  case $E in
+    production-sg)
+      export RELEASE_TARGET=production-sg
+      export TARGET=production
+      export COUNTRY=sg
+      ;;
+    production-my)
+      export RELEASE_TARGET=production-my
+      export TARGET=production
+      export COUNTRY=my
+      ;;
+    production-th)
+      export RELEASE_TARGET=production-th
+      export TARGET=production
+      export COUNTRY=th
+      ;;
+    production-tw)
+      export RELEASE_TARGET=production-tw
+      export TARGET=production
+      export COUNTRY=tw
+      ;;
+    production-ph)
+      export RELEASE_TARGET=production-ph
+      export TARGET=production
+      export COUNTRY=ph
+      ;;
+    production-id)
+      export RELEASE_TARGET=production-id
+      export TARGET=production
+      export COUNTRY=id
+      ;;
+    production-vn)
+      export RELEASE_TARGET=production-vn
+      export TARGET=production
+      export COUNTRY=vn
+      ;;
+    staging-ph)
+      export RELEASE_TARGET=staging-ph
+      export TARGET=staging
+      export COUNTRY=ph
+      ;;
+    staging-sg)
+      export RELEASE_TARGET=staging-sg
+      export TARGET=staging
+      export COUNTRY=sg
+      ;;
+    staging-id)
+      export RELEASE_TARGET=staging-id
+      export TARGET=staging
+      export COUNTRY=id
+      ;;
+    staging-tw)
+      export RELEASE_TARGET=staging-tw
+      export TARGET=staging
+      export COUNTRY=tw
+      ;;
+    staging-th)
+      export RELEASE_TARGET=staging-th
+      export TARGET=staging
+      export COUNTRY=th
+      ;;
+    staging-my)
+      export RELEASE_TARGET=staging-my
+      export TARGET=staging
+      export COUNTRY=my
+      ;;
+    staging-vn)
+      export RELEASE_TARGET=staging-vn
+      export TARGET=staging
+      export COUNTRY=vn
+      ;;
+    development)
+      export RELEASE_TARGET=development
+      ;;
+  esac
+
+  echo "Needle environment: $RELEASE_TARGET, $NEXT_VERSION"
+
+  echo "Deploying env: $TARGET"
+
+  if [[ "$TARGET" != "dev" ]] ; then
+    echo "Deploying now..."
+    npm run release:prod
+  else
+    echo "Deploying to dev now..."
+    npm run release:dev
+  fi
+
+  echo "###### Done for: ${E}"
+  echo "##############################"
+done
+```
