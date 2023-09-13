@@ -1,6 +1,5 @@
 # 安裝與設定
 
-
 ## iTerm2
 - https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f
 - font-sourcecodepro-nerd-font 2020 年後安裝法：https://medium.com/@prinswu/zsh-oh-my-zsh-powerlevel9k-in-2020-macbook-pro-13-c85f6a409bee
@@ -35,3 +34,6 @@ export PATH=$PATH:/Users/andychou/.nvm/versions/node/v12.13.0/bin:/usr/local/bin
 ## 常用的 command line 指令
 1. ```ls -a```：列出目前目錄下所有資料夾與檔案
 2. ```open .zshrc```：打開 .zshrc 檔案並編輯
+
+## curl 打 API
+1. ```curl -I http://localhost:8081/api/xxx```
