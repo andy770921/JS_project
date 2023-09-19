@@ -146,6 +146,7 @@ aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile Y
 - 切換 cluster: `kubectx TARGET_CLUSTER`
 - 看全部 namespace: kubectl get namespace
 - 看版本: `flux get hr --context prod-tw -n production-tw | grep POD_NAME`
+- 用打指令的方式，進入 pod 的終端機，使用 shell: `kubectl exec -it POD_NAME -n NAME_SPACE bash`
 - 進入總操作模式：`k9s --namespace development --context dev`
 - 進入總操作模式後，常用指令
   1. enter
