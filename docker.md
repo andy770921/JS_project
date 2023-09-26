@@ -159,3 +159,29 @@ aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile Y
   1. 查看一個環境變數: `echo $COUNTRIES`
   2. 查看所有環境變數: `printenv`
   3. 修改一個環境變數: `SB_COUNTRIES=TW,SG`
+  4. 可以看看有沒有 node 在環境中: `node -v`
+  5. 如果有的話，可以執行一串 JS 程式碼，先進入 node 互動模式: `node`
+  6. 再貼上需要執行的程式碼，按 enter 後執行，很像瀏覽器開發人員工具，比如輸入: `console.log('hi')`
+  7. `control + C` 兩次，退出 node 互動模式
+  
+## 檢查 k8s pod 內 redis ( cluster mode ) 的指令：
+- redis 因為使用 cluster mode，會有複數 pods，可能情況如下
+```
+   NAME                                                                                      PF READY RESTARTS STATUS                  CPU MEM %CPU/R %CPU/L %MEM/R %MEM/L IP
+│ sb-search-and-discovery-cluster-redis-cluster-0                                            ●  1/1          0 Running                  13   3     26     13      3      3 10  
+│ sb-search-and-discovery-cluster-redis-cluster-1                                            ●  1/1          2 Running                  16   3     32     16      3      3 10  
+│ sb-search-and-discovery-cluster-redis-cluster-2                                            ●  1/1          2 Running                  13   3     26     13      2      2 10  
+│ sb-search-and-discovery-cluster-redis-cluster-3                                            ●  1/1          0 Running                  13   3     26     13      3      3 10  
+│ sb-search-and-discovery-cluster-redis-cluster-4                                            ●  1/1          2 Running                  13   3     26     13      2      2 10  
+│ sb-search-and-discovery-cluster-redis-cluster-5 
+```
+- 此時，若要在 local 連到 pod，需要先讓 pod 能夠有對外的 port，才能從外部對接到內部，需要在終端機，輸入以下指令
+```sh
+k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-0 6380:6379 &
+k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-1 6381:6379 &
+k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-2 6382:6379 &
+k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-3 6383:6379 &
+k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-4 6384:6379 &
+k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-5 6385:6379 &
+```
+NOTE: 指令意義是，開放 6380 ，可以打進去 0 號 pod 內的 6379 port
