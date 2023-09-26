@@ -167,15 +167,15 @@ aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile Y
 ## 檢查 k8s pod 內 redis ( cluster mode ) 的指令：
 - redis 因為使用 cluster mode，會有複數 pods，可能情況如下
 ```
-   NAME                                                                                      PF READY RESTARTS STATUS                  CPU MEM %CPU/R %CPU/L %MEM/R %MEM/L IP
-│ sb-search-and-discovery-cluster-redis-cluster-0                                            ●  1/1          0 Running                  13   3     26     13      3      3 10  
-│ sb-search-and-discovery-cluster-redis-cluster-1                                            ●  1/1          2 Running                  16   3     32     16      3      3 10  
-│ sb-search-and-discovery-cluster-redis-cluster-2                                            ●  1/1          2 Running                  13   3     26     13      2      2 10  
-│ sb-search-and-discovery-cluster-redis-cluster-3                                            ●  1/1          0 Running                  13   3     26     13      3      3 10  
-│ sb-search-and-discovery-cluster-redis-cluster-4                                            ●  1/1          2 Running                  13   3     26     13      2      2 10  
+   NAME                                                                                      PF READY RESTARTS STATUS 
+│ sb-search-and-discovery-cluster-redis-cluster-0                                            ●  1/1          0 Running 
+│ sb-search-and-discovery-cluster-redis-cluster-1                                            ●  1/1          2 Running
+│ sb-search-and-discovery-cluster-redis-cluster-2                                            ●  1/1          2 Running
+│ sb-search-and-discovery-cluster-redis-cluster-3                                            ●  1/1          0 Running
+│ sb-search-and-discovery-cluster-redis-cluster-4                                            ●  1/1          2 Running
 │ sb-search-and-discovery-cluster-redis-cluster-5 
 ```
-- 此時，若要在 local 連到 pod，需要先讓 pod 能夠有對外的 port，才能從外部對接到內部，需要在終端機，輸入以下指令
+- 此時，若要在 local 連到 pod，需要先讓 pod 能夠有對外的 port，才能從外部對接到內部，需要在終端機，輸入以下 port-forward 指令
 ```sh
 k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-0 6380:6379 &
 k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-1 6381:6379 &
@@ -184,4 +184,14 @@ k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-3 6383:6379 &
 k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-4 6384:6379 &
 k port-forward pods/sb-search-and-discovery-cluster-redis-cluster-5 6385:6379 &
 ```
-NOTE: 指令意義是，開放 6380 ，可以打進去 0 號 pod 內的 6379 port
+NOTE: 指令意義是，開放 6380 給外部，外部可以打進去 0 號 pod 內的 6379 port，開放 6381 可打進去 1 號 pod 內的 6379 port
+- local 執行 redis-cli 指令，查看 pod 內的資訊，比如列出 key，查找單一 key 等: `redis-cli -p <port> -a <password>` 再打 `KEYS *` 或是 `GET <key name>`
+- 查找複數 pod 的單一 key ( 如 key 名稱為 abs )：
+```sh
+redis-cli -p 6380 -a <password> GET abs &&
+redis-cli -p 6381 -a <password> GET abs &&
+redis-cli -p 6382 -a <password> GET abs &&
+redis-cli -p 6383 -a <password> GET abs &&
+redis-cli -p 6384 -a <password> GET abs &&
+redis-cli -p 6385 -a <password> GET abs
+```
