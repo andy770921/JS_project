@@ -155,6 +155,7 @@ aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile Y
   4. d: describe ( 顯示 pod 的資訊 )
   5. s: shell 進入 pod ( 再輸入 exit 再按 enter 退出 )
   6. c: 複製 log 完整文字
+  7. /: 搜尋關鍵字
 - 進入 shell 後，可能的指令
   1. 查看一個環境變數: `echo $COUNTRIES`
   2. 查看所有環境變數: `printenv`
