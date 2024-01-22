@@ -46,7 +46,7 @@ const runContext = (callback: Function) => {
   return context.run(store, () => callback(store))
 }
 
-export const setAsyncLocalStorageMap = (callback: Function): any[] => {
+export const useAsyncLocalStorageMap = (callback: Function): any[] => {
   return runContext((store: Map<string, any>) => {
     const domain = 'SOME_DOMAIN'
     const country = 'SOME_COUNTRY'
@@ -63,7 +63,7 @@ export const setAsyncLocalStorageMap = (callback: Function): any[] => {
 }
 
 // use setAsyncLocalStorageMap
-const [currency, country] = await setAsyncLocalStorageMap(() => 
+const [currency, country] = await useAsyncLocalStorageMap(() => 
      [
         SOME_OTHER_MAP.get('CURRENCY'),
      ])
