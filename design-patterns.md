@@ -1,5 +1,73 @@
 # Design Patterns
 
+## Singleton 實際案例 - BE NodeJS Async Local Storage
+```ts
+import { AsyncLocalStorage } from "async_hooks"
+
+class AsyncLocalStorageSingleton {
+  static instance: AsyncLocalStorageSingleton
+  context: InstanceType<typeof AsyncLocalStorage>
+
+  constructor() {
+    if (!AsyncLocalStorageSingleton.instance) {
+      this.context = new AsyncLocalStorage()
+      AsyncLocalStorageSingleton.instance = this
+    } else {
+      this.context = AsyncLocalStorageSingleton.instance.context
+    }
+  }
+  getStore = () => {
+    const {context} = this
+    if (!context || !context.getStore) {
+      throw Error('Context is not initialised')
+    }
+    const store = context.getStore()
+
+    if (!store) {
+      throw Error(
+        'Context is not run. Please use the requestContextMiddleware to init the context store and use the get() function from within request flow',
+      )
+    }
+    return store
+  }
+}
+const AsyncLocalStorageSingletonInstance = new AsyncLocalStorageSingleton()
+
+export default AsyncLocalStorageSingletonInstance
+
+
+// usage files
+import asyncLocalStorageSingleton from './async-local-storage-singleton'
+
+const {context, getStore} = asyncLocalStorageSingleton
+
+const runContext = (callback: Function) => {
+  const store = new Map()
+  return context.run(store, () => callback(store))
+}
+
+export const setAsyncLocalStorageMap = (callback: Function): any[] => {
+  return runContext((store: Map<string, any>) => {
+    const domain = 'SOME_DOMAIN'
+    const country = 'SOME_COUNTRY'
+
+    store.set('domain', domain)
+    store.set('country', country)
+    const result: any[] = [
+      ...callback(),
+      country,
+      domain,
+    ]
+    return Promise.all(result);
+  })
+}
+
+// use setAsyncLocalStorageMap
+const [currency, country] = await setAsyncLocalStorageMap(() => 
+     [
+        SOME_OTHER_MAP.get('CURRENCY'),
+     ])
+```
 ## All pattern reference:
 - https://www.patterns.dev/posts/rendering-patterns/
 ## Observer Pattern（觀察者模式）
