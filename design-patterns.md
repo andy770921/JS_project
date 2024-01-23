@@ -4,6 +4,8 @@
 ```ts
 import {NextResponse, NextFetchEvent, NextRequest} from 'next/server'
 
+const checkIsErrorResponse = (res: NextResponse) => res.status >= 400
+
 type Middleware = (
   req: NextRequest,
   res: NextResponse,
@@ -24,7 +26,7 @@ const pipe = (...funcs: Middleware[]) => {
   return (req: NextRequest, res: NextResponse, _next: NextFetchEvent) => {
     let response = res
     for (let i = 0; i < funcs.length; i++) {
-      if (response.status >= 400) {
+      if (checkIsErrorResponse(response)) {
         return response
       }
       response = funcs[i](req, response, _next)
@@ -38,12 +40,22 @@ export const middleware = (req: NextRequest, _next: NextFetchEvent) => {
   /* NOTE:
     We can add more middlewares below if needed
   */
-  const middlewares = [middlewareItem1, middlewareItem2]
+  const middlewares = [requestHeaderMiddleware]
   const executeStackMiddlewares = pipe(...middlewares)
   const updatedResponse = executeStackMiddlewares(req, res, _next)
 
-  return NextResponse.next(updatedResponse)
+  if (checkIsErrorResponse(updatedResponse)) {
+    return updatedResponse
+  }
+
+  return NextResponse.next({
+    ...updatedResponse,
+    request: {
+      headers: req.headers,
+    },
+  })
 }
+
 ```
 ## Singleton 實際案例 - BE NodeJS Async Local Storage
 ```ts
