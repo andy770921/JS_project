@@ -1,5 +1,50 @@
 # Design Patterns
 
+## FP pipe function 實際案例 - nextJS middleware
+```ts
+import {NextResponse, NextFetchEvent, NextRequest} from 'next/server'
+
+type Middleware = (
+  req: NextRequest,
+  res: NextResponse,
+  next: NextFetchEvent,
+) => NextResponse
+
+const middlewareItem1: Middleware = (
+  req: NextRequest,
+  res: NextResponse,
+  _next: NextFetchEvent,
+) => {
+  // TODOs
+
+  return res
+}
+
+const pipe = (...funcs: Middleware[]) => {
+  return (req: NextRequest, res: NextResponse, _next: NextFetchEvent) => {
+    let response = res
+    for (let i = 0; i < funcs.length; i++) {
+      if (response.status >= 400) {
+        return response
+      }
+      response = funcs[i](req, response, _next)
+    }
+    return response
+  }
+}
+
+export const middleware = (req: NextRequest, _next: NextFetchEvent) => {
+  const res = new NextResponse()
+  /* NOTE:
+    We can add more middlewares below if needed
+  */
+  const middlewares = [middlewareItem1, middlewareItem2]
+  const executeStackMiddlewares = pipe(...middlewares)
+  const updatedResponse = executeStackMiddlewares(req, res, _next)
+
+  return NextResponse.next(updatedResponse)
+}
+```
 ## Singleton 實際案例 - BE NodeJS Async Local Storage
 ```ts
 import { AsyncLocalStorage } from "async_hooks"
