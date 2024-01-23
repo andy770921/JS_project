@@ -40,7 +40,7 @@ export const middleware = (req: NextRequest, _next: NextFetchEvent) => {
   /* NOTE:
     We can add more middlewares below if needed
   */
-  const middlewares = [requestHeaderMiddleware]
+  const middlewares = [middlewareItem1]
   const executeStackMiddlewares = pipe(...middlewares)
   const updatedResponse = executeStackMiddlewares(req, res, _next)
 
