@@ -612,6 +612,9 @@ class MaxHeap {
     const maxNumber = this.maxHeap[0];
     const k = this.maxHeap[this.maxHeap.length - 1]; // keep the last value
     this.maxHeap.pop(); // delete last element in the original heap array
+    if(this.maxHeap.length === 0){
+      return this.maxHeap;  // or return maxNumber;
+    }
     // i: parent level ( total 1 node ), j: children level ( total 2 nodes )
     let i = 0;
     for(let j = 1; j <= this.maxHeap.length - 1; j *= 2){
