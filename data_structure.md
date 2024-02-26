@@ -617,7 +617,7 @@ class MaxHeap {
     }
     // i: parent level ( total 1 node ), j: children level ( total 2 nodes )
     let i = 0;
-    for(let j = 1; j <= this.maxHeap.length - 1; j *= 2){
+    for(let j = 1; j <= this.maxHeap.length - 1; j = j*2 + 1){
       if(j < this.maxHeap.length - 1 && this.maxHeap[j] < this.maxHeap[j + 1]){
         j++; // j points to the larger child
       }
