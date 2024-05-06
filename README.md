@@ -84,6 +84,10 @@ https://github.com/jigsawye/javascript
 1. [esLint + Prettier](https://github.com/andy770921/react-ts-boilerplate)
 2. [React + TypeScript + Redux-observable + Styled-Component + React-Router + esLint + GitHub pages](https://github.com/andy770921/react-redux-boilerplate)
 
+## Chrome 插件
+1. 查 [redirect](https://chromewebstore.google.com/detail/redirect-path/aomidfkchockcldhbkggjokdkkebmdll?pli=1)
+2. [mock API response](https://chromewebstore.google.com/detail/mokku/llflfcikklhgamfmnjkgpdadpmdplmji)
+
 ## 自動化產生 css 字型的 Repo
 
 https://github.com/andy770921/sketch-to-css-fonts  
