@@ -21,6 +21,89 @@ https://medium.com/starbugs/%E8%BA%AB%E7%82%BA-web-%E5%B7%A5%E7%A8%8B%E5%B8%AB-%
 ## [偏後端] JS 用 Array 取代 Set, 用雙向指標取代 Map 減低複雜度
 https://www.youtube.com/watch?v=oewDaISQpw0
 
+
+## [實務經驗] Webpqck bundle size 34 MB => 1.9 MB ( 94% reduction )
+
+0. 加入 bundle analyzer 監測
+```js
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+//...
+module.exports = {
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'bundle-report.html',
+      openAnalyzer: false
+    }),
+  ]
+}
+```
+1. webpack.config.js 加入 optimization 設定
+```js
+const TerserPlugin = require('terser-webpack-plugin');
+
+// ...
+module.exports = {
+ devtool: isBuildMode ? false : 'inline-source-map',
+ optimization: {
+    usedExports: true,
+    minimize: true,
+    minimizer: [new TerserPlugin()]
+  }
+}
+```
+2. 使用最精細資料階層 import 語法
+NOTE: applying tree shaking but just reduced more than 2mb
+```js
+// Not use below
+import { withStyles } from '@material-ui/core';
+// Use below
+import withStyles from '@material-ui/core/styles/withStyles';
+```
+3. 在 AWS CloudFront，10 MB 以下，可用 gzip，目標是壓到每個 JS 在 10 MB 以下
+```
+File Size Limitations: by default, CloudFront skips compressing files larger than 10MB. Since our JavaScript file is 34MB, it exceeds the size limit, and CloudFront won’t apply compression to it.
+```
+Ref: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ServingCompressedFiles.html#compression-skipped
+
+4. webpack.config.js 分割檔案
+```js
+// ...
+module.exports = {
+optimization: {
+    usedExports: true,
+    minimize: true,
+    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin()],
+    splitChunks: {
+      chunks: 'all',
+      minSize: 1000000,
+      maxSize: 5000000,
+      maxInitialRequests: 5,
+      maxAsyncRequests: 5,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module, chunks, cacheGroupKey) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            return `npm.${packageName.replace('@', '')}`;
+          },
+          chunks: 'all',
+          maxSize: 5000000,
+          priority: -10,
+          reuseExistingChunk: true
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
+```
+
 ## React SSR
 
 https://medium.com/%E6%89%8B%E5%AF%AB%E7%AD%86%E8%A8%98/server-side-rendering-ssr-in-reactjs-part1-d2a11890abfc
