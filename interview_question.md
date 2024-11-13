@@ -1031,6 +1031,9 @@ function myPromiseAny(promises) {
   const errors = [];
   let promisesRejected = 0;
   return new Promise((resolve, reject) => {
+    if(promises.length === 0){
+      reject(new AggregateError(errors, 'All promises were rejected'))
+    }
     promises.forEach((promise, index) => {
       promise.then((val) => {
         resolve(val)
