@@ -1005,27 +1005,25 @@ const p5 = new Promise((resolve, reject) => {
 
 // 所有 Promise 都成功
 myPromiseAny([p1, p2, p3])
-  .then(res => console.log(res)) // p1
+  .then(res => console.log('test 1:', res)) // test 1: p1
   .catch(err => console.log(err)) 
   
 // 兩個 Promise 成功
 myPromiseAny([p1, p2, p4])
-  .then(res => console.log(res)) // p1
+  .then(res => console.log('test 2:', res)) // test 2: p1
   .catch(err => console.log(err))
 
 // 只有一個延時成功的 Promise
 myPromiseAny([p2, p4, p5])
-  .then(res => console.log(res)) // p2 延時1秒
+  .then(res => console.log('test 3:', res)) // test 3: p2 延時1秒
   .catch(err => console.log(err))
 
 // 所有 Promise 都失敗
 myPromiseAny([p4, p5])
   .then(res => console.log(res))
   .catch(err => {
-    console.log(err instanceof AggregateError)
-    console.log(err.errors)
-    console.log(err.message)
-  }) // true ["p4 rejected", "p5 rejected 延時1.5秒"] "All promises were rejected"
+    console.log('test 4:', err instanceof AggregateError, err.errors, err.message)
+  }) // test 4: true ["p4 rejected", "p5 rejected 延時1.5秒"] All promises were rejected
 ```
 - A:
 ```js
