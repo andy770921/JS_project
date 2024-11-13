@@ -1024,6 +1024,13 @@ myPromiseAny([p4, p5])
   .catch(err => {
     console.log('test 4:', err instanceof AggregateError, err.errors, err.message)
   }) // test 4: true ["p4 rejected", "p5 rejected 延時1.5秒"] All promises were rejected
+
+// 空陣列情況
+myPromiseAny([])
+  .then(res => console.log(res))
+  .catch(err => {
+    console.log('test 5:', err instanceof AggregateError, err.errors, err.message)
+  }) // test 5: true [] All promises were rejected
 ```
 - A:
 ```js
