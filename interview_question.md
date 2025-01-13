@@ -2172,7 +2172,7 @@ https://shubo.io/what-happens-when-you-type-a-url-in-the-browser-and-press-enter
 - 深入討論二: 規範內容是，後端 Response Header 必須要加 `Access-Control-Allow-Origin: *`，若需要其他限制，還可加 Access-Control-Allow-Headers 跟 Access-Control-Allow-Methods
 - 深入討論三: 若不是「[簡單請求](https://developer.mozilla.org/zh-TW/docs/Web/HTTP/CORS#%E7%B0%A1%E5%96%AE%E8%AB%8B%E6%B1%82)」，會發兩次請求給後端，第一次是 Method 為 OPTIONS 的「預檢請求」( Preflight Request )
 ### HTTP Cache:
-- Ref: https://blog.techbridge.cc/2017/06/17/cache-introduction/
+- Ref: https://blog.huli.tw/2017/08/27/http-cache/
 - 第一次瀏覽這個網頁的時候需要重新下載，第二次瀏覽的時候，圖片就可以直接從瀏覽器的快取裡面去抓
 - 實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30`，代表快取過期時間是 30 秒
 - 進階實作方法：server 回傳的 response header 加入 `Cache-Control: max-age=30` 及 `Etag: xxx`，代表快取過期時間是 30 秒，30 秒後，若前端送出 request 會在 request header 加入 `If-None-Match: xxx` 詢問 server 檔案是不是有被更動過
