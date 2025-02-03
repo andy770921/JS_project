@@ -163,7 +163,7 @@ aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile Y
   4. 可以看看有沒有 node 在環境中: `node -v`
   5. 如果有的話，可以執行一串 JS 程式碼，先進入 node 互動模式: `node`
   6. 再貼上需要執行的程式碼，按 enter 後執行，很像瀏覽器開發人員工具，比如輸入: `console.log('hi')`
-  7. `control + C` 兩次，退出 node 互動模式
+  7. ~~`control + C` 兩次~~，輸入 `exit`，退出 node 互動模式
   
 ## 檢查 k8s pod 內 redis ( cluster mode ) 的指令：
 - redis 因為使用 cluster mode，會有複數 pods，可能情況如下
