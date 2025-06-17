@@ -1538,6 +1538,37 @@ const queryClient = new QueryClient({
   },
 })
 ```
+- useMutationState (v5):
+```ts
+import {useMutationState} from '@tanstack/react-query'
+
+//...
+
+const nextOrderInfoIsLoadingList = useMutationState({
+    // this mutation key needs to match the mutation key of the given mutation (see above)
+    filters: {
+      mutationKey: ['api/members/me/programs/v2/subscription/order-initiate'],
+    },
+    select: (mutation) => mutation.state.status === 'pending',
+})
+const nextOrderInfoIsLoading =
+  nextOrderInfoIsLoadingList.length > 0
+  ? nextOrderInfoIsLoadingList[nextOrderInfoIsLoadingList.length - 1] : false
+```
+- optimistic update (v5):
+```ts
+  const {data: info, variables} = useMutation(...)
+
+  const getSelectedId = () => {
+    // NOTE: Use FE optimistic update value if user clicks one card and API is still loading
+    //       Normally, use BE response value when API responds the value
+    if (variables?.planId) {
+      return variables?.planId
+    }
+    return info.selectedPlan
+  }
+
+```
 
 ## Request Deduplication
 
