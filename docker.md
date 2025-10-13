@@ -141,6 +141,21 @@ aws eks --region ap-southeast-1 update-kubeconfig --name staging-eks --profile Y
 - 看全部 namespace: `kubectl get namespace`
 - 拿 namespace 看其中一個 pod: `kubectl -n development get pod | grep POD_NAME`
 
+### Check Canary
+- `kubectl get canary -n web-platform --context staging`
+```
+NAME   STATUS   WEIGHT   LASTTRANSITIONTIME
+web    Failed   0        2025-10-13T09:12:54Z
+```
+- `kubectl describe canary -n web-platform --context staging`
+```
+  Warning  Synced  34m                 flagger  Rolling back xxxx failed checks threshold reached 3
+  Warning  Synced  34m                 flagger  Canary failed! Scaling down web.sb-web-platform
+  Normal   Synced  4m7s (x3 over 97m)  flagger  New revision detected! Scaling up xxxx
+  Warning  Synced  4m7s                flagger  scaling up xxxx to 0x4000f0b7c8 failed: oooo
+```
+- `kubectl describe ingress -n web-platform --context staging` 
+- `kubectl describe virtualservice -n web-platform --context staging`
 
 ## kubectx, flux 及 k9s ( 背後操作 kubectl ) 好用指令
 - 切換 cluster: `kubectx TARGET_CLUSTER`
