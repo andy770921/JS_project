@@ -8,8 +8,18 @@
  * @returns { Promise<Object> }
  */
 ```
-## thread
-https://www.youtube.com/watch?v=zphcsoSJMvM
+## Prisma ( 用 "呼叫函數" 的方式，執行 SQL 語法，操作 DB )
+- Ref: https://www.youtube.com/watch?v=RebA5J-rlwg
+- 需要安裝 VSCode 插件 Prisma，讓 .prisma 檔案可以字體顏色容易辨識
+- 在 VSCode `settings.json` 內，加入存檔自動調整 lint:
+```json
+{
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma",
+    "editor.formatOnSave": true
+  },
+}
+```
 
 ## 取得 https 網頁的資料流程
 
