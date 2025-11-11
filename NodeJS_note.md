@@ -20,6 +20,10 @@
   },
 }
 ```
+- 當 schema.prisma 調整完後，需要下以下[指令](https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production)
+```
+npx prisma migrate dev
+```
 
 ## 取得 https 網頁的資料流程
 
