@@ -2304,6 +2304,9 @@ A  ●●  B  ●●  C  ●●  D  ●●
 - 英文，講 websocket vs long polling 清楚: https://www.youtube.com/watch?v=xyLO8ZAk2KE
 - 英文，高人氣: https://www.youtube.com/watch?v=vvhC64hQZMk
 
+## hellointerview 線上課程，含設計 FB, dropbox 等，一半免費看
+- https://www.hellointerview.com/learn/system-design/problem-breakdowns/fb-news-feed
+
 # 資料庫設計
 - Q&A and SQL syntax: https://www.softwaretestinghelp.com/database-interview-questions/ 
 - 設計商品意見調查網站: https://www.youtube.com/watch?v=F3Avo8AHmmY
