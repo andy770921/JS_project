@@ -327,6 +327,20 @@ function pipe(...funcs){
     }
     return (...args) => recursiveFn(funcs.length - 1, ...args);
 }
+
+// Ans 類別三 - 遞迴中最簡單的寫法:
+function pipe(...funcs){
+    return (...params) => {
+        if (funcs.length === 0) {
+            return;
+        }
+        if (funcs.length === 1) {
+            return funcs[0](...params);
+        }
+        const [firstFunc, ...otherFuncs] = funcs;
+        return pipe(...otherFuncs)(firstFunc(...params));
+    }
+}
 ```
 
 ## Array deep flatten ( while, recursion, arr.reduce )
