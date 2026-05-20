@@ -68,6 +68,8 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 ```
+- 會變成新樣式，是因為第一次讀完 `.zshrc` 後，ZSH_THEME 已經留在目前 shell 裡。第二次 source 時，跑到 source $ZSH/oh-my-zsh.sh 之前，ZSH_THEME 已經有值了，所以 Powerlevel10k 才會生效。`ZSH_THEME="powerlevel10k/powerlevel10k"`必須在 `source $ZSH/oh-my-zsh.sh` 之前
+
 - 若 VSCode 預設的終端機仍是 bash 需要調整兩個地方，開啟 VSCode 終端機介面，點擊介面右上角加號，右邊下拉箭頭，選「設定終端設定」，可改如下
 ```
 // 舊版改法 Ref: https://stackoverflow.com/questions/29957456/change-default-terminal-app-in-visual-studio-code-on-mac
