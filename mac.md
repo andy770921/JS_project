@@ -81,6 +81,13 @@ Terminal › External: Osx Exec（自訂要在 macOS 執行哪個終端機應用
 ```
 - 點擊終端機介面右上角加號，右邊下拉箭頭，選「選取預設設定檔」，可在 VSCode 最上方搜尋欄選 「zsh」
 
+## claude code cli
+- `curl -fsSL https://claude.ai/install.sh | bash` (Ref: https://code.claude.com/docs/zh-TW/overview)
+- `echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc`
+- `source ~/.zshrc`
+- 重開終端機
+- `claude`
+
 ## docker engine download  
 https://hub.docker.com/editions/community/docker-ce-desktop-mac  
 Ref:  
