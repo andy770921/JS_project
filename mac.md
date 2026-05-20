@@ -32,9 +32,9 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # command line 左邊想顯示的內容
-POWERLEVEL10K_LEFT_PROMPT_ELEMENTS=(dir) # <= left prompt 設了 "dir"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir) # <= left prompt 設了 "dir"
 # command line 右邊想顯示的內容
-POWERLEVEL10K_RIGHT_PROMPT_ELEMENTS=(time) # <= right prompt 設了 "time"
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time) # <= right prompt 設了 "time"
 
 # ...
 plugins=(git)
