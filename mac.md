@@ -36,6 +36,18 @@ POWERLEVEL10K_LEFT_PROMPT_ELEMENTS=(dir) # <= left prompt 設了 "dir"
 # command line 右邊想顯示的內容
 POWERLEVEL10K_RIGHT_PROMPT_ELEMENTS=(time) # <= right prompt 設了 "time"
 
+# ...
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
