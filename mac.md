@@ -87,7 +87,21 @@ Terminal › External: Osx Exec（自訂要在 macOS 執行哪個終端機應用
 - `source ~/.zshrc`
 - 重開終端機
 - `claude`
-
+## VSCode settings.json
+```
+{
+  "workbench.colorTheme": "Dark Modern",
+  "editor.fontSize": 18,
+  "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+  "terminal.integrated.fontSize": 16,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "window.zoomLevel": 1
+}
+```
 ## docker engine download  
 https://hub.docker.com/editions/community/docker-ce-desktop-mac  
 Ref:  
