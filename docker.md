@@ -171,6 +171,9 @@ web    Failed   0        2025-10-13T09:12:54Z
   5. s: shell 進入 pod ( 再輸入 exit 再按 enter 退出 )
   6. c: 複製 log 完整文字
   7. /: 搜尋關鍵字
+  8. 冒號: 接細部指令，比如 `ctx 空白 xxx`
+  9. port forward: 選定某個 pod，按 shift + f
+  10. 終止 port forward: 選定某個 pod，按 control + d
 - 進入 shell 後，可能的指令
   1. 查看一個環境變數: `echo $COUNTRIES`
   2. 查看所有環境變數: `printenv`
